@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Reflection;
+using GameRoundResult.Web.Extensions;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,7 +22,13 @@ namespace GameRoundResult.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMongoDatabase(Configuration);
+            services.AddServices();
+            services.AddLocalizationSettings(Configuration);
+
+            services.AddControllersWithViews()
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,11 +48,13 @@ namespace GameRoundResult.Web
 
             app.UseAuthorization();
 
+            app.UseRequestLocalization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=GameRoundResult}/{action=Index}/{id?}");
+                    pattern: "{culture=en-US}/{controller=GameRoundResult}/{action=Index}/{id?}");
             });
         }
     }

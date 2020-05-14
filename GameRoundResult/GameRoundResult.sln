@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRoundResult.Web", "GameRoundResult.Web\GameRoundResult.Web.csproj", "{79AD4BD1-D904-4CD9-9916-E5C5FABE4343}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameRoundResult.Web", "GameRoundResult.Web\GameRoundResult.Web.csproj", "{79AD4BD1-D904-4CD9-9916-E5C5FABE4343}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRoundResult.Core", "GameRoundResult.Core\GameRoundResult.Core.csproj", "{80BA5022-0B09-4E20-B40D-250243006CEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{79AD4BD1-D904-4CD9-9916-E5C5FABE4343}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79AD4BD1-D904-4CD9-9916-E5C5FABE4343}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79AD4BD1-D904-4CD9-9916-E5C5FABE4343}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80BA5022-0B09-4E20-B40D-250243006CEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80BA5022-0B09-4E20-B40D-250243006CEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80BA5022-0B09-4E20-B40D-250243006CEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80BA5022-0B09-4E20-B40D-250243006CEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
