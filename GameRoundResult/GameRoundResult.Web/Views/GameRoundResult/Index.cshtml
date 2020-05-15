@@ -1,12 +1,42 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
-
-@{
-    ViewData["Title"] = "Home Page";
-}
-
+@using GameRoundResult.Core.Constants
 @inject IViewLocalizer Localizer
 
-<div class="text-center">
-    <h1 class="display-4">@Localizer["Hello"]</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>+
+@model GameRoundResultViewModel
+
+@{
+    ViewData["Title"] = Localizer["GameRoundResult"];
+}
+
+<h1>@Localizer["GameRoundResult"]</h1>
+
+<form data-ajax="true" data-ajax-method="GET" asp-action="GetRoundResult" data-ajax-mode="replace"
+      data-ajax-update="#round-result"
+      data-ajax-success="gameRoundResult.onGetRoundResultSuccess"
+      method="get">
+    <div>
+        <select asp-for="GameTypeId" asp-items="Html.GetEnumSelectList<GameType>()"></select>
+    </div>
+    <div>
+        <input type="number" asp-for="RoundId">
+    </div>
+    <div>
+        <input type="date" asp-for="Date">
+    </div>
+    <div>
+        <button>@Localizer["Search"]</button>
+    </div>
+</form>
+
+<div id="round-result">
 </div>
+
+@section Styles {
+    <link href="~/lib/data-tables/datatables.min.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/lib/data-tables/datatables.min.js"></script>
+    <script src="~/js/game-round-result.js" asp-append-version="true"></script>
+}

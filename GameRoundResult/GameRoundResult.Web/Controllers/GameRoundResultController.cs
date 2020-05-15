@@ -8,32 +8,46 @@ using Microsoft.Extensions.Logging;
 using GameRoundResult.Web.Models;
 using Microsoft.Extensions.Localization;
 using Microsoft.AspNetCore.Mvc.Localization;
+using MediatR;
+using GameRoundResult.Web.Requests;
+using GameRoundResult.Core.Constants;
 
 namespace GameRoundResult.Web.Controllers
 {
     public class GameRoundResultController : Controller
     {
-        private readonly ILogger<GameRoundResultController> _logger;
+        private readonly IMediator mediator;
 
-        public GameRoundResultController(ILogger<GameRoundResultController> logger)
+        public GameRoundResultController(IMediator mediator)
         {
-            _logger = logger;
+            this.mediator = mediator;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var viewModel = new GameRoundResultViewModel();
+            return View(viewModel);
         }
 
-        public IActionResult Privacy()
+        [HttpGet]
+        public async Task<IActionResult> GetRoundResultAsync(byte gameTypeId, long roundId, DateTimeOffset date)
         {
-            return View();
-        }
+            var viewModel = await mediator.Send(new GetRoundResultRequest(gameTypeId, date.UtcDateTime, roundId));
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            switch (gameTypeId)
+            {
+                case (byte)GameType.BigSmall:
+                case (byte)GameType.BigSmallTurbo:
+                    return PartialView("_BigSmallRoundResult", viewModel);
+
+                case (byte)GameType.OddEven:
+                case (byte)GameType.OddEvenTurbo:
+                    return PartialView("_OddEvenRoundResult", viewModel);
+
+                default:
+                    throw new ArgumentException(nameof(GetRoundResultRequest.GameTypeId));
+            }
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Repository;
 
@@ -9,7 +8,13 @@ namespace GameRoundResult.Core.Services
 {
     public interface IGameRoundResultService
     {
-        Task<IEnumerable<GameRound>> GetRoundResultAsync(byte gameTypeId, DateTime date);
+        Task<IEnumerable<BigSmallRound>> GetBigSmallRoundResultAsync(DateTime date, long roundId);
+
+        Task<IEnumerable<BigSmallRound>> GetBigSmallTurboRoundResultAsync(DateTime date, long roundId);
+
+        Task<IEnumerable<OddEvenRound>> GetOddEvenRoundResultAsync(DateTime date, long roundId);
+
+        Task<IEnumerable<OddEvenRound>> GetOddEvenTurboRoundResultAsync(DateTime date, long roundId);
     }
 
     public class GameRoundResultService : IGameRoundResultService
@@ -21,19 +26,24 @@ namespace GameRoundResult.Core.Services
             this.repository = repository;
         }
 
-        public async Task<IEnumerable<GameRound>> GetRoundResultAsync(byte gameTypeId, DateTime date)
+        public async Task<IEnumerable<BigSmallRound>> GetBigSmallRoundResultAsync(DateTime date, long roundId)
         {
-            switch (gameTypeId)
-            {
-                case GameType.BigSmall:
-                    return await repository.GetBigSmallRoundResultAsync(date);
+            return await repository.GetBigSmallRoundResultAsync(date, roundId);
+        }
 
-                case GameType.BigSmallTurbo:
-                    return await repository.GetBigSmallTurboRoundResultAsync(date);
+        public async Task<IEnumerable<BigSmallRound>> GetBigSmallTurboRoundResultAsync(DateTime date, long roundId)
+        {
+            return await repository.GetBigSmallTurboRoundResultAsync(date, roundId);
+        }
 
-                default:
-                    throw new ArgumentException(nameof(gameTypeId));
-            }
+        public async Task<IEnumerable<OddEvenRound>> GetOddEvenRoundResultAsync(DateTime date, long roundId)
+        {
+            return await repository.GetOddEvenRoundResultAsync(date, roundId);
+        }
+
+        public async Task<IEnumerable<OddEvenRound>> GetOddEvenTurboRoundResultAsync(DateTime date, long roundId)
+        {
+            return await repository.GetOddEvenTurboRoundResultAsync(date, roundId);
         }
     }
 }
