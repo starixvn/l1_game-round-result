@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Threading
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -12,7 +14,7 @@
     <div class="main-container">
         @RenderBody()
     </div>
-
+    <input type="hidden" value="@Thread.CurrentThread.CurrentCulture.Name" id="culture" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>

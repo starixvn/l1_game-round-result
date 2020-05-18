@@ -23,26 +23,36 @@ namespace GameRoundResult.Web.Handlers
 
         public async Task<IEnumerable<RoundResultViewModel>> Handle(GetRoundResultRequest request, CancellationToken cancellationToken)
         {
-            switch (request.GameTypeId)
+            var utcDate = TimeZoneInfo.ConvertTimeToUtc(request.Date, request.TimeZoneInfo);
+
+            switch (request.GameType)
             {
-                case (byte)GameType.BigSmall:
-                    return (await gameRoundResultService.GetBigSmallRoundResultAsync(request.Date, request.RoundId))
-                        .Select(x => x.ToViewModel());
+                case GameType.BigSmall:
+                    return (await gameRoundResultService.GetBigSmallRoundResultAsync(utcDate, request.RoundId))
+                        .Select(x => x.ToViewModel(request.TimeZoneInfo));
 
-                case (byte)GameType.BigSmallTurbo:
-                    return (await gameRoundResultService.GetBigSmallTurboRoundResultAsync(request.Date, request.RoundId))
-                        .Select(x => x.ToViewModel());
+                case GameType.BigSmallTurbo:
+                    return (await gameRoundResultService.GetBigSmallTurboRoundResultAsync(utcDate, request.RoundId))
+                        .Select(x => x.ToViewModel(request.TimeZoneInfo));
 
-                case (byte)GameType.OddEven:
-                    return (await gameRoundResultService.GetOddEvenRoundResultAsync(request.Date, request.RoundId))
-                        .Select(x => x.ToViewModel());
+                case GameType.OddEven:
+                    return (await gameRoundResultService.GetOddEvenRoundResultAsync(utcDate, request.RoundId))
+                        .Select(x => x.ToViewModel(request.TimeZoneInfo));
 
-                case (byte)GameType.OddEvenTurbo:
-                    return (await gameRoundResultService.GetOddEvenTurboRoundResultAsync(request.Date, request.RoundId))
-                        .Select(x => x.ToViewModel());
+                case GameType.OddEvenTurbo:
+                    return (await gameRoundResultService.GetOddEvenTurboRoundResultAsync(utcDate, request.RoundId))
+                        .Select(x => x.ToViewModel(request.TimeZoneInfo));
+
+                case GameType.ShakeThePlate:
+                    return (await gameRoundResultService.GetShakeThePlateRoundResultAsync(utcDate, request.RoundId))
+                        .Select(x => x.ToViewModel(request.TimeZoneInfo));
+
+                case GameType.FishPrawn:
+                    return (await gameRoundResultService.GetFishPrawnRoundResultAsync(utcDate, request.RoundId))
+                        .Select(x => x.ToViewModel(request.TimeZoneInfo));
 
                 default:
-                    throw new ArgumentException(nameof(GetRoundResultRequest.GameTypeId));
+                    throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
             }
         }
     }

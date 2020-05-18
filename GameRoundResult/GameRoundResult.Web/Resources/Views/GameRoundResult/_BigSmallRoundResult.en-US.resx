@@ -132,8 +132,8 @@
   <data name="Small" xml:space="preserve">
     <value>Small</value>
   </data>
-  <data name="Sum" xml:space="preserve">
-    <value>Sum</value>
+  <data name="TotalPoints" xml:space="preserve">
+    <value>Total Points</value>
   </data>
   <data name="WinningOptions" xml:space="preserve">
     <value>Winning Option(s)</value>

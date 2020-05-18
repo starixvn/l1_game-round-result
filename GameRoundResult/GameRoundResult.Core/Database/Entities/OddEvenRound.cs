@@ -1,11 +1,16 @@
-﻿namespace GameRoundResult.Core.Database.Entities
+﻿using MongoDB.Bson.Serialization.Attributes;
+
+namespace GameRoundResult.Core.Database.Entities
 {
     public class OddEvenRound : GameRound
     {
-        public byte Dice1 { get; set; }
+        [BsonElement("dice1")]
+        public byte FirstDice { get; set; }
 
-        public byte Dice2 { get; set; }
+        [BsonElement("dice2")]
+        public byte SecondDice { get; set; }
 
-        public byte Dice3 { get; set; }
+        [BsonElement("dice3")]
+        public byte ThirdDice { get; set; }
     }
 }

@@ -1,5 +1,4 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
-@using GameRoundResult.Core.Constants
 @inject IViewLocalizer Localizer
 
 @model IEnumerable<BigSmallRoundResultViewModel>
@@ -10,7 +9,7 @@
             <th>@Localizer["Date"]</th>
             <th>@Localizer["Round"]</th>
             <th>@Localizer["Result"]</th>
-            <th>@Localizer["Sum"]</th>
+            <th>@Localizer["TotalPoints"]</th>
             <th>@Localizer["WinningOptions"]</th>
         </tr>
     </thead>
@@ -18,9 +17,9 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.Time.ToString()</td>
+                <td>@item.Time.ToString(ViewFormat.DateTimeFormat)</td>
                 <td>@item.Round</td>
-                <td>@item.Dice1 - @item.Dice2 - @item.Dice3</td>
+                <td>@string.Join(" - ", item.Dices)</td>
                 <td>@item.Total</td>
                 <td>@(item.Total > 10 ? Localizer["Big"] : Localizer["Small"])</td>
             </tr>

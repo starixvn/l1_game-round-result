@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Models;
 using MediatR;
 
@@ -7,17 +8,20 @@ namespace GameRoundResult.Web.Requests
 {
     public class GetRoundResultRequest : IRequest<IEnumerable<RoundResultViewModel>>
     {
-        public GetRoundResultRequest(byte gameTypeId, DateTime date, long roundId)
+        public GetRoundResultRequest(GameType gameType, DateTime date, long roundId, TimeZoneInfo timeZoneInfo)
         {
-            GameTypeId = gameTypeId;
+            GameType = gameType;
             Date = date;
             RoundId = roundId;
+            TimeZoneInfo = timeZoneInfo;
         }
 
         public long RoundId { get; }
 
         public DateTime Date { get; }
 
-        public byte GameTypeId { get; }
+        public GameType GameType { get; }
+
+        public TimeZoneInfo TimeZoneInfo { get; }
     }
 }

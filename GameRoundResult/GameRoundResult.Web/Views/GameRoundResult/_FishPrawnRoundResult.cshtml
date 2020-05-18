@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@model IEnumerable<FishPrawnRoundResultVIewModel>
+
+<table>
+    <thead>
+        <tr>
+            <th>@Localizer["Date"]</th>
+            <th>@Localizer["Round"]</th>
+            <th>@Localizer["Result"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                <td>@item.Round</td>
+                <td>@string.Join(" - ", item.Dices)</td>
+            </tr>
+        }
+    </tbody>
+</table>

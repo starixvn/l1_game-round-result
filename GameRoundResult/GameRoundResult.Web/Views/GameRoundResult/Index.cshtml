@@ -1,5 +1,4 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
-@using GameRoundResult.Core.Constants
 @inject IViewLocalizer Localizer
 
 @model GameRoundResultViewModel
@@ -14,11 +13,12 @@
       data-ajax-update="#round-result"
       data-ajax-success="gameRoundResult.onGetRoundResultSuccess"
       method="get">
+    <input type="hidden" asp-for="UserTimeZone" />
     <div>
-        <select asp-for="GameTypeId" asp-items="Html.GetEnumSelectList<GameType>()"></select>
+        <select asp-for="GameType" asp-items="Model.GameTypes"></select>
     </div>
     <div>
-        <input type="number" asp-for="RoundId">
+        <input type="number" asp-for="RoundId" placeholder="@Localizer["Round"]">
     </div>
     <div>
         <input type="date" asp-for="Date">

@@ -120,6 +120,9 @@
   <data name="GameRoundResult" xml:space="preserve">
     <value>Kết quả các phiên trò chơi</value>
   </data>
+  <data name="Round" xml:space="preserve">
+    <value>Phiên</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Tìm kiếm</value>
   </data>

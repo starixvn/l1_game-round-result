@@ -120,6 +120,9 @@
   <data name="GameRoundResult" xml:space="preserve">
     <value>Game Round Result</value>
   </data>
+  <data name="Round" xml:space="preserve">
+    <value>Round</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
   </data>

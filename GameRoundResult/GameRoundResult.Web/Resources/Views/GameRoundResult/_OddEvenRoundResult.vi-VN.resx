@@ -132,7 +132,7 @@
   <data name="Round" xml:space="preserve">
     <value>Phiên</value>
   </data>
-  <data name="Sum" xml:space="preserve">
+  <data name="TotalPoints" xml:space="preserve">
     <value>Tổng</value>
   </data>
   <data name="WinningOptions" xml:space="preserve">

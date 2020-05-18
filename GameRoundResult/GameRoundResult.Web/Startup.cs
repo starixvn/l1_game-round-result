@@ -1,6 +1,9 @@
+using System.Collections.Generic;
 using System.Reflection;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -22,10 +25,17 @@ namespace GameRoundResult.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<List<AuthenticationClient>>(Configuration.GetSection("AuthenticationClients"));
+
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddMongoDatabase(Configuration);
             services.AddServices();
             services.AddLocalizationSettings(Configuration);
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                  .AddCookie();
+
+            services.AddScoped<GameTypeLocalization>();
 
             services.AddControllersWithViews()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
@@ -46,6 +56,7 @@ namespace GameRoundResult.Web
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseRequestLocalization();
@@ -53,8 +64,11 @@ namespace GameRoundResult.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
+                    name: "culture-route",
                     pattern: "{culture=en-US}/{controller=GameRoundResult}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                   name: "default",
+                   pattern: "{controller=GameRoundResult}/{action=Index}/{id?}");
             });
         }
     }

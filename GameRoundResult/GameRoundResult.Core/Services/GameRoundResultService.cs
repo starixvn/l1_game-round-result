@@ -15,6 +15,10 @@ namespace GameRoundResult.Core.Services
         Task<IEnumerable<OddEvenRound>> GetOddEvenRoundResultAsync(DateTime date, long roundId);
 
         Task<IEnumerable<OddEvenRound>> GetOddEvenTurboRoundResultAsync(DateTime date, long roundId);
+
+        Task<IEnumerable<ShakeThePlateRound>> GetShakeThePlateRoundResultAsync(DateTime date, long roundId);
+
+        Task<IEnumerable<FishPrawnRound>> GetFishPrawnRoundResultAsync(DateTime date, long roundId);
     }
 
     public class GameRoundResultService : IGameRoundResultService
@@ -36,6 +40,11 @@ namespace GameRoundResult.Core.Services
             return await repository.GetBigSmallTurboRoundResultAsync(date, roundId);
         }
 
+        public async Task<IEnumerable<FishPrawnRound>> GetFishPrawnRoundResultAsync(DateTime date, long roundId)
+        {
+            return await repository.GetFishPrawnRoundResultAsync(date, roundId);
+        }
+
         public async Task<IEnumerable<OddEvenRound>> GetOddEvenRoundResultAsync(DateTime date, long roundId)
         {
             return await repository.GetOddEvenRoundResultAsync(date, roundId);
@@ -44,6 +53,11 @@ namespace GameRoundResult.Core.Services
         public async Task<IEnumerable<OddEvenRound>> GetOddEvenTurboRoundResultAsync(DateTime date, long roundId)
         {
             return await repository.GetOddEvenTurboRoundResultAsync(date, roundId);
+        }
+
+        public async Task<IEnumerable<ShakeThePlateRound>> GetShakeThePlateRoundResultAsync(DateTime date, long roundId)
+        {
+            return await repository.GetShakeThePlateRoundResultAsync(date, roundId);
         }
     }
 }
