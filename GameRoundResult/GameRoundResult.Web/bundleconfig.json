@@ -1,0 +1,10 @@
+[
+  {
+    "outputFileName": "wwwroot/js/game-round-result.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.min.js",
+      "wwwroot/js/lib/data-tables/datatables.min.js",
+      "wwwroot/js/game-round-result.js"
+    ]
+  }
+]
