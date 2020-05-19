@@ -67,5 +67,24 @@ namespace GameRoundResult.Web.Extensions
                 }
             };
         }
+
+        public static DragonTigerRoundResultViewModel ToViewModel(this DragonTigerRound entity, TimeZoneInfo timeZoneInfo)
+        {
+            return new DragonTigerRoundResultViewModel
+            {
+                Round = entity.Round,
+                Time = TimeZoneInfo.ConvertTimeFromUtc(entity.Time, timeZoneInfo),
+                Dragon = new CardViewModel
+                {
+                    Number = entity.Dragon.Number,
+                    Type = entity.Dragon.Type
+                },
+                Tiger = new CardViewModel
+                {
+                    Number = entity.Tiger.Number,
+                    Type = entity.Tiger.Type
+                }
+            };
+        }
     }
 }

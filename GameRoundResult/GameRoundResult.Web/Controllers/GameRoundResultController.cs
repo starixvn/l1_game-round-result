@@ -59,6 +59,9 @@ namespace GameRoundResult.Web.Controllers
                 case GameType.FishPrawn:
                     return PartialView("_FishPrawnRoundResult", viewModel);
 
+                case GameType.DragonTiger:
+                    return PartialView("_DragonTigerRoundResult", viewModel);
+
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
             }

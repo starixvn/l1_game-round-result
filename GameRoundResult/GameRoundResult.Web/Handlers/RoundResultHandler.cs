@@ -51,6 +51,10 @@ namespace GameRoundResult.Web.Handlers
                     return (await gameRoundResultService.GetFishPrawnRoundResultAsync(utcDate, request.RoundId))
                         .Select(x => x.ToViewModel(request.TimeZoneInfo));
 
+                case GameType.DragonTiger:
+                    return (await gameRoundResultService.GetDragonTigerRoundResultAsync(utcDate, request.RoundId))
+                        .Select(x => x.ToViewModel(request.TimeZoneInfo));
+
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
             }

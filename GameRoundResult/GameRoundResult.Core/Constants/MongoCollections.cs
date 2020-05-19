@@ -13,5 +13,9 @@
         public const string ShakeThePlateRound = "xocxoc_phiens";
 
         public const string FishPrawnRound = "baucua_phiens";
+
+        public const string DragonTigerRound = "minidragontiger_phiens";
+
+        public const string KenoProMaxRound = "kenopromax_phiens";
     }
 }
