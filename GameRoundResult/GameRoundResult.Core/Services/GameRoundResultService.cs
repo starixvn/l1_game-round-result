@@ -22,7 +22,7 @@ namespace GameRoundResult.Core.Services
 
         Task<IEnumerable<DragonTigerRound>> GetDragonTigerRoundResultAsync(DateTime date, long roundId);
 
-        Task<IEnumerable<KenoProMaxRound>> GetKenoProMaxRoundResultAsync(DateTime date, long roundId)
+        Task<IEnumerable<KenoProMaxRound>> GetKenoProMaxRoundResultAsync(DateTime date, long roundId);
     }
 
     public class GameRoundResultService : IGameRoundResultService
