@@ -62,6 +62,9 @@ namespace GameRoundResult.Web.Controllers
                 case GameType.DragonTiger:
                     return PartialView("_DragonTigerRoundResult", viewModel);
 
+                case GameType.KenoProMax:
+                    return PartialView("_KenoProMaxRoundResult", viewModel);
+
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
             }

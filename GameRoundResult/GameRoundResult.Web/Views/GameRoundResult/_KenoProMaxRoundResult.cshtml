@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@model IEnumerable<KenoProMaxRoundResultViewModel>
+
+<table>
+    <thead>
+        <tr>
+            <th rowspan="2">@Localizer["Date"]</th>
+            <th rowspan="2">@Localizer["Round"]</th>
+            <th rowspan="2">@Localizer["Result"]</th>
+            <th rowspan="2">@Localizer["TotalPoints"]</th>
+            <th colspan="3">@Localizer["WinningOptions"]</th>
+        </tr>
+        <tr>
+            <th>@Localizer["Big/Small"]</th>
+            <th>@Localizer["Even/Odd"]</th>
+            <th>@Localizer["Element"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                <td>@item.Round</td>
+                <td>
+                    @foreach (var number in item.Result)
+                    {
+                        <span>@number</span>
+                    }
+                </td>
+                <td>@item.Total</td>
+                <td>@(item.IsBig ? Localizer["Big"] : Localizer["Small"])</td>
+                <td>@(item.IsEven ? Localizer["Even"] : Localizer["Odd"])</td>
+                <td>
+                    @if (item.IsEarth)
+                    {
+                        @Localizer["Earth"]
+                    }
+                    @if (item.IsGold)
+                    {
+                        @Localizer["Gold"]
+                    }
+                    @if (item.IsWood)
+                    {
+                        @Localizer["Wood"]
+                    }
+                    @if (item.IsWater)
+                    {
+                        @Localizer["Water"]
+                    }
+                    @if (item.IsFire)
+                    {
+                        @Localizer["Fire"]
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

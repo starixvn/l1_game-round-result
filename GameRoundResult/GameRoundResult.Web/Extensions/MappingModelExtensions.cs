@@ -86,5 +86,22 @@ namespace GameRoundResult.Web.Extensions
                 }
             };
         }
+
+        public static KenoProMaxRoundResultViewModel ToViewModel(this KenoProMaxRound entity, TimeZoneInfo timeZoneInfo)
+        {
+            return new KenoProMaxRoundResultViewModel
+            {
+                Round = entity.Round,
+                Time = TimeZoneInfo.ConvertTimeFromUtc(entity.Time, timeZoneInfo),
+                Result = entity.Result,
+                IsBig = entity.SettlementResult.Big,
+                IsEven = entity.SettlementResult.Even,
+                IsEarth = entity.SettlementResult.Earth,
+                IsFire = entity.SettlementResult.Fire,
+                IsGold = entity.SettlementResult.Gold,
+                IsWood = entity.SettlementResult.Wood,
+                IsWater = entity.SettlementResult.Water
+            };
+        }
     }
 }

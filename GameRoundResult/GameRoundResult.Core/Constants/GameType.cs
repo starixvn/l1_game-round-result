@@ -8,6 +8,7 @@
         BigSmallTurbo,
         OddEven,
         OddEvenTurbo,
-        DragonTiger
+        DragonTiger,
+        KenoProMax
     }
 }

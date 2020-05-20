@@ -129,6 +129,9 @@
   <data name="FishPrawn" xml:space="preserve">
     <value>Bầu Cua</value>
   </data>
+  <data name="KenoProMax" xml:space="preserve">
+    <value>Keno Pro Max</value>
+  </data>
   <data name="OddEven" xml:space="preserve">
     <value>Chẵn Lẻ</value>
   </data>
