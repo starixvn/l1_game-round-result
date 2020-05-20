@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Net;
 using System.Reflection;
+using System.Threading.Tasks;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using MediatR;
@@ -33,9 +35,14 @@ namespace GameRoundResult.Web
             services.AddLocalizationSettings(Configuration);
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                  .AddCookie();
-
-            services.AddScoped<GameTypeLocalization>();
+                  .AddCookie(options =>
+                  {
+                      options.Events.OnRedirectToLogin = context =>
+                      {
+                          context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                          return Task.CompletedTask;
+                      };
+                  });
 
             services.AddControllersWithViews()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
