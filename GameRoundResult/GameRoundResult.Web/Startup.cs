@@ -33,7 +33,7 @@ namespace GameRoundResult.Web
             services.AddMongoDatabase(Configuration);
             services.AddServices();
             services.AddLocalizationSettings(Configuration);
-
+            services.AddResponseCaching();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                   .AddCookie(options =>
                   {
@@ -67,6 +67,7 @@ namespace GameRoundResult.Web
             app.UseAuthorization();
 
             app.UseRequestLocalization();
+            app.UseResponseCaching();
 
             app.UseEndpoints(endpoints =>
             {

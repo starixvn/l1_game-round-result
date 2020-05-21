@@ -2,6 +2,7 @@
 using System.Linq;
 using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
+using GameRoundResult.Web.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Localization.Routing;

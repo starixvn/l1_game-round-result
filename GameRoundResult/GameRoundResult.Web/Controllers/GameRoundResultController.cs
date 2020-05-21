@@ -35,6 +35,7 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpGet]
+        [ResponseCache(Duration = 15, VaryByQueryKeys = new[] { "gameType", "roundId", "userTimeZone", "date" })]
         public async Task<IActionResult> GetRoundResultAsync(GameType gameType, long roundId, string userTimeZone, DateTime date)
         {
             var clientTimeZone = User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.TimeZone)?.Value;
