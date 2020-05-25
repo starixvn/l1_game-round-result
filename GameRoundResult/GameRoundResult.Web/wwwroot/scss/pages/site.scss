@@ -1,0 +1,244 @@
+﻿@import "../base/_variables.scss";
+@import "../components/_button.scss";
+@import "../components/_forms.scss";
+@import "../components/_table.scss";
+@import "../components/_customize-datatable.scss";
+
+html {
+    font-size: 10px;
+}
+
+body {
+    background-color: $bg-color;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-size: 1.4rem;
+    color: #1a1a1a;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+*, :before, :after {
+    box-sizing: border-box;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.col-date {
+    width: 10rem;
+}
+
+.text-blue {
+    color: #365c9a;
+}
+
+.text-red {
+    color: #b53f39;
+}
+
+// Big Small
+
+.table-big-small {
+    .col-result {
+        width: 19rem;
+    }
+
+    .col-total-points {
+        width: 10rem;
+    }
+}
+
+%dice {
+    display: inline-block;
+    width: 3.9rem;
+    height: 3.9rem;
+    margin-left: .4rem;
+    margin-right: .4rem;
+}
+
+.dice-1 {
+    @extend %dice;
+    background: url(../images/dice_0.png) no-repeat;
+}
+
+.dice-2 {
+    @extend %dice;
+    background: url(../images/dice_1.png) no-repeat;
+}
+
+.dice-3 {
+    @extend %dice;
+    background: url(../images/dice_2.png) no-repeat;
+}
+
+.dice-4 {
+    @extend %dice;
+    background: url(../images/dice_3.png) no-repeat;
+}
+
+.dice-5 {
+    @extend %dice;
+    background: url(../images/dice_4.png) no-repeat;
+}
+
+.dice-6 {
+    @extend %dice;
+    background: url(../images/dice_5.png) no-repeat;
+}
+
+
+// Se die
+%chip {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.6rem;
+}
+
+.red-chip {
+    @extend %chip;
+    background: url(../images/chip_do.png) no-repeat;
+}
+
+.white-chip {
+    @extend %chip;
+    background: url(../images/chip_trang.png) no-repeat;
+}
+
+.table-se-die {
+    .col-result {
+        width: 10rem;
+    }
+}
+
+
+// Dragon tiger
+%card {
+    display: inline-block;    
+    margin-left: .4rem;
+    margin-right: .4rem;
+    color: $text-color;
+
+    span {
+        position: relative;
+        top: 10px;
+        color: #fff;
+    }
+}
+
+.card-type-0 {
+    @extend %card;
+    width: 4.1rem;
+    height: 3.7rem;
+    background: url(../images/card_co.png) no-repeat;
+}
+
+.card-type-1 {
+    @extend %card;
+    width: 4.6rem;
+    height: 4.2rem;
+    background: url(../images/card_ro.png) no-repeat;
+}
+
+.card-type-2 {
+    @extend %card;
+    width: 4.0rem;
+    height: 4.2rem;
+    background: url(../images/card_chuon.png) no-repeat;
+}
+
+.card-type-3 {
+    @extend %card;
+    width: 4.1rem;
+    height: 4.3rem;
+    background: url(../images/card_bich.png) no-repeat;
+}
+
+// Fish Prawn
+%animal {
+    display: inline-block;
+    width: 3.9rem;
+    height: 3.9rem;
+    margin-left: .4rem;
+    margin-right: .4rem;
+}
+
+.animal-0 {
+    @extend %animal;
+    background: url(../images/animal_0.png) no-repeat;
+}
+
+.animal-1 {
+    @extend %animal;
+    background: url(../images/animal_1.png) no-repeat;
+}
+
+.animal-2 {
+    @extend %animal;
+    background: url(../images/animal_2.png) no-repeat;
+}
+
+.animal-3 {
+    @extend %animal;
+    background: url(../images/animal_3.png) no-repeat;
+}
+
+.animal-4 {
+    @extend %animal;
+    background: url(../images/animal_4.png) no-repeat;
+}
+
+.animal-5 {
+    @extend %animal;
+    background: url(../images/animal_5.png) no-repeat;
+}
+
+
+// Keno Pro Max
+%icon {
+    display: inline-block;
+    width: 1.7rem;
+    height: 1.7rem;
+    margin-left: .4rem;
+    margin-right: .4rem;
+}
+
+.icon-earth {
+    @extend %icon;
+    background: url(../images/icon_earth.png) no-repeat;
+}
+
+.icon-gold {
+    @extend %icon;
+    background: url(../images/icon_gold.png) no-repeat;
+}
+
+
+.icon-wood {
+    @extend %icon;
+    background: url(../images/icon_wood.png) no-repeat;
+}
+
+
+.icon-water {
+    @extend %icon;
+    background: url(../images/icon_water.png) no-repeat;
+}
+
+
+.icon-fire {
+    @extend %icon;
+    background: url(../images/icon_fire.png) no-repeat;
+}
+

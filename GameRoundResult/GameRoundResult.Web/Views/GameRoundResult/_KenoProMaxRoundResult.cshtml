@@ -3,10 +3,10 @@
 
 @model IEnumerable<KenoProMaxRoundResultViewModel>
 
-<table>
+<table class="table table-bordered">
     <thead>
         <tr>
-            <th rowspan="2">@Localizer["Date"]</th>
+            <th rowspan="2" class="col-date">@Localizer["Date"]</th>
             <th rowspan="2">@Localizer["Round"]</th>
             <th rowspan="2">@Localizer["Result"]</th>
             <th rowspan="2">@Localizer["TotalPoints"]</th>
@@ -31,28 +31,46 @@
                     }
                 </td>
                 <td>@item.Total</td>
-                <td>@(item.IsBig ? Localizer["Big"] : Localizer["Small"])</td>
-                <td>@(item.IsEven ? Localizer["Even"] : Localizer["Odd"])</td>
+                <td>
+                    @if (item.IsBig)
+                    {
+                        <span class="text-red bold">@Localizer["Big"]</span>
+                    }
+                    else
+                    {
+                        <span class="text-blue bold">@Localizer["Small"]</span>
+                    }
+                </td>
+                <td>
+                    @if (item.IsEven)
+                    {
+                        <span class="text-red bold">@Localizer["Even"]</span>
+                    }
+                    else
+                    {
+                        <span class="text-blue bold">@Localizer["Odd"]</span>
+                    }
+                </td>
                 <td>
                     @if (item.IsEarth)
                     {
-                        @Localizer["Earth"]
+                        <span class="icon-earth"></span>
                     }
                     @if (item.IsGold)
                     {
-                        @Localizer["Gold"]
+                        <span class="icon-earth"></span>
                     }
                     @if (item.IsWood)
                     {
-                        @Localizer["Wood"]
+                        <span class="icon-wood"></span>
                     }
                     @if (item.IsWater)
                     {
-                        @Localizer["Water"]
+                        <span class="icon-water"></span>
                     }
                     @if (item.IsFire)
                     {
-                        @Localizer["Fire"]
+                        <span class="icon-fire"></span>
                     }
                 </td>
             </tr>

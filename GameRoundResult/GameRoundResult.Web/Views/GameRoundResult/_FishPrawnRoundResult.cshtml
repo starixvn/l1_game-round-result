@@ -3,10 +3,10 @@
 
 @model IEnumerable<FishPrawnRoundResultVIewModel>
 
-<table>
+<table class="table table-bordered">
     <thead>
         <tr>
-            <th>@Localizer["Date"]</th>
+            <th class="col-date">@Localizer["Date"]</th>
             <th>@Localizer["Round"]</th>
             <th>@Localizer["Result"]</th>
         </tr>
@@ -17,8 +17,13 @@
             <tr>
                 <td>@item.Time.ToString(ViewFormat.DateTimeFormat)</td>
                 <td>@item.Round</td>
-                <td>@string.Join(" - ", item.Dices)</td>
-            </tr>
+                <td>
+                    @foreach (var dice in item.Dices) 
+                    {
+                        <i class="animal-@dice"></i>
+                    } 
+                </td>
+           </tr>
         }
     </tbody>
 </table>

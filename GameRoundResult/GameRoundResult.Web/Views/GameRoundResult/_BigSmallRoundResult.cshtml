@@ -3,13 +3,13 @@
 
 @model IEnumerable<BigSmallRoundResultViewModel>
 
-<table>
+<table class="table table-bordered table-big-small">
     <thead>
         <tr>
-            <th>@Localizer["Date"]</th>
+            <th class="col-date">@Localizer["Date"]</th>
             <th>@Localizer["Round"]</th>
-            <th>@Localizer["Result"]</th>
-            <th>@Localizer["TotalPoints"]</th>
+            <th class="col-result">@Localizer["Result"]</th>
+            <th class="col-total-points">@Localizer["TotalPoints"]</th>
             <th>@Localizer["WinningOptions"]</th>
         </tr>
     </thead>
@@ -19,10 +19,25 @@
             <tr>
                 <td>@item.Time.ToString(ViewFormat.DateTimeFormat)</td>
                 <td>@item.Round</td>
-                <td>@string.Join(" - ", item.Dices)</td>
+                <td>
+                    @foreach (var dice in item.Dices)
+                    {
+                        <i class="dice-@dice"></i>
+                    }
+                </td>
                 <td>@item.Total</td>
-                <td>@(item.Total > 10 ? Localizer["Big"] : Localizer["Small"])</td>
-            </tr>
+                <td>
+                    @if (item.Total > 10)
+                    {
+                        <span class="text-red bold">@Localizer["Big"]</span>
+                    }
+                    else
+                    {
+                        <span class="text-blue bold">@Localizer["Small"]</span>
+                    }
+                </td>
+
+           </tr>
         }
     </tbody>
 </table>

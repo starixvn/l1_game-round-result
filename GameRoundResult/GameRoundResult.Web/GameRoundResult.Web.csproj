@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="compilerconfig.json" />
     <Content Remove="wwwroot\js\game-round-result.min.js" />
   </ItemGroup>
 
@@ -13,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="compilerconfig.json" />
     <None Include="wwwroot\js\game-round-result.min.js" />
+    <None Include="wwwroot\scss\fonts\material-icons\MaterialIcons-Regular.woff2" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,12 +3,12 @@
 
 @model IEnumerable<ShakeThePlateRoundResultViewModel>
 
-<table>
+<table class="table table-bordered table-se-die">
     <thead>
         <tr>
-            <th>@Localizer["Date"]</th>
+            <th class="col-date">@Localizer["Date"]</th>
             <th>@Localizer["Round"]</th>
-            <th>@Localizer["Result"]</th>
+            <th class="col-result">@Localizer["Result"]</th>
             <th>@Localizer["WinningOptions"]</th>
         </tr>
     </thead>

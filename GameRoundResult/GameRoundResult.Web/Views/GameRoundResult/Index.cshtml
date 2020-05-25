@@ -7,33 +7,33 @@
     ViewData["Title"] = Localizer["GameRoundResult"];
 }
 
-<h1>@Localizer["GameRoundResult"]</h1>
+<h1 class="page-title">@Localizer["GameRoundResult"]</h1>
 
 <form data-ajax="true" data-ajax-method="GET" asp-action="GetRoundResult" data-ajax-mode="replace"
       data-ajax-update="#round-result"
       data-ajax-success="gameRoundResult.onGetRoundResultSuccess"
-      method="get">
+      method="get"
+      class="form filter">
     <input type="hidden" asp-for="UserTimeZone" />
-    <div>
-        <select asp-for="GameType" asp-items="Model.GameTypes"></select>
+    <div class="form-group">
+        <label class="form-label">Game Type</label>
+        <select asp-for="GameType" asp-items="Model.GameTypes" class="form-control"></select>
     </div>
-    <div>
-        <input type="number" asp-for="RoundId" placeholder="@Localizer["Round"]">
+    <div class="form-group">
+        <label class="form-label">Round ID</label>
+        <input type="number" asp-for="RoundId" placeholder="@Localizer["Round"]" class="form-control" />
     </div>
-    <div>
-        <input type="date" asp-for="Date">
+    <div class="form-group">
+        <label class="form-label">Date</label>
+        <input type="date" asp-for="Date"  class="form-control" />
     </div>
-    <div>
-        <button>@Localizer["Search"]</button>
+    <div class="form-group">
+        <button class="btn-submit">@Localizer["Search"]</button>
     </div>
 </form>
 
 <div id="round-result">
 </div>
-
-@section Styles {
-    <link href="~/lib/data-tables/datatables.min.css" rel="stylesheet" />
-}
 
 @section Scripts {
     <environment include="Development">

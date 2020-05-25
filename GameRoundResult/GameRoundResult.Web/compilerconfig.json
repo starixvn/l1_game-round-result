@@ -1,0 +1,30 @@
+﻿[
+  {
+    "outputFile": "wwwroot/scss/base/roboto.css",
+    "inputFile": "wwwroot/scss/base/roboto.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/base/material-icon.css",
+    "inputFile": "wwwroot/scss/base/material-icon.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/pages/site.css",
+    "inputFile": "wwwroot/scss/pages/site.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/themes/theme-color-white.css",
+    "inputFile": "wwwroot/scss/themes/theme-color-white.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/pages/dragon-tiger.css",
+    "inputFile": "wwwroot/scss/pages/dragon-tiger.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/pages/se-die.css",
+    "inputFile": "wwwroot/scss/pages/se-die.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/pages/big-small.css",
+    "inputFile": "wwwroot/scss/pages/big-small.scss"
+  }
+]
