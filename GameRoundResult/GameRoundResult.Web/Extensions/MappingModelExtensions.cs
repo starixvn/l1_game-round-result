@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Models;
 
@@ -49,7 +50,7 @@ namespace GameRoundResult.Web.Extensions
                     entity.SecondRedChip,
                     entity.ThirdRedChip,
                     entity.FourthRedChip
-                }
+                }.OrderByDescending(x => x)
             };
         }
 
