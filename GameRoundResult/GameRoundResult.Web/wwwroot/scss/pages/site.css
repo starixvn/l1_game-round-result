@@ -31,20 +31,14 @@
   background: #fff;
   color: #3a3a3a;
   border: 1px solid #ced4da;
-  height: 3.6rem; }
+  height: 3.6rem;
+  margin-bottom: 1.6rem;
+  margin-right: 1.6rem; }
 
 .form .form-control:disabled,
 .form .form-control[readonly] {
   color: #6c757d;
   background-color: #e9ecef; }
-
-.form .form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1.6rem;
-  margin-right: 1.6rem; }
-  .form .form-group:last-child {
-    margin-bottom: 0; }
 
 .form.filter {
   display: flex;
@@ -52,12 +46,9 @@
   background: #fff;
   margin-bottom: 2rem;
   border: 1px solid #ddd;
-  padding: 2rem 2rem;
+  padding: 2rem 2rem 0;
   border-radius: 0.5rem;
   float: left; }
-
-.form .btn-submit {
-  margin-top: 2.5rem; }
 
 .table {
   background-color: #fff;
@@ -187,30 +178,12 @@ body {
 .table-big-small .col-total-points {
   width: 10rem; }
 
-.dice-1, .dice-2, .dice-3, .dice-4, .dice-5, .dice-6 {
+.dice {
   display: inline-block;
   width: 3.9rem;
   height: 3.9rem;
   margin-left: .4rem;
   margin-right: .4rem; }
-
-.dice-1 {
-  background: url(../images/dice_0.png) no-repeat; }
-
-.dice-2 {
-  background: url(../images/dice_1.png) no-repeat; }
-
-.dice-3 {
-  background: url(../images/dice_2.png) no-repeat; }
-
-.dice-4 {
-  background: url(../images/dice_3.png) no-repeat; }
-
-.dice-5 {
-  background: url(../images/dice_4.png) no-repeat; }
-
-.dice-6 {
-  background: url(../images/dice_5.png) no-repeat; }
 
 .red-chip, .white-chip {
   display: inline-block;
@@ -226,62 +199,56 @@ body {
 .table-se-die .col-result {
   width: 10rem; }
 
-.card-type-0, .card-type-1, .card-type-2, .card-type-3 {
+.card {
+  position: relative;
   display: inline-block;
+  height: 3.2rem;
+  width: 2.5rem;
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
+  border: 0.1rem solid #949494;
+  border-radius: .4rem;
+  background-color: #fff;
+  box-shadow: 0.1rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2); }
+  .card span {
+    position: relative;
+    top: -0.1rem;
+    font-size: 1.2rem; }
+  .card .img {
+    position: absolute;
+    bottom: 0.2rem;
+    left: 0.5rem;
+    width: 1.4rem;
+    height: 1.4rem; }
+  .card.tiger:before {
+    position: absolute;
+    left: -0.8rem;
+    top: 0.6rem;
+    content: "";
+    height: 1.8rem;
+    width: 0.1rem;
+    background-color: #222; }
+
+.card-type-0 span,
+.card-type-1 span {
+  color: #df0000; }
+
+.card-type-2 span,
+.card-type-3 span {
+  color: #000; }
+
+.animal {
+  width: 4.1rem;
+  height: 4.1rem;
   margin-left: .4rem;
   margin-right: .4rem;
-  color: #212529; }
-  .card-type-0 span, .card-type-1 span, .card-type-2 span, .card-type-3 span {
-    position: relative;
-    top: 10px;
-    color: #fff; }
-
-.card-type-0 {
-  width: 4.1rem;
-  height: 3.7rem;
-  background: url(../images/card_co.png) no-repeat; }
-
-.card-type-1 {
-  width: 4.6rem;
-  height: 4.2rem;
-  background: url(../images/card_ro.png) no-repeat; }
-
-.card-type-2 {
-  width: 4.0rem;
-  height: 4.2rem;
-  background: url(../images/card_chuon.png) no-repeat; }
-
-.card-type-3 {
-  width: 4.1rem;
-  height: 4.3rem;
-  background: url(../images/card_bich.png) no-repeat; }
-
-.animal-0, .animal-1, .animal-2, .animal-3, .animal-4, .animal-5 {
-  display: inline-block;
-  width: 3.9rem;
-  height: 3.9rem;
-  margin-left: .4rem;
-  margin-right: .4rem; }
-
-.animal-0 {
-  background: url(../images/animal_0.png) no-repeat; }
-
-.animal-1 {
-  background: url(../images/animal_1.png) no-repeat; }
-
-.animal-2 {
-  background: url(../images/animal_2.png) no-repeat; }
-
-.animal-3 {
-  background: url(../images/animal_3.png) no-repeat; }
-
-.animal-4 {
-  background: url(../images/animal_4.png) no-repeat; }
-
-.animal-5 {
-  background: url(../images/animal_5.png) no-repeat; }
+  border: 0.1rem solid #949494;
+  border-radius: 0.4rem;
+  padding: 0.2rem; }
 
 .icon-earth, .icon-gold, .icon-wood, .icon-water, .icon-fire {
+  position: relative;
+  top: 0.3rem;
   display: inline-block;
   width: 1.7rem;
   height: 1.7rem;
@@ -302,6 +269,15 @@ body {
 
 .icon-fire {
   background: url(../images/icon_fire.png) no-repeat; }
+
+.circle {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  line-height: 3rem;
+  border: 0.1rem solid #2a93d5;
+  border-radius: 50%;
+  text-align: center; }
 
 #overlay {
   position: fixed;

@@ -22,7 +22,7 @@
                 <td>
                     @foreach (var dice in item.Dices)
                     {
-                        <i class="dice-@dice"></i>
+                        <img src="~/scss/images/dice_@(dice).png" class="dice" />
                     }
                 </td>
                 <td>@item.Total</td>

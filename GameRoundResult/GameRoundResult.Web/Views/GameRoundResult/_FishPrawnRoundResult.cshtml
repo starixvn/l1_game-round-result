@@ -18,10 +18,10 @@
                 <td>@item.Time.ToString(ViewFormat.DateTimeFormat)</td>
                 <td>@item.Round</td>
                 <td>
-                    @foreach (var dice in item.Dices) 
+                    @foreach (var dice in item.Dices)
                     {
-                        <i class="animal-@dice"></i>
-                    } 
+                        <img src="~/scss/images/animal_@(dice).png" class="animal" />
+                    }
                 </td>
            </tr>
         }

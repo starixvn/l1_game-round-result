@@ -27,7 +27,7 @@
                 <td>
                     @foreach (var number in item.Result)
                     {
-                        <span>@number</span>
+                        <span class="circle">@number</span>
                     }
                 </td>
                 <td>@item.Total</td>
@@ -54,23 +54,23 @@
                 <td>
                     @if (item.IsEarth)
                     {
-                        <span class="icon-earth"></span>
+                        <span class="icon-earth"></span> @($"({Localizer["Earth"].Value})")
                     }
                     @if (item.IsGold)
                     {
-                        <span class="icon-earth"></span>
+                        <span class="icon-gold"></span> @($"({Localizer["Gold"].Value})")
                     }
                     @if (item.IsWood)
                     {
-                        <span class="icon-wood"></span>
+                        <span class="icon-wood"></span> @($"({Localizer["Wood"].Value})")
                     }
                     @if (item.IsWater)
                     {
-                        <span class="icon-water"></span>
+                        <span class="icon-water"></span> @($"({Localizer["Water"].Value})")
                     }
                     @if (item.IsFire)
                     {
-                        <span class="icon-fire"></span>
+                        <span class="icon-fire"></span> @($"({Localizer["Fire"].Value})")
                     }
                 </td>
             </tr>

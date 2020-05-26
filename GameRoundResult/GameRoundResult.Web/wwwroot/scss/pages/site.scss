@@ -60,42 +60,12 @@ body {
     }
 }
 
-%dice {
+.dice {
     display: inline-block;
     width: 3.9rem;
     height: 3.9rem;
     margin-left: .4rem;
     margin-right: .4rem;
-}
-
-.dice-1 {
-    @extend %dice;
-    background: url(../images/dice_0.png) no-repeat;
-}
-
-.dice-2 {
-    @extend %dice;
-    background: url(../images/dice_1.png) no-repeat;
-}
-
-.dice-3 {
-    @extend %dice;
-    background: url(../images/dice_2.png) no-repeat;
-}
-
-.dice-4 {
-    @extend %dice;
-    background: url(../images/dice_3.png) no-repeat;
-}
-
-.dice-5 {
-    @extend %dice;
-    background: url(../images/dice_4.png) no-repeat;
-}
-
-.dice-6 {
-    @extend %dice;
-    background: url(../images/dice_5.png) no-repeat;
 }
 
 // Se die
@@ -122,88 +92,74 @@ body {
 }
 
 // Dragon tiger
-%card {
+.card {
+    position: relative;
     display: inline-block;
-    margin-left: .4rem;
-    margin-right: .4rem;
-    color: $text-color;
+    height: 3.2rem;
+    width: 2.5rem;
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
+    border: 0.1rem solid #949494;
+    border-radius: .4rem;
+    background-color: #fff;
+    box-shadow: 0.1rem 0.2rem 0.2rem rgba(0,0,0,0.2);
 
     span {
         position: relative;
-        top: 10px;
-        color: #fff;
+        top: -0.1rem;
+        font-size: 1.2rem;
+    }
+
+    .img {
+        position: absolute;
+        bottom: 0.2rem;
+        left: 0.5rem;
+        width: 1.4rem;
+        height: 1.4rem;
+    }
+
+    &.tiger:before {
+        position: absolute;
+        left: -0.8rem;
+        top: 0.6rem;
+        content: "";
+        height: 1.8rem;
+        width: 0.1rem;
+        background-color: #222;
     }
 }
 
-.card-type-0 {
-    @extend %card;
-    width: 4.1rem;
-    height: 3.7rem;
-    background: url(../images/card_co.png) no-repeat;
-}
-
+// co, ro
+.card-type-0,
 .card-type-1 {
-    @extend %card;
-    width: 4.6rem;
-    height: 4.2rem;
-    background: url(../images/card_ro.png) no-repeat;
+    span {
+        color: #df0000;
+    }
 }
 
-.card-type-2 {
-    @extend %card;
-    width: 4.0rem;
-    height: 4.2rem;
-    background: url(../images/card_chuon.png) no-repeat;
-}
-
+// chuon, bich
+.card-type-2,
 .card-type-3 {
-    @extend %card;
-    width: 4.1rem;
-    height: 4.3rem;
-    background: url(../images/card_bich.png) no-repeat;
+    span {
+        color: #000;
+    }
 }
 
 // Fish Prawn
-%animal {
-    display: inline-block;
-    width: 3.9rem;
-    height: 3.9rem;
+.animal {
+    width: 4.1rem;
+    height: 4.1rem;
     margin-left: .4rem;
     margin-right: .4rem;
-}
-
-.animal-0 {
-    @extend %animal;
-    background: url(../images/animal_0.png) no-repeat;
-}
-
-.animal-1 {
-    @extend %animal;
-    background: url(../images/animal_1.png) no-repeat;
-}
-
-.animal-2 {
-    @extend %animal;
-    background: url(../images/animal_2.png) no-repeat;
-}
-
-.animal-3 {
-    @extend %animal;
-    background: url(../images/animal_3.png) no-repeat;
-}
-
-.animal-4 {
-    @extend %animal;
-    background: url(../images/animal_4.png) no-repeat;
-}
-
-.animal-5 {
-    @extend %animal;
-    background: url(../images/animal_5.png) no-repeat;
+    border: 0.1rem solid #949494;
+    border-radius: 0.4rem;
+    padding: 0.2rem;
 }
 
 // Keno Pro Max
 %icon {
+    position: relative;
+    top: 0.3rem;
     display: inline-block;
     width: 1.7rem;
     height: 1.7rem;
@@ -234,6 +190,16 @@ body {
 .icon-fire {
     @extend %icon;
     background: url(../images/icon_fire.png) no-repeat;
+}
+
+.circle {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    border: 0.1rem solid #2a93d5;
+    border-radius: 50%;
+    text-align: center;
 }
 
 #overlay {

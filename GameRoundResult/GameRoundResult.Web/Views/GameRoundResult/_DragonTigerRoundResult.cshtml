@@ -19,12 +19,13 @@
                 <td>@item.Time.ToString(ViewFormat.DateTimeFormat)</td>
                 <td>@item.Round</td>
                 <td>
-                    <div class="card-type-@item.Dragon.Type">
+                    <div class="card card-type-@item.Dragon.Type">
                         <span>@item.Dragon.Number</span>
+                        <img src="~/scss/images/card_@(item.Dragon.Type).png" class="img" />
                     </div>
-                    |
-                    <div class="card-type-@item.Tiger.Type">
-                        <span> @item.Tiger.Number</span>
+                    <div class="card card-type-@item.Tiger.Type tiger">
+                        <span>@item.Tiger.Number</span>
+                        <img src="~/scss/images/card_@(item.Tiger.Type).png" class="img" />
                     </div>
                 </td>
                 <td>
