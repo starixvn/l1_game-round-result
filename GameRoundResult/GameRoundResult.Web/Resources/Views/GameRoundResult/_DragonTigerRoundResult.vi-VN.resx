@@ -118,24 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Date" xml:space="preserve">
-    <value>Date</value>
+    <value>Thời Gian</value>
   </data>
   <data name="Dragon" xml:space="preserve">
-    <value>Dragon</value>
+    <value>Rồng</value>
   </data>
   <data name="Draw" xml:space="preserve">
-    <value>Draw</value>
+    <value>Hòa</value>
   </data>
   <data name="Result" xml:space="preserve">
-    <value>Result</value>
+    <value>Kết Quả</value>
   </data>
   <data name="Round" xml:space="preserve">
-    <value>Round</value>
+    <value>Phiên</value>
   </data>
   <data name="Tiger" xml:space="preserve">
-    <value>Tiger</value>
+    <value>Hổ</value>
   </data>
   <data name="WinningOptions" xml:space="preserve">
-    <value>Winning Option(s)</value>
+    <value>Cửa Thắng</value>
   </data>
 </root>

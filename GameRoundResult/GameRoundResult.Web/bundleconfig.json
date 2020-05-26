@@ -12,7 +12,7 @@
     "inputFiles": [
       "wwwroot/scss/base/roboto.min.css",
       "wwwroot/lib/data-tables/datatables.min.css",
-      "wwwroot/scss/pages/site.min.css"
+      "wwwroot/scss/pages/site.css"
     ]
   }
 ]

@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Date" xml:space="preserve">
+    <value>Thời Gian</value>
+  </data>
   <data name="GameRoundResult" xml:space="preserve">
     <value>Kết quả các phiên trò chơi</value>
+  </data>
+  <data name="GameType" xml:space="preserve">
+    <value>Trò chơi</value>
   </data>
   <data name="Round" xml:space="preserve">
     <value>Phiên</value>

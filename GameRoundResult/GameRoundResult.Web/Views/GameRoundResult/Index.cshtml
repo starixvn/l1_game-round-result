@@ -16,16 +16,16 @@
       class="form filter">
     <input type="hidden" asp-for="UserTimeZone" />
     <div class="form-group">
-        <label class="form-label">Game Type</label>
+        <label class="form-label">@Localizer["GameType"]</label>
         <select asp-for="GameType" asp-items="Model.GameTypes" class="form-control"></select>
     </div>
     <div class="form-group">
-        <label class="form-label">Round ID</label>
+        <label class="form-label">@Localizer["Round"]</label>
         <input type="number" asp-for="RoundId" placeholder="@Localizer["Round"]" class="form-control" />
     </div>
     <div class="form-group">
-        <label class="form-label">Date</label>
-        <input type="date" asp-for="Date"  class="form-control" />
+        <label class="form-label">@Localizer["Date"]</label>
+        <input type="date" asp-for="Date" class="form-control" />
     </div>
     <div class="form-group">
         <button class="btn-submit">@Localizer["Search"]</button>
