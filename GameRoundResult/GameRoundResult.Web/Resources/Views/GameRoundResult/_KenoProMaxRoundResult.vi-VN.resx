@@ -135,9 +135,6 @@
   <data name="Even" xml:space="preserve">
     <value>Chẵn</value>
   </data>
-  <data name="Even/Odd" xml:space="preserve">
-    <value>Chẵn/Lẻ</value>
-  </data>
   <data name="Fire" xml:space="preserve">
     <value>Hỏa</value>
   </data>
@@ -146,6 +143,9 @@
   </data>
   <data name="Odd" xml:space="preserve">
     <value>Lẻ</value>
+  </data>
+  <data name="Odd/Even" xml:space="preserve">
+    <value>Chẵn/Lẻ</value>
   </data>
   <data name="Result" xml:space="preserve">
     <value>Kết Quả</value>
