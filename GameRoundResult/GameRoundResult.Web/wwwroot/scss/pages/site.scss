@@ -157,39 +157,25 @@ body {
 }
 
 // Keno Pro Max
-%icon {
-    position: relative;
-    top: 0.3rem;
-    display: inline-block;
-    width: 1.7rem;
-    height: 1.7rem;
-    margin-left: .4rem;
-    margin-right: .4rem;
+
+.text-earth {
+    color: #c75d07;
 }
 
-.icon-earth {
-    @extend %icon;
-    background: url(../images/icon_earth.png) no-repeat;
+.text-gold {
+    color: #d49904;
 }
 
-.icon-gold {
-    @extend %icon;
-    background: url(../images/icon_gold.png) no-repeat;
+.text-wood {
+    color: #000;
 }
 
-.icon-wood {
-    @extend %icon;
-    background: url(../images/icon_wood.png) no-repeat;
+.text-water {
+    color: #6fc246;
 }
 
-.icon-water {
-    @extend %icon;
-    background: url(../images/icon_water.png) no-repeat;
-}
-
-.icon-fire {
-    @extend %icon;
-    background: url(../images/icon_fire.png) no-repeat;
+.text-fire {
+    color: #f12127;
 }
 
 .circle {

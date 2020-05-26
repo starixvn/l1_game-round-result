@@ -44,33 +44,33 @@
                 <td>
                     @if (item.IsEven)
                     {
-                        <span class="text-red bold">@Localizer["Even"]</span>
+                        <span class="text-blue bold">@Localizer["Even"]</span>
                     }
                     else
                     {
-                        <span class="text-blue bold">@Localizer["Odd"]</span>
+                        <span class="text-red bold">@Localizer["Odd"]</span>
                     }
                 </td>
                 <td>
                     @if (item.IsEarth)
                     {
-                        <span class="icon-earth"></span> @($"({Localizer["Earth"].Value})")
+                    <span class="text-earth">@Localizer["Earth"]</span>
                     }
                     @if (item.IsGold)
                     {
-                        <span class="icon-gold"></span> @($"({Localizer["Gold"].Value})")
+                    <span class="text-gold">@Localizer["Gold"]</span>
                     }
                     @if (item.IsWood)
                     {
-                        <span class="icon-wood"></span> @($"({Localizer["Wood"].Value})")
+                    <span class="text-wood">@Localizer["Wood"]</span>
                     }
                     @if (item.IsWater)
                     {
-                        <span class="icon-water"></span> @($"({Localizer["Water"].Value})")
+                    <span class="text-water">@Localizer["Water"]</span>
                     }
                     @if (item.IsFire)
                     {
-                        <span class="icon-fire"></span> @($"({Localizer["Fire"].Value})")
+                    <span class="text-fire">@Localizer["Fire"]</span>
                     }
                 </td>
             </tr>

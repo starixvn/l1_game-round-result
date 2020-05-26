@@ -246,29 +246,20 @@ body {
   border-radius: 0.4rem;
   padding: 0.2rem; }
 
-.icon-earth, .icon-gold, .icon-wood, .icon-water, .icon-fire {
-  position: relative;
-  top: 0.3rem;
-  display: inline-block;
-  width: 1.7rem;
-  height: 1.7rem;
-  margin-left: .4rem;
-  margin-right: .4rem; }
+.text-earth {
+  color: #c75d07; }
 
-.icon-earth {
-  background: url(../images/icon_earth.png) no-repeat; }
+.text-gold {
+  color: #d49904; }
 
-.icon-gold {
-  background: url(../images/icon_gold.png) no-repeat; }
+.text-wood {
+  color: #000; }
 
-.icon-wood {
-  background: url(../images/icon_wood.png) no-repeat; }
+.text-water {
+  color: #6fc246; }
 
-.icon-water {
-  background: url(../images/icon_water.png) no-repeat; }
-
-.icon-fire {
-  background: url(../images/icon_fire.png) no-repeat; }
+.text-fire {
+  color: #f12127; }
 
 .circle {
   display: inline-block;
