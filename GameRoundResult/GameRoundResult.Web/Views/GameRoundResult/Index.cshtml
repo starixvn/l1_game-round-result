@@ -10,7 +10,7 @@
 <h1 class="page-title">@Localizer["GameRoundResult"]</h1>
 
 <form data-ajax="true" data-ajax-method="GET" asp-action="GetRoundResult" data-ajax-mode="replace"
-      data-ajax-update="#round-result"
+      data-ajax-update="#round-result" data-ajax-loading="#overlay"
       data-ajax-success="gameRoundResult.onGetRoundResultSuccess"
       method="get"
       class="form filter">

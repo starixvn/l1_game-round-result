@@ -98,7 +98,6 @@ body {
     background: url(../images/dice_5.png) no-repeat;
 }
 
-
 // Se die
 %chip {
     display: inline-block;
@@ -122,10 +121,9 @@ body {
     }
 }
 
-
 // Dragon tiger
 %card {
-    display: inline-block;    
+    display: inline-block;
     margin-left: .4rem;
     margin-right: .4rem;
     color: $text-color;
@@ -204,7 +202,6 @@ body {
     background: url(../images/animal_5.png) no-repeat;
 }
 
-
 // Keno Pro Max
 %icon {
     display: inline-block;
@@ -224,21 +221,31 @@ body {
     background: url(../images/icon_gold.png) no-repeat;
 }
 
-
 .icon-wood {
     @extend %icon;
     background: url(../images/icon_wood.png) no-repeat;
 }
-
 
 .icon-water {
     @extend %icon;
     background: url(../images/icon_water.png) no-repeat;
 }
 
-
 .icon-fire {
     @extend %icon;
     background: url(../images/icon_fire.png) no-repeat;
 }
 
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
