@@ -54,9 +54,9 @@ namespace GameRoundResult.Web.Extensions
             };
         }
 
-        public static FishPrawnRoundResultVIewModel ToViewModel(this FishPrawnRound entity, TimeZoneInfo timeZoneInfo)
+        public static FishPrawnRoundResultViewModel ToViewModel(this FishPrawnRound entity, TimeZoneInfo timeZoneInfo)
         {
-            return new FishPrawnRoundResultVIewModel
+            return new FishPrawnRoundResultViewModel
             {
                 Round = entity.Round,
                 Time = TimeZoneInfo.ConvertTimeFromUtc(entity.Time, timeZoneInfo),

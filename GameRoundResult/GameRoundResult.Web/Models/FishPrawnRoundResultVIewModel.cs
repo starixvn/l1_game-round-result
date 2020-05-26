@@ -2,7 +2,7 @@
 
 namespace GameRoundResult.Web.Models
 {
-    public class FishPrawnRoundResultVIewModel : RoundResultViewModel
+    public class FishPrawnRoundResultViewModel : RoundResultViewModel
     {
         public IEnumerable<byte> Dices { get; set; }
     }
