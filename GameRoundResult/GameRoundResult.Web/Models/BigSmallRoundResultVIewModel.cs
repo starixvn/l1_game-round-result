@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text.Encodings.Web;
+using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
 
@@ -16,12 +14,36 @@ namespace GameRoundResult.Web.Models
 
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            var result = new List<string>(base.ToDataTableArray(stringLocalizer));
+            var result = new List<string>(base.ToDataTableArray(stringLocalizer))
+            {
+                GetDiceContent(),
+                Total.ToString(),
+                GetResultContent(stringLocalizer)
+            };
 
-            result.Add(GetDiceStringContent());
-            result.Add(Total.ToString());
+            return result;
+        }
 
+        private string GetDiceContent()
+        {
+            var result = new List<string>();
+
+            foreach (var dice in Dices)
+            {
+                var tagBuilder = new TagBuilder("img");
+                tagBuilder.AddCssClass("dice");
+                tagBuilder.Attributes.Add("src", $"/scss/images/dice_{dice}.png");
+
+                result.Add(tagBuilder.GetHtmlString());
+            }
+
+            return string.Join("", result);
+        }
+
+        private string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
             var tagBuilder = new TagBuilder("span");
+
             tagBuilder.AddCssClass("bold");
             if (Total > 10)
             {
@@ -34,31 +56,7 @@ namespace GameRoundResult.Web.Models
                 tagBuilder.InnerHtml.Append(stringLocalizer["Small"]);
             }
 
-            using var writer = new StringWriter();
-            tagBuilder.WriteTo(writer, HtmlEncoder.Default);
-            var htmlOutput = writer.ToString();
-            result.Add(htmlOutput);
-
-            return result;
-        }
-
-        private string GetDiceStringContent()
-        {
-            var result = new List<string>();
-
-            foreach (var dice in Dices)
-            {
-                var tagBuilder = new TagBuilder("img");
-                tagBuilder.AddCssClass("dice");
-                tagBuilder.Attributes.Add("src", $"/scss/images/dice_{dice}.png");
-
-                using var writer = new StringWriter();
-                tagBuilder.WriteTo(writer, HtmlEncoder.Default);
-                var htmlOutput = writer.ToString();
-                result.Add(htmlOutput);
-            }
-
-            return string.Join("", result);
+            return tagBuilder.GetHtmlString();
         }
     }
 }

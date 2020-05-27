@@ -1,8 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
-@model IEnumerable<FishPrawnRoundResultViewModel>
-
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -12,18 +10,5 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Time.ToString(ViewFormat.DateTimeFormat)</td>
-                <td>@item.Round</td>
-                <td>
-                    @foreach (var dice in item.Dices)
-                    {
-                        <img src="~/scss/images/animal_@(dice).png" class="animal" />
-                    }
-                </td>
-            </tr>
-        }
     </tbody>
 </table>

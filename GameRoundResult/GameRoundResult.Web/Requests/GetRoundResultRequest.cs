@@ -6,14 +6,16 @@ using MediatR;
 
 namespace GameRoundResult.Web.Requests
 {
-    public class GetRoundResultRequest : IRequest<IEnumerable<RoundResultViewModel>>
+    public class GetRoundResultRequest : IRequest<(long, IEnumerable<RoundResultViewModel>)>
     {
-        public GetRoundResultRequest(GameType gameType, DateTime date, long roundId, TimeZoneInfo timeZoneInfo)
+        public GetRoundResultRequest(GameType gameType, DateTime date, long roundId, TimeZoneInfo timeZoneInfo, int page, int pageSize)
         {
             GameType = gameType;
             Date = date;
             RoundId = roundId;
             TimeZoneInfo = timeZoneInfo;
+            Page = page;
+            PageSize = pageSize;
         }
 
         public long RoundId { get; }
@@ -23,5 +25,8 @@ namespace GameRoundResult.Web.Requests
         public GameType GameType { get; }
 
         public TimeZoneInfo TimeZoneInfo { get; }
+
+        public int Page { get; }
+        public int PageSize { get; }
     }
 }

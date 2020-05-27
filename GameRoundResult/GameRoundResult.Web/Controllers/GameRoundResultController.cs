@@ -36,56 +36,51 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpGet]
-        [ResponseCache(Duration = 15, VaryByQueryKeys = new[] { "gameType", "roundId", "userTimeZone", "date" })]
-        public async Task<IActionResult> GetRoundResultAsync(GameType gameType, long roundId, string userTimeZone, DateTime date)
+        public IActionResult GetRoundResult(GameType gameType)
         {
-            var clientTimeZone = User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.TimeZone)?.Value;
-            var timeZoneInfo = string.IsNullOrWhiteSpace(clientTimeZone) ?
-                 TZConvert.GetTimeZoneInfo(userTimeZone) : TZConvert.GetTimeZoneInfo(clientTimeZone);
+            switch (gameType)
+            {
+                case GameType.BigSmall:
+                case GameType.BigSmallTurbo:
+                    return PartialView("_BigSmallRoundResult");
 
-            //var viewModel = await mediator.Send(new GetRoundResultRequest(gameType, date, roundId, timeZoneInfo));
-            return PartialView("_BigSmallRoundResult");
-            //switch (gameType)
-            //{
-            //    case GameType.BigSmall:
-            //    case GameType.BigSmallTurbo:
-            //        return PartialView("_BigSmallRoundResult", viewModel);
+                case GameType.OddEven:
+                case GameType.OddEvenTurbo:
+                    return PartialView("_OddEvenRoundResult");
 
-            //    case GameType.OddEven:
-            //    case GameType.OddEvenTurbo:
-            //        return PartialView("_OddEvenRoundResult", viewModel);
+                case GameType.ShakeThePlate:
+                    return PartialView("_ShakeThePlateRoundResult");
 
-            //    case GameType.ShakeThePlate:
-            //        return PartialView("_ShakeThePlateRoundResult", viewModel);
+                case GameType.FishPrawn:
+                    return PartialView("_FishPrawnRoundResult");
 
-            //    case GameType.FishPrawn:
-            //        return PartialView("_FishPrawnRoundResult", viewModel);
+                case GameType.DragonTiger:
+                    return PartialView("_DragonTigerRoundResult");
 
-            //    case GameType.DragonTiger:
-            //        return PartialView("_DragonTigerRoundResult", viewModel);
+                case GameType.KenoProMax:
+                    return PartialView("_KenoProMaxRoundResult");
 
-            //    case GameType.KenoProMax:
-            //        return PartialView("_KenoProMaxRoundResult", viewModel);
-
-            //    default:
-            //        throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
+                default:
+                    throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
+            }
         }
 
-        public async Task<IActionResult> GetData(int draw, int start, int length, GameType gameType, long roundId, string userTimeZone, DateTime date, [FromServices]IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        [ResponseCache(Duration = 15, VaryByQueryKeys = new[] { "start", "length", "gameType", "roundId", "userTimeZone", "date" })]
+        public async Task<IActionResult> GetData(int start, int length, GameType gameType, long roundId, string userTimeZone, DateTime date, [FromServices]IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var clientTimeZone = User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.TimeZone)?.Value;
             var timeZoneInfo = string.IsNullOrWhiteSpace(clientTimeZone) ?
                  TZConvert.GetTimeZoneInfo(userTimeZone) : TZConvert.GetTimeZoneInfo(clientTimeZone);
 
-            var viewModel = await mediator.Send(new GetRoundResultRequest(gameType, date, roundId, timeZoneInfo));
-            var data = viewModel.Skip(start).Take(length).Select(x => x.ToDataTableArray(stringLocalizer));
+            var result = await mediator.Send(new GetRoundResultRequest(gameType, date, roundId, timeZoneInfo, start + 1, length));
+            var data = result.Item2.Select(x => x.ToDataTableArray(stringLocalizer));
 
             return Json(new
             {
                 data,
-                draw,
-                recordsFiltered = viewModel.Count(),
-                recordsTotal = viewModel.Count()
+                // draw,
+                recordsFiltered = result.Item1,
+                recordsTotal = result.Item1
             });
         }
     }

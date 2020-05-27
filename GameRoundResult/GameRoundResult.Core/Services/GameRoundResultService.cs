@@ -8,21 +8,21 @@ namespace GameRoundResult.Core.Services
 {
     public interface IGameRoundResultService
     {
-        Task<IEnumerable<BigSmallRound>> GetBigSmallRoundResultAsync(DateTime date, long roundId);
+        Task<(long, IEnumerable<BigSmallRound>)> GetBigSmallRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
-        Task<IEnumerable<BigSmallRound>> GetBigSmallTurboRoundResultAsync(DateTime date, long roundId);
+        Task<(long, IEnumerable<BigSmallRound>)> GetBigSmallTurboRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
-        Task<IEnumerable<OddEvenRound>> GetOddEvenRoundResultAsync(DateTime date, long roundId);
+        Task<(long, IEnumerable<OddEvenRound>)> GetOddEvenRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
-        Task<IEnumerable<OddEvenRound>> GetOddEvenTurboRoundResultAsync(DateTime date, long roundId);
+        Task<(long, IEnumerable<OddEvenRound>)> GetOddEvenTurboRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
-        Task<IEnumerable<ShakeThePlateRound>> GetShakeThePlateRoundResultAsync(DateTime date, long roundId);
+        Task<(long, IEnumerable<ShakeThePlateRound>)> GetShakeThePlateRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
-        Task<IEnumerable<FishPrawnRound>> GetFishPrawnRoundResultAsync(DateTime date, long roundId);
+        Task<(long, IEnumerable<FishPrawnRound>)> GetFishPrawnRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
-        Task<IEnumerable<DragonTigerRound>> GetDragonTigerRoundResultAsync(DateTime date, long roundId);
+        Task<(long, IEnumerable<DragonTigerRound>)> GetDragonTigerRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
-        Task<IEnumerable<KenoProMaxRound>> GetKenoProMaxRoundResultAsync(DateTime date, long roundId);
+        Task<(long, IEnumerable<KenoProMaxRound>)> GetKenoProMaxRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
     }
 
     public class GameRoundResultService : IGameRoundResultService
@@ -34,44 +34,44 @@ namespace GameRoundResult.Core.Services
             this.repository = repository;
         }
 
-        public async Task<IEnumerable<BigSmallRound>> GetBigSmallRoundResultAsync(DateTime date, long roundId)
+        public async Task<(long, IEnumerable<BigSmallRound>)> GetBigSmallRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
-            return await repository.GetBigSmallRoundResultAsync(date, roundId);
+            return await repository.GetBigSmallRoundResultAsync(date, roundId, page, pageSize);
         }
 
-        public async Task<IEnumerable<BigSmallRound>> GetBigSmallTurboRoundResultAsync(DateTime date, long roundId)
+        public async Task<(long, IEnumerable<BigSmallRound>)> GetBigSmallTurboRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
-            return await repository.GetBigSmallTurboRoundResultAsync(date, roundId);
+            return await repository.GetBigSmallTurboRoundResultAsync(date, roundId, page, pageSize);
         }
 
-        public async Task<IEnumerable<DragonTigerRound>> GetDragonTigerRoundResultAsync(DateTime date, long roundId)
+        public async Task<(long, IEnumerable<DragonTigerRound>)> GetDragonTigerRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
-            return await repository.GetDragonTigerRoundResultAsync(date, roundId);
+            return await repository.GetDragonTigerRoundResultAsync(date, roundId, page, pageSize);
         }
 
-        public async Task<IEnumerable<FishPrawnRound>> GetFishPrawnRoundResultAsync(DateTime date, long roundId)
+        public async Task<(long, IEnumerable<FishPrawnRound>)> GetFishPrawnRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
-            return await repository.GetFishPrawnRoundResultAsync(date, roundId);
+            return await repository.GetFishPrawnRoundResultAsync(date, roundId, page, pageSize);
         }
 
-        public async Task<IEnumerable<KenoProMaxRound>> GetKenoProMaxRoundResultAsync(DateTime date, long roundId)
+        public async Task<(long, IEnumerable<KenoProMaxRound>)> GetKenoProMaxRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
-            return await repository.GetKenoProMaxRoundResultAsync(date, roundId);
+            return await repository.GetKenoProMaxRoundResultAsync(date, roundId, page, pageSize);
         }
 
-        public async Task<IEnumerable<OddEvenRound>> GetOddEvenRoundResultAsync(DateTime date, long roundId)
+        public async Task<(long, IEnumerable<OddEvenRound>)> GetOddEvenRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
-            return await repository.GetOddEvenRoundResultAsync(date, roundId);
+            return await repository.GetOddEvenRoundResultAsync(date, roundId, page, pageSize);
         }
 
-        public async Task<IEnumerable<OddEvenRound>> GetOddEvenTurboRoundResultAsync(DateTime date, long roundId)
+        public async Task<(long, IEnumerable<OddEvenRound>)> GetOddEvenTurboRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
-            return await repository.GetOddEvenTurboRoundResultAsync(date, roundId);
+            return await repository.GetOddEvenTurboRoundResultAsync(date, roundId, page, pageSize);
         }
 
-        public async Task<IEnumerable<ShakeThePlateRound>> GetShakeThePlateRoundResultAsync(DateTime date, long roundId)
+        public async Task<(long, IEnumerable<ShakeThePlateRound>)> GetShakeThePlateRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
-            return await repository.GetShakeThePlateRoundResultAsync(date, roundId);
+            return await repository.GetShakeThePlateRoundResultAsync(date, roundId, page, pageSize);
         }
     }
 }

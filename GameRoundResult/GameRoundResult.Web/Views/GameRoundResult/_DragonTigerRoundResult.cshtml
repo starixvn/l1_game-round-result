@@ -1,8 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
-@model IEnumerable<DragonTigerRoundResultViewModel>
-
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -13,39 +11,5 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Time.ToString(ViewFormat.DateTimeFormat)</td>
-                <td>@item.Round</td>
-                <td>
-                    <div class="card card-type-@item.Dragon.Type">
-                        <span>@item.Dragon.Number</span>
-                        <img src="~/scss/images/card_@(item.Dragon.Type).png" class="img" />
-                    </div>
-                    <div class="card card-type-@item.Tiger.Type tiger">
-                        <span>@item.Tiger.Number</span>
-                        <img src="~/scss/images/card_@(item.Tiger.Type).png" class="img" />
-                    </div>
-                </td>
-                <td>
-                    @if (item.Dragon.Number > item.Tiger.Number)
-                    {
-                        @Localizer["Dragon"]
-                    }
-                    else
-                    {
-                        @if (item.Dragon.Number < item.Tiger.Number)
-                        {
-                            @Localizer["Tiger"]
-                        }
-                        else
-                        {
-                            @Localizer["Draw"]
-                        }
-                    }
-                </td>
-            </tr>
-        }
     </tbody>
 </table>

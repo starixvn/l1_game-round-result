@@ -1,8 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
-@model IEnumerable<OddEvenRoundResultViewModel>
-
 <table class="table table-bordered table-big-small">
     <thead>
         <tr>
@@ -14,29 +12,5 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Time.ToString(ViewFormat.DateTimeFormat)</td>
-                <td>@item.Round</td>
-                <td>
-                    @foreach (var dice in item.Dices)
-                    {
-                        <img src="~/scss/images/dice_@(dice).png" class="dice" />
-                    }
-                </td>
-                <td>@item.Total</td>
-                <td>
-                    @if (item.Total % 2 == 0)
-                    {
-                        <span class="text-blue bold">@Localizer["Even"]</span>
-                    }
-                    else
-                    {
-                        <span class="text-red bold">@Localizer["Odd"]</span>
-                    }
-                </td>
-            </tr>
-        }
     </tbody>
 </table>

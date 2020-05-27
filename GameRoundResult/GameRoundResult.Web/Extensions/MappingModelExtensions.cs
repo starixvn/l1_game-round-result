@@ -94,7 +94,7 @@ namespace GameRoundResult.Web.Extensions
             {
                 Round = entity.Round,
                 Time = TimeZoneInfo.ConvertTimeFromUtc(entity.Time, timeZoneInfo),
-                Result = entity.Result,
+                Result = entity.Result.ToList(),
                 IsBig = entity.SettlementResult.Big,
                 IsEven = entity.SettlementResult.Even,
                 IsEarth = entity.SettlementResult.Earth,

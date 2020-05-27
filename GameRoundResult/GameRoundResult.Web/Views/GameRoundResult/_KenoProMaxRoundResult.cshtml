@@ -1,8 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
-@model IEnumerable<KenoProMaxRoundResultViewModel>
-
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -19,61 +17,5 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Time.ToString(ViewFormat.DateTimeFormat)</td>
-                <td>@item.Round</td>
-                <td>
-                    @foreach (var number in item.Result)
-                    {
-                        <span class="circle">@number</span>
-                    }
-                </td>
-                <td>@item.Total</td>
-                <td>
-                    @if (item.IsBig)
-                    {
-                        <span class="text-red bold">@Localizer["Big"]</span>
-                    }
-                    else
-                    {
-                        <span class="text-blue bold">@Localizer["Small"]</span>
-                    }
-                </td>
-                <td>
-                    @if (item.IsEven)
-                    {
-                        <span class="text-blue bold">@Localizer["Even"]</span>
-                    }
-                    else
-                    {
-                        <span class="text-red bold">@Localizer["Odd"]</span>
-                    }
-                </td>
-                <td>
-                    @if (item.IsEarth)
-                    {
-                    <span class="text-earth">@Localizer["Earth"]</span>
-                    }
-                    @if (item.IsGold)
-                    {
-                    <span class="text-gold">@Localizer["Gold"]</span>
-                    }
-                    @if (item.IsWood)
-                    {
-                    <span class="text-wood">@Localizer["Wood"]</span>
-                    }
-                    @if (item.IsWater)
-                    {
-                    <span class="text-water">@Localizer["Water"]</span>
-                    }
-                    @if (item.IsFire)
-                    {
-                    <span class="text-fire">@Localizer["Fire"]</span>
-                    }
-                </td>
-            </tr>
-        }
     </tbody>
 </table>

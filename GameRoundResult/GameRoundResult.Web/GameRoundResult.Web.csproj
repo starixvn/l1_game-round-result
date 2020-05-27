@@ -15,12 +15,15 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
+    <None Include="Resources\Models\RoundResultViewModel.vi-VN.resx">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\Models\RoundResultViewModel.en-US.resx" />
     <None Include="wwwroot\js\game-round-result.min.js" />
     <None Include="wwwroot\scss\fonts\material-icons\MaterialIcons-Regular.woff2" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DataTables.AspNetCore.Mvc" Version="1.4.2" />
     <PackageReference Include="MediatR" Version="8.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
