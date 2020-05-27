@@ -289,3 +289,9 @@ body {
   /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer;
   /* Add a pointer on hover */ }
+
+.dataTables_wrapper .dataTables_length {
+  float: none; }
+
+.dataTables_wrapper table {
+  margin-top: 16px; }

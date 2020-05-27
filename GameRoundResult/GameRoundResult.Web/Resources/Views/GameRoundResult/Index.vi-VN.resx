@@ -126,8 +126,8 @@
   <data name="GameType" xml:space="preserve">
     <value>Trò chơi</value>
   </data>
-  <data name="Round" xml:space="preserve">
-    <value>Phiên</value>
+  <data name="RoundId" xml:space="preserve">
+    <value>Phiên ID</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Tìm kiếm</value>

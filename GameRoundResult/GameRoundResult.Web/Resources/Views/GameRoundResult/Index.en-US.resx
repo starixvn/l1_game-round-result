@@ -126,8 +126,8 @@
   <data name="GameType" xml:space="preserve">
     <value>Game Type</value>
   </data>
-  <data name="Round" xml:space="preserve">
-    <value>Round</value>
+  <data name="RoundId" xml:space="preserve">
+    <value>Round ID</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>

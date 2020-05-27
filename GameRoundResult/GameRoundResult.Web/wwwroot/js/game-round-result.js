@@ -1,5 +1,9 @@
 ﻿var gameRoundResult = (function ($) {
     var culture = $("#culture").val();
+    var $gameType = $("#GameType");
+    var $roundId = $("#RoundId");
+    var $date = $("#Date");
+    var $userTimeZone = $("#UserTimeZone");
 
     return {
         onGetRoundResultSuccess: function () {
@@ -14,17 +18,17 @@
                 "ajax": {
                     "url": `/${culture}/GameRoundResult/GetData`,
                     "data": {
-                        gameType: $("#GameType").val(),
-                        roundId: $("#RoundId").val(),
-                        date: $("#Date").val(),
-                        userTimeZone: $("#UserTimeZone").val()
+                        gameType: $gameType.val(),
+                        roundId: $roundId.val(),
+                        date: $date.val(),
+                        userTimeZone: $userTimeZone.val()
                     }
                 },
                 "searching": false
             });
         },
         init: function () {
-            $("#UserTimeZone").val(Intl.DateTimeFormat().resolvedOptions().timeZone);
+            $userTimeZone.val(Intl.DateTimeFormat().resolvedOptions().timeZone);
         }
     }
 }(jQuery));
