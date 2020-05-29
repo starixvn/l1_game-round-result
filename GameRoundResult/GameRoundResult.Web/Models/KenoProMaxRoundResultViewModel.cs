@@ -33,7 +33,7 @@ namespace GameRoundResult.Web.Models
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
-               GetResultContent(),
+               GetResultContent(stringLocalizer),
                Total.ToString(),
                GetBigSmallContent(stringLocalizer),
                GetOddEvenContent(stringLocalizer),
@@ -43,16 +43,17 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        private string GetResultContent()
+        private string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var stringContents = new List<string>();
 
+            var wrapper = new TagBuilder("div");
             for (var i = 0; i < Result.Count; i++)
             {
                 var tagBuilder = new TagBuilder("span");
                 tagBuilder.AddCssClass("circle");
                 tagBuilder.InnerHtml.Append(Result[i].ToString());
-                stringContents.Add(tagBuilder.GetHtmlString());
+                wrapper.InnerHtml.AppendHtml(tagBuilder.GetHtmlString());
 
                 if (i == 9)
                 {
@@ -60,9 +61,19 @@ namespace GameRoundResult.Web.Models
                     {
                         TagRenderMode = TagRenderMode.SelfClosing
                     };
-                    stringContents.Add(lineBreak.GetHtmlString());
+                    wrapper.InnerHtml.AppendHtml(lineBreak);
                 }
             }
+
+            stringContents.Add(wrapper.GetHtmlString());
+
+            var anchor = new TagBuilder("a");
+            anchor.AddCssClass("view-keno-result");
+            anchor.Attributes.Add("data-result", string.Join(",", Result));
+            anchor.Attributes.Add("href", "#");
+            anchor.InnerHtml.Append(stringLocalizer["Detail"]);
+
+            stringContents.Add(anchor.GetHtmlString());
 
             return string.Join("", stringContents);
         }

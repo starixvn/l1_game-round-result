@@ -4,6 +4,7 @@
     "inputFiles": [
       "wwwroot/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.min.js",
       "wwwroot/js/lib/data-tables/datatables.min.js",
+      "wwwroot/js/lib/jquery-modal/jquery.modal.js",
       "wwwroot/js/game-round-result.js"
     ]
   },
@@ -12,6 +13,7 @@
     "inputFiles": [
       "wwwroot/scss/base/roboto.min.css",
       "wwwroot/lib/data-tables/datatables.min.css",
+      "wwwroot/lib/jquery-modal/jquery.modal.min.css",
       "wwwroot/scss/pages/site.css"
     ]
   }

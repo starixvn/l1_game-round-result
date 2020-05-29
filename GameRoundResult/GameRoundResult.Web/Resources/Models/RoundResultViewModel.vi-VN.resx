@@ -120,6 +120,9 @@
   <data name="Big" xml:space="preserve">
     <value>Tài</value>
   </data>
+  <data name="Detail" xml:space="preserve">
+    <value>Xem chi tiết</value>
+  </data>
   <data name="Dragon" xml:space="preserve">
     <value>Rồng</value>
   </data>

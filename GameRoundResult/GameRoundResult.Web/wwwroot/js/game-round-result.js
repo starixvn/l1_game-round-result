@@ -35,4 +35,21 @@
 
 $(document).ready(function () {
     gameRoundResult.init();
+
+    $("body").on("click", ".view-keno-result", function () {
+        var $kenoResultModal = $("#keno-result-modal");
+        $kenoResultModal.empty();
+
+        var $this = $(this);
+        var result = $this.data("result").split(",");
+
+        for (var i = 0; i < result.length; i++) {
+            var $span = $("<span>");
+            $span.addClass("circle");
+            $span.text(result[i]);
+            $kenoResultModal.append($span);
+        }
+
+        $kenoResultModal.modal();
+    });
 });
