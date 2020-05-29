@@ -14,7 +14,13 @@
     <div class="main-container">
         @RenderBody()
     </div>
-    <div id="overlay"></div>
+    <div id="overlay">
+        <div class="pulse-container">
+            <div class="pulse-bubble pulse-bubble-1"></div>
+            <div class="pulse-bubble pulse-bubble-2"></div>
+            <div class="pulse-bubble pulse-bubble-3"></div>
+        </div>
+    </div>
     <input type="hidden" value="@Thread.CurrentThread.CurrentCulture.Name" id="culture" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     @RenderSection("Scripts", required: false)

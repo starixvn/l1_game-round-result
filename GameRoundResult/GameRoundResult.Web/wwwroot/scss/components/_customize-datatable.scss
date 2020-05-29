@@ -79,10 +79,20 @@
     }
 }
 
-.dataTables_wrapper .dataTables_filter {
-    margin-bottom: 1.5rem;
-}
+.dataTables_wrapper {
+    .dataTables_filter {
+        margin-bottom: 1.5rem;
+    }
 
-.dataTables_wrapper .dataTables_info {
-    padding-top: 1.2rem;
+    .dataTables_info {
+        padding-top: 1.2rem;
+    }
+
+    .dataTables_length {
+        float: none;
+    }
+
+    table {
+        margin-top: 16px;
+    }
 }
