@@ -72,13 +72,12 @@ namespace GameRoundResult.Web.Controllers
             var timeZoneInfo = string.IsNullOrWhiteSpace(clientTimeZone) ?
                  TZConvert.GetTimeZoneInfo(userTimeZone) : TZConvert.GetTimeZoneInfo(clientTimeZone);
 
-            var result = await mediator.Send(new GetRoundResultRequest(gameType, date, roundId, timeZoneInfo, start + 1, length));
+            var result = await mediator.Send(new GetRoundResultRequest(gameType, date, roundId, timeZoneInfo, start, length));
             var data = result.Item2.Select(x => x.ToDataTableArray(stringLocalizer));
 
             return Json(new
             {
                 data,
-                // draw,
                 recordsFiltered = result.Item1,
                 recordsTotal = result.Item1
             });

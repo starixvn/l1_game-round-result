@@ -83,7 +83,7 @@ namespace GameRoundResult.Core.Database.Repository
             var cursor = collection.Find(x => x.Time >= fromDate && x.Time < toDate && (roundId == 0 || x.Round == roundId));
 
             var total = await cursor.CountDocumentsAsync();
-            var data = await cursor.SortByDescending(x => x.Time).Skip(page - 1).Limit(pageSize).ToListAsync();
+            var data = await cursor.SortByDescending(x => x.Time).Skip(page).Limit(pageSize).ToListAsync();
             return (total, data);
         }
     }
