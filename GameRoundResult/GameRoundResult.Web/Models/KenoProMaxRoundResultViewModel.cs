@@ -48,21 +48,13 @@ namespace GameRoundResult.Web.Models
             var stringContents = new List<string>();
 
             var wrapper = new TagBuilder("div");
+            wrapper.AddCssClass("numbers");
             for (var i = 0; i < Result.Count; i++)
             {
                 var tagBuilder = new TagBuilder("span");
                 tagBuilder.AddCssClass("circle");
                 tagBuilder.InnerHtml.Append(Result[i].ToString());
                 wrapper.InnerHtml.AppendHtml(tagBuilder.GetHtmlString());
-
-                if (i == 9)
-                {
-                    var lineBreak = new TagBuilder("br")
-                    {
-                        TagRenderMode = TagRenderMode.SelfClosing
-                    };
-                    wrapper.InnerHtml.AppendHtml(lineBreak);
-                }
             }
 
             stringContents.Add(wrapper.GetHtmlString());

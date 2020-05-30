@@ -13,7 +13,7 @@
       data-ajax-update="#round-result" data-ajax-loading="#overlay"
       data-ajax-success="gameRoundResult.onGetRoundResultSuccess"
       method="get"
-      class="form filter">
+      class="filter">
     <input type="hidden" asp-for="UserTimeZone" />
     <select asp-for="GameType" asp-items="Model.GameTypes" class="form-control"></select>
     <input type="number" asp-for="RoundId" placeholder="@Localizer["RoundId"]" class="form-control" />

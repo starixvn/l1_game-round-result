@@ -1,33 +1,17 @@
-﻿.modal {
-    .modal-header,
-    .modal-footer {
-        background: #145388;
+﻿
+.blocker {
+    background-color: rgba(0,0,0,.5);
+}
+
+.modal {
+    padding: 4rem 2rem;
+    box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04);
+
+    .numbers {
+        display: grid;
     }
 
-    .modal-header {
-        padding: 1.2rem 1.4rem;
-        border-bottom: 1px solid #e9ecef;
-    }
-
-    .modal-title {
-        margin-bottom: 0;
-        line-height: 1.5;
-        font-size: 1.8rem;
-    }
-
-    .close {
-        font-size: 2.5rem;
-    }
-
-    .modal-footer > :not(:last-child) {
-        margin-right: .5rem;
-    }
-
-    .modal-content {
-        border-radius: .5rem;
-    }
-
-    .modal-body {
-        padding: 1.4rem;
+    a.close-modal {
+        background-image: url(../images/close.png);
     }
 }

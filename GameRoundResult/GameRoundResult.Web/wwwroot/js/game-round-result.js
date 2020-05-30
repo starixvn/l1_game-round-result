@@ -43,11 +43,16 @@ $(document).ready(function () {
         var $this = $(this);
         var result = $this.data("result").split(",");
 
+        
+        $kenoResultModal.append("<div id='numbers'></div>");
+        var listNumbers = $("#numbers");
+        listNumbers.addClass("numbers");
+
         for (var i = 0; i < result.length; i++) {
             var $span = $("<span>");
             $span.addClass("circle");
             $span.text(result[i]);
-            $kenoResultModal.append($span);
+            listNumbers.append($span);
         }
 
         $kenoResultModal.modal();
