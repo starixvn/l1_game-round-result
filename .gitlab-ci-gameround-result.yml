@@ -1,0 +1,120 @@
+variables:
+  ROUND_RESULT_ROOT_PATH: ./GameRoundResult.Web
+  ROUND_RESULT_BUILD_PATH: ~/build/game-round-result
+  ROUND_RESULT_PROJECT_NAME: GameRoundResult.Web.csproj
+
+.round-result-push-git-compiled:
+  script: 
+    - if [ "$CI_ENVIRONMENT_NAME" == "PRO" ]; 
+      then
+        export GIT_BRANCH=master;
+      else
+        export GIT_BRANCH=$CI_ENVIRONMENT_NAME;
+      fi
+    - echo $GIT_BRANCH
+    - echo "====== Pushing git compiled ... ======"
+    - git clone --branch $GIT_BRANCH $ROUND_RESULT_GIT_COMPILED $ROUND_RESULT_BUILD_PATH
+    - mkdir temp
+    - mv $ROUND_RESULT_BUILD_PATH/.git ./temp
+    - rm -rfv $ROUND_RESULT_BUILD_PATH/
+    - cp -r ./temp/ $ROUND_RESULT_BUILD_PATH
+    - dotnet clean $ROUND_RESULT_ROOT_PATH/$ROUND_RESULT_PROJECT_NAME
+    - dotnet publish -c $CI_ENVIRONMENT_NAME -r linux-x64 --self-contained false $ROUND_RESULT_ROOT_PATH/$ROUND_RESULT_PROJECT_NAME -o $ROUND_RESULT_BUILD_PATH
+    - cp $ROUND_RESULT_ROOT_PATH/gitlab-ci-after-script-${CI_ENVIRONMENT_NAME}.sh $ROUND_RESULT_BUILD_PATH
+    - cd $ROUND_RESULT_BUILD_PATH
+    - git add *
+    - if [ -z "$(git status --porcelain)" ]; 
+      then 
+        echo "Nothing change"; 
+      else 
+       git commit -m "$COMMIT_MESSAGE"; git push -u origin $GIT_BRANCH;
+       echo "==============Waiting for after script execution==============";
+       sleep 60; 
+      fi
+
+.base-round-result:
+  stage: deploy
+  tags:
+    - docker
+  retry:
+    max: 2
+    when:
+      - runner_system_failure
+      - forward_deployment_failure
+      - archived_failure
+
+build:round_result:
+  stage: build
+  script:   
+    - dotnet clean $ROUND_RESULT_ROOT_PATH/$ROUND_RESULT_PROJECT_NAME
+    - dotnet build $ROUND_RESULT_ROOT_PATH/$ROUND_RESULT_PROJECT_NAME
+  tags:
+    - docker
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      when: always
+
+local_deploy:round_result:
+  extends: 
+    - .base-round-result
+    - .round-result-push-git-compiled
+  environment:
+    name: LOCAL
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^l1-deploy-local-\d{8}-\d+.*$/
+      when: always
+    - if: $CI_COMMIT_TAG =~ /^l1-deploy-grr-\d{8}-\d+.*$/
+      when: always
+    - if: $CI_COMMIT_TAG =~ /^l1-deploy-local-grr-\d{8}-\d+.*$/
+      when: always
+    - if: $CI_COMMIT_TAG =~ /^l1-deploy-\d{8}-\d+.*$/
+      when: always      
+    - when: never
+
+sit_deploy:round_result:
+  extends: 
+    - .base-round-result
+    - .round-result-push-git-compiled
+  environment:
+    name: SIT
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^l1-deploy-sit-\d{8}-\d+.*$/
+      when: always
+    - if: $CI_COMMIT_TAG =~ /^l1-deploy-grr-\d{8}-\d+.*$/
+      when: always
+    - if: $CI_COMMIT_TAG =~ /^l1-deploy-sit-grr-\d{8}-\d+.*$/
+      when: always
+    - if: $CI_COMMIT_TAG =~ /^l1-deploy-\d{8}-\d+.*$/
+      when: always      
+    - when: never
+
+uat_deploy:round_result:
+  extends: 
+    - .base-round-result
+    - .round-result-push-git-compiled
+  environment:
+    name: UAT
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^l1-deploy-uat-\d{8}-\d+.*$/
+      when: always
+    - if: $CI_COMMIT_TAG =~ /^l1-deploy-grr-\d{8}-\d+.*$/
+      when: always
+    - if: $CI_COMMIT_TAG =~ /^l1-deploy-uat-grr-\d{8}-\d+.*$/
+      when: always
+    - if: $CI_COMMIT_TAG =~ /^l1-deploy-\d{8}-\d+.*$/
+      when: always      
+    - when: never
+
+prod_deploy:round_result:
+  extends: 
+    - .base-round-result
+    - .round-result-push-git-compiled
+  environment:
+    name: PRO
+  needs:
+    - build:round_result
+  allow_failure: false
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+      when: manual
+
