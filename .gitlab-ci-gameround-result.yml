@@ -1,5 +1,5 @@
 variables:
-  ROUND_RESULT_ROOT_PATH: ./GameRoundResult.Web
+  ROUND_RESULT_ROOT_PATH: ./GameRoundResult/GameRoundResult.Web
   ROUND_RESULT_BUILD_PATH: ~/build/game-round-result
   ROUND_RESULT_PROJECT_NAME: GameRoundResult.Web.csproj
 
