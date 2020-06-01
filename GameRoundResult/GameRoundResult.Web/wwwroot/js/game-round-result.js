@@ -24,8 +24,7 @@
                         userTimeZone: $userTimeZone.val()
                     }
                 },
-                "searching": false,
-                "responsive": true
+                "searching": false
             });
         },
         init: function () {
