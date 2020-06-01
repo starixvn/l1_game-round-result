@@ -24,7 +24,8 @@
                         userTimeZone: $userTimeZone.val()
                     }
                 },
-                "searching": false
+                "searching": false,
+                "responsive": true
             });
         },
         init: function () {
@@ -43,7 +44,6 @@ $(document).ready(function () {
         var $this = $(this);
         var result = $this.data("result").split(",");
 
-        
         $kenoResultModal.append("<div id='numbers'></div>");
         var listNumbers = $("#numbers");
         listNumbers.addClass("numbers");

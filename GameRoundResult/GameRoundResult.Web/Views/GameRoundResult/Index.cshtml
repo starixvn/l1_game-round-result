@@ -25,14 +25,12 @@
 </div>
 
 <div id="keno-result-modal" class="modal">
-    <p>Thanks for clicking. That felt good.</p>
-    <a href="#" rel="modal:close">Close</a>
 </div>
 
 @section Scripts {
     <environment include="Development">
-        <script src="~/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.min.js"></script>
-        <script src="~/lib/data-tables/datatables.min.js"></script>
+        <script src="~/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.js"></script>
+        <script src="~/lib/data-tables/datatables.js"></script>
         <script src="~/lib/jquery-modal/jquery.modal.js"></script>
         <script src="~/js/game-round-result.js" asp-append-version="true"></script>
     </environment>
