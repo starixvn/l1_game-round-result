@@ -121,7 +121,7 @@
     <value>Big Small</value>
   </data>
   <data name="BigSmallTurbo" xml:space="preserve">
-    <value>Big Small Turbo</value>
+    <value>Turbo Big Small</value>
   </data>
   <data name="DragonTiger" xml:space="preserve">
     <value>Dragon Tiger</value>
@@ -136,7 +136,7 @@
     <value>Odd Even</value>
   </data>
   <data name="OddEvenTurbo" xml:space="preserve">
-    <value>Odd Even Turbo</value>
+    <value>Turbo Odd Even</value>
   </data>
   <data name="ShakeThePlate" xml:space="preserve">
     <value>Se Die</value>

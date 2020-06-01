@@ -121,7 +121,7 @@
     <value>Thời Gian</value>
   </data>
   <data name="GameRoundResult" xml:space="preserve">
-    <value>Kết quả các phiên trò chơi</value>
+    <value>Kết quả</value>
   </data>
   <data name="GameType" xml:space="preserve">
     <value>Trò chơi</value>
