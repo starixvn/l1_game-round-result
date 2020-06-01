@@ -51,7 +51,7 @@ namespace GameRoundResult.Web.Controllers
                 case GameType.ShakeThePlate:
                     return PartialView("_ShakeThePlateRoundResult");
 
-                case GameType.FishPrawn:
+                case GameType.FishPrawnCrab:
                     return PartialView("_FishPrawnRoundResult");
 
                 case GameType.DragonTiger:

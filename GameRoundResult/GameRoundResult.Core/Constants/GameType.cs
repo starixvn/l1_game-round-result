@@ -4,7 +4,7 @@
     {
         BigSmall = 1,
         ShakeThePlate,
-        FishPrawn,
+        FishPrawnCrab,
         BigSmallTurbo,
         OddEven,
         OddEvenTurbo,

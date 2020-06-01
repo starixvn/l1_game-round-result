@@ -47,7 +47,7 @@ namespace GameRoundResult.Web.Handlers
                     var shakeThePlateResult = await gameRoundResultService.GetShakeThePlateRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
                     return (shakeThePlateResult.Item1, shakeThePlateResult.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
 
-                case GameType.FishPrawn:
+                case GameType.FishPrawnCrab:
                     var fishPrawnResult = await gameRoundResultService.GetFishPrawnRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
                     return (fishPrawnResult.Item1, fishPrawnResult.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
 
