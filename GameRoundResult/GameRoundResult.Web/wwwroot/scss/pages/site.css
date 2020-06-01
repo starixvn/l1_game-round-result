@@ -27,30 +27,35 @@
   padding: 2rem 2rem 0;
   border-radius: 0.5rem;
   float: left; }
-  .filter .form-label {
-    margin-bottom: .8rem; }
   .filter .form-control {
     border-radius: .5rem;
     outline: initial !important;
     box-shadow: none !important;
     font-size: 1.6rem;
+    width: 100%;
+    margin-right: 0;
     padding: 0.8rem 1rem;
-    line-height: 1;
-    background: #fff;
-    color: #3a3a3a;
-    border: 1px solid #ced4da;
     height: 3.6rem;
+    line-height: 1;
     margin-bottom: 1.6rem;
-    margin-right: 1.6rem; }
+    border: 1px solid #ced4da;
+    background: #fff;
+    color: #3a3a3a; }
     @media only screen and (min-device-width: 768px) {
       .filter .form-control {
+        width: auto;
+        margin-right: 1.6rem;
         font-size: 1.4rem; } }
   .filter .form-control:disabled,
   .filter .form-control[readonly] {
     color: #6c757d;
     background-color: #e9ecef; }
   .filter .btn-submit {
+    width: 100%;
     margin-bottom: 1.6rem; }
+    @media only screen and (min-device-width: 768px) {
+      .filter .btn-submit {
+        width: auto; } }
 
 .table {
   background-color: #fff;
