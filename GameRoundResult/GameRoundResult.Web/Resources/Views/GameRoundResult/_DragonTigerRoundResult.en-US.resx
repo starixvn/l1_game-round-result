@@ -126,8 +126,8 @@
   <data name="Draw" xml:space="preserve">
     <value>Draw</value>
   </data>
-  <data name="Result" xml:space="preserve">
-    <value>Result</value>
+  <data name="Results" xml:space="preserve">
+    <value>Results</value>
   </data>
   <data name="Round" xml:space="preserve">
     <value>Round ID</value>
