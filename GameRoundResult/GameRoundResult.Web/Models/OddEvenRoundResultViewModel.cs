@@ -28,7 +28,8 @@ namespace GameRoundResult.Web.Models
 
         private string GetDiceContent()
         {
-            var result = new List<string>();
+            var div = new TagBuilder("div");
+            div.AddCssClass("dice-list");
 
             foreach (var dice in Dices)
             {
@@ -36,10 +37,10 @@ namespace GameRoundResult.Web.Models
                 tagBuilder.AddCssClass("dice");
                 tagBuilder.Attributes.Add("src", $"/scss/images/dice_{dice}.png");
 
-                result.Add(tagBuilder.GetHtmlString());
+                div.InnerHtml.AppendHtml(tagBuilder);
             }
 
-            return string.Join("", result);
+            return div.GetHtmlString();
         }
 
         private string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
