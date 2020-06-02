@@ -7,6 +7,18 @@
     ViewData["Title"] = Localizer["GameRoundResult"];
 }
 
+@section Styles {
+    <environment include="Development">
+        <link href="~/scss/base/roboto.css" rel="stylesheet" />
+        <link href="~/lib/data-tables/datatables.css" rel="stylesheet" />
+        <link href="~/scss/pages/site.css" rel="stylesheet" />
+    </environment>
+    <environment exclude="Development">
+        <link href="~/css/pages/site.min.css" rel="stylesheet" asp-append-version="true" />
+    </environment>
+
+}
+
 <h1 class="page-title">@Localizer["GameRoundResult"]</h1>
 
 <form data-ajax="true" data-ajax-method="GET" asp-action="GetRoundResult" data-ajax-mode="replace"
@@ -20,7 +32,6 @@
     <input type="date" asp-for="Date" class="form-control" />
     <button class="btn-submit">@Localizer["Search"]</button>
 </form>
-
 <div id="round-result">
 </div>
 
@@ -28,6 +39,7 @@
     <environment include="Development">
         <script src="~/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.js"></script>
         <script src="~/lib/data-tables/datatables.js"></script>
+
         <script src="~/js/game-round-result.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">

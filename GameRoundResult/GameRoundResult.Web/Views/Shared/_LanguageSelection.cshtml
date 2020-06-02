@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+
+@inject IOptions<RequestLocalizationOptions> cultureOptions
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var supportedCultures = cultureOptions.Value.SupportedCultures;
+}
+
+<button id="language" class="flag-@requestCulture.RequestCulture.Culture.Name">@requestCulture.RequestCulture.Culture.DisplayName</button>
+
+<ul id="language-options">
+    @foreach (var culture in supportedCultures)
+    {
+        <li class="flag-@culture.Name"><a href="/@culture.Name">@culture.DisplayName</a></li>
+    }
+</ul>
