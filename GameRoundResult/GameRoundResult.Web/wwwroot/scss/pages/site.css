@@ -28,7 +28,7 @@
   border-radius: 0.5rem;
   float: left;
   width: 100%; }
-  @media only screen and (min-device-width: 768px) {
+  @media only screen and (min-width: 768px) {
     .filter {
       width: auto; } }
   .filter .form-control {
@@ -45,7 +45,7 @@
     border: 1px solid #ced4da;
     background: #fff;
     color: #3a3a3a; }
-    @media only screen and (min-device-width: 500px) {
+    @media only screen and (min-width: 500px) {
       .filter .form-control {
         width: 15rem;
         margin-right: 1.6rem;

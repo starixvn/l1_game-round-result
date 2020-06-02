@@ -9,7 +9,7 @@
     float: left;
     width: 100%;
 
-    @media only screen and (min-device-width: 768px) {
+    @media only screen and (min-width: 768px) {
         width: auto;
     }
 
@@ -28,7 +28,7 @@
         background: #fff;
         color: #3a3a3a;
 
-        @media only screen and (min-device-width: 500px) {
+        @media only screen and (min-width: 500px) {
             width: 15rem;
             margin-right: 1.6rem;
             font-size: 1.4rem;
