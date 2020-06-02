@@ -151,17 +151,6 @@
 .dataTables_wrapper table {
   margin-top: 16px; }
 
-.blocker {
-  background-color: rgba(0, 0, 0, 0.5); }
-
-.modal {
-  padding: 4rem 2rem;
-  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.04), 0 1px 6px rgba(0, 0, 0, 0.04); }
-  .modal .numbers {
-    display: grid; }
-  .modal a.close-modal {
-    background-image: url(../images/close.png); }
-
 html {
   font-size: 10px; }
 
@@ -307,23 +296,13 @@ body {
 .table-keno .col-options {
   width: 8rem; }
 
-.numbers {
-  display: none;
+.table-keno .numbers {
+  display: grid;
   grid-template-columns: repeat(10, 30px);
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   grid-gap: 4px;
   margin: auto; }
-
-.view-keno-result {
-  color: #2a93d5;
-  text-decoration: none; }
-
-@media only screen and (min-width: 768px) {
-  .numbers {
-    display: grid; }
-  .view-keno-result {
-    display: none; } }
 
 #overlay {
   position: fixed;

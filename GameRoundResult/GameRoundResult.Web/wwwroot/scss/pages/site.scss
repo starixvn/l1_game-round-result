@@ -3,7 +3,6 @@
 @import "../components/_forms.scss";
 @import "../components/_table.scss";
 @import "../components/_customize-datatable.scss";
-@import "../components/_modal.scss";
 
 html {
     font-size: 10px;
@@ -13,7 +12,7 @@ body {
     background-color: $bg-color;
     font-family: "Roboto", Arial, Helvetica, sans-serif;
     font-size: 1.4rem;
-    color: #1a1a1a;
+    color: $text-color;
 }
 
 .page-title {
@@ -91,10 +90,8 @@ body {
     background: url(../images/chip_trang.png) no-repeat;
 }
 
-.table-se-die {
-    .col-result {
-        width: 10rem;
-    }
+.table-se-die .col-result {
+    width: 10rem;
 }
 
 // Dragon tiger
@@ -205,29 +202,14 @@ body {
     .col-options {
         width: 8rem;
     }
-}
 
-.numbers {
-    display: none;
-    grid-template-columns: repeat(10, 30px);
-    justify-content: center;
-    flex-wrap: wrap;
-    grid-gap: 4px;
-    margin: auto;
-}
-
-.view-keno-result {
-    color: #2a93d5;
-    text-decoration: none;
-}
-
-@media only screen and (min-width: 768px) {
     .numbers {
         display: grid;
-    }
-
-    .view-keno-result {
-        display: none;
+        grid-template-columns: repeat(10, 30px);
+        justify-content: center;
+        flex-wrap: nowrap;
+        grid-gap: 4px;
+        margin: auto;
     }
 }
 
@@ -244,6 +226,8 @@ body {
     z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
 }
+
+// Loading icon
 
 .pulse-container {
     width: 10rem;
