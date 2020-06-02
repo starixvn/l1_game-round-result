@@ -59,14 +59,6 @@ namespace GameRoundResult.Web.Models
 
             stringContents.Add(wrapper.GetHtmlString());
 
-            var anchor = new TagBuilder("a");
-            anchor.AddCssClass("view-keno-result");
-            anchor.Attributes.Add("data-result", string.Join(",", Result));
-            anchor.Attributes.Add("href", "#");
-            anchor.InnerHtml.Append(stringLocalizer["Detail"]);
-
-            stringContents.Add(anchor.GetHtmlString());
-
             return string.Join("", stringContents);
         }
 
