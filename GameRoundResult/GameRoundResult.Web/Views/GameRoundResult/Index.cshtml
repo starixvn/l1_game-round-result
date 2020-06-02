@@ -19,7 +19,10 @@
 
 }
 
+<div class="header">
     <h1 class="page-title">@Localizer["GameRoundResult"]</h1>
+    <partial name="_LanguageSelection" />
+</div>   
 
 <form data-ajax="true" data-ajax-method="GET" asp-action="GetRoundResult" data-ajax-mode="replace"
       data-ajax-update="#round-result" data-ajax-loading="#overlay"

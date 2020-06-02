@@ -9,11 +9,15 @@
     var supportedCultures = cultureOptions.Value.SupportedCultures;
 }
 
-<button id="language" class="flag-@requestCulture.RequestCulture.Culture.Name">@requestCulture.RequestCulture.Culture.DisplayName</button>
+    <button id="language" class="language">
+        <span class="flag-@requestCulture.RequestCulture.Culture.Name"></span>
+        <span class="lang">@requestCulture.RequestCulture.Culture.DisplayName</span>
+        <i class="arrow-sm-down"></i>
+    </button>
 
-<ul id="language-options">
+<ul id="language-options" class="language-options">
     @foreach (var culture in supportedCultures)
     {
-        <li class="flag-@culture.Name"><a href="/@culture.Name">@culture.DisplayName</a></li>
+        <li><a href="/@culture.Name"><span class="flag-@culture.Name"></span> @culture.DisplayName</a></li>
     }
 </ul>
