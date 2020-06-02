@@ -26,7 +26,11 @@
   border: 1px solid #ddd;
   padding: 2rem 2rem 0;
   border-radius: 0.5rem;
-  float: left; }
+  float: left;
+  width: 100%; }
+  @media only screen and (min-device-width: 768px) {
+    .filter {
+      width: auto; } }
   .filter .form-control {
     border-radius: .5rem;
     outline: initial !important;
@@ -41,6 +45,9 @@
     border: 1px solid #ced4da;
     background: #fff;
     color: #3a3a3a; }
+    @media only screen and (min-device-width: 500px) {
+      .filter .form-control {
+        width: 15rem; } }
     @media only screen and (min-device-width: 768px) {
       .filter .form-control {
         width: auto;
@@ -246,10 +253,16 @@ body {
   background-image: url(../images/vi.svg); }
 
 .table-big-small .col-result {
-  width: 19rem; }
+  width: 13.5rem; }
+  @media only screen and (min-width: 768px) {
+    .table-big-small .col-result {
+      width: 19rem; } }
 
 .table-big-small .col-total-points {
-  width: 10rem; }
+  width: 7.5rem; }
+  @media only screen and (min-width: 768px) {
+    .table-big-small .col-total-points {
+      width: 10rem; } }
 
 .dice-list {
   display: flex;
@@ -278,7 +291,10 @@ body {
   background: url(../images/chip_trang.png) no-repeat; }
 
 .table-se-die .col-result {
-  width: 10rem; }
+  width: 5.4rem; }
+  @media only screen and (min-width: 768px) {
+    .table-se-die .col-result {
+      width: 10rem; } }
 
 .card {
   position: relative;
@@ -358,7 +374,10 @@ body {
   text-align: center; }
 
 .table-keno .col-options {
-  width: 8rem; }
+  width: 7rem; }
+  @media only screen and (min-width: 768px) {
+    .table-keno .col-options {
+      width: 8rem; } }
 
 .table-keno .numbers {
   display: grid;

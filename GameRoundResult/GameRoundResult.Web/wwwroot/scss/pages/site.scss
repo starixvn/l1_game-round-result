@@ -131,11 +131,19 @@ body {
 // Big Small
 .table-big-small {
     .col-result {
-        width: 19rem;
+        width: 13.5rem;
+
+        @media only screen and (min-width: 768px) {
+            width: 19rem;
+        }
     }
 
     .col-total-points {
-        width: 10rem;
+        width: 7.5rem;
+
+        @media only screen and (min-width: 768px) {
+            width: 10rem;
+        }
     }
 }
 
@@ -175,7 +183,11 @@ body {
 }
 
 .table-se-die .col-result {
-    width: 10rem;
+    width: 5.4rem;
+
+    @media only screen and (min-width: 768px) {
+        width: 10rem;
+    }
 }
 
 // Dragon tiger
@@ -284,7 +296,11 @@ body {
 
 .table-keno {
     .col-options {
-        width: 8rem;
+        width: 7rem;
+
+        @media only screen and (min-width: 768px) {
+            width: 8rem;
+        }
     }
 
     .numbers {
