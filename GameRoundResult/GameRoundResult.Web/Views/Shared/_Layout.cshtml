@@ -6,13 +6,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-    <environment include="Development">
-        <link href="~/lib/tippy.js/dist/tippy.css" rel="stylesheet" />
-        <link href="~/lib/tippy.js/themes/light-border.css" rel="stylesheet" />
-    </environment>
-    <environment exclude="Development">
-        <link href="~/lib/tippy.js/dist/tippy.min.css" rel="stylesheet" />
-    </environment>
     @RenderSection("Styles", required: false)
 </head>
 <body>
@@ -30,12 +23,9 @@
     <input type="hidden" value="@Thread.CurrentThread.CurrentCulture.Name" id="culture" />
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/popperjs/core/dist/umd/popper.js"></script>
-        <script src="~/lib/tippy.js/dist/tippy.umd.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
     </environment>
     @RenderSection("Scripts", required: false)
 </body>

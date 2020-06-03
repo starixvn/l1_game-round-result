@@ -21,8 +21,7 @@
 
 <div class="header">
     <h1 class="page-title">@Localizer["GameRoundResult"]</h1>
-    <partial name="_LanguageSelection" />
-</div>   
+</div>
 
 <form data-ajax="true" data-ajax-method="GET" asp-action="GetRoundResult" data-ajax-mode="replace"
       data-ajax-update="#round-result" data-ajax-loading="#overlay"
@@ -42,7 +41,6 @@
     <environment include="Development">
         <script src="~/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.js"></script>
         <script src="~/lib/data-tables/datatables.js"></script>
-
         <script src="~/js/game-round-result.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
