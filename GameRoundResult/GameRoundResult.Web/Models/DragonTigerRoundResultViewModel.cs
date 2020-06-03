@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text.Encodings.Web;
+﻿using System.Collections.Generic;
+using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
@@ -48,7 +46,7 @@ namespace GameRoundResult.Web.Models
             tagBuilder.AddCssClass($"card card-type-{card.Type}");
 
             var span = new TagBuilder("span");
-            span.InnerHtml.Append(card.Number.ToString());
+            span.InnerHtml.Append(DragonTiger.CardLabels[card.Number]);
             tagBuilder.InnerHtml.AppendHtml(span);
 
             var img = new TagBuilder("img");
