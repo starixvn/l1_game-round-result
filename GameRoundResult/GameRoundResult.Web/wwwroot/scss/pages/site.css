@@ -28,7 +28,7 @@
   border-radius: 0.5rem;
   float: left;
   width: 100%; }
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 500px) {
     .filter {
       width: auto; } }
   .filter .form-control {
@@ -57,7 +57,7 @@
   .filter .btn-submit {
     width: 100%;
     margin-bottom: 1.6rem; }
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 500px) {
       .filter .btn-submit {
         width: auto; } }
 
