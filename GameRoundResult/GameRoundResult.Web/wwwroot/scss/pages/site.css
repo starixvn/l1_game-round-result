@@ -378,11 +378,14 @@ body {
 
 .table-keno .numbers {
   display: grid;
-  grid-template-columns: repeat(10, 30px);
+  grid-template-columns: repeat(5, 30px);
   justify-content: center;
   flex-wrap: nowrap;
   grid-gap: 4px;
   margin: auto; }
+  @media only screen and (min-width: 1000px) {
+    .table-keno .numbers {
+      grid-template-columns: repeat(10, 30px); } }
 
 #overlay {
   position: fixed;
