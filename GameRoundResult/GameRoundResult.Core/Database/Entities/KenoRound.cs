@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    public class KenoProMaxRound : GameRound
+    public class KenoRound : GameRound
     {
         public IEnumerable<byte> Result { get; set; }
 

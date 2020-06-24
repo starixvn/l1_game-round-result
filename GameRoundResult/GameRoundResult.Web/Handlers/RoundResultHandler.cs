@@ -43,7 +43,7 @@ namespace GameRoundResult.Web.Handlers
                     var oddEvenTurboResult = await gameRoundResultService.GetOddEvenTurboRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
                     return (oddEvenTurboResult.Item1, oddEvenTurboResult.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
 
-                case GameType.ShakeThePlate:
+                case GameType.SeDie:
                     var shakeThePlateResult = await gameRoundResultService.GetShakeThePlateRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
                     return (shakeThePlateResult.Item1, shakeThePlateResult.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
 
@@ -58,6 +58,14 @@ namespace GameRoundResult.Web.Handlers
                 case GameType.KenoProMax:
                     var kenoResult = await gameRoundResultService.GetKenoProMaxRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
                     return (kenoResult.Item1, kenoResult.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
+
+                case GameType.MiniSeDie:
+                    var miniSeDieResult = await gameRoundResultService.GetMiniSeDieRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
+                    return (miniSeDieResult.Item1, miniSeDieResult.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
+
+                case GameType.KenoProViet:
+                    var kenoProVietResult = await gameRoundResultService.GetKenoProVietRoundResult(utcDate, request.RoundId, request.Page, request.PageSize);
+                    return (kenoProVietResult.Item1, kenoProVietResult.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
 
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));

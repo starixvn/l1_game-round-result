@@ -8,7 +8,7 @@ using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {
-    public class ShakeThePlateRoundResultViewModel : RoundResultViewModel
+    public class SeDieRoundResultViewModel : RoundResultViewModel
     {
         public IEnumerable<bool> RedChips { get; set; }
 

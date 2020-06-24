@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Baccarat" xml:space="preserve">
+    <value>Baccarat</value>
+  </data>
   <data name="BigSmall" xml:space="preserve">
     <value>Big Small</value>
   </data>
@@ -129,8 +132,38 @@
   <data name="FishPrawnCrab" xml:space="preserve">
     <value>Fish Prawn Crab</value>
   </data>
+  <data name="KenoEast" xml:space="preserve">
+    <value>Keno East</value>
+  </data>
+  <data name="KenoMax" xml:space="preserve">
+    <value>Keno Max</value>
+  </data>
+  <data name="KenoMax2" xml:space="preserve">
+    <value>Keno Max 2</value>
+  </data>
+  <data name="KenoMini" xml:space="preserve">
+    <value>Keno Mini</value>
+  </data>
+  <data name="KenoMini2" xml:space="preserve">
+    <value>Keno Mini 2</value>
+  </data>
+  <data name="KenoNorth" xml:space="preserve">
+    <value>Keno North</value>
+  </data>
   <data name="KenoProMax" xml:space="preserve">
     <value>Keno Pro Max</value>
+  </data>
+  <data name="KenoProViet" xml:space="preserve">
+    <value>Keno Pro Viet</value>
+  </data>
+  <data name="KenoSouth" xml:space="preserve">
+    <value>Keno South</value>
+  </data>
+  <data name="KenoWest" xml:space="preserve">
+    <value>Keno West</value>
+  </data>
+  <data name="MiniSeDie" xml:space="preserve">
+    <value>Mini Se Die</value>
   </data>
   <data name="OddEven" xml:space="preserve">
     <value>Odd Even</value>
@@ -138,7 +171,7 @@
   <data name="OddEvenTurbo" xml:space="preserve">
     <value>Turbo Odd Even</value>
   </data>
-  <data name="ShakeThePlate" xml:space="preserve">
+  <data name="SeDie" xml:space="preserve">
     <value>Se Die</value>
   </data>
 </root>

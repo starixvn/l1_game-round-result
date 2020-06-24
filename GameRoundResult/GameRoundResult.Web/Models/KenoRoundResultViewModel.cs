@@ -9,7 +9,7 @@ using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {
-    public class KenoProMaxRoundResultViewModel : RoundResultViewModel
+    public class KenoRoundResultViewModel : RoundResultViewModel
     {
         public IList<byte> Result { get; set; }
 

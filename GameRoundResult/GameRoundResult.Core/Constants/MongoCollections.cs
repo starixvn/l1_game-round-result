@@ -17,5 +17,9 @@
         public const string DragonTigerRound = "minidragontiger_phiens";
 
         public const string KenoProMaxRound = "kenopromax_phiens";
+
+        public const string MiniSeDieRound = "minisedie_phiens";
+
+        public const string KenoProVietRound = "kenoproviet_phiens";
     }
 }

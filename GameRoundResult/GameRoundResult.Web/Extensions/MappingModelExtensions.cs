@@ -38,9 +38,9 @@ namespace GameRoundResult.Web.Extensions
             };
         }
 
-        public static ShakeThePlateRoundResultViewModel ToViewModel(this ShakeThePlateRound entity, TimeZoneInfo timeZoneInfo)
+        public static SeDieRoundResultViewModel ToViewModel(this ShakeThePlateRound entity, TimeZoneInfo timeZoneInfo)
         {
-            return new ShakeThePlateRoundResultViewModel
+            return new SeDieRoundResultViewModel
             {
                 Round = entity.Round,
                 Time = TimeZoneInfo.ConvertTimeFromUtc(entity.Time, timeZoneInfo),
@@ -88,9 +88,9 @@ namespace GameRoundResult.Web.Extensions
             };
         }
 
-        public static KenoProMaxRoundResultViewModel ToViewModel(this KenoProMaxRound entity, TimeZoneInfo timeZoneInfo)
+        public static KenoRoundResultViewModel ToViewModel(this KenoRound entity, TimeZoneInfo timeZoneInfo)
         {
-            return new KenoProMaxRoundResultViewModel
+            return new KenoRoundResultViewModel
             {
                 Round = entity.Round,
                 Time = TimeZoneInfo.ConvertTimeFromUtc(entity.Time, timeZoneInfo),
@@ -102,6 +102,22 @@ namespace GameRoundResult.Web.Extensions
                 IsGold = entity.SettlementResult.Gold,
                 IsWood = entity.SettlementResult.Wood,
                 IsWater = entity.SettlementResult.Water
+            };
+        }
+
+        public static SeDieRoundResultViewModel ToViewModel(this MiniSeDieRound entity, TimeZoneInfo timeZoneInfo)
+        {
+            return new SeDieRoundResultViewModel
+            {
+                Round = entity.Round,
+                Time = TimeZoneInfo.ConvertTimeFromUtc(entity.Time, timeZoneInfo),
+                RedChips = new List<bool>
+                {
+                    entity.FirstRedChip,
+                    entity.SecondRedChip,
+                    entity.ThirdRedChip,
+                    entity.FourthRedChip
+                }.OrderByDescending(x => x)
             };
         }
     }

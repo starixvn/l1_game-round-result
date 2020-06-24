@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Baccarat" xml:space="preserve">
+    <value>Cào Baccarat</value>
+  </data>
   <data name="BigSmall" xml:space="preserve">
     <value>Tài Xỉu</value>
   </data>
@@ -129,8 +132,38 @@
   <data name="FishPrawnCrab" xml:space="preserve">
     <value>Bầu Cua</value>
   </data>
+  <data name="KenoEast" xml:space="preserve">
+    <value>Keno Đông</value>
+  </data>
+  <data name="KenoMax" xml:space="preserve">
+    <value>Keno Max</value>
+  </data>
+  <data name="KenoMax2" xml:space="preserve">
+    <value>Keno Max 2</value>
+  </data>
+  <data name="KenoMini" xml:space="preserve">
+    <value>Keno Mini</value>
+  </data>
+  <data name="KenoMini2" xml:space="preserve">
+    <value>Keno Mini 2</value>
+  </data>
+  <data name="KenoNorth" xml:space="preserve">
+    <value>Keno Bắc</value>
+  </data>
   <data name="KenoProMax" xml:space="preserve">
     <value>Keno Pro Max</value>
+  </data>
+  <data name="KenoProViet" xml:space="preserve">
+    <value>Keno Pro Viet</value>
+  </data>
+  <data name="KenoSouth" xml:space="preserve">
+    <value>Keno Nam</value>
+  </data>
+  <data name="KenoWest" xml:space="preserve">
+    <value>Keno Tây</value>
+  </data>
+  <data name="MiniSeDie" xml:space="preserve">
+    <value> Mini Xóc Đĩa</value>
   </data>
   <data name="OddEven" xml:space="preserve">
     <value>Chẵn Lẻ</value>
@@ -138,7 +171,7 @@
   <data name="OddEvenTurbo" xml:space="preserve">
     <value>Chẵn Lẻ Siêu Tốc</value>
   </data>
-  <data name="ShakeThePlate" xml:space="preserve">
+  <data name="SeDie" xml:space="preserve">
     <value>Xóc Đĩa</value>
   </data>
 </root>

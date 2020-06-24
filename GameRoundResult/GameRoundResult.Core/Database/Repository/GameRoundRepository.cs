@@ -23,7 +23,11 @@ namespace GameRoundResult.Core.Database.Repository
 
         Task<(long, IEnumerable<DragonTigerRound>)> GetDragonTigerRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
-        Task<(long, IEnumerable<KenoProMaxRound>)> GetKenoProMaxRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+        Task<(long, IEnumerable<KenoRound>)> GetKenoProMaxRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<MiniSeDieRound>)> GetMiniSeDieRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<KenoRound>)> GetKenoProVietRoundResult(DateTime date, long roundId, int page, int pageSize);
     }
 
     public class GameRoundRepository : IGameRoundRepository
@@ -70,9 +74,19 @@ namespace GameRoundResult.Core.Database.Repository
             return await GetRoundResultAsync<DragonTigerRound>(date, roundId, MiniGameCollections.DragonTigerRound, page, pageSize);
         }
 
-        public async Task<(long, IEnumerable<KenoProMaxRound>)> GetKenoProMaxRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+        public async Task<(long, IEnumerable<KenoRound>)> GetKenoProMaxRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
-            return await GetRoundResultAsync<KenoProMaxRound>(date, roundId, MiniGameCollections.KenoProMaxRound, page, pageSize);
+            return await GetRoundResultAsync<KenoRound>(date, roundId, MiniGameCollections.KenoProMaxRound, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<MiniSeDieRound>)> GetMiniSeDieRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await GetRoundResultAsync<MiniSeDieRound>(date, roundId, MiniGameCollections.MiniSeDieRound, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<KenoRound>)> GetKenoProVietRoundResult(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await GetRoundResultAsync<KenoRound>(date, roundId, MiniGameCollections.KenoProVietRound, page, pageSize);
         }
 
         private async Task<(long, IEnumerable<T>)> GetRoundResultAsync<T>(DateTime date, long roundId, string roundCollectionName, int page, int pageSize) where T : GameRound

@@ -48,7 +48,8 @@ namespace GameRoundResult.Web.Controllers
                 case GameType.OddEvenTurbo:
                     return PartialView("_OddEvenRoundResult");
 
-                case GameType.ShakeThePlate:
+                case GameType.SeDie:
+                case GameType.MiniSeDie:
                     return PartialView("_ShakeThePlateRoundResult");
 
                 case GameType.FishPrawnCrab:
@@ -58,6 +59,15 @@ namespace GameRoundResult.Web.Controllers
                     return PartialView("_DragonTigerRoundResult");
 
                 case GameType.KenoProMax:
+                case GameType.KenoProViet:
+                case GameType.KenoMax:
+                case GameType.KenoMax2:
+                case GameType.KenoMini:
+                case GameType.KenoMini2:
+                case GameType.KenoEast:
+                case GameType.KenoWest:
+                case GameType.KenoSouth:
+                case GameType.KenoNorth:
                     return PartialView("_KenoProMaxRoundResult");
 
                 default:

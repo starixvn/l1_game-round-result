@@ -22,7 +22,11 @@ namespace GameRoundResult.Core.Services
 
         Task<(long, IEnumerable<DragonTigerRound>)> GetDragonTigerRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
-        Task<(long, IEnumerable<KenoProMaxRound>)> GetKenoProMaxRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+        Task<(long, IEnumerable<KenoRound>)> GetKenoProMaxRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<MiniSeDieRound>)> GetMiniSeDieRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<KenoRound>)> GetKenoProVietRoundResult(DateTime date, long roundId, int page, int pageSize);
     }
 
     public class GameRoundResultService : IGameRoundResultService
@@ -54,7 +58,7 @@ namespace GameRoundResult.Core.Services
             return await repository.GetFishPrawnRoundResultAsync(date, roundId, page, pageSize);
         }
 
-        public async Task<(long, IEnumerable<KenoProMaxRound>)> GetKenoProMaxRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+        public async Task<(long, IEnumerable<KenoRound>)> GetKenoProMaxRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
             return await repository.GetKenoProMaxRoundResultAsync(date, roundId, page, pageSize);
         }
@@ -72,6 +76,17 @@ namespace GameRoundResult.Core.Services
         public async Task<(long, IEnumerable<ShakeThePlateRound>)> GetShakeThePlateRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
             return await repository.GetShakeThePlateRoundResultAsync(date, roundId, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<MiniSeDieRound>)> GetMiniSeDieRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await repository.GetMiniSeDieRoundResultAsync(date, roundId, page, pageSize);
+
+        }
+
+        public async Task<(long, IEnumerable<KenoRound>)> GetKenoProVietRoundResult(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await repository.GetKenoProVietRoundResult(date, roundId, page, pageSize);
         }
     }
 }

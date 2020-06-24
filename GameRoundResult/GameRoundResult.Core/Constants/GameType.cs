@@ -3,12 +3,23 @@
     public enum GameType
     {
         BigSmall = 1,
-        ShakeThePlate,
+        SeDie,
         FishPrawnCrab,
         BigSmallTurbo,
         OddEven,
         OddEvenTurbo,
         DragonTiger,
-        KenoProMax
+        KenoProMax,
+        MiniSeDie,
+        Baccarat,
+        KenoProViet,
+        KenoMax,
+        KenoMax2,
+        KenoMini,
+        KenoMini2,
+        KenoEast,
+        KenoWest,
+        KenoSouth,
+        KenoNorth
     }
 }
