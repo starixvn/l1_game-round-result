@@ -191,6 +191,7 @@ body {
 }
 
 // Dragon tiger
+
 .card {
     position: relative;
     display: inline-block;
@@ -314,6 +315,36 @@ body {
         @media only screen and (min-width: 1000px) {
             grid-template-columns: repeat(10, 30px);
         }
+    }
+}
+
+// Baccarat
+
+.cards {
+    display: inline-block;
+
+    &:last-child:before {
+        position: relative;
+        top: 1rem;
+        display: inline-block;
+        height: 1.8rem;
+        width: 0.1rem;
+        margin: 0 2px;
+        background-color: #222;
+        content: "";
+    }
+
+    .card {
+        margin-left: 0.1rem;
+        margin-right: 0.1rem;
+    }
+
+    .card:nth-child(3) {
+        margin-left: 0.8rem;
+    }
+
+    .card:last-child:before {
+        display: none;
     }
 }
 

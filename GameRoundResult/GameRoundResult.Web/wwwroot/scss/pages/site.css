@@ -406,6 +406,25 @@ body {
     .table-keno .numbers {
       grid-template-columns: repeat(10, 30px); } }
 
+.cards {
+  display: inline-block; }
+  .cards:last-child:before {
+    position: relative;
+    top: 1rem;
+    display: inline-block;
+    height: 1.8rem;
+    width: 0.1rem;
+    margin: 0 2px;
+    background-color: #222;
+    content: ""; }
+  .cards .card {
+    margin-left: 0.1rem;
+    margin-right: 0.1rem; }
+  .cards .card:nth-child(3) {
+    margin-left: 0.8rem; }
+  .cards .card:last-child:before {
+    display: none; }
+
 #overlay {
   position: fixed;
   /* Sit on top of the page content */
