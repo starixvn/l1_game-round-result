@@ -24,8 +24,8 @@ namespace GameRoundResult.Web.Models
 
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            var playerCardString = string.Join("", PlayerCards.Select(x => GetCardContent(x)));
-            var bankerCardString = string.Join("", BankerCards.Select(x => GetCardContent(x)));
+            var playerCardString = GetCardContent(PlayerCards);
+            var bankerCardString = GetCardContent(BankerCards);
 
 
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
@@ -73,7 +73,20 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        private string GetCardContent(CardViewModel card)
+        private string GetCardContent(IEnumerable<CardViewModel> cards)
+        {
+            var tagBuilder = new TagBuilder("div");
+            tagBuilder.AddCssClass($"cards");
+
+            foreach(var card in cards)
+            {
+                tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(card));
+            }
+
+            return tagBuilder.GetHtmlString();
+        }
+
+        private TagBuilder GetCardBuilder(CardViewModel card)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"card card-type-{card.Type}");
@@ -87,7 +100,7 @@ namespace GameRoundResult.Web.Models
             img.Attributes.Add("src", $"/scss/images/card_{card.Type}.png");
             tagBuilder.InnerHtml.AppendHtml(img);
 
-            return tagBuilder.GetHtmlString();
+            return tagBuilder;
         }
     }
 }
