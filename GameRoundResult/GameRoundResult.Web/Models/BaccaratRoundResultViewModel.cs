@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Extensions;
@@ -24,20 +25,18 @@ namespace GameRoundResult.Web.Models
 
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            var playerCardString = GetCardContent(PlayerCards);
-            var bankerCardString = GetCardContent(BankerCards);
-
 
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
-               $"{playerCardString}{bankerCardString}",
-               GetResultContent(stringLocalizer)
+               GetResultContent(),
+               GetWinningOptionsContent(stringLocalizer)
             };
 
             return result;
         }
 
-        private string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+
+        private string GetWinningOptionsContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             string result;
 
@@ -73,17 +72,28 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        private string GetCardContent(IEnumerable<CardViewModel> cards)
+        private string GetResultContent()
+        {
+            var tagBuilder = new TagBuilder("div");
+            tagBuilder.AddCssClass($"baccarat-result");
+
+            tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(PlayerCards));
+            tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(BankerCards));
+
+            return tagBuilder.GetHtmlString();
+        }
+
+        private TagBuilder GetCardBuilder(IEnumerable<CardViewModel> cards)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"cards");
 
-            foreach(var card in cards)
+            foreach (var card in cards)
             {
                 tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(card));
             }
 
-            return tagBuilder.GetHtmlString();
+            return tagBuilder;
         }
 
         private TagBuilder GetCardBuilder(CardViewModel card)

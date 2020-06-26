@@ -319,34 +319,47 @@ body {
 }
 
 // Baccarat
+.baccarat-result {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
-.cards {
-    display: inline-block;
+    .cards {
+        .card {
+            margin-left: 0.1rem;
+            margin-right: 0.1rem;
+        }
 
-    &:last-child:before {
-        position: relative;
-        top: 1rem;
-        display: inline-block;
-        height: 1.8rem;
-        width: 0.1rem;
-        margin: 0 2px;
-        background-color: #222;
-        content: "";
-    }
+        .card:nth-child(3) {
+            margin-left: 1rem;
+        }
 
-    .card {
-        margin-left: 0.1rem;
-        margin-right: 0.1rem;
-    }
+        .card:last-child:before {
+            display: none;
+        }
 
-    .card:nth-child(3) {
-        margin-left: 0.8rem;
-    }
+        &:first-child {
+            display: flex;
+            justify-content: flex-end;
+        }
 
-    .card:last-child:before {
-        display: none;
+        &:last-child {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        &:last-child:before {
+            position: relative;
+            top: 1rem;
+            display: inline-block;
+            height: 1.8rem;
+            width: 0.1rem;
+            margin: 0 0.6rem;
+            background-color: #222;
+            content: "";
+        }
     }
 }
+
 
 #overlay {
     position: fixed; /* Sit on top of the page content */
