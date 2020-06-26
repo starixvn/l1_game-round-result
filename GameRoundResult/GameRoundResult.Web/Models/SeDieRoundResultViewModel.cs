@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text.Encodings.Web;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
@@ -52,14 +50,7 @@ namespace GameRoundResult.Web.Models
 
         private string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            if (IsEven)
-            {
-                return $"{stringLocalizer["Even"]}, {stringLocalizer["{0} red", TotalRed]}";
-            }
-            else
-            {
-                return $"{stringLocalizer["Odd"]}, {stringLocalizer["{0} red", TotalRed]}";
-            }
+            return $"{(IsEven ? stringLocalizer["Even"] : stringLocalizer["Odd"])}, {(TotalRed > 0 ? stringLocalizer["{ 0} red", TotalRed] : stringLocalizer["{0} white", 4])}";
         }
     }
 }

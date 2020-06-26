@@ -67,6 +67,10 @@ namespace GameRoundResult.Web.Handlers
                     var kenoProVietResult = await gameRoundResultService.GetKenoProVietRoundResult(utcDate, request.RoundId, request.Page, request.PageSize);
                     return (kenoProVietResult.Item1, kenoProVietResult.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
 
+                case GameType.Baccarat:
+                    var baccaratRoundResult = await gameRoundResultService.GetBaccaratRoundResult(utcDate, request.RoundId, request.Page, request.PageSize);
+                    return (baccaratRoundResult.Item1, baccaratRoundResult.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
+
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
             }

@@ -21,5 +21,7 @@
         public const string MiniSeDieRound = "minisedie_phiens";
 
         public const string KenoProVietRound = "kenoproviet_phiens";
+
+        public const string BaccaratRound = "baccarat_phiens";
     }
 }

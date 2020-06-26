@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Extensions;
 using MongoDB.Driver;
 
 namespace GameRoundResult.Core.Database.Repository
@@ -28,6 +30,8 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(long, IEnumerable<MiniSeDieRound>)> GetMiniSeDieRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
         Task<(long, IEnumerable<KenoRound>)> GetKenoProVietRoundResult(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<BaccaratRound>)> GetBaccaratRoundResult(DateTime date, long roundId, int page, int pageSize);
     }
 
     public class GameRoundRepository : IGameRoundRepository
@@ -86,15 +90,26 @@ namespace GameRoundResult.Core.Database.Repository
 
         public async Task<(long, IEnumerable<KenoRound>)> GetKenoProVietRoundResult(DateTime date, long roundId, int page, int pageSize)
         {
-            return await GetRoundResultAsync<KenoRound>(date, roundId, MiniGameCollections.KenoProVietRound, page, pageSize);
+            return await GetRoundResultAsync<KenoRound>(date, roundId, MiniGameCollections.KenoProVietRound, page, pageSize, x => x.Result != null && x.SettlementResult != null);
         }
 
-        private async Task<(long, IEnumerable<T>)> GetRoundResultAsync<T>(DateTime date, long roundId, string roundCollectionName, int page, int pageSize) where T : GameRound
+        public async Task<(long, IEnumerable<BaccaratRound>)> GetBaccaratRoundResult(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await GetRoundResultAsync<BaccaratRound>(date, roundId, MiniGameCollections.BaccaratRound, page, pageSize);
+        }
+
+        private async Task<(long, IEnumerable<T>)> GetRoundResultAsync<T>(DateTime date, long roundId, string roundCollectionName, int page, int pageSize
+            , Expression<Func<T, bool>> filter = null) where T : GameRound
         {
             var collection = database.GetCollection<T>(roundCollectionName);
-            var fromDate = date.Date;
+            var fromDate = date;
             var toDate = fromDate.AddDays(1);
-            var cursor = collection.Find(x => x.Time >= fromDate && x.Time < toDate && (roundId == 0 || x.Round == roundId));
+
+            Expression<Func<T, bool>> defaultExpression = x => x.Time >= fromDate && x.Time < toDate && (roundId == 0 || x.Round == roundId);
+
+            var finalExpression = filter != null ? defaultExpression.And<T>(filter) : defaultExpression;
+
+            var cursor = collection.Find(finalExpression);
 
             var total = await cursor.CountDocumentsAsync();
             var data = await cursor.SortByDescending(x => x.Time).Skip(page).Limit(pageSize).ToListAsync();

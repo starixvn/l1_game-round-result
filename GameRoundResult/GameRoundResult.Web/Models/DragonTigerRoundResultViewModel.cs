@@ -46,7 +46,7 @@ namespace GameRoundResult.Web.Models
             tagBuilder.AddCssClass($"card card-type-{card.Type}");
 
             var span = new TagBuilder("span");
-            span.InnerHtml.Append(DragonTiger.CardLabels[card.Number]);
+            span.InnerHtml.Append(Card.CardLabels[card.Number]);
             tagBuilder.InnerHtml.AppendHtml(span);
 
             var img = new TagBuilder("img");

@@ -94,7 +94,7 @@ namespace GameRoundResult.Web.Extensions
             {
                 Round = entity.Round,
                 Time = TimeZoneInfo.ConvertTimeFromUtc(entity.Time, timeZoneInfo),
-                Result = entity.Result.ToList(),
+                Result = entity.Result?.ToList(),
                 IsBig = entity.SettlementResult.Big,
                 IsEven = entity.SettlementResult.Even,
                 IsEarth = entity.SettlementResult.Earth,
@@ -118,6 +118,38 @@ namespace GameRoundResult.Web.Extensions
                     entity.ThirdRedChip,
                     entity.FourthRedChip
                 }.OrderByDescending(x => x)
+            };
+        }
+
+        public static BaccaratRoundResultViewModel ToViewModel(this BaccaratRound entity, TimeZoneInfo timeZoneInfo)
+        {
+            return new BaccaratRoundResultViewModel
+            {
+                Round = entity.Round,
+                Time = TimeZoneInfo.ConvertTimeFromUtc(entity.Time, timeZoneInfo),
+                PlayerCards = entity.Player.ThirdCard != null ?
+                    new[] { entity.Player.FirstCard.ToViewModel(), entity.Player.SecondCard.ToViewModel(), entity.Player.ThirdCard.ToViewModel() } :
+                    new[] { entity.Player.FirstCard.ToViewModel(), entity.Player.SecondCard.ToViewModel() },
+                BankerCards = entity.Banker.ThirdCard != null ?
+                    new[] { entity.Banker.FirstCard.ToViewModel(), entity.Banker.SecondCard.ToViewModel(), entity.Banker.ThirdCard?.ToViewModel() } :
+                    new[] { entity.Banker.FirstCard.ToViewModel(), entity.Banker.SecondCard.ToViewModel()},
+                Player = entity.Result.Player,
+                Banker = entity.Result.Banker,
+                Tie = entity.Result.Tie,
+                Big = entity.Result.Big,
+                Small = entity.Result.Small,
+                PlayerPair = entity.Result.PlayerPair,
+                BankerPair = entity.Result.BankerPair,
+                Natural = entity.Result.Natural,
+            };
+        }
+
+        public static CardViewModel ToViewModel(this Card entity)
+        {
+            return new CardViewModel
+            {
+                Number = entity.Number,
+                Type = entity.Type
             };
         }
     }

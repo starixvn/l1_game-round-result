@@ -58,6 +58,9 @@ namespace GameRoundResult.Web.Controllers
                 case GameType.DragonTiger:
                     return PartialView("_DragonTigerRoundResult");
 
+                case GameType.Baccarat:
+                    return PartialView("_BaccaratRoundResult");
+
                 case GameType.KenoProMax:
                 case GameType.KenoProViet:
                 case GameType.KenoMax:

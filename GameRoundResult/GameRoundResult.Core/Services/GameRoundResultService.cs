@@ -27,6 +27,8 @@ namespace GameRoundResult.Core.Services
         Task<(long, IEnumerable<MiniSeDieRound>)> GetMiniSeDieRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
         Task<(long, IEnumerable<KenoRound>)> GetKenoProVietRoundResult(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<BaccaratRound>)> GetBaccaratRoundResult(DateTime date, long roundId, int page, int pageSize);
     }
 
     public class GameRoundResultService : IGameRoundResultService
@@ -87,6 +89,11 @@ namespace GameRoundResult.Core.Services
         public async Task<(long, IEnumerable<KenoRound>)> GetKenoProVietRoundResult(DateTime date, long roundId, int page, int pageSize)
         {
             return await repository.GetKenoProVietRoundResult(date, roundId, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<BaccaratRound>)> GetBaccaratRoundResult(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await repository.GetBaccaratRoundResult(date, roundId, page, pageSize);
         }
     }
 }

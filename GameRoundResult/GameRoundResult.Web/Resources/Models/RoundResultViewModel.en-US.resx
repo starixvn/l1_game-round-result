@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Banker" xml:space="preserve">
+    <value>Banker</value>
+  </data>
+  <data name="BankerPair" xml:space="preserve">
+    <value>BankerPair</value>
+  </data>
   <data name="Big" xml:space="preserve">
     <value>Big</value>
   </data>
@@ -141,8 +147,17 @@
   <data name="Odd" xml:space="preserve">
     <value>Odd</value>
   </data>
+  <data name="Player" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="PlayerPair" xml:space="preserve">
+    <value>Player Pair</value>
+  </data>
   <data name="Small" xml:space="preserve">
     <value>Small</value>
+  </data>
+  <data name="Tie" xml:space="preserve">
+    <value>Tie</value>
   </data>
   <data name="Tiger" xml:space="preserve">
     <value>Tiger</value>
@@ -155,5 +170,8 @@
   </data>
   <data name="{0} red" xml:space="preserve">
     <value>{0} red</value>
+  </data>
+  <data name="{0} white" xml:space="preserve">
+    <value>{0} white</value>
   </data>
 </root>
