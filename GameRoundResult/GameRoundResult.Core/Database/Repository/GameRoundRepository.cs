@@ -32,6 +32,22 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(long, IEnumerable<KenoRound>)> GetKenoProVietRoundResult(DateTime date, long roundId, int page, int pageSize);
 
         Task<(long, IEnumerable<BaccaratRound>)> GetBaccaratRoundResult(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<KenoRound>)> GetKenoMaxRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<KenoRound>)> GetKenoMax2RoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<KenoRound>)> GetKenoMiniRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<KenoRound>)> GetKenoMini2RoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<KenoRound>)> GetKenoEastRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<KenoRound>)> GetKenoWestRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<KenoRound>)> GetKenoSouthRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<KenoRound>)> GetKenoNorthRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
     }
 
     public class GameRoundRepository : IGameRoundRepository
@@ -96,6 +112,46 @@ namespace GameRoundResult.Core.Database.Repository
         public async Task<(long, IEnumerable<BaccaratRound>)> GetBaccaratRoundResult(DateTime date, long roundId, int page, int pageSize)
         {
             return await GetRoundResultAsync<BaccaratRound>(date, roundId, MiniGameCollections.BaccaratRound, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<KenoRound>)> GetKenoMaxRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await GetRoundResultAsync<KenoRound>(date, roundId, MiniGameCollections.KenoMaxRound, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<KenoRound>)> GetKenoMax2RoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await GetRoundResultAsync<KenoRound>(date, roundId, MiniGameCollections.KenoMax2Round, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<KenoRound>)> GetKenoMiniRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await GetRoundResultAsync<KenoRound>(date, roundId, MiniGameCollections.KenoMiniRound, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<KenoRound>)> GetKenoMini2RoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await GetRoundResultAsync<KenoRound>(date, roundId, MiniGameCollections.KenoMini2Round, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<KenoRound>)> GetKenoEastRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await GetRoundResultAsync<KenoRound>(date, roundId, MiniGameCollections.KenoEastRound, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<KenoRound>)> GetKenoWestRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await GetRoundResultAsync<KenoRound>(date, roundId, MiniGameCollections.KenoWestRound, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<KenoRound>)> GetKenoSouthRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await GetRoundResultAsync<KenoRound>(date, roundId, MiniGameCollections.KenoSouthRound, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<KenoRound>)> GetKenoNorthRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await GetRoundResultAsync<KenoRound>(date, roundId, MiniGameCollections.KenoNorthRound, page, pageSize);
         }
 
         private async Task<(long, IEnumerable<T>)> GetRoundResultAsync<T>(DateTime date, long roundId, string roundCollectionName, int page, int pageSize

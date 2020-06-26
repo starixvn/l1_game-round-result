@@ -71,6 +71,34 @@ namespace GameRoundResult.Web.Handlers
                     var baccaratRoundResult = await gameRoundResultService.GetBaccaratRoundResult(utcDate, request.RoundId, request.Page, request.PageSize);
                     return (baccaratRoundResult.Item1, baccaratRoundResult.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
 
+                case GameType.KenoMax:
+                    var kenoMaxResult = await gameRoundResultService.GetKenoMaxRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
+                    return (kenoMaxResult.Item1, kenoMaxResult.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
+              
+                case GameType.KenoMax2:
+                    var kenoMax2Result = await gameRoundResultService.GetKenoMax2RoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
+                    return (kenoMax2Result.Item1, kenoMax2Result.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
+                case GameType.KenoMini:
+                    var kenoMiniResult = await gameRoundResultService.GetKenoMiniRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
+                    return (kenoMiniResult.Item1, kenoMiniResult.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
+
+                case GameType.KenoMini2:
+                    var kenoMini2Result = await gameRoundResultService.GetKenoMini2RoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
+                    return (kenoMini2Result.Item1, kenoMini2Result.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
+
+                case GameType.KenoEast:
+                    var kenoEastResult = await gameRoundResultService.GetKenoEastRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
+                    return (kenoEastResult.Item1, kenoEastResult.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
+                case GameType.KenoWest:
+                    var kenoWestResult = await gameRoundResultService.GetKenoWestRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
+                    return (kenoWestResult.Item1, kenoWestResult.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
+                case GameType.KenoSouth:
+                    var kenoSouthResult = await gameRoundResultService.GetKenoSouthRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
+                    return (kenoSouthResult.Item1, kenoSouthResult.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
+                case GameType.KenoNorth:
+                    var kenoNorthResult = await gameRoundResultService.GetKenoNorthRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
+                    return (kenoNorthResult.Item1, kenoNorthResult.Item2.Select(x => x.ToViewModel(request.TimeZoneInfo)));
+
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
             }

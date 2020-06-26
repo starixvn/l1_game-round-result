@@ -62,7 +62,6 @@ namespace GameRoundResult.Web.Controllers
                     return PartialView("_BaccaratRoundResult");
 
                 case GameType.KenoProMax:
-                case GameType.KenoProViet:
                 case GameType.KenoMax:
                 case GameType.KenoMax2:
                 case GameType.KenoMini:
@@ -73,6 +72,8 @@ namespace GameRoundResult.Web.Controllers
                 case GameType.KenoNorth:
                     return PartialView("_KenoProMaxRoundResult");
 
+                case GameType.KenoProViet:
+                    return PartialView("_KenoProVietRoundResult");
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
             }

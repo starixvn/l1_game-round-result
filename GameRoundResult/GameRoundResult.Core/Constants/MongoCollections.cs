@@ -23,5 +23,21 @@
         public const string KenoProVietRound = "kenoproviet_phiens";
 
         public const string BaccaratRound = "baccarat_phiens";
+
+        public const string KenoMaxRound = "kenomax_phiens";
+
+        public const string KenoMax2Round = "kenomax2_phiens";
+
+        public const string KenoMiniRound = "kenomini_phiens";
+
+        public const string KenoMini2Round = "kenomini2_phiens";
+
+        public const string KenoEastRound = "kenoeast_phiens";
+
+        public const string KenoWestRound = "kenowest_phiens";
+
+        public const string KenoSouthRound = "kenosouth_phiens";
+
+        public const string KenoNorthRound = "kenonorth_phiens";
     }
 }
