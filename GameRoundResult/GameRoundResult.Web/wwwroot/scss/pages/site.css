@@ -82,6 +82,25 @@
     background-color: #fdf6e0; }
     .table .total td {
       font-weight: 600; }
+  .table.sticky-table th {
+    top: 0;
+    position: sticky;
+    z-index: 1;
+    background: #fff; }
+    .table.sticky-table th:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      bottom: -2px;
+      border-bottom: 2px solid #ddd; }
+    .table.sticky-table th:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: -1px;
+      border-top: 1px solid #ddd; }
 
 .table.dataTable {
   border-collapse: collapse; }
