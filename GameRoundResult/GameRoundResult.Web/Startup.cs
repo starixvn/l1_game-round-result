@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Reflection;
@@ -7,8 +8,10 @@ using GameRoundResult.Web.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.CodeAnalysis.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -34,9 +37,15 @@ namespace GameRoundResult.Web
             services.AddServices();
             services.AddLocalizationSettings(Configuration);
             services.AddResponseCaching();
+
+            services.AddDataProtection()
+              .PersistKeysToMongoDb(Configuration)
+              .SetApplicationName(Configuration["ApplicationName"]);
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                   .AddCookie(options =>
                   {
+                      options.ExpireTimeSpan = TimeSpan.FromHours(1);
                       options.Events.OnRedirectToLogin = context =>
                       {
                           context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
