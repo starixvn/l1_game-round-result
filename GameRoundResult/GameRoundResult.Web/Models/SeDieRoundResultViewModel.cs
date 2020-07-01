@@ -50,6 +50,11 @@ namespace GameRoundResult.Web.Models
 
         private string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
+            if(TotalRed == 2)
+            {
+                return stringLocalizer["Even"];
+            }
+            
             return $"{(IsEven ? stringLocalizer["Even"] : stringLocalizer["Odd"])}, {(TotalRed > 0 ? stringLocalizer["{0} red", TotalRed] : stringLocalizer["{0} white", 4])}";
         }
     }
