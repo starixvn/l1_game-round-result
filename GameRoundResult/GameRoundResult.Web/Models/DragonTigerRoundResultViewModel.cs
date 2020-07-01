@@ -37,7 +37,7 @@ namespace GameRoundResult.Web.Models
                 }
             }
 
-            return stringLocalizer["Draw"];
+            return stringLocalizer["Tie"];
         }
 
         private string GetCardContent(CardViewModel card)
