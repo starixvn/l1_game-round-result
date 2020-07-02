@@ -50,12 +50,27 @@ namespace GameRoundResult.Web.Models
 
         private string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            if(TotalRed == 2)
+            var tagBuilder = new TagBuilder("span");
+            tagBuilder.AddCssClass("bold");
+
+            if (IsEven)
             {
-                return stringLocalizer["Even"];
+                tagBuilder.AddCssClass("text-blue");
+                tagBuilder.InnerHtml.Append(stringLocalizer["Even"]);
             }
-            
-            return $"{(IsEven ? stringLocalizer["Even"] : stringLocalizer["Odd"])}, {(TotalRed > 0 ? stringLocalizer["{0} red", TotalRed] : stringLocalizer["{0} white", 4])}";
+            else
+            {
+                tagBuilder.AddCssClass("text-red");
+                tagBuilder.InnerHtml.Append(stringLocalizer["Odd"]);
+            }
+
+            if (TotalRed == 2)
+            {
+                return tagBuilder.GetHtmlString();
+            }
+
+            tagBuilder.InnerHtml.Append($", {(TotalRed > 0 ? stringLocalizer["{0} red", TotalRed] : stringLocalizer["{0} white", 4])}");
+            return tagBuilder.GetHtmlString();
         }
     }
 }

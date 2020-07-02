@@ -35,8 +35,7 @@
         }
     }
 
-    .form-control:disabled,
-    .form-control[readonly] {
+    .form-control:disabled {
         color: #6c757d;
         background-color: #e9ecef;
     }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -25,7 +23,6 @@ namespace GameRoundResult.Web.Models
 
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
                GetResultContent(),
@@ -34,7 +31,6 @@ namespace GameRoundResult.Web.Models
 
             return result;
         }
-
 
         private string GetWinningOptionsContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
@@ -60,12 +56,10 @@ namespace GameRoundResult.Web.Models
             {
                 result = $"{result}, {stringLocalizer["PlayerPair"]}";
             }
-            else
+
+            if (BankerPair)
             {
-                if (BankerPair)
-                {
-                    result = $"{result}, {stringLocalizer["BankerPair"]}";
-                }
+                result = $"{result}, {stringLocalizer["BankerPair"]}";
             }
 
             result = $"{result}, {(Big ? stringLocalizer["Big"] : stringLocalizer["Small"])}";

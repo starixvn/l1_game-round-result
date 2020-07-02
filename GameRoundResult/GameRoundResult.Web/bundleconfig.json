@@ -4,6 +4,8 @@
     "inputFiles": [
       "wwwroot/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.min.js",
       "wwwroot/lib/data-tables/datatables.min.js",
+      "wwwroot/lib/flatpickr/dist/flatpickr.js",
+      "wwwroot/lib/flatpickr/dist/l10n/vn.js",
       "wwwroot/js/game-round-result.js"
     ]
   },
@@ -12,6 +14,7 @@
     "inputFiles": [
       "wwwroot/scss/base/roboto.min.css",
       "wwwroot/lib/data-tables/datatables.min.css",
+      "wwwroot/lib/flatpickr/dist/flatpickr.css",
       "wwwroot/scss/pages/site.css"
     ]
   }

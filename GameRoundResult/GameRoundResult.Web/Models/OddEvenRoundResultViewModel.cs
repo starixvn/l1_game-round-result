@@ -50,7 +50,7 @@ namespace GameRoundResult.Web.Models
             tagBuilder.AddCssClass("bold");
             if (Total % 2 == 0)
             {
-                tagBuilder.AddCssClass("text-blu");
+                tagBuilder.AddCssClass("text-blue");
                 tagBuilder.InnerHtml.Append(stringLocalizer["Even"]);
             }
             else

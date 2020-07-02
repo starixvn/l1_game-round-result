@@ -32,6 +32,8 @@
     }
 
     &.sticky-table {
+        position: relative;
+
         thead {
             tr:nth-child(2) th {
                 top: 39px;
@@ -48,18 +50,12 @@
                 content: '';
                 position: absolute;
                 left: 0;
-                width: 100%;
-                bottom: -2px;
-                border-bottom: 2px solid #ddd;
-            }
-
-            &:before {
-                content: '';
-                position: absolute;
-                left: 0;
-                width: 100%;
+                right: -1px;
                 top: -1px;
+                bottom: -2px;
+                border-right: 1px solid #ddd;
                 border-top: 1px solid #ddd;
+                border-bottom: 2px solid #ddd;
             }
         }
     }
