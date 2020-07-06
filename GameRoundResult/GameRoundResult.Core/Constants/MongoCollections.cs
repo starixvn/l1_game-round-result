@@ -1,6 +1,6 @@
 ﻿namespace GameRoundResult.Core.Constants
 {
-    internal class MiniGameCollections
+    internal class MiniGameRoundCollections
     {
         public const string BigSmallRound = "taixiu_phiens";
 
@@ -39,5 +39,12 @@
         public const string KenoSouthRound = "kenosouth_phiens";
 
         public const string KenoNorthRound = "kenonorth_phiens";
+    }
+
+    internal class MiniGameBetCollections
+    {
+        public const string BigSmallBet = "taixiu_cuocs";
+
+        public const string BigSmallTurboBet = "txturbo_cuocs";
     }
 }

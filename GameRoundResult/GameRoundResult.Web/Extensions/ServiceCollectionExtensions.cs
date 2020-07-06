@@ -21,6 +21,8 @@ namespace GameRoundResult.Web.Extensions
             ConventionRegistry.Register("camelCase", conventionPack, t => true);
             var mongoClient = new MongoClient(configuration["DatabaseSettings:ConnectionString"]);
             services.AddSingleton<IMongoClient>(mongoClient);
+            var mongoDatabase = mongoClient.GetDatabase(configuration["DatabaseSettings:DatabaseName"]);
+            services.AddScoped(provider => mongoClient.GetDatabase(configuration["DatabaseSettings:DatabaseName"]));
         }
 
         public static void AddLocalizationSettings(this IServiceCollection services, IConfiguration configuration)

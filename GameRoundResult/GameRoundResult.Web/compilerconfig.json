@@ -30,5 +30,9 @@
   {
     "outputFile": "wwwroot/scss/pages/error-page.css",
     "inputFile": "wwwroot/scss/pages/error-page.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/pages/game-round-result.css",
+    "inputFile": "wwwroot/scss/pages/game-round-result.scss"
   }
 ]

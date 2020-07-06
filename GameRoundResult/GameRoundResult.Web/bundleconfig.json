@@ -4,18 +4,17 @@
     "inputFiles": [
       "wwwroot/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.min.js",
       "wwwroot/lib/data-tables/datatables.min.js",
-      "wwwroot/lib/flatpickr/dist/flatpickr.js",
+      "wwwroot/lib/flatpickr/dist/flatpickr.min.js",
       "wwwroot/lib/flatpickr/dist/l10n/vn.js",
       "wwwroot/js/game-round-result.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/css/pages/site.min.css",
+    "outputFileName": "wwwroot/css/pages/game-round-result.min.css",
     "inputFiles": [
-      "wwwroot/scss/base/roboto.min.css",
       "wwwroot/lib/data-tables/datatables.min.css",
-      "wwwroot/lib/flatpickr/dist/flatpickr.css",
-      "wwwroot/scss/pages/site.css"
+      "wwwroot/lib/flatpickr/dist/flatpickr.min.css",
+      "wwwroot/scss/pages/game-round-result.min.css"
     ]
   },
   {
