@@ -16,7 +16,7 @@ namespace GameRoundResult.Core.Services
 
         Task<(long, IEnumerable<OddEvenRound>)> GetOddEvenTurboRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
-        Task<(long, IEnumerable<ShakeThePlateRound>)> GetShakeThePlateRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+        Task<(long, IEnumerable<SeDieRound>)> GetShakeThePlateRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
         Task<(long, IEnumerable<FishPrawnRound>)> GetFishPrawnRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
@@ -91,7 +91,7 @@ namespace GameRoundResult.Core.Services
             return await repository.GetOddEvenTurboRoundResultAsync(date, roundId, page, pageSize);
         }
 
-        public async Task<(long, IEnumerable<ShakeThePlateRound>)> GetShakeThePlateRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+        public async Task<(long, IEnumerable<SeDieRound>)> GetShakeThePlateRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
             return await repository.GetShakeThePlateRoundResultAsync(date, roundId, page, pageSize);
         }

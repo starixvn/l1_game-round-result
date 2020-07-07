@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using MediatR;
@@ -31,7 +32,7 @@ namespace GameRoundResult.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<List<AuthenticationClient>>(Configuration.GetSection("AuthenticationClients"));
-
+            services.AddAutoMapper(typeof(Startup));
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddMongoDatabase(Configuration);
             services.AddServices();

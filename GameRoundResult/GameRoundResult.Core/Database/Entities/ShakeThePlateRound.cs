@@ -2,7 +2,7 @@
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    public class ShakeThePlateRound : GameRound
+    public class SeDieRound : GameRound
     {
         [BsonElement("red1")]
         public bool FirstRedChip { get; set; }
