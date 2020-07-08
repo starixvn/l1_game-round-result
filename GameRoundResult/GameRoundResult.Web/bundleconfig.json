@@ -17,5 +17,11 @@
       "wwwroot/lib/flatpickr/dist/flatpickr.css",
       "wwwroot/scss/pages/site.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/css/pages/error-page.min.css",
+    "inputFiles": [
+      "wwwroot/scss/pages/error-page.css"
+    ]
   }
 ]

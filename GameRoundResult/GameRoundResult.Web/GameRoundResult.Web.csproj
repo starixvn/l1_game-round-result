@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\js\game-round-result.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\scss\pages\error-page.css" />
   </ItemGroup>
 
   <ItemGroup>
