@@ -46,11 +46,7 @@ namespace GameRoundResult.Web
                   .AddCookie(options =>
                   {
                       options.ExpireTimeSpan = TimeSpan.FromHours(1);
-                      options.Events.OnRedirectToLogin = context =>
-                      {
-                          context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                          return Task.CompletedTask;
-                      };
+                      options.LoginPath = "/Error/NotAuthorized";
                   });
 
             services.AddControllersWithViews()
