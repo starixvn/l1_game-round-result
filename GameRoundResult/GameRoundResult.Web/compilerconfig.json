@@ -34,5 +34,9 @@
   {
     "outputFile": "wwwroot/scss/pages/game-round-result.css",
     "inputFile": "wwwroot/scss/pages/game-round-result.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/pages/game-ticket.css",
+    "inputFile": "wwwroot/scss/pages/game-ticket.scss"
   }
 ]

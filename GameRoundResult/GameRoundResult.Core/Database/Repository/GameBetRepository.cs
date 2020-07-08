@@ -6,7 +6,14 @@ using MongoDB.Driver;
 
 namespace GameRoundResult.Core.Database.Repository
 {
-    public class GameBetRepository
+    public interface IGameBetRepository
+    {
+        Task<(BigSmallRound, IEnumerable<BigSmallBet>)> GetBigSmallAsync(long roundId, int memberId);
+
+        Task<(BigSmallRound, IEnumerable<BigSmallBet>)> GetBigSmallTurboAsync(long roundId, int memberId);
+    }
+
+    public class GameBetRepository : IGameBetRepository
     {
         private readonly IMongoDatabase database;
 
@@ -15,10 +22,18 @@ namespace GameRoundResult.Core.Database.Repository
             this.database = database;
         }
 
-        public async Task<(BigSmallRound, IEnumerable<BigSmallBet>)> GetBigSmall(long roundId, int memberId)
+        public async Task<(BigSmallRound, IEnumerable<BigSmallBet>)> GetBigSmallAsync(long roundId, int memberId)
         {
             var round = await GetRoundAsync<BigSmallRound>(roundId, MiniGameRoundCollections.BigSmallRound);
             var bets = await GetBetsAsync<BigSmallBet>(roundId, memberId, MiniGameBetCollections.BigSmallBet);
+
+            return (round, bets);
+        }
+
+        public async Task<(BigSmallRound, IEnumerable<BigSmallBet>)> GetBigSmallTurboAsync(long roundId, int memberId)
+        {
+            var round = await GetRoundAsync<BigSmallRound>(roundId, MiniGameRoundCollections.BigSmallTurboRound);
+            var bets = await GetBetsAsync<BigSmallBet>(roundId, memberId, MiniGameBetCollections.BigSmallTurboBet);
 
             return (round, bets);
         }

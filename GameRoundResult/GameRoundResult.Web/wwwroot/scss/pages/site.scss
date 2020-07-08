@@ -15,6 +15,12 @@ body {
     color: $text-color;
 }
 
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 .page-title {
     font-size: 2rem;
     font-weight: 600;
@@ -359,7 +365,6 @@ body {
         }
     }
 }
-
 
 #overlay {
     position: fixed; /* Sit on top of the page content */

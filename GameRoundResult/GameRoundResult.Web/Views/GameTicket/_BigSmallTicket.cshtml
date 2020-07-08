@@ -1,0 +1,60 @@
+﻿@model BigSmallTicketViewModel
+
+@inject IViewLocalizer Localizer
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Localizer["Time"] (GMT-4)</th>
+            <th>@Localizer["Round"]</th>
+            <th>@Localizer["Result"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.RoundResult.Time.ToString(ViewFormat.DateTimeFormat)</td>
+            <td>@Model.RoundResult.Round</td>
+            <td>@string.Join("-", Model.RoundResult.Dices) @Model.RoundResult.Total</td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Localizer["BetTime"] (GMT-4)</th>
+            <th>@Localizer["BetChoice"]</th>
+            <th>@Localizer["BetAmount"]</th>
+            <th>@Localizer["Refund"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bet in Model.Bets)
+        {
+            <tr>
+                <td>@bet.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                <td>@(bet.Select ? Localizer["Big"]: Localizer["Small"])</td>
+                <td>@bet.Bet</td>
+                <td>@bet.Back</td>
+            </tr>
+        }
+        <tr>
+            <td></td>
+            <td>@Localizer["Total"]</td>
+            <td>@Model.TotalBet</td>
+            <td>@Model.TotalBack</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>@Localizer["TotalWin"]</td>
+            <td>@Model.TotalWin</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>@Localizer["WinLoss"]</td>
+            <td>@Model.WinLoss</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

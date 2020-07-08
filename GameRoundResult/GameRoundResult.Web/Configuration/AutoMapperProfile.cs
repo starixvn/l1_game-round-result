@@ -65,6 +65,8 @@ namespace GameRoundResult.Web.Configuration
                .ForMember(x => x.IsWater, opt => opt.MapFrom(x => x.SettlementResult.Water))
                .ForMember(x => x.IsFire, opt => opt.MapFrom(x => x.SettlementResult.Fire))
                .ForMember(x => x.IsEarth, opt => opt.MapFrom(x => x.SettlementResult.Earth));
+
+            CreateMap<BigSmallBet, BigSmallBetViewModel>();
         }
     }
 }

@@ -81,5 +81,13 @@ namespace GameRoundResult.Web.Extensions
                 Type = entity.Type
             };
         }
+
+        public static BigSmallBetViewModel ToViewModel(this BigSmallBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<BigSmallBet, BigSmallBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
     }
 }

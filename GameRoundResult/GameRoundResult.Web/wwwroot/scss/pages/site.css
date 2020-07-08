@@ -80,6 +80,8 @@
 
 .table {
   background-color: #fff;
+  border-spacing: 0;
+  border-collapse: collapse;
   /*tr {
         background-color: #e8e8e8;
     }*/ }
@@ -127,6 +129,11 @@ body {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 1.4rem;
   color: #1a1a1a; }
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table; }
 
 .page-title {
   font-size: 2rem;

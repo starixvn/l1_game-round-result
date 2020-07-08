@@ -1,0 +1,42 @@
+﻿@inject IViewLocalizer Localizer
+
+@model GameTicketSearchViewModel
+
+@{
+    ViewData["Title"] = Localizer["GameTickets"];
+}
+
+@section Styles {
+    <environment include="Development">
+        <link href="~/scss/pages/game-ticket.css" rel="stylesheet"  asp-append-version="true"/>
+    </environment>
+    <environment exclude="Development">
+        <link href="~/scss/pages/game-ticket.min.css" rel="stylesheet" asp-append-version="true" />
+    </environment>
+}
+
+<div class="header">
+    <h1 class="page-title">@Localizer["GameTickets"]</h1>
+</div>
+<div class="clearfix">
+    <form data-ajax="true" data-ajax-method="GET" asp-action="GetGameTicket" data-ajax-mode="replace"
+          data-ajax-update="#game-ticket" data-ajax-loading="#overlay"
+          method="get"
+          class="filter">
+        <select asp-for="GameType" asp-items="Model.GameTypes" class="form-control"></select>
+        <input type="number" asp-for="RoundId" placeholder="@Localizer["RoundId"]" class="form-control" />
+        <input type="number" asp-for="MemberId" placeholder="@Localizer["CustomerId"]" class="form-control" />
+        <button class="btn-submit">@Localizer["Search"]</button>
+    </form>
+</div>
+
+<div id="game-ticket">
+</div>
+
+@section Scripts {
+    <environment include="Development">
+        <script src="~/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.js"></script>
+    </environment>
+    <environment exclude="Development">
+    </environment>
+}
