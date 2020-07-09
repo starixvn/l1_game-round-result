@@ -46,5 +46,9 @@
         public const string BigSmallBet = "taixiu_cuocs";
 
         public const string BigSmallTurboBet = "txturbo_cuocs";
+
+        public const string OddEvenBet = "chanle_cuocs";
+
+        public const string OddEvenTurboBet = "chanleturbo_cuocs";
     }
 }

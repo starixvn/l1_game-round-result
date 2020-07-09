@@ -5,7 +5,7 @@ using MediatR;
 
 namespace GameRoundResult.Web.Requests
 {
-    public class GetGameTicketRequest : IRequest<BigSmallTicketViewModel>
+    public class GetGameTicketRequest : IRequest<GameTicketViewModel>
     {
         public GetGameTicketRequest(GameType gameType, long roundId, int memberId, TimeZoneInfo timeZoneInfo)
         {

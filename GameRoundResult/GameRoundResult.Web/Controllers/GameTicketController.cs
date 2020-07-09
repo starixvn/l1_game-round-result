@@ -13,7 +13,7 @@ using TimeZoneConverter;
 
 namespace GameRoundResult.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Policy = "OneWordOnly")]
     public class GameTicketController : Controller
     {
         private readonly IMediator mediator;
@@ -50,7 +50,7 @@ namespace GameRoundResult.Web.Controllers
 
                 case GameType.OddEven:
                 case GameType.OddEvenTurbo:
-                    return PartialView("_OddEvenRoundResult");
+                    return PartialView("_OddEvenTicket", viewModel);
 
                 case GameType.SeDie:
                 case GameType.MiniSeDie:

@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Reflection;
-using System.Threading.Tasks;
+using System.Security.Claims;
 using AutoMapper;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
@@ -12,7 +11,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.CodeAnalysis.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -48,7 +46,13 @@ namespace GameRoundResult.Web
                   {
                       options.ExpireTimeSpan = TimeSpan.FromHours(1);
                       options.LoginPath = "/Error/NotAuthorized";
+                      options.AccessDeniedPath = "/Error/NotAuthorized";
                   });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("OneWordOnly", policy => policy.RequireClaim(ClaimTypes.Name, "OneWord"));
+            });
 
             services.AddControllersWithViews()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);

@@ -132,4 +132,7 @@
   <data name="WinLoss" xml:space="preserve">
     <value>Win Loss</value>
   </data>
+  <data name="WinningOptions" xml:space="preserve">
+    <value>Winning Option(s)</value>
+  </data>
 </root>

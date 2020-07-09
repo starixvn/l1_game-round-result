@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text.Encodings.Web;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
@@ -13,6 +11,8 @@ namespace GameRoundResult.Web.Models
         public IEnumerable<byte> Dices { get; set; }
 
         public int Total => Dices.Sum(x => x);
+
+        public bool IsEven => Total % 2 == 0;
 
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
@@ -48,7 +48,7 @@ namespace GameRoundResult.Web.Models
             var tagBuilder = new TagBuilder("span");
 
             tagBuilder.AddCssClass("bold");
-            if (Total % 2 == 0)
+            if (IsEven)
             {
                 tagBuilder.AddCssClass("text-blue");
                 tagBuilder.InnerHtml.Append(stringLocalizer["Even"]);

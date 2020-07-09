@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace GameRoundResult.Web.Models
 {
-    public class BigSmallTicketViewModel
+    public class BigSmallTicketViewModel : GameTicketViewModel
     {
         public BigSmallRoundResultViewModel RoundResult { get; set; }
 
@@ -17,9 +16,9 @@ namespace GameRoundResult.Web.Models
 
         public decimal TotalBetWin => Bets.Sum(x => x.BetWin);
 
-        public decimal TotalWin => TotalBetWin > 0 ? TotalBet + TotalBetWin : 0;
+        public decimal TotalWin => TotalBetWin > 0 ? TotalBet + TotalBetWin - TotalBack : 0;
 
-        public decimal WinLoss => TotalWin + TotalBack - TotalBet;
+        public decimal WinLoss => TotalBetWin + TotalBack - TotalBet;
     }
 
     public class BigSmallBetViewModel

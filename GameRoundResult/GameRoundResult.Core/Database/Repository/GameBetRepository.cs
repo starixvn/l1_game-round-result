@@ -11,6 +11,10 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(BigSmallRound, IEnumerable<BigSmallBet>)> GetBigSmallAsync(long roundId, int memberId);
 
         Task<(BigSmallRound, IEnumerable<BigSmallBet>)> GetBigSmallTurboAsync(long roundId, int memberId);
+
+        Task<(OddEvenRound, IEnumerable<OddEvenBet>)> GetOddEvenAsync(long roundId, int memberId);
+
+        Task<(OddEvenRound, IEnumerable<OddEvenBet>)> GetOddEvenTurboAsync(long roundId, int memberId);
     }
 
     public class GameBetRepository : IGameBetRepository
@@ -34,6 +38,22 @@ namespace GameRoundResult.Core.Database.Repository
         {
             var round = await GetRoundAsync<BigSmallRound>(roundId, MiniGameRoundCollections.BigSmallTurboRound);
             var bets = await GetBetsAsync<BigSmallBet>(roundId, memberId, MiniGameBetCollections.BigSmallTurboBet);
+
+            return (round, bets);
+        }
+
+        public async Task<(OddEvenRound, IEnumerable<OddEvenBet>)> GetOddEvenAsync(long roundId, int memberId)
+        {
+            var round = await GetRoundAsync<OddEvenRound>(roundId, MiniGameRoundCollections.OddEvenRound);
+            var bets = await GetBetsAsync<OddEvenBet>(roundId, memberId, MiniGameBetCollections.OddEvenBet);
+
+            return (round, bets);
+        }
+
+        public async Task<(OddEvenRound, IEnumerable<OddEvenBet>)> GetOddEvenTurboAsync(long roundId, int memberId)
+        {
+            var round = await GetRoundAsync<OddEvenRound>(roundId, MiniGameRoundCollections.OddEvenTurboRound);
+            var bets = await GetBetsAsync<OddEvenBet>(roundId, memberId, MiniGameBetCollections.OddEvenTurboBet);
 
             return (round, bets);
         }

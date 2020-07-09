@@ -67,6 +67,7 @@ namespace GameRoundResult.Web.Configuration
                .ForMember(x => x.IsEarth, opt => opt.MapFrom(x => x.SettlementResult.Earth));
 
             CreateMap<BigSmallBet, BigSmallBetViewModel>();
+            CreateMap<OddEvenBet, OddEvenBetViewModel>();
         }
     }
 }

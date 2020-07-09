@@ -12,6 +12,8 @@ namespace GameRoundResult.Web.Models
 
         public int Total => Dices.Sum(x => x);
 
+        public bool IsBig => Total > 10;
+
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
@@ -46,7 +48,7 @@ namespace GameRoundResult.Web.Models
             var tagBuilder = new TagBuilder("span");
 
             tagBuilder.AddCssClass("bold");
-            if (Total > 10)
+            if (IsBig)
             {
                 tagBuilder.AddCssClass("text-red");
                 tagBuilder.InnerHtml.Append(stringLocalizer["Big"]);
