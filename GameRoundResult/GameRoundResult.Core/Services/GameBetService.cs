@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Repository;
@@ -16,7 +14,12 @@ namespace GameRoundResult.Core.Services
         Task<(OddEvenRound, IEnumerable<OddEvenBet>)> GetOddEvenAsync(long roundId, int memberId);
 
         Task<(OddEvenRound, IEnumerable<OddEvenBet>)> GetOddEvenTurboAsync(long roundId, int memberId);
+
+        Task<(SeDieRound, SeDieBet)> GetSeDieAsync(long roundId, int memberId);
+
+        Task<(MiniSeDieRound, MiniSeDieBet)> GetMiniSeDieAsync(long roundId, int memberId);
     }
+
     public class GameBetService : IGameBetService
     {
         private readonly IGameBetRepository repository;
@@ -44,6 +47,16 @@ namespace GameRoundResult.Core.Services
         public async Task<(OddEvenRound, IEnumerable<OddEvenBet>)> GetOddEvenTurboAsync(long roundId, int memberId)
         {
             return await repository.GetOddEvenTurboAsync(roundId, memberId);
+        }
+
+        public async Task<(SeDieRound, SeDieBet)> GetSeDieAsync(long roundId, int memberId)
+        {
+            return await repository.GetSeDieAsync(roundId, memberId);
+        }
+
+        public async Task<(MiniSeDieRound, MiniSeDieBet)> GetMiniSeDieAsync(long roundId, int memberId)
+        {
+            return await repository.GetMiniSeDieAsync(roundId, memberId);
         }
     }
 }

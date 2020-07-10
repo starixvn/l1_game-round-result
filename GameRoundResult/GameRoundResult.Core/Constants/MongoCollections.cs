@@ -10,7 +10,7 @@
 
         public const string OddEvenTurboRound = "chanleturbo_phiens";
 
-        public const string ShakeThePlateRound = "xocxoc_phiens";
+        public const string SeDieRound = "xocxoc_phiens";
 
         public const string FishPrawnRound = "baucua_phiens";
 
@@ -50,5 +50,9 @@
         public const string OddEvenBet = "chanle_cuocs";
 
         public const string OddEvenTurboBet = "chanleturbo_cuocs";
+
+        public const string SeDieBet = "xocxoc_cuocs";
+
+        public const string MiniSeDieBet = "minisedie_cuocs";
     }
 }

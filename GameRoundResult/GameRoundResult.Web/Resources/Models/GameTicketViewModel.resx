@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="3Red" xml:space="preserve">
+    <value>3 Red</value>
+  </data>
+  <data name="3White" xml:space="preserve">
+    <value>3 White</value>
+  </data>
+  <data name="4Red" xml:space="preserve">
+    <value>4 Red</value>
+  </data>
+  <data name="4White" xml:space="preserve">
+    <value>4 White</value>
+  </data>
   <data name="BetAmount" xml:space="preserve">
     <value>Bet Amount</value>
   </data>
@@ -125,6 +137,9 @@
   </data>
   <data name="BetTime" xml:space="preserve">
     <value>Bet Time</value>
+  </data>
+  <data name="NoDataAvailable" xml:space="preserve">
+    <value>No data available</value>
   </data>
   <data name="TotalWin" xml:space="preserve">
     <value>Total Win</value>

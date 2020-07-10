@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -60,10 +59,25 @@ namespace GameRoundResult.Web.Handlers
                         Bets = oddEvenTurboResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo))
                     };
 
+                case GameType.SeDie:
+                    var seDieResult = await service.GetSeDieAsync(request.RoundId, request.MemberId);
+                    return new SeDieTicketViewModel
+                    {
+                        RoundResult = seDieResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bet = seDieResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
+                    };
+
+                case GameType.MiniSeDie:
+                    var miniSeDieResult = await service.GetMiniSeDieAsync(request.RoundId, request.MemberId);
+                    return new SeDieTicketViewModel
+                    {
+                        RoundResult = miniSeDieResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bet = miniSeDieResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
+                    };
+
                 default:
                     throw new ArgumentException(nameof(GetGameTicketRequest.GameType));
             }
-           
         }
     }
 }

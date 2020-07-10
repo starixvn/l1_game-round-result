@@ -81,7 +81,7 @@ namespace GameRoundResult.Core.Database.Repository
 
         public async Task<(long, IEnumerable<SeDieRound>)> GetShakeThePlateRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
-            return await GetRoundResultAsync<SeDieRound>(date, roundId, MiniGameRoundCollections.ShakeThePlateRound, page, pageSize);
+            return await GetRoundResultAsync<SeDieRound>(date, roundId, MiniGameRoundCollections.SeDieRound, page, pageSize);
         }
 
         public async Task<(long, IEnumerable<FishPrawnRound>)> GetFishPrawnRoundResultAsync(DateTime date, long roundId, int page, int pageSize)

@@ -9,7 +9,6 @@
             <th>@Localizer["Round"]</th>
             <th>@Localizer["Result"]</th>
             <th>@Localizer["Total"]</th>
-            <th>@Localizer["WinningOptions"]</th>
         </tr>
     </thead>
     <tbody>
@@ -25,16 +24,13 @@
                     }
                 </td>
                 <td>@Model.RoundResult.Total</td>
-                <td class="bold @(Model.RoundResult.IsEven ? "text-blue" : "text-red")">
-                    @(Model.RoundResult.IsEven ? Localizer["Even"]: Localizer["Odd"])
-                </td>
             </tr>
         }
         else
         {
             <tr>
-                <td colspan="3" class="text-center">
-                    No data available
+                <td colspan="4" class="text-center">
+                    @Localizer["NoDataAvailable"]
                 </td>
             </tr>
         }
@@ -77,9 +73,17 @@
             </tr>
             <tr>
                 <td></td>
-                <td>@Localizer["WinLoss"]</td>
-                <td>@Model.WinLoss</td>
+                <td class="bold">@Localizer["WinLoss"]</td>
+                <td class="bold @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss</td>
                 <td></td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center">
+                    @Localizer["NoDataAvailable"]
+                </td>
             </tr>
         }
     </tbody>

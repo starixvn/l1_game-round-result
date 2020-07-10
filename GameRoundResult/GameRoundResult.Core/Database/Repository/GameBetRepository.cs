@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
@@ -15,6 +16,10 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(OddEvenRound, IEnumerable<OddEvenBet>)> GetOddEvenAsync(long roundId, int memberId);
 
         Task<(OddEvenRound, IEnumerable<OddEvenBet>)> GetOddEvenTurboAsync(long roundId, int memberId);
+
+        Task<(SeDieRound, SeDieBet)> GetSeDieAsync(long roundId, int memberId);
+
+        Task<(MiniSeDieRound, MiniSeDieBet)> GetMiniSeDieAsync(long roundId, int memberId);
     }
 
     public class GameBetRepository : IGameBetRepository
@@ -57,6 +62,23 @@ namespace GameRoundResult.Core.Database.Repository
 
             return (round, bets);
         }
+
+        public async Task<(SeDieRound, SeDieBet)> GetSeDieAsync(long roundId, int memberId)
+        {
+            var round = await GetRoundAsync<SeDieRound>(roundId, MiniGameRoundCollections.SeDieRound);
+            var bets = (await GetBetsAsync<SeDieBet>(roundId, memberId, MiniGameBetCollections.SeDieBet)).FirstOrDefault();
+
+            return (round, bets);
+        }
+
+        public async Task<(MiniSeDieRound, MiniSeDieBet)> GetMiniSeDieAsync(long roundId, int memberId)
+        {
+            var round = await GetRoundAsync<MiniSeDieRound>(roundId, MiniGameRoundCollections.MiniSeDieRound);
+            var bets = (await GetBetsAsync<MiniSeDieBet>(roundId, memberId, MiniGameBetCollections.MiniSeDieBet)).FirstOrDefault();
+
+            return (round, bets);
+        }
+
 
         private async Task<IEnumerable<T>> GetBetsAsync<T>(long roundId, int memberId, string collectionName) where T: BaseBetEntity
         {

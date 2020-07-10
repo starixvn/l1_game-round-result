@@ -68,6 +68,8 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<BigSmallBet, BigSmallBetViewModel>();
             CreateMap<OddEvenBet, OddEvenBetViewModel>();
+            CreateMap<SeDieBet, SeDieBetViewModel>();
+            CreateMap<MiniSeDieBet, SeDieBetViewModel>();
         }
     }
 }
