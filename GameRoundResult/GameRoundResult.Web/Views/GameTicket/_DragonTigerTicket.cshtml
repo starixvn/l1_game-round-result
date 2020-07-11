@@ -1,0 +1,88 @@
+﻿@model GameRoundResult.Web.Models.GameTicket.DragonTigerTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Localizer["Time"] (GMT-4)</th>
+            <th>@Localizer["Round"]</th>
+            <th>@Localizer["Result"] (@Localizer["Dragon"] | @Localizer["Tiger"])</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null)
+        {
+            <tr>
+                <td>@Model.RoundResult.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                <td>@Model.RoundResult.Round</td>
+                <td>
+                    <div class="card card-type-@Model.RoundResult.Dragon.Type">
+                        <span>@Model.RoundResult.Dragon.Number</span>
+                        <img src="~/scss/images/card_@(Model.RoundResult.Dragon.Type).png" />
+                    </div>
+                    <div class="card card-type-@Model.RoundResult.Tiger.Type">
+                        <span>@Model.RoundResult.Tiger.Number</span>
+                        <img src="~/scss/images/card_@(Model.RoundResult.Tiger.Type).png" />
+                    </div>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    @Localizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Localizer["BetChoice"]</th>
+            <th>@Localizer["BetAmount"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Bet != null)
+        {
+            if (Model.Bet.Dragon > 0)
+            {
+                <tr>
+                    <td>@Localizer["Dragon"]</td>
+                    <td>@Model.Bet.Dragon</td>
+                </tr>
+            }
+            if (Model.Bet.Tiger > 0)
+            {
+                <tr>
+                    <td>@Localizer["Tiger"]</td>
+                    <td>@Model.Bet.Tiger</td>
+                </tr>
+            }
+            if (Model.Bet.Tie > 0)
+            {
+                <tr>
+                    <td>@Localizer["Tie"]</td>
+                    <td>@Model.Bet.Tie</td>
+                </tr>
+            }
+
+            <tr>
+                <td class="bold">@Localizer["WinLoss"]</td>
+                <td class="bold @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="2" class="text-center">
+                    @Localizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

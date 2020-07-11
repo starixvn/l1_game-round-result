@@ -54,5 +54,9 @@
         public const string SeDieBet = "xocxoc_cuocs";
 
         public const string MiniSeDieBet = "minisedie_cuocs";
+
+        public const string DragonTigetBet = "minidragontiger_cuocs";
+
+        public const string FishPrawnCrabBet = "baucua_cuocs";
     }
 }

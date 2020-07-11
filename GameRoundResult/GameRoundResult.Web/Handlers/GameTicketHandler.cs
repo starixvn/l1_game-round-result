@@ -7,6 +7,7 @@ using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Models;
+using GameRoundResult.Web.Models.GameTicket;
 using GameRoundResult.Web.Requests;
 using MediatR;
 
@@ -75,6 +76,21 @@ namespace GameRoundResult.Web.Handlers
                         Bet = miniSeDieResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
                     };
 
+                case GameType.DragonTiger:
+                    var dragonTigerResult = await service.GetDragonTigerAsync(request.RoundId, request.MemberId);
+                    return new DragonTigerTicketViewModel
+                    {
+                        RoundResult = dragonTigerResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bet = dragonTigerResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
+                    };
+
+                case GameType.FishPrawnCrab:
+                    var fishPrawnCrabResult = await service.GetFishPrawnCrabRoundAsync(request.RoundId, request.MemberId);
+                    return new FishPrawnCrabTicketViewModel
+                    {
+                        RoundResult = fishPrawnCrabResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bet = fishPrawnCrabResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
+                    };
                 default:
                     throw new ArgumentException(nameof(GetGameTicketRequest.GameType));
             }

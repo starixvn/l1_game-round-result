@@ -1,8 +1,9 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
-using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Models;
+using GameRoundResult.Web.Models.GameTicket;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -16,7 +17,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<OddEvenRound, OddEvenRoundResultViewModel>()
               .ForMember(x => x.Dices, opt => opt.MapFrom(x => new byte[] { x.FirstDice, x.SecondDice, x.ThirdDice }));
 
-            CreateMap<FishPrawnRound, FishPrawnRoundResultViewModel>()
+            CreateMap<FishPrawnCrabRound, FishPrawnCrabRoundResultViewModel>()
              .ForMember(x => x.Dices, opt => opt.MapFrom(x => new byte[] { x.FirstDice, x.SecondDice, x.ThirdDice }));
 
             CreateMap<SeDieRound, SeDieRoundResultViewModel>()
@@ -41,12 +42,28 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<Card, CardViewModel>();
 
             CreateMap<BaccaratRound, BaccaratRoundResultViewModel>()
-                .ForMember(x => x.PlayerCards, opt => opt.MapFrom(x => x.Player.ThirdCard != null ?
-                    new[] { x.Player.FirstCard.ToViewModel(), x.Player.SecondCard.ToViewModel(), x.Player.ThirdCard.ToViewModel() } :
-                    new[] { x.Player.FirstCard.ToViewModel(), x.Player.SecondCard.ToViewModel() }))
-                .ForMember(x => x.BankerCards, opt => opt.MapFrom(x => x.Banker.ThirdCard != null ?
-                    new[] { x.Banker.FirstCard.ToViewModel(), x.Banker.SecondCard.ToViewModel(), x.Banker.ThirdCard.ToViewModel() } :
-                    new[] { x.Banker.FirstCard.ToViewModel(), x.Banker.SecondCard.ToViewModel() }))
+                .ForMember(x => x.PlayerCards, opt => opt.MapFrom((source, destination, i, context) =>
+                {
+                    var mapper = context.Mapper;
+                    var result = new List<CardViewModel> { mapper.Map<CardViewModel>(source.Player.FirstCard), mapper.Map<CardViewModel>(source.Player.SecondCard) };
+                    if (source.Player.ThirdCard != null)
+                    {
+                        result.Add(mapper.Map<CardViewModel>(source.Player.ThirdCard));
+                    }
+
+                    return result;
+                }))
+                 .ForMember(x => x.BankerCards, opt => opt.MapFrom((source, destination, i, context) =>
+                 {
+                     var mapper = context.Mapper;
+                     var result = new List<CardViewModel> { mapper.Map<CardViewModel>(source.Banker.FirstCard), mapper.Map<CardViewModel>(source.Banker.SecondCard) };
+                     if (source.Banker.ThirdCard != null)
+                     {
+                         result.Add(mapper.Map<CardViewModel>(source.Banker.ThirdCard));
+                     }
+
+                     return result;
+                 }))
                 .ForMember(x => x.Player, opt => opt.MapFrom(x => x.Result.Player))
                 .ForMember(x => x.Banker, opt => opt.MapFrom(x => x.Result.Banker))
                 .ForMember(x => x.Tie, opt => opt.MapFrom(x => x.Result.Tie))
@@ -70,6 +87,8 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<OddEvenBet, OddEvenBetViewModel>();
             CreateMap<SeDieBet, SeDieBetViewModel>();
             CreateMap<MiniSeDieBet, SeDieBetViewModel>();
+            CreateMap<DragonTigerBet, DragonTigerBetViewModel>();
+            CreateMap<FishPrawnCrabBet, FishPrawnCrabBetViewModel>();
         }
     }
 }

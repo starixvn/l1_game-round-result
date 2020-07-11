@@ -2,7 +2,7 @@
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    public class FishPrawnRound : GameRound
+    public class FishPrawnCrabRound : GameRound
     {
         [BsonElement("dice1")]
         public byte FirstDice { get; set; }

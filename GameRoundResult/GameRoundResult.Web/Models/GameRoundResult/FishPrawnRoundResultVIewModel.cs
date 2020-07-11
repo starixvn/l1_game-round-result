@@ -5,7 +5,7 @@ using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {
-    public class FishPrawnRoundResultViewModel : RoundResultViewModel
+    public class FishPrawnCrabRoundResultViewModel : RoundResultViewModel
     {
         public IEnumerable<byte> Dices { get; set; }
 

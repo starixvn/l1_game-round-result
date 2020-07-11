@@ -20,6 +20,10 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(SeDieRound, SeDieBet)> GetSeDieAsync(long roundId, int memberId);
 
         Task<(MiniSeDieRound, MiniSeDieBet)> GetMiniSeDieAsync(long roundId, int memberId);
+
+        Task<(DragonTigerRound, DragonTigerBet)> GetDragonTigerAsync(long roundId, int memberId);
+
+        Task<(FishPrawnCrabRound, FishPrawnCrabBet)> GetFishPrawnCrabRoundAsync(long roundId, int memberId);
     }
 
     public class GameBetRepository : IGameBetRepository
@@ -75,6 +79,22 @@ namespace GameRoundResult.Core.Database.Repository
         {
             var round = await GetRoundAsync<MiniSeDieRound>(roundId, MiniGameRoundCollections.MiniSeDieRound);
             var bets = (await GetBetsAsync<MiniSeDieBet>(roundId, memberId, MiniGameBetCollections.MiniSeDieBet)).FirstOrDefault();
+
+            return (round, bets);
+        }
+
+        public async Task<(DragonTigerRound, DragonTigerBet)> GetDragonTigerAsync(long roundId, int memberId)
+        {
+            var round = await GetRoundAsync<DragonTigerRound>(roundId, MiniGameRoundCollections.DragonTigerRound);
+            var bets = (await GetBetsAsync<DragonTigerBet>(roundId, memberId, MiniGameBetCollections.DragonTigetBet)).FirstOrDefault();
+
+            return (round, bets);
+        }
+
+        public async Task<(FishPrawnCrabRound, FishPrawnCrabBet)> GetFishPrawnCrabRoundAsync(long roundId, int memberId)
+        {
+            var round = await GetRoundAsync<FishPrawnCrabRound>(roundId, MiniGameRoundCollections.DragonTigerRound);
+            var bets = (await GetBetsAsync<FishPrawnCrabBet>(roundId, memberId, MiniGameBetCollections.DragonTigetBet)).FirstOrDefault();
 
             return (round, bets);
         }

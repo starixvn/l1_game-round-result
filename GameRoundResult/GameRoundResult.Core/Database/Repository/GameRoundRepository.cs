@@ -21,7 +21,7 @@ namespace GameRoundResult.Core.Database.Repository
 
         Task<(long, IEnumerable<SeDieRound>)> GetShakeThePlateRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
-        Task<(long, IEnumerable<FishPrawnRound>)> GetFishPrawnRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+        Task<(long, IEnumerable<FishPrawnCrabRound>)> GetFishPrawnRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
         Task<(long, IEnumerable<DragonTigerRound>)> GetDragonTigerRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
@@ -84,9 +84,9 @@ namespace GameRoundResult.Core.Database.Repository
             return await GetRoundResultAsync<SeDieRound>(date, roundId, MiniGameRoundCollections.SeDieRound, page, pageSize);
         }
 
-        public async Task<(long, IEnumerable<FishPrawnRound>)> GetFishPrawnRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+        public async Task<(long, IEnumerable<FishPrawnCrabRound>)> GetFishPrawnRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
-            return await GetRoundResultAsync<FishPrawnRound>(date, roundId, MiniGameRoundCollections.FishPrawnRound, page, pageSize);
+            return await GetRoundResultAsync<FishPrawnCrabRound>(date, roundId, MiniGameRoundCollections.FishPrawnRound, page, pageSize);
         }
 
         public async Task<(long, IEnumerable<DragonTigerRound>)> GetDragonTigerRoundResultAsync(DateTime date, long roundId, int page, int pageSize)

@@ -57,10 +57,10 @@ namespace GameRoundResult.Web.Controllers
                     return PartialView("_SeDieTicket", viewModel);
 
                 case GameType.FishPrawnCrab:
-                    return PartialView("_FishPrawnRoundResult");
+                    return PartialView("_FishPrawnCrabTicket");
 
                 case GameType.DragonTiger:
-                    return PartialView("_DragonTigerRoundResult");
+                    return PartialView("_DragonTigerTicket");
 
                 case GameType.Baccarat:
                     return PartialView("_BaccaratRoundResult");

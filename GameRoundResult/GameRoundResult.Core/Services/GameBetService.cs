@@ -18,6 +18,10 @@ namespace GameRoundResult.Core.Services
         Task<(SeDieRound, SeDieBet)> GetSeDieAsync(long roundId, int memberId);
 
         Task<(MiniSeDieRound, MiniSeDieBet)> GetMiniSeDieAsync(long roundId, int memberId);
+
+        Task<(DragonTigerRound, DragonTigerBet)> GetDragonTigerAsync(long roundId, int memberId);
+
+        Task<(FishPrawnCrabRound, FishPrawnCrabBet)> GetFishPrawnCrabRoundAsync(long roundId, int memberId);
     }
 
     public class GameBetService : IGameBetService
@@ -57,6 +61,16 @@ namespace GameRoundResult.Core.Services
         public async Task<(MiniSeDieRound, MiniSeDieBet)> GetMiniSeDieAsync(long roundId, int memberId)
         {
             return await repository.GetMiniSeDieAsync(roundId, memberId);
+        }
+
+        public async Task<(DragonTigerRound, DragonTigerBet)> GetDragonTigerAsync(long roundId, int memberId)
+        {
+            return await repository.GetDragonTigerAsync(roundId, memberId);
+        }
+
+        public async Task<(FishPrawnCrabRound, FishPrawnCrabBet)> GetFishPrawnCrabRoundAsync(long roundId, int memberId)
+        {
+            return await repository.GetFishPrawnCrabRoundAsync(roundId, memberId);
         }
     }
 }
