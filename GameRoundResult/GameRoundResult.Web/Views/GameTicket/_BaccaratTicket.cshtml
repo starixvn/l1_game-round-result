@@ -1,5 +1,5 @@
 ﻿@model BaccaratTicketViewModel
-
+@using GameRoundResult.Core.Constants
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
 
 
@@ -24,7 +24,7 @@
                             @foreach (var card in Model.RoundResult.PlayerCards)
                             {
                                 <div class="card card-type-@card.Type">
-                                    <span>@card.Number</span>
+                                    <span>@Card.CardLabels[card.Number]</span>
                                     <img class="img" src="~/scss/images/card_@(card.Type).png" />
                                 </div>
                             }
@@ -33,7 +33,7 @@
                             @foreach (var card in Model.RoundResult.BankerCards)
                             {
                                 <div class="card card-type-@card.Type">
-                                    <span>@card.Number</span>
+                                    <span>@Card.CardLabels[card.Number]</span>
                                     <img class="img" src="~/scss/images/card_@(card.Type).png" />
                                 </div>
                             }

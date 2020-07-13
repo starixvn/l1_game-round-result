@@ -1,5 +1,5 @@
 ﻿@model GameRoundResult.Web.Models.GameTicket.DragonTigerTicketViewModel
-
+@using GameRoundResult.Core.Constants 
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
 
 <table class="table table-bordered">
@@ -18,11 +18,11 @@
                 <td>@Model.RoundResult.Round</td>
                 <td>
                     <div class="card card-type-@Model.RoundResult.Dragon.Type">
-                        <span>@Model.RoundResult.Dragon.Number</span>
+                        <span>@Card.CardLabels[Model.RoundResult.Dragon.Number]</span>
                         <img class="img" src="~/scss/images/card_@(Model.RoundResult.Dragon.Type).png" />
                     </div>
                     <div class="card card-type-@Model.RoundResult.Tiger.Type">
-                        <span>@Model.RoundResult.Tiger.Number</span>
+                        <span>@Card.CardLabels[Model.RoundResult.Tiger.Number]</span>
                         <img class="img" src="~/scss/images/card_@(Model.RoundResult.Tiger.Type).png" />
                     </div>
                 </td>
