@@ -60,5 +60,7 @@
         public const string FishPrawnCrabBet = "baucua_cuocs";
 
         public const string BaccaratBet = "baccarat_cuocs";
+
+        public const string KenoProMaxBet = "kenopromax_cuocs";
     }
 }

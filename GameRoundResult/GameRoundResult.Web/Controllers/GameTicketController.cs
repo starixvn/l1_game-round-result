@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
@@ -40,7 +39,7 @@ namespace GameRoundResult.Web.Controllers
             var clientTimeZone = User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.TimeZone)?.Value;
             var timeZoneInfo = TZConvert.GetTimeZoneInfo(clientTimeZone);
 
-            var viewModel = await mediator.Send(new GetGameTicketRequest(gameType,  roundId, memberId, timeZoneInfo));
+            var viewModel = await mediator.Send(new GetGameTicketRequest(gameType, roundId, memberId, timeZoneInfo));
 
             switch (gameType)
             {
@@ -66,6 +65,9 @@ namespace GameRoundResult.Web.Controllers
                     return PartialView("_BaccaratTicket", viewModel);
 
                 case GameType.KenoProMax:
+                    return PartialView("_KenoProMaxTicket", viewModel);
+
+                case GameType.KenoProViet:
                 case GameType.KenoMax:
                 case GameType.KenoMax2:
                 case GameType.KenoMini:
@@ -74,10 +76,8 @@ namespace GameRoundResult.Web.Controllers
                 case GameType.KenoWest:
                 case GameType.KenoSouth:
                 case GameType.KenoNorth:
-                    return PartialView("_KenoProMaxRoundResult");
-
-                case GameType.KenoProViet:
                     return PartialView("_KenoProVietRoundResult");
+
                 default:
                     throw new ArgumentException(nameof(gameType));
             }

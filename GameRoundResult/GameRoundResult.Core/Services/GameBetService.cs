@@ -24,6 +24,8 @@ namespace GameRoundResult.Core.Services
         Task<(FishPrawnCrabRound, FishPrawnCrabBet)> GetFishPrawnCrabAsync(long roundId, int memberId);
 
         Task<(BaccaratRound, BaccaratBet)> GetBaccaratAsync(long roundId, int memberId);
+
+        Task<(KenoRound, KenoProMaxBet)> GetKenoProMaxAsync(long roundId, int memberId);
     }
 
     public class GameBetService : IGameBetService
@@ -78,6 +80,11 @@ namespace GameRoundResult.Core.Services
         public async Task<(BaccaratRound, BaccaratBet)> GetBaccaratAsync(long roundId, int memberId)
         {
             return await repository.GetBaccaratAsync(roundId, memberId);
+        }
+
+        public async Task<(KenoRound, KenoProMaxBet)> GetKenoProMaxAsync(long roundId, int memberId)
+        {
+            return await repository.GetKenoProMaxAsync(roundId, memberId);
         }
     }
 }

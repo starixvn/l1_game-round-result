@@ -99,6 +99,14 @@ namespace GameRoundResult.Web.Handlers
                         RoundResult = baccaratResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
                         Bet = baccaratResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
                     };
+
+                case GameType.KenoProMax:
+                    var kenoProMaxResult = await service.GetKenoProMaxAsync(request.RoundId, request.MemberId);
+                    return new KenoProMaxTicketViewModel
+                    {
+                        RoundResult = kenoProMaxResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bet = kenoProMaxResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
+                    };
                 default:
                     throw new ArgumentException(nameof(GetGameTicketRequest.GameType));
             }

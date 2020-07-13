@@ -26,6 +26,8 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(FishPrawnCrabRound, FishPrawnCrabBet)> GetFishPrawnCrabAsync(long roundId, int memberId);
 
         Task<(BaccaratRound, BaccaratBet)> GetBaccaratAsync(long roundId, int memberId);
+
+        Task<(KenoRound, KenoProMaxBet)> GetKenoProMaxAsync(long roundId, int memberId);
     }
 
     public class GameBetRepository : IGameBetRepository
@@ -105,6 +107,14 @@ namespace GameRoundResult.Core.Database.Repository
         {
             var round = await GetRoundAsync<BaccaratRound>(roundId, MiniGameRoundCollections.BaccaratRound);
             var bets = (await GetBetsAsync<BaccaratBet>(roundId, memberId, MiniGameBetCollections.BaccaratBet)).FirstOrDefault();
+
+            return (round, bets);
+        }
+
+        public async Task<(KenoRound, KenoProMaxBet)> GetKenoProMaxAsync(long roundId, int memberId)
+        {
+            var round = await GetRoundAsync<KenoRound>(roundId, MiniGameRoundCollections.KenoProMaxRound);
+            var bets = (await GetBetsAsync<KenoProMaxBet>(roundId, memberId, MiniGameBetCollections.KenoProMaxBet)).FirstOrDefault();
 
             return (round, bets);
         }
