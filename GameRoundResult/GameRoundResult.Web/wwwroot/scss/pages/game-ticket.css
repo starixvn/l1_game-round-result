@@ -8,4 +8,6 @@
   .table {
     max-width: 63rem; }
     .table .col-date {
-      width: 170px; } }
+      width: 170px; }
+    .table.table-keno {
+      max-width: 87rem; } }
