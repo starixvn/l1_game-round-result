@@ -10,7 +10,7 @@ namespace GameRoundResult.Web.Models.GameTicket
 
         public decimal TotalBet => Bet.Dragon + Bet.Tiger + Bet.Tie;
 
-        public decimal TotalWin => Bet.BetWin > 0 ? TotalBet + Bet.BetWin : 0;
+        public decimal TotalWin => Bet.BetWin ;
 
         public decimal WinLoss => TotalWin - TotalBet;
     }

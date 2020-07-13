@@ -93,8 +93,8 @@ namespace GameRoundResult.Core.Database.Repository
 
         public async Task<(FishPrawnCrabRound, FishPrawnCrabBet)> GetFishPrawnCrabRoundAsync(long roundId, int memberId)
         {
-            var round = await GetRoundAsync<FishPrawnCrabRound>(roundId, MiniGameRoundCollections.DragonTigerRound);
-            var bets = (await GetBetsAsync<FishPrawnCrabBet>(roundId, memberId, MiniGameBetCollections.DragonTigetBet)).FirstOrDefault();
+            var round = await GetRoundAsync<FishPrawnCrabRound>(roundId, MiniGameRoundCollections.FishPrawnRound);
+            var bets = (await GetBetsAsync<FishPrawnCrabBet>(roundId, memberId, MiniGameBetCollections.FishPrawnCrabBet)).FirstOrDefault();
 
             return (round, bets);
         }

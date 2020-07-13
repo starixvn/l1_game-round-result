@@ -19,7 +19,7 @@
                 <td>
                     @foreach (var dice in Model.RoundResult.Dices)
                     {
-                    <img class="animal" src="~/scss//images//animal_@(dice).png" />
+                    <img class="animal" src="~/scss/images/animal_@(dice).png" />
                     }
                 </td>
             </tr>
@@ -87,6 +87,15 @@
                     <td>@Model.Bet.Prawn</td>
                 </tr>
             }
+
+            <tr>
+                <td>@Localizer["Total"]</td>
+                <td>@Model.TotalBet</td>
+            </tr>
+            <tr>
+                <td>@Localizer["TotalWin"]</td>
+                <td>@Model.TotalWin</td>
+            </tr>
             <tr>
                 <td class="bold">@Localizer["WinLoss"]</td>
                 <td class="bold @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss</td>

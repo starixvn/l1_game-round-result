@@ -19,11 +19,11 @@
                 <td>
                     <div class="card card-type-@Model.RoundResult.Dragon.Type">
                         <span>@Model.RoundResult.Dragon.Number</span>
-                        <img src="~/scss/images/card_@(Model.RoundResult.Dragon.Type).png" />
+                        <img class="img" src="~/scss/images/card_@(Model.RoundResult.Dragon.Type).png" />
                     </div>
                     <div class="card card-type-@Model.RoundResult.Tiger.Type">
                         <span>@Model.RoundResult.Tiger.Number</span>
-                        <img src="~/scss/images/card_@(Model.RoundResult.Tiger.Type).png" />
+                        <img class="img" src="~/scss/images/card_@(Model.RoundResult.Tiger.Type).png" />
                     </div>
                 </td>
             </tr>
@@ -71,6 +71,14 @@
                 </tr>
             }
 
+            <tr>
+                <td>@Localizer["Total"]</td>
+                <td>@Model.TotalBet</td>
+            </tr>
+            <tr>
+                <td>@Localizer["TotalWin"]</td>
+                <td>@Model.TotalWin</td>
+            </tr>
             <tr>
                 <td class="bold">@Localizer["WinLoss"]</td>
                 <td class="bold @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss</td>

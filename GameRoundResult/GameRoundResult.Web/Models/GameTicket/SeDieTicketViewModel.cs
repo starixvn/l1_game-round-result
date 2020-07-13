@@ -10,7 +10,7 @@ namespace GameRoundResult.Web.Models
 
         public decimal TotalBet => Bet.Odd + Bet.Even + Bet.ThreeRed + Bet.FourRed + Bet.ThreeWhite + Bet.FourWhite;
 
-        public decimal TotalWin => Bet.BetWin > 0 ? TotalBet + Bet.BetWin : 0;
+        public decimal TotalWin => Bet.BetWin;
 
         public decimal WinLoss => TotalWin - TotalBet;
     }
