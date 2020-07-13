@@ -89,6 +89,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<MiniSeDieBet, SeDieBetViewModel>();
             CreateMap<DragonTigerBet, DragonTigerBetViewModel>();
             CreateMap<FishPrawnCrabBet, FishPrawnCrabBetViewModel>();
+            CreateMap<BaccaratBet, BaccaratBetViewModel>();
         }
     }
 }

@@ -63,7 +63,7 @@ namespace GameRoundResult.Web.Controllers
                     return PartialView("_DragonTigerTicket", viewModel);
 
                 case GameType.Baccarat:
-                    return PartialView("_BaccaratRoundResult");
+                    return PartialView("_BaccaratTicket", viewModel);
 
                 case GameType.KenoProMax:
                 case GameType.KenoMax:

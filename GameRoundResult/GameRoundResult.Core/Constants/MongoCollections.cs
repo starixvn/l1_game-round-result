@@ -58,5 +58,7 @@
         public const string DragonTigetBet = "minidragontiger_cuocs";
 
         public const string FishPrawnCrabBet = "baucua_cuocs";
+
+        public const string BaccaratBet = "baccarat_cuocs";
     }
 }

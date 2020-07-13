@@ -6,7 +6,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>@Localizer["Time"] (GMT-4)</th>
+            <th  class="col-date">@Localizer["Time"] (GMT-4)</th>
             <th>@Localizer["Round"]</th>
             <th>@Localizer["Result"]</th>
             <th>@Localizer["WinningOptions"]</th>
@@ -57,30 +57,50 @@
     <tbody>
         @if (Model.Bet != null)
         {
-            <tr>
-                <td>@Localizer["Odd"]</td>
-                <td>@Model.Bet.Odd</td>
-            </tr>
-            <tr>
-                <td>@Localizer["Even"]</td>
-                <td>@Model.Bet.Even</td>
-            </tr>
-            <tr>
-                <td>@Localizer["3Red"]</td>
-                <td>@Model.Bet.ThreeRed</td>
-            </tr>
-            <tr>
-                <td>@Localizer["4Red"]</td>
-                <td>@Model.Bet.FourRed</td>
-            </tr>
-            <tr>
-                <td>@Localizer["3White"]</td>
-                <td>@Model.Bet.ThreeWhite</td>
-            </tr>
-            <tr>
-                <td>@Localizer["4White"]</td>
-                <td>@Model.Bet.FourWhite</td>
-            </tr>
+            if (Model.Bet.Odd > 0)
+            {
+                <tr>
+                    <td>@Localizer["Odd"]</td>
+                    <td>@Model.Bet.Odd</td>
+                </tr>
+            }
+            if (Model.Bet.Even > 0)
+            {
+                <tr>
+                    <td>@Localizer["Even"]</td>
+                    <td>@Model.Bet.Even</td>
+                </tr>
+            }
+            if (Model.Bet.ThreeRed > 0)
+            {
+                <tr>
+                    <td>@Localizer["3Red"]</td>
+                    <td>@Model.Bet.ThreeRed</td>
+                </tr>
+            }
+            if (Model.Bet.FourRed > 0)
+            {
+                <tr>
+                    <td>@Localizer["4Red"]</td>
+                    <td>@Model.Bet.FourRed</td>
+                </tr>
+            }
+            if (Model.Bet.ThreeWhite > 0)
+            {
+                <tr>
+                    <td>@Localizer["3White"]</td>
+                    <td>@Model.Bet.ThreeWhite</td>
+                </tr>
+            }
+
+            if (Model.Bet.FourWhite > 0)
+            {
+                <tr>
+                    <td>@Localizer["4White"]</td>
+                    <td>@Model.Bet.FourWhite</td>
+                </tr>
+            }
+
             <tr>
                 <td>@Localizer["Total"]</td>
                 <td>@Model.TotalBet</td>

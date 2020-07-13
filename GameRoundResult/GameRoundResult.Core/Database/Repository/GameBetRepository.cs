@@ -23,7 +23,9 @@ namespace GameRoundResult.Core.Database.Repository
 
         Task<(DragonTigerRound, DragonTigerBet)> GetDragonTigerAsync(long roundId, int memberId);
 
-        Task<(FishPrawnCrabRound, FishPrawnCrabBet)> GetFishPrawnCrabRoundAsync(long roundId, int memberId);
+        Task<(FishPrawnCrabRound, FishPrawnCrabBet)> GetFishPrawnCrabAsync(long roundId, int memberId);
+
+        Task<(BaccaratRound, BaccaratBet)> GetBaccaratAsync(long roundId, int memberId);
     }
 
     public class GameBetRepository : IGameBetRepository
@@ -91,7 +93,7 @@ namespace GameRoundResult.Core.Database.Repository
             return (round, bets);
         }
 
-        public async Task<(FishPrawnCrabRound, FishPrawnCrabBet)> GetFishPrawnCrabRoundAsync(long roundId, int memberId)
+        public async Task<(FishPrawnCrabRound, FishPrawnCrabBet)> GetFishPrawnCrabAsync(long roundId, int memberId)
         {
             var round = await GetRoundAsync<FishPrawnCrabRound>(roundId, MiniGameRoundCollections.FishPrawnRound);
             var bets = (await GetBetsAsync<FishPrawnCrabBet>(roundId, memberId, MiniGameBetCollections.FishPrawnCrabBet)).FirstOrDefault();
@@ -99,15 +101,22 @@ namespace GameRoundResult.Core.Database.Repository
             return (round, bets);
         }
 
+        public async Task<(BaccaratRound, BaccaratBet)> GetBaccaratAsync(long roundId, int memberId)
+        {
+            var round = await GetRoundAsync<BaccaratRound>(roundId, MiniGameRoundCollections.BaccaratRound);
+            var bets = (await GetBetsAsync<BaccaratBet>(roundId, memberId, MiniGameBetCollections.BaccaratBet)).FirstOrDefault();
 
-        private async Task<IEnumerable<T>> GetBetsAsync<T>(long roundId, int memberId, string collectionName) where T: BaseBetEntity
+            return (round, bets);
+        }
+
+        private async Task<IEnumerable<T>> GetBetsAsync<T>(long roundId, int memberId, string collectionName) where T : BaseBetEntity
         {
             return await database.GetCollection<T>(collectionName).Find(x => x.MemberId == memberId && x.Round == roundId).ToListAsync();
         }
 
         private async Task<T> GetRoundAsync<T>(long roundId, string collectionName) where T : GameRound
         {
-            return await database.GetCollection<T>(collectionName).Find(x =>  x.Round == roundId).FirstOrDefaultAsync();
+            return await database.GetCollection<T>(collectionName).Find(x => x.Round == roundId).FirstOrDefaultAsync();
         }
     }
 }

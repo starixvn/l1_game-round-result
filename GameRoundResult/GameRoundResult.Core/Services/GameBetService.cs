@@ -21,7 +21,9 @@ namespace GameRoundResult.Core.Services
 
         Task<(DragonTigerRound, DragonTigerBet)> GetDragonTigerAsync(long roundId, int memberId);
 
-        Task<(FishPrawnCrabRound, FishPrawnCrabBet)> GetFishPrawnCrabRoundAsync(long roundId, int memberId);
+        Task<(FishPrawnCrabRound, FishPrawnCrabBet)> GetFishPrawnCrabAsync(long roundId, int memberId);
+
+        Task<(BaccaratRound, BaccaratBet)> GetBaccaratAsync(long roundId, int memberId);
     }
 
     public class GameBetService : IGameBetService
@@ -68,9 +70,14 @@ namespace GameRoundResult.Core.Services
             return await repository.GetDragonTigerAsync(roundId, memberId);
         }
 
-        public async Task<(FishPrawnCrabRound, FishPrawnCrabBet)> GetFishPrawnCrabRoundAsync(long roundId, int memberId)
+        public async Task<(FishPrawnCrabRound, FishPrawnCrabBet)> GetFishPrawnCrabAsync(long roundId, int memberId)
         {
-            return await repository.GetFishPrawnCrabRoundAsync(roundId, memberId);
+            return await repository.GetFishPrawnCrabAsync(roundId, memberId);
+        }
+
+        public async Task<(BaccaratRound, BaccaratBet)> GetBaccaratAsync(long roundId, int memberId)
+        {
+            return await repository.GetBaccaratAsync(roundId, memberId);
         }
     }
 }

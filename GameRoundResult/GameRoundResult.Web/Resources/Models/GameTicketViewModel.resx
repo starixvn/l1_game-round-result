@@ -129,6 +129,9 @@
   <data name="4White" xml:space="preserve">
     <value>4 White</value>
   </data>
+  <data name="BankerPair" xml:space="preserve">
+    <value>Banker Pair</value>
+  </data>
   <data name="BetAmount" xml:space="preserve">
     <value>Bet Amount</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="NoDataAvailable" xml:space="preserve">
     <value>No data available</value>
+  </data>
+  <data name="PlayerPair" xml:space="preserve">
+    <value>Player Pair</value>
   </data>
   <data name="TotalWin" xml:space="preserve">
     <value>Total Win</value>

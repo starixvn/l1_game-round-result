@@ -1,0 +1,167 @@
+﻿@model BaccaratTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@Localizer["Time"] (GMT-4)</th>
+            <th>@Localizer["Round"]</th>
+            <th>@Localizer["Result"]</th>
+            <th>@Localizer["WinningOptions"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null)
+        {
+            <tr>
+                <td>@Model.RoundResult.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                <td>@Model.RoundResult.Round</td>
+                <td>
+                    <div class="baccarat-result">
+                        <div class="cards">
+                            @foreach (var card in Model.RoundResult.PlayerCards)
+                            {
+                                <div class="card card-type-@card.Type">
+                                    <span>@card.Number</span>
+                                    <img class="img" src="~/scss/images/card_@(card.Type).png" />
+                                </div>
+                            }
+                        </div>
+                        <div class="cards">
+                            @foreach (var card in Model.RoundResult.BankerCards)
+                            {
+                                <div class="card card-type-@card.Type">
+                                    <span>@card.Number</span>
+                                    <img class="img" src="~/scss/images/card_@(card.Type).png" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @if (Model.RoundResult.Player)
+                    {
+                        @Localizer["Player"]
+                    }
+                    else
+                    {
+                        if (Model.RoundResult.Banker)
+                        {
+                            @Localizer["Banker"]
+                        }
+                        else
+                        {
+                            @Localizer["Tie"];
+                        }
+                    }
+
+                    @if (Model.RoundResult.PlayerPair)
+                    {
+                        @($", {Localizer["PlayerPair"]}")
+                    }
+
+                    @if (Model.RoundResult.BankerPair)
+                    {
+                        @($", {Localizer["BankerPair"]}")
+                    }
+
+                    @($", {(Model.RoundResult.Big ? Localizer["Big"] : Localizer["Small"])}")
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center">
+                    @Localizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Localizer["BetChoice"]</th>
+            <th>@Localizer["BetAmount"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Bet != null)
+        {
+            if (Model.Bet.Player > 0)
+            {
+                <tr>
+                    <td>@Localizer["Player"]</td>
+                    <td>@Model.Bet.Player</td>
+                </tr>
+            }
+            if (Model.Bet.PlayerPair > 0)
+            {
+                <tr>
+                    <td>@Localizer["PlayerPair"]</td>
+                    <td>@Model.Bet.PlayerPair</td>
+                </tr>
+            }
+            if (Model.Bet.Banker > 0)
+            {
+                <tr>
+                    <td>@Localizer["Banker"]</td>
+                    <td>@Model.Bet.Banker</td>
+                </tr>
+            }
+
+            if (Model.Bet.BankerPair > 0)
+            {
+                <tr>
+                    <td>@Localizer["BankerPair"]</td>
+                    <td>@Model.Bet.BankerPair</td>
+                </tr>
+            }
+            if (Model.Bet.Tie > 0)
+            {
+                <tr>
+                    <td>@Localizer["Tie"]</td>
+                    <td>@Model.Bet.Tie</td>
+                </tr>
+            }
+            if (Model.Bet.Big > 0)
+            {
+                <tr>
+                    <td>@Localizer["Big"]</td>
+                    <td>@Model.Bet.Big</td>
+                </tr>
+            }
+            if (Model.Bet.Small > 0)
+            {
+                <tr>
+                    <td>@Localizer["Small"]</td>
+                    <td>@Model.Bet.Small</td>
+                </tr>
+            }
+            <tr>
+                <td>@Localizer["Total"]</td>
+                <td>@Model.TotalBet</td>
+            </tr>
+            <tr>
+                <td>@Localizer["TotalWin"]</td>
+                <td>@Model.TotalWin</td>
+            </tr>
+            <tr>
+                <td class="bold">@Localizer["WinLoss"]</td>
+                <td class="bold @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="2" class="text-center">
+                    @Localizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

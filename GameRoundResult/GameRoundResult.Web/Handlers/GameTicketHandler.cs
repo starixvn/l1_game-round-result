@@ -85,11 +85,19 @@ namespace GameRoundResult.Web.Handlers
                     };
 
                 case GameType.FishPrawnCrab:
-                    var fishPrawnCrabResult = await service.GetFishPrawnCrabRoundAsync(request.RoundId, request.MemberId);
+                    var fishPrawnCrabResult = await service.GetFishPrawnCrabAsync(request.RoundId, request.MemberId);
                     return new FishPrawnCrabTicketViewModel
                     {
                         RoundResult = fishPrawnCrabResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
                         Bet = fishPrawnCrabResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
+                    };
+
+                case GameType.Baccarat:
+                    var baccaratResult = await service.GetBaccaratAsync(request.RoundId, request.MemberId);
+                    return new BaccaratTicketViewModel
+                    {
+                        RoundResult = baccaratResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bet = baccaratResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
                     };
                 default:
                     throw new ArgumentException(nameof(GetGameTicketRequest.GameType));
