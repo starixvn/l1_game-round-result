@@ -107,6 +107,87 @@ namespace GameRoundResult.Web.Handlers
                         RoundResult = kenoProMaxResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
                         Bet = kenoProMaxResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
                     };
+
+                case GameType.KenoProViet:
+                    var kenoProVietResult = await service.GetKenoProVietAsync(request.RoundId, request.MemberId);
+                    return new RNGKenoTicketViewModel
+                    {
+                        RoundResult = kenoProVietResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bets = kenoProVietResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                        TotalWin = kenoProVietResult.Item3 ?? 0
+                    };
+
+                case GameType.KenoMax:
+                    var kenoMaxResult = await service.GetKenoMaxAsync(request.RoundId, request.MemberId);
+                    return new RNGKenoTicketViewModel
+                    {
+                        RoundResult = kenoMaxResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bets = kenoMaxResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                        TotalWin = kenoMaxResult.Item3 ?? 0
+                    };
+
+                case GameType.KenoMax2:
+                    var kenoMax2Result = await service.GetKenoMax2Async(request.RoundId, request.MemberId);
+                    return new RNGKenoTicketViewModel
+                    {
+                        RoundResult = kenoMax2Result.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bets = kenoMax2Result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                        TotalWin = kenoMax2Result.Item3 ?? 0
+                    };
+
+                case GameType.KenoMini:
+                    var kenoMiniResult = await service.GetKenoMiniAsync(request.RoundId, request.MemberId);
+                    return new RNGKenoTicketViewModel
+                    {
+                        RoundResult = kenoMiniResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bets = kenoMiniResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                        TotalWin = kenoMiniResult.Item3 ?? 0
+                    };
+
+                case GameType.KenoMini2:
+                    var kenoMini2Result = await service.GetKenoMini2Async(request.RoundId, request.MemberId);
+                    return new RNGKenoTicketViewModel
+                    {
+                        RoundResult = kenoMini2Result.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bets = kenoMini2Result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                        TotalWin = kenoMini2Result.Item3 ?? 0
+                    };
+
+                case GameType.KenoEast:
+                    var kenoEastResult = await service.GetKenoEastAsync(request.RoundId, request.MemberId);
+                    return new RNGKenoTicketViewModel
+                    {
+                        RoundResult = kenoEastResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bets = kenoEastResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                        TotalWin = kenoEastResult.Item3 ?? 0
+                    };
+
+                case GameType.KenoWest:
+                    var kenoWestResult = await service.GetKenoWestAsync(request.RoundId, request.MemberId);
+                    return new RNGKenoTicketViewModel
+                    {
+                        RoundResult = kenoWestResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bets = kenoWestResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                        TotalWin = kenoWestResult.Item3 ?? 0
+                    };
+
+                case GameType.KenoSouth:
+                    var kenoSouthResult = await service.GetKenoSouthAsync(request.RoundId, request.MemberId);
+                    return new RNGKenoTicketViewModel
+                    {
+                        RoundResult = kenoSouthResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bets = kenoSouthResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                        TotalWin = kenoSouthResult.Item3 ?? 0
+                    };
+
+                case GameType.KenoNorth:
+                    var kenoNorthResult = await service.GetKenoNorthAsync(request.RoundId, request.MemberId);
+                    return new RNGKenoTicketViewModel
+                    {
+                        RoundResult = kenoNorthResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bets = kenoNorthResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                        TotalWin = kenoNorthResult.Item3 ?? 0
+                    };
                 default:
                     throw new ArgumentException(nameof(GetGameTicketRequest.GameType));
             }

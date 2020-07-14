@@ -5,9 +5,6 @@ namespace GameRoundResult.Core.Database.Entities
 {
     public abstract class BaseBetEntity : Document
     {
-        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
-        public DateTime Time { get; set; }
-
         [BsonElement("thanhtoan")]
         public bool Paid { get; set; }
 

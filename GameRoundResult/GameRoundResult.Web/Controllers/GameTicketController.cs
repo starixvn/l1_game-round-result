@@ -76,7 +76,7 @@ namespace GameRoundResult.Web.Controllers
                 case GameType.KenoWest:
                 case GameType.KenoSouth:
                 case GameType.KenoNorth:
-                    return PartialView("_KenoProVietRoundResult");
+                    return PartialView("_RNGKenoTicket", viewModel);
 
                 default:
                     throw new ArgumentException(nameof(gameType));

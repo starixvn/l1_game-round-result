@@ -62,5 +62,41 @@
         public const string BaccaratBet = "baccarat_cuocs";
 
         public const string KenoProMaxBet = "kenopromax_cuocs";
+
+        public const string KenoProVietBet = "kenoproviet_cuocs";
+
+        public const string KenoProVietOnes = "kenoproviet_ones";
+
+        public const string KenoMaxBet = "kenomax_cuocs";
+
+        public const string KenoMaxOnes = "kenomax_ones";
+
+        public const string KenoMax2Bet = "kenomax2_cuocs";
+
+        public const string KenoMax2Ones = "kenomax2_ones";
+
+        public const string KenoMiniBet = "kenomini_cuocs";
+                            
+        public const string KenoMiniOnes = "kenomini_ones";
+
+        public const string KenoMini2Bet = "kenomini2_cuocs";
+
+        public const string KenoMini2Ones = "kenomini2_ones";
+
+        public const string KenoEastBet = "kenoeast_cuocs";
+                            
+        public const string KenoEastOnes = "kenoeast_ones";
+
+        public const string KenoWestBet = "kenowest_cuocs";
+                            
+        public const string KenoWestOnes = "kenowest_ones";
+
+        public const string KenoSouthBet = "kenosouth_cuocs";
+                            
+        public const string KenoSouthOnes = "kenosouth_ones";
+
+        public const string KenoNorthBet = "kenonorth_cuocs";
+                            
+        public const string KenoNorthOnes = "kenonorth_ones";
     }
 }

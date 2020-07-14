@@ -26,6 +26,24 @@ namespace GameRoundResult.Core.Services
         Task<(BaccaratRound, BaccaratBet)> GetBaccaratAsync(long roundId, int memberId);
 
         Task<(KenoRound, KenoProMaxBet)> GetKenoProMaxAsync(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoProVietAsync(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoMaxAsync(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoMax2Async(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoMiniAsync(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoMini2Async(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoEastAsync(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoWestAsync(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoSouthAsync(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoNorthAsync(long roundId, int memberId);
     }
 
     public class GameBetService : IGameBetService
@@ -85,6 +103,51 @@ namespace GameRoundResult.Core.Services
         public async Task<(KenoRound, KenoProMaxBet)> GetKenoProMaxAsync(long roundId, int memberId)
         {
             return await repository.GetKenoProMaxAsync(roundId, memberId);
+        }
+
+        public async Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoProVietAsync(long roundId, int memberId)
+        {
+            return await repository.GetKenoProVietAsync(roundId, memberId);
+        }
+
+        public async Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoMaxAsync(long roundId, int memberId)
+        {
+            return await repository.GetKenoMaxAsync(roundId, memberId);
+        }
+
+        public async Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoMax2Async(long roundId, int memberId)
+        {
+            return await repository.GetKenoMax2Async(roundId, memberId);
+        }
+
+        public async Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoMiniAsync(long roundId, int memberId)
+        {
+            return await repository.GetKenoMiniAsync(roundId, memberId);
+        }
+
+        public async Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoMini2Async(long roundId, int memberId)
+        {
+            return await repository.GetKenoMini2Async(roundId, memberId);
+        }
+
+        public async Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoEastAsync(long roundId, int memberId)
+        {
+            return await repository.GetKenoEastAsync(roundId, memberId);
+        }
+
+        public async Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoWestAsync(long roundId, int memberId)
+        {
+            return await repository.GetKenoWestAsync(roundId, memberId);
+        }
+
+        public async Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoSouthAsync(long roundId, int memberId)
+        {
+            return await repository.GetKenoSouthAsync(roundId, memberId);
+        }
+
+        public async Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoNorthAsync(long roundId, int memberId)
+        {
+            return await repository.GetKenoNorthAsync(roundId, memberId);
         }
     }
 }

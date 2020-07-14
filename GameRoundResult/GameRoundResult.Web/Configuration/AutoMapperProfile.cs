@@ -91,6 +91,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<FishPrawnCrabBet, FishPrawnCrabBetViewModel>();
             CreateMap<BaccaratBet, BaccaratBetViewModel>();
             CreateMap<KenoProMaxBet, KenoProMaxBetViewModel>();
+            CreateMap<RNGKenoBet, RNGKEnoBetViewModel>();
         }
     }
 }

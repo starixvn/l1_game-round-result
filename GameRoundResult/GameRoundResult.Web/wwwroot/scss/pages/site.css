@@ -160,6 +160,9 @@ body {
 .text-red {
   color: #b53f39; }
 
+.text-capitalize {
+  text-transform: capitalize; }
+
 .header {
   display: flex;
   justify-content: space-between; }

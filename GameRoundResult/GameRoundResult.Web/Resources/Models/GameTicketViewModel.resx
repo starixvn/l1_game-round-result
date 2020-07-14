@@ -147,6 +147,9 @@
   <data name="PlayerPair" xml:space="preserve">
     <value>Player Pair</value>
   </data>
+  <data name="RoundId" xml:space="preserve">
+    <value>Round ID</value>
+  </data>
   <data name="TotalWin" xml:space="preserve">
     <value>Total Win</value>
   </data>

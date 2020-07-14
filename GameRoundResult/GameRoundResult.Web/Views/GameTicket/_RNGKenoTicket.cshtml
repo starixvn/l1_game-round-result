@@ -1,0 +1,130 @@
+﻿@model RNGKenoTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
+
+@{
+    var elementClass = string.Empty;
+    var element = string.Empty;
+
+    if (Model.RoundResult.IsEarth)
+    {
+        elementClass = "text-earth";
+        element = Localizer["Earth"];
+    }
+    if (Model.RoundResult.IsGold)
+    {
+        elementClass = "text-gold";
+        element = Localizer["Gold"];
+    }
+    if (Model.RoundResult.IsWood)
+    {
+        elementClass = "text-wod";
+        element = Localizer["Wood"];
+    }
+    if (Model.RoundResult.IsWater)
+    {
+        elementClass = "text-water";
+        element = Localizer["Water"];
+    }
+    if (Model.RoundResult.IsFire)
+    {
+        elementClass = "text-fire";
+        element = Localizer["Fire"];
+    }
+}
+
+<table class="table table-bordered table-keno">
+    <thead>
+        <tr>
+            <th rowspan="2" class="col-date">@Localizer["Time"] (GMT-4)</th>
+            <th rowspan="2">@Localizer["RoundId"]</th>
+            <th rowspan="2">@Localizer["Result"]</th>
+            <th rowspan="2">@Localizer["Total"]</th>
+            <th colspan="3">@Localizer["WinningOptions"]</th>
+        </tr>
+        <tr>
+            <th>@Localizer["Big"]/@Localizer["Small"]</th>
+            <th>@Localizer["Odd"]/@Localizer["Even"]</th>
+            <th>@Localizer["5 Elements"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null)
+        {
+            <tr>
+                <td>@Model.RoundResult.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                <td>@Model.RoundResult.Round</td>
+                <td>
+                    <div class="numbers">
+                        @foreach (var number in Model.RoundResult.Result)
+                        {
+                            <span class="circle">@number</span>
+                        }
+                    </div>
+                </td>
+                <td>@Model.RoundResult.Total</td>
+                <td class="bold @(Model.RoundResult.IsBig ? "text-blue" : "text-red")">
+                    @(Model.RoundResult.IsBig ? Localizer["Big"] : Localizer ["Big"])
+                </td>
+                <td class="bold @(Model.RoundResult.IsEven ? "text-blue" : "text-red")">
+                    @(Model.RoundResult.IsEven ? Localizer["Even"] : Localizer ["Odd"])
+                </td>
+                <td class="bold @elementClass">
+                    @element
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="7" class="text-center">
+                    @Localizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered table-keno">
+    <thead>
+        <tr>
+            <th class="col-date">@Localizer["BetTime"] (GMT-4)</th>
+            <th>@Localizer["BetChoice"]</th>
+            <th>@Localizer["BetAmount"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Bets.Any())
+        {
+            foreach(var bet in Model.Bets)
+            {
+                <tr>
+                    <td>@bet.Time.ToString(ViewFormat.TicketDateTimeFormat)</td>
+                    <td class="text-capitalize">@bet.Choice</td>
+                    <td>@bet.Amount</td>
+                </tr>
+            }
+
+            <tr>
+                <td colspan="2">@Localizer["Total"]</td>
+                <td>@Model.TotalBet</td>
+            </tr>
+            <tr>
+                <td colspan="2">@Localizer["TotalWin"]</td>
+                <td>@Model.TotalWin</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="bold">@Localizer["WinLoss"]</td>
+                <td class="bold @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    @Localizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
