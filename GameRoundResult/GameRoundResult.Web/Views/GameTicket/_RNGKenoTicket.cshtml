@@ -2,37 +2,6 @@
 
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
 
-@{
-    var elementClass = string.Empty;
-    var element = string.Empty;
-
-    if (Model.RoundResult.IsEarth)
-    {
-        elementClass = "text-earth";
-        element = Localizer["Earth"];
-    }
-    if (Model.RoundResult.IsGold)
-    {
-        elementClass = "text-gold";
-        element = Localizer["Gold"];
-    }
-    if (Model.RoundResult.IsWood)
-    {
-        elementClass = "text-wod";
-        element = Localizer["Wood"];
-    }
-    if (Model.RoundResult.IsWater)
-    {
-        elementClass = "text-water";
-        element = Localizer["Water"];
-    }
-    if (Model.RoundResult.IsFire)
-    {
-        elementClass = "text-fire";
-        element = Localizer["Fire"];
-    }
-}
-
 <table class="table table-bordered table-keno">
     <thead>
         <tr>
@@ -51,6 +20,34 @@
     <tbody>
         @if (Model.RoundResult != null)
         {
+            var elementClass = string.Empty;
+            var element = string.Empty;
+
+            if (Model.RoundResult.IsEarth)
+            {
+                elementClass = "text-earth";
+                element = Localizer["Earth"];
+            }
+            if (Model.RoundResult.IsGold)
+            {
+                elementClass = "text-gold";
+                element = Localizer["Gold"];
+            }
+            if (Model.RoundResult.IsWood)
+            {
+                elementClass = "text-wod";
+                element = Localizer["Wood"];
+            }
+            if (Model.RoundResult.IsWater)
+            {
+                elementClass = "text-water";
+                element = Localizer["Water"];
+            }
+            if (Model.RoundResult.IsFire)
+            {
+                elementClass = "text-fire";
+                element = Localizer["Fire"];
+            }
             <tr>
                 <td>@Model.RoundResult.Time.ToString(ViewFormat.DateTimeFormat)</td>
                 <td>@Model.RoundResult.Round</td>
@@ -64,7 +61,7 @@
                 </td>
                 <td>@Model.RoundResult.Total</td>
                 <td class="bold @(Model.RoundResult.IsBig ? "text-blue" : "text-red")">
-                    @(Model.RoundResult.IsBig ? Localizer["Big"] : Localizer ["Big"])
+                    @(Model.RoundResult.IsBig ? Localizer["Big"] : Localizer ["Small"])
                 </td>
                 <td class="bold @(Model.RoundResult.IsEven ? "text-blue" : "text-red")">
                     @(Model.RoundResult.IsEven ? Localizer["Even"] : Localizer ["Odd"])
@@ -101,21 +98,21 @@
                 <tr>
                     <td>@bet.Time.ToString(ViewFormat.TicketDateTimeFormat)</td>
                     <td class="text-capitalize">@bet.Choice</td>
-                    <td>@bet.Amount</td>
+                    <td>@bet.Amount.ToString(ViewFormat.NumberFormat)</td>
                 </tr>
             }
 
             <tr>
                 <td colspan="2">@Localizer["Total"]</td>
-                <td>@Model.TotalBet</td>
+                <td>@Model.TotalBet.ToString(ViewFormat.NumberFormat)</td>
             </tr>
             <tr>
                 <td colspan="2">@Localizer["TotalWin"]</td>
-                <td>@Model.TotalWin</td>
+                <td>@Model.TotalWin.ToString(ViewFormat.NumberFormat)</td>
             </tr>
             <tr>
                 <td colspan="2" class="bold">@Localizer["WinLoss"]</td>
-                <td class="bold @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss</td>
+                <td class="bold @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.ToString(ViewFormat.NumberFormat)</td>
             </tr>
         }
         else

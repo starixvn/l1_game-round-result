@@ -49,56 +49,56 @@
             {
                 <tr>
                     <td>@Localizer["Stag"]</td>
-                    <td>@Model.Bet.Stag</td>
+                    <td>@Model.Bet.Stag.ToString(ViewFormat.NumberFormat)</td>
                 </tr>
             }
             if (Model.Bet.Gourd > 0)
             {
                 <tr>
                     <td>@Localizer["Gourd"]</td>
-                    <td>@Model.Bet.Gourd</td>
+                    <td>@Model.Bet.Gourd.ToString(ViewFormat.NumberFormat)</td>
                 </tr>
             }
             if (Model.Bet.Rooster > 0)
             {
                 <tr>
                     <td>@Localizer["Rooster"]</td>
-                    <td>@Model.Bet.Rooster</td>
+                    <td>@Model.Bet.Rooster.ToString(ViewFormat.NumberFormat)</td>
                 </tr>
             }
             if (Model.Bet.Fish > 0)
             {
                 <tr>
                     <td>@Localizer["Fish"]</td>
-                    <td>@Model.Bet.Fish</td>
+                    <td>@Model.Bet.Fish.ToString(ViewFormat.NumberFormat)</td>
                 </tr>
             }
             if (Model.Bet.Crab > 0)
             {
                 <tr>
                     <td>@Localizer["Crab"]</td>
-                    <td>@Model.Bet.Crab</td>
+                    <td>@Model.Bet.Crab.ToString(ViewFormat.NumberFormat)</td>
                 </tr>
             }
             if (Model.Bet.Prawn > 0)
             {
                 <tr>
                     <td>@Localizer["Prawn"]</td>
-                    <td>@Model.Bet.Prawn</td>
+                    <td>@Model.Bet.Prawn.ToString(ViewFormat.NumberFormat)</td>
                 </tr>
             }
 
             <tr>
                 <td>@Localizer["Total"]</td>
-                <td>@Model.TotalBet</td>
+                <td>@Model.TotalBet.ToString(ViewFormat.NumberFormat)</td>
             </tr>
             <tr>
                 <td>@Localizer["TotalWin"]</td>
-                <td>@Model.TotalWin</td>
+                <td>@Model.TotalWin.ToString(ViewFormat.NumberFormat)</td>
             </tr>
             <tr>
                 <td class="bold">@Localizer["WinLoss"]</td>
-                <td class="bold @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss</td>
+                <td class="bold @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.ToString(ViewFormat.NumberFormat)</td>
             </tr>
         }
         else
