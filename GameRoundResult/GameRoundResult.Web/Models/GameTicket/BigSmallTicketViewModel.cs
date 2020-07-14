@@ -18,7 +18,7 @@ namespace GameRoundResult.Web.Models
 
         public decimal TotalWin => TotalBetWin > 0 ? TotalBet + TotalBetWin - TotalBack : 0;
 
-        public decimal WinLoss => TotalBetWin + TotalBack - TotalBet;
+        public decimal WinLoss => TotalWin + TotalBack - TotalBet;
     }
 
     public class BigSmallBetViewModel

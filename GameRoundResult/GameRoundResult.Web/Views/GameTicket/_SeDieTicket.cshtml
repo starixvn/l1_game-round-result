@@ -55,7 +55,7 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.Bet != null)
+        @if (Model.Bet != null && Model.RoundResult != null)
         {
             if (Model.Bet.Odd > 0)
             {

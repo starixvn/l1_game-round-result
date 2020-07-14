@@ -47,18 +47,17 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var bet in Model.Bets)
+        @if (Model.Bets.Any() && Model.RoundResult != null)
         {
-            <tr>
-                <td>@bet.Time.ToString(ViewFormat.TicketDateTimeFormat)</td>
-                <td>@(bet.Select ? Localizer["Big"]: Localizer["Small"])</td>
-                <td>@bet.Bet</td>
-                <td>@bet.Back</td>
-            </tr>
-        }
-
-        @if (Model.Bets.Any())
-        {
+            foreach (var bet in Model.Bets)
+            {
+                <tr>
+                    <td>@bet.Time.ToString(ViewFormat.TicketDateTimeFormat)</td>
+                    <td>@(bet.Select ? Localizer["Big"]: Localizer["Small"])</td>
+                    <td>@bet.Bet</td>
+                    <td>@bet.Back</td>
+                </tr>
+            }
             <tr>
                 <td></td>
                 <td>@Localizer["Total"]</td>
