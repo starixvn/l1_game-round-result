@@ -6,7 +6,7 @@
     <thead>
         <tr>
             <th rowspan="2" class="col-date">@Localizer["Time"] (GMT-4)</th>
-            <th rowspan="2">@Localizer["RoundId"]</th>
+            <th rowspan="2" class="col-round-id">@Localizer["RoundId"]</th>
             <th rowspan="2">@Localizer["Result"]</th>
             <th rowspan="2">@Localizer["Total"]</th>
             <th colspan="3">@Localizer["WinningOptions"]</th>
@@ -98,21 +98,21 @@
                 <tr>
                     <td>@bet.Time.ToString(ViewFormat.TicketDateTimeFormat)</td>
                     <td class="text-capitalize">@bet.Choice</td>
-                    <td>@bet.Amount.ToString(ViewFormat.NumberFormat)</td>
+                    <td class="text-right">@bet.Amount.ToString(ViewFormat.NumberFormat)</td>
                 </tr>
             }
 
             <tr>
-                <td colspan="2">@Localizer["Total"]</td>
-                <td>@Model.TotalBet.ToString(ViewFormat.NumberFormat)</td>
+                <td colspan="2" class="text-right">@Localizer["Total"]</td>
+                <td class="text-right">@Model.TotalBet.ToString(ViewFormat.NumberFormat)</td>
             </tr>
             <tr>
-                <td colspan="2">@Localizer["TotalWin"]</td>
-                <td>@Model.TotalWin.ToString(ViewFormat.NumberFormat)</td>
+                <td colspan="2" class="text-right">@Localizer["TotalWin"]</td>
+                <td class="text-right">@Model.TotalWin.ToString(ViewFormat.NumberFormat)</td>
             </tr>
-            <tr>
-                <td colspan="2" class="bold">@Localizer["WinLoss"]</td>
-                <td class="bold @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.ToString(ViewFormat.NumberFormat)</td>
+            <tr class="total">
+                <td colspan="2" class="bold text-right">@Localizer["WinLoss"]</td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.ToString(ViewFormat.NumberFormat)</td>
             </tr>
         }
         else

@@ -12,11 +12,24 @@
         max-width: 63rem;
 
         .col-date {
-            width: 170px;
+            width: 17rem;
+        }
+
+        .col-round-id {
+            width: 8rem;
         }
 
         &.table-keno {
-            max-width: 87rem;
+            max-width: 100rem;
+        }
+
+        &.table-dragon-tiger .cards {
+            display: flex;
+            justify-content: center;
+        }
+
+        &.table-baccarat {
+            max-width: 72rem;
         }
     }
 }

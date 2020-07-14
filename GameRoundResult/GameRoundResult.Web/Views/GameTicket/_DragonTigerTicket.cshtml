@@ -2,7 +2,7 @@
 @using GameRoundResult.Core.Constants 
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
 
-<table class="table table-bordered">
+<table class="table table-bordered table-dragon-tiger">
     <thead>
         <tr>
             <th class="col-date">@Localizer["Time"] (GMT-4)</th>
@@ -17,13 +17,15 @@
                 <td>@Model.RoundResult.Time.ToString(ViewFormat.DateTimeFormat)</td>
                 <td>@Model.RoundResult.Round</td>
                 <td>
-                    <div class="card card-type-@Model.RoundResult.Dragon.Type">
-                        <span>@Card.CardLabels[Model.RoundResult.Dragon.Number]</span>
-                        <img class="img" src="~/scss/images/card_@(Model.RoundResult.Dragon.Type).png" />
-                    </div>
-                    <div class="card card-type-@Model.RoundResult.Tiger.Type">
-                        <span>@Card.CardLabels[Model.RoundResult.Tiger.Number]</span>
-                        <img class="img" src="~/scss/images/card_@(Model.RoundResult.Tiger.Type).png" />
+                    <div class="cards">
+                        <div class="card card-type-@Model.RoundResult.Dragon.Type">
+                            <span>@Card.CardLabels[Model.RoundResult.Dragon.Number]</span>
+                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Dragon.Type).png" />
+                        </div>
+                        <div class="card card-type-@Model.RoundResult.Tiger.Type">
+                            <span>@Card.CardLabels[Model.RoundResult.Tiger.Number]</span>
+                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Tiger.Type).png" />
+                        </div>
                     </div>
                 </td>
             </tr>
@@ -53,35 +55,35 @@
             {
                 <tr>
                     <td>@Localizer["Dragon"]</td>
-                    <td>@Model.Bet.Dragon.ToString(ViewFormat.NumberFormat)</td>
+                    <td class="text-right">@Model.Bet.Dragon.ToString(ViewFormat.NumberFormat)</td>
                 </tr>
             }
             if (Model.Bet.Tiger > 0)
             {
                 <tr>
                     <td>@Localizer["Tiger"]</td>
-                    <td>@Model.Bet.Tiger.ToString(ViewFormat.NumberFormat)</td>
+                    <td class="text-right">@Model.Bet.Tiger.ToString(ViewFormat.NumberFormat)</td>
                 </tr>
             }
             if (Model.Bet.Tie > 0)
             {
                 <tr>
                     <td>@Localizer["Tie"]</td>
-                    <td>@Model.Bet.Tie.ToString(ViewFormat.NumberFormat)</td>
+                    <td class="text-right">@Model.Bet.Tie.ToString(ViewFormat.NumberFormat)</td>
                 </tr>
             }
 
             <tr>
-                <td>@Localizer["Total"]</td>
-                <td>@Model.TotalBet.ToString(ViewFormat.NumberFormat)</td>
+                <td class="text-right">@Localizer["Total"]</td>
+                <td class="text-right">@Model.TotalBet.ToString(ViewFormat.NumberFormat)</td>
             </tr>
             <tr>
-                <td>@Localizer["TotalWin"]</td>
-                <td>@Model.TotalWin.ToString(ViewFormat.NumberFormat)</td>
+                <td class="text-right">@Localizer["TotalWin"]</td>
+                <td class="text-right">@Model.TotalWin.ToString(ViewFormat.NumberFormat)</td>
             </tr>
-            <tr>
-                <td class="bold">@Localizer["WinLoss"]</td>
-                <td class="bold @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.ToString(ViewFormat.NumberFormat)</td>
+            <tr class="total">
+                <td class="bold text-right">@Localizer["WinLoss"]</td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.ToString(ViewFormat.NumberFormat)</td>
             </tr>
         }
         else

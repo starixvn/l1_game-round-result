@@ -146,7 +146,7 @@ body {
   text-align: center; }
 
 .text-right {
-  text-align: right; }
+  text-align: right !important; }
 
 .bold {
   font-weight: bold; }
@@ -269,6 +269,7 @@ body {
 
 .card {
   position: relative;
+  float: left;
   display: inline-block;
   height: 3.2rem;
   width: 2.5rem;
@@ -379,7 +380,7 @@ body {
     justify-content: flex-start; }
   .baccarat-result .cards:last-child:before {
     position: relative;
-    top: 1rem;
+    top: 0.8rem;
     display: inline-block;
     height: 1.8rem;
     width: 0.1rem;

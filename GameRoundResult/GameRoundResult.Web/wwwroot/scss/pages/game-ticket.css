@@ -8,6 +8,13 @@
   .table {
     max-width: 63rem; }
     .table .col-date {
-      width: 170px; }
+      width: 17rem; }
+    .table .col-round-id {
+      width: 8rem; }
     .table.table-keno {
-      max-width: 87rem; } }
+      max-width: 100rem; }
+    .table.table-dragon-tiger .cards {
+      display: flex;
+      justify-content: center; }
+    .table.table-baccarat {
+      max-width: 72rem; } }
