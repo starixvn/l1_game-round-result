@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Configuration;
@@ -56,7 +54,7 @@ namespace GameRoundResult.Web.Controllers
 
                 return RedirectToAction("NotAuthorized", "Error");
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 SentrySdk.CaptureException(exception);
                 return BadRequest();
@@ -75,7 +73,6 @@ namespace GameRoundResult.Web.Controllers
                     var queryKey = dataProtector.Protect($"{model.Key}_{model.GameType}_{model.RoundId}_{model.MemberId}");
                     return Ok(queryKey);
                 }
-
             }
 
             return BadRequest();
