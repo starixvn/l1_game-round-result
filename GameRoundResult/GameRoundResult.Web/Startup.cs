@@ -49,11 +49,6 @@ namespace GameRoundResult.Web
                       options.AccessDeniedPath = "/Error/NotAuthorized";
                   });
 
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("OneWordOnly", policy => policy.RequireClaim(ClaimTypes.Name, "OneWord"));
-            });
-
             services.AddControllersWithViews()
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
         }

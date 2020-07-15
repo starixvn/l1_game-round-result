@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
@@ -6,81 +6,50 @@ using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using TimeZoneConverter;
 
 namespace GameRoundResult.Web.Controllers
 {
-    [Authorize(Policy = "OneWordOnly")]
     public class GameTicketController : Controller
     {
         private readonly IMediator mediator;
-        private readonly GameTypeLocalization gameTypeLocalization;
+        private readonly IEnumerable<AuthenticationClient> clients;
 
-        public GameTicketController(IMediator mediator, GameTypeLocalization gameTypeLocalization)
+        public GameTicketController(IMediator mediator, IOptionsSnapshot<List<AuthenticationClient>> clientAccessor)
         {
+            clients = clientAccessor.Value;
             this.mediator = mediator;
-            this.gameTypeLocalization = gameTypeLocalization;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync(string key, GameType gameType, long roundId, int memberId)
         {
-            var viewModel = new GameTicketSearchViewModel
+            var client = GetClient(key);
+            if (client != null)
             {
-                GameTypes = gameTypeLocalization.GetSelectListItems()
-            };
+                var viewModel = new GameTicketSearchViewModel
+                {
+                    GameType = gameType,
+                    GameTicketResult = await GetGameTicket(client, gameType, roundId, memberId)
+                };
 
-            return View(viewModel);
-        }
-
-        public async Task<IActionResult> GetGameTicket(GameType gameType, long roundId, int memberId)
-        {
-            var clientTimeZone = User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.TimeZone)?.Value;
-            var timeZoneInfo = TZConvert.GetTimeZoneInfo(clientTimeZone);
-
-            var viewModel = await mediator.Send(new GetGameTicketRequest(gameType, roundId, memberId, timeZoneInfo));
-
-            switch (gameType)
-            {
-                case GameType.BigSmall:
-                case GameType.BigSmallTurbo:
-                    return PartialView("_BigSmallTicket", viewModel);
-
-                case GameType.OddEven:
-                case GameType.OddEvenTurbo:
-                    return PartialView("_OddEvenTicket", viewModel);
-
-                case GameType.SeDie:
-                case GameType.MiniSeDie:
-                    return PartialView("_SeDieTicket", viewModel);
-
-                case GameType.FishPrawnCrab:
-                    return PartialView("_FishPrawnCrabTicket", viewModel);
-
-                case GameType.DragonTiger:
-                    return PartialView("_DragonTigerTicket", viewModel);
-
-                case GameType.Baccarat:
-                    return PartialView("_BaccaratTicket", viewModel);
-
-                case GameType.KenoProMax:
-                    return PartialView("_KenoProMaxTicket", viewModel);
-
-                case GameType.KenoProViet:
-                case GameType.KenoMax:
-                case GameType.KenoMax2:
-                case GameType.KenoMini:
-                case GameType.KenoMini2:
-                case GameType.KenoEast:
-                case GameType.KenoWest:
-                case GameType.KenoSouth:
-                case GameType.KenoNorth:
-                    return PartialView("_RNGKenoTicket", viewModel);
-
-                default:
-                    throw new ArgumentException(nameof(gameType));
+                return View(viewModel);
             }
+
+            return RedirectToAction("NotAuthorized", "Error");
+        }
+
+        private AuthenticationClient GetClient(string key)
+        {
+            return clients.FirstOrDefault(x => x.Key == key && x.Name == "OneWord");
+        }
+
+        private async Task<GameTicketViewModel> GetGameTicket(AuthenticationClient client, GameType gameType, long roundId, int memberId)
+        {
+            var timeZoneInfo = TZConvert.GetTimeZoneInfo(client.TimeZone);
+
+            return await mediator.Send(new GetGameTicketRequest(gameType, roundId, memberId, timeZoneInfo));
         }
     }
 }

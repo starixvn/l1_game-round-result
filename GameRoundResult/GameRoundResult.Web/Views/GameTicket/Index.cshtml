@@ -1,5 +1,5 @@
 ﻿@inject IViewLocalizer Localizer
-
+@using GameRoundResult.Core.Constants
 @model GameTicketSearchViewModel
 
 @{
@@ -15,22 +15,52 @@
     </environment>
 }
 
-<div class="header">
-    <h1 class="page-title">@Localizer["GameTickets"]</h1>
-</div>
-<div class="clearfix">
-    <form data-ajax="true" data-ajax-method="GET" asp-action="GetGameTicket" data-ajax-mode="replace"
-          data-ajax-update="#game-ticket" data-ajax-loading="#overlay"
-          method="get"
-          class="filter">
-        <select asp-for="GameType" asp-items="Model.GameTypes" class="form-control"></select>
-        <input type="number" asp-for="RoundId" placeholder="@Localizer["RoundId"]" class="form-control" />
-        <input type="number" asp-for="MemberId" placeholder="@Localizer["CustomerId"]" class="form-control" />
-        <button class="btn-submit">@Localizer["Search"]</button>
-    </form>
-</div>
-
 <div id="game-ticket">
+    @switch (Model.GameType)
+    {
+        case GameType.BigSmall:
+        case GameType.BigSmallTurbo:
+            <partial name="_BigSmallTicket" for="GameTicketResult" />
+            break;
+        case GameType.OddEven:
+        case GameType.OddEvenTurbo:
+            <partial name="_OddEvenTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.SeDie:
+        case GameType.MiniSeDie:
+            <partial name="_SeDieTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.FishPrawnCrab:
+            <partial name="_FishPrawnCrabTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.DragonTiger:
+            <partial name="_DragonTigerTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.Baccarat:
+            <partial name="_BaccaratTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.KenoProMax:
+            <partial name="_KenoProMaxTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.KenoProViet:
+        case GameType.KenoMax:
+        case GameType.KenoMax2:
+        case GameType.KenoMini:
+        case GameType.KenoMini2:
+        case GameType.KenoEast:
+        case GameType.KenoWest:
+        case GameType.KenoSouth:
+        case GameType.KenoNorth:
+            <partial name="_RNGKenoTicket" for="GameTicketResult" />
+            break;
+
+    }
 </div>
 
 @section Scripts {
