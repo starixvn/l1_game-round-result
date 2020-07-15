@@ -1,5 +1,5 @@
 ﻿@model RNGKenoTicketViewModel
-
+@using System.Threading
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
 
 <table class="table table-bordered table-keno">
@@ -97,7 +97,7 @@
             {
                 <tr>
                     <td>@bet.Time.ToString(ViewFormat.TicketDateTimeFormat)</td>
-                    <td class="text-capitalize">@bet.Choice</td>
+                    <td>@Localizer[Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(bet.Choice)]</td>
                     <td class="text-right">@bet.Amount.ToString(ViewFormat.NumberFormat)</td>
                 </tr>
             }

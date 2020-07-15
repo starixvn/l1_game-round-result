@@ -1,13 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
 using MediatR;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Sentry;
 using TimeZoneConverter;
 
 namespace GameRoundResult.Web.Controllers
@@ -16,28 +21,64 @@ namespace GameRoundResult.Web.Controllers
     {
         private readonly IMediator mediator;
         private readonly IEnumerable<AuthenticationClient> clients;
+        private readonly IDataProtector dataProtector;
+        private const string dataProtectorKey = "game-ticket-data-key";
 
-        public GameTicketController(IMediator mediator, IOptionsSnapshot<List<AuthenticationClient>> clientAccessor)
+        public GameTicketController(IMediator mediator, IOptionsSnapshot<List<AuthenticationClient>> clientAccessor, IDataProtectionProvider dataProtectionProvider)
         {
             clients = clientAccessor.Value;
             this.mediator = mediator;
+            dataProtector = dataProtectionProvider.CreateProtector(dataProtectorKey);
         }
 
-        public async Task<IActionResult> Index(string key, GameType gameType, long roundId, int memberId)
+        [HttpGet]
+        public async Task<IActionResult> Index(string queryKey)
         {
-            var client = GetClient(key);
-            if (client != null)
+            try
             {
-                var viewModel = new GameTicketSearchViewModel
-                {
-                    GameType = gameType,
-                    GameTicketResult = await GetGameTicket(client, gameType, roundId, memberId)
-                };
+                var data = dataProtector.Unprotect(queryKey).Split('_');
+                var key = data[0];
+                var gameType = Enum.Parse<GameType>(data[1]);
+                var roundId = long.Parse(data[2]);
+                var memberId = int.Parse(data[3]);
 
-                return View(viewModel);
+                var client = GetClient(key);
+                if (client != null)
+                {
+                    var viewModel = new GameTicketSearchViewModel
+                    {
+                        GameType = gameType,
+                        GameTicketResult = await GetGameTicket(client, gameType, roundId, memberId)
+                    };
+
+                    return View(viewModel);
+                }
+
+                return RedirectToAction("NotAuthorized", "Error");
+            }
+            catch(Exception exception)
+            {
+                SentrySdk.CaptureException(exception);
+                return BadRequest();
+            }
+        }
+
+        [HttpPost]
+        public IActionResult QueryKey([FromBody] GameTicketQueryKeyModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var client = GetClient(model.Key);
+
+                if (client != null)
+                {
+                    var queryKey = dataProtector.Protect($"{model.Key}_{model.GameType}_{model.RoundId}_{model.MemberId}");
+                    return Ok(queryKey);
+                }
+
             }
 
-            return RedirectToAction("NotAuthorized", "Error");
+            return BadRequest();
         }
 
         private AuthenticationClient GetClient(string key)

@@ -189,6 +189,9 @@
   <data name="Prawn" xml:space="preserve">
     <value>Tôm</value>
   </data>
+  <data name="Red" xml:space="preserve">
+    <value>Đỏ</value>
+  </data>
   <data name="Refund" xml:space="preserve">
     <value>Trả lại</value>
   </data>
@@ -207,6 +210,9 @@
   <data name="Stag" xml:space="preserve">
     <value>Nai</value>
   </data>
+  <data name="Tie" xml:space="preserve">
+    <value>Hòa</value>
+  </data>
   <data name="Tiger" xml:space="preserve">
     <value>Hổ</value>
   </data>
@@ -221,6 +227,9 @@
   </data>
   <data name="Water" xml:space="preserve">
     <value>Thủy</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Trắng</value>
   </data>
   <data name="WinLoss" xml:space="preserve">
     <value>Thắng Thua</value>
