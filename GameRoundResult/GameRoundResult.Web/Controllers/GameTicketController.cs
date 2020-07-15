@@ -23,7 +23,7 @@ namespace GameRoundResult.Web.Controllers
             this.mediator = mediator;
         }
 
-        public async Task<IActionResult> IndexAsync(string key, GameType gameType, long roundId, int memberId)
+        public async Task<IActionResult> Index(string key, GameType gameType, long roundId, int memberId)
         {
             var client = GetClient(key);
             if (client != null)
