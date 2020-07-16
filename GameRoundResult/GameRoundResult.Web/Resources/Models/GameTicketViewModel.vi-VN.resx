@@ -177,6 +177,9 @@
   <data name="NoDataAvailable" xml:space="preserve">
     <value>Không có dữ liệu</value>
   </data>
+  <data name="Note" xml:space="preserve">
+    <value>Lưu ý: Bạn chỉ có thể xem dữ liệu cách đây 7 ngày tính từ thời điểm hiện tại.</value>
+  </data>
   <data name="Odd" xml:space="preserve">
     <value>Lẻ</value>
   </data>

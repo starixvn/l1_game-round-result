@@ -144,6 +144,9 @@
   <data name="NoDataAvailable" xml:space="preserve">
     <value>No data available</value>
   </data>
+  <data name="Note" xml:space="preserve">
+    <value>Note: Data are only available within the last 7 days from the current date.</value>
+  </data>
   <data name="PlayerPair" xml:space="preserve">
     <value>Player Pair</value>
   </data>
