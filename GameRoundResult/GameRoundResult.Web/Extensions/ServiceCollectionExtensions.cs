@@ -33,7 +33,7 @@ namespace GameRoundResult.Web.Extensions
             services.Configure<RequestLocalizationOptions>(opts =>
             {
                 opts.DefaultRequestCulture = new RequestCulture(configuration["DefaultCulture"]);
-                opts.SupportedCultures = cultures;
+                opts.SupportedCultures = new CultureInfo[] { new CultureInfo(configuration["DefaultCulture"]) };
                 opts.SupportedUICultures = cultures;
                 opts.RequestCultureProviders.Insert(0, new RouteDataRequestCultureProvider { Options = opts });
             });

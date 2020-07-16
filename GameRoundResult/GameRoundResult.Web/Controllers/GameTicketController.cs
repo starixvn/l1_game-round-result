@@ -30,6 +30,7 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpGet]
+        [Route("[controller]/{queryKey}")]
         public async Task<IActionResult> Index(string queryKey)
         {
             try
@@ -70,7 +71,7 @@ namespace GameRoundResult.Web.Controllers
 
                 if (client != null)
                 {
-                    var queryKey = dataProtector.Protect($"{model.Key}_{model.GameType}_{model.RoundId}_{model.MemberId}");
+                    var queryKey = dataProtector.Protect($"{model.Key}_{model.GameTypeId}_{model.RoundId}_{model.MemberId}");
                     return Ok(queryKey);
                 }
             }

@@ -18,7 +18,7 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.RoundResult != null)
+        @if (Model.RoundResult != null && Model.RoundResult.Result.Any())
         {
             var elementClass = string.Empty;
             var element = string.Empty;
@@ -91,9 +91,9 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.Bets.Any() && Model.RoundResult != null)
+        @if (Model.Bets.Any() && Model.RoundResult != null && Model.RoundResult.Result.Any())
         {
-            foreach(var bet in Model.Bets)
+            foreach (var bet in Model.Bets)
             {
                 <tr>
                     <td>@bet.Time.ToString(ViewFormat.TicketDateTimeFormat)</td>

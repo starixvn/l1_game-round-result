@@ -6,7 +6,7 @@ namespace GameRoundResult.Web.Models
     public class GameTicketQueryKeyModel
     {
         [Required]
-        public GameType GameType { get; set; }
+        public GameType GameTypeId { get; set; }
 
         [Required]
         public string Key { get; set; }
