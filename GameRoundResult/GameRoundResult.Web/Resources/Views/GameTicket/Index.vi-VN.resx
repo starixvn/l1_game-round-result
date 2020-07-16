@@ -126,6 +126,9 @@
   <data name="GameType" xml:space="preserve">
     <value>Trò chơi</value>
   </data>
+  <data name="Note" xml:space="preserve">
+    <value>Lưu ý: Bạn chỉ có thể xem dữ liệu cách đây 7 ngày tính từ thời điểm hiện tại.</value>
+  </data>
   <data name="RoundId" xml:space="preserve">
     <value>Phiên ID</value>
   </data>

@@ -19,14 +19,15 @@ namespace GameRoundResult.Web.Controllers
     {
         private readonly IMediator mediator;
         private readonly IEnumerable<AuthenticationClient> clients;
-        private readonly IDataProtector dataProtector;
+        private readonly ITimeLimitedDataProtector dataProtector;
         private const string dataProtectorKey = "game-ticket-data-key";
+        private const int dataProtectorLifeTimeSecond = 30;
 
         public GameTicketController(IMediator mediator, IOptionsSnapshot<List<AuthenticationClient>> clientAccessor, IDataProtectionProvider dataProtectionProvider)
         {
             clients = clientAccessor.Value;
             this.mediator = mediator;
-            dataProtector = dataProtectionProvider.CreateProtector(dataProtectorKey);
+            dataProtector = dataProtectionProvider.CreateProtector(dataProtectorKey).ToTimeLimitedDataProtector();
         }
 
         [HttpGet]
@@ -71,7 +72,8 @@ namespace GameRoundResult.Web.Controllers
 
                 if (client != null)
                 {
-                    var queryKey = dataProtector.Protect($"{model.Key}_{model.GameTypeId}_{model.RoundId}_{model.MemberId}");
+                    var queryKey = dataProtector.Protect($"{model.Key}_{model.GameTypeId}_{model.RoundId}_{model.MemberId}",
+                        TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
                     return Ok(queryKey);
                 }
             }
