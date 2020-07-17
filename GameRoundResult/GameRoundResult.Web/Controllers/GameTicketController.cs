@@ -31,7 +31,8 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpGet]
-        [Route("[controller]/{queryKey}")]
+        [Route("[controller]/{queryKey}", Order = 1)]
+        [Route("{culture}/[controller]/{queryKey}", Order = 2)]
         public async Task<IActionResult> Index(string queryKey)
         {
             try
