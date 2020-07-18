@@ -43,6 +43,11 @@ namespace GameRoundResult.Web.Controllers
                 var roundId = long.Parse(data[2]);
                 var memberId = int.Parse(data[3]);
 
+                if(gameType == 0)
+                {
+                    return View("GameNotSupported");
+                }
+
                 var client = GetClient(key);
                 if (client != null)
                 {
@@ -84,7 +89,7 @@ namespace GameRoundResult.Web.Controllers
 
         private AuthenticationClient GetClient(string key)
         {
-            return clients.FirstOrDefault(x => x.Key == key && x.Name == "OneWord");
+            return clients.FirstOrDefault(x => x.Key == key && x.Name == "OneWorks");
         }
 
         private async Task<GameTicketViewModel> GetGameTicket(AuthenticationClient client, GameType gameType, long roundId, int memberId)
