@@ -16,5 +16,7 @@ namespace GameRoundResult.Web.Models
 
         [Required]
         public int MemberId { get; set; }
+
+        public string Language { get; set; }
     }
 }

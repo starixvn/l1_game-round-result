@@ -78,7 +78,7 @@ namespace GameRoundResult.Web
             {
                 endpoints.MapControllerRoute(
                     name: "culture-route",
-                    pattern: "{culture=en-US}/{controller=GameRoundResult}/{action=Index}/{id?}");
+                    pattern: "{culture=vi-VN}/{controller=GameRoundResult}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                    name: "default",
                    pattern: "{controller=GameRoundResult}/{action=Index}/{id?}");

@@ -11,6 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="Resources\Views\GameTicket\GameNotSupported.en-US.resx" />
+    <EmbeddedResource Remove="Resources\Views\GameTicket\GameNotSupported.vi-VN.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\js\game-round-result.min.js" />
     <_ContentIncludedByDefault Remove="wwwroot\scss\pages\error-page.css" />
   </ItemGroup>
@@ -21,6 +26,10 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\Models\RoundResultViewModel.en-US.resx" />
+    <None Include="Resources\Views\GameTicket\GameNotSupported.en-US.resx">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\Views\GameTicket\GameNotSupported.vi-VN.resx" />
     <None Include="wwwroot\js\game-round-result.min.js" />
     <None Include="wwwroot\lib\flatpickr\dist\flatpickr.js" />
     <None Include="wwwroot\lib\flatpickr\dist\flatpickr.min.js" />

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Configuration;
@@ -31,8 +33,7 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpGet]
-        [Route("[controller]/{queryKey}", Order = 1)]
-        [Route("{culture}/[controller]/{queryKey}", Order = 2)]
+        [Route("{culture=vi-VN}/[controller]/{queryKey}", Order = 0)]
         public async Task<IActionResult> Index(string queryKey)
         {
             try
@@ -43,7 +44,7 @@ namespace GameRoundResult.Web.Controllers
                 var roundId = long.Parse(data[2]);
                 var memberId = int.Parse(data[3]);
 
-                if(gameType == 0)
+                if (gameType == 0)
                 {
                     return View("GameNotSupported");
                 }
@@ -80,7 +81,9 @@ namespace GameRoundResult.Web.Controllers
                 {
                     var queryKey = dataProtector.Protect($"{model.Key}_{model.GameTypeId}_{model.RoundId}_{model.MemberId}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
-                    return Ok(queryKey);
+
+                    var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, HttpContext.Request.Scheme, HttpContext.Request.Host.Value);
+                    return Ok(redirectUrl);
                 }
             }
 
