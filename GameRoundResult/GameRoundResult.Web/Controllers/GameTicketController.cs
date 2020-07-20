@@ -39,17 +39,18 @@ namespace GameRoundResult.Web.Controllers
             try
             {
                 var data = dataProtector.Unprotect(queryKey).Split('_');
-                var key = data[0];
-                var gameType = Enum.Parse<GameType>(data[1]);
-                var roundId = long.Parse(data[2]);
-                var memberId = int.Parse(data[3]);
+                var clientId = data[0];
+                var clientKey = data[1];
+                var gameType = Enum.Parse<GameType>(data[2]);
+                var roundId = long.Parse(data[3]);
+                var memberId = int.Parse(data[4]);
 
                 if (gameType == 0)
                 {
                     return View("GameNotSupported");
                 }
 
-                var client = GetClient(key);
+                var client = GetClient(clientId, clientKey);
                 if (client != null)
                 {
                     var viewModel = new GameTicketSearchViewModel
@@ -71,15 +72,15 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult QueryKey([FromBody] GameTicketQueryKeyModel model)
+        public IActionResult GetToken([FromBody] GameTicketQueryKeyModel model)
         {
             if (ModelState.IsValid)
             {
-                var client = GetClient(model.Key);
+                var client = GetClient(model.Auth.ClientID, model.Auth.ClientKey);
 
                 if (client != null)
                 {
-                    var queryKey = dataProtector.Protect($"{model.Key}_{model.GameTypeId}_{model.RoundId}_{model.MemberId}",
+                    var queryKey = dataProtector.Protect($"{model.Auth.ClientID}_{model.Auth.ClientKey}_{model.GameTypeId}_{model.RoundId}_{model.MemberId}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
 
                     var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, HttpContext.Request.Scheme, HttpContext.Request.Host.Value);
@@ -90,9 +91,9 @@ namespace GameRoundResult.Web.Controllers
             return BadRequest();
         }
 
-        private AuthenticationClient GetClient(string key)
+        private AuthenticationClient GetClient(string clientId, string clientKey)
         {
-            return clients.FirstOrDefault(x => x.Key == key && x.Name == "OneWorks");
+            return clients.FirstOrDefault(x => x.Key == clientKey && clientId == x.Name && x.Name == "ONEworks");
         }
 
         private async Task<GameTicketViewModel> GetGameTicket(AuthenticationClient client, GameType gameType, long roundId, int memberId)

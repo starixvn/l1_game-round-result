@@ -141,6 +141,9 @@
   <data name="BetTime" xml:space="preserve">
     <value>Bet Time</value>
   </data>
+  <data name="GameNotSupported" xml:space="preserve">
+    <value>Game is currently not supported.</value>
+  </data>
   <data name="NoDataAvailable" xml:space="preserve">
     <value>No data available</value>
   </data>

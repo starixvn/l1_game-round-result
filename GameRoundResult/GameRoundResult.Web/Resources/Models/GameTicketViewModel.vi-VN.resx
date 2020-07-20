@@ -168,6 +168,9 @@
   <data name="Fish" xml:space="preserve">
     <value>Cá</value>
   </data>
+  <data name="GameNotSupported" xml:space="preserve">
+    <value>Game hiện tại chưa được hỗ trợ.</value>
+  </data>
   <data name="Gold" xml:space="preserve">
     <value>Kim</value>
   </data>

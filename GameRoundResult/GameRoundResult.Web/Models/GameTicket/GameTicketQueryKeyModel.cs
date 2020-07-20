@@ -8,8 +8,7 @@ namespace GameRoundResult.Web.Models
         [Required]
         public GameType GameTypeId { get; set; }
 
-        [Required]
-        public string Key { get; set; }
+        public AuthModel Auth { get; set; }
 
         [Required]
         public long RoundId { get; set; }
@@ -18,5 +17,16 @@ namespace GameRoundResult.Web.Models
         public int MemberId { get; set; }
 
         public string Language { get; set; }
+
+        public int SiteId { get; set; }
+    }
+
+    public class AuthModel
+    {
+        [Required]
+        public string ClientID { get; set; }
+
+        [Required]
+        public string ClientKey { get; set; }
     }
 }
