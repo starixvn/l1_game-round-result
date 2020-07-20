@@ -2,7 +2,7 @@
 
 namespace GameRoundResult.Web.Models
 {
-    public class GameTicketSearchViewModel
+    public class GameTicketResultViewModel
     {
         public GameType GameType { get; set; }
         public GameTicketViewModel GameTicketResult { get; set; }

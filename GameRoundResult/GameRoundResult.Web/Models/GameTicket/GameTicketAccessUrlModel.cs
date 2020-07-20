@@ -3,7 +3,7 @@ using GameRoundResult.Core.Constants;
 
 namespace GameRoundResult.Web.Models
 {
-    public class GameTicketQueryKeyModel
+    public class GameTicketAccessUrlRequestModel
     {
         [Required]
         public GameType GameTypeId { get; set; }

@@ -53,7 +53,7 @@ namespace GameRoundResult.Web.Controllers
                 var client = GetClient(clientId, clientKey);
                 if (client != null)
                 {
-                    var viewModel = new GameTicketSearchViewModel
+                    var viewModel = new GameTicketResultViewModel
                     {
                         GameType = gameType,
                         GameTicketResult = await GetGameTicket(client, gameType, roundId, memberId)
@@ -72,7 +72,7 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult GetAccessUrl([FromBody] GameTicketQueryKeyModel model)
+        public IActionResult GetAccessUrl([FromBody] GameTicketAccessUrlRequestModel model)
         {
             if (ModelState.IsValid)
             {
@@ -84,7 +84,7 @@ namespace GameRoundResult.Web.Controllers
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
 
                     var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, HttpContext.Request.Scheme, HttpContext.Request.Host.Value);
-                    return Ok(new AccessUrlResultModel { RedirectUrl = redirectUrl });
+                    return Ok(new GameTicketAccessUrlResultModel { RedirectUrl = redirectUrl });
                 }
             }
 

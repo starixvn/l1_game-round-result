@@ -1,6 +1,6 @@
 ﻿namespace GameRoundResult.Web.Models
 {
-    public class AccessUrlResultModel
+    public class GameTicketAccessUrlResultModel
     {
         public string RedirectUrl { get; set; }
     }
