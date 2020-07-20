@@ -1,156 +1,147 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Models;
+using GameRoundResult.Web.Models.GameTicket;
 
 namespace GameRoundResult.Web.Extensions
 {
     public static class MappingModelExtensions
     {
-        public static BigSmallRoundResultViewModel ToViewModel(this BigSmallRound entity, TimeZoneInfo timeZoneInfo)
+        public static BigSmallRoundResultViewModel ToViewModel(this BigSmallRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return new BigSmallRoundResultViewModel
+            return mapper.Map<BigSmallRound, BigSmallRoundResultViewModel>(entity, opts =>
             {
-                Round = entity.Round,
-                Time = TimeZoneInfo.ConvertTimeFromUtc(entity.Time, timeZoneInfo),
-                Dices = new List<byte>
-                {
-                    entity.FirstDice,
-                    entity.SecondDice,
-                    entity.ThirdDice,
-                }
-            };
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
         }
 
-        public static OddEvenRoundResultViewModel ToViewModel(this OddEvenRound entity, TimeZoneInfo timeZoneInfo)
+        public static OddEvenRoundResultViewModel ToViewModel(this OddEvenRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return new OddEvenRoundResultViewModel
+            return mapper.Map<OddEvenRound, OddEvenRoundResultViewModel>(entity, opts =>
             {
-                Round = entity.Round,
-                Time = TimeZoneInfo.ConvertTimeFromUtc(entity.Time, timeZoneInfo),
-                Dices = new List<byte>
-                {
-                    entity.FirstDice,
-                    entity.SecondDice,
-                    entity.ThirdDice,
-                }
-            };
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
         }
 
-        public static SeDieRoundResultViewModel ToViewModel(this ShakeThePlateRound entity, TimeZoneInfo timeZoneInfo)
+        public static SeDieRoundResultViewModel ToViewModel(this SeDieRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return new SeDieRoundResultViewModel
+            return mapper.Map<SeDieRound, SeDieRoundResultViewModel>(entity, opts =>
             {
-                Round = entity.Round,
-                Time = TimeZoneInfo.ConvertTimeFromUtc(entity.Time, timeZoneInfo),
-                RedChips = new List<bool>
-                {
-                    entity.FirstRedChip,
-                    entity.SecondRedChip,
-                    entity.ThirdRedChip,
-                    entity.FourthRedChip
-                }.OrderByDescending(x => x)
-            };
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
         }
 
-        public static FishPrawnRoundResultViewModel ToViewModel(this FishPrawnRound entity, TimeZoneInfo timeZoneInfo)
+        public static FishPrawnCrabRoundResultViewModel ToViewModel(this FishPrawnCrabRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return new FishPrawnRoundResultViewModel
+            return mapper.Map<FishPrawnCrabRound, FishPrawnCrabRoundResultViewModel>(entity, opts =>
             {
-                Round = entity.Round,
-                Time = TimeZoneInfo.ConvertTimeFromUtc(entity.Time, timeZoneInfo),
-                Dices = new List<byte>
-                {
-                    entity.FirstDice,
-                    entity.SecondDice,
-                    entity.ThirdDice,
-                }
-            };
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
         }
 
-        public static DragonTigerRoundResultViewModel ToViewModel(this DragonTigerRound entity, TimeZoneInfo timeZoneInfo)
+        public static DragonTigerRoundResultViewModel ToViewModel(this DragonTigerRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return new DragonTigerRoundResultViewModel
+            return mapper.Map<DragonTigerRound, DragonTigerRoundResultViewModel>(entity, opts =>
             {
-                Round = entity.Round,
-                Time = TimeZoneInfo.ConvertTimeFromUtc(entity.Time, timeZoneInfo),
-                Dragon = new CardViewModel
-                {
-                    Number = entity.Dragon.Number,
-                    Type = entity.Dragon.Type
-                },
-                Tiger = new CardViewModel
-                {
-                    Number = entity.Tiger.Number,
-                    Type = entity.Tiger.Type
-                }
-            };
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
         }
 
-        public static KenoRoundResultViewModel ToViewModel(this KenoRound entity, TimeZoneInfo timeZoneInfo)
+        public static KenoRoundResultViewModel ToViewModel(this KenoRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return new KenoRoundResultViewModel
+            return mapper.Map<KenoRound, KenoRoundResultViewModel>(entity, opts =>
             {
-                Round = entity.Round,
-                Time = TimeZoneInfo.ConvertTimeFromUtc(entity.Time, timeZoneInfo),
-                Result = entity.Result?.ToList(),
-                IsBig = entity.SettlementResult.Big,
-                IsEven = entity.SettlementResult.Even,
-                IsEarth = entity.SettlementResult.Earth,
-                IsFire = entity.SettlementResult.Fire,
-                IsGold = entity.SettlementResult.Gold,
-                IsWood = entity.SettlementResult.Wood,
-                IsWater = entity.SettlementResult.Water
-            };
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
         }
 
-        public static SeDieRoundResultViewModel ToViewModel(this MiniSeDieRound entity, TimeZoneInfo timeZoneInfo)
+        public static SeDieRoundResultViewModel ToViewModel(this MiniSeDieRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return new SeDieRoundResultViewModel
+            return mapper.Map<MiniSeDieRound, SeDieRoundResultViewModel>(entity, opts =>
             {
-                Round = entity.Round,
-                Time = TimeZoneInfo.ConvertTimeFromUtc(entity.Time, timeZoneInfo),
-                RedChips = new List<bool>
-                {
-                    entity.FirstRedChip,
-                    entity.SecondRedChip,
-                    entity.ThirdRedChip,
-                    entity.FourthRedChip
-                }.OrderByDescending(x => x)
-            };
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
         }
 
-        public static BaccaratRoundResultViewModel ToViewModel(this BaccaratRound entity, TimeZoneInfo timeZoneInfo)
+        public static BaccaratRoundResultViewModel ToViewModel(this BaccaratRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return new BaccaratRoundResultViewModel
+            return mapper.Map<BaccaratRound, BaccaratRoundResultViewModel>(entity, opts =>
             {
-                Round = entity.Round,
-                Time = TimeZoneInfo.ConvertTimeFromUtc(entity.Time, timeZoneInfo),
-                PlayerCards = entity.Player.ThirdCard != null ?
-                    new[] { entity.Player.FirstCard.ToViewModel(), entity.Player.SecondCard.ToViewModel(), entity.Player.ThirdCard.ToViewModel() } :
-                    new[] { entity.Player.FirstCard.ToViewModel(), entity.Player.SecondCard.ToViewModel() },
-                BankerCards = entity.Banker.ThirdCard != null ?
-                    new[] { entity.Banker.FirstCard.ToViewModel(), entity.Banker.SecondCard.ToViewModel(), entity.Banker.ThirdCard?.ToViewModel() } :
-                    new[] { entity.Banker.FirstCard.ToViewModel(), entity.Banker.SecondCard.ToViewModel()},
-                Player = entity.Result.Player,
-                Banker = entity.Result.Banker,
-                Tie = entity.Result.Tie,
-                Big = entity.Result.Big,
-                Small = entity.Result.Small,
-                PlayerPair = entity.Result.PlayerPair,
-                BankerPair = entity.Result.BankerPair,
-                Natural = entity.Result.Natural,
-            };
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
         }
 
-        public static CardViewModel ToViewModel(this Card entity)
+        public static BigSmallBetViewModel ToViewModel(this BigSmallBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return new CardViewModel
+            return mapper.Map<BigSmallBet, BigSmallBetViewModel>(entity, opts =>
             {
-                Number = entity.Number,
-                Type = entity.Type
-            };
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static OddEvenBetViewModel ToViewModel(this OddEvenBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<OddEvenBet, OddEvenBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static SeDieBetViewModel ToViewModel(this SeDieBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<SeDieBet, SeDieBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static SeDieBetViewModel ToViewModel(this MiniSeDieBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<MiniSeDieBet, SeDieBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static DragonTigerBetViewModel ToViewModel(this DragonTigerBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<DragonTigerBet, DragonTigerBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static FishPrawnCrabBetViewModel ToViewModel(this FishPrawnCrabBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<FishPrawnCrabBet, FishPrawnCrabBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static BaccaratBetViewModel ToViewModel(this BaccaratBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<BaccaratBet, BaccaratBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static KenoProMaxBetViewModel ToViewModel(this KenoProMaxBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<KenoProMaxBet, KenoProMaxBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static RNGKEnoBetViewModel ToViewModel(this RNGKenoBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<RNGKenoBet, RNGKEnoBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
         }
     }
 }

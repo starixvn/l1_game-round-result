@@ -1,8 +1,8 @@
 ﻿@import "../base/_variables.scss";
+@import "../base/_roboto.scss";
 @import "../components/_button.scss";
 @import "../components/_forms.scss";
 @import "../components/_table.scss";
-@import "../components/_customize-datatable.scss";
 
 html {
     font-size: 10px;
@@ -13,6 +13,12 @@ body {
     font-family: "Roboto", Arial, Helvetica, sans-serif;
     font-size: 1.4rem;
     color: $text-color;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 
 .page-title {
@@ -29,7 +35,7 @@ body {
 }
 
 .text-right {
-    text-align: right;
+    text-align: right !important;
 }
 
 .bold {
@@ -48,6 +54,9 @@ body {
     color: #b53f39;
 }
 
+.text-capitalize {
+    text-transform: capitalize;
+}
 // Change language
 .header {
     display: flex;
@@ -194,6 +203,7 @@ body {
 
 .card {
     position: relative;
+    float: left;
     display: inline-block;
     height: 3.2rem;
     width: 2.5rem;
@@ -349,7 +359,7 @@ body {
 
         &:last-child:before {
             position: relative;
-            top: 1rem;
+            top: 0.8rem;
             display: inline-block;
             height: 1.8rem;
             width: 0.1rem;
@@ -359,7 +369,6 @@ body {
         }
     }
 }
-
 
 #overlay {
     position: fixed; /* Sit on top of the page content */

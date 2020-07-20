@@ -1,6 +1,6 @@
 ﻿namespace GameRoundResult.Core.Constants
 {
-    internal class MiniGameCollections
+    internal class MiniGameRoundCollections
     {
         public const string BigSmallRound = "taixiu_phiens";
 
@@ -10,7 +10,7 @@
 
         public const string OddEvenTurboRound = "chanleturbo_phiens";
 
-        public const string ShakeThePlateRound = "xocxoc_phiens";
+        public const string SeDieRound = "xocxoc_phiens";
 
         public const string FishPrawnRound = "baucua_phiens";
 
@@ -39,5 +39,64 @@
         public const string KenoSouthRound = "kenosouth_phiens";
 
         public const string KenoNorthRound = "kenonorth_phiens";
+    }
+
+    internal class MiniGameBetCollections
+    {
+        public const string BigSmallBet = "taixiu_cuocs";
+
+        public const string BigSmallTurboBet = "txturbo_cuocs";
+
+        public const string OddEvenBet = "chanle_cuocs";
+
+        public const string OddEvenTurboBet = "chanleturbo_cuocs";
+
+        public const string SeDieBet = "xocxoc_cuocs";
+
+        public const string MiniSeDieBet = "minisedie_cuocs";
+
+        public const string DragonTigetBet = "minidragontiger_cuocs";
+
+        public const string FishPrawnCrabBet = "baucua_cuocs";
+
+        public const string BaccaratBet = "baccarat_cuocs";
+
+        public const string KenoProMaxBet = "kenopromax_cuocs";
+
+        public const string KenoProVietBet = "kenoproviet_cuocs";
+
+        public const string KenoProVietOnes = "kenoproviet_ones";
+
+        public const string KenoMaxBet = "kenomax_cuocs";
+
+        public const string KenoMaxOnes = "kenomax_ones";
+
+        public const string KenoMax2Bet = "kenomax2_cuocs";
+
+        public const string KenoMax2Ones = "kenomax2_ones";
+
+        public const string KenoMiniBet = "kenomini_cuocs";
+                            
+        public const string KenoMiniOnes = "kenomini_ones";
+
+        public const string KenoMini2Bet = "kenomini2_cuocs";
+
+        public const string KenoMini2Ones = "kenomini2_ones";
+
+        public const string KenoEastBet = "kenoeast_cuocs";
+                            
+        public const string KenoEastOnes = "kenoeast_ones";
+
+        public const string KenoWestBet = "kenowest_cuocs";
+                            
+        public const string KenoWestOnes = "kenowest_ones";
+
+        public const string KenoSouthBet = "kenosouth_cuocs";
+                            
+        public const string KenoSouthOnes = "kenosouth_ones";
+
+        public const string KenoNorthBet = "kenonorth_cuocs";
+                            
+        public const string KenoNorthOnes = "kenonorth_ones";
     }
 }

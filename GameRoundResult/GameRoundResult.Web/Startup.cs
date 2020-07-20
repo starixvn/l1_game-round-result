@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Reflection;
-using System.Threading.Tasks;
+using System.Security.Claims;
+using AutoMapper;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using MediatR;
@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.CodeAnalysis.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,7 +30,7 @@ namespace GameRoundResult.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<List<AuthenticationClient>>(Configuration.GetSection("AuthenticationClients"));
-
+            services.AddAutoMapper(typeof(Startup));
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddMongoDatabase(Configuration);
             services.AddServices();
@@ -47,6 +46,7 @@ namespace GameRoundResult.Web
                   {
                       options.ExpireTimeSpan = TimeSpan.FromHours(1);
                       options.LoginPath = "/Error/NotAuthorized";
+                      options.AccessDeniedPath = "/Error/NotAuthorized";
                   });
 
             services.AddControllersWithViews()
@@ -78,7 +78,7 @@ namespace GameRoundResult.Web
             {
                 endpoints.MapControllerRoute(
                     name: "culture-route",
-                    pattern: "{culture=en-US}/{controller=GameRoundResult}/{action=Index}/{id?}");
+                    pattern: "{culture=vi-VN}/{controller=GameRoundResult}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                    name: "default",
                    pattern: "{controller=GameRoundResult}/{action=Index}/{id?}");

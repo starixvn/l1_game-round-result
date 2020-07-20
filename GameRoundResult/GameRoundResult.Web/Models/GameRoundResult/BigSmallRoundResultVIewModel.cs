@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text.Encodings.Web;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {
-    public class OddEvenRoundResultViewModel : RoundResultViewModel
+    public class BigSmallRoundResultViewModel : RoundResultViewModel
     {
         public IEnumerable<byte> Dices { get; set; }
 
         public int Total => Dices.Sum(x => x);
+
+        public bool IsBig => Total > 10;
 
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
@@ -48,15 +48,15 @@ namespace GameRoundResult.Web.Models
             var tagBuilder = new TagBuilder("span");
 
             tagBuilder.AddCssClass("bold");
-            if (Total % 2 == 0)
+            if (IsBig)
             {
-                tagBuilder.AddCssClass("text-blue");
-                tagBuilder.InnerHtml.Append(stringLocalizer["Even"]);
+                tagBuilder.AddCssClass("text-red");
+                tagBuilder.InnerHtml.Append(stringLocalizer["Big"]);
             }
             else
             {
-                tagBuilder.AddCssClass("text-red");
-                tagBuilder.InnerHtml.Append(stringLocalizer["Odd"]);
+                tagBuilder.AddCssClass("text-blue");
+                tagBuilder.InnerHtml.Append(stringLocalizer["Small"]);
             }
 
             return tagBuilder.GetHtmlString();

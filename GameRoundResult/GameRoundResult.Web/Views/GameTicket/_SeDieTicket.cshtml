@@ -1,0 +1,126 @@
+﻿@model SeDieTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th  class="col-date">@Localizer["Time"] (GMT-4)</th>
+            <th class="col-round-id">@Localizer["RoundId"]</th>
+            <th>@Localizer["Result"]</th>
+            <th>@Localizer["WinningOptions"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null)
+        {
+            <tr>
+                <td>@Model.RoundResult.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                <td>@Model.RoundResult.Round</td>
+                <td>
+                    @foreach (var chip in Model.RoundResult.RedChips)
+                    {
+                        <i class="@(chip ? "red-chip" : "white-chip")"></i>
+                    }
+                </td>
+                <td class="bold @(Model.RoundResult.IsEven ? "text-blue" : "text-red")">
+                    @(Model.RoundResult.IsEven ? Localizer["Even"] : Localizer["Odd"])
+
+                    @if (Model.RoundResult.TotalRed != 2)
+                    {
+                        var totalRed = Model.RoundResult.TotalRed;
+
+                        @(totalRed > 0 ? $", {totalRed} {Localizer["Red"]}" : $", 4 {Localizer["White"]}")
+                    }
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center">
+                    @Localizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Localizer["BetChoice"]</th>
+            <th>@Localizer["BetAmount"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Bet != null && Model.RoundResult != null)
+        {
+            if (Model.Bet.Odd > 0)
+            {
+                <tr>
+                    <td>@Localizer["Odd"]</td>
+                    <td class="text-right">@Model.Bet.Odd.ToString(ViewFormat.NumberFormat)</td>
+                </tr>
+            }
+            if (Model.Bet.Even > 0)
+            {
+                <tr>
+                    <td>@Localizer["Even"]</td>
+                    <td class="text-right">@Model.Bet.Even.ToString(ViewFormat.NumberFormat)</td>
+                </tr>
+            }
+            if (Model.Bet.ThreeRed > 0)
+            {
+                <tr>
+                    <td>@Localizer["3Red"]</td>
+                    <td class="text-right">@Model.Bet.ThreeRed.ToString(ViewFormat.NumberFormat)</td>
+                </tr>
+            }
+            if (Model.Bet.FourRed > 0)
+            {
+                <tr>
+                    <td>@Localizer["4Red"]</td>
+                    <td class="text-right">@Model.Bet.FourRed.ToString(ViewFormat.NumberFormat)</td>
+                </tr>
+            }
+            if (Model.Bet.ThreeWhite > 0)
+            {
+                <tr>
+                    <td>@Localizer["3White"]</td>
+                    <td class="text-right">@Model.Bet.ThreeWhite.ToString(ViewFormat.NumberFormat)</td>
+                </tr>
+            }
+
+            if (Model.Bet.FourWhite > 0)
+            {
+                <tr>
+                    <td>@Localizer["4White"]</td>
+                    <td class="text-right">@Model.Bet.FourWhite.ToString(ViewFormat.NumberFormat)</td>
+                </tr>
+            }
+
+            <tr>
+                <td class="text-right">@Localizer["Total"]</td>
+                <td class="text-right">@Model.TotalBet.ToString(ViewFormat.NumberFormat)</td>
+            </tr>
+            <tr>
+                <td class="text-right">@Localizer["TotalWin"]</td>
+                <td class="text-right">@Model.TotalWin.ToString(ViewFormat.NumberFormat)</td>
+            </tr>
+            <tr class="total">
+                <td class="bold text-right">@Localizer["WinLoss"]</td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.ToString(ViewFormat.NumberFormat)</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="2" class="text-center">
+                    @Localizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

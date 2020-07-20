@@ -1,0 +1,39 @@
+﻿.note {
+    margin-bottom: 1rem;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 2rem;
+
+    .col-date {
+        width: 10rem;
+    }
+}
+
+@media only screen and (min-width: 651px) {
+    .table {
+        max-width: 63rem;
+
+        .col-date {
+            width: 17rem;
+        }
+
+        .col-round-id {
+            width: 8rem;
+        }
+
+        &.table-keno {
+            max-width: 100rem;
+        }
+
+        &.table-dragon-tiger .cards {
+            display: flex;
+            justify-content: center;
+        }
+
+        &.table-baccarat {
+            max-width: 72rem;
+        }
+    }
+}

@@ -6,11 +6,13 @@ using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {
-    public class BigSmallRoundResultViewModel : RoundResultViewModel
+    public class OddEvenRoundResultViewModel : RoundResultViewModel
     {
         public IEnumerable<byte> Dices { get; set; }
 
         public int Total => Dices.Sum(x => x);
+
+        public bool IsEven => Total % 2 == 0;
 
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
@@ -46,15 +48,15 @@ namespace GameRoundResult.Web.Models
             var tagBuilder = new TagBuilder("span");
 
             tagBuilder.AddCssClass("bold");
-            if (Total > 10)
+            if (IsEven)
             {
-                tagBuilder.AddCssClass("text-red");
-                tagBuilder.InnerHtml.Append(stringLocalizer["Big"]);
+                tagBuilder.AddCssClass("text-blue");
+                tagBuilder.InnerHtml.Append(stringLocalizer["Even"]);
             }
             else
             {
-                tagBuilder.AddCssClass("text-blue");
-                tagBuilder.InnerHtml.Append(stringLocalizer["Small"]);
+                tagBuilder.AddCssClass("text-red");
+                tagBuilder.InnerHtml.Append(stringLocalizer["Odd"]);
             }
 
             return tagBuilder.GetHtmlString();

@@ -1,5 +1,4 @@
-﻿@using Microsoft.AspNetCore.Mvc.Localization
-@inject IViewLocalizer Localizer
+﻿@inject IViewLocalizer Localizer
 
 @model GameRoundResultViewModel
 
@@ -9,13 +8,12 @@
 
 @section Styles {
     <environment include="Development">
-        <link href="~/scss/base/roboto.css" rel="stylesheet" />
         <link href="~/lib/data-tables/datatables.css" rel="stylesheet" />
         <link href="~/lib/flatpickr/dist/flatpickr.css" rel="stylesheet" />  
-        <link href="~/scss/pages/site.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/scss/pages/game-round-result.css" rel="stylesheet" asp-append-version="true" />
     </environment>
     <environment exclude="Development">
-        <link href="~/css/pages/site.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/pages/game-round-result.min.css" rel="stylesheet" asp-append-version="true" />
     </environment>
 
 }

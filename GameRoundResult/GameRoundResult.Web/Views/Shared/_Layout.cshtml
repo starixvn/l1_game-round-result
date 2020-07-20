@@ -6,7 +6,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
+    <environment include="Development">
+        <link href="~/scss/pages/site.css" rel="stylesheet" asp-append-version="true" />
+    </environment>
+    <environment exclude="Development">
+        <link href="~/scss/pages/site.min.css" rel="stylesheet" asp-append-version="true"/>
+    </environment>
     @RenderSection("Styles", required: false)
+
 </head>
 <body>
 

@@ -21,6 +21,8 @@ namespace GameRoundResult.Web.Extensions
             ConventionRegistry.Register("camelCase", conventionPack, t => true);
             var mongoClient = new MongoClient(configuration["DatabaseSettings:ConnectionString"]);
             services.AddSingleton<IMongoClient>(mongoClient);
+            var mongoDatabase = mongoClient.GetDatabase(configuration["DatabaseSettings:DatabaseName"]);
+            services.AddScoped(provider => mongoClient.GetDatabase(configuration["DatabaseSettings:DatabaseName"]));
         }
 
         public static void AddLocalizationSettings(this IServiceCollection services, IConfiguration configuration)
@@ -31,7 +33,7 @@ namespace GameRoundResult.Web.Extensions
             services.Configure<RequestLocalizationOptions>(opts =>
             {
                 opts.DefaultRequestCulture = new RequestCulture(configuration["DefaultCulture"]);
-                opts.SupportedCultures = cultures;
+                opts.SupportedCultures = new CultureInfo[] { cultures[0] };
                 opts.SupportedUICultures = cultures;
                 opts.RequestCultureProviders.Insert(0, new RouteDataRequestCultureProvider { Options = opts });
             });
@@ -47,6 +49,8 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IGameRoundResultService, GameRoundResultService>();
             services.AddScoped<IGameRoundRepository, GameRoundRepository>();
             services.AddScoped<GameTypeLocalization>();
+            services.AddScoped<IGameBetRepository, GameBetRepository>();
+            services.AddScoped<IGameBetService, GameBetService>();
         }
     }
 }
