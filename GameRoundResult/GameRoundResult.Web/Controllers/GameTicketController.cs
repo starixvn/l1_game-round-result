@@ -72,7 +72,7 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult GetToken([FromBody] GameTicketQueryKeyModel model)
+        public IActionResult GetAccessUrl([FromBody] GameTicketQueryKeyModel model)
         {
             if (ModelState.IsValid)
             {
@@ -84,7 +84,7 @@ namespace GameRoundResult.Web.Controllers
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
 
                     var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, HttpContext.Request.Scheme, HttpContext.Request.Host.Value);
-                    return Ok(redirectUrl);
+                    return Ok(new AccessUrlResultModel { RedirectUrl = redirectUrl });
                 }
             }
 
