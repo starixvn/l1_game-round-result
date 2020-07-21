@@ -55,26 +55,26 @@
                 <tr>
                     <td>@bet.Time.ToString(ViewFormat.TicketDateTimeFormat)</td>
                     <td>@(bet.Select ? Localizer["Even"]: Localizer["Odd"])</td>
-                    <td class="text-right">@bet.Bet.ToString(ViewFormat.NumberFormat)</td>
-                    <td class="text-right">@bet.Back.ToString(ViewFormat.NumberFormat)</td>
+                    <td class="text-right">@bet.Bet.Format()</td>
+                    <td class="text-right">@bet.Back.Format()</td>
                 </tr>
             }
             <tr>
                 <td></td>
                 <td class="text-right">@Localizer["Total"]</td>
-                <td class="text-right">@Model.TotalBet.ToString(ViewFormat.NumberFormat)</td>
-                <td class="text-right">@Model.TotalBack.ToString(ViewFormat.NumberFormat)</td>
+                <td class="text-right">@Model.TotalBet.Format()</td>
+                <td class="text-right">@Model.TotalBack.Format()</td>
             </tr>
             <tr>
                 <td></td>
                 <td class="text-right">@Localizer["TotalWin"]</td>
-                <td class="text-right">@Model.TotalWin.ToString(ViewFormat.NumberFormat)</td>
+                <td class="text-right">@Model.TotalWin.Format()</td>
                 <td></td>
             </tr>
             <tr class="total">
                 <td></td>
                 <td class="bold text-right">@Localizer["WinLoss"]</td>
-                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.ToString(ViewFormat.NumberFormat)</td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
                 <td></td>
             </tr>
         }
