@@ -142,7 +142,7 @@
     <value>Bet Time</value>
   </data>
   <data name="GameNotSupported" xml:space="preserve">
-    <value>Game is currently not supported.</value>
+    <value>Sorry! The function is currently not supported for this game.</value>
   </data>
   <data name="NoDataAvailable" xml:space="preserve">
     <value>No data available</value>

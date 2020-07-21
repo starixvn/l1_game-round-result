@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Configuration;
@@ -45,7 +43,7 @@ namespace GameRoundResult.Web.Controllers
                 var roundId = long.Parse(data[3]);
                 var memberId = int.Parse(data[4]);
 
-                if (gameType == 0)
+                if (!Enum.IsDefined(typeof(GameType), gameType))
                 {
                     return View("GameNotSupported");
                 }
