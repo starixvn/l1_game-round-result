@@ -57,13 +57,6 @@
     <tbody>
         @if (Model.Bet != null && Model.RoundResult != null)
         {
-            if (Model.Bet.Odd > 0)
-            {
-                <tr>
-                    <td>@Localizer["Odd"]</td>
-                    <td class="text-right">@Model.Bet.Odd.Format()</td>
-                </tr>
-            }
             if (Model.Bet.Even > 0)
             {
                 <tr>
@@ -71,6 +64,14 @@
                     <td class="text-right">@Model.Bet.Even.Format()</td>
                 </tr>
             }
+            if (Model.Bet.Odd > 0)
+            {
+                <tr>
+                    <td>@Localizer["Odd"]</td>
+                    <td class="text-right">@Model.Bet.Odd.Format()</td>
+                </tr>
+            }
+
             if (Model.Bet.ThreeRed > 0)
             {
                 <tr>
