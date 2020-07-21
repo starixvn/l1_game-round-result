@@ -21,7 +21,8 @@ namespace GameRoundResult.Web.Controllers
             clients = clientAccessor.Value;
         }
 
-        public async Task<IActionResult> Index(string key, string returnUrl)
+        [Route("{culture=vi-VN}/[controller]/{key}", Order = 0)]
+        public async Task<IActionResult> Index(string key)
         {
             var client = clients.FirstOrDefault(x => x.Key == key);
 
@@ -46,12 +47,7 @@ namespace GameRoundResult.Web.Controllers
                     new ClaimsPrincipal(claimsIdentity),
                     authProperties);
 
-                if (string.IsNullOrWhiteSpace(returnUrl))
-                {
-                    return RedirectToAction("Index", "GameRoundResult");
-                }
-
-                return LocalRedirect(returnUrl);
+                return RedirectToAction("Index", "GameRoundResult");
             }
 
             return BadRequest();
