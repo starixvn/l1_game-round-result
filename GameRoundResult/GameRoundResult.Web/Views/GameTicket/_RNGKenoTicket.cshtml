@@ -98,21 +98,21 @@
                 <tr>
                     <td>@bet.Time.ToString(ViewFormat.TicketDateTimeFormat)</td>
                     <td>@Localizer[Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(bet.Choice)]</td>
-                    <td class="text-right">@bet.Amount.ToString(ViewFormat.NumberFormat)</td>
+                    <td class="text-right">@bet.Amount.Format()</td>
                 </tr>
             }
 
             <tr>
                 <td colspan="2" class="text-right">@Localizer["Total"]</td>
-                <td class="text-right">@Model.TotalBet.ToString(ViewFormat.NumberFormat)</td>
+                <td class="text-right">@Model.TotalBet.Format()</td>
             </tr>
             <tr>
                 <td colspan="2" class="text-right">@Localizer["TotalWin"]</td>
-                <td class="text-right">@Model.TotalWin.ToString(ViewFormat.NumberFormat)</td>
+                <td class="text-right">@Model.TotalWin.Format()</td>
             </tr>
             <tr class="total">
                 <td colspan="2" class="bold text-right">@Localizer["WinLoss"]</td>
-                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.ToString(ViewFormat.NumberFormat)</td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
             </tr>
         }
         else
