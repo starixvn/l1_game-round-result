@@ -95,22 +95,6 @@
     <tbody>
         @if (Model.Bet != null && Model.RoundResult != null)
         {
-            if (Model.Bet.Odd > 0)
-            {
-                <tr>
-                    <td>@Model.Bet.Time.ToString(ViewFormat.DateTimeFormat)</td>
-                    <td>@Localizer["Odd"]</td>
-                    <td class="text-right">@Model.Bet.Odd.Format()</td>
-                </tr>
-            }
-            if (Model.Bet.Even > 0)
-            {
-                <tr>
-                    <td>@Model.Bet.Time.ToString(ViewFormat.DateTimeFormat)</td>
-                    <td>@Localizer["Even"]</td>
-                    <td class="text-right">@Model.Bet.Even.Format()</td>
-                </tr>
-            }
             if (Model.Bet.Big > 0)
             {
                 <tr>
@@ -127,6 +111,24 @@
                     <td class="text-right">@Model.Bet.Small.Format()</td>
                 </tr>
             }
+            if (Model.Bet.Even > 0)
+            {
+                <tr>
+                    <td>@Model.Bet.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                    <td>@Localizer["Even"]</td>
+                    <td class="text-right">@Model.Bet.Even.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Odd > 0)
+            {
+                <tr>
+                    <td>@Model.Bet.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                    <td>@Localizer["Odd"]</td>
+                    <td class="text-right">@Model.Bet.Odd.Format()</td>
+                </tr>
+            }
+
             if (Model.Bet.Gold > 0)
             {
                 <tr>

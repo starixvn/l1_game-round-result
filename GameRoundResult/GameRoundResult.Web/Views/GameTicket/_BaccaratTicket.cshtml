@@ -99,18 +99,28 @@
                     <td class="text-right">@Model.Bet.Player.Format()</td>
                 </tr>
             }
-            if (Model.Bet.PlayerPair > 0)
-            {
-                <tr>
-                    <td>@Localizer["PlayerPair"]</td>
-                    <td class="text-right">@Model.Bet.PlayerPair.Format()</td>
-                </tr>
-            }
+
             if (Model.Bet.Banker > 0)
             {
                 <tr>
                     <td>@Localizer["Banker"]</td>
                     <td class="text-right">@Model.Bet.Banker.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Tie > 0)
+            {
+                <tr>
+                    <td>@Localizer["Tie"]</td>
+                    <td class="text-right">@Model.Bet.Tie.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.PlayerPair > 0)
+            {
+                <tr>
+                    <td>@Localizer["PlayerPair"]</td>
+                    <td class="text-right">@Model.Bet.PlayerPair.Format()</td>
                 </tr>
             }
 
@@ -121,13 +131,7 @@
                     <td class="text-right">@Model.Bet.BankerPair.Format()</td>
                 </tr>
             }
-            if (Model.Bet.Tie > 0)
-            {
-                <tr>
-                    <td>@Localizer["Tie"]</td>
-                    <td class="text-right">@Model.Bet.Tie.Format()</td>
-                </tr>
-            }
+
             if (Model.Bet.Big > 0)
             {
                 <tr>
