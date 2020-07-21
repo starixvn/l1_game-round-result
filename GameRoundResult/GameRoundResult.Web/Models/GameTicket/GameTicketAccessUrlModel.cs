@@ -18,7 +18,7 @@ namespace GameRoundResult.Web.Models
 
         public string Language { get; set; }
 
-        public int SiteId { get; set; }
+        public string SiteId { get; set; }
     }
 
     public class AuthModel
