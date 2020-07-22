@@ -80,7 +80,7 @@ namespace GameRoundResult.Web.Controllers
 
                 if (client != null)
                 {
-                    var queryKey = dataProtector.Protect($"{model.Auth.ClientID}_{model.Auth.ClientKey}_{model.GameTypeId}_{model.RoundId}_{model.MemberId}",
+                    var queryKey = dataProtector.Protect($"{model.Auth.ClientID}_{model.Auth.ClientKey}_{model.GameTypeId}_{model.GameRoundId}_{model.ObCustId}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
 
                     var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, HttpContext.Request.Scheme, HttpContext.Request.Host.Value);

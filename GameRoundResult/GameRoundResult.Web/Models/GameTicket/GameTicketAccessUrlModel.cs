@@ -11,10 +11,10 @@ namespace GameRoundResult.Web.Models
         public AuthModel Auth { get; set; }
 
         [Required]
-        public long RoundId { get; set; }
+        public long GameRoundId { get; set; }
 
         [Required]
-        public int MemberId { get; set; }
+        public int ObCustId { get; set; }
 
         public string Language { get; set; }
     }
