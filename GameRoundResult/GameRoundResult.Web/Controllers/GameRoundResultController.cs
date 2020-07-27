@@ -42,7 +42,7 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(string token)
+        public IActionResult Index()
         {
             var viewModel = new GameRoundResultViewModel
             {

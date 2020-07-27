@@ -50,7 +50,7 @@
                 disableMobile: true
             });
 
-            $roundId.on("change", function (event) {
+            $roundId.on("keyup", function (event) {
                 var value = event.target.value;
 
                 if (value) {
