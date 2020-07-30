@@ -25,6 +25,7 @@ namespace GameRoundResult.Web.Controllers
     {
         private readonly IMediator mediator;
         private readonly GameTypeLocalization gameTypeLocalization;
+        private readonly HostConfiguration hostConfiguration;
         private readonly IEnumerable<AuthenticationClient> clients;
         private readonly ITimeLimitedDataProtector dataProtector;
         private const string dataProtectorKey = "game-round-result-data-key";
@@ -33,12 +34,14 @@ namespace GameRoundResult.Web.Controllers
         public GameRoundResultController(IMediator mediator,
             GameTypeLocalization gameTypeLocalization,
             IOptionsSnapshot<List<AuthenticationClient>> clientAccessor,
+            IOptionsSnapshot<HostConfiguration> hostConfigurationAccessor,
             IDataProtectionProvider dataProtectionProvider)
         {
             this.mediator = mediator;
             this.gameTypeLocalization = gameTypeLocalization;
             dataProtector = dataProtectionProvider.CreateProtector(dataProtectorKey).ToTimeLimitedDataProtector();
             clients = clientAccessor.Value;
+            hostConfiguration = hostConfigurationAccessor.Value;
         }
 
         [HttpGet]
@@ -126,8 +129,7 @@ namespace GameRoundResult.Web.Controllers
                 {
                     var token = dataProtector.Protect($"{model.Auth.ClientID}_{model.Auth.ClientKey}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
-
-                    var redirectUrl = Url.Action("Auth", "GameRoundResult", new { culture = model.Language, token }, HttpContext.Request.Scheme, HttpContext.Request.Host.Value);
+                    var redirectUrl = Url.Action("Auth", "GameRoundResult", new { culture = model.Language, token }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
                     return Ok(new GameRoundResultAccessUrlResultModel { RedirectUrl = redirectUrl });
                 }
             }

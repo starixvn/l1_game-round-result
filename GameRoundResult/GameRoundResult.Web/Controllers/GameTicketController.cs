@@ -21,15 +21,20 @@ namespace GameRoundResult.Web.Controllers
     {
         private readonly IMediator mediator;
         private readonly IEnumerable<AuthenticationClient> clients;
+        private readonly HostConfiguration hostConfiguration;
         private readonly ITimeLimitedDataProtector dataProtector;
         private const string dataProtectorKey = "game-ticket-data-key";
         private const int dataProtectorLifeTimeSecond = 30;
 
-        public GameTicketController(IMediator mediator, IOptionsSnapshot<List<AuthenticationClient>> clientAccessor, IDataProtectionProvider dataProtectionProvider)
+        public GameTicketController(IMediator mediator, IOptionsSnapshot<List<AuthenticationClient>> clientAccessor, 
+            IDataProtectionProvider dataProtectionProvider,
+            IOptionsSnapshot<HostConfiguration> hostConfigurationAccessor
+            )
         {
             clients = clientAccessor.Value;
             this.mediator = mediator;
             dataProtector = dataProtectionProvider.CreateProtector(dataProtectorKey).ToTimeLimitedDataProtector();
+            hostConfiguration = hostConfigurationAccessor.Value;
         }
 
         [HttpGet]
@@ -83,7 +88,7 @@ namespace GameRoundResult.Web.Controllers
                     var queryKey = dataProtector.Protect($"{model.Auth.ClientID}_{model.Auth.ClientKey}_{model.GameTypeId}_{model.GameRoundId}_{model.ObCustId}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
 
-                    var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, HttpContext.Request.Scheme, HttpContext.Request.Host.Value);
+                    var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
                     return Ok(new GameTicketAccessUrlResultModel { RedirectUrl = redirectUrl });
                 }
             }
