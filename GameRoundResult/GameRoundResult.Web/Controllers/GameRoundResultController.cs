@@ -129,7 +129,7 @@ namespace GameRoundResult.Web.Controllers
                 {
                     var token = dataProtector.Protect($"{model.Auth.ClientID}_{model.Auth.ClientKey}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
-                    var redirectUrl = Url.Action("Auth", "GameRoundResult", new { culture = model.Language, token }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Host);
+                    var redirectUrl = Url.Action("Auth", "GameRoundResult", new { culture = model.Language, token }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
                     return Ok(new GameRoundResultAccessUrlResultModel { RedirectUrl = redirectUrl });
                 }
             }
