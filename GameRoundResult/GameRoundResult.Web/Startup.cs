@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Security.Claims;
 using AutoMapper;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
@@ -30,6 +29,7 @@ namespace GameRoundResult.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<List<AuthenticationClient>>(Configuration.GetSection("AuthenticationClients"));
+            services.Configure<HostConfiguration>(Configuration.GetSection("HostConfiguration"));
             services.AddAutoMapper(typeof(Startup));
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddMongoDatabase(Configuration);
