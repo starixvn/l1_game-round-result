@@ -15,61 +15,65 @@
     <tbody>
         @if (Model.RoundResult != null)
         {
-            <tr>
-                <td>@Model.RoundResult.Time.ToString(ViewFormat.DateTimeFormat)</td>
-                <td>@Model.RoundResult.Round</td>
-                <td>
-                    <div class="baccarat-result">
-                        <div class="cards">
-                            @foreach (var card in Model.RoundResult.PlayerCards)
-                            {
-                                <div class="card card-type-@card.Type">
-                                    <span>@Card.CardLabels[card.Number]</span>
-                                    <img class="img" src="~/scss/images/card_@(card.Type).png" />
-                                </div>
-                            }
-                        </div>
-                        <div class="cards">
-                            @foreach (var card in Model.RoundResult.BankerCards)
-                            {
-                                <div class="card card-type-@card.Type">
-                                    <span>@Card.CardLabels[card.Number]</span>
-                                    <img class="img" src="~/scss/images/card_@(card.Type).png" />
-                                </div>
-                            }
-                        </div>
+        <tr>
+            <td>
+                @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                <br />
+                @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeFormat, CultureInfo.InvariantCulture)
+            </td>
+            <td>@Model.RoundResult.Round</td>
+            <td>
+                <div class="baccarat-result">
+                    <div class="cards">
+                        @foreach (var card in Model.RoundResult.PlayerCards)
+                        {
+                            <div class="card card-type-@card.Type">
+                                <span>@Card.CardLabels[card.Number]</span>
+                                <img class="img" src="~/scss/images/card_@(card.Type).png" />
+                            </div>
+                        }
                     </div>
-                </td>
-                <td>
-                    @if (Model.RoundResult.Player)
+                    <div class="cards">
+                        @foreach (var card in Model.RoundResult.BankerCards)
+                        {
+                            <div class="card card-type-@card.Type">
+                                <span>@Card.CardLabels[card.Number]</span>
+                                <img class="img" src="~/scss/images/card_@(card.Type).png" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </td>
+            <td>
+                @if (Model.RoundResult.Player)
+                {
+                    @Localizer["Player"]
+                }
+                else
+                {
+                    if (Model.RoundResult.Banker)
                     {
-                        @Localizer["Player"]
+                        @Localizer["Banker"]
                     }
                     else
                     {
-                        if (Model.RoundResult.Banker)
-                        {
-                            @Localizer["Banker"]
-                        }
-                        else
-                        {
-                            @Localizer["Tie"];
-                        }
+                        @Localizer["Tie"];
                     }
+                }
 
-                    @if (Model.RoundResult.PlayerPair)
-                    {
-                        @($", {Localizer["PlayerPair"]}")
-                    }
+                @if (Model.RoundResult.PlayerPair)
+                {
+                    @($", {Localizer["PlayerPair"]}")
+                }
 
-                    @if (Model.RoundResult.BankerPair)
-                    {
-                        @($", {Localizer["BankerPair"]}")
-                    }
+                @if (Model.RoundResult.BankerPair)
+                {
+                    @($", {Localizer["BankerPair"]}")
+                }
 
-                    @($", {(Model.RoundResult.Big ? Localizer["Big"] : Localizer["Small"])}")
-                </td>
-            </tr>
+                @($", {(Model.RoundResult.Big ? Localizer["Big"] : Localizer["Small"])}")
+            </td>
+        </tr>
         }
         else
         {

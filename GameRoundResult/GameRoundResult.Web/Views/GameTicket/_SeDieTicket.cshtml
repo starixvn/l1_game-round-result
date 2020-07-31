@@ -16,7 +16,11 @@
         @if (Model.RoundResult != null)
         {
             <tr>
-                <td>@Model.RoundResult.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                <td>
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    <br />
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeFormat, CultureInfo.InvariantCulture)
+                </td>
                 <td>@Model.RoundResult.Round</td>
                 <td>
                     @foreach (var chip in Model.RoundResult.RedChips)

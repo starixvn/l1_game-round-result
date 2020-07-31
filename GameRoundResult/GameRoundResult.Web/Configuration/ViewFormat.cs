@@ -4,9 +4,15 @@ namespace GameRoundResult.Web.Configuration
 {
     public class ViewFormat
     {
-        public const string DateTimeFormat = "HH:mm dd/MM/yyyy";
-        public const string TicketDateTimeFormat = "HH:mm:ss dd/MM/yyyy";
         public const string NumberFormat = "#,##0.##";
+
+        public const string TicketDateFormat = "MM/dd/yyyy";
+
+        public const string TicketTimeFormat = "hh:mm:ss tt";
+
+        public const string RoundTimeFormat = "hh:mm tt";
+
+        public const string RoundDateFormat = "MM/dd/yyyy";
     }
 
     public static class FormatHelper

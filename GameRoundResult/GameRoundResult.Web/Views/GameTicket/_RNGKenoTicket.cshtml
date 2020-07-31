@@ -49,7 +49,11 @@
                 element = Localizer["Fire"];
             }
             <tr>
-                <td>@Model.RoundResult.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                <td>
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    <br />
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeFormat, CultureInfo.InvariantCulture)
+                </td>
                 <td>@Model.RoundResult.Round</td>
                 <td>
                     <div class="numbers">
@@ -96,7 +100,11 @@
             foreach (var bet in Model.Bets)
             {
                 <tr>
-                    <td>@bet.Time.ToString(ViewFormat.TicketDateTimeFormat)</td>
+                    <td>
+                        @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
                     <td>@Localizer[Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(bet.Choice)]</td>
                     <td class="text-right">@bet.Amount.Format()</td>
                 </tr>

@@ -15,7 +15,11 @@
         @if (Model.RoundResult != null)
         {
             <tr>
-                <td>@Model.RoundResult.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                <td>
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    <br />
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeFormat, CultureInfo.InvariantCulture)
+                </td>
                 <td>@Model.RoundResult.Round</td>
                 <td>
                     @foreach (var dice in Model.RoundResult.Dices)
@@ -52,7 +56,11 @@
             foreach (var bet in Model.Bets)
             {
                 <tr>
-                    <td>@bet.Time.ToString(ViewFormat.TicketDateTimeFormat)</td>
+                    <td>
+                        @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
                     <td>@(bet.Select ? Localizer["Big"]: Localizer["Small"])</td>
                     <td class="text-right">@bet.Bet.Format()</td>
                     <td class="text-right">@bet.Back.Format()</td>
