@@ -14,12 +14,16 @@
         @if (Model.RoundResult != null)
         {
             <tr>
-                <td>@Model.RoundResult.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                <td>
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    <br />
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeFormat, CultureInfo.InvariantCulture)
+                </td>
                 <td>@Model.RoundResult.Round</td>
                 <td>
                     @foreach (var dice in Model.RoundResult.Dices)
                     {
-                    <img class="animal" src="~/scss/images/animal_@(dice).png" />
+                        <img class="animal" src="~/scss/images/animal_@(dice).png" />
                     }
                 </td>
             </tr>

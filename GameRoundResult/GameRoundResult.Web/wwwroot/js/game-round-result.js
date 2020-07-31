@@ -44,7 +44,7 @@
         init: function () {
             $userTimeZone.val(Intl.DateTimeFormat().resolvedOptions().timeZone);
             flatPickr = $date.flatpickr({
-                dateFormat: "d/m/Y",
+                dateFormat: "m/d/Y",
                 defaultDate: new Date(),
                 locale: flatPickrLocale,
                 disableMobile: true

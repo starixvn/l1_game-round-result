@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using GameRoundResult.Web.Configuration;
 using Microsoft.Extensions.Localization;
 
@@ -13,7 +14,7 @@ namespace GameRoundResult.Web.Models
 
         public virtual IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            return new string[] { Time.ToString(ViewFormat.DateTimeFormat), Round.ToString() };
+            return new string[] { $"{Time.ToString(ViewFormat.RoundDateFormat)}<br/ >{Time.ToString(ViewFormat.RoundTimeFormat, CultureInfo.InvariantCulture)}", Round.ToString() };
         }
     }
 }

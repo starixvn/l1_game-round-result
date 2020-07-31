@@ -1,5 +1,5 @@
 ﻿@model GameRoundResult.Web.Models.GameTicket.DragonTigerTicketViewModel
-@using GameRoundResult.Core.Constants 
+@using GameRoundResult.Core.Constants
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
 
 <table class="table table-bordered table-dragon-tiger">
@@ -14,7 +14,11 @@
         @if (Model.RoundResult != null)
         {
             <tr>
-                <td>@Model.RoundResult.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                <td>
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    <br />
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeFormat, CultureInfo.InvariantCulture)
+                </td>
                 <td>@Model.RoundResult.Round</td>
                 <td>
                     <div class="cards">

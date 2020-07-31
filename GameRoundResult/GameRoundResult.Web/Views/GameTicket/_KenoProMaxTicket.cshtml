@@ -51,7 +51,11 @@
             }
 
             <tr>
-                <td>@Model.RoundResult.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                <td>
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    <br />
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeFormat, CultureInfo.InvariantCulture)
+                </td>
                 <td>@Model.RoundResult.Round</td>
                 <td>
                     <div class="numbers">
@@ -98,7 +102,11 @@
             if (Model.Bet.Big > 0)
             {
                 <tr>
-                    <td>@Model.Bet.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
                     <td>@Localizer["Big"]</td>
                     <td class="text-right">@Model.Bet.Big.Format()</td>
                 </tr>
@@ -106,7 +114,11 @@
             if (Model.Bet.Small > 0)
             {
                 <tr>
-                    <td>@Model.Bet.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
                     <td>@Localizer["Small"]</td>
                     <td class="text-right">@Model.Bet.Small.Format()</td>
                 </tr>
@@ -114,7 +126,11 @@
             if (Model.Bet.Even > 0)
             {
                 <tr>
-                    <td>@Model.Bet.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
                     <td>@Localizer["Even"]</td>
                     <td class="text-right">@Model.Bet.Even.Format()</td>
                 </tr>
@@ -123,7 +139,11 @@
             if (Model.Bet.Odd > 0)
             {
                 <tr>
-                    <td>@Model.Bet.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
                     <td>@Localizer["Odd"]</td>
                     <td class="text-right">@Model.Bet.Odd.Format()</td>
                 </tr>
@@ -132,7 +152,11 @@
             if (Model.Bet.Gold > 0)
             {
                 <tr>
-                    <td>@Model.Bet.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
                     <td>@Localizer["Gold"]</td>
                     <td class="text-right">@Model.Bet.Gold.Format()</td>
                 </tr>
@@ -141,7 +165,11 @@
             if (Model.Bet.Wood > 0)
             {
                 <tr>
-                    <td>@Model.Bet.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
                     <td>@Localizer["Wood"]</td>
                     <td class="text-right">@Model.Bet.Wood.Format()</td>
                 </tr>
@@ -150,7 +178,11 @@
             if (Model.Bet.Water > 0)
             {
                 <tr>
-                    <td>@Model.Bet.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
                     <td>@Localizer["Water"]</td>
                     <td class="text-right">@Model.Bet.Water.Format()</td>
                 </tr>
@@ -159,7 +191,11 @@
             if (Model.Bet.Fire > 0)
             {
                 <tr>
-                    <td>@Model.Bet.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
                     <td>@Localizer["Fire"]</td>
                     <td class="text-right">@Model.Bet.Fire.Format()</td>
                 </tr>
@@ -168,7 +204,11 @@
             if (Model.Bet.Earth > 0)
             {
                 <tr>
-                    <td>@Model.Bet.Time.ToString(ViewFormat.DateTimeFormat)</td>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
                     <td>@Localizer["Earth"]</td>
                     <td class="text-right">@Model.Bet.Earth.Format()</td>
                 </tr>
