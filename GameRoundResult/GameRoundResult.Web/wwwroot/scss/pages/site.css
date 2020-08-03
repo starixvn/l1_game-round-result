@@ -269,7 +269,6 @@ body {
 
 .card {
   position: relative;
-  float: left;
   display: inline-block;
   height: 3.2rem;
   width: 2.5rem;
