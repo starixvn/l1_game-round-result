@@ -12,6 +12,8 @@ namespace GameRoundResult.Web.Configuration
 
         public const string RoundTimeFormat = "hh:mm tt";
 
+        public const string RoundTimeWithSecondFormat = "hh:mm:ss tt";
+
         public const string RoundDateFormat = "MM/dd/yyyy";
     }
 
