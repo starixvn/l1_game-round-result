@@ -17,7 +17,7 @@
                 <td>
                     @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
                     <br />
-                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeFormat, CultureInfo.InvariantCulture)
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
                 </td>
                 <td>@Model.RoundResult.Round</td>
                 <td>
