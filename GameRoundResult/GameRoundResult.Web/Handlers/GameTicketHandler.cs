@@ -195,8 +195,8 @@ namespace GameRoundResult.Web.Handlers
                     {
                         RoundResult = rouletteResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
                         Bets = rouletteResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
-                        TotalBet = rouletteResult.Item3.TotalAmount,
-                        BetWin = rouletteResult.Item3.Betwin,
+                        TotalBet = rouletteResult.Item3?.TotalAmount ?? 0 ,
+                        BetWin = rouletteResult.Item3?.Betwin ?? 0,
                     };
 
                 default:

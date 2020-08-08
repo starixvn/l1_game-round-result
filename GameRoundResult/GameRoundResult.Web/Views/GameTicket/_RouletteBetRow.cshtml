@@ -4,83 +4,114 @@
 @{
     var rowSpan = 0;
     Dictionary<string, decimal> firstBetType = null;
-    var dozens = new Dictionary<string, string>() 
+    string firstBetTypeName = null;
+    var dozens = new Dictionary<string, string>()
     {
         {"1", "1-12" },
         {"2", "13-24" },
         {"3", "25-36"  }
     };
 
-    if (Model.StraightUp != null)
+    var bigSmall = new Dictionary<string, string>()
+    {
+        {"small", "1-18" },
+        {"big", "19-36" },
+    };
+
+    var redBlackResources = new Dictionary<string, string>()
+    {
+        {"red", "Red" },
+        {"black", "Black" },
+    };
+
+    var oddEvenResource = new Dictionary<string, string>()
+    {
+        {"odd", "Odd" },
+        {"even", "Even" },
+    };
+
+    if (Model.StraightUp.Any())
     {
         rowSpan += Model.StraightUp.Count;
         firstBetType = Model.StraightUp;
+        firstBetTypeName = nameof(Model.StraightUp);
     }
 
-    if (Model.Split != null)
+    if (Model.Split.Any())
     {
         rowSpan += Model.Split.Count;
         firstBetType = firstBetType ?? Model.Split;
+        firstBetTypeName = firstBetTypeName ?? nameof(Model.Split);
     }
 
-    if (Model.Street != null)
+    if (Model.Street.Any())
     {
         rowSpan += Model.Street.Count;
         firstBetType = firstBetType ?? Model.Street;
+        firstBetTypeName = firstBetTypeName ?? nameof(Model.Street);
     }
 
-    if (Model.Triangle != null)
+    if (Model.Triangle.Any())
     {
         rowSpan += Model.Triangle.Count;
         firstBetType = firstBetType ?? Model.Triangle;
+        firstBetTypeName = firstBetTypeName ?? nameof(Model.Triangle);
     }
 
-    if (Model.Corner != null)
+    if (Model.Corner.Any())
     {
         rowSpan += Model.Corner.Count;
         firstBetType = firstBetType ?? Model.Corner;
+        firstBetTypeName = firstBetTypeName ?? nameof(Model.Corner);
     }
 
-    if (Model.FourNumbers != null)
+    if (Model.FourNumbers.Any())
     {
         rowSpan += Model.FourNumbers.Count;
         firstBetType = firstBetType ?? Model.FourNumbers;
+        firstBetTypeName = firstBetTypeName ?? nameof(Model.FourNumbers);
     }
 
-    if (Model.Line != null)
+    if (Model.Line.Any())
     {
         rowSpan += Model.Line.Count;
         firstBetType = firstBetType ?? Model.Line;
+        firstBetTypeName = firstBetTypeName ?? nameof(Model.Line);
     }
 
-    if (Model.Column != null)
+    if (Model.Column.Any())
     {
         rowSpan += Model.Column.Count;
         firstBetType = firstBetType ?? Model.Column;
+        firstBetTypeName = firstBetTypeName ?? nameof(Model.Column);
     }
 
-    if (Model.Dozen != null)
+    if (Model.Dozen.Any())
     {
         rowSpan += Model.Dozen.Count;
-        firstBetType = firstBetType ?? Model.Column;
+        firstBetType = firstBetType ?? Model.Dozen;
+        firstBetTypeName = firstBetTypeName ?? nameof(Model.Dozen);
     }
 
-    if (Model.RedBlack != null)
+    if (Model.RedBlack.Any())
     {
         rowSpan += Model.RedBlack.Count;
         firstBetType = firstBetType ?? Model.RedBlack;
+        firstBetTypeName = firstBetTypeName ?? nameof(Model.StraightUp);
     }
 
-    if (Model.OddEven != null)
+    if (Model.OddEven.Any())
     {
         rowSpan += Model.OddEven.Count;
-        firstBetType = firstBetType ?? Model.RedBlack;
+        firstBetType = firstBetType ?? Model.OddEven;
+        firstBetTypeName = firstBetTypeName ?? nameof(Model.OddEven);
     }
 
-    if (Model.BigSmall != null)
+    if (Model.BigSmall.Any())
     {
         rowSpan += Model.BigSmall.Count;
-        firstBetType = firstBetType ?? Model.RedBlack;
+        firstBetType = firstBetType ?? Model.BigSmall;
+        firstBetTypeName = firstBetTypeName ?? nameof(Model.BigSmall);
     }
 }
 
@@ -90,10 +121,11 @@
         <br />
         @Model.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
     </td>
+    <td>@Localizer[firstBetTypeName]</td>
     <td>
         @firstBetType.FirstOrDefault().Key
     </td>
-    <td>
+    <td class="text-right">
         @firstBetType.FirstOrDefault().Value.Format()
     </td>
 </tr>
@@ -103,11 +135,12 @@
     foreach (var betChoice in firstBetType.Skip(1))
     {
         <tr>
-            <td></td>
+            <td>@Localizer[firstBetTypeName]</td>
+
             <td>
                 @betChoice.Key
             </td>
-            <td>
+            <td class="text-right">
                 @betChoice.Value.Format()
             </td>
         </tr>
@@ -115,7 +148,7 @@
     }
 }
 
-@if (Model.StraightUp != null && firstBetType != Model.StraightUp)
+@if (Model.StraightUp.Any() && firstBetType != Model.StraightUp)
 {
     foreach (var betChoice in Model.StraightUp)
     {
@@ -124,14 +157,14 @@
             <td>
                 @betChoice.Key
             </td>
-            <td>
+            <td class="text-right">
                 @betChoice.Value.Format()
             </td>
         </tr>
     }
 }
 
-@if (Model.Split != null && firstBetType != Model.Split)
+@if (Model.Split.Any() && firstBetType != Model.Split)
 {
     foreach (var betChoice in Model.Split)
     {
@@ -140,14 +173,14 @@
             <td>
                 @betChoice.Key.Replace("-", ", ")
             </td>
-            <td>
+            <td class="text-right">
                 @betChoice.Value.Format()
             </td>
         </tr>
     }
 }
 
-@if (Model.Street != null && firstBetType != Model.Street)
+@if (Model.Street.Any() && firstBetType != Model.Street)
 {
     foreach (var betChoice in Model.Street)
     {
@@ -156,14 +189,14 @@
             <td>
                 @betChoice.Key.Replace("-", ", ")
             </td>
-            <td>
+            <td class="text-right">
                 @betChoice.Value.Format()
             </td>
         </tr>
     }
 }
 
-@if (Model.Triangle != null && firstBetType != Model.Triangle)
+@if (Model.Triangle.Any() && firstBetType != Model.Triangle)
 {
     foreach (var betChoice in Model.Triangle)
     {
@@ -172,14 +205,14 @@
             <td>
                 @betChoice.Key.Replace("-", ", ")
             </td>
-            <td>
+            <td class="text-right">
                 @betChoice.Value.Format()
             </td>
         </tr>
     }
 }
 
-@if (Model.Corner != null && firstBetType != Model.Corner)
+@if (Model.Corner.Any() && firstBetType != Model.Corner)
 {
     foreach (var betChoice in Model.Corner)
     {
@@ -188,7 +221,7 @@
             <td>
                 @betChoice.Key.Replace("-", ", ")
             </td>
-            <td>
+            <td class="text-right">
                 @betChoice.Value.Format()
             </td>
         </tr>
@@ -196,7 +229,7 @@
 }
 
 
-@if (Model.FourNumbers != null && firstBetType != Model.FourNumbers)
+@if (Model.FourNumbers.Any() && firstBetType != Model.FourNumbers)
 {
     foreach (var betChoice in Model.FourNumbers)
     {
@@ -205,7 +238,7 @@
             <td>
                 @betChoice.Key.Replace("-", ", ")
             </td>
-            <td>
+            <td class="text-right">
                 @betChoice.Value.Format()
             </td>
         </tr>
@@ -213,7 +246,7 @@
 }
 
 
-@if (Model.Line != null && firstBetType != Model.Line)
+@if (Model.Line.Any() && firstBetType != Model.Line)
 {
     foreach (var betChoice in Model.Line)
     {
@@ -226,7 +259,7 @@
                 <div>@splits[0], @splits[1], @splits[2]</div>
                 <div>@splits[3], @splits[4], @splits[5]</div>
             </td>
-            <td>
+            <td class="text-right">
                 @betChoice.Value.Format()
             </td>
         </tr>
@@ -234,16 +267,16 @@
 }
 
 
-@if (Model.Column != null && firstBetType != Model.Column)
+@if (Model.Column.Any() && firstBetType != Model.Column)
 {
     foreach (var betChoice in Model.Column)
     {
         <tr>
             <td>@Localizer["Column"]</td>
             <td>
-                @Localizer[$"Column-{betChoice.Key}"]
+                @Localizer[$"column-{betChoice.Key}"]
             </td>
-            <td>
+            <td class="text-right">
                 @betChoice.Value.Format()
             </td>
         </tr>
@@ -251,7 +284,7 @@
 }
 
 
-@if (Model.Dozen != null && firstBetType != Model.Dozen)
+@if (Model.Dozen.Any() && firstBetType != Model.Dozen)
 {
     foreach (var betChoice in Model.Dozen)
     {
@@ -260,55 +293,55 @@
             <td>
                 @dozens[betChoice.Key]
             </td>
-            <td>
+            <td class="text-right">
                 @betChoice.Value.Format()
             </td>
         </tr>
     }
 }
 
-@if (Model.RedBlack != null && firstBetType != Model.RedBlack)
+@if (Model.RedBlack.Any() && firstBetType != Model.RedBlack)
 {
     foreach (var betChoice in Model.RedBlack)
     {
         <tr>
             <td>@Localizer["RedBlack"]</td>
             <td >
-                @Localizer[betChoice.Key]
+                @Localizer[redBlackResources[betChoice.Key]]
             </td>
-            <td>
+            <td class="text-right">
                 @betChoice.Value.Format()
             </td>
         </tr>
     }
 }
 
-@if (Model.OddEven != null && firstBetType != Model.OddEven)
+@if (Model.OddEven.Any() && firstBetType != Model.OddEven)
 {
     foreach (var betChoice in Model.OddEven)
     {
         <tr>
             <td>@Localizer["OddEven"]</td>
-            <td>
-                @Localizer[betChoice.Key]
+            <td class="text-capitalize">
+                @Localizer[oddEvenResource[betChoice.Key]]
             </td>
-            <td>
+            <td class="text-right">
                 @betChoice.Value.Format()
             </td>
         </tr>
     }
 }
 
-@if (Model.BigSmall != null && firstBetType != Model.BigSmall)
+@if (Model.BigSmall.Any() && firstBetType != Model.BigSmall)
 {
     foreach (var betChoice in Model.BigSmall)
     {
         <tr>
             <td>@Localizer["BigSmall"]</td>
             <td>
-                @Localizer[betChoice.Key]
+                @bigSmall[betChoice.Key]
             </td>
-            <td>
+            <td class="text-right">
                 @betChoice.Value.Format()
             </td>
         </tr>

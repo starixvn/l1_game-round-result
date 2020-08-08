@@ -156,8 +156,20 @@
   <data name="Big" xml:space="preserve">
     <value>Tài</value>
   </data>
+  <data name="Black" xml:space="preserve">
+    <value>Đen</value>
+  </data>
   <data name="Column" xml:space="preserve">
     <value>Cột</value>
+  </data>
+  <data name="Column-1" xml:space="preserve">
+    <value>Cột 1</value>
+  </data>
+  <data name="Column-2" xml:space="preserve">
+    <value>Cột 2</value>
+  </data>
+  <data name="Column-3" xml:space="preserve">
+    <value>Cột 3</value>
   </data>
   <data name="Corner" xml:space="preserve">
     <value>Góc</value>

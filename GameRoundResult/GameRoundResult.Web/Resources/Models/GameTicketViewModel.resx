@@ -147,6 +147,24 @@
   <data name="BetType" xml:space="preserve">
     <value>Bet Type</value>
   </data>
+  <data name="BigSmall" xml:space="preserve">
+    <value>Big/Small</value>
+  </data>
+  <data name="black" xml:space="preserve">
+    <value>black</value>
+  </data>
+  <data name="Column-1" xml:space="preserve">
+    <value>1st Column</value>
+  </data>
+  <data name="Column-2" xml:space="preserve">
+    <value>2nd Column</value>
+  </data>
+  <data name="Column-3" xml:space="preserve">
+    <value>3rd Column</value>
+  </data>
+  <data name="even" xml:space="preserve">
+    <value>even</value>
+  </data>
   <data name="FourNumbers" xml:space="preserve">
     <value>Four Numbers</value>
   </data>
@@ -156,8 +174,20 @@
   <data name="NoDataAvailable" xml:space="preserve">
     <value>No data available</value>
   </data>
+  <data name="odd" xml:space="preserve">
+    <value>odd</value>
+  </data>
+  <data name="OddEven" xml:space="preserve">
+    <value>Odd/Even</value>
+  </data>
   <data name="PlayerPair" xml:space="preserve">
     <value>Player Pair</value>
+  </data>
+  <data name="red" xml:space="preserve">
+    <value>red</value>
+  </data>
+  <data name="RedBlack" xml:space="preserve">
+    <value>Red/Black</value>
   </data>
   <data name="RoundId" xml:space="preserve">
     <value>Round ID</value>

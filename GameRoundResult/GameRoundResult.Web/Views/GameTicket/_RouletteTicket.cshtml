@@ -54,18 +54,15 @@
                 @await Html.PartialAsync("_RouletteBetRow", bet)
             }
             <tr>
-                <td colspan="3"></td>
-                <td class="text-right">@Localizer["Total"]</td>
+                <td colspan="3" class="text-right">@Localizer["Total"]</td>
                 <td class="text-right">@Model.TotalBet.Format()</td>
             </tr>
             <tr>
-                <td colspan="3"></td>
-                <td class="text-right">@Localizer["TotalWin"]</td>
+                <td colspan="3" class="text-right">@Localizer["TotalWin"]</td>
                 <td class="text-right">@Model.BetWin.Format()</td>
             </tr>
             <tr class="total">
-                <td colspan="3"></td>
-                <td class="bold text-right">@Localizer["WinLoss"]</td>
+                <td colspan="3" class="bold text-right">@Localizer["WinLoss"]</td>
                 <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
             </tr>
         }
