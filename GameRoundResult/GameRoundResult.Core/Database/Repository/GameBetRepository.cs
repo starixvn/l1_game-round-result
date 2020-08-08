@@ -46,6 +46,8 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoSouthAsync(long roundId, int memberId);
 
         Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoNorthAsync(long roundId, int memberId);
+
+        Task<(RouletteRound, IEnumerable<RouletteBet>, RouletteOne)> GetRouletteAsync(long roundId, int memberId);
     }
 
     public class GameBetRepository : IGameBetRepository
@@ -226,6 +228,17 @@ namespace GameRoundResult.Core.Database.Repository
 
             return (round, bets, ones?.Betwin);
         }
+
+        public async Task<(RouletteRound, IEnumerable<RouletteBet>, RouletteOne)> GetRouletteAsync(long roundId, int memberId)
+        {
+            var round = await GetRoundAsync<RouletteRound>(roundId, MiniGameRoundCollections.RouletteRound);
+            var ones = (await GetBetsAsync<RouletteOne>(roundId, memberId, MiniGameBetCollections.RouletteOnes)).FirstOrDefault();
+            var bets = await database.GetCollection<RouletteBet>(MiniGameBetCollections.RouletteBet)
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
+
+            return (round, bets, ones);
+        }
+
 
         private async Task<IEnumerable<T>> GetBetsAsync<T>(long roundId, int memberId, string collectionName) where T : BaseBetEntity
         {

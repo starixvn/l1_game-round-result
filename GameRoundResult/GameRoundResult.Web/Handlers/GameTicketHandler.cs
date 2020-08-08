@@ -188,6 +188,17 @@ namespace GameRoundResult.Web.Handlers
                         Bets = kenoNorthResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
                         TotalWin = kenoNorthResult.Item3 ?? 0
                     };
+
+                case GameType.Roulette:
+                    var rouletteResult = await service.GetRouletteAsync(request.RoundId, request.MemberId);
+                    return new RouletteTicketViewModel
+                    {
+                        RoundResult = rouletteResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bets = rouletteResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                        TotalBet = rouletteResult.Item3.TotalAmount,
+                        BetWin = rouletteResult.Item3.Betwin,
+                    };
+
                 default:
                     throw new ArgumentException(nameof(GetGameTicketRequest.GameType));
             }

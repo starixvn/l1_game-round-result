@@ -44,6 +44,8 @@ namespace GameRoundResult.Core.Services
         Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoSouthAsync(long roundId, int memberId);
 
         Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoNorthAsync(long roundId, int memberId);
+
+        Task<(RouletteRound, IEnumerable<RouletteBet>, RouletteOne)> GetRouletteAsync(long roundId, int memberId);
     }
 
     public class GameBetService : IGameBetService
@@ -148,6 +150,11 @@ namespace GameRoundResult.Core.Services
         public async Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoNorthAsync(long roundId, int memberId)
         {
             return await repository.GetKenoNorthAsync(roundId, memberId);
+        }
+
+        public async Task<(RouletteRound, IEnumerable<RouletteBet>, RouletteOne)> GetRouletteAsync(long roundId, int memberId)
+        {
+            return await repository.GetRouletteAsync(roundId, memberId);
         }
     }
 }

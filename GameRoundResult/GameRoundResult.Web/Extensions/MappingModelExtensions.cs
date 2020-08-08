@@ -152,6 +152,12 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
-    
+        public static RouletteBetViewModel ToViewModel(this RouletteBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<RouletteBet, RouletteBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
     }
 }

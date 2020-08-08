@@ -101,5 +101,9 @@
         public const string KenoNorthBet = "kenonorth_cuocs";
                             
         public const string KenoNorthOnes = "kenonorth_ones";
+
+        public const string RouletteBet = "roulette_cuocs";
+
+        public const string RouletteOnes = "roulette_ones";
     }
 }

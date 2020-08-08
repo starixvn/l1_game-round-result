@@ -1,0 +1,107 @@
+﻿@model RouletteBetViewModel
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
+
+@{
+    var rowSpan = 0;
+    Dictionary<string, decimal> firstBetType = null;
+
+    if (Model.StraightUp != null)
+    {
+        rowSpan += Model.StraightUp.Count;
+        firstBetType = Model.StraightUp;
+    }
+
+    if (Model.Split != null)
+    {
+        rowSpan += Model.Split.Count;
+        firstBetType = firstBetType ?? Model.Split;
+    }
+
+    if (Model.Street != null)
+    {
+        rowSpan += Model.Street.Count;
+        firstBetType = firstBetType ?? Model.Street;
+    }
+
+    if (Model.Triangle != null)
+    {
+        rowSpan += Model.Triangle.Count;
+        firstBetType = firstBetType ?? Model.Triangle;
+    }
+
+    if (Model.Corner != null)
+    {
+        rowSpan += Model.Corner.Count;
+        firstBetType = firstBetType ?? Model.Corner;
+    }
+
+    if (Model.FourNumbers != null)
+    {
+        rowSpan += Model.FourNumbers.Count;
+        firstBetType = firstBetType ?? Model.FourNumbers;
+    }
+
+    if (Model.Line != null)
+    {
+        rowSpan += Model.Line.Count;
+        firstBetType = firstBetType ?? Model.Line;
+    }
+
+    if (Model.Column != null)
+    {
+        rowSpan += Model.Column.Count;
+        firstBetType = firstBetType ?? Model.Column;
+    }
+
+    if (Model.Dozen != null)
+    {
+        rowSpan += Model.Dozen.Count;
+        firstBetType = firstBetType ?? Model.Column;
+    }
+
+    if (Model.RedBlack != null)
+    {
+        rowSpan += Model.RedBlack.Count;
+        firstBetType = firstBetType ?? Model.RedBlack;
+    }
+
+    if (Model.OddEven != null)
+    {
+        rowSpan += Model.OddEven.Count;
+        firstBetType = firstBetType ?? Model.RedBlack;
+    }
+
+    if (Model.BigSmall != null)
+    {
+        rowSpan += Model.BigSmall.Count;
+        firstBetType = firstBetType ?? Model.RedBlack;
+    }
+}
+
+<tr>
+    <td rowspan="@rowSpan">
+        @Model.Time.ToString(ViewFormat.TicketDateFormat)
+        <br />
+        @Model.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+    </td>
+    <td>
+        @firstBetType.FirstOrDefault().Key
+    </td>
+    <td>
+        @firstBetType.FirstOrDefault().Value.Format()
+    </td>
+</tr>
+
+@if (firstBetType.Count > 1)
+{
+    foreach (var item in firstBetType.Skip(1))
+    {
+        <td>
+            @item.Key
+        </td>
+        <td>
+            @item.Value.Format()
+        </td>
+    }
+}
+
