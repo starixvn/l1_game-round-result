@@ -51,7 +51,7 @@
         {
             foreach (var bet in Model.Bets)
             {
-                @await Html.PartialAsync("_RouletteBetRow", bet)
+                @await Html.PartialAsync("_RouletteBetRow", new RouletteBetRowViewModel { Bet = bet, SettlementResult = Model.RoundResult.SettlementResult })
             }
             <tr>
                 <td colspan="3" class="text-right">@Localizer["Total"]</td>

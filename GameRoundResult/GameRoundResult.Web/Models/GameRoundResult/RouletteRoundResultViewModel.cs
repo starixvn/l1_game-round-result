@@ -16,6 +16,8 @@ namespace GameRoundResult.Web.Models
 
             return result;
         }
+
+        public RouletteSettlementResultViewModel SettlementResult { get; set; }
     }
 
     public class RouletteSettlementResultViewModel
