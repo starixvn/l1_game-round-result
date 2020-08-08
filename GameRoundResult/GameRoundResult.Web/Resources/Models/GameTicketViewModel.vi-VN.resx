@@ -228,9 +228,6 @@
   <data name="Red" xml:space="preserve">
     <value>Đỏ</value>
   </data>
-  <data name="RedBlack" xml:space="preserve">
-    <value>Đỏ/Đen</value>
-  </data>
   <data name="Refund" xml:space="preserve">
     <value>Trả lại</value>
   </data>

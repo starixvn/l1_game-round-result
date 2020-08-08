@@ -341,7 +341,7 @@
     {
         var winningCssClass = settlementResult.RedBlack.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
         <tr>
-            <td>@Localizer["RedBlack"]</td>
+            <td>@Localizer["Red"]/@Localizer["Black"]</td>
             <td class="@winningCssClass">
                 @Localizer[redBlackResources[betChoice.Key]]
             </td>
@@ -358,7 +358,7 @@
     {
         var winningCssClass = settlementResult.OddEven.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
         <tr>
-            <td>@Localizer["OddEven"]</td>
+            <td>@Localizer["Odd"]/@Localizer["Even"]</td>
             <td class="@winningCssClass">
                 @Localizer[oddEvenResource[betChoice.Key]]
             </td>
@@ -375,7 +375,7 @@
     {
         var winningCssClass = settlementResult.BigSmall.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
         <tr>
-            <td>@Localizer["BigSmall"]</td>
+            <td>@Localizer["Big"]/@Localizer["Small"]</td>
             <td class="@winningCssClass">
                 @bigSmall[betChoice.Key]
             </td>
