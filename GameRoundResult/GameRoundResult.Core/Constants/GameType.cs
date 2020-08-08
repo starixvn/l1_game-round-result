@@ -20,6 +20,7 @@
         KenoEast,
         KenoWest,
         KenoSouth,
-        KenoNorth
+        KenoNorth,
+        Roulette = 21
     }
 }

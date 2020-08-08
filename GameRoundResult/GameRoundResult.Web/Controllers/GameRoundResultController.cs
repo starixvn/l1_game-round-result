@@ -94,6 +94,9 @@ namespace GameRoundResult.Web.Controllers
                 case GameType.KenoProViet:
                     return PartialView("_KenoProVietRoundResult");
 
+                case GameType.Roulette:
+                    return PartialView("_RouletteRoundResult");
+
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
             }

@@ -39,6 +39,9 @@
         public const string KenoSouthRound = "kenosouth_phiens";
 
         public const string KenoNorthRound = "kenonorth_phiens";
+
+        public const string RouletteRound = "roulette_phiens";
+
     }
 
     internal class MiniGameBetCollections

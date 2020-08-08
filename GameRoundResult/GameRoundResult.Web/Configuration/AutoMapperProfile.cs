@@ -83,6 +83,8 @@ namespace GameRoundResult.Web.Configuration
                .ForMember(x => x.IsFire, opt => opt.MapFrom(x => x.SettlementResult.Fire))
                .ForMember(x => x.IsEarth, opt => opt.MapFrom(x => x.SettlementResult.Earth));
 
+            CreateMap<RouletteRound, RouletteRoundResultViewModel>();
+
             CreateMap<BigSmallBet, BigSmallBetViewModel>();
             CreateMap<OddEvenBet, OddEvenBetViewModel>();
             CreateMap<SeDieBet, SeDieBetViewModel>();
@@ -91,7 +93,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<FishPrawnCrabBet, FishPrawnCrabBetViewModel>();
             CreateMap<BaccaratBet, BaccaratBetViewModel>();
             CreateMap<KenoProMaxBet, KenoProMaxBetViewModel>();
-            CreateMap<RNGKenoBet, RNGKEnoBetViewModel>();
+            CreateMap<RNGKenoBet, RNGKenoBetViewModel>();
         }
     }
 }
