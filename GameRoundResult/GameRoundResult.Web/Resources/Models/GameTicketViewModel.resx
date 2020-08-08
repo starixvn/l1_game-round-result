@@ -144,6 +144,12 @@
   <data name="BetTime" xml:space="preserve">
     <value>Bet Time</value>
   </data>
+  <data name="BetType" xml:space="preserve">
+    <value>Bet Type</value>
+  </data>
+  <data name="FourNumbers" xml:space="preserve">
+    <value>Four Numbers</value>
+  </data>
   <data name="GameNotSupported" xml:space="preserve">
     <value>Sorry! The function is currently not supported for this game.</value>
   </data>
@@ -155,6 +161,9 @@
   </data>
   <data name="RoundId" xml:space="preserve">
     <value>Round ID</value>
+  </data>
+  <data name="StraightUp" xml:space="preserve">
+    <value>Straight Up</value>
   </data>
   <data name="TotalWin" xml:space="preserve">
     <value>Total Win</value>

@@ -150,11 +150,23 @@
   <data name="BetTime" xml:space="preserve">
     <value>Thời Gian</value>
   </data>
+  <data name="BetType" xml:space="preserve">
+    <value>Loại Cược</value>
+  </data>
   <data name="Big" xml:space="preserve">
     <value>Tài</value>
   </data>
+  <data name="Column" xml:space="preserve">
+    <value>Cột</value>
+  </data>
+  <data name="Corner" xml:space="preserve">
+    <value>Góc</value>
+  </data>
   <data name="Crab" xml:space="preserve">
     <value>Cua</value>
+  </data>
+  <data name="Dozen" xml:space="preserve">
+    <value>Tá</value>
   </data>
   <data name="Dragon" xml:space="preserve">
     <value>Rồng</value>
@@ -171,6 +183,9 @@
   <data name="Fish" xml:space="preserve">
     <value>Cá</value>
   </data>
+  <data name="FourNumbers" xml:space="preserve">
+    <value>Bộ bốn</value>
+  </data>
   <data name="GameNotSupported" xml:space="preserve">
     <value>Rất tiếc, chức năng này hiện chưa được hỗ trợ.</value>
   </data>
@@ -179,6 +194,9 @@
   </data>
   <data name="Gourd" xml:space="preserve">
     <value>Bầu</value>
+  </data>
+  <data name="Line" xml:space="preserve">
+    <value>2 hàng</value>
   </data>
   <data name="NoDataAvailable" xml:space="preserve">
     <value>Không có dữ liệu</value>
@@ -198,6 +216,9 @@
   <data name="Red" xml:space="preserve">
     <value>Đỏ</value>
   </data>
+  <data name="RedBlack" xml:space="preserve">
+    <value>Đỏ/Đen</value>
+  </data>
   <data name="Refund" xml:space="preserve">
     <value>Trả lại</value>
   </data>
@@ -213,8 +234,17 @@
   <data name="Small" xml:space="preserve">
     <value>Xỉu</value>
   </data>
+  <data name="Split" xml:space="preserve">
+    <value>Đôi</value>
+  </data>
   <data name="Stag" xml:space="preserve">
     <value>Nai</value>
+  </data>
+  <data name="StraightUp" xml:space="preserve">
+    <value>Đơn</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Hàng</value>
   </data>
   <data name="Tie" xml:space="preserve">
     <value>Hòa</value>
@@ -230,6 +260,9 @@
   </data>
   <data name="TotalWin" xml:space="preserve">
     <value>Tổng Thắng</value>
+  </data>
+  <data name="Triangle" xml:space="preserve">
+    <value>Bộ ba</value>
   </data>
   <data name="Water" xml:space="preserve">
     <value>Thủy</value>
