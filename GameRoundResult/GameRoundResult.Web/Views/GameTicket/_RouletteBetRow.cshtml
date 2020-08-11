@@ -153,7 +153,7 @@
 {
     foreach (var betChoice in firstBetType.Skip(1))
     {
-        var winningCssClass = firstSettlementResult.Any(x => x == firstBetType.FirstOrDefault().Key) ? "text-blue" : string.Empty;
+        var winningCssClass = firstSettlementResult.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
         <tr>
             <td>@Localizer[firstBetTypeName]</td>
 
