@@ -2,6 +2,20 @@
 @using GameRoundResult.Core.Constants
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
 
+@{ 
+    var resultColorCssClass = string.Empty;
+
+    if(Model.RoundResult.Result == 0 )
+    {
+        resultColorCssClass = "text-green";
+    }else
+    {
+        if (Roulette.RedNumbers.Any(x => x == Model.RoundResult.Result)
+        {
+            resultColorCssClass = "text-red";
+        }
+    }
+}
 
 <table class="table table-bordered table-baccarat">
     <thead>
@@ -21,7 +35,7 @@
                     @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
                 </td>
                 <td>@Model.RoundResult.Round</td>
-                <td class="bold">
+                <td class="bold @resultColorCssClass">
                     @Model.RoundResult.Result
                 </td>
             </tr>

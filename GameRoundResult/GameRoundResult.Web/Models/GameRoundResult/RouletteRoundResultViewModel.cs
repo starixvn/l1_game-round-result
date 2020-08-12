@@ -1,4 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using GameRoundResult.Core.Constants;
+using GameRoundResult.Web.Extensions;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
@@ -11,10 +15,30 @@ namespace GameRoundResult.Web.Models
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
-               Result.ToString()
+               GetResultString()
             };
 
             return result;
+        }
+
+        private string GetResultString()
+        {
+            var span = new TagBuilder("span");
+            if(Result == 0)
+            {
+                span.AddCssClass("text-green");
+            }
+            else
+            {
+                if(Roulette.RedNumbers.Any(x => x == Result))
+                {
+                    span.AddCssClass("text-red");
+                }
+            }
+
+            span.InnerHtml.Append(Result.ToString());
+
+            return span.GetHtmlString();
         }
 
         public RouletteSettlementResultViewModel SettlementResult { get; set; }

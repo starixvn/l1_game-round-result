@@ -160,6 +160,9 @@ body {
 .text-red {
   color: #b53f39; }
 
+.text-green {
+  color: #28a745; }
+
 .text-capitalize {
   text-transform: capitalize; }
 
