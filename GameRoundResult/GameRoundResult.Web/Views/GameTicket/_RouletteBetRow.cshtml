@@ -139,10 +139,32 @@
     </td>
     <td>@Localizer[firstBetTypeName]</td>
     @{
-        var cssClass = firstSettlementResult.Any(x => x == firstBetType.FirstOrDefault().Key) ? "text-blue" : string.Empty;
+        var firstBetChoice = firstBetType.FirstOrDefault();
+        var cssClass = firstSettlementResult.Any(x => x == firstBetChoice.Key) ? "text-blue" : string.Empty;
+
     }
     <td class="@cssClass">
-        @firstBetType.FirstOrDefault().Key
+        @switch (firstBetTypeName)
+        {
+            case nameof(bet.Dozen):
+                @dozens[firstBetChoice.Key]
+                break;
+            case nameof(bet.RedBlack):
+                @redBlackResources[firstBetChoice.Key]
+                break;
+            case nameof(bet.OddEven):
+                @oddEvenResource[firstBetChoice.Key]
+                break;
+            case nameof(bet.BigSmall):
+                @bigSmall[firstBetChoice.Key]
+                break;
+            case nameof(bet.Column):
+                @Localizer[$"Column-{firstBetChoice.Key}"]
+                break;
+            default:
+                @firstBetChoice.Key.Replace("-", ", ")
+                break;
+        }
     </td>
     <td class="text-right @cssClass">
         @firstBetType.FirstOrDefault().Value.Format()
@@ -158,8 +180,29 @@
             <td>@Localizer[firstBetTypeName]</td>
 
             <td class="@winningCssClass">
-                @betChoice.Key
+                @switch (firstBetTypeName)
+                {
+                    case nameof(bet.Dozen):
+                        @dozens[betChoice.Key]
+                        break;
+                    case nameof(bet.RedBlack):
+                        @redBlackResources[betChoice.Key]
+                        break;
+                    case nameof(bet.OddEven):
+                        @oddEvenResource[betChoice.Key]
+                        break;
+                    case nameof(bet.BigSmall):
+                        @bigSmall[betChoice.Key]
+                        break;
+                    case nameof(bet.Column):
+                        @Localizer[$"Column-{betChoice.Key}"]
+                        break;
+                    default:
+                        @betChoice.Key.Replace("-", ", ")
+                        break;
+                }
             </td>
+
             <td class="text-right @winningCssClass">
                 @betChoice.Value.Format()
             </td>
@@ -256,7 +299,6 @@
     }
 }
 
-
 @if (bet.FourNumbers.Any() && firstBetType != bet.FourNumbers)
 {
     foreach (var betChoice in bet.FourNumbers)
@@ -274,7 +316,6 @@
         </tr>
     }
 }
-
 
 @if (bet.Line.Any() && firstBetType != bet.Line)
 {
@@ -298,7 +339,6 @@
     }
 }
 
-
 @if (bet.Column.Any() && firstBetType != bet.Column)
 {
     foreach (var betChoice in bet.Column)
@@ -308,7 +348,7 @@
         <tr>
             <td>@Localizer["Column"]</td>
             <td class="@winningCssClass">
-                @Localizer[$"column-{betChoice.Key}"]
+                @Localizer[$"Column-{betChoice.Key}"]
             </td>
             <td class="text-right @winningCssClass">
                 @betChoice.Value.Format()
@@ -316,7 +356,6 @@
         </tr>
     }
 }
-
 
 @if (bet.Dozen.Any() && firstBetType != bet.Dozen)
 {
@@ -341,7 +380,7 @@
     {
         var winningCssClass = settlementResult.RedBlack.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
         <tr>
-            <td>@Localizer["Red"]/@Localizer["Black"]</td>
+            <td>@Localizer["RedBlack"]</td>
             <td class="@winningCssClass">
                 @Localizer[redBlackResources[betChoice.Key]]
             </td>
@@ -358,7 +397,7 @@
     {
         var winningCssClass = settlementResult.OddEven.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
         <tr>
-            <td>@Localizer["Odd"]/@Localizer["Even"]</td>
+            <td>@Localizer["OddEven"]</td>
             <td class="@winningCssClass">
                 @Localizer[oddEvenResource[betChoice.Key]]
             </td>
@@ -375,7 +414,7 @@
     {
         var winningCssClass = settlementResult.BigSmall.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
         <tr>
-            <td>@Localizer["Big"]/@Localizer["Small"]</td>
+            <td>@Localizer["BigSmall"]</td>
             <td class="@winningCssClass">
                 @bigSmall[betChoice.Key]
             </td>

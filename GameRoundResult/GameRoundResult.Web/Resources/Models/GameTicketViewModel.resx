@@ -168,8 +168,14 @@
   <data name="NoDataAvailable" xml:space="preserve">
     <value>No data available</value>
   </data>
+  <data name="OddEven" xml:space="preserve">
+    <value>Odd/Even</value>
+  </data>
   <data name="PlayerPair" xml:space="preserve">
     <value>Player Pair</value>
+  </data>
+  <data name="RedBlack" xml:space="preserve">
+    <value>Red/Black</value>
   </data>
   <data name="RoundId" xml:space="preserve">
     <value>Round ID</value>
