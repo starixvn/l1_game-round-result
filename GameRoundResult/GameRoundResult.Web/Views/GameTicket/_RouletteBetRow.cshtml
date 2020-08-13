@@ -5,9 +5,6 @@
     var bet = Model.Bet;
     var settlementResult = Model.SettlementResult;
     var rowSpan = 0;
-    Dictionary<string, decimal> firstBetType = null;
-    string firstBetTypeName = null;
-    IEnumerable<string> firstSettlementResult = null;
 
     var dozens = new Dictionary<string, string>()
 {
@@ -37,390 +34,357 @@
     if (bet.StraightUp.Any())
     {
         rowSpan += bet.StraightUp.Count;
-        firstBetType = bet.StraightUp;
-        firstBetTypeName = nameof(bet.StraightUp);
-        firstSettlementResult = settlementResult.StraightUp;
     }
 
     if (bet.Split.Any())
     {
         rowSpan += bet.Split.Count;
-        firstBetType = firstBetType ?? bet.Split;
-        firstBetTypeName = firstBetTypeName ?? nameof(bet.Split);
-        firstSettlementResult = firstSettlementResult ?? settlementResult.Split;
     }
 
     if (bet.Street.Any())
     {
         rowSpan += bet.Street.Count;
-        firstBetType = firstBetType ?? bet.Street;
-        firstBetTypeName = firstBetTypeName ?? nameof(bet.Street);
-        firstSettlementResult = firstSettlementResult ?? settlementResult.Street;
     }
 
     if (bet.Triangle.Any())
     {
         rowSpan += bet.Triangle.Count;
-        firstBetType = firstBetType ?? bet.Triangle;
-        firstBetTypeName = firstBetTypeName ?? nameof(bet.Triangle);
-        firstSettlementResult = firstSettlementResult ?? settlementResult.Triangle;
     }
 
     if (bet.Corner.Any())
     {
         rowSpan += bet.Corner.Count;
-        firstBetType = firstBetType ?? bet.Corner;
-        firstBetTypeName = firstBetTypeName ?? nameof(bet.Corner);
-        firstSettlementResult = firstSettlementResult ?? settlementResult.Corner;
     }
 
     if (bet.FourNumbers.Any())
     {
         rowSpan += bet.FourNumbers.Count;
-        firstBetType = firstBetType ?? bet.FourNumbers;
-        firstBetTypeName = firstBetTypeName ?? nameof(bet.FourNumbers);
-        firstSettlementResult = firstSettlementResult ?? settlementResult.FourNumbers;
     }
 
     if (bet.Line.Any())
     {
         rowSpan += bet.Line.Count;
-        firstBetType = firstBetType ?? bet.Line;
-        firstBetTypeName = firstBetTypeName ?? nameof(bet.Line);
-        firstSettlementResult = firstSettlementResult ?? settlementResult.Line;
     }
 
     if (bet.Column.Any())
     {
         rowSpan += bet.Column.Count;
-        firstBetType = firstBetType ?? bet.Column;
-        firstBetTypeName = firstBetTypeName ?? nameof(bet.Column);
-        firstSettlementResult = firstSettlementResult ?? settlementResult.Column;
     }
 
     if (bet.Dozen.Any())
     {
         rowSpan += bet.Dozen.Count;
-        firstBetType = firstBetType ?? bet.Dozen;
-        firstBetTypeName = firstBetTypeName ?? nameof(bet.Dozen);
-        firstSettlementResult = firstSettlementResult ?? settlementResult.Dozen;
     }
 
     if (bet.RedBlack.Any())
     {
         rowSpan += bet.RedBlack.Count;
-        firstBetType = firstBetType ?? bet.RedBlack;
-        firstBetTypeName = firstBetTypeName ?? nameof(bet.RedBlack);
-        firstSettlementResult = firstSettlementResult ?? settlementResult.RedBlack;
     }
 
     if (bet.OddEven.Any())
     {
         rowSpan += bet.OddEven.Count;
-        firstBetType = firstBetType ?? bet.OddEven;
-        firstBetTypeName = firstBetTypeName ?? nameof(bet.OddEven);
-        firstSettlementResult = firstSettlementResult ?? settlementResult.OddEven;
     }
 
     if (bet.BigSmall.Any())
     {
         rowSpan += bet.BigSmall.Count;
-        firstBetType = firstBetType ?? bet.BigSmall;
-        firstBetTypeName = firstBetTypeName ?? nameof(bet.BigSmall);
-        firstSettlementResult = firstSettlementResult ?? settlementResult.BigSmall;
     }
+
+    var renderDate = true;
 }
 
-<tr>
-    <td rowspan="@rowSpan">
-        @bet.Time.ToString(ViewFormat.TicketDateFormat)
-        <br />
-        @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
-    </td>
-    <td>@Localizer[firstBetTypeName]</td>
-    @{
-        var firstBetChoice = firstBetType.FirstOrDefault();
-        var cssClass = firstSettlementResult.Any(x => x == firstBetChoice.Key) ? "text-blue" : string.Empty;
 
-    }
-    <td class="@cssClass">
-        @switch (firstBetTypeName)
+
+@foreach (var betChoice in bet.StraightUp)
+{
+    var winningCssClass = settlementResult.StraightUp.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
+    <tr>
+        @if (renderDate)
         {
-            case nameof(bet.Dozen):
-                @dozens[firstBetChoice.Key]
-                break;
-            case nameof(bet.RedBlack):
-                @redBlackResources[firstBetChoice.Key]
-                break;
-            case nameof(bet.OddEven):
-                @oddEvenResource[firstBetChoice.Key]
-                break;
-            case nameof(bet.BigSmall):
-                @bigSmall[firstBetChoice.Key]
-                break;
-            case nameof(bet.Column):
-                @Localizer[$"Column-{firstBetChoice.Key}"]
-                break;
-            default:
-                @firstBetChoice.Key.Replace("-", ", ")
-                break;
+            renderDate = false;
+            <td rowspan="@rowSpan">
+                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                <br />
+                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+            </td>
         }
-    </td>
-    <td class="text-right @cssClass">
-        @firstBetType.FirstOrDefault().Value.Format()
-    </td>
-</tr>
-
-@if (firstBetType.Count > 1)
-{
-    foreach (var betChoice in firstBetType.Skip(1))
-    {
-        var winningCssClass = firstSettlementResult.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
-        <tr>
-            <td>@Localizer[firstBetTypeName]</td>
-
-            <td class="@winningCssClass">
-                @switch (firstBetTypeName)
-                {
-                    case nameof(bet.Dozen):
-                        @dozens[betChoice.Key]
-                        break;
-                    case nameof(bet.RedBlack):
-                        @redBlackResources[betChoice.Key]
-                        break;
-                    case nameof(bet.OddEven):
-                        @oddEvenResource[betChoice.Key]
-                        break;
-                    case nameof(bet.BigSmall):
-                        @bigSmall[betChoice.Key]
-                        break;
-                    case nameof(bet.Column):
-                        @Localizer[$"Column-{betChoice.Key}"]
-                        break;
-                    default:
-                        @betChoice.Key.Replace("-", ", ")
-                        break;
-                }
-            </td>
-
-            <td class="text-right @winningCssClass">
-                @betChoice.Value.Format()
-            </td>
-        </tr>
-
-    }
+        <td>@Localizer["StraightUp"]</td>
+        <td class="@winningCssClass">
+            @betChoice.Key
+        </td>
+        <td class="text-right @winningCssClass">
+            @betChoice.Value.Format()
+        </td>
+    </tr>
 }
 
-@if (bet.StraightUp.Any() && firstBetType != bet.StraightUp)
+
+@foreach (var betChoice in bet.Split)
 {
-    foreach (var betChoice in bet.StraightUp)
-    {
-        var winningCssClass = settlementResult.StraightUp.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
-        <tr>
-            <td>@Localizer["StraightUp"]</td>
-            <td class="@winningCssClass">
-                @betChoice.Key
+    var winningCssClass = settlementResult.Split.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
+    <tr>
+        @if (renderDate)
+        {
+            renderDate = false;
+            <td rowspan="@rowSpan">
+                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                <br />
+                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
             </td>
-            <td class="text-right @winningCssClass">
-                @betChoice.Value.Format()
-            </td>
-        </tr>
-    }
+        }
+        <td>@Localizer["Split"]</td>
+        <td class="@winningCssClass">
+            @betChoice.Key.Replace("-", ", ")
+        </td>
+        <td class="text-right @winningCssClass">
+            @betChoice.Value.Format()
+        </td>
+    </tr>
 }
 
-@if (bet.Split.Any() && firstBetType != bet.Split)
+
+@foreach (var betChoice in bet.Street)
 {
-    foreach (var betChoice in bet.Split)
-    {
-        var winningCssClass = settlementResult.Split.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
-        <tr>
-            <td>@Localizer["Split"]</td>
-            <td class="@winningCssClass">
-                @betChoice.Key.Replace("-", ", ")
+    var winningCssClass = settlementResult.Street.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
+
+    <tr>
+        @if (renderDate)
+        {
+            renderDate = false;
+            <td rowspan="@rowSpan">
+                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                <br />
+                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
             </td>
-            <td class="text-right @winningCssClass">
-                @betChoice.Value.Format()
-            </td>
-        </tr>
-    }
+        }
+        <td>@Localizer["Street"]</td>
+        <td class="@winningCssClass">
+            @betChoice.Key.Replace("-", ", ")
+        </td>
+        <td class="text-right @winningCssClass">
+            @betChoice.Value.Format()
+        </td>
+    </tr>
 }
 
-@if (bet.Street.Any() && firstBetType != bet.Street)
-{
-    foreach (var betChoice in bet.Street)
-    {
-        var winningCssClass = settlementResult.Street.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
 
-        <tr>
-            <td>@Localizer["Street"]</td>
-            <td class="@winningCssClass">
-                @betChoice.Key.Replace("-", ", ")
+@foreach (var betChoice in bet.Triangle)
+{
+    var winningCssClass = settlementResult.Triangle.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
+
+    <tr>
+        @if (renderDate)
+        {
+            renderDate = false;
+            <td rowspan="@rowSpan">
+                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                <br />
+                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
             </td>
-            <td class="text-right @winningCssClass">
-                @betChoice.Value.Format()
-            </td>
-        </tr>
-    }
+        }
+        <td>@Localizer["Triangle"]</td>
+        <td class="@winningCssClass">
+            @betChoice.Key.Replace("-", ", ")
+        </td>
+        <td class="text-right @winningCssClass">
+            @betChoice.Value.Format()
+        </td>
+    </tr>
 }
 
-@if (bet.Triangle.Any() && firstBetType != bet.Triangle)
-{
-    foreach (var betChoice in bet.Triangle)
-    {
-        var winningCssClass = settlementResult.Triangle.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
 
-        <tr>
-            <td>@Localizer["Triangle"]</td>
-            <td class="@winningCssClass">
-                @betChoice.Key.Replace("-", ", ")
+@foreach (var betChoice in bet.Corner)
+{
+    var winningCssClass = settlementResult.Corner.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
+
+    <tr>
+        @if (renderDate)
+        {
+            renderDate = false;
+            <td rowspan="@rowSpan">
+                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                <br />
+                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
             </td>
-            <td class="text-right @winningCssClass">
-                @betChoice.Value.Format()
-            </td>
-        </tr>
-    }
+        }
+        <td>@Localizer["Corner"]</td>
+        <td class="@winningCssClass">
+            @betChoice.Key.Replace("-", ", ")
+        </td>
+        <td class="text-right @winningCssClass">
+            @betChoice.Value.Format()
+        </td>
+    </tr>
 }
 
-@if (bet.Corner.Any() && firstBetType != bet.Corner)
-{
-    foreach (var betChoice in bet.Corner)
-    {
-        var winningCssClass = settlementResult.Corner.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
 
-        <tr>
-            <td>@Localizer["Corner"]</td>
-            <td class="@winningCssClass">
-                @betChoice.Key.Replace("-", ", ")
+@foreach (var betChoice in bet.FourNumbers)
+{
+    var winningCssClass = settlementResult.FourNumbers.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
+
+    <tr>
+        @if (renderDate)
+        {
+            renderDate = false;
+            <td rowspan="@rowSpan">
+                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                <br />
+                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
             </td>
-            <td class="text-right @winningCssClass">
-                @betChoice.Value.Format()
-            </td>
-        </tr>
-    }
+        }
+        <td>@Localizer["FourNumbers"]</td>
+        <td class="@winningCssClass">
+            @betChoice.Key.Replace("-", ", ")
+        </td>
+        <td class="text-right @winningCssClass">
+            @betChoice.Value.Format()
+        </td>
+    </tr>
 }
 
-@if (bet.FourNumbers.Any() && firstBetType != bet.FourNumbers)
-{
-    foreach (var betChoice in bet.FourNumbers)
-    {
-        var winningCssClass = settlementResult.FourNumbers.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
 
-        <tr>
-            <td>@Localizer["FourNumbers"]</td>
-            <td class="@winningCssClass">
-                @betChoice.Key.Replace("-", ", ")
+@foreach (var betChoice in bet.Line)
+{
+    var winningCssClass = settlementResult.Line.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
+
+    <tr>
+        @if (renderDate)
+        {
+            renderDate = false;
+            <td rowspan="@rowSpan">
+                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                <br />
+                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
             </td>
-            <td class="text-right @winningCssClass">
-                @betChoice.Value.Format()
-            </td>
-        </tr>
-    }
+        }
+        <td>@Localizer["Line"]</td>
+        <td class="@winningCssClass">
+            @{
+                var splits = betChoice.Key.Split('-');
+            }
+            <div>@splits[0], @splits[1], @splits[2]</div>
+            <div>@splits[3], @splits[4], @splits[5]</div>
+        </td>
+        <td class="text-right @winningCssClass">
+            @betChoice.Value.Format()
+        </td>
+    </tr>
 }
 
-@if (bet.Line.Any() && firstBetType != bet.Line)
+@foreach (var betChoice in bet.Column)
 {
-    foreach (var betChoice in bet.Line)
-    {
-        var winningCssClass = settlementResult.Line.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
+    var winningCssClass = settlementResult.Column.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
 
-        <tr>
-            <td>@Localizer["Line"]</td>
-            <td class="@winningCssClass">
-                @{
-                    var splits = betChoice.Key.Split('-');
-                }
-                <div>@splits[0], @splits[1], @splits[2]</div>
-                <div>@splits[3], @splits[4], @splits[5]</div>
+    <tr>
+        @if (renderDate)
+        {
+            renderDate = false;
+            <td rowspan="@rowSpan">
+                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                <br />
+                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
             </td>
-            <td class="text-right @winningCssClass">
-                @betChoice.Value.Format()
-            </td>
-        </tr>
-    }
+        }
+        <td>@Localizer["Column"]</td>
+        <td class="@winningCssClass">
+            @Localizer[$"Column-{betChoice.Key}"]
+        </td>
+        <td class="text-right @winningCssClass">
+            @betChoice.Value.Format()
+        </td>
+    </tr>
 }
 
-@if (bet.Column.Any() && firstBetType != bet.Column)
+@foreach (var betChoice in bet.Dozen)
 {
-    foreach (var betChoice in bet.Column)
-    {
-        var winningCssClass = settlementResult.Column.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
-
-        <tr>
-            <td>@Localizer["Column"]</td>
-            <td class="@winningCssClass">
-                @Localizer[$"Column-{betChoice.Key}"]
+    var winningCssClass = settlementResult.Dozen.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
+    <tr>
+        @if (renderDate)
+        {
+            renderDate = false;
+            <td rowspan="@rowSpan">
+                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                <br />
+                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
             </td>
-            <td class="text-right @winningCssClass">
-                @betChoice.Value.Format()
-            </td>
-        </tr>
-    }
+        }
+        <td>@Localizer["Dozen"]</td>
+        <td class="@winningCssClass">
+            @dozens[betChoice.Key]
+        </td>
+        <td class="text-right @winningCssClass">
+            @betChoice.Value.Format()
+        </td>
+    </tr>
 }
 
-@if (bet.Dozen.Any() && firstBetType != bet.Dozen)
+@foreach (var betChoice in bet.RedBlack)
 {
-    foreach (var betChoice in bet.Dozen)
-    {
-        var winningCssClass = settlementResult.Dozen.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
-        <tr>
-            <td>@Localizer["Dozen"]</td>
-            <td class="@winningCssClass">
-                @dozens[betChoice.Key]
+    var winningCssClass = settlementResult.RedBlack.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
+    <tr>
+        @if (renderDate)
+        {
+            renderDate = false;
+            <td rowspan="@rowSpan">
+                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                <br />
+                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
             </td>
-            <td class="text-right @winningCssClass">
-                @betChoice.Value.Format()
-            </td>
-        </tr>
-    }
+        }
+        <td>@Localizer["RedBlack"]</td>
+        <td class="@winningCssClass">
+            @Localizer[redBlackResources[betChoice.Key]]
+        </td>
+        <td class="text-right @winningCssClass">
+            @betChoice.Value.Format()
+        </td>
+    </tr>
 }
 
-@if (bet.RedBlack.Any() && firstBetType != bet.RedBlack)
+
+@foreach (var betChoice in bet.OddEven)
 {
-    foreach (var betChoice in bet.RedBlack)
-    {
-        var winningCssClass = settlementResult.RedBlack.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
-        <tr>
-            <td>@Localizer["RedBlack"]</td>
-            <td class="@winningCssClass">
-                @Localizer[redBlackResources[betChoice.Key]]
+    var winningCssClass = settlementResult.OddEven.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
+    <tr>
+        @if (renderDate)
+        {
+            renderDate = false;
+            <td rowspan="@rowSpan">
+                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                <br />
+                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
             </td>
-            <td class="text-right @winningCssClass">
-                @betChoice.Value.Format()
-            </td>
-        </tr>
-    }
+        }
+        <td>@Localizer["OddEven"]</td>
+        <td class="@winningCssClass">
+            @Localizer[oddEvenResource[betChoice.Key]]
+        </td>
+        <td class="text-right @winningCssClass">
+            @betChoice.Value.Format()
+        </td>
+    </tr>
 }
 
-@if (bet.OddEven.Any() && firstBetType != bet.OddEven)
+@foreach (var betChoice in bet.BigSmall)
 {
-    foreach (var betChoice in bet.OddEven)
-    {
-        var winningCssClass = settlementResult.OddEven.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
-        <tr>
-            <td>@Localizer["OddEven"]</td>
-            <td class="@winningCssClass">
-                @Localizer[oddEvenResource[betChoice.Key]]
+    var winningCssClass = settlementResult.BigSmall.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
+    <tr>
+        @if (renderDate)
+        {
+            renderDate = false;
+            <td rowspan="@rowSpan">
+                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                <br />
+                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
             </td>
-            <td class="text-right @winningCssClass">
-                @betChoice.Value.Format()
-            </td>
-        </tr>
-    }
-}
-
-@if (bet.BigSmall.Any() && firstBetType != bet.BigSmall)
-{
-    foreach (var betChoice in bet.BigSmall)
-    {
-        var winningCssClass = settlementResult.BigSmall.Any(x => x == betChoice.Key) ? "text-blue" : string.Empty;
-        <tr>
-            <td>@Localizer["BigSmall"]</td>
-            <td class="@winningCssClass">
-                @bigSmall[betChoice.Key]
-            </td>
-            <td class="text-right @winningCssClass">
-                @betChoice.Value.Format()
-            </td>
-        </tr>
-    }
+        }
+        <td>@Localizer["BigSmall"]</td>
+        <td class="@winningCssClass">
+            @bigSmall[betChoice.Key]
+        </td>
+        <td class="text-right @winningCssClass">
+            @betChoice.Value.Format()
+        </td>
+    </tr>
 }
