@@ -24,7 +24,9 @@ namespace GameRoundResult.Web.Models
         private string GetResultString()
         {
             var span = new TagBuilder("span");
-            if(Result == 0)
+            span.AddCssClass("bold");
+
+            if (Result == 0)
             {
                 span.AddCssClass("text-green");
             }
