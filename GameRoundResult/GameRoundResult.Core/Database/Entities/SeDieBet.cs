@@ -4,10 +4,8 @@ namespace GameRoundResult.Core.Database.Entities
 {
     public class SeDieBet : BaseBetEntity
     {
-        [BsonElement("le")]
         public decimal Odd { get; set; }
 
-        [BsonElement("chan")]
         public decimal Even { get; set; }
 
         [BsonElement("red3")]
@@ -21,5 +19,13 @@ namespace GameRoundResult.Core.Database.Entities
 
         [BsonElement("white4")]
         public decimal FourWhite { get; set; }
+
+        [BsonElement("le")]
+        public decimal OldOdd { get; set; }
+
+        [BsonElement("chan")]
+        public decimal OldEven { get; set; }
+
+        public bool FreeBet { get; set; }
     }
 }
