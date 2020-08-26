@@ -32,5 +32,7 @@ namespace GameRoundResult.Web.Models
         public decimal FourWhite { get; set; }
 
         public decimal BetWin { get; set; }
+
+        public bool FreeBet { get; set; }
     }
 }

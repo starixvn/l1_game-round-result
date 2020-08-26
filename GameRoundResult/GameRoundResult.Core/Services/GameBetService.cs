@@ -15,7 +15,7 @@ namespace GameRoundResult.Core.Services
 
         Task<(OddEvenRound, IEnumerable<OddEvenBet>)> GetOddEvenTurboAsync(long roundId, int memberId);
 
-        Task<(SeDieRound, SeDieBet)> GetSeDieAsync(long roundId, int memberId);
+        Task<(SeDieRound, SeDieBet)> GetSeDieAsync(long roundId, int memberId, bool freeBet);
 
         Task<(MiniSeDieRound, MiniSeDieBet)> GetMiniSeDieAsync(long roundId, int memberId);
 
@@ -77,9 +77,9 @@ namespace GameRoundResult.Core.Services
             return await repository.GetOddEvenTurboAsync(roundId, memberId);
         }
 
-        public async Task<(SeDieRound, SeDieBet)> GetSeDieAsync(long roundId, int memberId)
+        public async Task<(SeDieRound, SeDieBet)> GetSeDieAsync(long roundId, int memberId, bool freeBet)
         {
-            return await repository.GetSeDieAsync(roundId, memberId);
+            return await repository.GetSeDieAsync(roundId, memberId, freeBet);
         }
 
         public async Task<(MiniSeDieRound, MiniSeDieBet)> GetMiniSeDieAsync(long roundId, int memberId)

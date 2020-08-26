@@ -26,6 +26,7 @@ namespace GameRoundResult.Core.Database.Entities
         [BsonElement("chan")]
         public decimal OldEven { get; set; }
 
-        public bool FreeBet { get; set; }
+        [BsonDefaultValue(false)]
+        public bool? FreeBet { get; set; }
     }
 }

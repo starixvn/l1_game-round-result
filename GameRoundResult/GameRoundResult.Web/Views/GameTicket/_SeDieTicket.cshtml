@@ -108,7 +108,7 @@
 
             <tr>
                 <td class="text-right">@Localizer["Total"]</td>
-                <td class="text-right">@Model.TotalBet.Format()</td>
+                <td class="text-right">@Model.TotalBet.Format() @(Model.Bet.FreeBet ? "(Scoin)": string.Empty)</td>
             </tr>
             <tr>
                 <td class="text-right">@Localizer["TotalWin"]</td>

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text.Encodings.Web;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
@@ -33,7 +30,7 @@ namespace GameRoundResult.Web.Models
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
-               GetResultContent(stringLocalizer),
+               GetResultContent(),
                Total.ToString(),
                GetBigSmallContent(stringLocalizer),
                GetOddEvenContent(stringLocalizer),
@@ -43,7 +40,7 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        private string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetResultContent()
         {
             var stringContents = new List<string>();
 

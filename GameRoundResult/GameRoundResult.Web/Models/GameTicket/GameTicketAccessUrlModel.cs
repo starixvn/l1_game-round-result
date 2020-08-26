@@ -17,6 +17,8 @@ namespace GameRoundResult.Web.Models
         public int ObCustId { get; set; }
 
         public string Language { get; set; }
+
+        public bool FreeBet { get; set; }
     }
 
     public class AuthModel
