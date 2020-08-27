@@ -106,6 +106,10 @@ namespace GameRoundResult.Web.Handlers
                     var kenoNorthResult = await gameRoundResultService.GetKenoNorthRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
                     return (kenoNorthResult.Item1, kenoNorthResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)));
 
+                case GameType.Roulette:
+                    var rouletteResult = await gameRoundResultService.GetRouletteRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
+                    return (rouletteResult.Item1, rouletteResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)));
+
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
             }

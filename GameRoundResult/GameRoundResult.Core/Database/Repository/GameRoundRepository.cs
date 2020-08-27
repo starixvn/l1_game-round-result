@@ -48,6 +48,8 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(long, IEnumerable<KenoRound>)> GetKenoSouthRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
         Task<(long, IEnumerable<KenoRound>)> GetKenoNorthRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<RouletteRound>)> GetRouletteRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
     }
 
     public class GameRoundRepository : IGameRoundRepository
@@ -170,6 +172,11 @@ namespace GameRoundResult.Core.Database.Repository
             var total = await cursor.CountDocumentsAsync();
             var data = await cursor.SortByDescending(x => x.Time).Skip(page).Limit(pageSize).ToListAsync();
             return (total, data);
+        }
+
+        public async Task<(long, IEnumerable<RouletteRound>)> GetRouletteRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await GetRoundResultAsync<RouletteRound>(date, roundId, MiniGameRoundCollections.RouletteRound, page, pageSize);
         }
     }
 }

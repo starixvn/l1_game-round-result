@@ -144,17 +144,44 @@
   <data name="BetTime" xml:space="preserve">
     <value>Bet Time</value>
   </data>
+  <data name="BetType" xml:space="preserve">
+    <value>Bet Type</value>
+  </data>
+  <data name="BigSmall" xml:space="preserve">
+    <value>Big/Small</value>
+  </data>
+  <data name="Column-1" xml:space="preserve">
+    <value>1st Column</value>
+  </data>
+  <data name="Column-2" xml:space="preserve">
+    <value>2nd Column</value>
+  </data>
+  <data name="Column-3" xml:space="preserve">
+    <value>3rd Column</value>
+  </data>
+  <data name="FourNumbers" xml:space="preserve">
+    <value>Four Numbers</value>
+  </data>
   <data name="GameNotSupported" xml:space="preserve">
     <value>Sorry! The function is currently not supported for this game.</value>
   </data>
   <data name="NoDataAvailable" xml:space="preserve">
     <value>No data available</value>
   </data>
+  <data name="OddEven" xml:space="preserve">
+    <value>Odd/Even</value>
+  </data>
   <data name="PlayerPair" xml:space="preserve">
     <value>Player Pair</value>
   </data>
+  <data name="RedBlack" xml:space="preserve">
+    <value>Red/Black</value>
+  </data>
   <data name="RoundId" xml:space="preserve">
     <value>Round ID</value>
+  </data>
+  <data name="StraightUp" xml:space="preserve">
+    <value>Straight Up</value>
   </data>
   <data name="TotalWin" xml:space="preserve">
     <value>Total Win</value>
