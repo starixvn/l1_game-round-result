@@ -42,6 +42,7 @@
 
         public const string RouletteRound = "roulette_phiens";
 
+        public const string VipSeDieRound = "vipsedie_phiens";
     }
 
     internal class MiniGameBetCollections
@@ -105,5 +106,9 @@
         public const string RouletteBet = "roulette_cuocs";
 
         public const string RouletteOnes = "roulette_ones";
+
+        public const string VipSeDieOnes = "vipsedie_ones";
+
+        public const string VipSeDieBet = "vipsedie_cuocs";
     }
 }

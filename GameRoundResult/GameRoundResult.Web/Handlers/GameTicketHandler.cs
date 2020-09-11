@@ -199,6 +199,14 @@ namespace GameRoundResult.Web.Handlers
                         BetWin = rouletteResult.Item3?.Betwin ?? 0,
                     };
 
+                case GameType.VipSeDie:
+                    var vipSeDieResult = await service.GetVipSeDieAsync(request.RoundId, request.MemberId);
+                    return new VipSeDieTicketViewModel
+                    {
+                        RoundResult = vipSeDieResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bets = vipSeDieResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                        BetWin = vipSeDieResult.Item3?.Betwin ?? 0,
+                    };
                 default:
                     throw new ArgumentException(nameof(GetGameTicketRequest.GameType));
             }

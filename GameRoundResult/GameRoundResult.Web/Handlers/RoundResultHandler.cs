@@ -110,6 +110,10 @@ namespace GameRoundResult.Web.Handlers
                     var rouletteResult = await gameRoundResultService.GetRouletteRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
                     return (rouletteResult.Item1, rouletteResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)));
 
+                case GameType.VipSeDie:
+                    var vipSeDieResult = await gameRoundResultService.GetVipSeDieRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
+                    return (vipSeDieResult.Item1, vipSeDieResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)));
+
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
             }

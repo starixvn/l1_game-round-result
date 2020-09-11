@@ -51,6 +51,8 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoNorthAsync(long roundId, int memberId);
 
         Task<(RouletteRound, IEnumerable<RouletteBet>, RouletteOne)> GetRouletteAsync(long roundId, int memberId);
+
+        Task<(VipSeDieRound, IEnumerable<VipSeDieBet>, VipSeDieOne)> GetVipSeDieAsync(long roundId, int memberId);
     }
 
     public class GameBetRepository : IGameBetRepository
@@ -242,6 +244,15 @@ namespace GameRoundResult.Core.Database.Repository
             return (round, bets, ones);
         }
 
+        public async Task<(VipSeDieRound, IEnumerable<VipSeDieBet>, VipSeDieOne)> GetVipSeDieAsync(long roundId, int memberId)
+        {
+            var round = await GetRoundAsync<VipSeDieRound>(roundId, MiniGameRoundCollections.VipSeDieRound);
+            var ones = (await GetBetsAsync<VipSeDieOne>(roundId, memberId, MiniGameBetCollections.VipSeDieOnes)).FirstOrDefault();
+            var bets = await database.GetCollection<VipSeDieBet>(MiniGameBetCollections.VipSeDieBet)
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
+
+            return (round, bets, ones);
+        }
 
         private async Task<IEnumerable<T>> GetBetsAsync<T>(long roundId, int memberId, string collectionName, Expression<Func<T, bool>> filter = null) where T : BaseBetEntity
         {
