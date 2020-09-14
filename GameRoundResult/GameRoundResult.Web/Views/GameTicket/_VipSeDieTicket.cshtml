@@ -87,11 +87,11 @@
                 </tr>
             }
 
-            if (Model.Bet.TwoRed > 0)
+            if (Model.Bet.FourRed > 0)
             {
                 <tr>
-                    <td>@Localizer["2Red"]</td>
-                    <td class="text-right">@Model.Bet.TwoRed.Format()</td>
+                    <td>@Localizer["4Red"]</td>
+                    <td class="text-right">@Model.Bet.FourRed.Format()</td>
                 </tr>
             }
 
@@ -102,13 +102,15 @@
                     <td class="text-right">@Model.Bet.ThreeRed.Format()</td>
                 </tr>
             }
-            if (Model.Bet.FourRed > 0)
+
+            if (Model.Bet.TwoRed > 0)
             {
                 <tr>
-                    <td>@Localizer["4Red"]</td>
-                    <td class="text-right">@Model.Bet.FourRed.Format()</td>
+                    <td>@Localizer["2Red"]</td>
+                    <td class="text-right">@Model.Bet.TwoRed.Format()</td>
                 </tr>
             }
+
             if (Model.Bet.ThreeWhite > 0)
             {
                 <tr>
