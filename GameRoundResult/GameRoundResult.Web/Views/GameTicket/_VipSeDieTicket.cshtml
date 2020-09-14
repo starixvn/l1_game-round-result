@@ -2,7 +2,7 @@
 
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
 
-@{ 
+@{
     var betChoiceDictionary = new Dictionary<string, string>
 {
         { "odd", "Odd" },
@@ -70,15 +70,74 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.Bets.Any())
+        @if (Model.Bet != null && Model.RoundResult != null)
         {
-            foreach(var bet in Model.Bets)
+            if (Model.Bet.Even > 0)
             {
                 <tr>
-                    <td>@Localizer[betChoiceDictionary[bet.Choice]]</td>
-                    <td>@bet.Amount.Format()</td>
+                    <td>@Localizer["Even"]</td>
+                    <td class="text-right">@Model.Bet.Even.Format()</td>
                 </tr>
             }
+            if (Model.Bet.Odd > 0)
+            {
+                <tr>
+                    <td>@Localizer["Odd"]</td>
+                    <td class="text-right">@Model.Bet.Odd.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.TwoRed > 0)
+            {
+                <tr>
+                    <td>@Localizer["2Red"]</td>
+                    <td class="text-right">@Model.Bet.TwoRed.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.ThreeRed > 0)
+            {
+                <tr>
+                    <td>@Localizer["3Red"]</td>
+                    <td class="text-right">@Model.Bet.ThreeRed.Format()</td>
+                </tr>
+            }
+            if (Model.Bet.FourRed > 0)
+            {
+                <tr>
+                    <td>@Localizer["4Red"]</td>
+                    <td class="text-right">@Model.Bet.FourRed.Format()</td>
+                </tr>
+            }
+            if (Model.Bet.ThreeWhite > 0)
+            {
+                <tr>
+                    <td>@Localizer["1Red"]</td>
+                    <td class="text-right">@Model.Bet.ThreeWhite.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.FourWhite > 0)
+            {
+                <tr>
+                    <td>@Localizer["4White"]</td>
+                    <td class="text-right">@Model.Bet.FourWhite.Format()</td>
+                </tr>
+            }
+
+            <tr>
+                <td class="text-right">@Localizer["Total"]</td>
+                <td class="text-right">@Model.TotalBet.Format()</td>
+            </tr>
+            <tr>
+                <td class="text-right">@Localizer["TotalWin"]</td>
+                <td class="text-right">@Model.Bet.BetWin.Format()</td>
+            </tr>
+
+            <tr class="total">
+                <td class="bold text-right">@Localizer["WinLoss"]</td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+            </tr>
         }
         else
         {

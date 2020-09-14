@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace GameRoundResult.Web.Models
 {
@@ -8,21 +6,31 @@ namespace GameRoundResult.Web.Models
     {
         public VipSeDieRoundResultViewModel RoundResult { get; set; }
 
-        public IEnumerable<VipSeDieBetViewModel> Bets { get; set; }
+        public VipSeDieBetViewModel Bet { get; set; }
 
-        public decimal TotalBet => Bets.Sum(x => x.Amount);
+        public decimal TotalBet => Bet.Odd + Bet.Even + Bet.TwoRed + Bet.ThreeRed + Bet.FourRed + Bet.ThreeWhite + Bet.FourWhite;
 
-        public decimal BetWin { get; set; }
-
-        public decimal WinLoss => BetWin - TotalBet;
+        public decimal WinLoss => Bet.BetWin - TotalBet;
     }
 
     public class VipSeDieBetViewModel
     {
         public DateTime Time { get; set; }
 
-        public string Choice { get; set; }
+        public decimal Odd { get; set; }
 
-        public decimal Amount { get; set; }
+        public decimal Even { get; set; }
+
+        public decimal TwoRed { get; set; }
+
+        public decimal ThreeRed { get; set; }
+
+        public decimal FourRed { get; set; }
+
+        public decimal ThreeWhite { get; set; }
+
+        public decimal FourWhite { get; set; }
+
+        public decimal BetWin { get; set; }
     }
 }

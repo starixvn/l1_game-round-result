@@ -204,8 +204,7 @@ namespace GameRoundResult.Web.Handlers
                     return new VipSeDieTicketViewModel
                     {
                         RoundResult = vipSeDieResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
-                        Bets = vipSeDieResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
-                        BetWin = vipSeDieResult.Item3?.Betwin ?? 0,
+                        Bet = vipSeDieResult.Item2.ToViewModel(mapper, request.TimeZoneInfo),
                     };
                 default:
                     throw new ArgumentException(nameof(GetGameTicketRequest.GameType));
