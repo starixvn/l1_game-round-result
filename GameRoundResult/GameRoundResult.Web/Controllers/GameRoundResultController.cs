@@ -30,6 +30,7 @@ namespace GameRoundResult.Web.Controllers
         private readonly ITimeLimitedDataProtector dataProtector;
         private const string dataProtectorKey = "game-round-result-data-key";
         private const int dataProtectorLifeTimeSecond = 10;
+        public const int dataCacheDuration = 15;
 
         public GameRoundResultController(IMediator mediator,
             GameTypeLocalization gameTypeLocalization,
@@ -105,8 +106,9 @@ namespace GameRoundResult.Web.Controllers
             }
         }
 
-        [ResponseCache(Duration = 15, VaryByQueryKeys = new[] { "start", "length", "gameType", "roundId", "userTimeZone", "date" })]
-        public async Task<IActionResult> GetData(int start, int length, GameType gameType, long roundId, string userTimeZone, DateTime date, [FromServices] IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        [ResponseCache(Duration = dataCacheDuration, VaryByQueryKeys = new[] { "start", "length", "gameType", "roundId", "userTimeZone", "date" })]
+        public async Task<IActionResult> GetData(int start, int length, GameType gameType, long roundId, string userTimeZone, DateTime date, 
+            [FromServices] IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var clientTimeZone = User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.TimeZone)?.Value;
             var timeZoneInfo = string.IsNullOrWhiteSpace(clientTimeZone) ?

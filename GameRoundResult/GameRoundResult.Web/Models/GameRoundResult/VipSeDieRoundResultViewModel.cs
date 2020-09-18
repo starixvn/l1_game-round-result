@@ -12,7 +12,7 @@ namespace GameRoundResult.Web.Models
 
         public int TotalRed => RedChips.Count(x => x);
 
-        public bool IsEven => TotalRed % 2 == 0;
+        public bool IsEven { get; set; }
 
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
@@ -24,6 +24,8 @@ namespace GameRoundResult.Web.Models
 
             return result;
         }
+
+        private const int maxChips = 4;
 
         private string GetChipContent()
         {
@@ -64,7 +66,7 @@ namespace GameRoundResult.Web.Models
                 tagBuilder.InnerHtml.Append(stringLocalizer["Odd"]);
             }
 
-            tagBuilder.InnerHtml.Append($", {(TotalRed > 0 ? stringLocalizer["{0} red", TotalRed] : stringLocalizer["{0} white", 4])}");
+            tagBuilder.InnerHtml.Append($", {(TotalRed > 0 ? stringLocalizer["{0} red", TotalRed] : stringLocalizer["{0} white", maxChips])}");
             return tagBuilder.GetHtmlString();
         }
     }

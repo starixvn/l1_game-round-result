@@ -102,6 +102,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<RouletteBet, RouletteBetViewModel>();
 
             CreateMap<VipSeDieRound, VipSeDieRoundResultViewModel>()
+             .ForMember(x => x.IsEven, opt => opt.MapFrom(x => x.SettlementResult.Even))
              .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new bool[]
              {
                  x.Result.FirstRedChip,
@@ -109,7 +110,6 @@ namespace GameRoundResult.Web.Configuration
                  x.Result.ThirdRedChip,
                  x.Result.FourthRedChip
              }.OrderByDescending(x => x)));
-
 
             CreateMap<VipSeDieBet, VipSeDieBetViewModel>();
         }
