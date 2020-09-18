@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    public abstract class Document
+    public class Document
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

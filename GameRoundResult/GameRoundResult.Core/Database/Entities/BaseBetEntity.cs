@@ -2,7 +2,7 @@
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    public abstract class BaseBetEntity : Document
+    public class BaseBetEntity : Document
     {
         [BsonElement("thanhtoan")]
         public bool Paid { get; set; }
