@@ -42,14 +42,7 @@ namespace GameRoundResult.Web.Models
             }
             else
             {
-                if (Banker)
-                {
-                    result = stringLocalizer["Banker"];
-                }
-                else
-                {
-                    result = stringLocalizer["Tie"];
-                }
+                result = Banker ? stringLocalizer["Banker"] : stringLocalizer["Tie"];
             }
 
             if (PlayerPair)
@@ -77,7 +70,7 @@ namespace GameRoundResult.Web.Models
             return tagBuilder.GetHtmlString();
         }
 
-        private TagBuilder GetCardBuilder(IEnumerable<CardViewModel> cards)
+        private static TagBuilder GetCardBuilder(IEnumerable<CardViewModel> cards)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"cards");
@@ -90,7 +83,7 @@ namespace GameRoundResult.Web.Models
             return tagBuilder;
         }
 
-        private TagBuilder GetCardBuilder(CardViewModel card)
+        private static TagBuilder GetCardBuilder(CardViewModel card)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"card card-type-{card.Type}");

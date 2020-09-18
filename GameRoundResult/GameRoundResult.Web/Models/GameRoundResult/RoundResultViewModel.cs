@@ -6,7 +6,7 @@ using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {
-    public abstract class RoundResultViewModel
+    public class RoundResultViewModel
     {
         public DateTime Time { get; set; }
 
@@ -14,7 +14,7 @@ namespace GameRoundResult.Web.Models
 
         public virtual IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            return new string[] { $"{Time.ToString(ViewFormat.RoundDateFormat)}<br/ >{Time.ToString(ViewFormat.RoundTimeFormat, CultureInfo.InvariantCulture)}", Round.ToString() };
+            return new[] { $"{Time.ToString(ViewFormat.RoundDateFormat)}<br/ >{Time.ToString(ViewFormat.RoundTimeFormat, CultureInfo.InvariantCulture)}", Round.ToString() };
         }
     }
 }

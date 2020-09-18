@@ -40,7 +40,7 @@ namespace GameRoundResult.Web.Models
             return stringLocalizer["Tie"];
         }
 
-        private string GetCardContent(CardViewModel card)
+        private static string GetCardContent(CardViewModel card)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"card card-type-{card.Type}");

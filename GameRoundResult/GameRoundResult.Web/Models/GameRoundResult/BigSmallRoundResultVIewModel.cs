@@ -12,7 +12,7 @@ namespace GameRoundResult.Web.Models
 
         public int Total => Dices.Sum(x => x);
 
-        public bool IsBig => Total > 10;
+        public bool IsBig => Total > maximumSmallNumber;
 
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
@@ -26,6 +26,7 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
+        private const int maximumSmallNumber = 10;
         private string GetDiceContent()
         {
             var div = new TagBuilder("div");
