@@ -1,0 +1,7 @@
+include:
+  - .gitlab-ci/deploy-vars.gitlab-ci.yml
+  - .gitlab-ci/rules.gitlab-ci.yml
+  - .gitlab-ci/deploy-local.gitlab-ci.yml
+  - .gitlab-ci/deploy-sit.gitlab-ci.yml
+  - .gitlab-ci/deploy-uat.gitlab-ci.yml
+  - .gitlab-ci/deploy-prod.gitlab-ci.yml
