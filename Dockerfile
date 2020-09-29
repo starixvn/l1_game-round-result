@@ -13,7 +13,7 @@ ARG CACHEBUST=1
 ARG DEPLOY_ENV=DEV
 RUN echo $DEPLOY_ENV $CACHEBUST
 
-RUN dotnet publish -c $DEPLOY_ENV -r linux-x64 --self-contained false -o /app 
+RUN dotnet publish -c $DEPLOY_ENV -r linux-x64 --self-contained false -o /app && echo $CACHEBUST
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS base
 
