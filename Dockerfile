@@ -9,8 +9,9 @@ RUN dotnet restore -v diag
 
 COPY ./GameRoundResult/GameRoundResult.Web/ .
 
+ARG CACHEBUST=1 
 ARG DEPLOY_ENV=DEV
-RUN echo $DEPLOY_ENV
+RUN echo $DEPLOY_ENV $CACHEBUST
 
 RUN dotnet publish -c $DEPLOY_ENV -r linux-x64 --self-contained false -o /app 
 
