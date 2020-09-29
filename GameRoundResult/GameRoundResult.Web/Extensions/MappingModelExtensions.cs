@@ -80,14 +80,6 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
-        public static VipSeDieRoundResultViewModel ToViewModel(this VipSeDieRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
-        {
-            return mapper.Map<VipSeDieRound, VipSeDieRoundResultViewModel>(entity, opts =>
-            {
-                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
-            });
-        }
-
         public static BigSmallBetViewModel ToViewModel(this BigSmallBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<BigSmallBet, BigSmallBetViewModel>(entity, opts =>
@@ -163,14 +155,6 @@ namespace GameRoundResult.Web.Extensions
         public static RouletteBetViewModel ToViewModel(this RouletteBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<RouletteBet, RouletteBetViewModel>(entity, opts =>
-            {
-                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
-            });
-        }
-
-        public static VipSeDieBetViewModel ToViewModel(this VipSeDieBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
-        {
-            return mapper.Map<VipSeDieBet, VipSeDieBetViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });

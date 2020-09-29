@@ -100,18 +100,6 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<KenoProMaxBet, KenoProMaxBetViewModel>();
             CreateMap<RNGKenoBet, RNGKenoBetViewModel>();
             CreateMap<RouletteBet, RouletteBetViewModel>();
-
-            CreateMap<VipSeDieRound, VipSeDieRoundResultViewModel>()
-             .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new bool[]
-             {
-                 x.Result.FirstRedChip,
-                 x.Result.SecondRedChip,
-                 x.Result.ThirdRedChip,
-                 x.Result.FourthRedChip
-             }.OrderByDescending(x => x)));
-
-
-            CreateMap<VipSeDieBet, VipSeDieBetViewModel>();
         }
     }
 }
