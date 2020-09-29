@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
 using MediatR;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -26,7 +24,7 @@ namespace GameRoundResult.Web.Controllers
         private const string dataProtectorKey = "game-ticket-data-key";
         private const int dataProtectorLifeTimeSecond = 30;
 
-        public GameTicketController(IMediator mediator, IOptionsSnapshot<List<AuthenticationClient>> clientAccessor, 
+        public GameTicketController(IMediator mediator, IOptionsSnapshot<List<AuthenticationClient>> clientAccessor,
             IDataProtectionProvider dataProtectionProvider,
             IOptionsSnapshot<HostConfiguration> hostConfigurationAccessor
             )
@@ -49,6 +47,7 @@ namespace GameRoundResult.Web.Controllers
                 var gameType = Enum.Parse<GameType>(data[2]);
                 var roundId = long.Parse(data[3]);
                 var memberId = int.Parse(data[4]);
+                var freeBet = bool.Parse(data[5]);
 
                 if (!Enum.IsDefined(typeof(GameType), gameType))
                 {
@@ -61,7 +60,7 @@ namespace GameRoundResult.Web.Controllers
                     var viewModel = new GameTicketResultViewModel
                     {
                         GameType = gameType,
-                        GameTicketResult = await GetGameTicket(client, gameType, roundId, memberId)
+                        GameTicketResult = await GetGameTicket(client, gameType, roundId, memberId, freeBet)
                     };
 
                     return View(viewModel);
@@ -85,7 +84,7 @@ namespace GameRoundResult.Web.Controllers
 
                 if (client != null)
                 {
-                    var queryKey = dataProtector.Protect($"{model.Auth.ClientID}_{model.Auth.ClientKey}_{model.GameTypeId}_{model.GameRoundId}_{model.ObCustId}",
+                    var queryKey = dataProtector.Protect($"{model.Auth.ClientID}_{model.Auth.ClientKey}_{model.GameTypeId}_{model.GameRoundId}_{model.ObCustId}_{model.FreeBet}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
 
                     var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
@@ -101,11 +100,11 @@ namespace GameRoundResult.Web.Controllers
             return clients.FirstOrDefault(x => x.Key == clientKey && clientId == x.Name && x.Name == "ONEworks");
         }
 
-        private async Task<GameTicketViewModel> GetGameTicket(AuthenticationClient client, GameType gameType, long roundId, int memberId)
+        private async Task<GameTicketViewModel> GetGameTicket(AuthenticationClient client, GameType gameType, long roundId, int memberId, bool freeBet)
         {
             var timeZoneInfo = TZConvert.GetTimeZoneInfo(client.TimeZone);
 
-            return await mediator.Send(new GetGameTicketRequest(gameType, roundId, memberId, timeZoneInfo));
+            return await mediator.Send(new GetGameTicketRequest(gameType, roundId, memberId, timeZoneInfo, freeBet));
         }
     }
 }

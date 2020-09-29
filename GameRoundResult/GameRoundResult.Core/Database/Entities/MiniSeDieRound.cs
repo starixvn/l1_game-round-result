@@ -16,16 +16,8 @@ namespace GameRoundResult.Core.Database.Entities
         [BsonElement("red4")]
         public bool FourthRedChip { get; set; }
 
-        public MiniSeDieSettlementResult SettlementResult { get; set; }
-    }
+        public SeDieResultEntity Result { get; set; }
 
-    public class MiniSeDieSettlementResult
-    {
-        public bool Odd { get; set; }
-        public bool Even { get; set; }
-        public bool Red3 { get; set; }
-        public bool Red4 { get; set; }
-        public bool White3 { get; set; }
-        public bool White4 { get; set; }
+        public SeDieSettlementResultEntity SettlementResult { get; set; }
     }
 }

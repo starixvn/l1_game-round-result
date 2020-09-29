@@ -23,19 +23,19 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<SeDieRound, SeDieRoundResultViewModel>()
                 .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new bool[]
                 {
-                    x.FirstRedChip,
-                    x.SecondRedChip,
-                    x.ThirdRedChip,
-                    x.FourthRedChip
+                    x.Result != null ? x.Result.FirstRedChip : x.FirstRedChip,
+                    x.Result != null ? x.Result.SecondRedChip : x.SecondRedChip,
+                    x.Result != null ? x.Result.ThirdRedChip : x.ThirdRedChip,
+                    x.Result != null ? x.Result.FourthRedChip : x.FourthRedChip
                 }.OrderByDescending(x => x)));
 
             CreateMap<MiniSeDieRound, SeDieRoundResultViewModel>()
                 .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new bool[]
                 {
-                    x.FirstRedChip,
-                    x.SecondRedChip,
-                    x.ThirdRedChip,
-                    x.FourthRedChip
+                    x.Result != null ? x.Result.FirstRedChip : x.FirstRedChip,
+                    x.Result != null ? x.Result.SecondRedChip : x.SecondRedChip,
+                    x.Result != null ? x.Result.ThirdRedChip : x.ThirdRedChip,
+                    x.Result != null ? x.Result.FourthRedChip : x.FourthRedChip
                 }.OrderByDescending(x => x)));
 
             CreateMap<DragonTigerRound, DragonTigerRoundResultViewModel>();
@@ -88,7 +88,11 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<BigSmallBet, BigSmallBetViewModel>();
             CreateMap<OddEvenBet, OddEvenBetViewModel>();
-            CreateMap<SeDieBet, SeDieBetViewModel>();
+
+            CreateMap<SeDieBet, SeDieBetViewModel>()
+                .ForMember(x => x.Odd, opt => opt.MapFrom(x => x.Odd + x.OldOdd))
+                .ForMember(x => x.Even, opt => opt.MapFrom(x => x.Even + x.OldEven));
+
             CreateMap<MiniSeDieBet, SeDieBetViewModel>();
             CreateMap<DragonTigerBet, DragonTigerBetViewModel>();
             CreateMap<FishPrawnCrabBet, FishPrawnCrabBetViewModel>();
@@ -96,6 +100,18 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<KenoProMaxBet, KenoProMaxBetViewModel>();
             CreateMap<RNGKenoBet, RNGKenoBetViewModel>();
             CreateMap<RouletteBet, RouletteBetViewModel>();
+
+            CreateMap<VipSeDieRound, VipSeDieRoundResultViewModel>()
+             .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new bool[]
+             {
+                 x.Result.FirstRedChip,
+                 x.Result.SecondRedChip,
+                 x.Result.ThirdRedChip,
+                 x.Result.FourthRedChip
+             }.OrderByDescending(x => x)));
+
+
+            CreateMap<VipSeDieBet, VipSeDieBetViewModel>();
         }
     }
 }

@@ -2,11 +2,10 @@
 
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
 
-
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th  class="col-date">@Localizer["Time"] (GMT-4)</th>
+            <th class="col-date">@Localizer["Time"] (GMT-4)</th>
             <th class="col-round-id">@Localizer["RoundId"]</th>
             <th>@Localizer["Result"]</th>
             <th>@Localizer["WinningOptions"]</th>
@@ -108,16 +107,19 @@
 
             <tr>
                 <td class="text-right">@Localizer["Total"]</td>
-                <td class="text-right">@Model.TotalBet.Format()</td>
+                <td class="text-right">@Model.TotalBet.Format() @(Model.Bet.FreeBet ? "(Scoin)": string.Empty)</td>
             </tr>
             <tr>
                 <td class="text-right">@Localizer["TotalWin"]</td>
                 <td class="text-right">@Model.TotalWin.Format()</td>
             </tr>
-            <tr class="total">
-                <td class="bold text-right">@Localizer["WinLoss"]</td>
-                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
-            </tr>
+            @if (!Model.Bet.FreeBet)
+            {
+                <tr class="total">
+                    <td class="bold text-right">@Localizer["WinLoss"]</td>
+                    <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+                </tr>
+            }
         }
         else
         {

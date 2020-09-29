@@ -1,6 +1,11 @@
 image: mcr.microsoft.com/dotnet/core/sdk:3.1
 
+variables:
+  SOLUTION_NAME: ./GameRoundResult/GameRoundResult.sln
+  PROJECT_NAME: "l1-game-round-result"
+
 stages:
+  - test
   - build
   - deploy
 
@@ -24,4 +29,7 @@ before_script:
   - git config --global user.name "Luminet"
 
 include:
+  - project: 'lumi-ops/ci-scripts'
+    ref: master
+    file: 'sonarqube-dotnet.gitlab-ci.yml'
   - .gitlab-ci-gameround-result.yml
