@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Configurations>Dev;SIT;UAT;PRO;LOCAL</Configurations>
+    <Configurations>Dev;SIT;UAT;PROD;LOCAL</Configurations>
     <CodeAnalysisRuleSet>..\.sonarlint\l1-game-round-resultcsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
