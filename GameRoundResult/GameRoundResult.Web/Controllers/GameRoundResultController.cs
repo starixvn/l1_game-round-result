@@ -70,7 +70,8 @@ namespace GameRoundResult.Web.Controllers
 
                 case GameType.SeDie:
                 case GameType.MiniSeDie:
-                    return PartialView("_ShakeThePlateRoundResult");
+                case GameType.SpecialSeDie:
+                    return PartialView("_SeDieRoundResult");
 
                 case GameType.FishPrawnCrab:
                     return PartialView("_FishPrawnRoundResult");

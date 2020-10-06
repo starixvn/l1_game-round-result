@@ -195,7 +195,7 @@ namespace GameRoundResult.Web.Handlers
                     {
                         RoundResult = rouletteResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
                         Bets = rouletteResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
-                        TotalBet = rouletteResult.Item3?.TotalAmount ?? 0 ,
+                        TotalBet = rouletteResult.Item3?.TotalAmount ?? 0,
                         BetWin = rouletteResult.Item3?.Betwin ?? 0,
                     };
 
@@ -206,6 +206,18 @@ namespace GameRoundResult.Web.Handlers
                         RoundResult = vipSeDieResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
                         Bet = vipSeDieResult.Item2.ToViewModel(mapper, request.TimeZoneInfo),
                     };
+
+                case GameType.SpecialSeDie:
+                    var specialSeDieResult = await service.GetSpecialSeDieAsync(request.RoundId, request.MemberId);
+                    return new SpecialSeDieTicketViewModel
+                    {
+                        RoundResult = specialSeDieResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bets = specialSeDieResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                        TotalBet = specialSeDieResult.Item3.Amount,
+                        TotalRefund = specialSeDieResult.Item3.Refund,
+                        TotalBetWin = specialSeDieResult.Item3.Betwin
+                    };
+
                 default:
                     throw new ArgumentException(nameof(GetGameTicketRequest.GameType));
             }

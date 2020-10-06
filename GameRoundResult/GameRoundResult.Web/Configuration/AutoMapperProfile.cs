@@ -103,7 +103,7 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<VipSeDieRound, VipSeDieRoundResultViewModel>()
              .ForMember(x => x.IsEven, opt => opt.MapFrom(x => x.SettlementResult.Even))
-             .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new bool[]
+             .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new []
              {
                  x.Result.FirstRedChip,
                  x.Result.SecondRedChip,
@@ -112,6 +112,18 @@ namespace GameRoundResult.Web.Configuration
              }.OrderByDescending(x => x)));
 
             CreateMap<VipSeDieBet, VipSeDieBetViewModel>();
+
+            CreateMap<SpecialSeDieRound, SpecialSeDieRoundResultViewModel>()
+                .ForMember(x => x.IsEven, opt => opt.MapFrom(x => x.SettlementResult.Even))
+                .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new []
+                {
+                      x.Result.FirstRedChip,
+                      x.Result.SecondRedChip,
+                      x.Result.ThirdRedChip,
+                      x.Result.FourthRedChip
+                }.OrderByDescending(x => x)));
+
+            CreateMap<SpecialSeDieBet, SpecialSeDieBetViewModel>();
         }
     }
 }
