@@ -21,7 +21,7 @@ namespace GameRoundResult.Web
                         .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                         .Build();
 
-                    webBuilder.UseUrls($"http://localhost:{configuration["HostingPort"]}");
+                    webBuilder.UseUrls($"http://0.0.0.0:{configuration["HostingPort"]}");
                     webBuilder.UseSentry();
                     webBuilder.UseStartup<Startup>();
                 });

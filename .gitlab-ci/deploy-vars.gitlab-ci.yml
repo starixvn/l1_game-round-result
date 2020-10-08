@@ -1,0 +1,8 @@
+.deploy_vars_grr:
+  variables:
+    WORKING_PATH: /var/www/l2/game-round-result/
+    DOCKER_SERVICE_NAME: l2-game-round-result
+    DOCKER_IMAGE_PATH: l2/game-round-result
+    DOCKER_FILE_PATH: ./
+    DOCKER_FILE_NAME: Dockerfile
+    DOCKER_NETWORK_NAME: game-round-result

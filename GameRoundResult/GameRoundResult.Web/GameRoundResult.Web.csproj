@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Configurations>Dev;SIT;UAT;PRO;LOCAL</Configurations>
+    <Configurations>Dev;SIT;UAT;PROD;LOCAL</Configurations>
+    <CodeAnalysisRuleSet>..\.sonarlint\l1-game-round-resultcsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +14,10 @@
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\js\game-round-result.min.js" />
     <_ContentIncludedByDefault Remove="wwwroot\scss\pages\error-page.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\.sonarlint\l1-game-round-result\CSharp\SonarLint.xml" Link="SonarLint.xml" />
   </ItemGroup>
 
   <ItemGroup>

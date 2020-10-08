@@ -61,7 +61,7 @@ namespace GameRoundResult.Web.Handlers
                     };
 
                 case GameType.SeDie:
-                    var seDieResult = await service.GetSeDieAsync(request.RoundId, request.MemberId);
+                    var seDieResult = await service.GetSeDieAsync(request.RoundId, request.MemberId, request.FreeBet);
                     return new SeDieTicketViewModel
                     {
                         RoundResult = seDieResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),

@@ -12,7 +12,7 @@ namespace GameRoundResult.Web.Models
 
         public decimal TotalWin => Bet.BetWin;
 
-        public decimal WinLoss => TotalWin - TotalBet;
+        public decimal WinLoss => Bet.FreeBet ? TotalWin : TotalWin - TotalBet;
     }
 
     public class SeDieBetViewModel
@@ -32,5 +32,7 @@ namespace GameRoundResult.Web.Models
         public decimal FourWhite { get; set; }
 
         public decimal BetWin { get; set; }
+
+        public bool FreeBet { get; set; }
     }
 }
