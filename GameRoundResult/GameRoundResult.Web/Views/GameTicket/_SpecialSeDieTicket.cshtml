@@ -71,7 +71,7 @@
                         <br />
                         @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
-                    <td>@(Localizer[betChoiceDictionary[bet.Choice]</td>
+                    <td>@Localizer[betChoiceDictionary[bet.Choice]]</td>
                     <td class="text-right">@bet.Amount.Format()</td>
                     <td class="text-right">@bet.Refund.Format()</td>
                 </tr>

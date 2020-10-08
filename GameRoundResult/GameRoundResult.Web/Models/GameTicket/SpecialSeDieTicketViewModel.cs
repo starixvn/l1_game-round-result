@@ -17,7 +17,7 @@ namespace GameRoundResult.Web.Models
 
         public decimal TotalWin => TotalBetWin > 0 ? TotalBetWin + TotalBet - TotalRefund : 0;
 
-        public decimal WinLoss => TotalBetWin - TotalBet + TotalRefund;
+        public decimal WinLoss => TotalWin + TotalRefund - TotalBet;
     }
 
     public class SpecialSeDieBetViewModel

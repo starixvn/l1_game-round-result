@@ -23,6 +23,6 @@
         KenoNorth,
         Roulette = 21,
         VipSeDie,
-        SpecialSeDie = 23
+        SpecialSeDie = 24
     }
 }
