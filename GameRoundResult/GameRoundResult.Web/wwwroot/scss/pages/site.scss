@@ -430,3 +430,11 @@ body {
         transform: scale(.75);
     }
 }
+
+.blackjack-result {
+    .cards {
+        .card:last-child:before {
+            display: none;
+        }
+    }
+}

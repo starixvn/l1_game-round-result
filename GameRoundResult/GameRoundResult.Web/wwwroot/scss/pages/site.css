@@ -441,3 +441,6 @@ body {
   to {
     opacity: .25;
     transform: scale(0.75); } }
+
+.blackjack-result .cards .card:last-child:before {
+  display: none; }

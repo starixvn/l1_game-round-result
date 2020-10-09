@@ -29,7 +29,7 @@
                     @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                 </td>
                 <td>@Model.Bet.HandId</td>
-                <td>
+                <td class="blackjack-result">
                     <div class="cards">
                         @if (Model.End)
                         {
@@ -69,9 +69,8 @@
                         @("-")
                     }
                 </td>
-                <td>
+                <td class="blackjack-result">
                     <div class="cards">
-
                         @foreach (var card in Model.Bet.Cards)
                         {
                             <div class="card card-type-@card.Suit">
