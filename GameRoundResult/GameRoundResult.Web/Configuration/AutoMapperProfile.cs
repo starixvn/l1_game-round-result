@@ -113,6 +113,8 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<VipSeDieBet, VipSeDieBetViewModel>();
 
+            CreateMap<BlackjackBet, BlackjackBetViewModel>();
+            CreateMap<BlackjackCard, BlackjackCardViewModel>();
             CreateMap<SpecialSeDieRound, SpecialSeDieRoundResultViewModel>()
                 .ForMember(x => x.IsEven, opt => opt.MapFrom(x => x.SettlementResult.Even))
                 .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new []

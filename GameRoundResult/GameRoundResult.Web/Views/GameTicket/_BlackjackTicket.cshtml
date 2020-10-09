@@ -1,0 +1,110 @@
+﻿@using Microsoft.Extensions.Localization
+@model BlackjackTicketViewModel
+
+
+@inject IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IStringLocalizer<BlackjackTicketViewModel> BlackjackLocalizer
+
+@{
+    var blackjackValue = 21;
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["Time"] (GMT-4)</th>
+            <th class="col-round-id">@BlackjackLocalizer["HandId"]</th>
+            <th colspan="2">@BlackjackLocalizer["Dealer"]</th>
+            <th colspan="2">@BlackjackLocalizer["Player"]</th>
+            <th>@BlackjackLocalizer["Stake"]</th>
+            <th>@CommonLocalizer["WinLoss"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Bet != null)
+        {
+            <tr>
+                <td>
+                    @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                    <br />
+                    @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@Model.Bet.HandId</td>
+                <td>
+                    <div class="cards">
+                        @if (Model.End)
+                        {
+                            @foreach (var card in Model.DealerCards)
+                            {
+                                <div class="card card-type-@card.Suit">
+                                    <span>@card.Rank</span>
+                                    <img class="img" src="~/scss/images/card_@(card.Suit).png" />
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            var card = Model.DealerCards.FirstOrDefault();
+                            <div class="card card-type-@card.Suit">
+                                <span>@card.Rank</span>
+                                <img class="img" src="~/scss/images/card_@(card.Suit).png" />
+                            </div>
+                            <div class="card card-type-@card.Suit">
+                                <img class="img" src="~/scss/images/card_back.png" />
+                            </div>
+                        }
+                    </div>
+                </td>
+                <td>
+                    @if (Model.End)
+                    {
+                        if (Model.DealerPoint == blackjackValue && Model.DealerCards.Count() == 2)
+                        {
+                            @("BJ")
+                        }
+                        else
+                        {
+                            @(Model.DealerPoint > blackjackValue ? BlackjackLocalizer["Bust"] : Model.DealerPoint.ToString())
+                        }
+                    }
+                    else
+                    {
+                        @("-")
+                    }
+                </td>
+                <td>
+                    <div class="cards">
+
+                        @foreach (var card in Model.Bet.Cards)
+                        {
+                            <div class="card card-type-@card.Suit">
+                                <span>@card.Rank]</span>
+                                <img class="img" src="~/scss/images/card_@(card.Suit).png" />
+                            </div>
+                        }
+                    </div>
+                </td>
+                <td>
+                    @if (Model.Bet.Total == blackjackValue && Model.Bet.Cards.Count() == 2)
+                    {
+                        @("BJ")
+                    }
+                    else
+                    {
+                        @(Model.Bet.Total > blackjackValue ? BlackjackLocalizer["Bust"] : Model.Bet.Total.ToString())
+                    }
+                </td>
+                <td class="text-right">@Model.Bet.Bet.Format()</td>
+                <td class="text-right">@(Model.End ? Model.WinLoss.Format() : BlackjackLocalizer["Running"])</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

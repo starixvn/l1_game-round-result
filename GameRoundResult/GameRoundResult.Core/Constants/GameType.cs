@@ -23,6 +23,7 @@
         KenoNorth,
         Roulette = 21,
         VipSeDie,
+        Blackjack
         SpecialSeDie = 24
     }
 }
