@@ -26,7 +26,7 @@ namespace GameRoundResult.Web.Models
 
         public byte Total { get; set; }
 
-        public byte? SplitFrom { get; set; }
+        public long? SplitFrom { get; set; }
 
         public decimal Bet { get; set; }
 
