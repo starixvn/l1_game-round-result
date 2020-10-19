@@ -213,9 +213,9 @@ namespace GameRoundResult.Web.Handlers
                     {
                         RoundResult = specialSeDieResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
                         Bets = specialSeDieResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
-                        TotalBet = specialSeDieResult.Item3.Amount,
-                        TotalRefund = specialSeDieResult.Item3.Refund,
-                        TotalBetWin = specialSeDieResult.Item3.Betwin
+                        TotalBet = specialSeDieResult.Item3?.Amount ?? 0,
+                        TotalRefund = specialSeDieResult.Item3?.Refund ?? 0,
+                        TotalBetWin = specialSeDieResult.Item3?.Betwin ?? 0
                     };
 
                 default:
