@@ -207,27 +207,28 @@ namespace GameRoundResult.Web.Handlers
                         Bet = vipSeDieResult.Item2.ToViewModel(mapper, request.TimeZoneInfo),
                     };
 
-                    case GameType.Blackjack:
+                case GameType.Blackjack:
                     var blackjackResult = await service.GetBlackjackAsync(request.RoundId, request.MemberId);
                     return new BlackjackTicketViewModel
                     {
-                     DealerCards = blackjackResult.Item1?.Result.Select(x => mapper.Map<BlackjackCardViewModel>(x)),
+                        DealerCards = blackjackResult.Item1?.Result.Select(x => mapper.Map<BlackjackCardViewModel>(x)),
                         DealerPoint = blackjackResult.Item1.SettlementResult,
                         End = blackjackResult.Item1.End,
                         Bet = blackjackResult.Item2.ToViewModel(mapper, request.TimeZoneInfo),
                     };
+
                 case GameType.SpecialSeDie:
                     var specialSeDieResult = await service.GetSpecialSeDieAsync(request.RoundId, request.MemberId);
                     return new SpecialSeDieTicketViewModel
-                
+
                     {
                         RoundResult = specialSeDieResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
                         Bets = specialSeDieResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
                         TotalBet = specialSeDieResult.Item3?.Amount ?? 0,
                         TotalRefund = specialSeDieResult.Item3?.Refund ?? 0,
                         TotalBetWin = specialSeDieResult.Item3?.Betwin ?? 0
-                       
                     };
+
                 default:
                     throw new ArgumentException(nameof(GetGameTicketRequest.GameType));
             }
