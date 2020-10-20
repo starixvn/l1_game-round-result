@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Sentry;
 
 namespace GameRoundResult.Web.Controllers
 {
@@ -6,6 +7,7 @@ namespace GameRoundResult.Web.Controllers
     {
         public IActionResult NotAuthorized()
         {
+            SentrySdk.CaptureMessage("Error NotAuthorized!");
             return View();
         }
     }
