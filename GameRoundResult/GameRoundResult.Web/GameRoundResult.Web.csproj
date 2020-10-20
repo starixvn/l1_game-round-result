@@ -12,11 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Remove="Resources\Models\BlackjackTicketViewModel.resx" />
-    <EmbeddedResource Remove="Resources\Models\BlackjackTicketViewModel.vi-VN.resx" />
-  </ItemGroup>
-
-  <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\js\game-round-result.min.js" />
     <_ContentIncludedByDefault Remove="wwwroot\scss\pages\error-page.css" />
   </ItemGroup>
@@ -27,10 +22,6 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
-    <None Include="Resources\Models\BlackjackTicketViewModel.resx">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Resources\Models\BlackjackTicketViewModel.vi-VN.resx" />
     <None Include="Resources\Models\RoundResultViewModel.vi-VN.resx">
       <SubType>Designer</SubType>
     </None>
@@ -216,6 +207,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\Models\BlackjackTicketViewModel.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\GameRoundResult\Index.en-US.resx">
       <Generator></Generator>
     </EmbeddedResource>
