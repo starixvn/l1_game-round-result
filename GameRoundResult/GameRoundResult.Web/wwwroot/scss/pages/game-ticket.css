@@ -20,4 +20,6 @@
       display: flex;
       justify-content: center; }
     .table.table-baccarat {
-      max-width: 72rem; } }
+      max-width: 72rem; }
+    .table.table-blackjack {
+      max-width: 100rem; } }

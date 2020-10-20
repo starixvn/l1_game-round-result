@@ -8,7 +8,7 @@
     var blackjackValue = 21;
 }
 
-<table class="table table-bordered">
+<table class="table table-bordered table-blackjack">
     <thead>
         <tr>
             <th class="col-date">@CommonLocalizer["Time"] (GMT-4)</th>
@@ -74,7 +74,7 @@
                         @foreach (var card in Model.Bet.Cards)
                         {
                             <div class="card card-type-@card.Suit">
-                                <span>@card.Rank]</span>
+                                <span>@card.Rank</span>
                                 <img class="img" src="~/scss/images/card_@(card.Suit).png" />
                             </div>
                         }

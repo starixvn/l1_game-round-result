@@ -433,6 +433,9 @@ body {
 
 .blackjack-result {
     .cards {
+        display: flex;
+        justify-content: center;
+
         .card:last-child:before {
             display: none;
         }
