@@ -151,6 +151,7 @@ namespace GameRoundResult.Web.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Auth(string token)
         {
+            SentrySdk.CaptureMessage("Auth has been called!");
             try
             {
                 var data = dataProtector.Unprotect(token).Split('_');
