@@ -130,6 +130,7 @@ namespace GameRoundResult.Web.Controllers
         [AllowAnonymous]
         public IActionResult GetAccessUrl([FromBody] GameRoundResultAccessUrlRequestModel model)
         {
+            SentrySdk.CaptureMessage("GetAccessUrl has been called!");
             if (ModelState.IsValid)
             {
                 var client = GetClient(model.Auth.ClientID, model.Auth.ClientKey);
