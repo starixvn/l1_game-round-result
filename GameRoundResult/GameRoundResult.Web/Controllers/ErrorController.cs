@@ -7,7 +7,6 @@ namespace GameRoundResult.Web.Controllers
     {
         public IActionResult NotAuthorized()
         {
-            SentrySdk.CaptureMessage("Error NotAuthorized!");
             return View();
         }
     }

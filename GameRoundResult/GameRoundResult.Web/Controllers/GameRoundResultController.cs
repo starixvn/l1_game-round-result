@@ -130,7 +130,6 @@ namespace GameRoundResult.Web.Controllers
         [AllowAnonymous]
         public IActionResult GetAccessUrl([FromBody] GameRoundResultAccessUrlRequestModel model)
         {
-            SentrySdk.CaptureMessage("GetAccessUrl has been called!");
             if (ModelState.IsValid)
             {
                 var client = GetClient(model.Auth.ClientID, model.Auth.ClientKey);
@@ -151,7 +150,6 @@ namespace GameRoundResult.Web.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Auth(string token)
         {
-            SentrySdk.CaptureMessage("Auth has been called!");
             try
             {
                 var data = dataProtector.Unprotect(token).Split('_');
