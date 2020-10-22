@@ -213,7 +213,7 @@ namespace GameRoundResult.Web.Handlers
                     {
                         DealerCards = blackjackResult.Item1?.Result.Select(x => mapper.Map<BlackjackCardViewModel>(x)),
                         DealerPoint = blackjackResult.Item1.SettlementResult,
-                        End = blackjackResult.Item1.End,
+                        Ended = blackjackResult.Item1.Ended,
                         Bet = blackjackResult.Item2.ToViewModel(mapper, request.TimeZoneInfo),
                     };
 

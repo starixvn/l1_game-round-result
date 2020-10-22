@@ -9,7 +9,7 @@ namespace GameRoundResult.Core.Database.Entities
 
         public DateTime RoundStartTime { get; set; }
 
-        public bool End { get; set; }
+        public bool Ended { get; set; }
 
         public string Uid { get; set; }
 

@@ -11,7 +11,7 @@ namespace GameRoundResult.Web.Models
 
         public byte DealerPoint { get; set; }
 
-        public bool End { get; set; }
+        public bool Ended { get; set; }
 
         public decimal WinLoss => Bet.BetWin - Bet.Bet;
     }

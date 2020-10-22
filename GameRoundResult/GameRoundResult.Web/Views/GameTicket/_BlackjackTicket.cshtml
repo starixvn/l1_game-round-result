@@ -31,7 +31,7 @@
                 <td>@Model.Bet.HandId</td>
                 <td class="blackjack-result">
                     <div class="cards">
-                        @if (Model.End)
+                        @if (Model.Ended)
                         {
                             @foreach (var card in Model.DealerCards)
                             {
@@ -53,7 +53,7 @@
                     </div>
                 </td>
                 <td>
-                    @if (Model.End)
+                    @if (Model.Ended)
                     {
                         if (Model.DealerPoint == blackjackValue && Model.DealerCards.Count() == 2)
                         {
@@ -91,7 +91,7 @@
                     }
                 </td>
                 <td class="text-right">@Model.Bet.Bet.Format()</td>
-                <td class="text-right">@(Model.End ? Model.WinLoss.Format() : BlackjackLocalizer["Running"])</td>
+                <td class="text-right">@(Model.Ended ? Model.WinLoss.Format() : BlackjackLocalizer["Running"])</td>
             </tr>
         }
         else
