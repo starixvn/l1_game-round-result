@@ -6,3 +6,7 @@
     DOCKER_FILE_PATH: ./
     DOCKER_FILE_NAME: Dockerfile
     DOCKER_NETWORK_NAME: game-round-result
+    CONFIG_FILE_NAME: appsettings
+    CONFIG_FILE_EXTENSION: json
+    CONFIGS_SRC_DIR_PATH: ./GameRoundResult/GameRoundResult.Web
+    CONFIG_CONTAINER_PATH: /app/appsettings.json

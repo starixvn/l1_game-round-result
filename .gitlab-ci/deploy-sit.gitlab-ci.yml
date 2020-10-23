@@ -1,17 +1,9 @@
-build_image_grr_sit:
-  extends:
-    - .deploy_vars_grr
-    - .build_image
-    - .deploy-grr:sit:rules
-  environment:
-    name: SIT
-
 post_build_grr_sit:
   extends:
     - .deploy_vars_grr
     - .post_build
     - .deploy-grr:sit:rules
-  needs: ['build_image_grr_sit']
+  needs: ['build_image']
   environment:
     name: SIT
 
