@@ -130,7 +130,7 @@
     <value>Người chơi</value>
   </data>
   <data name="Running" xml:space="preserve">
-    <value>Đang chơi</value>
+    <value>Đang chờ</value>
   </data>
   <data name="Stake" xml:space="preserve">
     <value>Cược</value>

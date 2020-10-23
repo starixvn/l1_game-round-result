@@ -37,7 +37,14 @@
         }
 
         &.table-blackjack {
-            max-width: 100rem;
+            max-width: 120rem;
+            .split-hand {
+                height: 3rem;
+                margin-bottom: -1rem;
+            }
+            .col-round-id {
+                width: 16rem;
+            }
         }
     }
 }

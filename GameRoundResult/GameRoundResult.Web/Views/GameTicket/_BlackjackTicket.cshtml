@@ -1,4 +1,5 @@
 ﻿@using Microsoft.Extensions.Localization
+@using GameRoundResult.Core.Constants
 @model BlackjackTicketViewModel
 
 @inject IStringLocalizer<GameTicketViewModel> CommonLocalizer
@@ -6,6 +7,7 @@
 
 @{
     var blackjackValue = 21;
+    var isSplittedHand = Model.Bet.SplitFrom.HasValue || Model.Bet.Actions.Any(x => x == BlackjackAction.Split);
 }
 
 <table class="table table-bordered table-blackjack">
@@ -28,7 +30,13 @@
                     <br />
                     @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                 </td>
-                <td>@Model.Bet.HandId</td>
+                <td>
+                    @Model.Bet.HandId
+                    @if (isSplittedHand)
+                    {
+                        <img class="split-hand" src="~/scss/images/split_hand.png" />
+                    }
+                </td>
                 <td class="blackjack-result">
                     <div class="cards">
                         @if (Model.Ended)
@@ -81,7 +89,7 @@
                     </div>
                 </td>
                 <td>
-                    @if (Model.Bet.Total == blackjackValue && Model.Bet.Cards.Count() == 2)
+                    @if (Model.Bet.Total == blackjackValue && Model.Bet.Cards.Count() == 2 && !isSplittedHand)
                     {
                         @("Blackjack")
                     }

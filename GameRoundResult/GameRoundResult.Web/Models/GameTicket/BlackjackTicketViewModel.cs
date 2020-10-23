@@ -24,6 +24,8 @@ namespace GameRoundResult.Web.Models
 
         public IEnumerable<BlackjackCardViewModel> Cards { get; set; }
 
+        public IEnumerable<string> Actions { get; set; }
+
         public byte Total { get; set; }
 
         public long? SplitFrom { get; set; }
