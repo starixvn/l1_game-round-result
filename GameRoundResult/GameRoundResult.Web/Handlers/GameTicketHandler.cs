@@ -204,7 +204,7 @@ namespace GameRoundResult.Web.Handlers
                     return new VipSeDieTicketViewModel
                     {
                         RoundResult = vipSeDieResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
-                        Bet = vipSeDieResult.Item2.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bet = vipSeDieResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo),
                     };
 
                 case GameType.Blackjack:
@@ -212,9 +212,9 @@ namespace GameRoundResult.Web.Handlers
                     return new BlackjackTicketViewModel
                     {
                         DealerCards = blackjackResult.Item1?.Result.Select(x => mapper.Map<BlackjackCardViewModel>(x)),
-                        DealerPoint = blackjackResult.Item1.SettlementResult,
-                        Ended = blackjackResult.Item1.Ended,
-                        Bet = blackjackResult.Item2.ToViewModel(mapper, request.TimeZoneInfo),
+                        DealerPoint = blackjackResult.Item1?.SettlementResult ?? 0,
+                        Ended = blackjackResult.Item1?.Ended ?? false,
+                        Bet = blackjackResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo),
                     };
 
                 case GameType.SpecialSeDie:

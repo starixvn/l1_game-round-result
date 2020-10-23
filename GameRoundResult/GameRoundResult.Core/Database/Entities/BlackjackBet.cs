@@ -14,6 +14,8 @@ namespace GameRoundResult.Core.Database.Entities
 
         public IEnumerable<BlackjackCard> Cards { get; set; }
 
+        public IEnumerable<byte> SoftPoints { get; set; }
+
         public byte Total { get; set; }
 
         public long? SplitFrom { get; set; }

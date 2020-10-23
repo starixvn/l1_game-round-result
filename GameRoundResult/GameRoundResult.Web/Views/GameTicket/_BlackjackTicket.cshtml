@@ -7,7 +7,6 @@
 
 @{
     var blackjackValue = 21;
-    var isSplittedHand = Model.Bet.SplitFrom.HasValue || Model.Bet.Actions.Any(x => x == BlackjackAction.Split);
 }
 
 <table class="table table-bordered table-blackjack">
@@ -24,6 +23,8 @@
     <tbody>
         @if (Model.Bet != null)
         {
+            var isSplittedHand = Model.Bet.SplitFrom.HasValue || Model.Bet.Actions.Any(x => x == BlackjackAction.Split);
+
             <tr>
                 <td>
                     @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
@@ -89,14 +90,22 @@
                     </div>
                 </td>
                 <td>
-                    @if (Model.Bet.Total == blackjackValue && Model.Bet.Cards.Count() == 2 && !isSplittedHand)
+                    @if (Model.Ended)
                     {
-                        @("Blackjack")
+                        if (Model.Bet.Total == blackjackValue && Model.Bet.Cards.Count() == 2 && !isSplittedHand)
+                        {
+                            @("Blackjack")
+                        }
+                        else
+                        {
+                            @(Model.Bet.Total > blackjackValue ? BlackjackLocalizer["Bust"] : Model.Bet.Total.ToString())
+                        }
                     }
                     else
                     {
-                        @(Model.Bet.Total > blackjackValue ? BlackjackLocalizer["Bust"] : Model.Bet.Total.ToString())
+                        @(string.Join("/", Model.Bet.SoftPoints))
                     }
+
                 </td>
                 <td class="text-right">@Model.Bet.Bet.Format()</td>
                 <td class="text-right">@(Model.Ended ? Model.WinLoss.Format() : BlackjackLocalizer["Running"])</td>
@@ -105,7 +114,7 @@
         else
         {
             <tr>
-                <td colspan="4" class="text-center">
+                <td colspan="8" class="text-center">
                     @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>

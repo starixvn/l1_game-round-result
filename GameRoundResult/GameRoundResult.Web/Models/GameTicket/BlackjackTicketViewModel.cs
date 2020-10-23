@@ -26,6 +26,8 @@ namespace GameRoundResult.Web.Models
 
         public IEnumerable<string> Actions { get; set; }
 
+        public IEnumerable<byte> SoftPoints { get; set; }
+
         public byte Total { get; set; }
 
         public long? SplitFrom { get; set; }

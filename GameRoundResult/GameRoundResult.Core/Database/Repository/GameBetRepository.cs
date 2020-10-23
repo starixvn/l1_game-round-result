@@ -259,9 +259,15 @@ namespace GameRoundResult.Core.Database.Repository
         {
             var bet = await database.GetCollection<BlackjackBet>(MiniGameBetCollections.BlackjackBet).Find(x => x.HandId == handId && x.MemberId == memberId)
                 .SortByDescending(x => x.Time).FirstOrDefaultAsync();
-            var round = await GetRoundAsync<BlackjackRound>(bet.Round, MiniGameRoundCollections.BlackjackRound);
 
-            return (round, bet);
+            if(bet != null)
+            {
+                var round = await GetRoundAsync<BlackjackRound>(bet.Round, MiniGameRoundCollections.BlackjackRound);
+
+                return (round, bet);
+            }
+
+            return (null, bet);
         }
 
         public async Task<(SpecialSeDieRound, IEnumerable<SpecialSeDieBet>, SpecialSeDieOne)> GetSpecialSeDieAsync(long roundId, int memberId)
