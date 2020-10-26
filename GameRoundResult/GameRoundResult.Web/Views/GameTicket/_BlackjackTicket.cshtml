@@ -90,22 +90,21 @@
                     </div>
                 </td>
                 <td>
-                    @if (Model.Ended)
+                    @if (Model.Bet.Total == blackjackValue && Model.Bet.Cards.Count() == 2 && !isSplittedHand)
                     {
-                        if (Model.Bet.Total == blackjackValue && Model.Bet.Cards.Count() == 2 && !isSplittedHand)
-                        {
-                            @("Blackjack")
-                        }
-                        else
-                        {
-                            @(Model.Bet.Total > blackjackValue ? BlackjackLocalizer["Bust"] : Model.Bet.Total.ToString())
-                        }
+                        @("Blackjack")
                     }
                     else
                     {
-                        @(string.Join("/", Model.Bet.SoftPoints))
+                        @if (Model.Ended)
+                        {
+                            @(Model.Bet.Total > blackjackValue ? BlackjackLocalizer["Bust"] : Model.Bet.Total.ToString())
+                        }
+                        else
+                        {
+                            @(string.Join("/", Model.Bet.SoftPoints))
+                        }
                     }
-
                 </td>
                 <td class="text-right">@Model.Bet.Bet.Format()</td>
                 <td class="text-right">@(Model.Ended ? Model.WinLoss.Format() : BlackjackLocalizer["Running"])</td>
