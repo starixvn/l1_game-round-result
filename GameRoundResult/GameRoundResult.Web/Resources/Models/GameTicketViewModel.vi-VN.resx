@@ -120,6 +120,9 @@
   <data name="1Red" xml:space="preserve">
     <value>1 Đỏ</value>
   </data>
+  <data name="2Red" xml:space="preserve">
+    <value>2 Đỏ</value>
+  </data>
   <data name="3Red" xml:space="preserve">
     <value>3 Đỏ</value>
   </data>

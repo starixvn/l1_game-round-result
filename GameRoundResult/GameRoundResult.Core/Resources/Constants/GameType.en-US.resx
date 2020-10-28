@@ -174,4 +174,7 @@
   <data name="SeDie" xml:space="preserve">
     <value>Se Die</value>
   </data>
+  <data name="VipSeDie" xml:space="preserve">
+    <value>VIP Se Die</value>
+  </data>
 </root>
