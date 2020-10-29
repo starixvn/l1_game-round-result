@@ -36,6 +36,7 @@ namespace GameRoundResult.Web
             services.AddServices();
             services.AddLocalizationSettings(Configuration);
             services.AddResponseCaching();
+            services.AddHealthChecks();
 
             services.AddDataProtection()
               .PersistKeysToMongoDb(Configuration)
@@ -76,6 +77,7 @@ namespace GameRoundResult.Web
 
             app.UseEndpoints(endpoints =>
             {
+                 endpoints.MapHealthChecks("/health");
                 endpoints.MapControllerRoute(
                     name: "culture-route",
                     pattern: "{culture=vi-VN}/{controller=GameRoundResult}/{action=Index}/{id?}");
