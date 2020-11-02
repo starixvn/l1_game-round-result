@@ -102,7 +102,7 @@
                         }
                         else
                         {
-                            @(string.Join("/", Model.Bet.SoftPoints))
+                            @(Model.Bet.Total > blackjackValue ? BlackjackLocalizer["Bust"] : string.Join("/", Model.Bet.SoftPoints))
                         }
                     }
                 </td>
