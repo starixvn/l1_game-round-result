@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Sentry;
 
 namespace GameRoundResult.Web.Controllers
 {

@@ -53,6 +53,8 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(RouletteRound, IEnumerable<RouletteBet>, RouletteOne)> GetRouletteAsync(long roundId, int memberId);
 
         Task<(VipSeDieRound, VipSeDieBet)> GetVipSeDieAsync(long roundId, int memberId);
+
+        Task<(SpecialSeDieRound, IEnumerable<SpecialSeDieBet>, SpecialSeDieOne)> GetSpecialSeDieAsync(long roundId, int memberId);
     }
 
     public class GameBetRepository : IGameBetRepository
@@ -99,7 +101,7 @@ namespace GameRoundResult.Core.Database.Repository
         public async Task<(SeDieRound, SeDieBet)> GetSeDieAsync(long roundId, int memberId, bool freeBet)
         {
             var round = await GetRoundAsync<SeDieRound>(roundId, MiniGameRoundCollections.SeDieRound);
-            var bets = (await GetBetsAsync<SeDieBet>(roundId, memberId, MiniGameBetCollections.SeDieBet, x=> !x.FreeBet.HasValue || x.FreeBet == freeBet)).FirstOrDefault();
+            var bets = (await GetBetsAsync<SeDieBet>(roundId, memberId, MiniGameBetCollections.SeDieBet, x => !x.FreeBet.HasValue || x.FreeBet == freeBet)).FirstOrDefault();
 
             return (round, bets);
         }
@@ -250,6 +252,16 @@ namespace GameRoundResult.Core.Database.Repository
             var bet = (await GetBetsAsync<VipSeDieBet>(roundId, memberId, MiniGameBetCollections.VipSeDieBet)).FirstOrDefault();
 
             return (round, bet);
+        }
+
+        public async Task<(SpecialSeDieRound, IEnumerable<SpecialSeDieBet>, SpecialSeDieOne)> GetSpecialSeDieAsync(long roundId, int memberId)
+        {
+            var round = await GetRoundAsync<SpecialSeDieRound>(roundId, MiniGameRoundCollections.SpecialSeDieRound);
+            var ones = (await GetBetsAsync<SpecialSeDieOne>(roundId, memberId, MiniGameBetCollections.SpecialSeDieOnes)).FirstOrDefault();
+            var bets = await database.GetCollection<SpecialSeDieBet>(MiniGameBetCollections.SpecialSeDieBet)
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
+
+            return (round, bets, ones);
         }
 
         private async Task<IEnumerable<T>> GetBetsAsync<T>(long roundId, int memberId, string collectionName, Expression<Func<T, bool>> filter = null) where T : BaseBetEntity

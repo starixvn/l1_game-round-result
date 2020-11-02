@@ -114,6 +114,9 @@ namespace GameRoundResult.Web.Handlers
                     var vipSeDieResult = await gameRoundResultService.GetVipSeDieRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
                     return (vipSeDieResult.Item1, vipSeDieResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)));
 
+                case GameType.SpecialSeDie:
+                    var specialSeDieResult = await gameRoundResultService.GetSpecialSeDieRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
+                    return (specialSeDieResult.Item1, specialSeDieResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)));
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
             }

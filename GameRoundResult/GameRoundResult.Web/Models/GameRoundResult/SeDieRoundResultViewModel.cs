@@ -33,14 +33,7 @@ namespace GameRoundResult.Web.Models
             {
                 var tagBuilder = new TagBuilder("i");
 
-                if (chip)
-                {
-                    tagBuilder.AddCssClass("red-chip");
-                }
-                else
-                {
-                    tagBuilder.AddCssClass("white-chip");
-                }
+                tagBuilder.AddCssClass(chip ? "red-chip" : "white-chip");
 
                 result.Add(tagBuilder.GetHtmlString());
             }

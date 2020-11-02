@@ -1,6 +1,6 @@
 ﻿namespace GameRoundResult.Web.Models
 {
-    public abstract class GameTicketViewModel
+    public class GameTicketViewModel
     {
     }
 }

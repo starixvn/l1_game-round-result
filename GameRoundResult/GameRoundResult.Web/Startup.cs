@@ -31,7 +31,7 @@ namespace GameRoundResult.Web
             services.Configure<List<AuthenticationClient>>(Configuration.GetSection("AuthenticationClients"));
             services.Configure<HostConfiguration>(Configuration.GetSection("HostConfiguration"));
             services.AddAutoMapper(typeof(Startup));
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMediatR(typeof(Startup));
             services.AddMongoDatabase(Configuration);
             services.AddServices();
             services.AddLocalizationSettings(Configuration);
