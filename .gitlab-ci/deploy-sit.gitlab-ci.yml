@@ -29,7 +29,7 @@ deploy_grr_sit:
     SWARM_REPLICAS: 1
     NODE_LABEL: L2
     DOCKER_NETWORK_NAME: lumi-network
-    DOCKER_PUBLIC_PORT: 6515
-    DOCKER_PRIVATE_PORT: 6515
+    DOCKER_PUBLIC_PORT: 6315
+    DOCKER_PRIVATE_PORT: 6315
   environment:
     name: SIT
