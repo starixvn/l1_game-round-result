@@ -24,6 +24,7 @@
         Roulette = 21,
         VipSeDie,
         Blackjack,
-        SpecialSeDie = 24
+        SpecialSeDie = 24,
+        VipFishPrawnCrab = 26
     }
 }

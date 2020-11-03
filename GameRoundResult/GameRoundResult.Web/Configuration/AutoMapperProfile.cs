@@ -126,6 +126,10 @@ namespace GameRoundResult.Web.Configuration
                 }.OrderByDescending(x => x)));
 
             CreateMap<SpecialSeDieBet, SpecialSeDieBetViewModel>();
+
+
+            CreateMap<VipFishPrawnCrabRound, FishPrawnCrabRoundResultViewModel>()
+             .ForMember(x => x.Dices, opt => opt.MapFrom(x => new [] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice }));
         }
     }
 }

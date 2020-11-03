@@ -229,6 +229,14 @@ namespace GameRoundResult.Web.Handlers
                         TotalBetWin = specialSeDieResult.Item3?.Betwin ?? 0
                     };
 
+                case GameType.VipFishPrawnCrab:
+                    var vipFishPrawnCrabResult = await service.GetVipFishPrawnCrabAsync(request.RoundId, request.MemberId);
+                    return new VipFishPrawnCrabTicketViewModel
+                    {
+                        RoundResult = vipFishPrawnCrabResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bet = vipFishPrawnCrabResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
+                    };
+
                 default:
                     throw new ArgumentException(nameof(GetGameTicketRequest.GameType));
             }

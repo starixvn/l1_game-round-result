@@ -74,6 +74,7 @@ namespace GameRoundResult.Web.Controllers
                     return PartialView("_SeDieRoundResult");
 
                 case GameType.FishPrawnCrab:
+                case GameType.VipFishPrawnCrab:
                     return PartialView("_FishPrawnRoundResult");
 
                 case GameType.DragonTiger:

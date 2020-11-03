@@ -138,6 +138,9 @@
   <data name="5 Elements" xml:space="preserve">
     <value>Ngũ Hành</value>
   </data>
+  <data name="AnyTriple" xml:space="preserve">
+    <value>Bộ ba bất kì</value>
+  </data>
   <data name="Banker" xml:space="preserve">
     <value>Nhà cái</value>
   </data>

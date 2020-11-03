@@ -1,6 +1,6 @@
 ﻿namespace GameRoundResult.Core.Constants
 {
-    internal class MiniGameRoundCollections
+    internal static class MiniGameRoundCollections
     {
         public const string BigSmallRound = "taixiu_phiens";
 
@@ -46,9 +46,11 @@
 
         public const string BlackjackRound = "blackjack_phiens";
         public const string SpecialSeDieRound = "specialsedie_phiens";
+
+        public const string VipFishPrawnCrabRound = "vipfishprawncrab_phiens";
     }
 
-    internal class MiniGameBetCollections
+    internal static class MiniGameBetCollections
     {
         public const string BigSmallBet = "taixiu_cuocs";
 
@@ -118,5 +120,7 @@
         public const string SpecialSeDieOnes = "specialsedie_ones";
 
         public const string SpecialSeDieBet = "specialsedie_cuocs";
+
+        public const string VipFishPrawnCrabBet = "vipfishprawncrab_cuocs";
     }
 }

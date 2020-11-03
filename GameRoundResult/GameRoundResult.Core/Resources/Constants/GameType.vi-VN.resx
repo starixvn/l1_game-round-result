@@ -177,6 +177,9 @@
   <data name="SpecialSeDie" xml:space="preserve">
     <value>Xóc Đĩa Cân Cửa</value>
   </data>
+  <data name="VipFishPrawnCrab" xml:space="preserve">
+    <value>Bầu Cua VIP</value>
+  </data>
   <data name="VipSeDie" xml:space="preserve">
     <value>Xóc Đĩa VIP</value>
   </data>

@@ -135,6 +135,9 @@
   <data name="4White" xml:space="preserve">
     <value>4 White</value>
   </data>
+  <data name="AnyTriple" xml:space="preserve">
+    <value>Any Triple</value>
+  </data>
   <data name="BankerPair" xml:space="preserve">
     <value>Banker Pair</value>
   </data>
