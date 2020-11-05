@@ -16,7 +16,7 @@ namespace GameRoundResult.Web.Configuration
             this.localizer = localizer;
         }
 
-        public IEnumerable<SelectListItem> GetSelectListItems()
+        public virtual IEnumerable<SelectListItem> GetSelectListItems()
         {
             var enums = Enum.GetValues(typeof(T)).Cast<T>();
             return enums.Select(x => new SelectListItem
@@ -31,6 +31,11 @@ namespace GameRoundResult.Web.Configuration
     {
         public GameTypeLocalization(IStringLocalizer<GameType> localizer) : base(localizer)
         {
+        }
+
+        public override IEnumerable<SelectListItem> GetSelectListItems()
+        {
+            return base.GetSelectListItems().Where(x => x.Value != GameType.Blackjack.ToString());
         }
     }
 }

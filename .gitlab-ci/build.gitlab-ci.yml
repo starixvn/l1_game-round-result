@@ -1,0 +1,5 @@
+build_image:
+    extends:
+      - .deploy_vars_grr
+      - .build_image_no_env
+      - .build:image:rules  

@@ -207,6 +207,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\Models\BlackjackTicketViewModel.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\GameRoundResult\Index.en-US.resx">
       <Generator></Generator>
     </EmbeddedResource>
