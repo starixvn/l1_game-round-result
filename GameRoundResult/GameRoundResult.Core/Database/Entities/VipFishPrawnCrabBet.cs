@@ -15,5 +15,9 @@
         public decimal Prawn { get; set; }
 
         public decimal AnyTriple { get; set; }
+
+        public decimal Mountain { get; set; }
+
+        public decimal Ocean { get; set; }
     }
 }

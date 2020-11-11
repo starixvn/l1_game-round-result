@@ -98,6 +98,21 @@
                     <td class="text-right">@Model.Bet.AnyTriple.Format()</td>
                 </tr>
             }
+
+            if (Model.Bet.Mountain > 0)
+            {
+                <tr>
+                    <td>@Localizer["Mountain"]</td>
+                    <td class="text-right">@Model.Bet.Mountain.Format()</td>
+                </tr>
+            }
+            if (Model.Bet.Ocean > 0)
+            {
+                <tr>
+                    <td>@Localizer["Ocean"]</td>
+                    <td class="text-right">@Model.Bet.Ocean.Format()</td>
+                </tr>
+            }
             <tr>
                 <td class="text-right">@Localizer["Total"]</td>
                 <td class="text-right">@Model.TotalBet.Format()</td>

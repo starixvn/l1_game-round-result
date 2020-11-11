@@ -219,8 +219,14 @@
   <data name="Line" xml:space="preserve">
     <value>Cược 2 hàng</value>
   </data>
+  <data name="Mountain" xml:space="preserve">
+    <value>Trên cạn</value>
+  </data>
   <data name="NoDataAvailable" xml:space="preserve">
     <value>Không có dữ liệu</value>
+  </data>
+  <data name="Ocean" xml:space="preserve">
+    <value>Dưới nước</value>
   </data>
   <data name="Odd" xml:space="preserve">
     <value>Lẻ</value>
