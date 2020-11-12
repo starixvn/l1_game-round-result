@@ -277,6 +277,11 @@ body {
     }
 }
 
+.vip-animal {
+    @extend .animal;
+    background-color: #624152;
+}
+
 // Keno Pro Max
 
 .text-earth {

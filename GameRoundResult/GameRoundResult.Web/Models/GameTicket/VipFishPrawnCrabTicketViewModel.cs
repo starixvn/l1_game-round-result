@@ -4,7 +4,7 @@ namespace GameRoundResult.Web.Models.GameTicket
 {
     public class VipFishPrawnCrabTicketViewModel : GameTicketViewModel
     {
-        public FishPrawnCrabRoundResultViewModel RoundResult { get; set; }
+        public VipFishPrawnCrabRoundResultViewModel RoundResult { get; set; }
 
         public VipFishPrawnCrabBetViewModel Bet { get; set; }
 

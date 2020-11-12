@@ -128,7 +128,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<SpecialSeDieBet, SpecialSeDieBetViewModel>();
 
 
-            CreateMap<VipFishPrawnCrabRound, FishPrawnCrabRoundResultViewModel>()
+            CreateMap<VipFishPrawnCrabRound, VipFishPrawnCrabRoundResultViewModel>()
              .ForMember(x => x.Dices, opt => opt.MapFrom(x => new [] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice }));
             CreateMap<VipFishPrawnCrabBet, VipFishPrawnCrabBetViewModel>();
         }
