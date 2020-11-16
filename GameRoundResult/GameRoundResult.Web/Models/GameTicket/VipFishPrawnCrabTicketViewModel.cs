@@ -8,7 +8,7 @@ namespace GameRoundResult.Web.Models.GameTicket
 
         public VipFishPrawnCrabBetViewModel Bet { get; set; }
 
-        public decimal TotalBet => Bet.Stag + Bet.Gourd + Bet.Rooster + Bet.Fish + Bet.Crab + Bet.Prawn + Bet.AnyTriple;
+        public decimal TotalBet => Bet.Stag + Bet.Gourd + Bet.Rooster + Bet.Fish + Bet.Crab + Bet.Prawn + Bet.AnyTriple + Bet.Mountain + Bet.Ocean;
 
         public decimal TotalWin =>  Bet.BetWin;
 
