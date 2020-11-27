@@ -96,6 +96,16 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
+        public static VipFishPrawnCrabRoundResultViewModel ToViewModel(this VipFishPrawnCrabRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<VipFishPrawnCrabRound, VipFishPrawnCrabRoundResultViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+
+
         public static BigSmallBetViewModel ToViewModel(this BigSmallBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<BigSmallBet, BigSmallBetViewModel>(entity, opts =>
@@ -187,6 +197,22 @@ namespace GameRoundResult.Web.Extensions
         public static SpecialSeDieBetViewModel ToViewModel(this SpecialSeDieBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<SpecialSeDieBet, SpecialSeDieBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static BlackjackBetViewModel ToViewModel(this BlackjackBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<BlackjackBet, BlackjackBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static VipFishPrawnCrabBetViewModel ToViewModel(this VipFishPrawnCrabBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<VipFishPrawnCrabBet, VipFishPrawnCrabBetViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });

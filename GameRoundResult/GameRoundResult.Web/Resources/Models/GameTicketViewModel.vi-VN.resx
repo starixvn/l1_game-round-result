@@ -138,6 +138,9 @@
   <data name="5 Elements" xml:space="preserve">
     <value>Ngũ Hành</value>
   </data>
+  <data name="AnyTriple" xml:space="preserve">
+    <value>Bộ ba bất kỳ</value>
+  </data>
   <data name="Banker" xml:space="preserve">
     <value>Nhà cái</value>
   </data>
@@ -216,8 +219,14 @@
   <data name="Line" xml:space="preserve">
     <value>Cược 2 hàng</value>
   </data>
+  <data name="Mountain" xml:space="preserve">
+    <value>Trên cạn</value>
+  </data>
   <data name="NoDataAvailable" xml:space="preserve">
     <value>Không có dữ liệu</value>
+  </data>
+  <data name="Ocean" xml:space="preserve">
+    <value>Dưới nước</value>
   </data>
   <data name="Odd" xml:space="preserve">
     <value>Lẻ</value>

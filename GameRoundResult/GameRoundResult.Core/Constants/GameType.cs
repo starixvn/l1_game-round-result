@@ -23,6 +23,8 @@
         KenoNorth,
         Roulette = 21,
         VipSeDie,
-        SpecialSeDie = 24
+        Blackjack,
+        SpecialSeDie = 24,
+        VipFishPrawnCrab = 26
     }
 }

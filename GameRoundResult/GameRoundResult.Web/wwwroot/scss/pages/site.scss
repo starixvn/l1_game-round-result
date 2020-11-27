@@ -277,6 +277,11 @@ body {
     }
 }
 
+.vip-animal {
+    @extend .animal;
+    background-color: #624152;
+}
+
 // Keno Pro Max
 
 .text-earth {
@@ -428,5 +433,16 @@ body {
     to {
         opacity: .25;
         transform: scale(.75);
+    }
+}
+
+.blackjack-result {
+    .cards {
+        display: flex;
+        justify-content: center;
+
+        .card:last-child:before {
+            display: none;
+        }
     }
 }

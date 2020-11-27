@@ -35,5 +35,16 @@
         &.table-baccarat {
             max-width: 72rem;
         }
+
+        &.table-blackjack {
+            max-width: 120rem;
+            .split-hand {
+                height: 3rem;
+                margin-bottom: -1rem;
+            }
+            .col-round-id {
+                width: 16rem;
+            }
+        }
     }
 }

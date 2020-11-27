@@ -117,6 +117,10 @@ namespace GameRoundResult.Web.Handlers
                 case GameType.SpecialSeDie:
                     var specialSeDieResult = await gameRoundResultService.GetSpecialSeDieRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
                     return (specialSeDieResult.Item1, specialSeDieResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)));
+
+                case GameType.VipFishPrawnCrab:
+                    var vipFishPrawnCrabResult = await gameRoundResultService.GetVipFishPrawnRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
+                    return (vipFishPrawnCrabResult.Item1, vipFishPrawnCrabResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)));
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
             }

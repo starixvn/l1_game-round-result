@@ -54,7 +54,10 @@ namespace GameRoundResult.Core.Database.Repository
 
         Task<(VipSeDieRound, VipSeDieBet)> GetVipSeDieAsync(long roundId, int memberId);
 
+        Task<(BlackjackRound, BlackjackBet)> GetBlackjackAsync(long handId, int memberId);
         Task<(SpecialSeDieRound, IEnumerable<SpecialSeDieBet>, SpecialSeDieOne)> GetSpecialSeDieAsync(long roundId, int memberId);
+
+        Task<(VipFishPrawnCrabRound, VipFishPrawnCrabBet)> GetVipFishPrawnCrabAsync(long roundId, int memberId);
     }
 
     public class GameBetRepository : IGameBetRepository
@@ -254,6 +257,21 @@ namespace GameRoundResult.Core.Database.Repository
             return (round, bet);
         }
 
+        public async Task<(BlackjackRound, BlackjackBet)> GetBlackjackAsync(long handId, int memberId)
+        {
+            var bet = await database.GetCollection<BlackjackBet>(MiniGameBetCollections.BlackjackBet).Find(x => x.HandId == handId && x.MemberId == memberId)
+                .SortByDescending(x => x.Time).FirstOrDefaultAsync();
+
+            if(bet != null)
+            {
+                var round = await GetRoundAsync<BlackjackRound>(bet.Round, MiniGameRoundCollections.BlackjackRound);
+
+                return (round, bet);
+            }
+
+            return (null, bet);
+        }
+
         public async Task<(SpecialSeDieRound, IEnumerable<SpecialSeDieBet>, SpecialSeDieOne)> GetSpecialSeDieAsync(long roundId, int memberId)
         {
             var round = await GetRoundAsync<SpecialSeDieRound>(roundId, MiniGameRoundCollections.SpecialSeDieRound);
@@ -262,6 +280,14 @@ namespace GameRoundResult.Core.Database.Repository
                 .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
 
             return (round, bets, ones);
+        }
+
+        public async Task<(VipFishPrawnCrabRound, VipFishPrawnCrabBet)> GetVipFishPrawnCrabAsync(long roundId, int memberId)
+        {
+            var round = await GetRoundAsync<VipFishPrawnCrabRound>(roundId, MiniGameRoundCollections.VipFishPrawnCrabRound);
+            var bet = (await GetBetsAsync<VipFishPrawnCrabBet>(roundId, memberId, MiniGameBetCollections.VipFishPrawnCrabBet)).FirstOrDefault();
+
+            return (round, bet);
         }
 
         private async Task<IEnumerable<T>> GetBetsAsync<T>(long roundId, int memberId, string collectionName, Expression<Func<T, bool>> filter = null) where T : BaseBetEntity

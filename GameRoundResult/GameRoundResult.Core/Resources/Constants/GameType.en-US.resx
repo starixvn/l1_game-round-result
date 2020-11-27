@@ -177,6 +177,9 @@
   <data name="SpecialSeDie" xml:space="preserve">
     <value>Special Se Die</value>
   </data>
+  <data name="VipFishPrawnCrab" xml:space="preserve">
+    <value>VIP Fish Prawn Crab</value>
+  </data>
   <data name="VipSeDie" xml:space="preserve">
     <value>VIP Se Die</value>
   </data>
