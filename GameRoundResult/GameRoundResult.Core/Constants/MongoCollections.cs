@@ -45,9 +45,12 @@
         public const string VipSeDieRound = "vipsedie_phiens";
 
         public const string BlackjackRound = "blackjack_phiens";
+
         public const string SpecialSeDieRound = "specialsedie_phiens";
 
         public const string VipFishPrawnCrabRound = "vipfishprawncrab_phiens";
+
+        public const string SicBoRound = "sicbo_phiens";
     }
 
     internal static class MiniGameBetCollections
@@ -122,5 +125,10 @@
         public const string SpecialSeDieBet = "specialsedie_cuocs";
 
         public const string VipFishPrawnCrabBet = "vipfishprawncrab_cuocs";
+
+        public const string SicBoBet = "sicbo_cuocs";
+
+        public const string SicBoOnes = "sicbo_ones";
+        
     }
 }

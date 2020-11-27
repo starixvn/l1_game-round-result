@@ -56,6 +56,8 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(long, IEnumerable<SpecialSeDieRound>)> GetSpecialSeDieRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
         Task<(long, IEnumerable<VipFishPrawnCrabRound>)> GetVipFishPrawnRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<SicBoRound>)> GetSicBoRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
     }
 
     public class GameRoundRepository : IGameRoundRepository
@@ -175,6 +177,11 @@ namespace GameRoundResult.Core.Database.Repository
         public async Task<(long, IEnumerable<VipFishPrawnCrabRound>)> GetVipFishPrawnRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
             return await GetRoundResultAsync<VipFishPrawnCrabRound>(date, roundId, MiniGameRoundCollections.VipFishPrawnCrabRound, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<SicBoRound>)> GetSicBoRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await GetRoundResultAsync<SicBoRound>(date, roundId, MiniGameRoundCollections.SicBoRound, page, pageSize);
         }
 
         private async Task<(long, IEnumerable<T>)> GetRoundResultAsync<T>(DateTime date, long roundId, string roundCollectionName, int page, int pageSize
