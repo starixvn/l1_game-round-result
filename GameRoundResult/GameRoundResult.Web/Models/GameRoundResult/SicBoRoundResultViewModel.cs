@@ -19,6 +19,7 @@ namespace GameRoundResult.Web.Models
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
                 GetDiceContent(),
+                Total.ToString()
             };
 
             return result;

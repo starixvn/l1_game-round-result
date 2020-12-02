@@ -126,4 +126,7 @@
   <data name="Round" xml:space="preserve">
     <value>Phiên</value>
   </data>
+  <data name="Total" xml:space="preserve">
+    <value>Tổng</value>
+  </data>
 </root>
