@@ -32,8 +32,8 @@ namespace GameRoundResult.Web.Models
             foreach (var dice in Dices)
             {
                 var tagBuilder = new TagBuilder("img");
-                tagBuilder.AddCssClass("dice");
-                tagBuilder.Attributes.Add("src", $"/scss/images/dice_{dice}.png");
+                tagBuilder.AddCssClass("dice sicbo");
+                tagBuilder.Attributes.Add("src", $"/scss/images/sicbo_dice_{dice}.png");
 
                 div.InnerHtml.AppendHtml(tagBuilder);
             }
