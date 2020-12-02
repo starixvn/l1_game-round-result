@@ -55,7 +55,7 @@ namespace GameRoundResult.Core.Services
         Task<(long, IEnumerable<VipFishPrawnCrabRound>)> GetVipFishPrawnRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
         Task<(long, IEnumerable<SicBoRound>)> GetSicBoRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
-        
+        Task<(long, IEnumerable<VipSeDieWarRound>)> GetVipSeDieWarRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
         Task<(long, IEnumerable<VipBaccaratRound>)> GetVipBaccaratRoundResult(DateTime date, long roundId, int page, int pageSize);
     }
 
@@ -188,6 +188,11 @@ namespace GameRoundResult.Core.Services
         public async Task<(long, IEnumerable<SicBoRound>)> GetSicBoRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
             return await repository.GetSicBoRoundResultAsync(date, roundId, page, pageSize);
+        }
+        
+        public async Task<(long, IEnumerable<VipSeDieWarRound>)> GetVipSeDieWarRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await repository.GetVipSeDieWarRoundResultAsync(date, roundId, page, pageSize);
         }
 
         public async Task<(long, IEnumerable<VipBaccaratRound>)> GetVipBaccaratRoundResult(DateTime date, long roundId, int page, int pageSize)

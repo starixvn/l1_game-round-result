@@ -52,6 +52,8 @@
 
         public const string SicBoRound = "sicbo_phiens";
         
+        public const string VipSeDieWarRound = "vipsediewar_phiens";
+        
         public const string VipBaccaratRound = "vipbaccarat_phiens";
     }
 
@@ -132,8 +134,10 @@
         public const string VipBaccaratBet = "vipbaccarat_cuocs";
         
         public const string SicBoBet = "sicbo_cuocs";
+        public const string VipSeDieWarBet = "vipsediewar_cuocs";
 
         public const string SicBoOnes = "sicbo_ones";
+        public const string VipSeDieWarOnes = "vipsediewar_ones";
         
     }
 }
