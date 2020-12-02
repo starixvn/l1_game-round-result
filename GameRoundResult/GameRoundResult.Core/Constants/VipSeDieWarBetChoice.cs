@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GameRoundResult.Core.Constants
+﻿namespace GameRoundResult.Core.Constants
 {
     public static class VipSeDieWarBetChoice
     {
@@ -11,5 +7,19 @@ namespace GameRoundResult.Core.Constants
         public const string Tie = "tie";
         public const string Odd = "odd";
         public const string Even = "even";
+
+        public const string PlayerOdd = "playerOdd";
+        public const string PlayerEven = "playerEven";
+        public const string PlayerRed3 = "playerRed3";
+        public const string PlayerRed4 = "playerRed4";
+        public const string PlayerWhite3 = "playerWhite3";
+        public const string PlayerWhite4 = "playerWhite4";
+
+        public const string BankerOdd = "bankerOdd";
+        public const string BankerEven = "bankerEven";
+        public const string BankerRed3 = "bankerRed3";
+        public const string BankerRed4 = "bankerRed4";
+        public const string BankerWhite3 = "bankerWhite3";
+        public const string BankerWhite4 = "bankerWhite4";
     }
 }

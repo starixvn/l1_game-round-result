@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Text;
+using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
@@ -9,6 +11,7 @@ namespace GameRoundResult.Web.Models
     {
         public IEnumerable<bool> PlayerChips { get; set; }
         public IEnumerable<bool> BankerChips { get; set; }
+        public Dictionary<string, bool> SettlementResult { get; set; }
 
         public bool IsEven { get; set; }
 
@@ -42,21 +45,37 @@ namespace GameRoundResult.Web.Models
 
         private string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            var tagBuilder = new TagBuilder("span");
-            tagBuilder.AddCssClass("bold");
+            var tagBuilder = new TagBuilder("br");
+            var result = new StringBuilder();
+            result.Append(GetFirstRowResult(stringLocalizer));
+            result.AppendLine();
 
-            if (IsEven)
+            return tagBuilder.GetHtmlString();
+        }
+
+        private string GetFirstRowResult(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            var result = new StringBuilder();
+
+            if (SettlementResult[VipSeDieWarBetChoice.Player])
             {
-                tagBuilder.AddCssClass("text-blue");
-                tagBuilder.InnerHtml.Append(stringLocalizer["Even"]);
+                result.Append(stringLocalizer["Player"]);
             }
             else
             {
-                tagBuilder.AddCssClass("text-red");
-                tagBuilder.InnerHtml.Append(stringLocalizer["Odd"]);
+                if (SettlementResult[VipSeDieWarBetChoice.Banker])
+                {
+                    result.Append(stringLocalizer["Banker"]);
+                }
+                else
+                {
+                    result.Append(stringLocalizer["Tie"]);
+                }
             }
 
-            return tagBuilder.GetHtmlString();
+            result.Append(SettlementResult[VipSeDieWarBetChoice.Odd] ? $", {stringLocalizer["TotalOdd"]}" : $", {stringLocalizer["TotalEven"]}");
+
+            return result.ToString();
         }
     }
 }
