@@ -451,3 +451,11 @@ body {
         }
     }
 }
+
+.table-vip-se-die-war {
+    tr {
+        td:nth-child(4) {
+            white-space: pre-wrap;
+        }
+    }
+}

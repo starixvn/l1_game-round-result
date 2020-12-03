@@ -106,6 +106,8 @@ namespace GameRoundResult.Web.Controllers
 
                 case GameType.SicBo:
                     return PartialView("_SicBoRoundResult");
+                case GameType.VipSeDieWar:
+                    return PartialView("_VipSeDieWarRoundResult");
 
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
