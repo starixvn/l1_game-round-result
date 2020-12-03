@@ -120,8 +120,26 @@
   <data name="Banker" xml:space="preserve">
     <value>Banker</value>
   </data>
+  <data name="BankerEven" xml:space="preserve">
+    <value>Banker - Even</value>
+  </data>
+  <data name="BankerOdd" xml:space="preserve">
+    <value>Banker - Odd</value>
+  </data>
   <data name="BankerPair" xml:space="preserve">
     <value>Banker Pair</value>
+  </data>
+  <data name="BankerRed1" xml:space="preserve">
+    <value>Banker - 1 Red</value>
+  </data>
+  <data name="BankerRed3" xml:space="preserve">
+    <value>Banker - 3 Red</value>
+  </data>
+  <data name="BankerRed4" xml:space="preserve">
+    <value>Banker - 4 Red</value>
+  </data>
+  <data name="BankerWhite4" xml:space="preserve">
+    <value>Banker - 4 White</value>
   </data>
   <data name="Big" xml:space="preserve">
     <value>Big</value>
@@ -147,8 +165,26 @@
   <data name="Player" xml:space="preserve">
     <value>Player</value>
   </data>
+  <data name="PlayerEven" xml:space="preserve">
+    <value>Player - Even</value>
+  </data>
+  <data name="PlayerOdd" xml:space="preserve">
+    <value>Player - Odd</value>
+  </data>
   <data name="PlayerPair" xml:space="preserve">
     <value>Player Pair</value>
+  </data>
+  <data name="PlayerRed1" xml:space="preserve">
+    <value>Player - 1 Red</value>
+  </data>
+  <data name="PlayerRed3" xml:space="preserve">
+    <value>Player - 3 Red</value>
+  </data>
+  <data name="PlayerRed4" xml:space="preserve">
+    <value>Player - 4 Red</value>
+  </data>
+  <data name="PlayerWhite4" xml:space="preserve">
+    <value>Player - 4 White</value>
   </data>
   <data name="Small" xml:space="preserve">
     <value>Small</value>
@@ -158,6 +194,12 @@
   </data>
   <data name="Tiger" xml:space="preserve">
     <value>Tiger</value>
+  </data>
+  <data name="TotalEven" xml:space="preserve">
+    <value>Total Even</value>
+  </data>
+  <data name="TotalOdd" xml:space="preserve">
+    <value>Total Odd</value>
   </data>
   <data name="Water" xml:space="preserve">
     <value>Water</value>

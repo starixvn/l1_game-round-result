@@ -453,3 +453,6 @@ body {
   justify-content: center; }
   .blackjack-result .cards .card:last-child:before {
     display: none; }
+
+.table-vip-se-die-war tr td:nth-child(5) {
+  white-space: pre-wrap; }

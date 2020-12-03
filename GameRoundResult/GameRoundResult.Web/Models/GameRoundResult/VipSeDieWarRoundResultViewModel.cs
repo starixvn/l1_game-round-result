@@ -13,8 +13,6 @@ namespace GameRoundResult.Web.Models
         public IEnumerable<bool> BankerChips { get; set; }
         public Dictionary<string, bool> SettlementResult { get; set; }
 
-        public bool IsEven { get; set; }
-
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
@@ -47,10 +45,11 @@ namespace GameRoundResult.Web.Models
         {
             var tagBuilder = new TagBuilder("br");
             var result = new StringBuilder();
-            result.Append(GetFirstRowResult(stringLocalizer));
-            result.AppendLine();
+            result.AppendLine(GetFirstRowResult(stringLocalizer));
+            result.AppendLine(GetSecondRowResult(stringLocalizer));
+            result.AppendLine(GetThirdRowResult(stringLocalizer));
 
-            return tagBuilder.GetHtmlString();
+            return result.ToString();
         }
 
         private string GetFirstRowResult(IStringLocalizer<RoundResultViewModel> stringLocalizer)
@@ -63,19 +62,76 @@ namespace GameRoundResult.Web.Models
             }
             else
             {
-                if (SettlementResult[VipSeDieWarBetChoice.Banker])
-                {
-                    result.Append(stringLocalizer["Banker"]);
-                }
-                else
-                {
-                    result.Append(stringLocalizer["Tie"]);
-                }
+                result.Append(SettlementResult[VipSeDieWarBetChoice.Banker] ? stringLocalizer["Banker"] : stringLocalizer["Tie"]);
             }
 
             result.Append(SettlementResult[VipSeDieWarBetChoice.Odd] ? $", {stringLocalizer["TotalOdd"]}" : $", {stringLocalizer["TotalEven"]}");
 
             return result.ToString();
+        }
+
+        private string GetSecondRowResult(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            var result = new StringBuilder();
+
+            result.Append(SettlementResult[VipSeDieWarBetChoice.PlayerEven] ? stringLocalizer["PlayerEven"] : stringLocalizer["PlayerOdd"]);
+
+            result.Append(SettlementResult[VipSeDieWarBetChoice.Banker] ? $", {stringLocalizer["BankerEven"]}" : $", {stringLocalizer["BankerOdd"]}");
+
+            return result.ToString();
+        }
+
+        private string GetThirdRowResult(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            var result = new List<string>();
+            var playerResult = new StringBuilder();
+            var bankerResult = new StringBuilder();
+
+            if (SettlementResult[VipSeDieWarBetChoice.PlayerRed3])
+            {
+                result.Add(stringLocalizer["PlayerRed3"]);
+            }
+            else
+            {
+                if (SettlementResult[VipSeDieWarBetChoice.PlayerRed4])
+                {
+                    result.Add(stringLocalizer["PlayerRed3"]);
+                }
+
+                if (SettlementResult[VipSeDieWarBetChoice.PlayerWhite3])
+                {
+                    result.Add(stringLocalizer["PlayerRed1"]);
+                }
+
+                if (SettlementResult[VipSeDieWarBetChoice.PlayerWhite4])
+                {
+                    result.Add(stringLocalizer["PlayerWhite4"]);
+                }
+            }
+
+            if (SettlementResult[VipSeDieWarBetChoice.BankerRed3])
+            {
+                result.Add(stringLocalizer["BankerRed3"]);
+            }
+            else
+            {
+                if (SettlementResult[VipSeDieWarBetChoice.BankerRed4])
+                {
+                    result.Add(stringLocalizer["BankerRed4"]);
+                }
+
+                if (SettlementResult[VipSeDieWarBetChoice.BankerWhite3])
+                {
+                    result.Add(stringLocalizer["BankerRed1"]);
+                }
+
+                if (SettlementResult[VipSeDieWarBetChoice.BankerWhite4])
+                {
+                    result.Add(stringLocalizer["BankerWhite4"]);
+                }
+            }
+
+            return string.Join(", ", result);
         }
     }
 }
