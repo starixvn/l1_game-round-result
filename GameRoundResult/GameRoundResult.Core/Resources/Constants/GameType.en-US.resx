@@ -188,5 +188,8 @@
   </data>
   <data name="VipBaccarat" xml:space="preserve">
     <value>VIP Baccarat</value>
+    </data>
+  <data name="VipSeDieWar" xml:space="preserve">
+    <value>VIP Se Die War</value>
   </data>
 </root>
