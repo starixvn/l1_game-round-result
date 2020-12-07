@@ -41,9 +41,8 @@ namespace GameRoundResult.Web.Models
             return string.Join("", result);
         }
 
-        private string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            var tagBuilder = new TagBuilder("br");
             var result = new StringBuilder();
             result.AppendLine(GetFirstRowResult(stringLocalizer));
             result.AppendLine(GetSecondRowResult(stringLocalizer));
@@ -76,7 +75,7 @@ namespace GameRoundResult.Web.Models
 
             result.Append(SettlementResult[VipSeDieWarBetChoice.PlayerEven] ? stringLocalizer["PlayerEven"] : stringLocalizer["PlayerOdd"]);
 
-            result.Append(SettlementResult[VipSeDieWarBetChoice.Banker] ? $", {stringLocalizer["BankerEven"]}" : $", {stringLocalizer["BankerOdd"]}");
+            result.Append(SettlementResult[VipSeDieWarBetChoice.BankerEven] ? $", {stringLocalizer["BankerEven"]}" : $", {stringLocalizer["BankerOdd"]}");
 
             return result.ToString();
         }
@@ -95,7 +94,7 @@ namespace GameRoundResult.Web.Models
             {
                 if (SettlementResult[VipSeDieWarBetChoice.PlayerRed4])
                 {
-                    result.Add(stringLocalizer["PlayerRed3"]);
+                    result.Add(stringLocalizer["PlayerRed4"]);
                 }
 
                 if (SettlementResult[VipSeDieWarBetChoice.PlayerWhite3])
