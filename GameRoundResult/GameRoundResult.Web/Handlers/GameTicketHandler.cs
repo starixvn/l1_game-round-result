@@ -246,6 +246,15 @@ namespace GameRoundResult.Web.Handlers
                         TotalBet = sicboResult.Item3?.TotalAmount ?? 0,
                         TotalBetWin = sicboResult.Item3?.Betwin ?? 0
                     };
+                case GameType.VipSeDieWar:
+                    var vipSeDieWarResult = await service.GetVipSeDieWarAsync(request.RoundId, request.MemberId);
+                    return new VipSeDieWarTicketViewModel
+                    {
+                        RoundResult = vipSeDieWarResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bets = vipSeDieWarResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                        TotalBet = vipSeDieWarResult.Item3?.TotalAmount ?? 0,
+                        TotalBetWin = vipSeDieWarResult.Item3?.Betwin ?? 0
+                    };
                  case GameType.VipBaccarat:
                     var vipBaccaratResult = await service.GetVipBaccaratAsync(request.RoundId, request.MemberId);
                     return new BaccaratTicketViewModel

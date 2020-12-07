@@ -61,6 +61,7 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(VipFishPrawnCrabRound, VipFishPrawnCrabBet)> GetVipFishPrawnCrabAsync(long roundId, int memberId);
 
         Task<(SicBoRound, IEnumerable<SicBoBet>, SicBoOne)> GetSicBoAsync(long roundId, int memberId);
+        Task<(VipSeDieWarRound, IEnumerable<VipSeDieWarBet>, VipSeDieWarOne)> GetVipSeDieWarAsync(long roundId, int memberId);
         
         Task<(VipBaccaratRound, BaccaratBet)> GetVipBaccaratAsync(long roundId, int memberId);
     }
@@ -300,6 +301,16 @@ namespace GameRoundResult.Core.Database.Repository
             var round = await GetRoundAsync<SicBoRound>(roundId, MiniGameRoundCollections.SicBoRound);
             var ones = (await GetBetsAsync<SicBoOne>(roundId, memberId, MiniGameBetCollections.SicBoOnes)).FirstOrDefault();
             var bets = await database.GetCollection<SicBoBet>(MiniGameBetCollections.SicBoBet)
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
+
+            return (round, bets, ones);
+        }
+        
+        public async Task<(VipSeDieWarRound, IEnumerable<VipSeDieWarBet>, VipSeDieWarOne)> GetVipSeDieWarAsync(long roundId, int memberId)
+        {
+            var round = await GetRoundAsync<VipSeDieWarRound>(roundId, MiniGameRoundCollections.VipSeDieWarRound);
+            var ones = (await GetBetsAsync<VipSeDieWarOne>(roundId, memberId, MiniGameBetCollections.VipSeDieWarOnes)).FirstOrDefault();
+            var bets = await database.GetCollection<VipSeDieWarBet>(MiniGameBetCollections.VipSeDieWarBet)
                 .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
 
             return (round, bets, ones);

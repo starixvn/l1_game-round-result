@@ -38,13 +38,19 @@
 
         &.table-blackjack {
             max-width: 120rem;
+
             .split-hand {
                 height: 3rem;
                 margin-bottom: -1rem;
             }
+
             .col-round-id {
                 width: 16rem;
             }
+        }
+
+        &.table-vip-se-die-war {
+            max-width: 100rem;
         }
     }
 }

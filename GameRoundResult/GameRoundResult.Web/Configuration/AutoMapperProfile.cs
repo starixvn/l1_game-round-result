@@ -151,6 +151,7 @@ namespace GameRoundResult.Web.Configuration
                     x.Result.Banker.FourthChip
               }.OrderByDescending(x => x)));
 
+            CreateMap<VipSeDieWarBet, VipSeDieWarBetViewModel>();
             CreateMap<VipBaccaratRound, BaccaratRoundResultViewModel>()
                 .ForMember(x => x.PlayerCards, opt => opt.MapFrom((source, destination, i, context) =>
                 {
