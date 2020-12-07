@@ -83,8 +83,6 @@ namespace GameRoundResult.Web.Models
         private string GetThirdRowResult(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>();
-            var playerResult = new StringBuilder();
-            var bankerResult = new StringBuilder();
 
             if (SettlementResult[VipSeDieWarBetChoice.PlayerRed3])
             {
