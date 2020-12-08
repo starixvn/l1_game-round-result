@@ -51,6 +51,8 @@
         public const string VipFishPrawnCrabRound = "vipfishprawncrab_phiens";
 
         public const string SicBoRound = "sicbo_phiens";
+        
+        public const string VipBaccaratRound = "vipbaccarat_phiens";
     }
 
     internal static class MiniGameBetCollections
@@ -88,7 +90,7 @@
         public const string KenoMax2Ones = "kenomax2_ones";
 
         public const string KenoMiniBet = "kenomini_cuocs";
-                            
+
         public const string KenoMiniOnes = "kenomini_ones";
 
         public const string KenoMini2Bet = "kenomini2_cuocs";
@@ -96,19 +98,19 @@
         public const string KenoMini2Ones = "kenomini2_ones";
 
         public const string KenoEastBet = "kenoeast_cuocs";
-                            
+
         public const string KenoEastOnes = "kenoeast_ones";
 
         public const string KenoWestBet = "kenowest_cuocs";
-                            
+
         public const string KenoWestOnes = "kenowest_ones";
 
         public const string KenoSouthBet = "kenosouth_cuocs";
-                            
+
         public const string KenoSouthOnes = "kenosouth_ones";
 
         public const string KenoNorthBet = "kenonorth_cuocs";
-                            
+
         public const string KenoNorthOnes = "kenonorth_ones";
 
         public const string RouletteBet = "roulette_cuocs";
@@ -120,12 +122,15 @@
         public const string VipSeDieBet = "vipsedie_cuocs";
 
         public const string BlackjackBet = "blackjack_cuocs";
+
         public const string SpecialSeDieOnes = "specialsedie_ones";
 
         public const string SpecialSeDieBet = "specialsedie_cuocs";
 
         public const string VipFishPrawnCrabBet = "vipfishprawncrab_cuocs";
 
+        public const string VipBaccaratBet = "vipbaccarat_cuocs";
+        
         public const string SicBoBet = "sicbo_cuocs";
 
         public const string SicBoOnes = "sicbo_ones";

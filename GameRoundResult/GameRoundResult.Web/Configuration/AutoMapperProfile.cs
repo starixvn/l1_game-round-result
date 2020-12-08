@@ -135,6 +135,38 @@ namespace GameRoundResult.Web.Configuration
                 .ForMember(x => x.Dices, opt => opt.MapFrom(x => new[] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice }));
 
             CreateMap<SicBoBet, SicBoBetViewModel>();
+
+            CreateMap<VipBaccaratRound, BaccaratRoundResultViewModel>()
+                .ForMember(x => x.PlayerCards, opt => opt.MapFrom((source, destination, i, context) =>
+                {
+                    var mapper = context.Mapper;
+                    var result = new List<CardViewModel> { mapper.Map<CardViewModel>(source.Result.Player.FirstCard), mapper.Map<CardViewModel>(source.Result.Player.SecondCard) };
+                    if (source.Result.Player.ThirdCard != null)
+                    {
+                        result.Add(mapper.Map<CardViewModel>(source.Result.Player.ThirdCard));
+                    }
+
+                    return result;
+                }))
+                .ForMember(x => x.BankerCards, opt => opt.MapFrom((source, destination, i, context) =>
+                {
+                    var mapper = context.Mapper;
+                    var result = new List<CardViewModel> { mapper.Map<CardViewModel>(source.Result.Banker.FirstCard), mapper.Map<CardViewModel>(source.Result.Banker.SecondCard) };
+                    if (source.Result.Banker.ThirdCard != null)
+                    {
+                        result.Add(mapper.Map<CardViewModel>(source.Result.Banker.ThirdCard));
+                    }
+
+                    return result;
+                }))
+                .ForMember(x => x.Player, opt => opt.MapFrom(x => x.SettlementResult.Player))
+                .ForMember(x => x.Banker, opt => opt.MapFrom(x => x.SettlementResult.Banker))
+                .ForMember(x => x.Tie, opt => opt.MapFrom(x => x.SettlementResult.Tie))
+                .ForMember(x => x.Big, opt => opt.MapFrom(x => x.SettlementResult.Big))
+                .ForMember(x => x.Small, opt => opt.MapFrom(x => x.SettlementResult.Small))
+                .ForMember(x => x.PlayerPair, opt => opt.MapFrom(x => x.SettlementResult.PlayerPair))
+                .ForMember(x => x.BankerPair, opt => opt.MapFrom(x => x.SettlementResult.BankerPair))
+                .ForMember(x => x.Natural, opt => opt.MapFrom(x => x.SettlementResult.Natural));
         }
     }
 }

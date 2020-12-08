@@ -231,5 +231,16 @@ namespace GameRoundResult.Web.Extensions
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });
         }
+
+        public static BaccaratRoundResultViewModel ToViewModel(this VipBaccaratRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<VipBaccaratRound, BaccaratRoundResultViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) =>
+                {
+                    dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo);
+                });
+            });
+        }
     }
 }

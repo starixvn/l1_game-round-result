@@ -58,6 +58,8 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(long, IEnumerable<VipFishPrawnCrabRound>)> GetVipFishPrawnRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
         Task<(long, IEnumerable<SicBoRound>)> GetSicBoRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+        
+        Task<(long, IEnumerable<VipBaccaratRound>)> GetVipBaccaratRoundResult(DateTime date, long roundId, int page, int pageSize);
     }
 
     public class GameRoundRepository : IGameRoundRepository
@@ -205,6 +207,11 @@ namespace GameRoundResult.Core.Database.Repository
         public async Task<(long, IEnumerable<RouletteRound>)> GetRouletteRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
             return await GetRoundResultAsync<RouletteRound>(date, roundId, MiniGameRoundCollections.RouletteRound, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<VipBaccaratRound>)> GetVipBaccaratRoundResult(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await GetRoundResultAsync<VipBaccaratRound>(date, roundId, MiniGameRoundCollections.VipBaccaratRound, page, pageSize);
         }
     }
 }
