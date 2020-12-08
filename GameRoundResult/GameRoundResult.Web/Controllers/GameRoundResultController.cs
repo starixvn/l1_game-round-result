@@ -81,6 +81,7 @@ namespace GameRoundResult.Web.Controllers
                     return PartialView("_DragonTigerRoundResult");
 
                 case GameType.Baccarat:
+                case GameType.VipBaccarat:
                     return PartialView("_BaccaratRoundResult");
 
                 case GameType.KenoProMax:
@@ -112,7 +113,7 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [ResponseCache(Duration = dataCacheDuration, VaryByQueryKeys = new[] { "start", "length", "gameType", "roundId", "userTimeZone", "date" })]
-        public async Task<IActionResult> GetData(int start, int length, GameType gameType, long roundId, string userTimeZone, DateTime date, 
+        public async Task<IActionResult> GetData(int start, int length, GameType gameType, long roundId, string userTimeZone, DateTime date,
             [FromServices] IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var clientTimeZone = User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.TimeZone)?.Value;

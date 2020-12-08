@@ -246,6 +246,13 @@ namespace GameRoundResult.Web.Handlers
                         TotalBet = sicboResult.Item3?.TotalAmount ?? 0,
                         TotalBetWin = sicboResult.Item3?.Betwin ?? 0
                     };
+                 case GameType.VipBaccarat:
+                    var vipBaccaratResult = await service.GetVipBaccaratAsync(request.RoundId, request.MemberId);
+                    return new BaccaratTicketViewModel
+                    {
+                        RoundResult = vipBaccaratResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bet = vipBaccaratResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
+                    };
                 default:
                     throw new ArgumentException(nameof(GetGameTicketRequest.GameType));
             }
