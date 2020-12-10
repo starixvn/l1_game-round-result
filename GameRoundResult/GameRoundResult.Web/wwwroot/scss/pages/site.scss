@@ -47,7 +47,7 @@ body {
 }
 
 .text-blue {
-    color: #365c9a;
+    color: #133b7d;
 }
 
 .text-red {
@@ -175,6 +175,11 @@ body {
     @media only screen and (min-width: 768px) {
         width: 3.9rem;
         height: 3.9rem;
+    }
+
+    &.sicbo {
+        border: 1px solid #ddd;
+        border-radius: 2px;
     }
 }
 

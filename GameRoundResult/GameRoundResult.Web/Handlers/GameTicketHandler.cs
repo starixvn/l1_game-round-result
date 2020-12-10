@@ -237,6 +237,15 @@ namespace GameRoundResult.Web.Handlers
                         Bet = vipFishPrawnCrabResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
                     };
 
+                case GameType.SicBo:
+                    var sicboResult = await service.GetSicBoAsync(request.RoundId, request.MemberId);
+                    return new SicBoTicketViewModel
+                    {
+                        RoundResult = sicboResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bets = sicboResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                        TotalBet = sicboResult.Item3?.TotalAmount ?? 0,
+                        TotalBetWin = sicboResult.Item3?.Betwin ?? 0
+                    };
                 default:
                     throw new ArgumentException(nameof(GetGameTicketRequest.GameType));
             }

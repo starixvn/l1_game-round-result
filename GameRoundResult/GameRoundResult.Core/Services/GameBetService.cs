@@ -54,6 +54,8 @@ namespace GameRoundResult.Core.Services
         Task<(SpecialSeDieRound, IEnumerable<SpecialSeDieBet>, SpecialSeDieOne)> GetSpecialSeDieAsync(long roundId, int memberId);
 
         Task<(VipFishPrawnCrabRound, VipFishPrawnCrabBet)> GetVipFishPrawnCrabAsync(long roundId, int memberId);
+
+        Task<(SicBoRound, IEnumerable<SicBoBet>, SicBoOne)> GetSicBoAsync(long roundId, int memberId);
     }
 
     public class GameBetService : IGameBetService
@@ -183,6 +185,11 @@ namespace GameRoundResult.Core.Services
         public async Task<(VipFishPrawnCrabRound, VipFishPrawnCrabBet)> GetVipFishPrawnCrabAsync(long roundId, int memberId)
         {
             return await repository.GetVipFishPrawnCrabAsync(roundId, memberId);
+        }
+
+        public async Task<(SicBoRound, IEnumerable<SicBoBet>, SicBoOne)> GetSicBoAsync(long roundId, int memberId)
+        {
+            return await repository.GetSicBoAsync(roundId, memberId);
         }
     }
 }

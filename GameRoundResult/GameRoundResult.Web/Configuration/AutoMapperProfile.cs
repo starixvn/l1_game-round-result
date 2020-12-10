@@ -103,7 +103,7 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<VipSeDieRound, VipSeDieRoundResultViewModel>()
              .ForMember(x => x.IsEven, opt => opt.MapFrom(x => x.SettlementResult.Even))
-             .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new []
+             .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new[]
              {
                  x.Result.FirstRedChip,
                  x.Result.SecondRedChip,
@@ -117,7 +117,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<BlackjackCard, BlackjackCardViewModel>();
             CreateMap<SpecialSeDieRound, SpecialSeDieRoundResultViewModel>()
                 .ForMember(x => x.IsEven, opt => opt.MapFrom(x => x.SettlementResult.Even))
-                .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new []
+                .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new[]
                 {
                       x.Result.FirstRedChip,
                       x.Result.SecondRedChip,
@@ -127,10 +127,14 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<SpecialSeDieBet, SpecialSeDieBetViewModel>();
 
-
             CreateMap<VipFishPrawnCrabRound, VipFishPrawnCrabRoundResultViewModel>()
-             .ForMember(x => x.Dices, opt => opt.MapFrom(x => new [] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice }));
+             .ForMember(x => x.Dices, opt => opt.MapFrom(x => new[] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice }));
             CreateMap<VipFishPrawnCrabBet, VipFishPrawnCrabBetViewModel>();
+
+            CreateMap<SicBoRound, SicBoRoundResultViewModel>()
+                .ForMember(x => x.Dices, opt => opt.MapFrom(x => new[] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice }));
+
+            CreateMap<SicBoBet, SicBoBetViewModel>();
         }
     }
 }
