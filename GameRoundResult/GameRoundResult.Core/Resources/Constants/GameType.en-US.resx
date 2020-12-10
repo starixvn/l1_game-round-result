@@ -176,6 +176,8 @@
   </data>
   <data name="SicBo" xml:space="preserve">
     <value>Sic Bo</value>
+  <data name="SeDieWar" xml:space="preserve">
+    <value>Se Die War</value>
   </data>
   <data name="SpecialSeDie" xml:space="preserve">
     <value>Special Se Die</value>
@@ -189,7 +191,4 @@
   <data name="VipBaccarat" xml:space="preserve">
     <value>VIP Baccarat</value>
     </data>
-  <data name="VipSeDieWar" xml:space="preserve">
-    <value>VIP Se Die War</value>
-  </data>
 </root>

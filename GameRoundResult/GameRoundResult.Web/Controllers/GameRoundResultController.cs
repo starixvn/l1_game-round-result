@@ -105,8 +105,9 @@ namespace GameRoundResult.Web.Controllers
                     return PartialView("_VipSeDieRoundResult");
 
                 case GameType.SicBo:
+                
                     return PartialView("_SicBoRoundResult");
-                case GameType.VipSeDieWar:
+		case GameType.SeDieWar:
                     return PartialView("_VipSeDieWarRoundResult");
 
                 default:
