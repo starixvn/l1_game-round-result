@@ -236,7 +236,6 @@ namespace GameRoundResult.Web.Handlers
                         RoundResult = vipFishPrawnCrabResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
                         Bet = vipFishPrawnCrabResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
                     };
-
                 case GameType.SicBo:
                     var sicboResult = await service.GetSicBoAsync(request.RoundId, request.MemberId);
                     return new SicBoTicketViewModel
@@ -246,7 +245,7 @@ namespace GameRoundResult.Web.Handlers
                         TotalBet = sicboResult.Item3?.TotalAmount ?? 0,
                         TotalBetWin = sicboResult.Item3?.Betwin ?? 0
                     };
-                case GameType.VipSeDieWar:
+                case GameType.SeDieWar:
                     var vipSeDieWarResult = await service.GetVipSeDieWarAsync(request.RoundId, request.MemberId);
                     return new VipSeDieWarTicketViewModel
                     {
