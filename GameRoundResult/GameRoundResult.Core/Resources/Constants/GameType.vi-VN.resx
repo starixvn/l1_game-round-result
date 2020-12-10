@@ -176,6 +176,8 @@
   </data>
   <data name="SicBo" xml:space="preserve">
     <value>Tài Xỉu Sic Bo</value>
+  <data name="SeDieWar" xml:space="preserve">
+    <value>Xóc Đĩa Đối Kháng</value>
   </data>
   <data name="SpecialSeDie" xml:space="preserve">
     <value>Xóc Đĩa Cân Cửa</value>
@@ -188,7 +190,5 @@
   </data>
   <data name="VipBaccarat" xml:space="preserve">
     <value>Cào Baccarat VIP</value>
-  <data name="VipSeDieWar" xml:space="preserve">
-    <value>Xóc Đĩa Đối Kháng Vip</value>
-  </data>
+    </data>
 </root>
