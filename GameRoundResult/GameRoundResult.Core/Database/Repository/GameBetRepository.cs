@@ -160,7 +160,7 @@ namespace GameRoundResult.Core.Database.Repository
             var round = await GetRoundAsync<KenoRound>(roundId, MiniGameRoundCollections.KenoProVietRound);
             var ones = (await GetBetsAsync<RNGKenoOnes>(roundId, memberId, MiniGameBetCollections.KenoProVietOnes)).FirstOrDefault();
             var bets = await database.GetCollection<RNGKenoBet>(MiniGameBetCollections.KenoProVietBet)
-                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Id).ToListAsync();
 
             return (round, bets, ones?.Betwin);
         }
@@ -170,7 +170,7 @@ namespace GameRoundResult.Core.Database.Repository
             var round = await GetRoundAsync<KenoRound>(roundId, MiniGameRoundCollections.KenoMaxRound);
             var ones = (await GetBetsAsync<RNGKenoOnes>(roundId, memberId, MiniGameBetCollections.KenoMaxOnes)).FirstOrDefault();
             var bets = await database.GetCollection<RNGKenoBet>(MiniGameBetCollections.KenoMaxBet)
-                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Id).ToListAsync();
 
             return (round, bets, ones?.Betwin);
         }
@@ -180,7 +180,7 @@ namespace GameRoundResult.Core.Database.Repository
             var round = await GetRoundAsync<KenoRound>(roundId, MiniGameRoundCollections.KenoMax2Round);
             var ones = (await GetBetsAsync<RNGKenoOnes>(roundId, memberId, MiniGameBetCollections.KenoMax2Ones)).FirstOrDefault();
             var bets = await database.GetCollection<RNGKenoBet>(MiniGameBetCollections.KenoMax2Bet)
-                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Id).ToListAsync();
 
             return (round, bets, ones?.Betwin);
         }
@@ -190,7 +190,7 @@ namespace GameRoundResult.Core.Database.Repository
             var round = await GetRoundAsync<KenoRound>(roundId, MiniGameRoundCollections.KenoMiniRound);
             var ones = (await GetBetsAsync<RNGKenoOnes>(roundId, memberId, MiniGameBetCollections.KenoMiniOnes)).FirstOrDefault();
             var bets = await database.GetCollection<RNGKenoBet>(MiniGameBetCollections.KenoMiniBet)
-                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Id).ToListAsync();
 
             return (round, bets, ones?.Betwin);
         }
@@ -200,7 +200,7 @@ namespace GameRoundResult.Core.Database.Repository
             var round = await GetRoundAsync<KenoRound>(roundId, MiniGameRoundCollections.KenoMini2Round);
             var ones = (await GetBetsAsync<RNGKenoOnes>(roundId, memberId, MiniGameBetCollections.KenoMini2Ones)).FirstOrDefault();
             var bets = await database.GetCollection<RNGKenoBet>(MiniGameBetCollections.KenoMini2Bet)
-                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Id).ToListAsync();
 
             return (round, bets, ones?.Betwin);
         }
@@ -210,7 +210,7 @@ namespace GameRoundResult.Core.Database.Repository
             var round = await GetRoundAsync<KenoRound>(roundId, MiniGameRoundCollections.KenoEastRound);
             var ones = (await GetBetsAsync<RNGKenoOnes>(roundId, memberId, MiniGameBetCollections.KenoEastOnes)).FirstOrDefault();
             var bets = await database.GetCollection<RNGKenoBet>(MiniGameBetCollections.KenoEastBet)
-                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Id).ToListAsync();
 
             return (round, bets, ones?.Betwin);
         }
@@ -220,7 +220,7 @@ namespace GameRoundResult.Core.Database.Repository
             var round = await GetRoundAsync<KenoRound>(roundId, MiniGameRoundCollections.KenoWestRound);
             var ones = (await GetBetsAsync<RNGKenoOnes>(roundId, memberId, MiniGameBetCollections.KenoWestOnes)).FirstOrDefault();
             var bets = await database.GetCollection<RNGKenoBet>(MiniGameBetCollections.KenoWestBet)
-                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Id).ToListAsync();
 
             return (round, bets, ones?.Betwin);
         }
@@ -230,7 +230,7 @@ namespace GameRoundResult.Core.Database.Repository
             var round = await GetRoundAsync<KenoRound>(roundId, MiniGameRoundCollections.KenoSouthRound);
             var ones = (await GetBetsAsync<RNGKenoOnes>(roundId, memberId, MiniGameBetCollections.KenoSouthOnes)).FirstOrDefault();
             var bets = await database.GetCollection<RNGKenoBet>(MiniGameBetCollections.KenoSouthBet)
-                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Id).ToListAsync();
 
             return (round, bets, ones?.Betwin);
         }
@@ -240,7 +240,7 @@ namespace GameRoundResult.Core.Database.Repository
             var round = await GetRoundAsync<KenoRound>(roundId, MiniGameRoundCollections.KenoNorthRound);
             var ones = (await GetBetsAsync<RNGKenoOnes>(roundId, memberId, MiniGameBetCollections.KenoNorthOnes)).FirstOrDefault();
             var bets = await database.GetCollection<RNGKenoBet>(MiniGameBetCollections.KenoNorthBet)
-                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Id).ToListAsync();
 
             return (round, bets, ones?.Betwin);
         }
@@ -250,7 +250,7 @@ namespace GameRoundResult.Core.Database.Repository
             var round = await GetRoundAsync<RouletteRound>(roundId, MiniGameRoundCollections.RouletteRound);
             var ones = (await GetBetsAsync<RouletteOne>(roundId, memberId, MiniGameBetCollections.RouletteOnes)).FirstOrDefault();
             var bets = await database.GetCollection<RouletteBet>(MiniGameBetCollections.RouletteBet)
-                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Id).ToListAsync();
 
             return (round, bets, ones);
         }
@@ -266,7 +266,7 @@ namespace GameRoundResult.Core.Database.Repository
         public async Task<(BlackjackRound, BlackjackBet)> GetBlackjackAsync(long handId, int memberId)
         {
             var bet = await database.GetCollection<BlackjackBet>(MiniGameBetCollections.BlackjackBet).Find(x => x.HandId == handId && x.MemberId == memberId)
-                .SortByDescending(x => x.Time).FirstOrDefaultAsync();
+                .SortByDescending(x => x.Id).FirstOrDefaultAsync();
 
             if (bet != null)
             {
@@ -283,7 +283,7 @@ namespace GameRoundResult.Core.Database.Repository
             var round = await GetRoundAsync<SpecialSeDieRound>(roundId, MiniGameRoundCollections.SpecialSeDieRound);
             var ones = (await GetBetsAsync<SpecialSeDieOne>(roundId, memberId, MiniGameBetCollections.SpecialSeDieOnes)).FirstOrDefault();
             var bets = await database.GetCollection<SpecialSeDieBet>(MiniGameBetCollections.SpecialSeDieBet)
-                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Id).ToListAsync();
 
             return (round, bets, ones);
         }
@@ -301,7 +301,7 @@ namespace GameRoundResult.Core.Database.Repository
             var round = await GetRoundAsync<SicBoRound>(roundId, MiniGameRoundCollections.SicBoRound);
             var ones = (await GetBetsAsync<SicBoOne>(roundId, memberId, MiniGameBetCollections.SicBoOnes)).FirstOrDefault();
             var bets = await database.GetCollection<SicBoBet>(MiniGameBetCollections.SicBoBet)
-                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Id).ToListAsync();
 
             return (round, bets, ones);
         }
@@ -311,7 +311,7 @@ namespace GameRoundResult.Core.Database.Repository
             var round = await GetRoundAsync<VipSeDieWarRound>(roundId, MiniGameRoundCollections.VipSeDieWarRound);
             var ones = (await GetBetsAsync<VipSeDieWarOne>(roundId, memberId, MiniGameBetCollections.VipSeDieWarOnes)).FirstOrDefault();
             var bets = await database.GetCollection<VipSeDieWarBet>(MiniGameBetCollections.VipSeDieWarBet)
-                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Time).ToListAsync();
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Id).ToListAsync();
 
             return (round, bets, ones);
         }
@@ -331,7 +331,7 @@ namespace GameRoundResult.Core.Database.Repository
             var finalExpression = filter != null ? defaultExpression.And<T>(filter) : defaultExpression;
 
             return await database.GetCollection<T>(collectionName).Find(finalExpression)
-                .SortByDescending(x => x.Time).ToListAsync();
+                .SortByDescending(x => x.Id).ToListAsync();
         }
 
         private async Task<T> GetRoundAsync<T>(long roundId, string collectionName) where T : GameRound

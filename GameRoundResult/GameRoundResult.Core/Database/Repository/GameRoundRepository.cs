@@ -205,7 +205,7 @@ namespace GameRoundResult.Core.Database.Repository
             var cursor = collection.Find(finalExpression);
 
             var total = await cursor.CountDocumentsAsync();
-            var data = await cursor.SortByDescending(x => x.Time).Skip(page).Limit(pageSize).ToListAsync();
+            var data = await cursor.SortByDescending(x => x.Id).Skip(page).Limit(pageSize).ToListAsync();
             return (total, data);
         }
 
