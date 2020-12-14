@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BankerEven" xml:space="preserve">
-    <value>Nhà Cái lẻ</value>
+    <value>Nhà Cái chẵn</value>
   </data>
   <data name="BankerOdd" xml:space="preserve">
-    <value>Nhà Cái chẵn</value>
+    <value>Nhà Cái lẻ</value>
   </data>
   <data name="BankerRed1" xml:space="preserve">
     <value>Nhà Cái 1 đỏ</value>
