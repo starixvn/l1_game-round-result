@@ -121,10 +121,10 @@
     <value>Nhà cái</value>
   </data>
   <data name="BankerEven" xml:space="preserve">
-    <value>Nhà Cái lẻ</value>
+    <value>Nhà Cái chẵn</value>
   </data>
   <data name="BankerOdd" xml:space="preserve">
-    <value>Nhà Cái chẵn</value>
+    <value>Nhà Cái lẻ</value>
   </data>
   <data name="BankerPair" xml:space="preserve">
     <value>Cái đôi</value>
