@@ -69,3 +69,7 @@
 
 .dataTables_wrapper table {
   margin-top: 16px; }
+
+@media only screen and (min-width: 500px) {
+  .filter select.form-control {
+    width: 17rem; } }
