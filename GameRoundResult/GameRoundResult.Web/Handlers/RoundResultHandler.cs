@@ -125,13 +125,15 @@ namespace GameRoundResult.Web.Handlers
                 case GameType.SicBo:
                     var sicboResult = await gameRoundResultService.GetSicBoRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
                     return (sicboResult.Item1, sicboResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)));
-		        case GameType.SeDieWar:
+
+                case GameType.SeDieWar:
                     var vipSeDieWar = await gameRoundResultService.GetVipSeDieWarRoundResultAsync(utcDate, request.RoundId, request.Page, request.PageSize);
                     return (vipSeDieWar.Item1, vipSeDieWar.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)));
-                    
+
                 case GameType.VipBaccarat:
                     var vipBaccaratRoundResult = await gameRoundResultService.GetVipBaccaratRoundResult(utcDate, request.RoundId, request.Page, request.PageSize);
                     return (vipBaccaratRoundResult.Item1, vipBaccaratRoundResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)));
+
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
             }
