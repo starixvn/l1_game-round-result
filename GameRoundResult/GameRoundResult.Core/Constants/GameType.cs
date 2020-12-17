@@ -28,6 +28,6 @@
         SicBo,
         VipFishPrawnCrab = 26,
         VipBaccarat = 27,
-        VipSeDieWar = 28
+        SeDieWar = 28
     }
 }
