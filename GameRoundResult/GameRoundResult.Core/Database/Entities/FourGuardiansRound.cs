@@ -1,0 +1,80 @@
+﻿using System.Collections.Generic;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace GameRoundResult.Core.Database.Entities
+{
+    public class FourGuardiansRound : GameRound
+    {
+        public decimal Bet { get; set; }
+
+        public decimal TotalAmount { get; set; }
+
+        public IEnumerable<byte> Paylines { get; set; }
+
+        public bool FreeSpin { get; set; }
+
+        public IEnumerable<byte> Results { get; set; }
+
+        public FourGuardiansSettlementResult SettlementResult { get; set; }
+
+        public IEnumerable<FourGuardiansBonusChest> BonusChests { get; set; }
+
+        [BsonElement("thanhtoan")]
+        public bool Paid { get; set; }
+
+        [BsonRepresentation(BsonType.Decimal128, AllowTruncation = true)]
+        public decimal BetWin { get; set; }
+
+        public string Uid { get; set; }
+
+        public string Name { get; set; }
+
+        public int? MemberId { get; set; }
+
+        public string SiteId { get; set; }
+    }
+
+    public class FourGuardiansBonusChest
+    {
+        public byte Amount { get; set; }
+
+        public bool Picked { get; set; }
+    }
+
+    public class FourGuardiansSettlementResult
+    {
+        public IEnumerable<FourGuardiansWinningLine> WinningLines { get; set; }
+
+        public FourGuardiansBonus Bonus { get; set; }
+
+        public FourGuardiansFreeSpin FreeSpins { get; set; }
+
+        public bool Jackpot { get; set; }
+    }
+
+    public class FourGuardiansWinningLine
+    {
+        public byte PayLine { get; set; }
+
+        public string Symbol { get; set; }
+
+        public byte Count { get; set; }
+
+        public decimal Odds { get; set; }
+    }
+
+    public class FourGuardiansBonus
+    {
+        public byte Count { get; set; }
+
+        public decimal Odds { get; set; }
+    }
+
+    public class FourGuardiansFreeSpin
+    {
+        public byte Count { get; set; }
+
+        public decimal Odds { get; set; }
+    }
+}
