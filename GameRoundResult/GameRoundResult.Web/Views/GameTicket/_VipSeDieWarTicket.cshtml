@@ -96,7 +96,7 @@
                     <td class="@(Model.RoundResult.SettlementResult[bet.Choice] ? "text-blue bold" : string.Empty)">
                         @betChoiceDictionary[bet.Choice]
                     </td>
-                    <td class="@(Model.RoundResult.SettlementResult[bet.Choice] ? "text-blue bold" : string.Empty)">@bet.Amount.Format()</td>
+                    <td class="text-right @(Model.RoundResult.SettlementResult[bet.Choice] ? "text-blue bold" : string.Empty)">@bet.Amount.Format()</td>
                 </tr>
             }
             <tr>
