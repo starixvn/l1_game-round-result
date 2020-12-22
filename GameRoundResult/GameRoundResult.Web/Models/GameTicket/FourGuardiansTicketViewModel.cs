@@ -45,12 +45,10 @@ namespace GameRoundResult.Web.Models
                 {
                     formatResult[row, column] = array[row + column * 3];
                 }
-
             }
 
             return formatResult;
         }
-
     }
 
     public class FourGuardiansBonusChestViewModel
@@ -68,7 +66,14 @@ namespace GameRoundResult.Web.Models
 
         public FourGuardiansFreeSpinViewModel FreeSpins { get; set; }
 
-        public bool Jackpot { get; set; }
+        public FourGuardiansJackpotViewModel Jackpot { get; set; }
+    }
+
+    public class FourGuardiansJackpotViewModel
+    {
+        public byte WinningLine { get; set; }
+
+        public decimal WinningAmount { get; set; }
     }
 
     public class FourGuardiansWinningLineViewModel

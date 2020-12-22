@@ -144,6 +144,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<FourGuardiansBonus, FourGuardiansBonusViewModel>();
             CreateMap<FourGuardiansWinningLine, FourGuardiansWinningLineViewModel>();
             CreateMap<FourGuardiansBonusChest, FourGuardiansBonusChestViewModel>();
+            CreateMap<FourGuardiansJackpot, FourGuardiansJackpotViewModel>();
             CreateMap<VipSeDieWarRound, VipSeDieWarRoundResultViewModel>()
               .ForMember(x => x.PlayerChips, opt => opt.MapFrom(x => new[]
               {

@@ -19,8 +19,6 @@ namespace GameRoundResult.Core.Database.Entities
         public FourGuardiansSettlementResult SettlementResult { get; set; }
 
         public IEnumerable<FourGuardiansBonusChest> BonusChests { get; set; }
-
-        [BsonElement("thanhtoan")]
         public bool Paid { get; set; }
 
         [BsonRepresentation(BsonType.Decimal128, AllowTruncation = true)]
@@ -50,7 +48,15 @@ namespace GameRoundResult.Core.Database.Entities
 
         public FourGuardiansFreeSpin FreeSpins { get; set; }
 
-        public bool Jackpot { get; set; }
+        public FourGuardiansJackpot Jackpot { get; set; }
+    }
+
+    public class FourGuardiansJackpot
+    {
+        public byte WinningLine { get; set; }
+
+        [BsonRepresentation(BsonType.Decimal128, AllowTruncation = true)]
+        public decimal WinningAmount { get; set; }
     }
 
     public class FourGuardiansWinningLine
