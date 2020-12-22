@@ -137,6 +137,13 @@ namespace GameRoundResult.Web.Configuration
                 .ForMember(x => x.Dices, opt => opt.MapFrom(x => new[] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice }));
 
             CreateMap<SicBoBet, SicBoBetViewModel>();
+
+            CreateMap<FourGuardiansRound, FourGuardiansRoundResultViewModel>();
+            CreateMap<FourGuardiansSettlementResult, FourGuardiansSettlementResultViewModel>();
+            CreateMap<FourGuardiansFreeSpin, FourGuardiansFreeSpinViewModel>();
+            CreateMap<FourGuardiansBonus, FourGuardiansBonusViewModel>();
+            CreateMap<FourGuardiansWinningLine, FourGuardiansWinningLineViewModel>();
+            CreateMap<FourGuardiansBonusChest, FourGuardiansBonusChestViewModel>();
             CreateMap<VipSeDieWarRound, VipSeDieWarRoundResultViewModel>()
               .ForMember(x => x.PlayerChips, opt => opt.MapFrom(x => new[]
               {

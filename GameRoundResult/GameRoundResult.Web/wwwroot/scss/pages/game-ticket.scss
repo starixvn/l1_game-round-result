@@ -49,6 +49,16 @@
             }
         }
 
+        &.table-four-guardians {
+            max-width: 100rem;
+            .table-paylines {
+                margin: auto;
+                td {
+                    border: none;
+                }
+            }
+        }
+
         &.table-vip-se-die-war {
             max-width: 100rem;
         }

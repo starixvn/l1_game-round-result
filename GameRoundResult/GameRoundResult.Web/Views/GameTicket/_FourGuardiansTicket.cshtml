@@ -1,0 +1,147 @@
+﻿@model FourGuardiansTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<FourGuardiansTicketViewModel> Localizer
+
+@{
+    var roundResult = Model.RoundResult;
+}
+
+<table class="table table-bordered table-four-guardians">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["Time"] (GMT-4)</th>
+            <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
+            <th>@CommonLocalizer["Result"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (roundResult != null)
+        {
+            <tr>
+                <td>
+                    @roundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    <br />
+                    @roundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@roundResult.Round</td>
+                <td>
+                    <table class="table-paylines">
+                        <tbody>
+                            @{
+                                var array = roundResult.GetFormatResults();
+                                for (var row = 0; row < array.GetLength(0); row++)
+                                {
+                                    <tr>
+                                        @for (var column = 0; column < array.GetLength(1); column++)
+                                        {
+                                            <td><img src="~/scss/images/four-guardians/@(array[row,column]).png" /></td>
+                                        }
+                                    </tr>
+
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Localizer["Payline"]</th>
+            <th>@Localizer["Symbol"]</th>
+            <th>@Localizer["NoSymbol"]</th>
+            <th>@Localizer["Odds"]</th>
+            <th>@CommonLocalizer["BetAmount"]</th>
+            <th>@CommonLocalizer["Win"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (roundResult != null)
+        {
+            foreach (var payline in roundResult.Paylines.Where(x => roundResult.SettlementResult.Paylines.Any(y => y.Payline == x)))
+            {
+                var winningPayline = roundResult.SettlementResult.Paylines.FirstOrDefault(x => x.Payline == payline);
+
+                <tr>
+                    <td><img src="~/scss/images/four-guardians/dong@(payline + 1).png" /></td>
+                    <td><img src="~/scss/images/four-guardians/@(winningPayline.Symbol).png" /></td>
+                    <td>@winningPayline.Count</td>
+                    <td>x@(winningPayline.Odds)</td>
+                    <td class="text-right">@roundResult.Bet</td>
+                    <td class="text-right">@((roundResult.Bet * winningPayline.Odds).Format())</td>
+                </tr>
+            }
+            foreach (var payline in roundResult.Paylines.Where(x => !roundResult.SettlementResult.Paylines.Any(y => y.Payline == x)))
+            {
+
+                <tr>
+                    <td><img src="~/scss/images/four-guardians/dong@(payline + 1).png" /></td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td class="text-right">@roundResult.Bet.Format()</td>
+                    <td class="text-right">0</td>
+                </tr>
+            }
+            if (roundResult.SettlementResult.Bonus.Count >= 3)
+            {
+                <tr>
+                    <td></td>
+                    <td><img src="~/scss/images/four-guardians/8.png" /></td>
+                    <td>@roundResult.SettlementResult.Bonus.Count</td>
+                    <td>@roundResult.SettlementResult.Bonus.Odds @Localizer["Bonus"]</td>
+                    <td>-</td>
+                    <td>@roundResult.BonusChests.Where(x => x.Picked).Sum(x => x.Amount).Format()</td>
+                </tr>
+            }
+            if (roundResult.SettlementResult.FreeSpins.Count >= 3)
+            {
+                <tr>
+                    <td></td>
+                    <td><img src="~/scss/images/four-guardians/7.png" /></td>
+                    <td>@roundResult.SettlementResult.FreeSpins.Count</td>
+                    <td>@roundResult.SettlementResult.FreeSpins.Odds @Localizer["Free spins"]</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            }
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="bold text-right">@CommonLocalizer["Total"]</td>
+                <td class="bold text-right">@(roundResult.FreeSpin ? "0" : roundResult.TotalAmount.Format())</td>
+                <td class="bold text-right">@roundResult.BetWin.Format()</td>
+            </tr>
+            <tr class="total">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="bold text-right">@CommonLocalizer["WinLoss"]</td>
+                <td></td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">
+                    @Localizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

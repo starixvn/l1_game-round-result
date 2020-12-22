@@ -37,14 +37,14 @@ namespace GameRoundResult.Core.Database.Entities
 
     public class FourGuardiansBonusChest
     {
-        public byte Amount { get; set; }
+        public decimal Amount { get; set; }
 
         public bool Picked { get; set; }
     }
 
     public class FourGuardiansSettlementResult
     {
-        public IEnumerable<FourGuardiansWinningLine> WinningLines { get; set; }
+        public IEnumerable<FourGuardiansWinningLine> Paylines { get; set; }
 
         public FourGuardiansBonus Bonus { get; set; }
 
@@ -55,7 +55,7 @@ namespace GameRoundResult.Core.Database.Entities
 
     public class FourGuardiansWinningLine
     {
-        public byte PayLine { get; set; }
+        public byte Payline { get; set; }
 
         public string Symbol { get; set; }
 
