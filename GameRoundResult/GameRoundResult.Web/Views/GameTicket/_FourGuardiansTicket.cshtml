@@ -35,7 +35,7 @@
                                     <tr>
                                         @for (var column = 0; column < array.GetLength(1); column++)
                                         {
-                                            <td><img src="~/scss/images/four-guardians/@(array[row,column]).png" /></td>
+                                            <td><img class="symbol" src="~/scss/images/four-guardians/@(array[row,column]).png" /></td>
                                         }
                                     </tr>
 
@@ -57,7 +57,7 @@
     </tbody>
 </table>
 
-<table class="table table-bordered">
+<table class="table table-bordered table-four-guardians">
     <thead>
         <tr>
             <th>@Localizer["Payline"]</th>
@@ -74,32 +74,32 @@
             if (roundResult.SettlementResult.Jackpot != null)
             {
                 <tr>
-                    <td><img src="~/scss/images/four-guardians/dong@(roundResult.SettlementResult.Jackpot.WinningLine + 1).png" /></td>
-                    <td><img src="~/scss/images/four-guardians/10.png" /></td>
+                    <td><img class="payline" src="~/scss/images/four-guardians/dong@(roundResult.SettlementResult.Jackpot.WinningLine + 1).png" /></td>
+                    <td><img class="symbol" src="~/scss/images/four-guardians/10.png" /></td>
                     <td>5</td>
                     <td>@Localizer["Jackpot"]</td>
                     <td class="text-right">@roundResult.Bet</td>
                     <td class="text-right">@roundResult.SettlementResult.Jackpot.WinningAmount.Format()</td>
                 </tr>
             }
-            foreach (var payline in roundResult.Paylines.Where(x => roundResult.SettlementResult.Paylines.Any(y => y.Payline == x)))
+            foreach (var payline in roundResult.Paylines.Where(x => roundResult.SettlementResult.WinningPaylines.Any(y => y.Payline == x)))
             {
-                var winningPayline = roundResult.SettlementResult.Paylines.FirstOrDefault(x => x.Payline == payline);
+                var winningPayline = roundResult.SettlementResult.WinningPaylines.FirstOrDefault(x => x.Payline == payline);
 
                 <tr>
-                    <td><img src="~/scss/images/four-guardians/dong@(payline + 1).png" /></td>
-                    <td><img src="~/scss/images/four-guardians/@(winningPayline.Symbol).png" /></td>
+                    <td><img class="payline" src="~/scss/images/four-guardians/dong@(payline + 1).png" /></td>
+                    <td><img class="symbol" src="~/scss/images/four-guardians/@(winningPayline.Symbol).png" /></td>
                     <td>@winningPayline.Count</td>
                     <td>x@(winningPayline.Odds)</td>
                     <td class="text-right">@roundResult.Bet</td>
                     <td class="text-right">@((roundResult.Bet * winningPayline.Odds).Format())</td>
                 </tr>
             }
-            foreach (var payline in roundResult.Paylines.Where(x => !roundResult.SettlementResult.Paylines.Any(y => y.Payline == x)))
+            foreach (var payline in roundResult.Paylines.Where(x => !roundResult.SettlementResult.WinningPaylines.Any(y => y.Payline == x)))
             {
 
                 <tr>
-                    <td><img src="~/scss/images/four-guardians/dong@(payline + 1).png" /></td>
+                    <td><img class="payline" src="~/scss/images/four-guardians/dong@(payline + 1).png" /></td>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
@@ -111,7 +111,7 @@
             {
                 <tr>
                     <td></td>
-                    <td><img src="~/scss/images/four-guardians/8.png" /></td>
+                    <td><img class="symbol" src="~/scss/images/four-guardians/8.png" /></td>
                     <td>@roundResult.SettlementResult.Bonus.Count</td>
                     <td>@roundResult.SettlementResult.Bonus.Odds @Localizer["Bonus"]</td>
                     <td>-</td>
@@ -122,7 +122,7 @@
             {
                 <tr>
                     <td></td>
-                    <td><img src="~/scss/images/four-guardians/7.png" /></td>
+                    <td><img class="symbol" src="~/scss/images/four-guardians/7.png" /></td>
                     <td>@roundResult.SettlementResult.FreeSpins.Count</td>
                     <td>@roundResult.SettlementResult.FreeSpins.Odds @Localizer["Free spins"]</td>
                     <td>-</td>

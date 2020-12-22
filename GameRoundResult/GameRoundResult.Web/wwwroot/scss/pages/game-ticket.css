@@ -31,8 +31,16 @@
     .table.table-vip-se-die-war {
       max-width: 100rem; } }
     .table.table-four-guardians {
-      max-width: 100rem; }
-      .table.table-four-guardians .table-paylines {
-        margin: auto; }
-        .table.table-four-guardians .table-paylines td {
-          border: none; } }
+      max-width: 100rem; } }
+
+.table-four-guardians .table-paylines {
+  margin: auto; }
+  .table-four-guardians .table-paylines td {
+    border: none; }
+
+.table-four-guardians .payline {
+  width: 50px; }
+
+.table-four-guardians .symbol {
+  width: 50px;
+  height: 50px; }

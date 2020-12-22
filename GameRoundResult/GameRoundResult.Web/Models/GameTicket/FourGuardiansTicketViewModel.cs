@@ -60,7 +60,7 @@ namespace GameRoundResult.Web.Models
 
     public class FourGuardiansSettlementResultViewModel
     {
-        public IEnumerable<FourGuardiansWinningLineViewModel> Paylines { get; set; }
+        public IEnumerable<FourGuardiansWinningLineViewModel> WinningPaylines { get; set; }
 
         public FourGuardiansBonusViewModel Bonus { get; set; }
 

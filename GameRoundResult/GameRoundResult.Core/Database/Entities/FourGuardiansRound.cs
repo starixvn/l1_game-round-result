@@ -42,7 +42,7 @@ namespace GameRoundResult.Core.Database.Entities
 
     public class FourGuardiansSettlementResult
     {
-        public IEnumerable<FourGuardiansWinningLine> Paylines { get; set; }
+        public IEnumerable<FourGuardiansWinningLine> WinningPaylines { get; set; }
 
         public FourGuardiansBonus Bonus { get; set; }
 
