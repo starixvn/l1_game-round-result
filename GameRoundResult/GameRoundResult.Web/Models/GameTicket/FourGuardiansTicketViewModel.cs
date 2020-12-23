@@ -25,7 +25,7 @@ namespace GameRoundResult.Web.Models
 
         public bool FreeSpin { get; set; }
 
-        public IEnumerable<byte> Results { get; set; }
+        public IEnumerable<byte> Result { get; set; }
 
         public IEnumerable<FourGuardiansBonusChestViewModel> BonusChests { get; set; }
 
@@ -35,7 +35,7 @@ namespace GameRoundResult.Web.Models
 
         public byte[,] GetFormatResults()
         {
-            var array = Results.ToArray();
+            var array = Result.ToArray();
 
             var formatResult = new byte[3, 5];
 
