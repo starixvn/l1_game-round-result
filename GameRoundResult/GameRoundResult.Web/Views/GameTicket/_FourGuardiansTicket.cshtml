@@ -107,7 +107,7 @@
                     <td class="text-right">0</td>
                 </tr>
             }
-            if (roundResult.SettlementResult.Bonus.Count >= 3)
+            if (roundResult.SettlementResult.Bonus.Odds > 0)
             {
                 <tr>
                     <td></td>
@@ -118,7 +118,7 @@
                     <td>@roundResult.BonusChests.Where(x => x.Picked).Sum(x => x.Amount).Format()</td>
                 </tr>
             }
-            if (roundResult.SettlementResult.FreeSpins.Count >= 3)
+            if (roundResult.SettlementResult.FreeSpins.Odds > 0)
             {
                 <tr>
                     <td></td>
