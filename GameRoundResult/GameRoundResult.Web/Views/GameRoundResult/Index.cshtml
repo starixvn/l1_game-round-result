@@ -9,7 +9,7 @@
 @section Styles {
     <environment include="Development">
         <link href="~/lib/data-tables/datatables.css" rel="stylesheet" />
-        <link href="~/lib/flatpickr/dist/flatpickr.css" rel="stylesheet" />  
+        <link href="~/lib/flatpickr/dist/flatpickr.css" rel="stylesheet" />
         <link href="~/scss/pages/game-round-result.css" rel="stylesheet" asp-append-version="true" />
     </environment>
     <environment exclude="Development">
@@ -21,6 +21,7 @@
 <div class="header">
     <h1 class="page-title">@Localizer["GameRoundResult"]</h1>
 </div>
+<div class="note"><span class="bold">@Localizer["Note"]:</span> @Localizer["NoteDetail"]</div>
 
 <form data-ajax="true" data-ajax-method="GET" asp-action="GetRoundResult" data-ajax-mode="replace"
       data-ajax-update="#round-result" data-ajax-loading="#overlay"

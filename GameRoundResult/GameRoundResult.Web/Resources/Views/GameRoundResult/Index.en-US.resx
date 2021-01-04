@@ -126,6 +126,9 @@
   <data name="GameType" xml:space="preserve">
     <value>Game Type</value>
   </data>
+  <data name="NoteDetail" xml:space="preserve">
+    <value>Data are only available within the last 7 days from the current date.</value>
+  </data>
   <data name="RoundId" xml:space="preserve">
     <value>Round ID</value>
   </data>
