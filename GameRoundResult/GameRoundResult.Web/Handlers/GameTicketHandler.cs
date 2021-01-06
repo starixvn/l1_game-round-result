@@ -70,7 +70,7 @@ namespace GameRoundResult.Web.Handlers
 
                 case GameType.MiniSeDie:
                     var miniSeDieResult = await service.GetMiniSeDieAsync(request.RoundId, request.MemberId);
-                    return new SeDieTicketViewModel
+                    return new MiniSeDieTicketViewModel
                     {
                         RoundResult = miniSeDieResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
                         Bet = miniSeDieResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)

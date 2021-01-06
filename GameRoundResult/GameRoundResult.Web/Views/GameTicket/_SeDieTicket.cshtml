@@ -27,8 +27,8 @@
                         <i class="@(chip ? "red-chip" : "white-chip")"></i>
                     }
                 </td>
-                <td class="bold @(Model.RoundResult.IsEven ? "text-blue" : "text-red")">
-                    @(Model.RoundResult.IsEven ? Localizer["Even"] : Localizer["Odd"])
+                <td class="bold @(Model.RoundResult.SettlementResult.Even ? "text-blue" : "text-red")">
+                    @(Model.RoundResult.SettlementResult.Even ? Localizer["Even"] : Localizer["Odd"])
 
                     @if (Model.RoundResult.TotalRed != 2)
                     {
@@ -72,6 +72,14 @@
                 <tr>
                     <td>@Localizer["Odd"]</td>
                     <td class="text-right">@Model.Bet.Odd.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.TwoRed > 0)
+            {
+                <tr>
+                    <td>@Localizer["2Red"]</td>
+                    <td class="text-right">@Model.Bet.TwoRed.Format()</td>
                 </tr>
             }
 
