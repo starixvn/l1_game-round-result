@@ -10,7 +10,7 @@ namespace GameRoundResult.Web.Models
 
         public decimal BetWin => RoundResult.BetWin + RoundResult.SettlementResult.Jackpot?.WinningAmount ?? 0;
 
-        public decimal WinLoss => RoundResult.BetWin - RoundResult.TotalAmount;
+        public decimal WinLoss => RoundResult.FreeSpin ? BetWin : BetWin - RoundResult.TotalAmount;
     }
 
     public class FourGuardiansRoundResultViewModel
