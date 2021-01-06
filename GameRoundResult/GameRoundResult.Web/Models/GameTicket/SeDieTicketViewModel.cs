@@ -8,7 +8,7 @@ namespace GameRoundResult.Web.Models
 
         public SeDieBetViewModel Bet { get; set; }
 
-        public decimal TotalBet => Bet.Odd + Bet.Even + Bet.ThreeRed + Bet.FourRed + Bet.ThreeWhite + Bet.FourWhite;
+        public decimal TotalBet => Bet.Odd + Bet.Even + Bet.ThreeRed + Bet.FourRed + Bet.ThreeWhite + Bet.FourWhite + Bet.TwoRed;
 
         public decimal TotalWin => Bet.BetWin;
 
@@ -22,6 +22,8 @@ namespace GameRoundResult.Web.Models
         public decimal Odd { get; set; }
 
         public decimal Even { get; set; }
+
+        public decimal TwoRed { get; set; }
 
         public decimal ThreeRed { get; set; }
 

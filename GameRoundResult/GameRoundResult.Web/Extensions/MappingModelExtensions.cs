@@ -56,9 +56,9 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
-        public static SeDieRoundResultViewModel ToViewModel(this MiniSeDieRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        public static MiniSeDieRoundResultViewModel ToViewModel(this MiniSeDieRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return mapper.Map<MiniSeDieRound, SeDieRoundResultViewModel>(entity, opts =>
+            return mapper.Map<MiniSeDieRound, MiniSeDieRoundResultViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });
@@ -144,9 +144,9 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
-        public static SeDieBetViewModel ToViewModel(this MiniSeDieBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        public static MiniSeDieBetViewModel ToViewModel(this MiniSeDieBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return mapper.Map<MiniSeDieBet, SeDieBetViewModel>(entity, opts =>
+            return mapper.Map<MiniSeDieBet, MiniSeDieBetViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });

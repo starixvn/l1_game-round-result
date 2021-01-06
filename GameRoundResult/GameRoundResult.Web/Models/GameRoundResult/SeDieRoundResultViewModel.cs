@@ -10,9 +10,9 @@ namespace GameRoundResult.Web.Models
     {
         public IEnumerable<bool> RedChips { get; set; }
 
-        public int TotalRed => RedChips.Count(x => x);
+        public SeDieSettlementResultViewModel SettlementResult { get; set; }
 
-        public bool IsEven => TotalRed % 2 == 0;
+        public int TotalRed => RedChips.Count(x => x);
 
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
@@ -46,7 +46,7 @@ namespace GameRoundResult.Web.Models
             var tagBuilder = new TagBuilder("span");
             tagBuilder.AddCssClass("bold");
 
-            if (IsEven)
+            if (SettlementResult.Even)
             {
                 tagBuilder.AddCssClass("text-blue");
                 tagBuilder.InnerHtml.Append(stringLocalizer["Even"]);
@@ -57,13 +57,25 @@ namespace GameRoundResult.Web.Models
                 tagBuilder.InnerHtml.Append(stringLocalizer["Odd"]);
             }
 
-            if (TotalRed == 2)
-            {
-                return tagBuilder.GetHtmlString();
-            }
-
             tagBuilder.InnerHtml.Append($", {(TotalRed > 0 ? stringLocalizer["{0} red", TotalRed] : stringLocalizer["{0} white", 4])}");
             return tagBuilder.GetHtmlString();
         }
+    }
+
+    public class SeDieSettlementResultViewModel
+    {
+        public bool Odd { get; set; }
+
+        public bool Even { get; set; }
+
+        public bool TwoRed { get; set; }
+
+        public bool ThreeRed { get; set; }
+
+        public bool FourRed { get; set; }
+
+        public bool ThreeWhite { get; set; }
+
+        public bool FourWhite { get; set; }
     }
 }

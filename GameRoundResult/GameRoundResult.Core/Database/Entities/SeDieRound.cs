@@ -4,18 +4,6 @@ namespace GameRoundResult.Core.Database.Entities
 {
     public class SeDieRound : GameRound
     {
-        [BsonElement("red1")]
-        public bool FirstRedChip { get; set; }
-
-        [BsonElement("red2")]
-        public bool SecondRedChip { get; set; }
-
-        [BsonElement("red3")]
-        public bool ThirdRedChip { get; set; }
-
-        [BsonElement("red4")]
-        public bool FourthRedChip { get; set; }
-
         public SeDieResultEntity Result { get; set; }
 
         public SeDieSettlementResultEntity SettlementResult { get; set; }
@@ -41,6 +29,9 @@ namespace GameRoundResult.Core.Database.Entities
         public bool Odd { get; set; }
 
         public bool Even { get; set; }
+
+        [BsonElement("red2")]
+        public bool TwoRed { get; set; }
 
         [BsonElement("red3")]
         public bool ThreeRed { get; set; }
