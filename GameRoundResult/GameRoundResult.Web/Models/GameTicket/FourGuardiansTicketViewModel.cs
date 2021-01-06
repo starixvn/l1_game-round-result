@@ -8,6 +8,8 @@ namespace GameRoundResult.Web.Models
     {
         public FourGuardiansRoundResultViewModel RoundResult { get; set; }
 
+        public decimal BetWin => RoundResult.BetWin + RoundResult.SettlementResult.Jackpot?.WinningAmount ?? 0;
+
         public decimal WinLoss => RoundResult.BetWin - RoundResult.TotalAmount;
     }
 
