@@ -24,7 +24,7 @@
                     <br />
                     @roundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
                 </td>
-                <td>@roundResult.Round</td>
+                <td>@roundResult.Round @(roundResult.FreeSpin ? $"{Localizer["Free spins"]}" : string.Empty)</td>
                 <td>
                     <table class="table-paylines">
                         <tbody>
@@ -95,6 +95,31 @@
                     <td class="text-right">@((roundResult.Bet * winningPayline.Odds).Format())</td>
                 </tr>
             }
+
+            if (roundResult.SettlementResult.Bonus.Odds > 0)
+            {
+                <tr>
+                    <td></td>
+                    <td><img class="symbol" src="~/scss/images/four-guardians/8.png" /></td>
+                    <td>@roundResult.SettlementResult.Bonus.Count</td>
+                    <td>@roundResult.SettlementResult.Bonus.Odds @Localizer["Bonus"]</td>
+                    <td>-</td>
+                    <td>@roundResult.BonusChests.Where(x => x.Picked).Sum(x => x.Amount).Format()</td>
+                </tr>
+            }
+
+            if (roundResult.SettlementResult.FreeSpins.Odds > 0)
+            {
+                <tr>
+                    <td></td>
+                    <td><img class="symbol" src="~/scss/images/four-guardians/7.png" /></td>
+                    <td>@roundResult.SettlementResult.FreeSpins.Count</td>
+                    <td>@roundResult.SettlementResult.FreeSpins.Odds @Localizer["Free spins"]</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            }
+
             foreach (var payline in roundResult.Paylines.Where(x => !roundResult.SettlementResult.WinningPaylines.Any(y => y.Payline == x)))
             {
 
@@ -107,28 +132,7 @@
                     <td class="text-right">0</td>
                 </tr>
             }
-            if (roundResult.SettlementResult.Bonus.Odds > 0)
-            {
-                <tr>
-                    <td></td>
-                    <td><img class="symbol" src="~/scss/images/four-guardians/8.png" /></td>
-                    <td>@roundResult.SettlementResult.Bonus.Count</td>
-                    <td>@roundResult.SettlementResult.Bonus.Odds @Localizer["Bonus"]</td>
-                    <td>-</td>
-                    <td>@roundResult.BonusChests.Where(x => x.Picked).Sum(x => x.Amount).Format()</td>
-                </tr>
-            }
-            if (roundResult.SettlementResult.FreeSpins.Odds > 0)
-            {
-                <tr>
-                    <td></td>
-                    <td><img class="symbol" src="~/scss/images/four-guardians/7.png" /></td>
-                    <td>@roundResult.SettlementResult.FreeSpins.Count</td>
-                    <td>@roundResult.SettlementResult.FreeSpins.Odds @Localizer["Free spins"]</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-            }
+
             <tr>
                 <td></td>
                 <td></td>
