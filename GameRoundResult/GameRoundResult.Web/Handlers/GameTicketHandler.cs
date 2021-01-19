@@ -260,7 +260,7 @@ namespace GameRoundResult.Web.Handlers
                     var fourGuardiansResult = await service.GetFourGuardiansAsync(request.RoundId, request.MemberId);
                     return new FourGuardiansTicketViewModel
                   {
-                        RoundResult = fourGuardiansResult.ToViewModel(mapper, request.TimeZoneInfo),
+                        RoundResult = fourGuardiansResult?.ToViewModel(mapper, request.TimeZoneInfo),
                     };
 
                 case GameType.VipBaccarat:

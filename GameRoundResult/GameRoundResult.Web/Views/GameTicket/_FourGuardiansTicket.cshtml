@@ -120,7 +120,7 @@
                 </tr>
             }
 
-            foreach (var payline in roundResult.Paylines.Where(x => !roundResult.SettlementResult.WinningPaylines.Any(y => y.Payline == x)))
+            foreach (var payline in roundResult.Paylines.Where(x => !roundResult.SettlementResult.WinningPaylines.Any(y => y.Payline == x) && x != roundResult.SettlementResult.Jackpot?.WinningLine))
             {
 
                 <tr>
