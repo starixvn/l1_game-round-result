@@ -38,6 +38,9 @@
   .table-four-guardians .table-paylines td {
     border: none; }
 
+.table-four-guardians .col-round-id {
+  width: 10rem; }
+
 .table-four-guardians .payline {
   width: 50px; }
 
