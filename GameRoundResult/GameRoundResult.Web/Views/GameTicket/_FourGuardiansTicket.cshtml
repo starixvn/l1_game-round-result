@@ -104,7 +104,7 @@
                     <td>@roundResult.SettlementResult.Bonus.Count</td>
                     <td>@roundResult.SettlementResult.Bonus.Odds @Localizer["Bonus"]</td>
                     <td>-</td>
-                    <td>@roundResult.BonusChests.Where(x => x.Picked).Sum(x => x.Amount).Format()</td>
+                    <td class="text-right">@roundResult.BonusChests.Where(x => x.Picked).Sum(x => x.Amount).Format()</td>
                 </tr>
             }
 
