@@ -30,10 +30,8 @@
                 <td class="bold @(Model.RoundResult.SettlementResult.Even ? "text-blue" : "text-red")">
                     @(Model.RoundResult.SettlementResult.Even ? Localizer["Even"] : Localizer["Odd"])
 
-                    @if (Model.RoundResult.TotalRed != 2)
-                    {
+                    @{
                         var totalRed = Model.RoundResult.TotalRed;
-
                         @(totalRed > 0 ? $", {totalRed} {Localizer["Red"]}" : $", 4 {Localizer["White"]}")
                     }
                 </td>
