@@ -250,7 +250,7 @@ namespace GameRoundResult.Web.Handlers
                 case GameType.SeDieWar:
                     var vipSeDieWarResult = await service.GetVipSeDieWarAsync(request.RoundId, request.MemberId);
                     return new VipSeDieWarTicketViewModel
-                      {
+                    {
                         RoundResult = vipSeDieWarResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
                         Bets = vipSeDieWarResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
                         TotalBet = vipSeDieWarResult.Item3?.TotalAmount ?? 0,
@@ -259,7 +259,7 @@ namespace GameRoundResult.Web.Handlers
                 case GameType.FourGuardians:
                     var fourGuardiansResult = await service.GetFourGuardiansAsync(request.RoundId, request.MemberId);
                     return new FourGuardiansTicketViewModel
-                  {
+                    {
                         RoundResult = fourGuardiansResult?.ToViewModel(mapper, request.TimeZoneInfo),
                     };
 
