@@ -22,7 +22,7 @@ namespace GameRoundResult.Web
                         .Build();
 
                     webBuilder.UseUrls($"http://0.0.0.0:{configuration["HostingPort"]}");
-                    webBuilder.UseSentry();
+                    webBuilder.UseSentry(opt => opt.Environment = configuration["Env"]);
                     webBuilder.UseStartup<Startup>();
                 });
     }
