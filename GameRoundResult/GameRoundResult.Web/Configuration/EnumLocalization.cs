@@ -35,7 +35,7 @@ namespace GameRoundResult.Web.Configuration
 
         public override IEnumerable<SelectListItem> GetSelectListItems()
         {
-            return base.GetSelectListItems().Where(x => x.Value != GameType.Blackjack.ToString());
+            return base.GetSelectListItems().Where(x => x.Value != GameType.Blackjack.ToString() && x.Value != GameType.FourGuardians.ToString());
         }
     }
 }
