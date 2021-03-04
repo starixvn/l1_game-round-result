@@ -26,7 +26,8 @@
                 </td>
                 <td>
                     @roundResult.Round
-                    @(roundResult.FreeSpin ? $"({Localizer["Free spin"]})" : string.Empty)</td>
+                    <div>@(roundResult.FreeSpin ? $"({Localizer["Free spin"]})" : string.Empty)</div>
+                </td>
                 <td>
                     <table class="table-paylines">
                         <tbody>
