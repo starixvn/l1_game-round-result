@@ -104,6 +104,14 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
+        public static FourGuardiansRoundResultViewModel ToViewModel(this FourGuardiansRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<FourGuardiansRound, FourGuardiansRoundResultViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
         public static SicBoRoundResultViewModel ToViewModel(this SicBoRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<SicBoRound, SicBoRoundResultViewModel>(entity, opts =>

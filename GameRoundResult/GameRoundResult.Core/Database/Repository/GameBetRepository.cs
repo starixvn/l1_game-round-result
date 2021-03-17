@@ -63,6 +63,8 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(SicBoRound, IEnumerable<SicBoBet>, SicBoOne)> GetSicBoAsync(long roundId, int memberId);
         Task<(VipSeDieWarRound, IEnumerable<VipSeDieWarBet>, VipSeDieWarOne)> GetVipSeDieWarAsync(long roundId, int memberId);
         
+
+        Task<FourGuardiansRound> GetFourGuardiansAsync(long roundId, int memberId);
         Task<(VipBaccaratRound, BaccaratBet)> GetVipBaccaratAsync(long roundId, int memberId);
     }
 
@@ -314,6 +316,12 @@ namespace GameRoundResult.Core.Database.Repository
                 .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Id).ToListAsync();
 
             return (round, bets, ones);
+        }
+
+        public async Task<FourGuardiansRound> GetFourGuardiansAsync(long roundId, int memberId)
+        {
+            return await database.GetCollection<FourGuardiansRound>(MiniGameRoundCollections.FourGuardianRounds)
+                .Find(x => x.Round == roundId && x.MemberId == memberId).FirstOrDefaultAsync();
         }
 
         public async Task<(VipBaccaratRound, BaccaratBet)> GetVipBaccaratAsync(long roundId, int memberId)
