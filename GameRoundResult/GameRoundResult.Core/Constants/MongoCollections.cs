@@ -53,6 +53,8 @@
         public const string SicBoRound = "sicbo_phiens";
         
         public const string VipSeDieWarRound = "vipsediewar_phiens";
+
+        public const string FourGuardianRounds = "fourguardians_rounds";
         
         public const string VipBaccaratRound = "vipbaccarat_phiens";
     }
