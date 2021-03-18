@@ -93,8 +93,15 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<RouletteRound, RouletteRoundResultViewModel>();
             CreateMap<RouletteSettlementResult, RouletteSettlementResultViewModel>();
 
-            CreateMap<BigSmallBet, BigSmallBetViewModel>();
-            CreateMap<OddEvenBet, OddEvenBetViewModel>();
+            CreateMap<BigSmallBet, BigSmallBetViewModel>()
+                .ForMember(x => x.Bet, opt => opt.MapFrom(x => x.Amount ?? x.Bet))
+                .ForMember(x => x.Select, opt => opt.MapFrom(x => x.Select ?? x.Choice == "big"))
+                .ForMember(x => x.Back, opt => opt.MapFrom(x => x.Back ?? x.Refund));
+
+            CreateMap<OddEvenBet, OddEvenBetViewModel>()
+                .ForMember(x => x.Bet, opt => opt.MapFrom(x => x.Amount ?? x.Bet))
+                .ForMember(x => x.Select, opt => opt.MapFrom(x => x.Select ?? x.Choice == "even"))
+                .ForMember(x => x.Back, opt => opt.MapFrom(x => x.Back ?? x.Refund)); ;
 
             CreateMap<SeDieBet, SeDieBetViewModel>();
             CreateMap<MiniSeDieBet, MiniSeDieBetViewModel>();
