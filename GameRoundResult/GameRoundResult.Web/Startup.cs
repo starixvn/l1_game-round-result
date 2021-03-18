@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using AutoMapper;
+using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using MediatR;
@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MongoDB.Bson.Serialization;
 
 namespace GameRoundResult.Web
 {
@@ -77,7 +78,7 @@ namespace GameRoundResult.Web
 
             app.UseEndpoints(endpoints =>
             {
-                 endpoints.MapHealthChecks("/health");
+                endpoints.MapHealthChecks("/health");
                 endpoints.MapControllerRoute(
                     name: "culture-route",
                     pattern: "{culture=vi-VN}/{controller=GameRoundResult}/{action=Index}/{id?}");
