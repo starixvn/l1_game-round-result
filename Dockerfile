@@ -1,4 +1,4 @@
-FROM git3.nexdev.net:5050/lumi-ops/docker-images/dotnet/core/sdk:3.1 AS builder
+FROM registry.nexdev.net:5050/docker/dotnet/core/sdk:3.1 AS builder
 
 WORKDIR /src
 
@@ -12,7 +12,7 @@ COPY ./GameRoundResult/GameRoundResult.Web/ .
 
 RUN dotnet publish -r linux-x64 --self-contained false -o /app && echo $CACHEBUST
 
-FROM git3.nexdev.net:5050/lumi-ops/docker-images/dotnet/core/aspnet:3.1 AS base
+FROM registry.nexdev.net:5050/docker/dotnet/core/aspnet:3.1-buster-slim AS base
 
 WORKDIR /app
 COPY --from=builder /app .
