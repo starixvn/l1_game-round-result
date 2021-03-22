@@ -201,9 +201,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="appsettings.AWS.json">
-      <TransformOnBuild>true</TransformOnBuild>
-    </Content>
     <Content Update="appsettings.json">
       <TransformOnBuild>true</TransformOnBuild>
     </Content>
