@@ -5,13 +5,13 @@
 @{ 
     var resultColorCssClass = string.Empty;
 
-    if(Model.RoundResult.Result == 0 )
+    if(Model.RoundResult?.Result == 0 )
     {
         resultColorCssClass = "text-green";
     }
     else
     {
-        if (Roulette.RedNumbers.Any(x => x == Model.RoundResult.Result))
+        if (Roulette.RedNumbers.Any(x => x == Model.RoundResult?.Result))
         {
             resultColorCssClass = "text-red";
         }
