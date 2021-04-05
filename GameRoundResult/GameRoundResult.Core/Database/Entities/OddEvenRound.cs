@@ -4,6 +4,11 @@ namespace GameRoundResult.Core.Database.Entities
 {
     public class OddEvenRound : GameRound
     {
+        public OddEvenResult Result { get; set; }
+    }
+
+    public class OddEvenResult
+    {
         [BsonElement("dice1")]
         public byte FirstDice { get; set; }
 

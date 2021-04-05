@@ -81,7 +81,7 @@
                     <td><img class="symbol" src="~/scss/images/four-guardians/10.png" /></td>
                     <td>5</td>
                     <td>@Localizer["Jackpot"]</td>
-                    <td class="text-right">@roundResult.Bet</td>
+                    <td class="text-right">@roundResult.Bet.Format()</td>
                     <td class="text-right">@roundResult.SettlementResult.Jackpot.WinningAmount.Format()</td>
                 </tr>
             }
@@ -94,7 +94,7 @@
                     <td><img class="symbol" src="~/scss/images/four-guardians/@(winningPayline.Symbol).png" /></td>
                     <td>@winningPayline.Count</td>
                     <td>x@(winningPayline.Odds)</td>
-                    <td class="text-right">@roundResult.Bet</td>
+                    <td class="text-right">@roundResult.Bet.Format()</td>
                     <td class="text-right">@((roundResult.Bet * winningPayline.Odds).Format())</td>
                 </tr>
             }

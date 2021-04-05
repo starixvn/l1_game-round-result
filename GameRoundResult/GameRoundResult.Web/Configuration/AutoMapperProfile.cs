@@ -12,16 +12,16 @@ namespace GameRoundResult.Web.Configuration
         public AutoMapperProfile()
         {
             CreateMap<BigSmallRound, BigSmallRoundResultViewModel>()
-                .ForMember(x => x.Dices, opt => opt.MapFrom(x => new [] { x.FirstDice, x.SecondDice, x.ThirdDice }));
+                .ForMember(x => x.Dices, opt => opt.MapFrom(x => x.Result != null ? new[] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice } : new[] { x.FirstDice, x.SecondDice, x.ThirdDice }));
 
             CreateMap<OddEvenRound, OddEvenRoundResultViewModel>()
-              .ForMember(x => x.Dices, opt => opt.MapFrom(x => new [] { x.FirstDice, x.SecondDice, x.ThirdDice }));
+              .ForMember(x => x.Dices, opt => opt.MapFrom(x => new[] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice }));
 
             CreateMap<FishPrawnCrabRound, FishPrawnCrabRoundResultViewModel>()
-             .ForMember(x => x.Dices, opt => opt.MapFrom(x => new [] { x.FirstDice, x.SecondDice, x.ThirdDice }));
+             .ForMember(x => x.Dices, opt => opt.MapFrom(x => x.Result != null ? new[] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice } : new[] { x.FirstDice, x.SecondDice, x.ThirdDice }));
 
             CreateMap<SeDieRound, SeDieRoundResultViewModel>()
-                .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new []
+                .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new[]
                 {
                     x.Result.FirstRedChip,
                     x.Result.SecondRedChip ,
@@ -34,15 +34,18 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<MiniSeDieRound, MiniSeDieRoundResultViewModel>()
                 .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new bool[]
                 {
-                    x.FirstRedChip,
-                    x.SecondRedChip,
-                    x.ThirdRedChip,
-                    x.FourthRedChip
+                    x.Result != null ? x.Result.FirstRedChip : x.FirstRedChip,
+                    x.Result != null ? x.Result.SecondRedChip : x.SecondRedChip,
+                    x.Result != null ? x.Result.ThirdRedChip : x.ThirdRedChip,
+                    x.Result != null ? x.Result.FourthRedChip : x.FourthRedChip
                 }.OrderByDescending(x => x)));
 
             CreateMap<MiniSeDieSettlementResultEntity, MiniSeDieSettlementResultViewModel>();
 
-            CreateMap<DragonTigerRound, DragonTigerRoundResultViewModel>();
+            CreateMap<DragonTigerRound, DragonTigerRoundResultViewModel>()
+                .ForMember(x => x.Dragon, opt => opt.MapFrom(x => x.Result != null ? x.Result.Dragon : x.Dragon))
+                .ForMember(x => x.Tiger, opt => opt.MapFrom(x => x.Result != null ? x.Result.Tiger : x.Tiger));
+
             CreateMap<Card, CardViewModel>();
 
             CreateMap<BaccaratRound, BaccaratRoundResultViewModel>()
@@ -90,14 +93,28 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<RouletteRound, RouletteRoundResultViewModel>();
             CreateMap<RouletteSettlementResult, RouletteSettlementResultViewModel>();
 
-            CreateMap<BigSmallBet, BigSmallBetViewModel>();
-            CreateMap<OddEvenBet, OddEvenBetViewModel>();
+            CreateMap<BigSmallBet, BigSmallBetViewModel>()
+                .ForMember(x => x.Bet, opt => opt.MapFrom(x => x.Amount ?? x.Bet))
+                .ForMember(x => x.Select, opt => opt.MapFrom(x => x.Select ?? x.Choice == "big"))
+                .ForMember(x => x.Back, opt => opt.MapFrom(x => x.Back ?? x.Refund));
+
+            CreateMap<OddEvenBet, OddEvenBetViewModel>()
+                .ForMember(x => x.Bet, opt => opt.MapFrom(x => x.Amount ?? x.Bet))
+                .ForMember(x => x.Select, opt => opt.MapFrom(x => x.Select ?? x.Choice == "even"))
+                .ForMember(x => x.Back, opt => opt.MapFrom(x => x.Back ?? x.Refund)); ;
 
             CreateMap<SeDieBet, SeDieBetViewModel>();
             CreateMap<MiniSeDieBet, MiniSeDieBetViewModel>();
 
             CreateMap<DragonTigerBet, DragonTigerBetViewModel>();
-            CreateMap<FishPrawnCrabBet, FishPrawnCrabBetViewModel>();
+            CreateMap<FishPrawnCrabBet, FishPrawnCrabBetViewModel>()
+                .ForMember(x => x.Stag, opt => opt.MapFrom(x=> x.Stag != null ? x.Stag : x.OldStag))
+                .ForMember(x => x.Gourd, opt => opt.MapFrom(x => x.Gourd != null ? x.Gourd : x.OldGourd))
+                .ForMember(x => x.Rooster, opt => opt.MapFrom(x => x.Rooster != null ? x.Rooster : x.OldRooster))
+                .ForMember(x => x.Fish, opt => opt.MapFrom(x => x.Fish != null ? x.Fish : x.OldFish))
+                .ForMember(x => x.Crab, opt => opt.MapFrom(x => x.Crab != null ? x.Crab : x.OldCrab))
+                .ForMember(x => x.Prawn, opt => opt.MapFrom(x => x.Prawn != null ? x.Prawn : x.OldPrawn));
+
             CreateMap<BaccaratBet, BaccaratBetViewModel>();
             CreateMap<KenoProMaxBet, KenoProMaxBetViewModel>();
             CreateMap<RNGKenoBet, RNGKenoBetViewModel>();
