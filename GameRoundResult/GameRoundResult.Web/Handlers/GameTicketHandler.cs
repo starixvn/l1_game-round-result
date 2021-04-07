@@ -271,6 +271,18 @@ namespace GameRoundResult.Web.Handlers
                         Bet = vipBaccaratResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
                     };
 
+                case GameType.Lottery:
+                    var lotteryResult = await service.GetLotteryAsync(request.RoundId, request.MemberId);
+                    return new LotteryTicketViewModel
+                    {
+                        RoundResult = lotteryResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        SettlementResult = mapper.Map<LotterySettlementResultViewModel>(lotteryResult.Item1.SettlementResult),
+                        Bets = lotteryResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                        TotalBet = lotteryResult.Item3?.TotalAmount ?? 0,
+                        TotalBetWin = lotteryResult.Item3?.Betwin ?? 0,
+                        Odds = mapper.Map<LotteryOddsViewModel>(lotteryResult.Item3?.Odds) ?? null
+                    };
+
                 default:
                     throw new ArgumentException(nameof(GetGameTicketRequest.GameType));
             }

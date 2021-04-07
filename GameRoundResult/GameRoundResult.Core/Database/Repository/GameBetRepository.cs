@@ -66,6 +66,8 @@ namespace GameRoundResult.Core.Database.Repository
 
         Task<FourGuardiansRound> GetFourGuardiansAsync(long roundId, int memberId);
         Task<(VipBaccaratRound, BaccaratBet)> GetVipBaccaratAsync(long roundId, int memberId);
+
+        Task<(LotteryRound, IEnumerable<LotteryBet>, LotteryOne)> GetLotteryAsync(long roundId, int memberId);
     }
 
     public class GameBetRepository : IGameBetRepository
@@ -345,6 +347,16 @@ namespace GameRoundResult.Core.Database.Repository
         private async Task<T> GetRoundAsync<T>(long roundId, string collectionName) where T : GameRound
         {
             return await database.GetCollection<T>(collectionName).Find(x => x.Round == roundId).FirstOrDefaultAsync();
+        }
+
+        public async Task<(LotteryRound, IEnumerable<LotteryBet>, LotteryOne)> GetLotteryAsync(long roundId, int memberId)
+        {
+            var round = await GetRoundAsync<LotteryRound>(roundId, MiniGameRoundCollections.LotteryRound);
+            var ones = (await GetBetsAsync<LotteryOne>(roundId, memberId, MiniGameBetCollections.LotteryOnes)).FirstOrDefault();
+            var bets = await database.GetCollection<LotteryBet>(MiniGameBetCollections.LotteryBet)
+                .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Id).ToListAsync();
+
+            return (round, bets, ones);
         }
     }
 }

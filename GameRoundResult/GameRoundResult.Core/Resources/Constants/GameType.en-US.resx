@@ -191,5 +191,8 @@
   </data>
   <data name="VipBaccarat" xml:space="preserve">
     <value>VIP Baccarat</value>
-    </data>
+  </data>
+  <data name="Lottery" xml:space="preserve">
+    <value>Saba.club Lottery</value>
+  </data>
 </root>

@@ -62,6 +62,9 @@ namespace GameRoundResult.Core.Services
         Task<(VipBaccaratRound, BaccaratBet)> GetVipBaccaratAsync(long roundId, int memberId);
 
         Task<FourGuardiansRound> GetFourGuardiansAsync(long roundId, int memberId);
+
+
+        Task<(LotteryRound, IEnumerable<LotteryBet>, LotteryOne)> GetLotteryAsync(long roundId, int memberId);
     }
 
     public class GameBetService : IGameBetService
@@ -212,6 +215,11 @@ namespace GameRoundResult.Core.Services
         public async Task<(VipBaccaratRound, BaccaratBet)> GetVipBaccaratAsync(long roundId, int memberId)
         {
             return await repository.GetVipBaccaratAsync(roundId, memberId);
+        }
+
+        public async Task<(LotteryRound, IEnumerable<LotteryBet>, LotteryOne)> GetLotteryAsync(long roundId, int memberId)
+        {
+            return await repository.GetLotteryAsync(roundId, memberId);
         }
     }
 }
