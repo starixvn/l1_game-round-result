@@ -291,10 +291,10 @@
                         <td class="@cssClass">
                             @Model.Odds.Tail.Format()
                         </td>
-                        <td class="text-right">
+                        <td class="text-right @cssClass">
                             @betChoice.Value.Format()
                         </td>
-                        <td class="text-right">
+                        <td class="text-right @cssClass">
                             @if (settlementResult.Tail == betChoice.Key)
                             {
                                 @((betChoice.Value * Model.Odds.Tail).Format())
