@@ -276,7 +276,7 @@ namespace GameRoundResult.Web.Handlers
                     return new LotteryTicketViewModel
                     {
                         RoundResult = lotteryResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
-                        SettlementResult = mapper.Map<LotterySettlementResultViewModel>(lotteryResult.Item1.SettlementResult),
+                        SettlementResult = lotteryResult.Item1 != null ? mapper.Map<LotterySettlementResultViewModel>(lotteryResult.Item1.SettlementResult) : null,
                         Bets = lotteryResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
                         TotalBet = lotteryResult.Item3?.TotalAmount ?? 0,
                         TotalBetWin = lotteryResult.Item3?.Betwin ?? 0,
