@@ -8,6 +8,6 @@ namespace GameRoundResult.Web.Models
 
         public string Language { get; set; }
 
-        public byte GameId { get; set; }
+        public int GameId { get; set; }
     }
 }

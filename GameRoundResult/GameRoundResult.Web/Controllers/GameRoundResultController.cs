@@ -155,17 +155,6 @@ namespace GameRoundResult.Web.Controllers
                 }
             }
 
-            var sentryMessage = string.Empty;
-            foreach (var modelState in ViewData.ModelState.Values)
-            {
-                foreach (var error in modelState.Errors)
-                {
-                    sentryMessage += $" {error.ErrorMessage}";
-                }
-            }
-
-            SentrySdk.CaptureMessage($"GetAccessURL Failed: {sentryMessage}");
-
             return BadRequest();
         }
 
