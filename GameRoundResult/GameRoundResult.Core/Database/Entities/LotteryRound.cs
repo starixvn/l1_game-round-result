@@ -35,6 +35,7 @@ namespace GameRoundResult.Core.Database.Entities
 
         public Dictionary<string, bool> Others { get; set; }
 
+        [BsonElement("27Sets")]
         public IEnumerable<string> TwentySevenSets { get; set; }
 
         public LotteryOccurrences Occurrences { get; set; }
