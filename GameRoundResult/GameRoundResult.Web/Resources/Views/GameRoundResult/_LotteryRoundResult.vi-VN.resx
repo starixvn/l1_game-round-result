@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="1st" xml:space="preserve">
+    <value>Giải Nhất</value>
+  </data>
+  <data name="2nd" xml:space="preserve">
+    <value>Giải Nhì</value>
+  </data>
+  <data name="3rd" xml:space="preserve">
+    <value>Giải Ba</value>
+  </data>
+  <data name="4th" xml:space="preserve">
+    <value>Giải Tư</value>
+  </data>
+  <data name="5th" xml:space="preserve">
+    <value>Giải Năm</value>
+  </data>
+  <data name="6th" xml:space="preserve">
+    <value>Giải Sáu</value>
+  </data>
+  <data name="7th" xml:space="preserve">
+    <value>Giải Bảy</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Thời Gian</value>
   </data>
@@ -125,5 +146,8 @@
   </data>
   <data name="Round" xml:space="preserve">
     <value>Phiên</value>
+  </data>
+  <data name="Special" xml:space="preserve">
+    <value>Giải Đặc Biệt</value>
   </data>
 </root>
