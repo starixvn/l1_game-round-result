@@ -28,88 +28,15 @@
                 <td>
                     <table class="table table-bordered table-hover bold">
                         <tbody>
-                            <tr>
-                                <td>@LotteryLocalizer["SpecialPrize"]</td>
-                                <td colSpan="12" class="text-center text-red">
-                                    @Model.RoundResult.Special.FirstOrDefault()
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>@LotteryLocalizer["First"]</td>
-                                <td colSpan="12">
-                                    @Model.RoundResult.First.FirstOrDefault()
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>@LotteryLocalizer["Second"]</td>
-                                @foreach (var number in Model.RoundResult.Second)
-                                {
-                                    <td colSpan="6">
-                                        @number
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                <td rowSpan="2">@LotteryLocalizer["Third"]</td>
-                                @foreach (var number in Model.RoundResult.Third.ToList().GetRange(0, 3))
-                                {
-                                    <td colSpan="4">
-                                        @number
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                @foreach (var number in Model.RoundResult.Third.ToList().GetRange(3, 3))
-                                {
-                                    <td colSpan="4">
-                                        @number
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                <td>@LotteryLocalizer["Fourth"]</td>
-                                @foreach (var number in Model.RoundResult.Fourth)
-                                {
-                                    <td colSpan="3">
-                                        @number
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                <td rowSpan="2">@LotteryLocalizer["Fifth"]</td>
-                                @foreach (var number in Model.RoundResult.Fifth.ToList().GetRange(0, 3))
-                                {
-                                    <td colSpan="4">
-                                        @number
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                @foreach (var number in Model.RoundResult.Fifth.ToList().GetRange(3, 3))
-                                {
-                                    <td colSpan="4">
-                                        @number
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                <td>@LotteryLocalizer["Sixth"]</td>
-                                @foreach (var number in Model.RoundResult.Sixth)
-                                {
-                                    <td colSpan="4">
-                                        @number
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                <td>@LotteryLocalizer["Seventh"]</td>
-                                @foreach (var number in Model.RoundResult.Seventh)
-                                {
-                                    <td colSpan="3" class="text-center text-red">
-                                        @number
-                                    </td>
-                                }
-                            </tr>
+                            <partial name="LotteryResult/_SpecialPrize" model="Model" />
+                            <partial name="LotteryResult/_FirstPrize" model="Model" />
+                            <partial name="LotteryResult/_SecondPrize" model="Model" />
+                            <partial name="LotteryResult/_ThirdPrize" model="Model" />
+                            <partial name="LotteryResult/_ThirdPrize" model="Model" />
+                            <partial name="LotteryResult/_FourthPrize" model="Model" />
+                            <partial name="LotteryResult/_FifthPrize" model="Model" />
+                            <partial name="LotteryResult/_SixthPrize" model="Model" />
+                            <partial name="LotteryResult/_SeventhPrize" model="Model" />
                         </tbody>
                     </table>
                 </td>

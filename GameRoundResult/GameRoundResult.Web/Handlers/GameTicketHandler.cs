@@ -280,7 +280,8 @@ namespace GameRoundResult.Web.Handlers
                         Bets = lotteryResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
                         TotalBet = lotteryResult.Item3?.TotalAmount ?? 0,
                         TotalBetWin = lotteryResult.Item3?.Betwin ?? 0,
-                        Odds = mapper.Map<LotteryOddsViewModel>(lotteryResult.Item3?.Odds) ?? null
+                        Odds = mapper.Map<LotteryOddsViewModel>(lotteryResult.Item3?.Odds) ?? null,
+                        Choices = mapper.Map<LotteryChoicesViewModel>(lotteryResult.Item3?.Choices) ?? null
                     };
 
                 default:

@@ -18,6 +18,8 @@ namespace GameRoundResult.Web.Models
         public decimal TotalBetWin { get; set; }
 
         public decimal WinLoss => TotalBetWin - TotalBet;
+
+        public LotteryChoicesViewModel Choices { get; set; }
     }
 
     public class LotterySettlementResultViewModel

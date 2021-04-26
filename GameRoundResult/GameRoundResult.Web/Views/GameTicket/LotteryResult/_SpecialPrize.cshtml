@@ -1,0 +1,38 @@
+﻿@model LotteryTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<LotteryTicketViewModel> LotteryLocalizer
+
+@{
+    var settlementResult = Model.SettlementResult;
+    var choices = Model.Choices;
+    var specialNumber = Model.RoundResult.Special.FirstOrDefault();
+
+    var onesDigit = specialNumber.Substring(specialNumber.Length - 1);
+    var tensDigit = specialNumber.Substring(specialNumber.Length - 2, 1);
+
+    var lastTwoDigits = specialNumber.Substring(specialNumber.Length - 2);
+    var rest = specialNumber.Substring(0, specialNumber.Length - 2);
+
+    var highlightOnesDigit = (choices.Tail.Any(x => x.Key == onesDigit) && settlementResult.Tail == onesDigit)
+        || (choices.Special.ContainsKey(lastTwoDigits) && settlementResult.Special == lastTwoDigits)
+        || (choices.TwentySevenSets.ContainsKey(lastTwoDigits) && settlementResult.TwentySevenSets.Contains(lastTwoDigits))
+        || choices.Parlay2.Any(x => x.Key.Contains(lastTwoDigits) && x.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number)))
+        || choices.Parlay3.Any(x => x.Key.Contains(lastTwoDigits) && x.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number)))
+        || choices.Parlay4.Any(x => x.Key.Contains(lastTwoDigits) && x.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number)))
+        || choices.Others.Any(x => settlementResult.Others[x.Key]);
+
+    var highlightTensDigit = (choices.Head.Any(x => x.Key == tensDigit) && settlementResult.Head == tensDigit)
+      || (choices.Special.ContainsKey(lastTwoDigits) && settlementResult.Special == lastTwoDigits)
+      || (choices.TwentySevenSets.ContainsKey(lastTwoDigits) && settlementResult.TwentySevenSets.Contains(lastTwoDigits))
+      || choices.Parlay2.Any(x => x.Key.Contains(lastTwoDigits) && x.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number)))
+      || choices.Parlay3.Any(x => x.Key.Contains(lastTwoDigits) && x.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number)))
+      || choices.Parlay4.Any(x => x.Key.Contains(lastTwoDigits) && x.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number)))
+      || choices.Others.Any(x => settlementResult.Others[x.Key]);
+}
+
+<tr>
+    <td>@LotteryLocalizer["SpecialPrize"]</td>
+    <td colSpan="12" class="text-center text-red">
+        <span>@rest</span><span class="@(highlightTensDigit ? "text-blue" : string.Empty)">@tensDigit</span><span class="@(highlightOnesDigit ? "text-blue" : string.Empty)">@onesDigit</span>
+    </td>
+</tr>
