@@ -29,13 +29,21 @@ namespace GameRoundResult.Web.Configuration
 
     public class GameTypeLocalization : EnumLocalization<GameType>
     {
+        private readonly IEnumerable<GameType> excludeGames = new List<GameType> 
+        {
+            GameType.Blackjack,
+            GameType.FourGuardians,
+            GameType.OddEven,
+            GameType.KenoProViet
+        };
+
         public GameTypeLocalization(IStringLocalizer<GameType> localizer) : base(localizer)
         {
         }
 
         public override IEnumerable<SelectListItem> GetSelectListItems()
         {
-            return base.GetSelectListItems().Where(x => x.Value != GameType.Blackjack.ToString() && x.Value != GameType.FourGuardians.ToString());
+            return base.GetSelectListItems().Where(x => !excludeGames.Any(e => e.ToString() == x.Value));
         }
     }
 }
