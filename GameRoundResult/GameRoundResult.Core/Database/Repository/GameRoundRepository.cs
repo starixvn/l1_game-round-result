@@ -58,8 +58,12 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(long, IEnumerable<VipFishPrawnCrabRound>)> GetVipFishPrawnRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
         Task<(long, IEnumerable<SicBoRound>)> GetSicBoRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+
         Task<(long, IEnumerable<VipSeDieWarRound>)> GetVipSeDieWarRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
+
         Task<(long, IEnumerable<VipBaccaratRound>)> GetVipBaccaratRoundResult(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<LotteryRound>)> GetLotteryRoundResult(DateTime date, long roundId, int page, int pageSize);
     }
 
     public class GameRoundRepository : IGameRoundRepository
@@ -185,8 +189,8 @@ namespace GameRoundResult.Core.Database.Repository
         {
             return await GetRoundResultAsync<SicBoRound>(date, roundId, MiniGameRoundCollections.SicBoRound, page, pageSize);
         }
-        
-         public async Task<(long, IEnumerable<VipSeDieWarRound>)> GetVipSeDieWarRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
+
+        public async Task<(long, IEnumerable<VipSeDieWarRound>)> GetVipSeDieWarRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
             return await GetRoundResultAsync<VipSeDieWarRound>(date, roundId, MiniGameRoundCollections.VipSeDieWarRound, page, pageSize);
         }
@@ -217,6 +221,11 @@ namespace GameRoundResult.Core.Database.Repository
         public async Task<(long, IEnumerable<VipBaccaratRound>)> GetVipBaccaratRoundResult(DateTime date, long roundId, int page, int pageSize)
         {
             return await GetRoundResultAsync<VipBaccaratRound>(date, roundId, MiniGameRoundCollections.VipBaccaratRound, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<LotteryRound>)> GetLotteryRoundResult(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await GetRoundResultAsync<LotteryRound>(date, roundId, MiniGameRoundCollections.LotteryRound, page, pageSize);
         }
     }
 }

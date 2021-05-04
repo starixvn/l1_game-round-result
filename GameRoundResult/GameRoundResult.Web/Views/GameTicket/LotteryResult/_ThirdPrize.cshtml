@@ -1,0 +1,47 @@
+﻿@model LotteryTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<LotteryTicketViewModel> LotteryLocalizer
+
+@{
+    var settlementResult = Model.SettlementResult;
+    var choices = Model.Choices;
+}
+
+@functions {
+    bool isHighlighted(LotteryChoicesViewModel choices, string lastTwoDigits, LotterySettlementResultViewModel settlementResult)
+    {
+        return (choices.TwentySevenSets.ContainsKey(lastTwoDigits) && settlementResult.TwentySevenSets.Contains(lastTwoDigits))
+            || choices.Parlay2.Any(x => x.Key.Contains(lastTwoDigits) && x.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number)))
+            || choices.Parlay3.Any(x => x.Key.Contains(lastTwoDigits) && x.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number)))
+            || choices.Parlay4.Any(x => x.Key.Contains(lastTwoDigits) && x.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number))); ;
+    }
+}
+
+<tr>
+    <td rowSpan="2">@LotteryLocalizer["Third"]</td>
+    @foreach (var number in Model.RoundResult.Third.ToList().GetRange(0, 3))
+    {
+        var lastTwoDigits = number.Substring(number.Length - 2);
+        var rest = number.Substring(0, number.Length - 2);
+
+        var highlight = isHighlighted(choices, lastTwoDigits, settlementResult);
+
+        <td colSpan="4">
+            <span>@rest</span><span class="@(highlight ? "text-blue" : string.Empty)">@lastTwoDigits</span>
+
+        </td>
+    }
+</tr>
+<tr>
+    @foreach (var number in Model.RoundResult.Third.ToList().GetRange(3, 3))
+    {
+        var lastTwoDigits = number.Substring(number.Length - 2);
+        var rest = number.Substring(0, number.Length - 2);
+
+        var highlight = isHighlighted(choices, lastTwoDigits, settlementResult);
+
+        <td colSpan="4">
+            <span>@rest</span><span class="@(highlight ? "text-blue" : string.Empty)">@lastTwoDigits</span>
+        </td>
+    }
+</tr>

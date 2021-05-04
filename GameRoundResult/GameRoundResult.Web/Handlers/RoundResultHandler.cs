@@ -134,6 +134,9 @@ namespace GameRoundResult.Web.Handlers
                     var vipBaccaratRoundResult = await gameRoundResultService.GetVipBaccaratRoundResult(utcDate, request.RoundId, request.Page, request.PageSize);
                     return (vipBaccaratRoundResult.Item1, vipBaccaratRoundResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)));
 
+                case GameType.Lottery:
+                    var lotteryRoundResult = await gameRoundResultService.GetLotteryRoundResult(utcDate, request.RoundId, request.Page, request.PageSize);
+                    return (lotteryRoundResult.Item1, lotteryRoundResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)));
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
             }

@@ -47,7 +47,7 @@ body {
 }
 
 .text-blue {
-    color: #133b7d;
+    color: #004ac3;
 }
 
 .text-red {
@@ -457,5 +457,12 @@ body {
         td:nth-child(5) {
             white-space: pre-wrap;
         }
+    }
+}
+
+.table-lottery {
+    .table-result {
+        margin: auto;
+        width: 100%;
     }
 }

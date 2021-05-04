@@ -1,0 +1,26 @@
+﻿@model LotteryTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<LotteryTicketViewModel> LotteryLocalizer
+
+@{
+    var settlementResult = Model.SettlementResult;
+    var choices = Model.Choices;
+    var number = Model.RoundResult.First.FirstOrDefault();
+
+
+    var lastTwoDigits = number.Substring(number.Length - 2);
+    var rest = number.Substring(0, number.Length - 2);
+
+    var highlight = (choices.TwentySevenSets.ContainsKey(lastTwoDigits) && settlementResult.TwentySevenSets.Contains(lastTwoDigits))
+        || choices.Parlay2.Any(x => x.Key.Contains(lastTwoDigits) && x.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number)))
+        || choices.Parlay3.Any(x => x.Key.Contains(lastTwoDigits) && x.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number)))
+        || choices.Parlay4.Any(x => x.Key.Contains(lastTwoDigits) && x.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number)));
+}
+
+
+<tr>
+    <td>@LotteryLocalizer["First"]</td>
+    <td colSpan="12">
+        <span>@rest</span><span class="@(highlight ? "text-blue" : string.Empty)">@lastTwoDigits</span>
+    </td>
+</tr>

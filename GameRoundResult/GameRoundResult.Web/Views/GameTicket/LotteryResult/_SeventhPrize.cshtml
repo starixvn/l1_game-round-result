@@ -1,0 +1,27 @@
+﻿@model LotteryTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<LotteryTicketViewModel> LotteryLocalizer
+
+@{
+    var settlementResult = Model.SettlementResult;
+    var choices = Model.Choices;
+}
+
+<tr>
+    <td>@LotteryLocalizer["Seventh"]</td>
+    @foreach (var number in Model.RoundResult.Seventh)
+    {
+        var lastTwoDigits = number.Substring(number.Length - 2);
+        var rest = number.Substring(0, number.Length - 2);
+
+        var highlight = (choices.FourSets.ContainsKey(lastTwoDigits) && settlementResult.FourSets.Contains(lastTwoDigits))
+            || (choices.TwentySevenSets.ContainsKey(lastTwoDigits) && settlementResult.TwentySevenSets.Contains(lastTwoDigits))
+            || choices.Parlay2.Any(x => x.Key.Contains(lastTwoDigits) && x.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number)))
+            || choices.Parlay3.Any(x => x.Key.Contains(lastTwoDigits) && x.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number)))
+            || choices.Parlay4.Any(x => x.Key.Contains(lastTwoDigits) && x.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number)));
+
+        <td colSpan="3" class="text-center text-red">
+            <span>@rest</span><span class="@(highlight ? "text-blue" : string.Empty)">@lastTwoDigits</span>
+        </td>
+    }
+</tr>

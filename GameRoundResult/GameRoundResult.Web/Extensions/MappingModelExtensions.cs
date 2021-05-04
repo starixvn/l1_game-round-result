@@ -119,7 +119,7 @@ namespace GameRoundResult.Web.Extensions
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });
         }
-        
+
         public static VipSeDieWarRoundResultViewModel ToViewModel(this VipSeDieWarRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<VipSeDieWarRound, VipSeDieWarRoundResultViewModel>(entity, opts =>
@@ -264,6 +264,25 @@ namespace GameRoundResult.Web.Extensions
                 {
                     dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo);
                 });
+            });
+        }
+
+        public static LotteryRoundResultViewModel ToViewModel(this LotteryRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<LotteryRound, LotteryRoundResultViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) =>
+                {
+                    dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo);
+                });
+            });
+        }
+
+        public static LotteryBetViewModel ToViewModel(this LotteryBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<LotteryBet, LotteryBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });
         }
     }

@@ -57,6 +57,8 @@
         public const string FourGuardianRounds = "fourguardians_rounds";
         
         public const string VipBaccaratRound = "vipbaccarat_phiens";
+
+        public const string LotteryRound = "lottery_phiens";
     }
 
     internal static class MiniGameBetCollections
@@ -140,6 +142,11 @@
 
         public const string SicBoOnes = "sicbo_ones";
         public const string VipSeDieWarOnes = "vipsediewar_ones";
-        
+
+
+        public const string LotteryOnes = "lottery_ones";
+
+        public const string LotteryBet = "lottery_cuocs";
+
     }
 }

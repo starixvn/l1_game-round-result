@@ -108,7 +108,7 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<DragonTigerBet, DragonTigerBetViewModel>();
             CreateMap<FishPrawnCrabBet, FishPrawnCrabBetViewModel>()
-                .ForMember(x => x.Stag, opt => opt.MapFrom(x=> x.Stag != null ? x.Stag : x.OldStag))
+                .ForMember(x => x.Stag, opt => opt.MapFrom(x => x.Stag != null ? x.Stag : x.OldStag))
                 .ForMember(x => x.Gourd, opt => opt.MapFrom(x => x.Gourd != null ? x.Gourd : x.OldGourd))
                 .ForMember(x => x.Rooster, opt => opt.MapFrom(x => x.Rooster != null ? x.Rooster : x.OldRooster))
                 .ForMember(x => x.Fish, opt => opt.MapFrom(x => x.Fish != null ? x.Fish : x.OldFish))
@@ -210,6 +210,22 @@ namespace GameRoundResult.Web.Configuration
                 .ForMember(x => x.PlayerPair, opt => opt.MapFrom(x => x.SettlementResult.PlayerPair))
                 .ForMember(x => x.BankerPair, opt => opt.MapFrom(x => x.SettlementResult.BankerPair))
                 .ForMember(x => x.Natural, opt => opt.MapFrom(x => x.SettlementResult.Natural));
+
+            CreateMap<LotteryRound, LotteryRoundResultViewModel>()
+                .ForMember(x => x.Special, opt => opt.MapFrom(x => x.Result.Special))
+                .ForMember(x => x.First, opt => opt.MapFrom(x => x.Result.First))
+                .ForMember(x => x.Second, opt => opt.MapFrom(x => x.Result.Second))
+                .ForMember(x => x.Third, opt => opt.MapFrom(x => x.Result.Third))
+                .ForMember(x => x.Fourth, opt => opt.MapFrom(x => x.Result.Fourth))
+                .ForMember(x => x.Fifth, opt => opt.MapFrom(x => x.Result.Fifth))
+                .ForMember(x => x.Sixth, opt => opt.MapFrom(x => x.Result.Sixth))
+                .ForMember(x => x.Seventh, opt => opt.MapFrom(x => x.Result.Seventh));
+
+            CreateMap<LotteryBet, LotteryBetViewModel>();
+            CreateMap<LotteryOdds, LotteryOddsViewModel>();
+            CreateMap<LotteryChoices, LotteryChoicesViewModel>();
+            CreateMap<LotterySettlementResult, LotterySettlementResultViewModel>();
+            CreateMap<LotteryOccurrences, LotteryOccurrencesViewModel>();
         }
     }
 }

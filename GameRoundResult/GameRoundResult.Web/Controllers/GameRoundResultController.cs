@@ -46,11 +46,12 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(GameType gameType)
         {
             var viewModel = new GameRoundResultViewModel
             {
-                GameTypes = gameTypeLocalization.GetSelectListItems()
+                GameTypes = gameTypeLocalization.GetSelectListItems(),
+                GameType = gameType
             };
             return View(viewModel);
         }
@@ -105,10 +106,13 @@ namespace GameRoundResult.Web.Controllers
                     return PartialView("_VipSeDieRoundResult");
 
                 case GameType.SicBo:
-                
                     return PartialView("_SicBoRoundResult");
-		case GameType.SeDieWar:
+
+                case GameType.SeDieWar:
                     return PartialView("_VipSeDieWarRoundResult");
+
+                case GameType.Lottery:
+                    return PartialView("_LotteryRoundResult");
 
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
@@ -144,12 +148,23 @@ namespace GameRoundResult.Web.Controllers
 
                 if (client != null)
                 {
-                    var token = dataProtector.Protect($"{model.Auth.ClientID}_{model.Auth.ClientKey}",
+                    var token = dataProtector.Protect($"{model.Auth.ClientID}_{model.Auth.ClientKey}_{model.GameId}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
                     var redirectUrl = Url.Action("Auth", "GameRoundResult", new { culture = model.Language, token }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
                     return Ok(new GameRoundResultAccessUrlResultModel { RedirectUrl = redirectUrl });
                 }
             }
+
+            var sentryMessage = string.Empty;
+            foreach (var modelState in ViewData.ModelState.Values)
+            {
+                foreach (var error in modelState.Errors)
+                {
+                    sentryMessage += $" {error.ErrorMessage}";
+                }
+            }
+
+            SentrySdk.CaptureMessage($"GetAccessURL Failed: {sentryMessage}");
 
             return BadRequest();
         }
@@ -184,6 +199,13 @@ namespace GameRoundResult.Web.Controllers
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(claimsIdentity),
                         authProperties);
+
+                    var gameType = Enum.Parse<GameType>(data[2]);
+
+                    if (Enum.IsDefined(typeof(GameType), gameType))
+                    {
+                        return RedirectToAction("Index", new { gameType });
+                    }
 
                     return RedirectToAction("Index");
                 }

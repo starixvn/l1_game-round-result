@@ -155,7 +155,7 @@ body {
   width: 10rem; }
 
 .text-blue {
-  color: #133b7d; }
+  color: #004ac3; }
 
 .text-red {
   color: #b53f39; }
@@ -456,3 +456,7 @@ body {
 
 .table-vip-se-die-war tr td:nth-child(5) {
   white-space: pre-wrap; }
+
+.table-lottery .table-result {
+  margin: auto;
+  width: 100%; }
