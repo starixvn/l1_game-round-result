@@ -117,6 +117,15 @@
                 </tr>
             }
 
+            if (Model.Bet.Hearts > 0)
+            {
+                <tr class="@(settlementResult.Hearts ? "bold text-blue" : string.Empty)">
+                    <td>@Localizer["Hearts"]</td>
+                    <td class="text-right">@Model.Bet.Odds.Hearts</td>
+                    <td class="text-right">@Model.Bet.Hearts.Format()</td>
+                </tr>
+            }
+
             if (Model.Bet.Spades > 0)
             {
                 <tr class="@(settlementResult.Spades ? "bold text-blue" : string.Empty)">
