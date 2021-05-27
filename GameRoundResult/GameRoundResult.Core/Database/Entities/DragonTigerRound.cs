@@ -5,19 +5,19 @@ namespace GameRoundResult.Core.Database.Entities
     public class DragonTigerRound : GameRound
     {
         public DragonTigerResult Result { get; set; }
-        public Card Dragon { get; set; }
+        public DragonTigerCard Dragon { get; set; }
 
-        public Card Tiger { get; set; }
+        public DragonTigerCard Tiger { get; set; }
     }
 
     public class DragonTigerResult
     {
-        public Card Dragon { get; set; }
+        public DragonTigerCard Dragon { get; set; }
 
-        public Card Tiger { get; set; }
+        public DragonTigerCard Tiger { get; set; }
     }
 
-    public class Card
+    public class DragonTigerCard
     {
         [BsonElement("card")]
         public byte Number { get; set; }

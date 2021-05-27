@@ -114,6 +114,9 @@ namespace GameRoundResult.Web.Controllers
                 case GameType.Lottery:
                     return PartialView("_LotteryRoundResult");
 
+                case GameType.ThreeCards:
+                    return PartialView("_ThreeCardsRoundResult");
+
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
             }

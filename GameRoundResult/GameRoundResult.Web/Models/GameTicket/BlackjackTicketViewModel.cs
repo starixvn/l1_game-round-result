@@ -7,7 +7,7 @@ namespace GameRoundResult.Web.Models
     {
         public BlackjackBetViewModel Bet { get; set; }
 
-        public IEnumerable<BlackjackCardViewModel> DealerCards { get; set; }
+        public IEnumerable<CardViewModel> DealerCards { get; set; }
 
         public byte DealerPoint { get; set; }
 
@@ -22,7 +22,7 @@ namespace GameRoundResult.Web.Models
 
         public long HandId { get; set; }
 
-        public IEnumerable<BlackjackCardViewModel> Cards { get; set; }
+        public IEnumerable<CardViewModel> Cards { get; set; }
 
         public IEnumerable<string> Actions { get; set; }
 
@@ -37,7 +37,7 @@ namespace GameRoundResult.Web.Models
         public decimal BetWin { get; set; }
     }
 
-    public class BlackjackCardViewModel
+    public class CardViewModel
     {
         public string Rank { get; set; }
 

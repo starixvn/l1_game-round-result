@@ -137,6 +137,10 @@ namespace GameRoundResult.Web.Handlers
                 case GameType.Lottery:
                     var lotteryRoundResult = await gameRoundResultService.GetLotteryRoundResult(utcDate, request.RoundId, request.Page, request.PageSize);
                     return (lotteryRoundResult.Item1, lotteryRoundResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)));
+
+                case GameType.ThreeCards:
+                    var threeCardsRoundResult = await gameRoundResultService.GetThreeCardsRoundResult(utcDate, request.RoundId, request.Page, request.PageSize);
+                    return (threeCardsRoundResult.Item1, threeCardsRoundResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)));
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
             }

@@ -12,7 +12,7 @@ namespace GameRoundResult.Core.Database.Entities
 
         public IEnumerable<string> Actions { get; set; }
 
-        public IEnumerable<BlackjackCard> Cards { get; set; }
+        public IEnumerable<Card> Cards { get; set; }
 
         public IEnumerable<byte> SoftPoints { get; set; }
 

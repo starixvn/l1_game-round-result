@@ -448,10 +448,10 @@ body {
     opacity: .25;
     transform: scale(0.75); } }
 
-.blackjack-result .cards {
+.blackjack-result .cards, .three-cards-result .cards {
   display: flex;
   justify-content: center; }
-  .blackjack-result .cards .card:last-child:before {
+  .blackjack-result .cards .card:last-child:before, .three-cards-result .cards .card:last-child:before {
     display: none; }
 
 .table-vip-se-die-war tr td:nth-child(5) {
