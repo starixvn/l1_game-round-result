@@ -7,7 +7,7 @@
     var settlementResult = Model.RoundResult.SettlementResult;
 }
 
-<table class="table table-bordered">
+<table class="table table-bordered table-three-cards">
     <thead>
         <tr>
             <th class="col-date">@CommonLocalizer["Time"] (GMT-4)</th>
@@ -49,22 +49,22 @@
 
                     @if (settlementResult.Diamonds)
                     {
-                        <span>, <span class="text-red">@Localizer["Diamonds"]</span></span>
+                        <img class="img card-suit" src="~/scss/images/card_1.png" />
                     }
 
                     @if (settlementResult.Hearts)
                     {
-                        <span>, <span class="text-red">@Localizer["Hearts"]</span></span>
+                        <img class="img card-suit" src="~/scss/images/card_0.png" />
                     }
 
                     @if (settlementResult.Spades)
                     {
-                        <span>, @Localizer["Spades"]</span>
+                        <img class="img card-suit" src="~/scss/images/card_3.png" />
                     }
 
                     @if (settlementResult.Clubs)
                     {
-                        <span>, @Localizer["Clubs"]</span>
+                        <img class="img card-suit" src="~/scss/images/card_2.png" />
                     }
 
                 </td>

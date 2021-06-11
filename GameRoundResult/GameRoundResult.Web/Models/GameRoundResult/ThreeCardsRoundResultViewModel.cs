@@ -43,36 +43,34 @@ namespace GameRoundResult.Web.Models
 
             if (SettlementResult.Diamonds)
             {
-                tagBuilder = new TagBuilder("span");
-                tagBuilder.AddCssClass("bold");
-                tagBuilder.AddCssClass("text-red");
-                tagBuilder.InnerHtml.Append(stringLocalizer["Diamonds"]);
-                stringBuilder.Append($", {tagBuilder.GetHtmlString()}");
+                tagBuilder = new TagBuilder("img");
+                tagBuilder.AddCssClass($"img card-suit");
+                tagBuilder.Attributes.Add("src", $"/scss/images/card_1.png");
+                stringBuilder.Append(tagBuilder.GetHtmlString());
             }
 
             if (SettlementResult.Hearts)
             {
-                tagBuilder = new TagBuilder("span");
-                tagBuilder.AddCssClass("bold");
-                tagBuilder.AddCssClass("text-red");
-                tagBuilder.InnerHtml.Append(stringLocalizer["Hearts"]);
-                stringBuilder.Append($", {tagBuilder.GetHtmlString()}");
+                tagBuilder = new TagBuilder("img");
+                tagBuilder.AddCssClass($"img card-suit");
+                tagBuilder.Attributes.Add("src", $"/scss/images/card_0.png");
+                stringBuilder.Append(tagBuilder.GetHtmlString());
             }
 
             if (SettlementResult.Spades)
             {
-                tagBuilder = new TagBuilder("span");
-                tagBuilder.AddCssClass("bold");
-                tagBuilder.InnerHtml.Append(stringLocalizer["Spades"]);
-                stringBuilder.Append($", {tagBuilder.GetHtmlString()}");
+                tagBuilder = new TagBuilder("img");
+                tagBuilder.AddCssClass($"img card-suit");
+                tagBuilder.Attributes.Add("src", $"/scss/images/card_3.png");
+                stringBuilder.Append(tagBuilder.GetHtmlString());
             }
 
             if (SettlementResult.Hearts)
             {
-                tagBuilder = new TagBuilder("span");
-                tagBuilder.AddCssClass("bold");
-                tagBuilder.InnerHtml.Append(stringLocalizer["Clubs"]);
-                stringBuilder.Append($", {tagBuilder.GetHtmlString()}");
+                tagBuilder = new TagBuilder("img");
+                tagBuilder.AddCssClass($"img card-suit");
+                tagBuilder.Attributes.Add("src", $"/scss/images/card_2.png");
+                stringBuilder.Append(tagBuilder.GetHtmlString());
             }
 
             return stringBuilder.ToString();
