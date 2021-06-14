@@ -65,7 +65,7 @@ namespace GameRoundResult.Web.Models
                 stringBuilder.Append(tagBuilder.GetHtmlString());
             }
 
-            if (SettlementResult.Hearts)
+            if (SettlementResult.Clubs)
             {
                 tagBuilder = new TagBuilder("img");
                 tagBuilder.AddCssClass($"img card-suit");
