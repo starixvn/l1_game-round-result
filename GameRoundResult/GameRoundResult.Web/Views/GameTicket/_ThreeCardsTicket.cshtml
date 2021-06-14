@@ -3,9 +3,6 @@
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
 @inject Microsoft.Extensions.Localization.IStringLocalizer<ThreeCardsTicketViewModel> Localizer
 
-@{
-    var settlementResult = Model.RoundResult.SettlementResult;
-}
 
 <table class="table table-bordered table-three-cards">
     <thead>
@@ -19,6 +16,9 @@
     <tbody>
         @if (Model.RoundResult != null)
         {
+
+            var settlementResult = Model.RoundResult.SettlementResult;
+
             <tr>
                 <td>
                     @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
@@ -74,7 +74,7 @@
         {
             <tr>
                 <td colspan="4" class="text-center">
-                    @Localizer["NoDataAvailable"]
+                    @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>
         }
@@ -92,6 +92,8 @@
     <tbody>
         @if (Model.Bet != null && Model.RoundResult != null)
         {
+            var settlementResult = Model.RoundResult.SettlementResult;
+
             if (Model.Bet.Red > 0)
             {
                 <tr class="@(settlementResult.Red ? "bold text-blue" : string.Empty)">
@@ -161,7 +163,7 @@
         else
         {
             <tr>
-                <td colspan="2" class="text-center">
+                <td colspan="3" class="text-center">
                     @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>
