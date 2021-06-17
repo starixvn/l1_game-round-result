@@ -30,6 +30,7 @@
         VipBaccarat = 27,
         SeDieWar = 28,
         FourGuardians = 29,
-        Lottery = 31
+        Lottery = 31,
+        ThreeCards = 35
     }
 }

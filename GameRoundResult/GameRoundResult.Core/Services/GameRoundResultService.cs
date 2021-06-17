@@ -61,6 +61,8 @@ namespace GameRoundResult.Core.Services
         Task<(long, IEnumerable<VipBaccaratRound>)> GetVipBaccaratRoundResult(DateTime date, long roundId, int page, int pageSize);
 
         Task<(long, IEnumerable<LotteryRound>)> GetLotteryRoundResult(DateTime date, long roundId, int page, int pageSize);
+
+        Task<(long, IEnumerable<ThreeCardsRound>)> GetThreeCardsRoundResult(DateTime date, long roundId, int page, int pageSize);
     }
 
     public class GameRoundResultService : IGameRoundResultService
@@ -205,6 +207,11 @@ namespace GameRoundResult.Core.Services
         public async Task<(long, IEnumerable<LotteryRound>)> GetLotteryRoundResult(DateTime date, long roundId, int page, int pageSize)
         {
             return await repository.GetLotteryRoundResult(date, roundId, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<ThreeCardsRound>)> GetThreeCardsRoundResult(DateTime date, long roundId, int page, int pageSize)
+        {
+            return await repository.GetThreeCardsRoundResult(date, roundId, page, pageSize);
         }
     }
 }

@@ -5,7 +5,7 @@ namespace GameRoundResult.Core.Database.Entities
 {
     public class BlackjackRound : GameRound
     {
-        public IEnumerable<BlackjackCard> Result { get; set; }
+        public IEnumerable<Card> Result { get; set; }
 
         public DateTime RoundStartTime { get; set; }
 
@@ -18,7 +18,7 @@ namespace GameRoundResult.Core.Database.Entities
         public byte SettlementResult { get; set; }
     }
 
-    public class BlackjackCard
+    public class Card
     {
         public string Rank { get; set; }
 

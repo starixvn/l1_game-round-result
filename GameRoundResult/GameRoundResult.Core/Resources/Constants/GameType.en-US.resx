@@ -195,4 +195,7 @@
   <data name="Lottery" xml:space="preserve">
     <value>RNG Lottery</value>
   </data>
+  <data name="ThreeCards" xml:space="preserve">
+    <value>Three Cards</value>
+  </data>
 </root>

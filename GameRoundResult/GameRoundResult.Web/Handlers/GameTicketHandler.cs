@@ -211,7 +211,7 @@ namespace GameRoundResult.Web.Handlers
                     var blackjackResult = await service.GetBlackjackAsync(request.RoundId, request.MemberId);
                     return new BlackjackTicketViewModel
                     {
-                        DealerCards = blackjackResult.Item1?.Result.Select(x => mapper.Map<BlackjackCardViewModel>(x)),
+                        DealerCards = blackjackResult.Item1?.Result.Select(x => mapper.Map<CardViewModel>(x)),
                         DealerPoint = blackjackResult.Item1?.SettlementResult ?? 0,
                         Ended = blackjackResult.Item1?.Ended ?? false,
                         Bet = blackjackResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo),
@@ -284,6 +284,13 @@ namespace GameRoundResult.Web.Handlers
                         Choices = mapper.Map<LotteryChoicesViewModel>(lotteryResult.Item3?.Choices) ?? null
                     };
 
+                case GameType.ThreeCards:
+                    var threeCardsResult = await service.GetThreeCardsAsync(request.RoundId, request.MemberId);
+                    return new ThreeCardsTicketViewModel
+                    {
+                        RoundResult = threeCardsResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                        Bet = threeCardsResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
+                    };
                 default:
                     throw new ArgumentException(nameof(GetGameTicketRequest.GameType));
             }

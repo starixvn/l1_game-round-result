@@ -165,8 +165,17 @@
   <data name="Big" xml:space="preserve">
     <value>Tài</value>
   </data>
+  <data name="Black" xml:space="preserve">
+    <value>Đen</value>
+  </data>
+  <data name="Clubs" xml:space="preserve">
+    <value>Chuồn</value>
+  </data>
   <data name="Detail" xml:space="preserve">
     <value>Xem chi tiết</value>
+  </data>
+  <data name="Diamonds" xml:space="preserve">
+    <value>Rô</value>
   </data>
   <data name="Dragon" xml:space="preserve">
     <value>Rồng</value>
@@ -182,6 +191,9 @@
   </data>
   <data name="Gold" xml:space="preserve">
     <value>Kim</value>
+  </data>
+  <data name="Hearts" xml:space="preserve">
+    <value>Cơ</value>
   </data>
   <data name="Odd" xml:space="preserve">
     <value>Lẻ</value>
@@ -210,8 +222,14 @@
   <data name="PlayerWhite4" xml:space="preserve">
     <value>Nhà Con 4 Trắng</value>
   </data>
+  <data name="Red" xml:space="preserve">
+    <value>Đỏ</value>
+  </data>
   <data name="Small" xml:space="preserve">
     <value>Xỉu</value>
+  </data>
+  <data name="Spades" xml:space="preserve">
+    <value>Bích</value>
   </data>
   <data name="Special" xml:space="preserve">
     <value>Giải Đặc Biệt</value>

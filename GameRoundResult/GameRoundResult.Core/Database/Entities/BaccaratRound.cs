@@ -26,12 +26,12 @@ namespace GameRoundResult.Core.Database.Entities
     public class Side
     {
         [BsonElement("card1")]
-        public Card FirstCard { get; set; }
+        public DragonTigerCard FirstCard { get; set; }
 
         [BsonElement("card2")]
-        public Card SecondCard { get; set; }
+        public DragonTigerCard SecondCard { get; set; }
 
         [BsonElement("card3")]
-        public Card ThirdCard { get; set; }
+        public DragonTigerCard ThirdCard { get; set; }
     }
 }

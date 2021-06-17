@@ -8,9 +8,9 @@ namespace GameRoundResult.Web.Models
 {
     public class BaccaratRoundResultViewModel : RoundResultViewModel
     {
-        public IEnumerable<CardViewModel> PlayerCards { get; set; }
+        public IEnumerable<DragonTigerCardViewModel> PlayerCards { get; set; }
 
-        public IEnumerable<CardViewModel> BankerCards { get; set; }
+        public IEnumerable<DragonTigerCardViewModel> BankerCards { get; set; }
 
         public bool Player { get; set; }
         public bool Banker { get; set; }
@@ -70,7 +70,7 @@ namespace GameRoundResult.Web.Models
             return tagBuilder.GetHtmlString();
         }
 
-        private static TagBuilder GetCardBuilder(IEnumerable<CardViewModel> cards)
+        private static TagBuilder GetCardBuilder(IEnumerable<DragonTigerCardViewModel> cards)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"cards");
@@ -83,7 +83,7 @@ namespace GameRoundResult.Web.Models
             return tagBuilder;
         }
 
-        private static TagBuilder GetCardBuilder(CardViewModel card)
+        private static TagBuilder GetCardBuilder(DragonTigerCardViewModel card)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"card card-type-{card.Type}");
