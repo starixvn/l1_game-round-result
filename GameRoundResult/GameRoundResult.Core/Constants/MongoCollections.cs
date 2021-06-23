@@ -151,4 +151,9 @@
 
         public const string ThreeCardsBet = "threecards_cuocs";
     }
+
+    internal static class CommonCollections
+    {
+        public const string GlobalConfig = "global_configs";
+    }
 }

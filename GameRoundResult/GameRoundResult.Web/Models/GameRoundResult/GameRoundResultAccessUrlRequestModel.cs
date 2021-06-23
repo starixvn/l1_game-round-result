@@ -9,5 +9,7 @@ namespace GameRoundResult.Web.Models
         public string Language { get; set; }
 
         public int GameId { get; set; }
+
+        public string SiteName { get; set; }
     }
 }

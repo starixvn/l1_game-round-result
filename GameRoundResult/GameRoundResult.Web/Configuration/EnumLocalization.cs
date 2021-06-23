@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
+using GameRoundResult.Core.Services;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
 
@@ -16,12 +18,12 @@ namespace GameRoundResult.Web.Configuration
             this.localizer = localizer;
         }
 
-        public virtual IEnumerable<SelectListItem> GetSelectListItems()
+        protected virtual IEnumerable<SelectListItem> GetSelectListItems()
         {
             var enums = Enum.GetValues(typeof(T)).Cast<T>();
             return enums.Select(x => new SelectListItem
             {
-                Value = x.ToString(),
+                Value = Convert.ToInt32(x).ToString(),
                 Text = localizer[x.ToString()]
             });
         }
@@ -37,13 +39,19 @@ namespace GameRoundResult.Web.Configuration
             GameType.KenoProViet
         };
 
-        public GameTypeLocalization(IStringLocalizer<GameType> localizer) : base(localizer)
+        private readonly IGlobalConfigService globalConfigService;
+
+        public GameTypeLocalization(IStringLocalizer<GameType> localizer, IGlobalConfigService globalConfigService) : base(localizer)
         {
+            this.globalConfigService = globalConfigService;
         }
 
-        public override IEnumerable<SelectListItem> GetSelectListItems()
+        public async Task<IEnumerable<SelectListItem>> GetGameListAsync(string siteName)
         {
-            return base.GetSelectListItems().Where(x => !excludeGames.Any(e => e.ToString() == x.Value));
+            var configs = (await globalConfigService.GetAsync()).Configs;
+            return GetSelectListItems()
+                .Where(x => !excludeGames.Any(e => e == (GameType) Enum.Parse(typeof(GameType), x.Value)) && 
+                !configs[x.Value].Any(excludedSite => excludedSite.Equals(siteName, StringComparison.InvariantCultureIgnoreCase)));
         }
     }
 }
