@@ -155,4 +155,9 @@
 
         public const string HeroesSlotRounds = "heroesslot_rounds";
     }
+
+    internal static class CommonCollections
+    {
+        public const string GlobalConfig = "global_configs";
+    }
 }
