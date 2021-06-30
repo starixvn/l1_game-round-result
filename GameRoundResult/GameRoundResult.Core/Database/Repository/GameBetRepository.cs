@@ -68,6 +68,8 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(VipBaccaratRound, BaccaratBet)> GetVipBaccaratAsync(long roundId, int memberId);
 
         Task<(LotteryRound, IEnumerable<LotteryBet>, LotteryOne)> GetLotteryAsync(long roundId, int memberId);
+
+        Task<(ThreeCardsRound, ThreeCardsBet)> GetThreeCardsAsync(long roundId, int memberId);
     }
 
     public class GameBetRepository : IGameBetRepository
@@ -357,6 +359,14 @@ namespace GameRoundResult.Core.Database.Repository
                 .Find(x => x.Round == roundId && x.MemberId == memberId).SortByDescending(x => x.Id).ToListAsync();
 
             return (round, bets, ones);
+        }
+
+        public async Task<(ThreeCardsRound, ThreeCardsBet)> GetThreeCardsAsync(long roundId, int memberId)
+        {
+            var round = await GetRoundAsync<ThreeCardsRound>(roundId, MiniGameRoundCollections.ThreeCardsRound);
+            var bets = (await GetBetsAsync<ThreeCardsBet>(roundId, memberId, MiniGameBetCollections.ThreeCardsBet)).FirstOrDefault();
+
+            return (round, bets);
         }
     }
 }

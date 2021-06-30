@@ -59,6 +59,8 @@
         public const string VipBaccaratRound = "vipbaccarat_phiens";
 
         public const string LotteryRound = "lottery_phiens";
+
+        public const string ThreeCardsRound = "threecards_phiens";
     }
 
     internal static class MiniGameBetCollections
@@ -143,10 +145,15 @@
         public const string SicBoOnes = "sicbo_ones";
         public const string VipSeDieWarOnes = "vipsediewar_ones";
 
-
         public const string LotteryOnes = "lottery_ones";
 
         public const string LotteryBet = "lottery_cuocs";
 
+        public const string ThreeCardsBet = "threecards_cuocs";
+    }
+
+    internal static class CommonCollections
+    {
+        public const string GlobalConfig = "global_configs";
     }
 }

@@ -195,4 +195,7 @@
   <data name="Lottery" xml:space="preserve">
     <value>Xổ Số RNG</value>
   </data>
+  <data name="ThreeCards" xml:space="preserve">
+    <value>3 Lá Đỏ Đen</value>
+  </data>
 </root>

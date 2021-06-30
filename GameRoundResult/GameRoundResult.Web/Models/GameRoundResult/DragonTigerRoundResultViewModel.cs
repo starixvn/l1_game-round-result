@@ -8,9 +8,9 @@ namespace GameRoundResult.Web.Models
 {
     public class DragonTigerRoundResultViewModel : RoundResultViewModel
     {
-        public CardViewModel Dragon { get; set; }
+        public DragonTigerCardViewModel Dragon { get; set; }
 
-        public CardViewModel Tiger { get; set; }
+        public DragonTigerCardViewModel Tiger { get; set; }
 
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
@@ -40,7 +40,7 @@ namespace GameRoundResult.Web.Models
             return stringLocalizer["Tie"];
         }
 
-        private static string GetCardContent(CardViewModel card)
+        private static string GetCardContent(DragonTigerCardViewModel card)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"card card-type-{card.Type}");
@@ -58,7 +58,7 @@ namespace GameRoundResult.Web.Models
         }
     }
 
-    public class CardViewModel
+    public class DragonTigerCardViewModel
     {
         public byte Number { get; set; }
 

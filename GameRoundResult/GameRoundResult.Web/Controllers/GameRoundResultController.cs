@@ -46,11 +46,11 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(GameType gameType)
+        public async Task<IActionResult> Index(GameType gameType)
         {
             var viewModel = new GameRoundResultViewModel
             {
-                GameTypes = gameTypeLocalization.GetSelectListItems(),
+                GameTypes = await gameTypeLocalization.GetGameListAsync(User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.SiteName)?.Value),
                 GameType = gameType
             };
             return View(viewModel);
@@ -114,6 +114,9 @@ namespace GameRoundResult.Web.Controllers
                 case GameType.Lottery:
                     return PartialView("_LotteryRoundResult");
 
+                case GameType.ThreeCards:
+                    return PartialView("_ThreeCardsRoundResult");
+
                 default:
                     throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
             }
@@ -148,7 +151,7 @@ namespace GameRoundResult.Web.Controllers
 
                 if (client != null)
                 {
-                    var token = dataProtector.Protect($"{model.Auth.ClientID}_{model.Auth.ClientKey}_{model.GameId}",
+                    var token = dataProtector.Protect($"{model.Auth.ClientID}_{model.Auth.ClientKey}_{model.GameId}_{model.SiteName}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
                     var redirectUrl = Url.Action("Auth", "GameRoundResult", new { culture = model.Language, token }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
                     return Ok(new GameRoundResultAccessUrlResultModel { RedirectUrl = redirectUrl });
@@ -178,6 +181,7 @@ namespace GameRoundResult.Web.Controllers
                 var data = dataProtector.Unprotect(token).Split('_');
                 var clientId = data[0];
                 var clientKey = data[1];
+                var siteName = data[3];
                 var client = GetClient(clientId, clientKey);
 
                 if (client != null)
@@ -185,7 +189,8 @@ namespace GameRoundResult.Web.Controllers
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, client.Name),
-                        new Claim(CustomClaimTypes.TimeZone, client.TimeZone)
+                        new Claim(CustomClaimTypes.TimeZone, client.TimeZone),
+                        new Claim(CustomClaimTypes.SiteName, siteName)
                     };
                     var claimsIdentity = new ClaimsIdentity(
                         claims, CookieAuthenticationDefaults.AuthenticationScheme);

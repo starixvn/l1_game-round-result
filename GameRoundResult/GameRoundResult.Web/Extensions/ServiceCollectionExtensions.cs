@@ -51,6 +51,8 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<GameTypeLocalization>();
             services.AddScoped<IGameBetRepository, GameBetRepository>();
             services.AddScoped<IGameBetService, GameBetService>();
+            services.AddScoped<IGlobalConfigService, GlobalConfigService>();
+            services.AddScoped<IGlobalConfigRepository, GlobalConfigRepository>();
         }
     }
 }

@@ -441,7 +441,7 @@ body {
     }
 }
 
-.blackjack-result {
+.blackjack-result, .three-cards-result {
     .cards {
         display: flex;
         justify-content: center;
@@ -464,5 +464,13 @@ body {
     .table-result {
         margin: auto;
         width: 100%;
+    }
+}
+
+.table-three-cards {
+    .card-suit {
+        width: 2rem;
+        height: 2rem;
+        margin-bottom: -5px;
     }
 }

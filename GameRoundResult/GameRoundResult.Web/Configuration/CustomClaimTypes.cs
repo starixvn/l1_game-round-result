@@ -1,7 +1,8 @@
 ﻿namespace GameRoundResult.Web.Configuration
 {
-    public class CustomClaimTypes
+    public static class CustomClaimTypes
     {
         public const string TimeZone = "TimeZone";
+        public const string SiteName = "SiteName";
     }
 }
