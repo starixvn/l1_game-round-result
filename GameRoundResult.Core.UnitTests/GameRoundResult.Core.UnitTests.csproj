@@ -23,4 +23,10 @@
     <ProjectReference Include="..\GameRoundResult.Core\GameRoundResult.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
 </Project>
