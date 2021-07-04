@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using GameRoundResult.Core._Share;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Extensions;
@@ -11,6 +12,8 @@ namespace GameRoundResult.Core.Database.Repository
 {
     public interface IGameRoundRepository
     {
+        Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int page, int pageSize) where GR : GameRound;
+
         Task<(long, IEnumerable<BigSmallRound>)> GetBigSmallRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
         Task<(long, IEnumerable<BigSmallRound>)> GetBigSmallTurboRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
@@ -75,6 +78,37 @@ namespace GameRoundResult.Core.Database.Repository
         public GameRoundRepository(IMongoDatabase database)
         {
             this.database = database;
+        }
+
+        private async Task<(long, IEnumerable<T>)> GetRoundResultAsync<T>(DateTime date, long roundId, string roundCollectionName, int page, int pageSize
+          , Expression<Func<T, bool>> filter = null) where T : GameRound
+        {
+            var collection = database.GetCollection<T>(roundCollectionName);
+            var fromDate = date;
+            var toDate = fromDate.AddDays(1);
+
+            Expression<Func<T, bool>> defaultExpression = x => (roundId == 0 && x.Time >= fromDate && x.Time < toDate) || x.Round == roundId;
+
+            var finalExpression = filter != null ? defaultExpression.And(filter) : defaultExpression;
+
+            var cursor = collection.Find(finalExpression);
+
+            var total = await cursor.CountDocumentsAsync();
+            var data = await cursor.SortByDescending(x => x.Id).Skip(page).Limit(pageSize).ToListAsync();
+
+            return (total, data);
+        }
+
+        public async Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int page, int pageSize) where GR : GameRound
+        {
+            var collectionName = ((CollectionNameAttribute)Attribute.GetCustomAttribute(typeof(GR), typeof(CollectionNameAttribute))).CollectionName;
+
+            if (string.IsNullOrWhiteSpace(collectionName))
+            {
+                throw new InvalidOperationException(nameof(collectionName));
+            }
+
+            return await GetRoundResultAsync<GR>(date, roundId, collectionName, page, pageSize);
         }
 
         public async Task<(long, IEnumerable<BigSmallRound>)> GetBigSmallRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
@@ -195,24 +229,6 @@ namespace GameRoundResult.Core.Database.Repository
         public async Task<(long, IEnumerable<VipSeDieWarRound>)> GetVipSeDieWarRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
         {
             return await GetRoundResultAsync<VipSeDieWarRound>(date, roundId, MiniGameRoundCollections.VipSeDieWarRound, page, pageSize);
-        }
-
-        private async Task<(long, IEnumerable<T>)> GetRoundResultAsync<T>(DateTime date, long roundId, string roundCollectionName, int page, int pageSize
-            , Expression<Func<T, bool>> filter = null) where T : GameRound
-        {
-            var collection = database.GetCollection<T>(roundCollectionName);
-            var fromDate = date;
-            var toDate = fromDate.AddDays(1);
-
-            Expression<Func<T, bool>> defaultExpression = x => (roundId == 0 && x.Time >= fromDate && x.Time < toDate) || x.Round == roundId;
-
-            var finalExpression = filter != null ? defaultExpression.And<T>(filter) : defaultExpression;
-
-            var cursor = collection.Find(finalExpression);
-
-            var total = await cursor.CountDocumentsAsync();
-            var data = await cursor.SortByDescending(x => x.Id).Skip(page).Limit(pageSize).ToListAsync();
-            return (total, data);
         }
 
         public async Task<(long, IEnumerable<RouletteRound>)> GetRouletteRoundResultAsync(DateTime date, long roundId, int page, int pageSize)

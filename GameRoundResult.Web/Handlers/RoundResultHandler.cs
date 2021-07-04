@@ -26,6 +26,8 @@ namespace GameRoundResult.Web.Handlers
 
         public async Task<(long, IEnumerable<RoundResultViewModel>)> Handle(GetRoundResultRequest request, CancellationToken cancellationToken)
         {
+
+         
             var utcDate = TimeZoneInfo.ConvertTimeToUtc(request.Date, request.TimeZoneInfo);
 
             switch (request.GameType)

@@ -25,7 +25,7 @@ namespace GameRoundResult.Web.Handlers
         }
 
         public async Task<GameTicketViewModel> Handle(GetGameTicketRequest request, CancellationToken cancellationToken)
-        {
+        {     
             switch (request.GameType)
             {
                 case GameType.BigSmall:
