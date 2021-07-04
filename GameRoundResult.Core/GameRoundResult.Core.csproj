@@ -13,4 +13,10 @@
     <PackageReference Include="MongoDB.Driver" Version="2.10.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Share\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="_Share\" />
+  </ItemGroup>
 </Project>
