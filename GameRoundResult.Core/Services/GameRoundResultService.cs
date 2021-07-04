@@ -8,6 +8,8 @@ namespace GameRoundResult.Core.Services
 {
     public interface IGameRoundResultService
     {
+        Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int page, int pageSize) where GR: GameRound;
+
         Task<(long, IEnumerable<BigSmallRound>)> GetBigSmallRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
 
         Task<(long, IEnumerable<BigSmallRound>)> GetBigSmallTurboRoundResultAsync(DateTime date, long roundId, int page, int pageSize);
@@ -63,6 +65,8 @@ namespace GameRoundResult.Core.Services
         Task<(long, IEnumerable<LotteryRound>)> GetLotteryRoundResult(DateTime date, long roundId, int page, int pageSize);
 
         Task<(long, IEnumerable<ThreeCardsRound>)> GetThreeCardsRoundResult(DateTime date, long roundId, int page, int pageSize);
+
+
     }
 
     public class GameRoundResultService : IGameRoundResultService
@@ -72,6 +76,13 @@ namespace GameRoundResult.Core.Services
         public GameRoundResultService(IGameRoundRepository repository)
         {
             this.repository = repository;
+        }
+
+        public async Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int page, int pageSize) where GR: GameRound
+        {
+            //TODO: check every param to throw InvalidArgumentException 
+           
+            return await repository.GetGameRoundResultAsync<GR>(date, roundId, page, pageSize);
         }
 
         public async Task<(long, IEnumerable<BigSmallRound>)> GetBigSmallRoundResultAsync(DateTime date, long roundId, int page, int pageSize)
@@ -213,5 +224,7 @@ namespace GameRoundResult.Core.Services
         {
             return await repository.GetThreeCardsRoundResult(date, roundId, page, pageSize);
         }
+
+       
     }
 }

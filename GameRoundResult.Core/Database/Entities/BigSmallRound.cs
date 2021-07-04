@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using GameRoundResult.Core._Share;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
+
+
+    [CollectionName("taixiu_phiens")]
     public class BigSmallRound : GameRound
     {
         [BsonElement("dice1")]
