@@ -34,10 +34,6 @@ namespace GameRoundResult.Core.Extensions
         }
 
         public override Expression Visit(Expression node)
-        {
-            if (node == oldValue)
-                return newValue;
-            return base.Visit(node);
-        }
+            => node == oldValue ? newValue : base.Visit(node);
     }
 }
