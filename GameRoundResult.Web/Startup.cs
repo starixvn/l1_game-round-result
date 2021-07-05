@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using AutoMapper;
-using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using MediatR;
@@ -13,7 +12,6 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MongoDB.Bson.Serialization;
 
 namespace GameRoundResult.Web
 {

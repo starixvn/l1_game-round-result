@@ -1,5 +1,4 @@
-﻿using System;
-using GameRoundResult.Core.Constants;
+﻿using GameRoundResult.Core.Constants;
 using Xunit;
 
 namespace GameRoundResult.Core.UnitTests.Constants

@@ -59,67 +59,24 @@ namespace GameRoundResult.Web.Controllers
         [HttpGet]
         public IActionResult GetRoundResult(GameType gameType)
         {
-            switch (gameType)
+            return gameType switch
             {
-                case GameType.BigSmall:
-                case GameType.BigSmallTurbo:
-                    return PartialView("_BigSmallRoundResult");
-
-                case GameType.OddEven:
-                case GameType.OddEvenTurbo:
-                    return PartialView("_OddEvenRoundResult");
-
-                case GameType.SeDie:
-                case GameType.MiniSeDie:
-                case GameType.SpecialSeDie:
-                    return PartialView("_SeDieRoundResult");
-
-                case GameType.FishPrawnCrab:
-                case GameType.VipFishPrawnCrab:
-                    return PartialView("_FishPrawnRoundResult");
-
-                case GameType.DragonTiger:
-                    return PartialView("_DragonTigerRoundResult");
-
-                case GameType.Baccarat:
-                case GameType.VipBaccarat:
-                    return PartialView("_BaccaratRoundResult");
-
-                case GameType.KenoProMax:
-                case GameType.KenoMax:
-                case GameType.KenoMax2:
-                case GameType.KenoMini:
-                case GameType.KenoMini2:
-                case GameType.KenoEast:
-                case GameType.KenoWest:
-                case GameType.KenoSouth:
-                case GameType.KenoNorth:
-                    return PartialView("_KenoProMaxRoundResult");
-
-                case GameType.KenoProViet:
-                    return PartialView("_KenoProVietRoundResult");
-
-                case GameType.Roulette:
-                    return PartialView("_RouletteRoundResult");
-
-                case GameType.VipSeDie:
-                    return PartialView("_VipSeDieRoundResult");
-
-                case GameType.SicBo:
-                    return PartialView("_SicBoRoundResult");
-
-                case GameType.SeDieWar:
-                    return PartialView("_VipSeDieWarRoundResult");
-
-                case GameType.Lottery:
-                    return PartialView("_LotteryRoundResult");
-
-                case GameType.ThreeCards:
-                    return PartialView("_ThreeCardsRoundResult");
-
-                default:
-                    throw new ArgumentException(nameof(GetRoundResultRequest.GameType));
-            }
+                GameType.BigSmall or GameType.BigSmallTurbo => PartialView("_BigSmallRoundResult"),
+                GameType.OddEven or GameType.OddEvenTurbo => PartialView("_OddEvenRoundResult"),
+                GameType.SeDie or GameType.MiniSeDie or GameType.SpecialSeDie => PartialView("_SeDieRoundResult"),
+                GameType.FishPrawnCrab or GameType.VipFishPrawnCrab => PartialView("_FishPrawnRoundResult"),
+                GameType.DragonTiger => PartialView("_DragonTigerRoundResult"),
+                GameType.Baccarat or GameType.VipBaccarat => PartialView("_BaccaratRoundResult"),
+                GameType.KenoProMax or GameType.KenoMax or GameType.KenoMax2 or GameType.KenoMini or GameType.KenoMini2 or GameType.KenoEast or GameType.KenoWest or GameType.KenoSouth or GameType.KenoNorth => PartialView("_KenoProMaxRoundResult"),
+                GameType.KenoProViet => PartialView("_KenoProVietRoundResult"),
+                GameType.Roulette => PartialView("_RouletteRoundResult"),
+                GameType.VipSeDie => PartialView("_VipSeDieRoundResult"),
+                GameType.SicBo => PartialView("_SicBoRoundResult"),
+                GameType.SeDieWar => PartialView("_VipSeDieWarRoundResult"),
+                GameType.Lottery => PartialView("_LotteryRoundResult"),
+                GameType.ThreeCards => PartialView("_ThreeCardsRoundResult"),
+                _ => throw new ArgumentException(nameof(GetRoundResultRequest.GameType)),
+            };
         }
 
         [ResponseCache(Duration = dataCacheDuration, VaryByQueryKeys = new[] { "start", "length", "gameType", "roundId", "userTimeZone", "date" })]
@@ -207,12 +164,7 @@ namespace GameRoundResult.Web.Controllers
 
                     var gameType = Enum.Parse<GameType>(data[2]);
 
-                    if (Enum.IsDefined(typeof(GameType), gameType))
-                    {
-                        return RedirectToAction("Index", new { gameType });
-                    }
-
-                    return RedirectToAction("Index");
+                    return Enum.IsDefined(typeof(GameType), gameType) ? RedirectToAction("Index", new { gameType }) : RedirectToAction("Index");
                 }
             }
             catch (Exception exception)

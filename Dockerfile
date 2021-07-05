@@ -1,4 +1,4 @@
-FROM registry.nexdev.net:5050/docker/dotnet/core/sdk:3.1 AS builder
+FROM registry.nexdev.net:5050/docker/dotnet/core/sdk:5.0 AS builder
 
 WORKDIR /src
 
@@ -18,3 +18,5 @@ WORKDIR /app
 COPY --from=builder /app .
 
 ENTRYPOINT ["dotnet", "GameRoundResult.Web.dll"]
+
+

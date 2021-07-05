@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <CodeAnalysisRuleSet>..\.sonarlint\l1-game-round-resultcsharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
@@ -11,10 +11,15 @@
 
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.10.4" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="8.25.0.33663">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Share\" />
+    <None Remove="SonarAnalyzer.CSharp" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_Share\" />
