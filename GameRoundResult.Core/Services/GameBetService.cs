@@ -79,12 +79,9 @@ namespace GameRoundResult.Core.Services
         }
 
         public async Task<(BigSmallRound, IEnumerable<BigSmallBet>)> GetBigSmallAsync(long roundId, int memberId)
-        {
-            if (roundId <= 0 || memberId <= 0)
-                throw new System.ArgumentException($"{nameof(roundId)} or {nameof(memberId)}");
-
-            return await repository.GetBigSmallAsync(roundId, memberId);
-        }
+            => roundId <= 0 || memberId <= 0
+                ? throw new System.ArgumentException($"{nameof(roundId)} or {nameof(memberId)}")
+                : await repository.GetBigSmallAsync(roundId, memberId);
 
         public async Task<(BigSmallRound, IEnumerable<BigSmallBet>)> GetBigSmallTurboAsync(long roundId, int memberId)
         {

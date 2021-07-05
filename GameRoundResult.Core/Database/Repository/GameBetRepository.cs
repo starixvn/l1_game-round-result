@@ -81,6 +81,20 @@ namespace GameRoundResult.Core.Database.Repository
             this.database = database;
         }
 
+        private async Task<IEnumerable<T>> GetBetsAsync<T>(long roundId, int memberId, string collectionName, Expression<Func<T, bool>> filter = null) where T : BaseBetEntity
+        {
+            Expression<Func<T, bool>> defaultExpression = bet => bet.MemberId == memberId && bet.Round == roundId;
+
+            return await database
+                .GetCollection<T>(collectionName)
+                .Find(filter == null ? defaultExpression : defaultExpression.And(filter))
+                .SortByDescending(x => x.Id)
+                .ToListAsync();
+        }
+
+        private async Task<T> GetRoundAsync<T>(long roundId, string collectionName) where T : GameRound
+            => await database.GetCollection<T>(collectionName).Find(x => x.Round == roundId).FirstOrDefaultAsync();
+
         public async Task<(BigSmallRound, IEnumerable<BigSmallBet>)> GetBigSmallAsync(long roundId, int memberId)
         {
             var round = await GetRoundAsync<BigSmallRound>(roundId, MiniGameRoundCollections.BigSmallRound);
@@ -336,20 +350,7 @@ namespace GameRoundResult.Core.Database.Repository
             return (round, bets);
         }
 
-        private async Task<IEnumerable<T>> GetBetsAsync<T>(long roundId, int memberId, string collectionName, Expression<Func<T, bool>> filter = null) where T : BaseBetEntity
-        {
-            Expression<Func<T, bool>> defaultExpression = x => x.MemberId == memberId && x.Round == roundId;
-
-            var finalExpression = filter != null ? defaultExpression.And<T>(filter) : defaultExpression;
-
-            return await database.GetCollection<T>(collectionName).Find(finalExpression)
-                .SortByDescending(x => x.Id).ToListAsync();
-        }
-
-        private async Task<T> GetRoundAsync<T>(long roundId, string collectionName) where T : GameRound
-        {
-            return await database.GetCollection<T>(collectionName).Find(x => x.Round == roundId).FirstOrDefaultAsync();
-        }
+       
 
         public async Task<(LotteryRound, IEnumerable<LotteryBet>, LotteryOne)> GetLotteryAsync(long roundId, int memberId)
         {

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace GameRoundResult.Web.Models
+﻿namespace GameRoundResult.Web.Models
 {
     public class GameRoundResultAccessUrlRequestModel
     {

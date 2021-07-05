@@ -4,14 +4,37 @@ namespace GameRoundResult.Core._Share
     [AttributeUsage(AttributeTargets.Class, Inherited = false)]
     public class CollectionNameAttribute : Attribute
     {
-        public CollectionNameAttribute(string collectionName)
+        public CollectionNameAttribute(string roundCollectionName, string betCollectionName)
         {
-            if (string.IsNullOrWhiteSpace(collectionName))
-                throw new ArgumentNullException(nameof(collectionName));
+            if (string.IsNullOrWhiteSpace(roundCollectionName))
+            {
+                throw new ArgumentNullException(nameof(roundCollectionName));
+            }
 
-            CollectionName = collectionName;
+            if (string.IsNullOrWhiteSpace(betCollectionName))
+            {
+                throw new ArgumentNullException(nameof(betCollectionName));
+            }
+
+            RoundCollectionName = roundCollectionName;
+            BetCollectionName = betCollectionName;
         }
 
-        public string CollectionName { get; }
+        public CollectionNameAttribute(string roundCollectionName, string betCollectionName, string onesCollectionName)
+            : this (roundCollectionName, betCollectionName)
+        {
+            if (string.IsNullOrWhiteSpace(onesCollectionName))
+            {
+                throw new ArgumentNullException(nameof(onesCollectionName));
+            }
+
+            OnesCollectionName = onesCollectionName;
+        }
+
+        public string RoundCollectionName { get; }
+
+        public string BetCollectionName { get; }
+
+        public string OnesCollectionName { get; }
     }
 }

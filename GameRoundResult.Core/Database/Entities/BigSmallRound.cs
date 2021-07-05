@@ -4,8 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace GameRoundResult.Core.Database.Entities
 {
 
-
-    [CollectionName("taixiu_phiens")]
+    [CollectionName(roundCollectionName:"taixiu_phiens", betCollectionName: "taixiu_cuocs")]
     public class BigSmallRound : GameRound
     {
         [BsonElement("dice1")]
