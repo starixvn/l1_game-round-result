@@ -3,6 +3,7 @@ using System.Linq;
 using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Configuration;
+using GameRoundResult.Web.Accessor;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Localization.Routing;
@@ -54,6 +55,8 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IGlobalConfigService, GlobalConfigService>();
             services.AddScoped<IGlobalConfigRepository, GlobalConfigRepository>();
 
+            services.AddScoped<IGameRoundAccessorFactory, GameRoundAccessorFactory>();
+            services.AddScoped(typeof(GameRoundAccessor<,>));
             services.AddScoped<ILogRepository, LogRepository>();
             services.AddScoped<ILogService, LogService>();
         }

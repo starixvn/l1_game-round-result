@@ -3,8 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
-
-    [CollectionName(roundCollectionName:"taixiu_phiens", betCollectionName: "taixiu_cuocs")]
+    [CollectionName("taixiu_phiens")]
     public class BigSmallRound : GameRound
     {
         [BsonElement("dice1")]
@@ -17,6 +16,12 @@ namespace GameRoundResult.Core.Database.Entities
         public byte ThirdDice { get; set; }
 
         public BigSmallResult Result { get; set; }
+    }
+
+    [CollectionName("txturbo_phiens")]
+    public class TurboBigSmallRound : BigSmallRound
+    {
+
     }
 
     public class BigSmallResult

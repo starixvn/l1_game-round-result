@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using AutoMapper;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using MediatR;

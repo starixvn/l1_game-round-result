@@ -12,7 +12,7 @@ namespace GameRoundResult.Web.Configuration
         public AutoMapperProfile()
         {
             CreateMap<BigSmallRound, BigSmallRoundResultViewModel>()
-                .ForMember(x => x.Dices, opt => opt.MapFrom(x => x.Result != null ? new[] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice } : new[] { x.FirstDice, x.SecondDice, x.ThirdDice }));
+                .ForMember(x => x.Dices, opt => opt.MapFrom(x => new[] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice }));
 
             CreateMap<OddEvenRound, OddEvenRoundResultViewModel>()
               .ForMember(x => x.Dices, opt => opt.MapFrom(x => new[] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice }));
