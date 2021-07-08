@@ -8,6 +8,16 @@ namespace GameRoundResult.Web.Extensions
 {
     public static class MappingModelExtensions
     {
+        public static TViewModel ToViewModel<TRoundEntity, TViewModel>(this TRoundEntity entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+            where TRoundEntity: GameRound where TViewModel: RoundResultViewModel
+        {
+            return mapper.Map<TRoundEntity, TViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+
         public static BigSmallRoundResultViewModel ToViewModel(this BigSmallRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<BigSmallRound, BigSmallRoundResultViewModel>(entity, opts =>
