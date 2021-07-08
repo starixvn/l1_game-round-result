@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using GameRoundResult.Core._Share;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("vipsediewar_phiens")]
     public class VipSeDieWarRound : GameRound
     {
         public VipSeDieWarRoundResult Result { get; set; }

@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using GameRoundResult.Core._Share;
 
 namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("roulette_phiens")]
     public class RouletteRound : GameRound
     {
         public byte Result { get; set; }

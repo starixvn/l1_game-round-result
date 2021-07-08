@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using GameRoundResult.Core._Share;
 
 namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("threecards_phiens")]
     public class ThreeCardsRound : GameRound
     {
         public IEnumerable<Card> Result { get; set; }

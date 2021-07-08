@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GameRoundResult.Core._Share;
 
 namespace GameRoundResult.Core.Database.Entities
 {
@@ -8,6 +9,61 @@ namespace GameRoundResult.Core.Database.Entities
 
         public SettlementResult SettlementResult { get; set; }
     }
+
+    [CollectionName("kenopromax_phiens")]
+    public class KenoProMaxRound: KenoRound
+    {
+
+    }
+
+    [CollectionName("kenomax_phiens")]
+    public class KenoMaxRound : KenoRound
+    {
+
+    }
+
+    [CollectionName("kenomax2_phiens")]
+    public class KenoMax2Round : KenoRound
+    {
+
+    }
+
+    [CollectionName("kenomini_phiens")]
+    public class KenoMiniRound : KenoRound
+    {
+
+    }
+
+    [CollectionName("kenomini2_phiens")]
+    public class KenoMini2Round : KenoRound
+    {
+
+    }
+
+    [CollectionName("kenoeast_phiens")]
+    public class KenoEastRound : KenoRound
+    {
+
+    }
+
+    [CollectionName("kenowest_phiens")]
+    public class KenoWestRound : KenoRound
+    {
+
+    }
+
+    [CollectionName("kenosouth_phiens")]
+    public class KenoSouthRound : KenoRound
+    {
+
+    }
+
+    [CollectionName("kenonorth_phiens")]
+    public class KenoNorthRound : KenoRound
+    {
+
+    }
+
 
     public class SettlementResult
     {
