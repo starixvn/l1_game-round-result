@@ -1,5 +1,8 @@
-﻿namespace GameRoundResult.Core.Database.Entities
+﻿using GameRoundResult.Core._Share;
+
+namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("vipbaccarat_phiens")]
     public class VipBaccaratRound : GameRound
     {
         public VipBaccaratResult Result { get; set; }
