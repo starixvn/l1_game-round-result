@@ -1,7 +1,9 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using GameRoundResult.Core._Share;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("specialsedie_phiens")]
     public class SpecialSeDieRound : GameRound
     {
         public SpecialSeDieResultEntity Result { get; set; }

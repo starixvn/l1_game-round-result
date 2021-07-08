@@ -1,7 +1,10 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using GameRoundResult.Core._Share;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
+ 
+    [CollectionName("vipfishprawncrab_phiens")]
     public class VipFishPrawnCrabRound : GameRound
     {
         public VipFishPrawnCrabRoundResult Result { get; set; }
