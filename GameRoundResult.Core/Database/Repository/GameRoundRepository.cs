@@ -105,7 +105,7 @@ namespace GameRoundResult.Core.Database.Repository
 
         public async Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int page, int pageSize) where GR : GameRound
         {
-            var collectionName = ((CollectionNameAttribute)Attribute.GetCustomAttribute(typeof(GR), typeof(CollectionNameAttribute))).RoundCollectionName;
+            var collectionName = Document.GetCollectionName(typeof(GR));
 
             return string.IsNullOrWhiteSpace(collectionName)
                 ? throw new InvalidOperationException(nameof(collectionName))
