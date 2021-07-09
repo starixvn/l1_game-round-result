@@ -138,6 +138,9 @@
   <data name="7th" xml:space="preserve">
     <value>Giải Bảy</value>
   </data>
+  <data name="Away" xml:space="preserve">
+    <value>Đội Khách</value>
+  </data>
   <data name="Banker" xml:space="preserve">
     <value>Nhà cái</value>
   </data>
@@ -171,6 +174,9 @@
   <data name="Clubs" xml:space="preserve">
     <value>Chuồn</value>
   </data>
+  <data name="Date" xml:space="preserve">
+    <value>Thời Gian</value>
+  </data>
   <data name="Detail" xml:space="preserve">
     <value>Xem chi tiết</value>
   </data>
@@ -183,17 +189,29 @@
   <data name="Earth" xml:space="preserve">
     <value>Thổ</value>
   </data>
+  <data name="Element" xml:space="preserve">
+    <value>Ngũ Hành</value>
+  </data>
   <data name="Even" xml:space="preserve">
     <value>Chẵn</value>
   </data>
   <data name="Fire" xml:space="preserve">
     <value>Hỏa</value>
   </data>
+  <data name="Full Time" xml:space="preserve">
+    <value>Toàn Trận</value>
+  </data>
   <data name="Gold" xml:space="preserve">
     <value>Kim</value>
   </data>
+  <data name="Half Time" xml:space="preserve">
+    <value>Hiệp 1</value>
+  </data>
   <data name="Hearts" xml:space="preserve">
     <value>Cơ</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Đội Nhà</value>
   </data>
   <data name="Odd" xml:space="preserve">
     <value>Lẻ</value>
@@ -228,6 +246,12 @@
   <data name="Red" xml:space="preserve">
     <value>Đỏ</value>
   </data>
+  <data name="Results" xml:space="preserve">
+    <value>Kết Quả</value>
+  </data>
+  <data name="Round" xml:space="preserve">
+    <value>Phiên</value>
+  </data>
   <data name="Small" xml:space="preserve">
     <value>Xỉu</value>
   </data>
@@ -236,6 +260,9 @@
   </data>
   <data name="Special" xml:space="preserve">
     <value>Giải Đặc Biệt</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
   </data>
   <data name="Tie" xml:space="preserve">
     <value>Hòa</value>
@@ -249,11 +276,17 @@
   <data name="TotalOdd" xml:space="preserve">
     <value>Tổng Lẻ</value>
   </data>
+  <data name="TotalPoints" xml:space="preserve">
+    <value>Tổng</value>
+  </data>
   <data name="Under" xml:space="preserve">
     <value>Xỉu</value>
   </data>
   <data name="Water" xml:space="preserve">
     <value>Thủy</value>
+  </data>
+  <data name="WinningOptions" xml:space="preserve">
+    <value>Cửa Thắng</value>
   </data>
   <data name="Wood" xml:space="preserve">
     <value>Mộc</value>
