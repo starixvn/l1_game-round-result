@@ -10,7 +10,7 @@ namespace GameRoundResult.Core.Database.Repository
 {
     public interface IGameRoundRepository
     {
-        Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int page, int pageSize) where GR : GameRound;
+        Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int page, int pageSize, Expression<Func<GR, bool>> filter = null) where GR : GameRound;
     }
 
     public class GameRoundRepository : IGameRoundRepository
@@ -45,7 +45,7 @@ namespace GameRoundResult.Core.Database.Repository
             return (total, data);
         }
 
-        public async Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int page, int pageSize) where GR : GameRound
+        public async Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int page, int pageSize, Expression<Func<GR, bool>> filter = null) where GR : GameRound
         {
             var collectionName = Document.GetCollectionName(typeof(GR));
 

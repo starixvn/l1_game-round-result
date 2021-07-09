@@ -31,6 +31,9 @@
         SeDieWar = 28,
         FourGuardians = 29,
         Lottery = 31,
-        ThreeCards = 35
+        ThreeCards = 35,
+        MyDinh,
+        HangDay,
+        ThongNhat
     }
 }

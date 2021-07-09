@@ -22,6 +22,8 @@ namespace GameRoundResult.Core.Database.Entities
         public int Total { get; set; }
 
         public KenoSoccerPeriodResult Result { get; set; }
+
+        public KenoSoccerPeriodSettlementResult SettlementResult { get; set; }
     }
 
     public class KenoSoccerPeriodResult
@@ -40,8 +42,20 @@ namespace GameRoundResult.Core.Database.Entities
         public bool Even { get; set; }
     }
 
-    [CollectionName("MyDinh_phiens")]
+    [CollectionName("mydinh_phiens")]
     public class KenoSoccerMyDinhRound: KenoSoccerRound
+    {
+
+    }
+
+    [CollectionName("hangday_phiens")]
+    public class KenoSoccerHangDayRound : KenoSoccerRound
+    {
+
+    }
+
+    [CollectionName("thongnhat_phiens")]
+    public class KenoSoccerThongNhatRound : KenoSoccerRound
     {
 
     }
