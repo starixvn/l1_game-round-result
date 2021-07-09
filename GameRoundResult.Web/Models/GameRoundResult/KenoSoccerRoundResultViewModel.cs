@@ -138,6 +138,7 @@ namespace GameRoundResult.Web.Models
         public int Total { get; set; }
 
         public KenoSoccerPeriodResultViewModel Result { get; set; }
+
         public KenoSoccerPeriodSettlementResultViewModel SettlementResult { get; set; }
     }
 
