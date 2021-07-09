@@ -75,6 +75,7 @@ namespace GameRoundResult.Web.Controllers
                 GameType.SeDieWar => PartialView("_VipSeDieWarRoundResult"),
                 GameType.Lottery => PartialView("_LotteryRoundResult"),
                 GameType.ThreeCards => PartialView("_ThreeCardsRoundResult"),
+                GameType.MyDinh or GameType.HangDay or GameType.ThongNhat => PartialView("_ThreeCardsRoundResult"),
                 _ => throw new ArgumentException(nameof(GetRoundResultRequest.GameType)),
             };
         }
