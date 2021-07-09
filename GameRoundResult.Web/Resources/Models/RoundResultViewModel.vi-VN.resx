@@ -198,6 +198,9 @@
   <data name="Odd" xml:space="preserve">
     <value>Lẻ</value>
   </data>
+  <data name="Over" xml:space="preserve">
+    <value>Tài</value>
+  </data>
   <data name="Player" xml:space="preserve">
     <value>Nhà con</value>
   </data>
@@ -245,6 +248,9 @@
   </data>
   <data name="TotalOdd" xml:space="preserve">
     <value>Tổng Lẻ</value>
+  </data>
+  <data name="Under" xml:space="preserve">
+    <value>Xỉu</value>
   </data>
   <data name="Water" xml:space="preserve">
     <value>Thủy</value>

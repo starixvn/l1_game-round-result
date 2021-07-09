@@ -457,7 +457,7 @@ body {
 .table-vip-se-die-war tr td:nth-child(5) {
   white-space: pre-wrap; }
 
-.table-lottery .table-result {
+.table-lottery .table-result, .table-keno-soccer .table-result {
   margin: auto;
   width: 100%; }
 
