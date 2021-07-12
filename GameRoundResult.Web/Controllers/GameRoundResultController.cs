@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
+using GameRoundResult.Web.ViewFactory;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -57,27 +59,14 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetRoundResult(GameType gameType)
+        public IActionResult GetRoundResult(GameType gameType, [FromServices] IRoundResultViewFactory viewFactory)
         {
-            return gameType switch
+            if (Enum.IsDefined(typeof(GameType), gameType))
             {
-                GameType.BigSmall or GameType.BigSmallTurbo => PartialView("_BigSmallRoundResult"),
-                GameType.OddEven or GameType.OddEvenTurbo => PartialView("_OddEvenRoundResult"),
-                GameType.SeDie or GameType.MiniSeDie or GameType.SpecialSeDie => PartialView("_SeDieRoundResult"),
-                GameType.FishPrawnCrab or GameType.VipFishPrawnCrab => PartialView("_FishPrawnRoundResult"),
-                GameType.DragonTiger => PartialView("_DragonTigerRoundResult"),
-                GameType.Baccarat or GameType.VipBaccarat => PartialView("_BaccaratRoundResult"),
-                GameType.KenoProMax or GameType.KenoMax or GameType.KenoMax2 or GameType.KenoMini or GameType.KenoMini2 or GameType.KenoEast or GameType.KenoWest or GameType.KenoSouth or GameType.KenoNorth => PartialView("_KenoProMaxRoundResult"),
-                GameType.KenoProViet => PartialView("_KenoProVietRoundResult"),
-                GameType.Roulette => PartialView("_RouletteRoundResult"),
-                GameType.VipSeDie => PartialView("_VipSeDieRoundResult"),
-                GameType.SicBo => PartialView("_SicBoRoundResult"),
-                GameType.SeDieWar => PartialView("_VipSeDieWarRoundResult"),
-                GameType.Lottery => PartialView("_LotteryRoundResult"),
-                GameType.ThreeCards => PartialView("_ThreeCardsRoundResult"),
-                GameType.MyDinh or GameType.HangDay or GameType.ThongNhat => PartialView("_KenoSoccerRoundResult"),
-                _ => throw new ArgumentException(nameof(GetRoundResultRequest.GameType)),
-            };
+                return View(viewFactory.GetView(gameType));
+            }
+
+            throw new ArgumentException("Invalid game type", nameof(gameType));
         }
 
         [ResponseCache(Duration = dataCacheDuration, VaryByQueryKeys = new[] { "start", "length", "gameType", "roundId", "userTimeZone", "date" })]
@@ -116,12 +105,12 @@ namespace GameRoundResult.Web.Controllers
                 }
             }
 
-            var sentryMessage = string.Empty;
+            var sentryMessage = new StringBuilder();
             foreach (var modelState in ViewData.ModelState.Values)
             {
                 foreach (var error in modelState.Errors)
                 {
-                    sentryMessage += $" {error.ErrorMessage}";
+                    sentryMessage.Append($" {error.ErrorMessage}");
                 }
             }
 
