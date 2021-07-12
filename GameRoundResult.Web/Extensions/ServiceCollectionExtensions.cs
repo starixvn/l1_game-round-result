@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
+using GameRoundResult.Web.ViewFactory;
 
 namespace GameRoundResult.Web.Extensions
 {
@@ -59,6 +60,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(GameRoundAccessor<,>));
             services.AddScoped(typeof(KenoSoccerRoundAccessor<>));
             services.AddScoped<IKenoSoccerRoundResultService, KenoSoccerRoundResultService>();
+            services.AddScoped<IRoundResultViewFactory, RoundResultViewFactory>();
             services.AddScoped<ILogRepository, LogRepository>();
             services.AddScoped<ILogService, LogService>();
         }
