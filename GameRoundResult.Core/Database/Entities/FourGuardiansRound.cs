@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using GameRoundResult.Core._Share;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("fourguardians_rounds")]
     public class FourGuardiansRound : GameRound
     {
         public decimal Bet { get; set; }

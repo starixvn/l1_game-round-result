@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameRoundResult.Core._Share;
 
 namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("blackjack_phiens")]
     public class BlackjackRound : GameRound
     {
         public IEnumerable<Card> Result { get; set; }

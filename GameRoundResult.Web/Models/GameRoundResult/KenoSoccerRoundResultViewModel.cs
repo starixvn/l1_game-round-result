@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
@@ -20,6 +21,8 @@ namespace GameRoundResult.Web.Models
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
                 GeResultContent(stringLocalizer),
+                GetPeriodSettlementResultContent(stringLocalizer, HalfTime.SettlementResult),
+                GetPeriodSettlementResultContent(stringLocalizer, FullTime.SettlementResult),
             };
 
             return result;
@@ -38,27 +41,33 @@ namespace GameRoundResult.Web.Models
             tbody.InnerHtml.AppendHtml(GetNumbers(HalfTime.Result.Away));
             tbody.InnerHtml.AppendHtml(GetNumbers(FullTime.Result.Away));
             tbody.InnerHtml.AppendHtml(GetHalfTimeSummary(stringLocalizer));
-            tbody.InnerHtml.AppendHtml(GetPeriodSettlementResult(stringLocalizer, HalfTime.SettlementResult));
             tbody.InnerHtml.AppendHtml(GetFullTimeSummary(stringLocalizer));
-            tbody.InnerHtml.AppendHtml(GetPeriodSettlementResult(stringLocalizer, FullTime.SettlementResult));
 
             table.InnerHtml.AppendHtml(tbody);
 
             return table.GetHtmlString();
         }
-        private TagBuilder GetPeriodSettlementResult(IStringLocalizer<RoundResultViewModel> stringLocalizer,
+
+        private string GetPeriodSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer,
             KenoSoccerPeriodSettlementResultViewModel settlementResult)
         {
-            var row = new TagBuilder("tr");
-            var cell = new TagBuilder("td");
-            cell.Attributes.Add("colspan", "10");
-            cell.AddCssClass("bold");
-            cell.InnerHtml.Append(settlementResult.Home ? stringLocalizer["Home"] : stringLocalizer["Away"]);
-            cell.InnerHtml.Append($", {(settlementResult.Over ? stringLocalizer["Over"] : stringLocalizer["Under"])}");
-            cell.InnerHtml.Append($", {(settlementResult.Even ? stringLocalizer["Even"] : stringLocalizer["Odd"])}");
-            row.InnerHtml.AppendHtml(cell);
+            var stringBuilder = new StringBuilder();
+            if (settlementResult.Home)
+            {
+                stringBuilder.Append(stringLocalizer["Home"]);
+            }
+            else
+            {
+                if (settlementResult.Away)
+                {
+                    stringBuilder.Append(stringLocalizer["Away"]);
+                }
+            }
 
-            return row;
+            stringBuilder.AppendLine(settlementResult.Over ? stringLocalizer["Over"] : stringLocalizer["Under"]);
+            stringBuilder.AppendLine(settlementResult.Even ? stringLocalizer["Even"] : stringLocalizer["Odd"]);
+
+            return stringBuilder.ToString();
         }
 
         private TagBuilder GetHalfTimeSummary(IStringLocalizer<RoundResultViewModel> stringLocalizer)
@@ -92,7 +101,6 @@ namespace GameRoundResult.Web.Models
 
             return row;
         }
-
 
         private TagBuilder GetNumbers(IEnumerable<int> numbers)
         {

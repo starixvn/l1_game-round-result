@@ -1,20 +1,21 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using GameRoundResult.Core._Share;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    public class OddEvenBet : BaseBetEntity
+    [CollectionName("chanleturbo_cuocs")]
+    public class OddEvenBet : BaseBetLogEntity
     {
-        [BsonElement("tralai")]
-        public decimal? Back { get; set; }
+        [BsonRepresentation(BsonType.Decimal128, AllowTruncation = true)]
+        public decimal Betwin { get; set; }
 
-        public decimal? Bet { get; set; }
-
-        public bool? Select { get; set; }
+        public bool Win { get; set; }
 
         public string Choice { get; set; }
 
-        public decimal? Amount { get; set; }
+        public decimal Amount { get; set; }
 
-        public decimal? Refund { get; set; }
+        public decimal Refund { get; set; }
     }
 }

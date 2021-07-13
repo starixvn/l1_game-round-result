@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using GameRoundResult.Core._Share;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("blackjack_cuocs")]
     public class BlackjackBet : BaseBetEntity
     {
         [BsonElement("id")]

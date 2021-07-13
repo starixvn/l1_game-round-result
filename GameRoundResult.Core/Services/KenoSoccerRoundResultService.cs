@@ -9,7 +9,7 @@ namespace GameRoundResult.Core.Services
     public interface IKenoSoccerRoundResultService
     {
         Task<(long, IEnumerable<TRoundEntity>)> GetGameRoundResultAsync<TRoundEntity>(DateTime date, long roundId, int page, int pageSize)
-            where TRoundEntity : KenoSoccerRound
+            where TRoundEntity : KenoSoccerRound;
     }
 
     public class KenoSoccerRoundResultService : IKenoSoccerRoundResultService

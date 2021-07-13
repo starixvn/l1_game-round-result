@@ -1,23 +1,27 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using GameRoundResult.Core._Share;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    public class BigSmallBet : BaseBetEntity
+    [CollectionName("taixiu_cuocs")]
+    public class BigSmallBet : BaseBetLogEntity
     {
-        [BsonElement("taixiu")]
-        public bool BigSmall { get; set; }
+        [BsonRepresentation(BsonType.Decimal128, AllowTruncation = true)]
+        public decimal Betwin { get; set; }
 
-        [BsonElement("tralai")]
-        public decimal? Back { get; set; }
-
-        public decimal? Bet { get; set; }
-
-        public bool? Select { get; set; }
+        public bool Win { get; set; }
 
         public string Choice { get; set; }
 
-        public decimal? Amount { get; set; }
+        public decimal Amount { get; set; }
 
-        public decimal? Refund { get; set; }
+        public decimal Refund { get; set; }
+    }
+
+    [CollectionName("txturbo_cuocs")]
+    public class TurboBigSmallBet: BigSmallBet
+    {
+
     }
 }

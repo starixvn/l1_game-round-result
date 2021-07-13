@@ -1,5 +1,8 @@
-﻿namespace GameRoundResult.Core.Database.Entities
+﻿using GameRoundResult.Core._Share;
+
+namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("threecards_cuocss")]
     public class ThreeCardsBet : BaseBetEntity
     {
         public decimal Red { get; set; }

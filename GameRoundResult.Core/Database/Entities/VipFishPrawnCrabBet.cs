@@ -1,5 +1,8 @@
-﻿namespace GameRoundResult.Core.Database.Entities
+﻿using GameRoundResult.Core._Share;
+
+namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("vipfishprawncrab_cuocs")]
     public class VipFishPrawnCrabBet : BaseBetEntity
     {
         public decimal Stag { get; set; }

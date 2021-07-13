@@ -94,27 +94,21 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<RouletteSettlementResult, RouletteSettlementResultViewModel>();
 
             CreateMap<BigSmallBet, BigSmallBetViewModel>()
-                .ForMember(x => x.Bet, opt => opt.MapFrom(x => x.Amount ?? x.Bet))
-                .ForMember(x => x.Select, opt => opt.MapFrom(x => x.Select ?? x.Choice == "big"))
-                .ForMember(x => x.Back, opt => opt.MapFrom(x => x.Back ?? x.Refund));
+                .ForMember(x => x.Bet, opt => opt.MapFrom(x => x.Amount))
+                .ForMember(x => x.Select, opt => opt.MapFrom(x => x.Choice == "big"))
+                .ForMember(x => x.Back, opt => opt.MapFrom(x => x.Refund));
 
             CreateMap<OddEvenBet, OddEvenBetViewModel>()
-                .ForMember(x => x.Bet, opt => opt.MapFrom(x => x.Amount ?? x.Bet))
-                .ForMember(x => x.Select, opt => opt.MapFrom(x => x.Select ?? x.Choice == "even"))
-                .ForMember(x => x.Back, opt => opt.MapFrom(x => x.Back ?? x.Refund)); ;
+                .ForMember(x => x.Bet, opt => opt.MapFrom(x => x.Amount))
+                .ForMember(x => x.Select, opt => opt.MapFrom(x => x.Choice == "even"))
+                .ForMember(x => x.Back, opt => opt.MapFrom(x => x.Refund));
 
             CreateMap<SeDieBet, SeDieBetViewModel>();
             CreateMap<MiniSeDieBet, MiniSeDieBetViewModel>();
 
             CreateMap<DragonTigerBet, DragonTigerBetViewModel>();
-            CreateMap<FishPrawnCrabBet, FishPrawnCrabBetViewModel>()
-                .ForMember(x => x.Stag, opt => opt.MapFrom(x => x.Stag != null ? x.Stag : x.OldStag))
-                .ForMember(x => x.Gourd, opt => opt.MapFrom(x => x.Gourd != null ? x.Gourd : x.OldGourd))
-                .ForMember(x => x.Rooster, opt => opt.MapFrom(x => x.Rooster != null ? x.Rooster : x.OldRooster))
-                .ForMember(x => x.Fish, opt => opt.MapFrom(x => x.Fish != null ? x.Fish : x.OldFish))
-                .ForMember(x => x.Crab, opt => opt.MapFrom(x => x.Crab != null ? x.Crab : x.OldCrab))
-                .ForMember(x => x.Prawn, opt => opt.MapFrom(x => x.Prawn != null ? x.Prawn : x.OldPrawn));
-
+            CreateMap<FishPrawnCrabBet, FishPrawnCrabBetViewModel>();
+            
             CreateMap<BaccaratBet, BaccaratBetViewModel>();
             CreateMap<KenoProMaxBet, KenoProMaxBetViewModel>();
             CreateMap<RNGKenoBet, RNGKenoBetViewModel>();
