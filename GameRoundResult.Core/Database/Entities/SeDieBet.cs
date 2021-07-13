@@ -1,7 +1,9 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using GameRoundResult.Core._Share;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("xocxoc_cuocs")]
     public class SeDieBet : BaseBetEntity
     {
         public decimal Odd { get; set; }
@@ -24,6 +26,6 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal FourWhite { get; set; }
 
         [BsonDefaultValue(false)]
-        public bool? FreeBet { get; set; }
+        public override bool? FreeBet { get; set; }
     }
 }

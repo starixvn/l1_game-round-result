@@ -13,11 +13,8 @@ namespace GameRoundResult.Web.Models
         public decimal WinLoss => RoundResult.FreeSpin ? BetWin : BetWin - RoundResult.TotalAmount;
     }
 
-    public class FourGuardiansRoundResultViewModel
+    public class FourGuardiansRoundResultViewModel :RoundResultViewModel
     {
-        public long Round { get; set; }
-
-        public DateTime Time { get; set; }
 
         public decimal Bet { get; set; }
 

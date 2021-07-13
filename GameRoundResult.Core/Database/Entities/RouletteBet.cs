@@ -1,21 +1,11 @@
 ﻿using System.Collections.Generic;
-using MongoDB.Bson.Serialization.Attributes;
+using GameRoundResult.Core._Share;
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    public class RouletteBet : Document
+    [CollectionName("roulette_cuocs")]
+    public class RouletteBet : BaseBetLogEntity
     {
-        [BsonElement("phien")]
-        public long Round { get; set; }
-
-        public string Uid { get; set; }
-
-        public string Name { get; set; }
-
-        public int? MemberId { get; set; }
-
-        public string SiteId { get; set; }
-
         public Dictionary<string, decimal> StraightUp { get; set; }
 
         public Dictionary<string, decimal> Split { get; set; }

@@ -1,37 +1,21 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using GameRoundResult.Core._Share;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("baucua_cuocs")]
     public class FishPrawnCrabBet : BaseBetEntity
     {
-        [BsonElement("0")]
-        public decimal? OldStag { get; set; }
+        public decimal Stag { get; set; }
 
-        [BsonElement("1")]
-        public decimal? OldGourd { get; set; }
+        public decimal Gourd { get; set; }
 
-        [BsonElement("2")]
-        public decimal? OldRooster { get; set; }
+        public decimal Rooster { get; set; }
 
-        [BsonElement("3")]
-        public decimal? OldFish { get; set; }
+        public decimal Fish { get; set; }
 
-        [BsonElement("4")]
-        public decimal? OldCrab { get; set; }
+        public decimal Crab { get; set; }
 
-        [BsonElement("5")]
-        public decimal? OldPrawn { get; set; }
-
-        public decimal? Stag { get; set; }
-
-        public decimal? Gourd { get; set; }
-
-        public decimal? Rooster { get; set; }
-
-        public decimal? Fish { get; set; }
-
-        public decimal? Crab { get; set; }
-
-        public decimal? Prawn { get; set; }
+        public decimal Prawn { get; set; }
     }
 }

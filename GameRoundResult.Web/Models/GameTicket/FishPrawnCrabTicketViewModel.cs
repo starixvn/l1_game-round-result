@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameRoundResult.Web.Models.GameTicket
+namespace GameRoundResult.Web.Models
 {
     public class FishPrawnCrabTicketViewModel : GameTicketViewModel
     {

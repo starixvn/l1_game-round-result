@@ -1,4 +1,6 @@
-﻿namespace GameRoundResult.Core.Database.Entities
+﻿using GameRoundResult.Core._Share;
+
+namespace GameRoundResult.Core.Database.Entities
 {
     public class RNGKenoOnes : BaseBetEntity
     {
@@ -19,5 +21,54 @@
         public decimal Water { get; set; }
 
         public decimal Wood { get; set; }
+    }
+
+
+    [CollectionName("kenomax_ones")]
+    public class KenoMaxOne : RNGKenoOnes
+    {
+
+    }
+
+    [CollectionName("kenomax2_ones")]
+    public class KenoMax2One : RNGKenoOnes
+    {
+
+    }
+
+    [CollectionName("kenomini_ones")]
+    public class KenoMiniOne : RNGKenoOnes
+    {
+
+    }
+
+    [CollectionName("kenomini2_ones")]
+    public class KenoMini2One : RNGKenoOnes
+    {
+
+    }
+
+    [CollectionName("kenoeast_ones")]
+    public class KenoEastOne : RNGKenoOnes
+    {
+
+    }
+
+    [CollectionName("kenowest_ones")]
+    public class KenoWestOne : RNGKenoOnes
+    {
+
+    }
+
+    [CollectionName("kenosouth_ones")]
+    public class KenoSouthOne : RNGKenoOnes
+    {
+
+    }
+
+    [CollectionName("kenonorth_ones")]
+    public class KenoNorthOne : RNGKenoOnes
+    {
+
     }
 }
