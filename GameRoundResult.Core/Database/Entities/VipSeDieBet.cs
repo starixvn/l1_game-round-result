@@ -1,7 +1,9 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using GameRoundResult.Core._Share;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("vipsedie_cuocs")]
     public class VipSeDieBet : BaseBetEntity
     {
         public decimal Odd { get; set; }

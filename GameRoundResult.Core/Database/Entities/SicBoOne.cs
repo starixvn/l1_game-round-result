@@ -1,5 +1,8 @@
-﻿namespace GameRoundResult.Core.Database.Entities
+﻿using GameRoundResult.Core._Share;
+
+namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("sicbo_ones")]
     public class SicBoOne : BaseBetEntity
     {
         public decimal? AnyTriple { get; set; }

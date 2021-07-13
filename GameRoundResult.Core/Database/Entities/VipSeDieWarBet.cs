@@ -1,6 +1,9 @@
-﻿namespace GameRoundResult.Core.Database.Entities
+﻿using GameRoundResult.Core._Share;
+
+namespace GameRoundResult.Core.Database.Entities
 {
-    public class VipSeDieWarBet : BaseBetEntity
+    [CollectionName("vipsediewar_cuocs")]
+    public class VipSeDieWarBet : BaseBetLogEntity
     {
         public string Choice { get; set; }
 

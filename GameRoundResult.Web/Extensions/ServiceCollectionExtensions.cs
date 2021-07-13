@@ -61,6 +61,34 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(KenoSoccerRoundAccessor<>));
             services.AddScoped<IKenoSoccerRoundResultService, KenoSoccerRoundResultService>();
             services.AddScoped<IRoundResultViewFactory, RoundResultViewFactory>();
+
+            services.AddScoped<IBlackjackTicketService, BlackjackTicketService>();
+            services.AddScoped<BlackjackBetRepository>();
+
+            services.AddScoped<IFourGuardiansTicketService, FourGuardiansTicketService>();
+            services.AddScoped<FourGuardiansBetRepository>();
+
+            services.AddScoped(typeof(BigSmallTicketAccessor<,,>));
+            services.AddScoped<BaccaratTicketAccessor>();
+            services.AddScoped<BlackjackTicketAccessor>();
+            services.AddScoped<DragonTigerTicketAccessor>();
+            services.AddScoped<FishPrawnCrabTicketAccessor>();
+            services.AddScoped<FourGuardiansTicketAccessor>();
+            services.AddScoped<KenoProMaxTicketAccessor>();
+            services.AddScoped<LotteryTicketAccessor>();
+            services.AddScoped(typeof(MiniKenoTicketAccessor<,,>));
+            services.AddScoped<MiniSeDieTicketAccessor>();
+            services.AddScoped<OddEvenTicketAccessor>();
+            services.AddScoped<RouletteTicketAccessor>();
+            services.AddScoped<SeDieTicketAccessor>();
+            services.AddScoped<SicBoTicketAccessor>();
+            services.AddScoped<SpecialSeDieTicketAccessor>();
+            services.AddScoped<VipBaccaratTicketAccessor>();
+            services.AddScoped<VipFishPrawnCrabTicketAccessor>();
+            services.AddScoped<VipSeDieTicketAccessor>();
+            services.AddScoped<VipSeDieWarTicketAccessor>();
+
+            services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
         }
     }
 }

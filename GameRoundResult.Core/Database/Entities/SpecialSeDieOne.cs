@@ -1,5 +1,8 @@
-﻿namespace GameRoundResult.Core.Database.Entities
+﻿using GameRoundResult.Core._Share;
+
+namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("specialsedie_ones")]
     public class SpecialSeDieOne : BaseBetEntity
     {
         public string Choice { get; set; }

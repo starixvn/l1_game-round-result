@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using GameRoundResult.Core._Share;
 
 namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("roulette_ones")]
     public class RouletteOne : BaseBetEntity
     {
         public Dictionary<string, decimal> StraightUp { get; set; }
