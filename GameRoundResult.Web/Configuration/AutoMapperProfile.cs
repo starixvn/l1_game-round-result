@@ -3,7 +3,6 @@ using System.Linq;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Models;
-using GameRoundResult.Web.Models.GameTicket;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -230,6 +229,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<KenoSoccerPeriod, KenoSoccerPeriodViewModel>();
             CreateMap<KenoSoccerPeriodResult, KenoSoccerPeriodResultViewModel>();
             CreateMap<KenoSoccerPeriodSettlementResult, KenoSoccerPeriodSettlementResultViewModel>();
+            CreateMap<KenoSoccerBet, KenoSoccerBetViewModel>();
         }
     }
 }

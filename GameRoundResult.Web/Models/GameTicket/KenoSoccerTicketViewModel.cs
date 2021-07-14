@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GameRoundResult.Web.Models.GameTicket
+namespace GameRoundResult.Web.Models
 {
     public class KenoSoccerTicketViewModel : GameTicketViewModel
     {
         public KenoSoccerRoundResultViewModel RoundResult { get; set; }
 
         public IEnumerable<KenoSoccerBetViewModel> Bets { get; set; }
-
-        public Dictionary<string, decimal> Odds { get; set; }
 
         public decimal TotalBet { get; set; }
 

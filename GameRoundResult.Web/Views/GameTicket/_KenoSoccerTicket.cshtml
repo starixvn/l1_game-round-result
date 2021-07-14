@@ -1,0 +1,285 @@
+﻿@model KenoSoccerTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<KenoSoccerTicketViewModel> Localizer
+
+@{
+    var betChoiceMapper = new Dictionary<string, string>
+{
+        { "preHTHome", Localizer["Home"] },
+        { "preHTAway", Localizer["Away"] },
+        { "preHTOver", Localizer["Over"] },
+        { "preHTUnder", Localizer["Under"] },
+        { "preHTOdd", Localizer["Odd"] },
+        { "preHTEven", Localizer["Even"] },
+        { "preFTHome", Localizer["Home"] },
+        { "preFTAway", Localizer["Away"] },
+        { "preFTOver", Localizer["Over"] },
+        { "preFTUnder", Localizer["Under"] },
+        { "preFTOdd", Localizer["Odd"] },
+        { "preFTEven", Localizer["Even"] },
+        { "liveFTHome", Localizer["Home"] },
+        { "liveFTAway", Localizer["Away"] },
+        { "liveFTOver", Localizer["Over"] },
+        { "liveFTUnder", Localizer["Under"] },
+        { "liveFTOdd", Localizer["Odd"] },
+        { "liveFTEven", Localizer["Even"] },
+    };
+
+    var betTypeMapper = new Dictionary<string, string>
+{
+        { "preHTHome", Localizer["Pre-match - Half Time Home/Away"] },
+        { "preHTAway", Localizer["Pre-match - Half Time Home/Away"] },
+        { "preHTOver", Localizer["Pre-match - Half Time Over/Under"] },
+        { "preHTUnder", Localizer["Pre-match - Half Time Over/Under"] },
+        { "preHTOdd", Localizer["Pre-match - Half Time Odd/Even"] },
+        { "preHTEven", Localizer["Pre-match - Half Time Odd/Even"] },
+        { "preFTHome", Localizer["Pre-match - Full Time Home/Away"] },
+        { "preFTAway", Localizer["Pre-match - Full Time Home/Away"] },
+        { "preFTOver", Localizer["Pre-match - Full Time Over/Under"] },
+        { "preFTUnder", Localizer["Pre-match - Full Time Over/Under"] },
+        { "preFTOdd", Localizer["Pre-match - Full Time Odd/Even"] },
+        { "preFTEven", Localizer["Pre-match - Full Time Odd/Even"] },
+        { "liveFTHome", Localizer["Live - Full Time Home/Away"] },
+        { "liveFTAway", Localizer["Live - Full Time Home/Away"] },
+        { "liveFTOver", Localizer["Live - Full Time Over/Under"] },
+        { "liveFTUnder", Localizer["Live - Full Time Over/Under"] },
+        { "liveFTOdd", Localizer["Live - Full Time Odd/Even"] },
+        { "liveFTEven", Localizer["Live - Full Time Odd/Even"] },
+    };
+
+    var htSettlementResult = Model.RoundResult.HalfTime.SettlementResult;
+    var ftSettlementResult = Model.RoundResult.FullTime.SettlementResult;
+
+    var settlmentResultMapper = new Dictionary<string, bool>
+{
+        { "preHTHome", htSettlementResult.Home },
+        { "preHTAway", htSettlementResult.Away },
+        { "preHTOver", htSettlementResult.Over},
+        { "preHTUnder", htSettlementResult.Under },
+        { "preHTOdd", htSettlementResult.Odd},
+        { "preHTEven", htSettlementResult.Even },
+        { "preFTHome", ftSettlementResult.Home },
+        { "preFTAway", ftSettlementResult.Away },
+        { "preFTOver", ftSettlementResult.Over},
+        { "preFTUnder", ftSettlementResult.Under },
+        { "preFTOdd", ftSettlementResult.Odd},
+        { "preFTEven", ftSettlementResult.Even },
+        { "liveFTHome", ftSettlementResult.Home },
+        { "liveFTAway", ftSettlementResult.Away },
+        { "liveFTOver", ftSettlementResult.Over},
+        { "liveFTUnder", ftSettlementResult.Under },
+        { "liveFTOdd", ftSettlementResult.Odd},
+        { "liveFTEven", ftSettlementResult.Even },
+    };
+}
+
+<table class="table table-bordered table-three-cards">
+    <thead>
+        <tr>
+            <th rowspan="2" class="col-date">@CommonLocalizer["Time"] (GMT-4)</th>
+            <th rowspan="2" class="col-round-id">@CommonLocalizer["RoundId"]</th>
+            <th rowspan="2">@CommonLocalizer["Result"]</th>
+            <th colspan="2">@CommonLocalizer["WinningOptions"]</th>
+        </tr>
+        <tr>
+            <th>@Localizer["Half Time"]</th>
+            <th>@Localizer["Full Time"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null)
+        {
+            <tr>
+                <td>
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    <br />
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@Model.RoundResult.Round</td>
+                <td>
+                    <table class="table table-bordered table-hover">
+                        <tbody>
+                            <tr>
+                                <td colspan="10">@Localizer["Home"]</td>
+                            </tr>
+                            <tr class="bold">
+                                @foreach (var number in Model.RoundResult.HalfTime.Result.Home)
+                                {
+                                    <td>@number</td>
+                                }
+                            </tr>
+                            <tr class="bold">
+                                @foreach (var number in Model.RoundResult.FullTime.Result.Home)
+                                {
+                                    <td>@number</td>
+                                }
+                            </tr>
+                            <tr>
+                                <td colspan="10">@Localizer["Away"]</td>
+                            </tr>
+                            <tr class="bold">
+                                @foreach (var number in Model.RoundResult.HalfTime.Result.Away)
+                                {
+                                    <td>@number</td>
+                                }
+                            </tr>
+                            <tr class="bold">
+                                @foreach (var number in Model.RoundResult.FullTime.Result.Away)
+                                {
+                                    <td>@number</td>
+                                }
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td class="bold">
+                    @{
+                        if (htSettlementResult.Home)
+                        {
+                            @Localizer["Home"]
+                            <br />
+                        }
+
+                        if (htSettlementResult.Away)
+                        {
+                            @Localizer["Home"]
+                            <br />
+                        }
+
+                        if (htSettlementResult.Over)
+                        {
+                            @Localizer["Over"]<br />
+                        }
+                        else
+                        {
+                            @Localizer["Under"]<br />
+                        }
+
+                        if (htSettlementResult.Odd)
+                        {
+                            @Localizer["Odd"]
+                        }
+                        else
+                        {
+                            @Localizer["Even"]
+                        }
+                    }
+
+                </td>
+
+                <td class="bold">
+                    @{
+                        if (ftSettlementResult.Home)
+                        {
+                            @Localizer["Home"]
+                            <br />
+                        }
+
+                        if (ftSettlementResult.Away)
+                        {
+                            @Localizer["Home"]
+                            <br />
+                        }
+
+                        if (ftSettlementResult.Over)
+                        {
+                            @Localizer["Over"]<br />
+                        }
+                        else
+                        {
+                            @Localizer["Under"]<br />
+                        }
+
+                        if (ftSettlementResult.Odd)
+                        {
+                            @Localizer["Odd"]
+                        }
+                        else
+                        {
+                            @Localizer["Even"]
+                        }
+                    }
+
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["BetTime"] (GMT-4)</th>
+            <th>@CommonLocalizer["BetType"]</th>
+            <th>@CommonLocalizer["BetChoice"]</th>
+            <th>@CommonLocalizer["Odds"]</th>
+            <th>@CommonLocalizer["BetAmount"]</th>
+            <th>@CommonLocalizer["Win"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Bets.Any() && Model.RoundResult != null)
+        {
+            foreach (var bet in Model.Bets)
+            {
+                var cssClass = settlmentResultMapper[bet.Choice] ? "text-blue bold" : string.Empty;
+                var choiceOdds = Model.RoundResult.Odds[bet.Choice];
+                <tr>
+                    <td>
+                        @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td class="@cssClass">
+                        @betTypeMapper[bet.Choice]
+                    </td>
+                    <td class="@cssClass">
+                        @betChoiceMapper[bet.Choice]
+                    </td>
+                    <td class="@cssClass">
+                        @choiceOdds.Format()
+                    </td>
+                    <td class="text-right @cssClass">
+                        @bet.Amount.Format()
+                    </td>
+                    <td class="text-right @cssClass">
+                        @if (settlmentResultMapper[bet.Choice])
+                        {
+                            @((bet.Amount * choiceOdds).Format())
+                        }
+                    </td>
+                </tr>
+            }
+
+            <tr class="total">
+                <td colspan="4" class="text-right">@CommonLocalizer["Total"]</td>
+                <td class="text-right">@Model.TotalBet.Format()</td>
+                <td class="text-right">@Model.TotalBetWin.Format()</td>
+            </tr>
+
+            <tr class="total">
+
+                <td colspan="4" class="bold text-right">@CommonLocalizer["WinLoss"]</td>
+                <td></td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
