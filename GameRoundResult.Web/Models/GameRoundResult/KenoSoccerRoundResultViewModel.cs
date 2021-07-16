@@ -54,13 +54,13 @@ namespace GameRoundResult.Web.Models
             var stringBuilder = new StringBuilder();
             if (settlementResult.Home)
             {
-                stringBuilder.Append(stringLocalizer["Home"]);
+                stringBuilder.AppendLine(stringLocalizer["Home"]);
             }
             else
             {
                 if (settlementResult.Away)
                 {
-                    stringBuilder.Append(stringLocalizer["Away"]);
+                    stringBuilder.AppendLine(stringLocalizer["Away"]);
                 }
             }
 

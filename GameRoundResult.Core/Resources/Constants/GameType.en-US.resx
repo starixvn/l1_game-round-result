@@ -201,4 +201,13 @@
 	<data name="HeroesSlot" xml:space="preserve">
     <value>The Legend of Heroes</value>
   </data>
+  <data name="HangDay" xml:space="preserve">
+    <value>Hang Day</value>
+  </data>
+  <data name="MyDinh" xml:space="preserve">
+    <value>My Dinh</value>
+  </data>
+  <data name="ThongNhat" xml:space="preserve">
+    <value>Thong Nhat</value>
+  </data>
 </root>

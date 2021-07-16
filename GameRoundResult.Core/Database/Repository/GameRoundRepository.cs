@@ -51,7 +51,7 @@ namespace GameRoundResult.Core.Database.Repository
 
             return string.IsNullOrWhiteSpace(collectionName)
                 ? throw new InvalidOperationException(nameof(collectionName))
-                : await GetRoundResultAsync<GR>(date, roundId, collectionName, page, pageSize);
+                : await GetRoundResultAsync<GR>(date, roundId, collectionName, page, pageSize, filter);
         }
     }
 }
