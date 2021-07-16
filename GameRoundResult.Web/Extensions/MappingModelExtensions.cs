@@ -2,7 +2,6 @@
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Models;
-using GameRoundResult.Web.Models.GameTicket;
 
 namespace GameRoundResult.Web.Extensions
 {

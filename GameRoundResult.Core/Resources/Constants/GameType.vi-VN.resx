@@ -198,4 +198,13 @@
   <data name="ThreeCards" xml:space="preserve">
     <value>3 Lá Đỏ Đen</value>
   </data>
+  <data name="HangDay" xml:space="preserve">
+    <value>Hàng Đẫy</value>
+  </data>
+  <data name="MyDinh" xml:space="preserve">
+    <value>Mỹ Đình</value>
+  </data>
+  <data name="ThongNhat" xml:space="preserve">
+    <value>Thống Nhất</value>
+  </data>
 </root>
