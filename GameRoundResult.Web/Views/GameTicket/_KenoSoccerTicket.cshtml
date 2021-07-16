@@ -223,7 +223,6 @@
             <th>@CommonLocalizer["BetChoice"]</th>
             <th>@CommonLocalizer["Odds"]</th>
             <th>@CommonLocalizer["BetAmount"]</th>
-            <th>@CommonLocalizer["Win"]</th>
         </tr>
     </thead>
     <tbody>
@@ -251,32 +250,26 @@
                     <td class="text-right @cssClass">
                         @bet.Amount.Format()
                     </td>
-                    <td class="text-right @cssClass">
-                        @if (settlmentResultMapper[bet.Choice])
-                        {
-                            @((bet.Amount * choiceOdds).Format())
-                        }
-                    </td>
                 </tr>
             }
 
-            <tr class="total">
+            <tr>
                 <td colspan="4" class="text-right">@CommonLocalizer["Total"]</td>
                 <td class="text-right">@Model.TotalBet.Format()</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="text-right">@Localizer["TotalWin"]</td>
                 <td class="text-right">@Model.TotalBetWin.Format()</td>
             </tr>
-
             <tr class="total">
-
                 <td colspan="4" class="bold text-right">@CommonLocalizer["WinLoss"]</td>
-                <td></td>
                 <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
             </tr>
         }
         else
         {
             <tr>
-                <td colspan="6" class="text-center">
+                <td colspan="5" class="text-center">
                     @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>
