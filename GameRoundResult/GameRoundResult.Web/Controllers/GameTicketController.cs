@@ -97,7 +97,7 @@ namespace GameRoundResult.Web.Controllers
 
         private AuthenticationClient GetClient(string clientId, string clientKey)
         {
-            return clients.FirstOrDefault(x => x.Key == clientKey && clientId == x.Name && x.Name == "ONEworks");
+            return clients.FirstOrDefault(x => x.Key == clientKey && clientId == x.Name && (x.Name == "ONEworks" || x.Name == "ONEworksVGCash"));
         }
 
         private async Task<GameTicketViewModel> GetGameTicket(AuthenticationClient client, GameType gameType, long roundId, int memberId, bool freeBet)
