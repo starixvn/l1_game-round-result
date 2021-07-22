@@ -17,7 +17,8 @@ namespace GameRoundResult.Web.Configuration
               .ForMember(x => x.Dices, opt => opt.MapFrom(x => new[] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice }));
 
             CreateMap<FishPrawnCrabRound, FishPrawnCrabRoundResultViewModel>()
-             .ForMember(x => x.Dices, opt => opt.MapFrom(x => x.Result != null ? new[] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice } : new[] { x.FirstDice, x.SecondDice, x.ThirdDice }));
+             .ForMember(x => x.Dices,
+                opt => opt.MapFrom(x => new[] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice }));
 
             CreateMap<SeDieRound, SeDieRoundResultViewModel>()
                 .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new[]
@@ -31,19 +32,19 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<SeDieSettlementResultEntity, SeDieSettlementResultViewModel>();
 
             CreateMap<MiniSeDieRound, MiniSeDieRoundResultViewModel>()
-                .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new bool[]
+                .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new[]
                 {
-                    x.Result != null ? x.Result.FirstRedChip : x.FirstRedChip,
-                    x.Result != null ? x.Result.SecondRedChip : x.SecondRedChip,
-                    x.Result != null ? x.Result.ThirdRedChip : x.ThirdRedChip,
-                    x.Result != null ? x.Result.FourthRedChip : x.FourthRedChip
+                    x.Result.FirstRedChip,
+                    x.Result.SecondRedChip ,
+                    x.Result.ThirdRedChip,
+                    x.Result.FourthRedChip
                 }.OrderByDescending(x => x)));
 
             CreateMap<MiniSeDieSettlementResultEntity, MiniSeDieSettlementResultViewModel>();
 
             CreateMap<DragonTigerRound, DragonTigerRoundResultViewModel>()
-                .ForMember(x => x.Dragon, opt => opt.MapFrom(x => x.Result != null ? x.Result.Dragon : x.Dragon))
-                .ForMember(x => x.Tiger, opt => opt.MapFrom(x => x.Result != null ? x.Result.Tiger : x.Tiger));
+                .ForMember(x => x.Dragon, opt => opt.MapFrom(x => x.Result.Dragon))
+                .ForMember(x => x.Tiger, opt => opt.MapFrom(x => x.Result.Tiger));
 
             CreateMap<DragonTigerCard, DragonTigerCardViewModel>();
 
@@ -107,7 +108,7 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<DragonTigerBet, DragonTigerBetViewModel>();
             CreateMap<FishPrawnCrabBet, FishPrawnCrabBetViewModel>();
-            
+
             CreateMap<BaccaratBet, BaccaratBetViewModel>();
             CreateMap<KenoProMaxBet, KenoProMaxBetViewModel>();
             CreateMap<RNGKenoBet, RNGKenoBetViewModel>();
@@ -176,7 +177,11 @@ namespace GameRoundResult.Web.Configuration
                 .ForMember(x => x.PlayerCards, opt => opt.MapFrom((source, destination, i, context) =>
                 {
                     var mapper = context.Mapper;
-                    var result = new List<DragonTigerCardViewModel> { mapper.Map<DragonTigerCardViewModel>(source.Result.Player.FirstCard), mapper.Map<DragonTigerCardViewModel>(source.Result.Player.SecondCard) };
+                    var result = new List<DragonTigerCardViewModel> 
+                    { 
+                        mapper.Map<DragonTigerCardViewModel>(source.Result.Player.FirstCard), 
+                        mapper.Map<DragonTigerCardViewModel>(source.Result.Player.SecondCard)
+                    };
                     if (source.Result.Player.ThirdCard != null)
                     {
                         result.Add(mapper.Map<DragonTigerCardViewModel>(source.Result.Player.ThirdCard));
@@ -187,7 +192,11 @@ namespace GameRoundResult.Web.Configuration
                 .ForMember(x => x.BankerCards, opt => opt.MapFrom((source, destination, i, context) =>
                 {
                     var mapper = context.Mapper;
-                    var result = new List<DragonTigerCardViewModel> { mapper.Map<DragonTigerCardViewModel>(source.Result.Banker.FirstCard), mapper.Map<DragonTigerCardViewModel>(source.Result.Banker.SecondCard) };
+                    var result = new List<DragonTigerCardViewModel> {
+                        mapper.Map<DragonTigerCardViewModel>(source.Result.Banker.FirstCard),
+                        mapper.Map<DragonTigerCardViewModel>(source.Result.Banker.SecondCard) 
+                    };
+
                     if (source.Result.Banker.ThirdCard != null)
                     {
                         result.Add(mapper.Map<DragonTigerCardViewModel>(source.Result.Banker.ThirdCard));
