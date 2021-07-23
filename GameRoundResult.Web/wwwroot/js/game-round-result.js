@@ -39,7 +39,7 @@
                 "searching": false
             }).on('length.dt', function (e, settings, len) {
                 tableOptions.pageSize =  len;
-            });;
+            });
         },
         init: function () {
             $userTimeZone.val(Intl.DateTimeFormat().resolvedOptions().timeZone);
