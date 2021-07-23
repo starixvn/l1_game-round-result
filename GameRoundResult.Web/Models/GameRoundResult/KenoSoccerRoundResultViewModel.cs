@@ -48,7 +48,7 @@ namespace GameRoundResult.Web.Models
             return table.GetHtmlString();
         }
 
-        private string GetPeriodSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer,
+        private static string GetPeriodSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer,
             KenoSoccerPeriodSettlementResultViewModel settlementResult)
         {
             var stringBuilder = new StringBuilder();
@@ -102,7 +102,7 @@ namespace GameRoundResult.Web.Models
             return row;
         }
 
-        private TagBuilder GetNumbers(IEnumerable<int> numbers)
+        private static TagBuilder GetNumbers(IEnumerable<int> numbers)
         {
             var row = new TagBuilder("tr");
             row.AddCssClass("bold");
@@ -116,7 +116,7 @@ namespace GameRoundResult.Web.Models
             return row;
         }
 
-        private TagBuilder GetHomeTitle(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private static TagBuilder GetHomeTitle(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
             var cell = new TagBuilder("td");
@@ -127,7 +127,7 @@ namespace GameRoundResult.Web.Models
             return row;
         }
 
-        private TagBuilder GetAwayTitle(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private static TagBuilder GetAwayTitle(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
             var cell = new TagBuilder("td");
