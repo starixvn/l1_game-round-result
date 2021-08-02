@@ -231,6 +231,14 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<ThreeCardsSettlementResult, ThreeCardsSettlementResultViewModel>();
             CreateMap<ThreeCardsBet, ThreeCardsBetViewModel>();
             CreateMap<ThreeCardsOdds, ThreeCardsOddsViewModel>();
+
+            CreateMap<HeroesSlotRound, HeroesSlotRoundResultViewModel>();
+            CreateMap<HeroesSlotSettlementResult, HeroesSlotSettlementResultViewModel>();
+            CreateMap<HeroesSlotFreeSpin, HeroesSlotFreeSpinViewModel>();
+            CreateMap<HeroesSlotBonus, HeroesSlotBonusViewModel>();
+            CreateMap<HeroesSlotWinningLine, HeroesSlotWinningLineViewModel>();
+            CreateMap<HeroesSlotBonusChest, HeroesSlotBonusChestViewModel>();
+            CreateMap<HeroesSlotJackpot, HeroesSlotJackpotViewModel>();
         }
     }
 }

@@ -291,6 +291,13 @@ namespace GameRoundResult.Web.Handlers
                         RoundResult = threeCardsResult.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
                         Bet = threeCardsResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
                     };
+
+                case GameType.HeroesSlot:
+                    var heroesSlotResult = await service.GetHeroesSlotAsync(request.RoundId, request.MemberId);
+                    return new HeroesSlotTicketViewModel
+                    {
+                        RoundResult = heroesSlotResult?.ToViewModel(mapper, request.TimeZoneInfo),
+                    };
                 default:
                     throw new ArgumentException(nameof(GetGameTicketRequest.GameType));
             }

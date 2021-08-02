@@ -67,6 +67,8 @@ namespace GameRoundResult.Core.Services
         Task<(LotteryRound, IEnumerable<LotteryBet>, LotteryOne)> GetLotteryAsync(long roundId, int memberId);
 
         Task<(ThreeCardsRound, ThreeCardsBet)> GetThreeCardsAsync(long roundId, int memberId);
+
+        Task<HeroesSlotRound> GetHeroesSlotAsync(long roundId, int memberId);
     }
 
     public class GameBetService : IGameBetService
@@ -227,6 +229,11 @@ namespace GameRoundResult.Core.Services
         public async Task<(ThreeCardsRound, ThreeCardsBet)> GetThreeCardsAsync(long roundId, int memberId)
         {
             return await repository.GetThreeCardsAsync(roundId, memberId);
+        }
+
+        public async Task<HeroesSlotRound> GetHeroesSlotAsync(long roundId, int memberId)
+        {
+            return await repository.GetHeroesSlotAsync(roundId, memberId);
         }
     }
 }

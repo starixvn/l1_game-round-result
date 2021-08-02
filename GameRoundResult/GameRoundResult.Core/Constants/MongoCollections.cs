@@ -51,16 +51,18 @@
         public const string VipFishPrawnCrabRound = "vipfishprawncrab_phiens";
 
         public const string SicBoRound = "sicbo_phiens";
-        
+
         public const string VipSeDieWarRound = "vipsediewar_phiens";
 
         public const string FourGuardianRounds = "fourguardians_rounds";
-        
+
         public const string VipBaccaratRound = "vipbaccarat_phiens";
 
         public const string LotteryRound = "lottery_phiens";
 
         public const string ThreeCardsRound = "threecards_phiens";
+
+        public const string HeroesSlotRounds = "heroesslot_rounds";
     }
 
     internal static class MiniGameBetCollections
@@ -138,7 +140,7 @@
         public const string VipFishPrawnCrabBet = "vipfishprawncrab_cuocs";
 
         public const string VipBaccaratBet = "vipbaccarat_cuocs";
-        
+
         public const string SicBoBet = "sicbo_cuocs";
         public const string VipSeDieWarBet = "vipsediewar_cuocs";
 
@@ -150,5 +152,7 @@
         public const string LotteryBet = "lottery_cuocs";
 
         public const string ThreeCardsBet = "threecards_cuocs";
+
+        public const string HeroesSlotRounds = "heroesslot_rounds";
     }
 }
