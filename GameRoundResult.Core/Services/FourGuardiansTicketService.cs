@@ -11,9 +11,9 @@ namespace GameRoundResult.Core.Services
 
     public class FourGuardiansTicketService : IFourGuardiansTicketService
     {
-        private readonly FourGuardiansBetRepository repository;
+        private readonly IFourGuardiansBetRepository repository;
 
-        public FourGuardiansTicketService(FourGuardiansBetRepository repository)
+        public FourGuardiansTicketService(IFourGuardiansBetRepository repository)
         {
             this.repository = repository;
         }

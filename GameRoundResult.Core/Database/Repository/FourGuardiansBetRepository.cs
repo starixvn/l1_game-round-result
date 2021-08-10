@@ -4,7 +4,12 @@ using MongoDB.Driver;
 
 namespace GameRoundResult.Core.Database.Repository
 {
-    public class FourGuardiansBetRepository : GameBetRepository
+    public interface IFourGuardiansBetRepository
+    {
+        Task<FourGuardiansRound> GetAsync(long roundId, int memberId);
+    }
+
+    public class FourGuardiansBetRepository : GameBetRepository, IFourGuardiansBetRepository
     {
         public FourGuardiansBetRepository(IMongoDatabase database) : base(database)
         {

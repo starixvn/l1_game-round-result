@@ -68,7 +68,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IBlackjackBetRepository, BlackjackBetRepository>();
 
             services.AddScoped<IFourGuardiansTicketService, FourGuardiansTicketService>();
-            services.AddScoped<FourGuardiansBetRepository>();
+            services.AddScoped<IFourGuardiansBetRepository, FourGuardiansBetRepository>();
 
             services.AddScoped(typeof(BigSmallTicketAccessor<,,>));
             services.AddScoped<BaccaratTicketAccessor>();
