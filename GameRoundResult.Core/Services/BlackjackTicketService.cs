@@ -11,9 +11,9 @@ namespace GameRoundResult.Core.Services
 
     public class BlackjackTicketService : IBlackjackTicketService
     {
-        private readonly BlackjackBetRepository repository;
+        private readonly IBlackjackBetRepository repository;
 
-        public BlackjackTicketService(BlackjackBetRepository repository)
+        public BlackjackTicketService(IBlackjackBetRepository repository)
         {
             this.repository = repository;
         }
