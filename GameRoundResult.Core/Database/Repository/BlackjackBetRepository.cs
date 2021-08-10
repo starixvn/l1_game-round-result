@@ -4,7 +4,11 @@ using MongoDB.Driver;
 
 namespace GameRoundResult.Core.Database.Repository
 {
-    public class BlackjackBetRepository : GameBetRepository
+    public interface IBlackjackBetRepository
+    {
+        Task<(BlackjackRound, BlackjackBet)> GetAsync(long handId, int memberId);
+    }
+    public class BlackjackBetRepository : GameBetRepository, IBlackjackBetRepository
     {
         public BlackjackBetRepository(IMongoDatabase database) : base(database)
         {

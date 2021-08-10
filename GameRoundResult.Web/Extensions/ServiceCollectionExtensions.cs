@@ -63,7 +63,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IRoundResultViewFactory, RoundResultViewFactory>();
 
             services.AddScoped<IBlackjackTicketService, BlackjackTicketService>();
-            services.AddScoped<BlackjackBetRepository>();
+            services.AddScoped<IBlackjackBetRepository, BlackjackBetRepository>();
 
             services.AddScoped<IFourGuardiansTicketService, FourGuardiansTicketService>();
             services.AddScoped<FourGuardiansBetRepository>();
