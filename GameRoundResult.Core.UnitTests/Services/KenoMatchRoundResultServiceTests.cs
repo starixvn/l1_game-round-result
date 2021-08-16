@@ -12,16 +12,16 @@ using Xunit;
 
 namespace GameRoundResult.Core.UnitTests.Services
 {
-    public class KenoSoccerRoundResultServiceTests
+    public class KenoMatchRoundResultServiceTests
     {
-        private readonly IKenoSoccerRoundResultService gameRoundService;
+        private readonly IKenoMatchRoundResultService gameRoundService;
         private readonly IGameRoundRepository gameRoundRepository;
         private readonly Fixture fixture;
 
-        public KenoSoccerRoundResultServiceTests()
+        public KenoMatchRoundResultServiceTests()
         {
             gameRoundRepository = Substitute.For<IGameRoundRepository>();
-            gameRoundService = new KenoSoccerRoundResultService(gameRoundRepository);
+            gameRoundService = new KenoMatchRoundResultService(gameRoundRepository);
             fixture = new Fixture();
         }
 
@@ -29,12 +29,12 @@ namespace GameRoundResult.Core.UnitTests.Services
         public async Task GetAsync_ReturnCorrectResult(DateTime date, long roundId, int page, int pageSize)
         {
             //Arrnage
-            var roundEntities = fixture.CreateMany<KenoSoccerRound>();
-            gameRoundRepository.GetGameRoundResultAsync(date, roundId, page, pageSize, Arg.Any<Expression<Func<KenoSoccerRound, bool>>>())
+            var roundEntities = fixture.CreateMany<KenoMatchRound>();
+            gameRoundRepository.GetGameRoundResultAsync(date, roundId, page, pageSize, Arg.Any<Expression<Func<KenoMatchRound, bool>>>())
                 .Returns((roundEntities.Count(), roundEntities));
 
             //Act
-            var result = await gameRoundService.GetGameRoundResultAsync<KenoSoccerRound>(date, roundId, page, pageSize);
+            var result = await gameRoundService.GetGameRoundResultAsync<KenoMatchRound>(date, roundId, page, pageSize);
 
             //Assert
             Assert.StrictEqual(roundEntities.Count(), result.Item1);
