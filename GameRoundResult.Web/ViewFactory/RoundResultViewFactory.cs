@@ -14,7 +14,7 @@ namespace GameRoundResult.Web.ViewFactory
         private const string oddEven = "_OddEvenRoundResult";
         private const string sedie = "_SeDieRoundResult";
         private const string keno = "_KenoProMaxRoundResult";
-        private const string kenoSoccer = "_KenoSoccerRoundResult";
+        private const string kenoMatch = "_KenoMatchRoundResult";
         private const string fishPrawnCrab = "_FishPrawnRoundResult";
         private const string baccarat = "_BaccaratRoundResult";
         private const string dragonTiger = "_DragonTigerRoundResult";
@@ -52,9 +52,8 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.SeDieWar, sedieWar },
             { GameType.Lottery, lottery },
             { GameType.ThreeCards, threeCards},
-            { GameType.MyDinh, kenoSoccer },
-            { GameType.HangDay, kenoSoccer },
-            { GameType.ThongNhat, kenoSoccer },
+            { GameType.KenoMatch1, kenoMatch },
+            { GameType.KenoMatch2, kenoMatch },
         };
 
         public string GetView(GameType game) => views[game];

@@ -41,9 +41,8 @@ namespace GameRoundResult.Web.Accessor
             { GameType.SeDieWar, typeof(VipSeDieWarTicketAccessor) },
             { GameType.Lottery, typeof(LotteryTicketAccessor) },
             { GameType.ThreeCards, typeof(ThreeCardsTicketAccessor) },
-            { GameType.MyDinh, typeof(KenoSoccerTicketAccessor<KenoSoccerMyDinhRound, KenoSoccerMyDinhOne, KenoSoccerMyDinhBet>) },
-            { GameType.HangDay, typeof(KenoSoccerTicketAccessor<KenoSoccerHangDayRound, KenoSoccerHangDayOne, KenoSoccerHangDayBet>) },
-            { GameType.ThongNhat, typeof(KenoSoccerTicketAccessor<KenoSoccerThongNhatRound, KenoSoccerThongNhatOne, KenoSoccerThongNhatBet>) },
+            { GameType.KenoMatch1, typeof(KenoMatchTicketAccessor<KenoMatch1Round, KenoMatch1One, KenoMatch1Bet>) },
+            { GameType.KenoMatch2, typeof(KenoMatchTicketAccessor<KenoMatch2Round, KenoMatch2One, KenoMatch2Bet>) },
         };
 
         private readonly IServiceProvider serviceProvider;

@@ -8,7 +8,7 @@ using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {
-    public class KenoSoccerRoundResultViewModel : RoundResultViewModel
+    public class KenoMatchRoundResultViewModel : RoundResultViewModel
     {
         public KenoSoccerPeriodViewModel HalfTime { get; set; }
 
@@ -35,11 +35,11 @@ namespace GameRoundResult.Web.Models
             var tbody = new TagBuilder("tbody");
 
             tbody.InnerHtml.AppendHtml(GetHomeTitle(stringLocalizer));
-            tbody.InnerHtml.AppendHtml(GetNumbers(HalfTime.Result.Home));
-            tbody.InnerHtml.AppendHtml(GetNumbers(FullTime.Result.Home));
+            tbody.InnerHtml.AppendHtml(GetNumbers(HalfTime.Result.Blue));
+            tbody.InnerHtml.AppendHtml(GetNumbers(FullTime.Result.Red));
             tbody.InnerHtml.AppendHtml(GetAwayTitle(stringLocalizer));
-            tbody.InnerHtml.AppendHtml(GetNumbers(HalfTime.Result.Away));
-            tbody.InnerHtml.AppendHtml(GetNumbers(FullTime.Result.Away));
+            tbody.InnerHtml.AppendHtml(GetNumbers(HalfTime.Result.Blue));
+            tbody.InnerHtml.AppendHtml(GetNumbers(FullTime.Result.Red));
             tbody.InnerHtml.AppendHtml(GetHalfTimeSummary(stringLocalizer));
             tbody.InnerHtml.AppendHtml(GetFullTimeSummary(stringLocalizer));
 
@@ -49,16 +49,16 @@ namespace GameRoundResult.Web.Models
         }
 
         private static string GetPeriodSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer,
-            KenoSoccerPeriodSettlementResultViewModel settlementResult)
+            KenoMatchPeriodSettlementResultViewModel settlementResult)
         {
             var stringBuilder = new StringBuilder();
-            if (settlementResult.Home)
+            if (settlementResult.Blue)
             {
                 stringBuilder.AppendLine(stringLocalizer["Home"]);
             }
             else
             {
-                if (settlementResult.Away)
+                if (settlementResult.Red)
                 {
                     stringBuilder.AppendLine(stringLocalizer["Away"]);
                 }
@@ -75,12 +75,12 @@ namespace GameRoundResult.Web.Models
             var row = new TagBuilder("tr");
             var cell = new TagBuilder("td");
             cell.Attributes.Add("colspan", "10");
-            cell.InnerHtml.Append($"{stringLocalizer["Half Time"]} - {HalfTime.Total}");
+            cell.InnerHtml.Append($"{stringLocalizer["First Half"]} - {HalfTime.Total}");
 
-            var homeFTSum = FullTime.Result.Home.Sum();
-            var awayFTSum = FullTime.Result.Away.Sum();
+            var blueFTSum = FullTime.Result.Blue.Sum();
+            var redFTSum = FullTime.Result.Red.Sum();
 
-            cell.InnerHtml.Append($" ({stringLocalizer["Home"]} {homeFTSum}, {stringLocalizer["Away"]} {awayFTSum})");
+            cell.InnerHtml.Append($" ({stringLocalizer["Team Blue"]} {blueFTSum}, {stringLocalizer["Team Red"]} {redFTSum})");
             row.InnerHtml.AppendHtml(cell);
 
             return row;
@@ -93,10 +93,10 @@ namespace GameRoundResult.Web.Models
             cell.Attributes.Add("colspan", "10");
             cell.InnerHtml.Append($"{stringLocalizer["Full Time"]} - {FullTime.Total}");
 
-            var homeFTSum = FullTime.Result.Home.Sum();
-            var awayFTSum = FullTime.Result.Away.Sum();
+            var blueFTSum = FullTime.Result.Blue.Sum();
+            var redFTSum = FullTime.Result.Red.Sum();
 
-            cell.InnerHtml.Append($" ({stringLocalizer["Home"]} {homeFTSum}, {stringLocalizer["Away"]} {awayFTSum})");
+            cell.InnerHtml.Append($" ({stringLocalizer["Team Blue"]} {blueFTSum}, {stringLocalizer["Team Red"]} {redFTSum})");
             row.InnerHtml.AppendHtml(cell);
 
             return row;
@@ -147,19 +147,19 @@ namespace GameRoundResult.Web.Models
 
         public KenoSoccerPeriodResultViewModel Result { get; set; }
 
-        public KenoSoccerPeriodSettlementResultViewModel SettlementResult { get; set; }
+        public KenoMatchPeriodSettlementResultViewModel SettlementResult { get; set; }
     }
 
     public class KenoSoccerPeriodResultViewModel
     {
-        public List<int> Home { get; set; }
-        public List<int> Away { get; set; }
+        public List<int> Blue { get; set; }
+        public List<int> Red { get; set; }
     }
 
-    public class KenoSoccerPeriodSettlementResultViewModel
+    public class KenoMatchPeriodSettlementResultViewModel
     {
-        public bool Home { get; set; }
-        public bool Away { get; set; }
+        public bool Blue { get; set; }
+        public bool Red { get; set; }
         public bool Over { get; set; }
         public bool Under { get; set; }
         public bool Odd { get; set; }

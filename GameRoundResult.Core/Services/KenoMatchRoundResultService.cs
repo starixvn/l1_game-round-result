@@ -6,23 +6,23 @@ using GameRoundResult.Core.Database.Repository;
 
 namespace GameRoundResult.Core.Services
 {
-    public interface IKenoSoccerRoundResultService
+    public interface IKenoMatchRoundResultService
     {
         Task<(long, IEnumerable<TRoundEntity>)> GetGameRoundResultAsync<TRoundEntity>(DateTime date, long roundId, int page, int pageSize)
-            where TRoundEntity : KenoSoccerRound;
+            where TRoundEntity : KenoMatchRound;
     }
 
-    public class KenoSoccerRoundResultService : IKenoSoccerRoundResultService
+    public class KenoMatchRoundResultService : IKenoMatchRoundResultService
     {
         private readonly IGameRoundRepository repository;
 
-        public KenoSoccerRoundResultService(IGameRoundRepository repository)
+        public KenoMatchRoundResultService(IGameRoundRepository repository)
         {
             this.repository = repository;
         }
 
         public async Task<(long, IEnumerable<TRoundEntity>)> GetGameRoundResultAsync<TRoundEntity>(DateTime date, long roundId, int page, int pageSize)
-            where TRoundEntity : KenoSoccerRound
+            where TRoundEntity : KenoMatchRound
         {
             return await repository.GetGameRoundResultAsync<TRoundEntity>(date, roundId, page, pageSize, x => x.FullTime != null);
         }

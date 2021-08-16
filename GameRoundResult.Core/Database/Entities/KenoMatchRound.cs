@@ -5,15 +5,15 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    public class KenoSoccerRound : GameRound
+    public class KenoMatchRound : GameRound
     {
-        public KenoSoccerPeriod HalfTime { get; set; }
-        public KenoSoccerPeriod FullTime { get; set; }
+        public KenoMatchPeriod HalfTime { get; set; }
+        public KenoMatchPeriod FullTime { get; set; }
 
         public Dictionary<string, decimal> Odds { get; set; }
     }
 
-    public class KenoSoccerPeriod
+    public class KenoMatchPeriod
     {
         [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime Time { get; set; }
@@ -21,18 +21,18 @@ namespace GameRoundResult.Core.Database.Entities
         [BsonElement("sum")]
         public int Total { get; set; }
 
-        public KenoSoccerPeriodResult Result { get; set; }
+        public KenoMatchPeriodResult Result { get; set; }
 
-        public KenoSoccerPeriodSettlementResult SettlementResult { get; set; }
+        public KenoMatchPeriodSettlementResult SettlementResult { get; set; }
     }
 
-    public class KenoSoccerPeriodResult
+    public class KenoMatchPeriodResult
     {
         public List<int> Home { get; set; }
         public List<int> Away { get; set; }
     }
 
-    public class KenoSoccerPeriodSettlementResult
+    public class KenoMatchPeriodSettlementResult
     {
         public bool Home { get; set; }
         public bool Away { get; set; }
@@ -42,20 +42,14 @@ namespace GameRoundResult.Core.Database.Entities
         public bool Even { get; set; }
     }
 
-    [CollectionName("mydinh_phiens")]
-    public class KenoSoccerMyDinhRound: KenoSoccerRound
+    [CollectionName("kenomatch1_phiens")]
+    public class KenoMatch1Round: KenoMatchRound
     {
 
     }
 
-    [CollectionName("hangday_phiens")]
-    public class KenoSoccerHangDayRound : KenoSoccerRound
-    {
-
-    }
-
-    [CollectionName("thongnhat_phiens")]
-    public class KenoSoccerThongNhatRound : KenoSoccerRound
+    [CollectionName("kenomatch2_phiens")]
+    public class KenoMatch2Round : KenoMatchRound
     {
 
     }

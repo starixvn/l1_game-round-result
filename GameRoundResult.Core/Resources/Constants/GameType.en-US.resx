@@ -198,13 +198,10 @@
   <data name="ThreeCards" xml:space="preserve">
     <value>Three Cards</value>
   </data>
-  <data name="HangDay" xml:space="preserve">
-    <value>Hang Day</value>
+  <data name="KenoMatch2" xml:space="preserve">
+    <value>Keno Match 2</value>
   </data>
-  <data name="MyDinh" xml:space="preserve">
-    <value>My Dinh</value>
-  </data>
-  <data name="ThongNhat" xml:space="preserve">
-    <value>Thong Nhat</value>
+  <data name="KenoMatch1" xml:space="preserve">
+    <value>Keno Match 1</value>
   </data>
 </root>

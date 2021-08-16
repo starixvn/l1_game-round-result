@@ -1,25 +1,25 @@
-﻿@model KenoSoccerTicketViewModel
+﻿@model KenoMatchTicketViewModel
 
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<KenoSoccerTicketViewModel> Localizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<KenoMatchTicketViewModel> Localizer
 
 @{
     var betChoiceMapper = new Dictionary<string, string>
 {
-        { "preHTHome", Localizer["Home"] },
-        { "preHTAway", Localizer["Away"] },
-        { "preHTOver", Localizer["Over"] },
-        { "preHTUnder", Localizer["Under"] },
-        { "preHTOdd", Localizer["Odd"] },
-        { "preHTEven", Localizer["Even"] },
-        { "preFTHome", Localizer["Home"] },
-        { "preFTAway", Localizer["Away"] },
-        { "preFTOver", Localizer["Over"] },
-        { "preFTUnder", Localizer["Under"] },
-        { "preFTOdd", Localizer["Odd"] },
-        { "preFTEven", Localizer["Even"] },
-        { "liveFTHome", Localizer["Home"] },
-        { "liveFTAway", Localizer["Away"] },
+        { "fhBlue", Localizer["Team Blue"] },
+        { "fhRed", Localizer["Team Red"] },
+        { "fhOver", Localizer["Over"] },
+        { "fhUnder", Localizer["Under"] },
+        { "fhOdd", Localizer["Odd"] },
+        { "fhEven", Localizer["Even"] },
+        { "ftBlue", Localizer["Team Blue"] },
+        { "ftRed", Localizer["Team Red"] },
+        { "ftOver", Localizer["Over"] },
+        { "ftUnder", Localizer["Under"] },
+        { "ftOdd", Localizer["Odd"] },
+        { "ftEven", Localizer["Even"] },
+        { "liveFTBlue", Localizer["Team Blue"] },
+        { "liveFTRed", Localizer["Team Red"] },
         { "liveFTOver", Localizer["Over"] },
         { "liveFTUnder", Localizer["Under"] },
         { "liveFTOdd", Localizer["Odd"] },
@@ -28,24 +28,24 @@
 
     var betTypeMapper = new Dictionary<string, string>
 {
-        { "preHTHome", Localizer["Pre-match - Half Time Home/Away"] },
-        { "preHTAway", Localizer["Pre-match - Half Time Home/Away"] },
-        { "preHTOver", Localizer["Pre-match - Half Time Over/Under"] },
-        { "preHTUnder", Localizer["Pre-match - Half Time Over/Under"] },
-        { "preHTOdd", Localizer["Pre-match - Half Time Odd/Even"] },
-        { "preHTEven", Localizer["Pre-match - Half Time Odd/Even"] },
-        { "preFTHome", Localizer["Pre-match - Full Time Home/Away"] },
-        { "preFTAway", Localizer["Pre-match - Full Time Home/Away"] },
-        { "preFTOver", Localizer["Pre-match - Full Time Over/Under"] },
-        { "preFTUnder", Localizer["Pre-match - Full Time Over/Under"] },
-        { "preFTOdd", Localizer["Pre-match - Full Time Odd/Even"] },
-        { "preFTEven", Localizer["Pre-match - Full Time Odd/Even"] },
-        { "liveFTHome", Localizer["Live - Full Time Home/Away"] },
-        { "liveFTAway", Localizer["Live - Full Time Home/Away"] },
-        { "liveFTOver", Localizer["Live - Full Time Over/Under"] },
-        { "liveFTUnder", Localizer["Live - Full Time Over/Under"] },
-        { "liveFTOdd", Localizer["Live - Full Time Odd/Even"] },
-        { "liveFTEven", Localizer["Live - Full Time Odd/Even"] },
+        { "fhBlue", Localizer["First Half Team Blue/Team Red"] },
+        { "fhRed", Localizer["First Half Team Blue/Team Red"] },
+        { "fhOver", Localizer["First Half Over/Under"] },
+        { "fhUnder", Localizer["First Half Over/Under"] },
+        { "fhOdd", Localizer["First Half Even/Odd"] },
+        { "fhEven", Localizer["First Half Even/Odd"] },
+        { "ftBlue", Localizer["Full Time Team Blue/Team Red"] },
+        { "ftRed", Localizer["Full Time Team Blue/Team Red"] },
+        { "ftOver", Localizer["Full Time Over/Under"] },
+        { "ftUnder", Localizer["Full Time Over/Under"] },
+        { "ftOdd", Localizer["Full Time Even/Odd"] },
+        { "ftEven", Localizer["Full Time Even/Odd"] },
+        { "liveFTBlue", Localizer["Full Time Team Blue/Team Red (Live)"] },
+        { "liveFTRed", Localizer["Full Time Team Blue/Team Red (Live)"] },
+        { "liveFTOver", Localizer["Full Time Over/Under (Live)"] },
+        { "liveFTUnder", Localizer["Full Time Over/Under (Live)"] },
+        { "liveFTOdd", Localizer["Full Time Even/Odd (Live)"] },
+        { "liveFTEven", Localizer["Full Time Even/Odd (Live)"] },
     };
 
     var htSettlementResult = Model.RoundResult.HalfTime.SettlementResult;
@@ -53,20 +53,20 @@
 
     var settlmentResultMapper = new Dictionary<string, bool>
 {
-        { "preHTHome", htSettlementResult.Home },
-        { "preHTAway", htSettlementResult.Away },
-        { "preHTOver", htSettlementResult.Over},
-        { "preHTUnder", htSettlementResult.Under },
-        { "preHTOdd", htSettlementResult.Odd},
-        { "preHTEven", htSettlementResult.Even },
-        { "preFTHome", ftSettlementResult.Home },
-        { "preFTAway", ftSettlementResult.Away },
-        { "preFTOver", ftSettlementResult.Over},
-        { "preFTUnder", ftSettlementResult.Under },
-        { "preFTOdd", ftSettlementResult.Odd},
-        { "preFTEven", ftSettlementResult.Even },
-        { "liveFTHome", ftSettlementResult.Home },
-        { "liveFTAway", ftSettlementResult.Away },
+        { "fhBlue", htSettlementResult.Blue },
+        { "fhRed", htSettlementResult.Red },
+        { "fhOver", htSettlementResult.Over},
+        { "fhUnder", htSettlementResult.Under },
+        { "fhOdd", htSettlementResult.Odd},
+        { "fhEven", htSettlementResult.Even },
+        { "ftBlue", ftSettlementResult.Blue },
+        { "ftRed", ftSettlementResult.Red },
+        { "ftOver", ftSettlementResult.Over},
+        { "ftUnder", ftSettlementResult.Under },
+        { "ftOdd", ftSettlementResult.Odd},
+        { "ftEven", ftSettlementResult.Even },
+        { "liveFTBlue", ftSettlementResult.Blue },
+        { "liveFTRed", ftSettlementResult.Red },
         { "liveFTOver", ftSettlementResult.Over},
         { "liveFTUnder", ftSettlementResult.Under },
         { "liveFTOdd", ftSettlementResult.Odd},
@@ -83,7 +83,7 @@
             <th colspan="2">@CommonLocalizer["WinningOptions"]</th>
         </tr>
         <tr>
-            <th>@Localizer["Half Time"]</th>
+            <th>@Localizer["First Half"]</th>
             <th>@Localizer["Full Time"]</th>
         </tr>
     </thead>
@@ -101,31 +101,31 @@
                     <table class="table table-bordered table-hover">
                         <tbody>
                             <tr>
-                                <td colspan="10">@Localizer["Home"]</td>
+                                <td colspan="10">@Localizer["Team Blue"]</td>
                             </tr>
                             <tr class="bold">
-                                @foreach (var number in Model.RoundResult.HalfTime.Result.Home)
+                                @foreach (var number in Model.RoundResult.HalfTime.Result.Blue)
                                 {
                                     <td>@number</td>
                                 }
                             </tr>
                             <tr class="bold">
-                                @foreach (var number in Model.RoundResult.FullTime.Result.Home)
+                                @foreach (var number in Model.RoundResult.FullTime.Result.Blue)
                                 {
                                     <td>@number</td>
                                 }
                             </tr>
                             <tr>
-                                <td colspan="10">@Localizer["Away"]</td>
+                                <td colspan="10">@Localizer["Team Red"]</td>
                             </tr>
                             <tr class="bold">
-                                @foreach (var number in Model.RoundResult.HalfTime.Result.Away)
+                                @foreach (var number in Model.RoundResult.HalfTime.Result.Red)
                                 {
                                     <td>@number</td>
                                 }
                             </tr>
                             <tr class="bold">
-                                @foreach (var number in Model.RoundResult.FullTime.Result.Away)
+                                @foreach (var number in Model.RoundResult.FullTime.Result.Red)
                                 {
                                     <td>@number</td>
                                 }
@@ -135,15 +135,15 @@
                 </td>
                 <td class="bold">
                     @{
-                        if (htSettlementResult.Home)
+                        if (htSettlementResult.Blue)
                         {
-                            @Localizer["Home"]
+                            @Localizer["Team Blue"]
                             <br />
                         }
 
-                        if (htSettlementResult.Away)
+                        if (htSettlementResult.Red)
                         {
-                            @Localizer["Home"]
+                            @Localizer["Team Red"]
                             <br />
                         }
 
@@ -170,15 +170,15 @@
 
                 <td class="bold">
                     @{
-                        if (ftSettlementResult.Home)
+                        if (ftSettlementResult.Blue)
                         {
-                            @Localizer["Home"]
+                            @Localizer["Team Blue"]
                             <br />
                         }
 
-                        if (ftSettlementResult.Away)
+                        if (ftSettlementResult.Red)
                         {
-                            @Localizer["Home"]
+                            @Localizer["Team Red"]
                             <br />
                         }
 
