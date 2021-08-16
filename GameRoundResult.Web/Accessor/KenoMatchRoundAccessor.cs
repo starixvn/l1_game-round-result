@@ -11,13 +11,13 @@ using GameRoundResult.Web.Requests;
 
 namespace GameRoundResult.Web.Accessor
 {
-    public class KenoSoccerRoundAccessor<TRoundEntity> : IGameRoundAccessor
-        where TRoundEntity : KenoSoccerRound
+    public class KenoMatchRoundAccessor<TRoundEntity> : IGameRoundAccessor
+        where TRoundEntity : KenoMatchRound
     {
         private readonly IMapper mapper;
-        private readonly IKenoSoccerRoundResultService gameRoundResultService;
+        private readonly IKenoMatchRoundResultService gameRoundResultService;
 
-        public KenoSoccerRoundAccessor(IKenoSoccerRoundResultService gameRoundResultService, IMapper mapper)
+        public KenoMatchRoundAccessor(IKenoMatchRoundResultService gameRoundResultService, IMapper mapper)
         {
             this.gameRoundResultService = gameRoundResultService;
             this.mapper = mapper;
@@ -28,7 +28,7 @@ namespace GameRoundResult.Web.Accessor
             var utcDate = TimeZoneInfo.ConvertTimeToUtc(request.Date, request.TimeZoneInfo);
             var result = await gameRoundResultService.GetGameRoundResultAsync<TRoundEntity>(utcDate, request.RoundId, request.Page, request.PageSize);
 
-            return (result.Item1, result.Item2.Select(x => x.ToViewModel<TRoundEntity, KenoSoccerRoundResultViewModel>(mapper, request.TimeZoneInfo)));
+            return (result.Item1, result.Item2.Select(x => x.ToViewModel<TRoundEntity, KenoMatchRoundResultViewModel>(mapper, request.TimeZoneInfo)));
         }
     }
 }

@@ -161,10 +161,16 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
-        public static KenoSoccerBetViewModel ToViewModel(this KenoSoccerBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        public static KenoMatchetViewModel ToViewModel(this KenoMatchBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+        return mapper.Map<KenoMatchBet, KenoMatchetViewModel>(entity, opts =>
+                  {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
         public static HeroesSlotRoundResultViewModel ToViewModel(this HeroesSlotRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return mapper.Map<KenoSoccerBet, KenoSoccerBetViewModel>(entity, opts =>
+            
             return mapper.Map<HeroesSlotRound, HeroesSlotRoundResultViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));

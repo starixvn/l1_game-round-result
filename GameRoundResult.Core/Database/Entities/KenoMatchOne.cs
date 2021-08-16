@@ -3,7 +3,7 @@ using GameRoundResult.Core._Share;
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    public class KenoSoccerOne : BaseBetEntity
+    public class KenoMatchOne : BaseBetEntity
     {
         public decimal PreHTHome { get; set; }
         public decimal PreHTAway { get; set; }
@@ -32,20 +32,14 @@ namespace GameRoundResult.Core.Database.Entities
         public Dictionary<string, bool> Odds { get; set; }
     }
 
-    [CollectionName("mydinh_ones")]
-    public class KenoSoccerMyDinhOne : KenoSoccerOne
+    [CollectionName("kenomatch1_ones")]
+    public class KenoMatch1One : KenoMatchOne
     {
 
     }
 
-    [CollectionName("hangday_ones")]
-    public class KenoSoccerHangDayOne : KenoSoccerOne
-    {
-
-    }
-
-    [CollectionName("thongnhat_ones")]
-    public class KenoSoccerThongNhatOne : KenoSoccerOne
+    [CollectionName("kenomatch2_ones")]
+    public class KenoMatch2One : KenoMatchOne
     {
 
     }

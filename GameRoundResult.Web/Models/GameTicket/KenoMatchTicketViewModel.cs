@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace GameRoundResult.Web.Models
 {
-    public class KenoSoccerTicketViewModel : GameTicketViewModel
+    public class KenoMatchTicketViewModel : GameTicketViewModel
     {
-        public KenoSoccerRoundResultViewModel RoundResult { get; set; }
+        public KenoMatchRoundResultViewModel RoundResult { get; set; }
 
-        public IEnumerable<KenoSoccerBetViewModel> Bets { get; set; }
+        public IEnumerable<KenoMatchetViewModel> Bets { get; set; }
 
         public decimal TotalBet { get; set; }
 
@@ -16,7 +16,7 @@ namespace GameRoundResult.Web.Models
         public decimal WinLoss => TotalBetWin - TotalBet;
     }
 
-    public class KenoSoccerBetViewModel
+    public class KenoMatchetViewModel
     {
         public DateTime Time { get; set; }
 

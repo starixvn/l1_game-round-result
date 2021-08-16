@@ -234,11 +234,11 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<ThreeCardsBet, ThreeCardsBetViewModel>();
             CreateMap<ThreeCardsOdds, ThreeCardsOddsViewModel>();
 
-            CreateMap<KenoSoccerRound, KenoSoccerRoundResultViewModel>();
-            CreateMap<KenoSoccerPeriod, KenoSoccerPeriodViewModel>();
-            CreateMap<KenoSoccerPeriodResult, KenoSoccerPeriodResultViewModel>();
-            CreateMap<KenoSoccerPeriodSettlementResult, KenoSoccerPeriodSettlementResultViewModel>();
-            CreateMap<KenoSoccerBet, KenoSoccerBetViewModel>();
+            CreateMap<KenoMatchRound, KenoMatchRoundResultViewModel>();
+            CreateMap<KenoMatchPeriod, KenoSoccerPeriodViewModel>();
+            CreateMap<KenoMatchPeriodResult, KenoSoccerPeriodResultViewModel>();
+            CreateMap<KenoMatchPeriodSettlementResult, KenoMatchPeriodSettlementResultViewModel>();
+            CreateMap<KenoMatchBet, KenoMatchetViewModel>();
             CreateMap<HeroesSlotRound, HeroesSlotRoundResultViewModel>();
             CreateMap<HeroesSlotSettlementResult, HeroesSlotSettlementResultViewModel>();
             CreateMap<HeroesSlotFreeSpin, HeroesSlotFreeSpinViewModel>();

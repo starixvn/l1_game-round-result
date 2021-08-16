@@ -201,13 +201,10 @@
 	<data name="HeroesSlot" xml:space="preserve">
     <value>Anh Hùng Chim Lạc</value>
   </data>
-  <data name="HangDay" xml:space="preserve">
-    <value>Hàng Đẫy</value>
+  <data name="KenoMatch1" xml:space="preserve">
+    <value>Keno Match 1</value>
   </data>
-  <data name="MyDinh" xml:space="preserve">
-    <value>Mỹ Đình</value>
-  </data>
-  <data name="ThongNhat" xml:space="preserve">
-    <value>Thống Nhất</value>
+  <data name="KenoMatch2" xml:space="preserve">
+    <value>Keno Match 2</value>
   </data>
 </root>

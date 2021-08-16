@@ -32,9 +32,8 @@
         FourGuardians = 29,
         Lottery = 31,
         ThreeCards = 35,
-        HeroesSlot = 38
-        MyDinh,
-        HangDay,
-        ThongNhat
+        KenoMatch1,
+        KenoMatch2,
+        HeroesSlot
     }
 }

@@ -1,0 +1,114 @@
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Database.Repository;
+
+namespace GameRoundResult.Core.Services
+{
+    public interface IGameBetService
+    {
+<<<<<<< HEAD
+        Task<(BigSmallRound, IEnumerable<BigSmallBet>)> GetBigSmallAsync(long roundId, int memberId);
+
+        Task<(BigSmallRound, IEnumerable<BigSmallBet>)> GetBigSmallTurboAsync(long roundId, int memberId);
+
+        Task<(OddEvenRound, IEnumerable<OddEvenBet>)> GetOddEvenAsync(long roundId, int memberId);
+
+        Task<(OddEvenRound, IEnumerable<OddEvenBet>)> GetOddEvenTurboAsync(long roundId, int memberId);
+
+        Task<(SeDieRound, SeDieBet)> GetSeDieAsync(long roundId, int memberId, bool freeBet);
+
+        Task<(MiniSeDieRound, MiniSeDieBet)> GetMiniSeDieAsync(long roundId, int memberId);
+
+        Task<(DragonTigerRound, DragonTigerBet)> GetDragonTigerAsync(long roundId, int memberId);
+
+        Task<(FishPrawnCrabRound, FishPrawnCrabBet)> GetFishPrawnCrabAsync(long roundId, int memberId);
+
+        Task<(BaccaratRound, BaccaratBet)> GetBaccaratAsync(long roundId, int memberId);
+
+        Task<(KenoRound, KenoProMaxBet)> GetKenoProMaxAsync(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoProVietAsync(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoMaxAsync(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoMax2Async(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoMiniAsync(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoMini2Async(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoEastAsync(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoWestAsync(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoSouthAsync(long roundId, int memberId);
+
+        Task<(KenoRound, IEnumerable<RNGKenoBet>, decimal?)> GetKenoNorthAsync(long roundId, int memberId);
+
+        Task<(RouletteRound, IEnumerable<RouletteBet>, RouletteOne)> GetRouletteAsync(long roundId, int memberId);
+
+        Task<(VipSeDieRound, VipSeDieBet)> GetVipSeDieAsync(long roundId, int memberId);
+
+        Task<(BlackjackRound, BlackjackBet)> GetBlackjackAsync(long handId, int memberId);
+
+        Task<(SpecialSeDieRound, IEnumerable<SpecialSeDieBet>, SpecialSeDieOne)> GetSpecialSeDieAsync(long roundId, int memberId);
+
+        Task<(VipFishPrawnCrabRound, VipFishPrawnCrabBet)> GetVipFishPrawnCrabAsync(long roundId, int memberId);
+
+        Task<(SicBoRound, IEnumerable<SicBoBet>, SicBoOne)> GetSicBoAsync(long roundId, int memberId);
+
+        Task<(VipSeDieWarRound, IEnumerable<VipSeDieWarBet>, VipSeDieWarOne)> GetVipSeDieWarAsync(long roundId, int memberId);
+
+        Task<(VipBaccaratRound, BaccaratBet)> GetVipBaccaratAsync(long roundId, int memberId);
+
+        Task<FourGuardiansRound> GetFourGuardiansAsync(long roundId, int memberId);
+
+
+        Task<(LotteryRound, IEnumerable<LotteryBet>, LotteryOne)> GetLotteryAsync(long roundId, int memberId);
+
+        Task<(ThreeCardsRound, ThreeCardsBet)> GetThreeCardsAsync(long roundId, int memberId);
+
+        Task<HeroesSlotRound> GetHeroesSlotAsync(long roundId, int memberId);
+=======
+        Task<(TRoundEntity, IEnumerable<TBetEntity>, TOneEntity)> GetAsync<TRoundEntity, TOneEntity, TBetEntity>(long roundId, int memberId, bool freeBet)
+            where TRoundEntity : GameRound
+            where TOneEntity : BaseBetEntity
+            where TBetEntity : BaseBetLogEntity;
+
+        Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, int memberId, bool freeBet)
+           where TRoundEntity : GameRound
+           where TBetEntity : BaseBetEntity;
+>>>>>>> 44a79b0... refactor game ticket
+    }
+
+    public class GameBetService : IGameBetService
+    {
+        private readonly IGameBetRepository repository;
+
+        public GameBetService(IGameBetRepository repository)
+        {
+            this.repository = repository;
+        }
+
+        public async Task<(TRoundEntity, IEnumerable<TBetEntity>, TOneEntity)> GetAsync<TRoundEntity, TOneEntity, TBetEntity>(long roundId, int memberId, bool freeBet)
+            where TRoundEntity : GameRound
+            where TOneEntity : BaseBetEntity
+            where TBetEntity : BaseBetLogEntity
+        {
+            return await repository.GetAsync<TRoundEntity, TOneEntity, TBetEntity>(roundId, memberId, freeBet);
+        }
+
+        public async Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, int memberId, bool freeBet)
+            where TRoundEntity : GameRound
+            where TBetEntity : BaseBetEntity
+        {
+            return await repository.GetAsync<TRoundEntity, TBetEntity>(roundId, memberId, freeBet);
+        }
+
+        public async Task<HeroesSlotRound> GetHeroesSlotAsync(long roundId, int memberId)
+        {
+            return await repository.GetHeroesSlotAsync(roundId, memberId);
+        }
+    }
+}

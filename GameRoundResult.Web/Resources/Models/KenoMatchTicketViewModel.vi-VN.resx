@@ -117,29 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Away" xml:space="preserve">
-    <value>Đội Khách</value>
-  </data>
   <data name="Even" xml:space="preserve">
     <value>Chẵn</value>
+  </data>
+  <data name="First Half" xml:space="preserve">
+    <value>Hiệp 1</value>
+  </data>
+  <data name="First Half Even/Odd" xml:space="preserve">
+    <value>Hiệp 1 Chẵn/Lẻ</value>
+  </data>
+  <data name="First Half Over/Under" xml:space="preserve">
+    <value>Hiệp 1 Tài/Xỉu</value>
+  </data>
+  <data name="First Half Team Blue/Team Red" xml:space="preserve">
+    <value>Hiệp 1 Đội Xanh/Đội Đỏ</value>
   </data>
   <data name="Full Time" xml:space="preserve">
     <value>Toàn trận</value>
   </data>
-  <data name="Half Time" xml:space="preserve">
-    <value>Hiệp 1</value>
+  <data name="Full Time Even/Odd" xml:space="preserve">
+    <value>Toàn trận Chẵn/Lẻ</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Đội Nhà</value>
+  <data name="Full Time Even/Odd (Live)" xml:space="preserve">
+    <value>Toàn trận Chẵn/Lẻ (Live)</value>
   </data>
-  <data name="Live - Full Time Home/Away" xml:space="preserve">
-    <value>Trực tiếp - Toàn trận Đội Nhà/Đội Khách</value>
+  <data name="Full Time Over/Under" xml:space="preserve">
+    <value>Toàn trận Tài/Xỉu</value>
   </data>
-  <data name="Live - Full Time Odd/Even" xml:space="preserve">
-    <value>Trực tiếp - Toàn trận Lẻ/Chẵn</value>
+  <data name="Full Time Over/Under (Live)" xml:space="preserve">
+    <value>Toàn trận Tài/Xỉu (Live)</value>
   </data>
-  <data name="Live - Full Time Over/Under" xml:space="preserve">
-    <value>Trực tiếp - Toàn trận Tài/Xỉu</value>
+  <data name="Full Time Team Blue/Team Red" xml:space="preserve">
+    <value>Toàn trận Đội Xanh/Đội Đỏ</value>
+  </data>
+  <data name="Full Time Team Blue/Team Red (Live)" xml:space="preserve">
+    <value>Toàn trận Đội Xanh/Đội Đỏ (Live)</value>
   </data>
   <data name="Odd" xml:space="preserve">
     <value>Lẻ</value>
@@ -147,23 +159,11 @@
   <data name="Over" xml:space="preserve">
     <value>Tài</value>
   </data>
-  <data name="Pre-match - Full Time Home/Away" xml:space="preserve">
-    <value>Trước trận - Toàn trận Đội Nhà/Đội Khách</value>
+  <data name="Team Blue" xml:space="preserve">
+    <value>Đội Xanh</value>
   </data>
-  <data name="Pre-match - Full Time Odd/Even" xml:space="preserve">
-    <value>Trước trận - Toàn trận Lẻ/Chẵn</value>
-  </data>
-  <data name="Pre-match - Full Time Over/Under" xml:space="preserve">
-    <value>Trước trận - Toàn trận Tài/Xỉu</value>
-  </data>
-  <data name="Pre-match - Half Time Home/Away" xml:space="preserve">
-    <value>Trước trận - Hiệp 1 Đội Nhà/Đội Khách</value>
-  </data>
-  <data name="Pre-match - Half Time Odd/Even" xml:space="preserve">
-    <value>Trước trận - Hiệp 1 Lẻ/Chẵn</value>
-  </data>
-  <data name="Pre-match - Half Time Over/Under" xml:space="preserve">
-    <value>Trước trận - Hiệp 1 Tài/Xỉu</value>
+  <data name="Team Red" xml:space="preserve">
+    <value>Đội Đỏ</value>
   </data>
   <data name="Under" xml:space="preserve">
     <value>Xỉu</value>
