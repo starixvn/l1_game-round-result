@@ -48,6 +48,8 @@
         { "liveFTEven", Localizer["Full Time Even/Odd (Live)"] },
     };
 
+    var htResult = Model.RoundResult.HalfTime;
+    var ftResult = Model.RoundResult.FullTime;
     var htSettlementResult = Model.RoundResult.HalfTime.SettlementResult;
     var ftSettlementResult = Model.RoundResult.FullTime.SettlementResult;
 
@@ -74,7 +76,7 @@
     };
 }
 
-<table class="table table-bordered table-three-cards">
+<table class="table table-bordered table-keno-match">
     <thead>
         <tr>
             <th rowspan="2" class="col-date">@CommonLocalizer["Time"] (GMT-4)</th>
@@ -100,40 +102,64 @@
                 <td>
                     <table class="table table-bordered table-hover">
                         <tbody>
-                            <tr>
-                                <td colspan="10">@Localizer["Team Blue"]</td>
-                            </tr>
                             <tr class="bold">
-                                @foreach (var number in Model.RoundResult.HalfTime.Result.Blue)
-                                {
-                                    <td>@number</td>
-                                }
-                            </tr>
-                            <tr class="bold">
-                                @foreach (var number in Model.RoundResult.FullTime.Result.Blue)
-                                {
-                                    <td>@number</td>
-                                }
+                                <td>@Localizer["Team Blue"]</td>
+                                <td>@Localizer["Team Red"]</td>
                             </tr>
                             <tr>
-                                <td colspan="10">@Localizer["Team Red"]</td>
+                                <td class="bold" colspan="2">@Localizer["First Half"]</td>
                             </tr>
-                            <tr class="bold">
-                                @foreach (var number in Model.RoundResult.HalfTime.Result.Red)
-                                {
-                                    <td>@number</td>
-                                }
+                            <tr>
+                                <td>
+                                    <div class="number-list">
+                                        @foreach (var number in htResult.Result.Blue)
+                                        {
+                                            <span class="number blue">@number</span>
+                                        }
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="number-list">
+                                        @foreach (var number in htResult.Result.Red)
+                                        {
+                                            <span class="number red">@number</span>
+                                        }
+                                    </div>
+                                </td>
                             </tr>
-                            <tr class="bold">
-                                @foreach (var number in Model.RoundResult.FullTime.Result.Red)
-                                {
-                                    <td>@number</td>
-                                }
+                            <tr>
+                                <td>@Localizer["Team Blue"] @htResult.Result.Blue.Sum() - @Localizer["Total"] @htResult.Total - @Localizer["Team Red"] @htResult.Result.Red.Sum()</td>
+                            </tr>
+                            <tr>
+                                <td class="bold" colspan="2">@Localizer["Full Time"]</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="number-list">
+                                        @foreach (var number in Model.RoundResult.FullTime.Result.Blue)
+                                        {
+                                            <span class="number blue">@number</span>
+                                        }
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="number-list">
+                                        @foreach (var number in Model.RoundResult.FullTime.Result.Red)
+                                        {
+                                            <span class="number red">@number</span>
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Localizer["Team Blue"] @(htResult.Result.Blue.Sum() + ftResult.Result.Blue.Sum()) - @Localizer["Total"] @ftResult.Total - @Localizer["Team Red"] @(ftResult.Result.Red.Sum() + ftResult.Result.Red.Sum())</td>
                             </tr>
                         </tbody>
                     </table>
                 </td>
-                <td class="bold">
+                <td>
                     @{
                         if (htSettlementResult.Blue)
                         {
@@ -168,7 +194,7 @@
 
                 </td>
 
-                <td class="bold">
+                <td>
                     @{
                         if (ftSettlementResult.Blue)
                         {

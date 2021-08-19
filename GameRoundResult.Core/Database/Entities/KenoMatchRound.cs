@@ -28,14 +28,14 @@ namespace GameRoundResult.Core.Database.Entities
 
     public class KenoMatchPeriodResult
     {
-        public List<int> Home { get; set; }
-        public List<int> Away { get; set; }
+        public List<int> Blue { get; set; }
+        public List<int> Red { get; set; }
     }
 
     public class KenoMatchPeriodSettlementResult
     {
-        public bool Home { get; set; }
-        public bool Away { get; set; }
+        public bool Blue { get; set; }
+        public bool Red { get; set; }
         public bool Over { get; set; }
         public bool Under { get; set; }
         public bool Odd { get; set; }

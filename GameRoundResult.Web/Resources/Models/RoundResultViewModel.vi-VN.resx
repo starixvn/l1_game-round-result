@@ -204,7 +204,7 @@
   <data name="Gold" xml:space="preserve">
     <value>Kim</value>
   </data>
-  <data name="Half Time" xml:space="preserve">
+  <data name="First Half" xml:space="preserve">
     <value>Hiệp 1</value>
   </data>
   <data name="Hearts" xml:space="preserve">
@@ -302,5 +302,8 @@
   </data>
   <data name="{0} white" xml:space="preserve">
     <value>{0} trắng</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Tổng Cộng</value>
   </data>
 </root>

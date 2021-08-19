@@ -460,7 +460,7 @@ body {
     }
 }
 
-.table-lottery, .table-keno-soccer {
+.table-lottery, .table-keno-match {
     .table-result {
         margin: auto;
         width: 100%;
@@ -475,11 +475,37 @@ body {
     }
 }
 
-.table-keno-soccer {
+.table-keno-match {
     tr {
         td:nth-child(4), td:nth-child(5) {
             white-space: pre-wrap;
-            font-weight: bold;
+        }
+    }
+
+    .number-list {
+        display: grid;
+        grid-template-columns: repeat(5, 30px);
+        justify-content: center;
+        flex-wrap: nowrap;
+        grid-gap: 4px;
+        margin: auto;
+
+        .number {
+            display: inline-block;
+            width: 3rem;
+            height: 3rem;
+            line-height: 3rem;
+            border: 0.1rem solid;
+            border-radius: 50%;
+            text-align: center;
+
+            &.blue {
+                border-color: #2a93d5;
+            }
+
+            &.red {
+                border-color: #b53f39;
+            }
         }
     }
 }

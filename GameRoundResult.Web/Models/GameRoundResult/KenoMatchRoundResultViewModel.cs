@@ -10,9 +10,9 @@ namespace GameRoundResult.Web.Models
 {
     public class KenoMatchRoundResultViewModel : RoundResultViewModel
     {
-        public KenoSoccerPeriodViewModel HalfTime { get; set; }
+        public KenoMatchPeriodViewModel HalfTime { get; set; }
 
-        public KenoSoccerPeriodViewModel FullTime { get; set; }
+        public KenoMatchPeriodViewModel FullTime { get; set; }
 
         public Dictionary<string, decimal> Odds { get; set; }
 
@@ -34,18 +34,54 @@ namespace GameRoundResult.Web.Models
             table.AddCssClass("table table-bordered table-result");
             var tbody = new TagBuilder("tbody");
 
-            tbody.InnerHtml.AppendHtml(GetHomeTitle(stringLocalizer));
-            tbody.InnerHtml.AppendHtml(GetNumbers(HalfTime.Result.Blue));
-            tbody.InnerHtml.AppendHtml(GetNumbers(FullTime.Result.Red));
-            tbody.InnerHtml.AppendHtml(GetAwayTitle(stringLocalizer));
-            tbody.InnerHtml.AppendHtml(GetNumbers(HalfTime.Result.Blue));
-            tbody.InnerHtml.AppendHtml(GetNumbers(FullTime.Result.Red));
+            tbody.InnerHtml.AppendHtml(GetTeamTitle(stringLocalizer));
+            tbody.InnerHtml.AppendHtml(GetFirstHalfTitle(stringLocalizer));
+            tbody.InnerHtml.AppendHtml(GetPeriodResult(HalfTime.Result));
             tbody.InnerHtml.AppendHtml(GetHalfTimeSummary(stringLocalizer));
+            tbody.InnerHtml.AppendHtml(GetFullTimeTitle(stringLocalizer));
+            tbody.InnerHtml.AppendHtml(GetPeriodResult(FullTime.Result));
             tbody.InnerHtml.AppendHtml(GetFullTimeSummary(stringLocalizer));
 
             table.InnerHtml.AppendHtml(tbody);
 
             return table.GetHtmlString();
+        }
+
+        private static TagBuilder GetPeriodResult(KenoMatchPeriodResultViewModel result)
+        {
+            var row = new TagBuilder("tr");
+            var blueCell = new TagBuilder("td");
+            blueCell.InnerHtml.AppendHtml(GetNumbers(result.Blue));
+            row.InnerHtml.AppendHtml(blueCell);
+
+            var redCell = new TagBuilder("td");
+            redCell.InnerHtml.AppendHtml(GetNumbers(result.Red, false));
+            row.InnerHtml.AppendHtml(redCell);
+
+            return row;
+        }
+
+        private static TagBuilder GetFirstHalfTitle(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            var row = new TagBuilder("tr");
+            var cell = new TagBuilder("td");
+            cell.AddCssClass("bold");
+            cell.Attributes.Add("colspan", "2");
+            cell.InnerHtml.Append(stringLocalizer["First Half"]);
+            row.InnerHtml.AppendHtml(cell);
+            return row;
+        }
+
+        private static TagBuilder GetFullTimeTitle(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            var row = new TagBuilder("tr");
+            var cell = new TagBuilder("td");
+            cell.AddCssClass("bold");
+            cell.Attributes.Add("colspan", "2");
+            cell.InnerHtml.Append(stringLocalizer["Full Time"]);
+            row.InnerHtml.AppendHtml(cell);
+
+            return row;
         }
 
         private static string GetPeriodSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer,
@@ -54,13 +90,13 @@ namespace GameRoundResult.Web.Models
             var stringBuilder = new StringBuilder();
             if (settlementResult.Blue)
             {
-                stringBuilder.AppendLine(stringLocalizer["Home"]);
+                stringBuilder.AppendLine(stringLocalizer["Team Blue"]);
             }
             else
             {
                 if (settlementResult.Red)
                 {
-                    stringBuilder.AppendLine(stringLocalizer["Away"]);
+                    stringBuilder.AppendLine(stringLocalizer["Team Red"]);
                 }
             }
 
@@ -74,13 +110,15 @@ namespace GameRoundResult.Web.Models
         {
             var row = new TagBuilder("tr");
             var cell = new TagBuilder("td");
-            cell.Attributes.Add("colspan", "10");
-            cell.InnerHtml.Append($"{stringLocalizer["First Half"]} - {HalfTime.Total}");
+            cell.Attributes.Add("colspan", "2");
 
-            var blueFTSum = FullTime.Result.Blue.Sum();
-            var redFTSum = FullTime.Result.Red.Sum();
+            var blueFTSum = HalfTime.Result.Blue.Sum();
+            var redFTSum = HalfTime.Result.Red.Sum();
 
-            cell.InnerHtml.Append($" ({stringLocalizer["Team Blue"]} {blueFTSum}, {stringLocalizer["Team Red"]} {redFTSum})");
+            cell.InnerHtml.Append($"{stringLocalizer["Team Blue"]} {blueFTSum}");
+
+
+            cell.InnerHtml.Append($" - {stringLocalizer["Total"]} {HalfTime.Total} - {stringLocalizer["Team Red"]} {redFTSum}");
             row.InnerHtml.AppendHtml(cell);
 
             return row;
@@ -90,67 +128,63 @@ namespace GameRoundResult.Web.Models
         {
             var row = new TagBuilder("tr");
             var cell = new TagBuilder("td");
-            cell.Attributes.Add("colspan", "10");
-            cell.InnerHtml.Append($"{stringLocalizer["Full Time"]} - {FullTime.Total}");
+            cell.Attributes.Add("colspan", "2");
 
             var blueFTSum = FullTime.Result.Blue.Sum();
             var redFTSum = FullTime.Result.Red.Sum();
 
-            cell.InnerHtml.Append($" ({stringLocalizer["Team Blue"]} {blueFTSum}, {stringLocalizer["Team Red"]} {redFTSum})");
+            cell.InnerHtml.Append($"{stringLocalizer["Team Blue"]} {blueFTSum}");
+
+            cell.InnerHtml.Append($" - {stringLocalizer["Total"]} {FullTime.Total} - {stringLocalizer["Team Red"]} {redFTSum}");
             row.InnerHtml.AppendHtml(cell);
 
             return row;
         }
 
-        private static TagBuilder GetNumbers(IEnumerable<int> numbers)
+        private static TagBuilder GetNumbers(IEnumerable<int> numbers, bool isBlue = true)
+        {
+            var div = new TagBuilder("div");
+            div.AddCssClass("number-list");
+
+            foreach (var number in numbers)
+            {
+                var span = new TagBuilder("span");
+                span.AddCssClass($"number {(isBlue ? "blue" : "red")}");
+                span.InnerHtml.Append(number.ToString());
+                div.InnerHtml.AppendHtml(span);
+            }
+
+            return div;
+        }
+
+        private static TagBuilder GetTeamTitle(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
             row.AddCssClass("bold");
-            foreach (var number in numbers)
-            {
-                var cell = new TagBuilder("td");
-                cell.InnerHtml.Append(number.ToString());
-                row.InnerHtml.AppendHtml(cell);
-            }
+            var blueCell = new TagBuilder("td");
+            blueCell.InnerHtml.Append(stringLocalizer["Team Blue"]);
+            row.InnerHtml.AppendHtml(blueCell);
 
-            return row;
-        }
-
-        private static TagBuilder GetHomeTitle(IStringLocalizer<RoundResultViewModel> stringLocalizer)
-        {
-            var row = new TagBuilder("tr");
-            var cell = new TagBuilder("td");
-            cell.Attributes.Add("colspan", "10");
-            cell.InnerHtml.Append(stringLocalizer["Home"]);
-            row.InnerHtml.AppendHtml(cell);
-
-            return row;
-        }
-
-        private static TagBuilder GetAwayTitle(IStringLocalizer<RoundResultViewModel> stringLocalizer)
-        {
-            var row = new TagBuilder("tr");
-            var cell = new TagBuilder("td");
-            cell.Attributes.Add("colspan", "10");
-            cell.InnerHtml.Append(stringLocalizer["Away"]);
-            row.InnerHtml.AppendHtml(cell);
+            var redCell = new TagBuilder("td");
+            redCell.InnerHtml.Append(stringLocalizer["Team Red"]);
+            row.InnerHtml.AppendHtml(redCell);
 
             return row;
         }
     }
 
-    public class KenoSoccerPeriodViewModel
+    public class KenoMatchPeriodViewModel
     {
         public DateTime Time { get; set; }
 
         public int Total { get; set; }
 
-        public KenoSoccerPeriodResultViewModel Result { get; set; }
+        public KenoMatchPeriodResultViewModel Result { get; set; }
 
         public KenoMatchPeriodSettlementResultViewModel SettlementResult { get; set; }
     }
 
-    public class KenoSoccerPeriodResultViewModel
+    public class KenoMatchPeriodResultViewModel
     {
         public List<int> Blue { get; set; }
         public List<int> Red { get; set; }
