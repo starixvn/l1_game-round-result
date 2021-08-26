@@ -2,8 +2,9 @@
 using System.Linq;
 using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
-using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Accessor;
+using GameRoundResult.Web.Configuration;
+using GameRoundResult.Web.ViewFactory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Localization.Routing;
@@ -11,7 +12,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
-using GameRoundResult.Web.ViewFactory;
 
 namespace GameRoundResult.Web.Extensions
 {
@@ -22,8 +22,9 @@ namespace GameRoundResult.Web.Extensions
             var conventionPack = new ConventionPack { new CamelCaseElementNameConvention(), new IgnoreExtraElementsConvention(true) };
             ConventionRegistry.Register("camelCase", conventionPack, t => true);
             var mongoClient = new MongoClient(configuration["DatabaseSettings:ConnectionString"]);
-            services.AddSingleton<IMongoClient>(mongoClient);
             var mongoDatabase = mongoClient.GetDatabase(configuration["DatabaseSettings:DatabaseName"]);
+
+            services.AddSingleton<IMongoClient>(mongoClient);
             services.AddScoped(provider => mongoClient.GetDatabase(configuration["DatabaseSettings:DatabaseName"]));
         }
 
@@ -89,6 +90,9 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<VipSeDieWarTicketAccessor>();
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
+
+            services.AddScoped<ILogRepository, LogRepository>();
+            services.AddScoped<ILogService, LogService>();
         }
     }
 }
