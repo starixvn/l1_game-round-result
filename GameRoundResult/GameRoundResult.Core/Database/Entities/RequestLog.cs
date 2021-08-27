@@ -11,7 +11,7 @@ namespace GameRoundResult.Core.Database.Entities
         {
             LogTimeStamp = DateTimeOffset.UtcNow;
             RequestTimeStamp = requestTimeStamp;
-            Request = request;
+            Call = request;
         }
 
         [BsonRepresentation(BsonType.String)]
@@ -23,9 +23,9 @@ namespace GameRoundResult.Core.Database.Entities
         [BsonRepresentation(BsonType.String)]
         public DateTimeOffset ResponseTimeStamp { get; set; }
 
-        public AccessUrlRequest Request { get; set; }
+        public AccessUrlRequest Call { get; set; }
 
-        public AccessUrlResponse Response { get; set; }
+        public AccessUrlResponse Result { get; set; }
     }
 
     public class AccessUrlRequest
