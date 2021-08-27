@@ -96,7 +96,7 @@ namespace GameRoundResult.Web.Controllers
 
                     var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
 
-                    log.AccessUrlResponse = new AccessUrlResponse { RedirectUrl = redirectUrl };
+                    log.Response = new AccessUrlResponse { RedirectUrl = redirectUrl };
                     log.ResponseTimeStamp = DateTimeOffset.UtcNow;
                     logService.LogTicketDetailRequestAsync(log);
 
@@ -105,7 +105,7 @@ namespace GameRoundResult.Web.Controllers
             }
 
             log.ResponseTimeStamp = DateTimeOffset.UtcNow;
-            log.AccessUrlResponse = new AccessUrlResponse { Error = "BadRequest" };
+            log.Response = new AccessUrlResponse { Error = "BadRequest" };
             logService.LogTicketDetailRequestAsync(log);
 
             return BadRequest();
