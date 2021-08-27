@@ -2,7 +2,9 @@
 using System.Linq;
 using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
+using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.Configuration;
+using GameRoundResult.Web.ViewFactory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Localization.Routing;
@@ -20,8 +22,9 @@ namespace GameRoundResult.Web.Extensions
             var conventionPack = new ConventionPack { new CamelCaseElementNameConvention(), new IgnoreExtraElementsConvention(true) };
             ConventionRegistry.Register("camelCase", conventionPack, t => true);
             var mongoClient = new MongoClient(configuration["DatabaseSettings:ConnectionString"]);
-            services.AddSingleton<IMongoClient>(mongoClient);
             var mongoDatabase = mongoClient.GetDatabase(configuration["DatabaseSettings:DatabaseName"]);
+
+            services.AddSingleton<IMongoClient>(mongoClient);
             services.AddScoped(provider => mongoClient.GetDatabase(configuration["DatabaseSettings:DatabaseName"]));
         }
 
@@ -51,6 +54,45 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<GameTypeLocalization>();
             services.AddScoped<IGameBetRepository, GameBetRepository>();
             services.AddScoped<IGameBetService, GameBetService>();
+            services.AddScoped<IGlobalConfigService, GlobalConfigService>();
+            services.AddScoped<IGlobalConfigRepository, GlobalConfigRepository>();
+
+            services.AddScoped<IGameRoundAccessorFactory, GameRoundAccessorFactory>();
+            services.AddScoped(typeof(GameRoundAccessor<,>));
+            services.AddScoped(typeof(KenoMatchRoundAccessor<>));
+            services.AddScoped<IKenoMatchRoundResultService, KenoMatchRoundResultService>();
+            services.AddScoped<IRoundResultViewFactory, RoundResultViewFactory>();
+
+            services.AddScoped<IBlackjackTicketService, BlackjackTicketService>();
+            services.AddScoped<IBlackjackBetRepository, BlackjackBetRepository>();
+
+            services.AddScoped<IFourGuardiansTicketService, FourGuardiansTicketService>();
+            services.AddScoped<IFourGuardiansBetRepository, FourGuardiansBetRepository>();
+
+            services.AddScoped(typeof(BigSmallTicketAccessor<,,>));
+            services.AddScoped<BaccaratTicketAccessor>();
+            services.AddScoped<BlackjackTicketAccessor>();
+            services.AddScoped<DragonTigerTicketAccessor>();
+            services.AddScoped<FishPrawnCrabTicketAccessor>();
+            services.AddScoped<FourGuardiansTicketAccessor>();
+            services.AddScoped<KenoProMaxTicketAccessor>();
+            services.AddScoped<LotteryTicketAccessor>();
+            services.AddScoped(typeof(MiniKenoTicketAccessor<,,>));
+            services.AddScoped<MiniSeDieTicketAccessor>();
+            services.AddScoped<OddEvenTicketAccessor>();
+            services.AddScoped<RouletteTicketAccessor>();
+            services.AddScoped<SeDieTicketAccessor>();
+            services.AddScoped<SicBoTicketAccessor>();
+            services.AddScoped<SpecialSeDieTicketAccessor>();
+            services.AddScoped<VipBaccaratTicketAccessor>();
+            services.AddScoped<VipFishPrawnCrabTicketAccessor>();
+            services.AddScoped<VipSeDieTicketAccessor>();
+            services.AddScoped<VipSeDieWarTicketAccessor>();
+
+            services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
+
+            services.AddScoped<ILogRepository, LogRepository>();
+            services.AddScoped<ILogService, LogService>();
         }
     }
 }

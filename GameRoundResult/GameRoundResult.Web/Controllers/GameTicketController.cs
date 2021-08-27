@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
+using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
@@ -23,16 +25,19 @@ namespace GameRoundResult.Web.Controllers
         private readonly ITimeLimitedDataProtector dataProtector;
         private const string dataProtectorKey = "game-ticket-data-key";
         private const int dataProtectorLifeTimeSecond = 30;
+        private readonly ILogService logService;
 
         public GameTicketController(IMediator mediator, IOptionsSnapshot<List<AuthenticationClient>> clientAccessor,
             IDataProtectionProvider dataProtectionProvider,
-            IOptionsSnapshot<HostConfiguration> hostConfigurationAccessor
+            IOptionsSnapshot<HostConfiguration> hostConfigurationAccessor,
+            ILogService logService
             )
         {
             clients = clientAccessor.Value;
             this.mediator = mediator;
             dataProtector = dataProtectionProvider.CreateProtector(dataProtectorKey).ToTimeLimitedDataProtector();
             hostConfiguration = hostConfigurationAccessor.Value;
+            this.logService = logService;
         }
 
         [HttpGet]
@@ -78,6 +83,8 @@ namespace GameRoundResult.Web.Controllers
         [HttpPost]
         public IActionResult GetAccessUrl([FromBody] GameTicketAccessUrlRequestModel model)
         {
+            var log = ConvertToLog(model);
+
             if (ModelState.IsValid)
             {
                 var client = GetClient(model.Auth.ClientID, model.Auth.ClientKey);
@@ -88,12 +95,32 @@ namespace GameRoundResult.Web.Controllers
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
 
                     var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
+
+                    log.AccessUrlResponse = new AccessUrlResponse { RedirectUrl = redirectUrl };
+                    log.ResponseTimeStamp = DateTimeOffset.UtcNow;
+                    logService.LogTicketDetailRequestAsync(log);
+
                     return Ok(new GameTicketAccessUrlResultModel { RedirectUrl = redirectUrl });
                 }
             }
 
+            log.ResponseTimeStamp = DateTimeOffset.UtcNow;
+            log.AccessUrlResponse = new AccessUrlResponse { Error = "BadRequest" };
+            logService.LogTicketDetailRequestAsync(log);
+
             return BadRequest();
         }
+
+        private static RequestLog ConvertToLog(GameTicketAccessUrlRequestModel model)
+        => new RequestLog(DateTimeOffset.UtcNow, new AccessUrlRequest
+        {
+            Auth = new Core.Database.Entities.AuthModel(model.Auth.ClientID, model.Auth.ClientKey),
+            GameTypeId = model.GameTypeId,
+            GameRoundId = model.GameRoundId,
+            ObCustId = model.ObCustId,
+            Language = model.Language,
+            FreeBet = model.FreeBet
+        });
 
         private AuthenticationClient GetClient(string clientId, string clientKey)
         {
