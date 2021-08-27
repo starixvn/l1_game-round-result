@@ -46,6 +46,8 @@ namespace GameRoundResult.Web.Controllers
         {
             try
             {
+                SentrySdk.CaptureMessage($"Request ticket detail {DateTime.Now}");
+
                 var data = dataProtector.Unprotect(queryKey).Split('_');
                 var clientId = data[0];
                 var clientKey = data[1];
