@@ -202,9 +202,18 @@
     <value>Anh Hùng Chim Lạc</value>
   </data>
   <data name="KenoMatch1" xml:space="preserve">
-    <value>Keno Match 1</value>
+    <value>Keno Match</value>
   </data>
   <data name="KenoMatch2" xml:space="preserve">
-    <value>Keno Match 2</value>
+    <value>Keno Match MD5</value>
+  </data>
+  <data name="KenoPower1" xml:space="preserve">
+    <value>Keno Đối Kháng</value>
+  </data>
+  <data name="KenoPower2" xml:space="preserve">
+    <value>Keno Đối Kháng MD5</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
   </data>
 </root>

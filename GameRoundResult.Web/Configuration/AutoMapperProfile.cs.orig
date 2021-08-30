@@ -234,12 +234,12 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<ThreeCardsBet, ThreeCardsBetViewModel>();
             CreateMap<ThreeCardsOdds, ThreeCardsOddsViewModel>();
 
+            CreateMap<KenoMatchRound, KenoMatchRoundResultViewModel>();
+            CreateMap<KenoMatchPeriod, KenoMatchPeriodViewModel>();
+            CreateMap<KenoMatchPeriodResult, KenoMatchPeriodResultViewModel>();
+            CreateMap<KenoMatchPeriodSettlementResult, KenoMatchPeriodSettlementResultViewModel>();
+            CreateMap<KenoMatchBet, KenoMatchetViewModel>();
 <<<<<<< HEAD
-            CreateMap<KenoSoccerRound, KenoSoccerRoundResultViewModel>();
-            CreateMap<KenoSoccerPeriod, KenoSoccerPeriodViewModel>();
-            CreateMap<KenoSoccerPeriodResult, KenoSoccerPeriodResultViewModel>();
-            CreateMap<KenoSoccerPeriodSettlementResult, KenoSoccerPeriodSettlementResultViewModel>();
-            CreateMap<KenoSoccerBet, KenoSoccerBetViewModel>();
             CreateMap<HeroesSlotRound, HeroesSlotRoundResultViewModel>();
             CreateMap<HeroesSlotSettlementResult, HeroesSlotSettlementResultViewModel>();
             CreateMap<HeroesSlotFreeSpin, HeroesSlotFreeSpinViewModel>();
@@ -248,12 +248,11 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<HeroesSlotBonusChest, HeroesSlotBonusChestViewModel>();
             CreateMap<HeroesSlotJackpot, HeroesSlotJackpotViewModel>();
 =======
-            CreateMap<KenoMatchRound, KenoMatchRoundResultViewModel>();
-            CreateMap<KenoMatchPeriod, KenoSoccerPeriodViewModel>();
-            CreateMap<KenoMatchPeriodResult, KenoSoccerPeriodResultViewModel>();
-            CreateMap<KenoMatchPeriodSettlementResult, KenoMatchPeriodSettlementResultViewModel>();
-            CreateMap<KenoMatchBet, KenoMatchetViewModel>();
->>>>>>> 19d3fad... change keno soccer to keno match
+
+            CreateMap<KenoPowerRound, KenoPowerRoundResultViewModel>();
+            CreateMap<KenoPowerResult, KenoPowerResultViewModel>();
+            CreateMap<KenoPowerSettlementResult, KenoPowerSettlementResultViewModel>();
+>>>>>>> f87e934... feat: keno power - round result
         }
     }
 }

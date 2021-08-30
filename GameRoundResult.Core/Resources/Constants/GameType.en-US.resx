@@ -202,9 +202,15 @@
     <value>The Legend of Heroes</value>
   </data>
   <data name="KenoMatch2" xml:space="preserve">
-    <value>Keno Match 2</value>
+    <value>Keno Match MD5</value>
   </data>
   <data name="KenoMatch1" xml:space="preserve">
-    <value>Keno Match 1</value>
+    <value>Keno Match</value>
+  </data>
+  <data name="KenoPower1" xml:space="preserve">
+    <value>Keno Power</value>
+  </data>
+  <data name="KenoPower2" xml:space="preserve">
+    <value>Keno Power MD5</value>
   </data>
 </root>

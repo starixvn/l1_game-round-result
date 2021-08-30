@@ -475,12 +475,7 @@ body {
     }
 }
 
-.table-keno-match {
-    tr {
-        td:nth-child(4), td:nth-child(5) {
-            white-space: pre-wrap;
-        }
-    }
+.table-keno-match, .table-keno-power {
 
     .number-list {
         display: grid;
@@ -506,6 +501,22 @@ body {
             &.red {
                 border-color: #b53f39;
             }
+        }
+    }
+}
+
+.table-keno-match {
+    tr {
+        td:nth-child(4), td:nth-child(5) {
+            white-space: pre-wrap;
+        }
+    }
+}
+
+.table-keno-power {
+    tr {
+        td:nth-child(8) {
+            white-space: pre-wrap;
         }
     }
 }

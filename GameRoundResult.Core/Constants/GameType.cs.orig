@@ -32,14 +32,13 @@
         FourGuardians = 29,
         Lottery = 31,
         ThreeCards = 35,
-<<<<<<< HEAD
-        HeroesSlot = 38
-        MyDinh,
-        HangDay,
-        ThongNhat
-=======
         KenoMatch1,
         KenoMatch2,
->>>>>>> 19d3fad... change keno soccer to keno match
+<<<<<<< HEAD
+        HeroesSlot
+=======
+        KenoPower1 = 40,
+        KenoPower2
+>>>>>>> f87e934... feat: keno power - round result
     }
 }

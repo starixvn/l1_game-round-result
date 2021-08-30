@@ -7,6 +7,7 @@ namespace GameRoundResult.Core.Database.Entities
 {
     public class KenoMatchRound : GameRound
     {
+        [BsonElement("firstHalf")]
         public KenoMatchPeriod HalfTime { get; set; }
         public KenoMatchPeriod FullTime { get; set; }
 

@@ -23,6 +23,7 @@ namespace GameRoundResult.Web.ViewFactory
         private const string sedieWar = "_VipSeDieWarRoundResult";
         private const string lottery = "_LotteryRoundResult";
         private const string threeCards = "_ThreeCardsRoundResult";
+        private const string kenoPower = "_KenoPowerRoundResult";
 
         private readonly Dictionary<GameType, string> views = new()
         {
@@ -54,6 +55,8 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.ThreeCards, threeCards},
             { GameType.KenoMatch1, kenoMatch },
             { GameType.KenoMatch2, kenoMatch },
+            { GameType.KenoPower1, kenoPower },
+            { GameType.KenoPower2, kenoPower },
         };
 
         public string GetView(GameType game) => views[game];
