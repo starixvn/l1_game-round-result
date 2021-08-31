@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GameRoundResult.Web.Models
 {
@@ -23,5 +24,17 @@ namespace GameRoundResult.Web.Models
         public string Choice { get; set; }
 
         public decimal Amount { get; set; }
+
+        public decimal GetRefund(KenoMatchPeriodSettlementResultViewModel settlementResult)
+        {
+            var teamChoices = new[] { "fhBlue", "fhRed", "ftBlue", "ftRed", "liveFTBlue", "liveFTRed" };
+
+            if (!settlementResult.Blue && !settlementResult.Red && teamChoices.Contains(Choice))
+            {
+                return Amount;
+            }
+
+            return 0;
+        }
     }
 }

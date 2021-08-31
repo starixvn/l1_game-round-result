@@ -220,6 +220,7 @@
             <th>@CommonLocalizer["BetChoice"]</th>
             <th>@CommonLocalizer["Odds"]</th>
             <th>@CommonLocalizer["BetAmount"]</th>
+            <th>@CommonLocalizer["Refund"]</th>
         </tr>
     </thead>
     <tbody>
@@ -247,6 +248,9 @@
                     <td class="text-right @cssClass">
                         @bet.Amount.Format()
                     </td>
+                    <td class="text-right @cssClass">
+                        @bet.GetRefund(settlementResult).Format()
+                    </td>
                 </tr>
             }
 
@@ -266,7 +270,7 @@
         else
         {
             <tr>
-                <td colspan="5" class="text-center">
+                <td colspan="6" class="text-center">
                     @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>

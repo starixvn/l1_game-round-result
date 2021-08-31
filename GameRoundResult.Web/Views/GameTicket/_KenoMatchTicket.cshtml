@@ -54,7 +54,7 @@
     var ftSettlementResult = Model.RoundResult.FullTime.SettlementResult;
 
     var settlmentResultMapper = new Dictionary<string, bool>
-{
+    {
         { "fhBlue", htSettlementResult.Blue },
         { "fhRed", htSettlementResult.Red },
         { "fhOver", htSettlementResult.Over},
@@ -73,6 +73,16 @@
         { "liveFTUnder", ftSettlementResult.Under },
         { "liveFTOdd", ftSettlementResult.Odd},
         { "liveFTEven", ftSettlementResult.Even },
+    };
+
+    var settlmentResultRefund = new Dictionary<string, KenoMatchPeriodSettlementResultViewModel>
+    {
+        { "fhBlue", htSettlementResult },
+        { "fhRed", htSettlementResult },
+        { "ftBlue", ftSettlementResult },
+        { "ftRed", ftSettlementResult },
+        { "liveFTBlue", ftSettlementResult },
+        { "liveFTRed", ftSettlementResult },
     };
 }
 
@@ -191,7 +201,6 @@
                             @Localizer["Even"]
                         }
                     }
-
                 </td>
 
                 <td>
@@ -226,7 +235,6 @@
                             @Localizer["Even"]
                         }
                     }
-
                 </td>
             </tr>
         }
@@ -249,6 +257,7 @@
             <th>@CommonLocalizer["BetChoice"]</th>
             <th>@CommonLocalizer["Odds"]</th>
             <th>@CommonLocalizer["BetAmount"]</th>
+            <th>@CommonLocalizer["Refund"]</th>
         </tr>
     </thead>
     <tbody>
@@ -276,6 +285,9 @@
                     <td class="text-right @cssClass">
                         @bet.Amount.Format()
                     </td>
+                    <td class="text-right @cssClass">
+                        @bet.GetRefund(settlmentResultRefund[bet.Choice]).Format()
+                    </td>
                 </tr>
             }
 
@@ -295,7 +307,7 @@
         else
         {
             <tr>
-                <td colspan="5" class="text-center">
+                <td colspan="6" class="text-center">
                     @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>

@@ -25,5 +25,15 @@ namespace GameRoundResult.Web.Models
         public string Choice { get; set; }
 
         public decimal Amount { get; set; }
+
+        public decimal GetRefund(KenoPowerSettlementResultViewModel settlementResult)
+        {
+            if (!settlementResult.Banker && !settlementResult.Player && (Choice == "player" || Choice == "banker"))
+            {
+                return Amount;
+            }
+
+            return 0;
+        }
     }
 }
