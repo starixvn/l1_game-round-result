@@ -152,7 +152,6 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
-
         public static ThreeCardsBetViewModel ToViewModel(this ThreeCardsBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<ThreeCardsBet, ThreeCardsBetViewModel>(entity, opts =>
@@ -161,10 +160,18 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
-        public static KenoMatchetViewModel ToViewModel(this KenoMatchBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        public static KenoMatchBetViewModel ToViewModel(this KenoMatchBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-        return mapper.Map<KenoMatchBet, KenoMatchetViewModel>(entity, opts =>
-                  {
+            return mapper.Map<KenoMatchBet, KenoMatchBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static KenoPowerBetViewModel ToViewModel(this KenoPowerBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<KenoPowerBet, KenoPowerBetViewModel>(entity, opts =>
+            {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });
         }

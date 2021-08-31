@@ -22,7 +22,7 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal TotalAmount { get; set; }
         public decimal Refund { get; set; }
 
-        public Dictionary<string, bool> Odds { get; set; }
+        public Dictionary<string, decimal> Odds { get; set; }
     }
 
     [CollectionName("kenopower1_ones")]

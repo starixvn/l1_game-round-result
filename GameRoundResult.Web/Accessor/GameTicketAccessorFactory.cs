@@ -43,6 +43,8 @@ namespace GameRoundResult.Web.Accessor
             { GameType.ThreeCards, typeof(ThreeCardsTicketAccessor) },
             { GameType.KenoMatch1, typeof(KenoMatchTicketAccessor<KenoMatch1Round, KenoMatch1One, KenoMatch1Bet>) },
             { GameType.KenoMatch2, typeof(KenoMatchTicketAccessor<KenoMatch2Round, KenoMatch2One, KenoMatch2Bet>) },
+            { GameType.KenoPower1, typeof(KenoPowerTicketAccessor<KenoPower1Round, KenoPower1One, KenoPower1Bet>) },
+            { GameType.KenoPower2, typeof(KenoPowerTicketAccessor<KenoPower2Round, KenoPower2One, KenoPower2Bet>) },
         };
 
         private readonly IServiceProvider serviceProvider;

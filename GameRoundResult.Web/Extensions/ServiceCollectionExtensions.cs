@@ -89,6 +89,8 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<VipFishPrawnCrabTicketAccessor>();
             services.AddScoped<VipSeDieTicketAccessor>();
             services.AddScoped<VipSeDieWarTicketAccessor>();
+            services.AddScoped(typeof(KenoMatchTicketAccessor<,,>));
+            services.AddScoped(typeof(KenoPowerTicketAccessor<,,>));
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
         }

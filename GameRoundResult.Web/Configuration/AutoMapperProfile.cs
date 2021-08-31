@@ -177,9 +177,9 @@ namespace GameRoundResult.Web.Configuration
                 .ForMember(x => x.PlayerCards, opt => opt.MapFrom((source, destination, i, context) =>
                 {
                     var mapper = context.Mapper;
-                    var result = new List<DragonTigerCardViewModel> 
-                    { 
-                        mapper.Map<DragonTigerCardViewModel>(source.Result.Player.FirstCard), 
+                    var result = new List<DragonTigerCardViewModel>
+                    {
+                        mapper.Map<DragonTigerCardViewModel>(source.Result.Player.FirstCard),
                         mapper.Map<DragonTigerCardViewModel>(source.Result.Player.SecondCard)
                     };
                     if (source.Result.Player.ThirdCard != null)
@@ -194,7 +194,7 @@ namespace GameRoundResult.Web.Configuration
                     var mapper = context.Mapper;
                     var result = new List<DragonTigerCardViewModel> {
                         mapper.Map<DragonTigerCardViewModel>(source.Result.Banker.FirstCard),
-                        mapper.Map<DragonTigerCardViewModel>(source.Result.Banker.SecondCard) 
+                        mapper.Map<DragonTigerCardViewModel>(source.Result.Banker.SecondCard)
                     };
 
                     if (source.Result.Banker.ThirdCard != null)
@@ -238,11 +238,12 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<KenoMatchPeriod, KenoMatchPeriodViewModel>();
             CreateMap<KenoMatchPeriodResult, KenoMatchPeriodResultViewModel>();
             CreateMap<KenoMatchPeriodSettlementResult, KenoMatchPeriodSettlementResultViewModel>();
-            CreateMap<KenoMatchBet, KenoMatchetViewModel>();
+            CreateMap<KenoMatchBet, KenoMatchBetViewModel>();
 
             CreateMap<KenoPowerRound, KenoPowerRoundResultViewModel>();
             CreateMap<KenoPowerResult, KenoPowerResultViewModel>();
             CreateMap<KenoPowerSettlementResult, KenoPowerSettlementResultViewModel>();
+            CreateMap<KenoPowerBet, KenoPowerBetViewModel>();
             CreateMap<HeroesSlotRound, HeroesSlotRoundResultViewModel>();
             CreateMap<HeroesSlotSettlementResult, HeroesSlotSettlementResultViewModel>();
             CreateMap<HeroesSlotFreeSpin, HeroesSlotFreeSpinViewModel>();

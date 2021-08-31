@@ -7,7 +7,7 @@ namespace GameRoundResult.Web.Models
     {
         public KenoMatchRoundResultViewModel RoundResult { get; set; }
 
-        public IEnumerable<KenoMatchetViewModel> Bets { get; set; }
+        public IEnumerable<KenoMatchBetViewModel> Bets { get; set; }
 
         public decimal TotalBet { get; set; }
 
@@ -16,7 +16,7 @@ namespace GameRoundResult.Web.Models
         public decimal WinLoss => TotalBetWin - TotalBet;
     }
 
-    public class KenoMatchetViewModel
+    public class KenoMatchBetViewModel
     {
         public DateTime Time { get; set; }
 
