@@ -32,7 +32,8 @@ namespace GameRoundResult.Web.Accessor
                 RoundResult = result.Item1?.ToViewModel<TRoundEntity, KenoMatchRoundResultViewModel>(mapper, request.TimeZoneInfo),
                 Bets = result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
                 TotalBet = result.Item3?.TotalAmount ?? 0,
-                TotalBetWin = result.Item3?.Betwin ?? 0
+                TotalBetWin = result.Item3?.Betwin ?? 0,
+                Refund =  result.Item3?.Refund ?? 0
             };
         }
     }

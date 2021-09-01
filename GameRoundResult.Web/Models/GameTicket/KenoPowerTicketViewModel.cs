@@ -10,6 +10,7 @@ namespace GameRoundResult.Web.Models
         public IEnumerable<KenoPowerBetViewModel> Bets { get; set; }
 
         public decimal TotalBet { get; set; }
+        public decimal Refund { get; set; }
 
         public decimal TotalBetWin { get; set; }
 

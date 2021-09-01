@@ -33,7 +33,8 @@ namespace GameRoundResult.Web.Accessor
                 Bets = result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
                 TotalBet = result.Item3?.TotalAmount ?? 0,
                 TotalBetWin = result.Item3?.Betwin ?? 0,
-                Odds = result.Item3?.Odds
+                Odds = result.Item3?.Odds,
+                Refund =  result.Item3?.Refund ?? 0
             };
         }
     }

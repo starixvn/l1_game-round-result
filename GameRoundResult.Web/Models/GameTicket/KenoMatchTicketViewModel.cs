@@ -12,9 +12,11 @@ namespace GameRoundResult.Web.Models
 
         public decimal TotalBet { get; set; }
 
+        public decimal Refund { get; set; }
+
         public decimal TotalBetWin { get; set; }
 
-        public decimal WinLoss => TotalBetWin - TotalBet;
+        public decimal WinLoss => TotalBetWin - TotalBet + Refund;  
     }
 
     public class KenoMatchBetViewModel

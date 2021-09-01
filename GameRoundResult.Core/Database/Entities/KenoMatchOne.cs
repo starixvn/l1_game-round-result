@@ -5,22 +5,22 @@ namespace GameRoundResult.Core.Database.Entities
 {
     public class KenoMatchOne : BaseBetEntity
     {
-        public decimal PreHTHome { get; set; }
-        public decimal PreHTAway { get; set; }
-        public decimal PreHTOver { get; set; }
-        public decimal PreHTUnder { get; set; }
-        public decimal PreHTOdd { get; set; }
-        public decimal PreHTEven { get; set; }
+        public decimal FHBlue { get; set; }
+        public decimal FHRed { get; set; }
+        public decimal FHOver { get; set; }
+        public decimal FHUnder { get; set; }
+        public decimal FHOdd { get; set; }
+        public decimal FHEven { get; set; }
 
-        public decimal PreFTHome { get; set; }
-        public decimal PreFTAway { get; set; }
-        public decimal PreFTOver { get; set; }
-        public decimal PreFTUnder { get; set; }
-        public decimal PreFTOdd { get; set; }
-        public decimal PreFTEven { get; set; }
+        public decimal FTBlue { get; set; }
+        public decimal FTRed { get; set; }
+        public decimal FTOver { get; set; }
+        public decimal FTUnder { get; set; }
+        public decimal FTOdd { get; set; }
+        public decimal FTEven { get; set; }
 
-        public decimal LiveFTHome { get; set; }
-        public decimal LiveFTAway { get; set; }
+        public decimal LiveFTBlue { get; set; }
+        public decimal LiveFTRed { get; set; }
         public decimal LiveFTOver { get; set; }
         public decimal LiveFTUnder { get; set; }
         public decimal LiveFTOdd { get; set; }
