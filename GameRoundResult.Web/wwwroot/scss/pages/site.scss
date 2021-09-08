@@ -460,7 +460,7 @@ body {
     }
 }
 
-.table-lottery, .table-keno-match {
+.table-lottery, .table-keno-match, .table-keno-power {
     .table-result {
         margin: auto;
         width: 100%;
@@ -515,7 +515,7 @@ body {
 
 .table-keno-power {
     tr {
-        td:nth-child(8) {
+        td:nth-child(7) {
             white-space: pre-wrap;
         }
     }

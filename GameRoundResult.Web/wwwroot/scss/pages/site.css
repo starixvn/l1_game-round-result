@@ -457,7 +457,7 @@ body {
 .table-vip-se-die-war tr td:nth-child(5) {
   white-space: pre-wrap; }
 
-.table-lottery .table-result, .table-keno-match .table-result {
+.table-lottery .table-result, .table-keno-match .table-result, .table-keno-power .table-result {
   margin: auto;
   width: 100%; }
 
@@ -489,5 +489,5 @@ body {
 .table-keno-match tr td:nth-child(4), .table-keno-match tr td:nth-child(5) {
   white-space: pre-wrap; }
 
-.table-keno-power tr td:nth-child(8) {
+.table-keno-power tr td:nth-child(7) {
   white-space: pre-wrap; }

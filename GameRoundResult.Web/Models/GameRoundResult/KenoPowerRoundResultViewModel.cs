@@ -38,7 +38,7 @@ namespace GameRoundResult.Web.Models
             }
             if (SettlementResult.Orange)
             {
-                stringBuilder.AppendLine(stringLocalizer[")"]);
+                stringBuilder.AppendLine(stringLocalizer["Orange"]);
             }
             if (SettlementResult.Yellow)
             {
