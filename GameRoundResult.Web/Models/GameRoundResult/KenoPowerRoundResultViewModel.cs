@@ -17,9 +17,9 @@ namespace GameRoundResult.Web.Models
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
                 GeResultContent(stringLocalizer),
-                GetPlayerBankerSettlementResultContent(stringLocalizer),
-                GetPlayerSettlementResultContent(stringLocalizer),
-                GetBankerSettlementResultContent(stringLocalizer),
+                GetBlueRedSettlementResultContent(stringLocalizer),
+                GetBlueSettlementResultContent(stringLocalizer),
+                GetRedSettlementResultContent(stringLocalizer),
                 GetTotalSettlementResultContent(stringLocalizer),
             };
 
@@ -31,35 +31,6 @@ namespace GameRoundResult.Web.Models
             var stringBuilder = new StringBuilder();
             stringBuilder.AppendLine(SettlementResult.Big ? stringLocalizer["Big"] : stringLocalizer["Small"]);
             stringBuilder.AppendLine(SettlementResult.Odd ? stringLocalizer["Odd"] : stringLocalizer["Even"]);
-
-            if (SettlementResult.Red)
-            {
-                stringBuilder.AppendLine(stringLocalizer["Red"]);
-            }
-            if (SettlementResult.Orange)
-            {
-                stringBuilder.AppendLine(stringLocalizer["Orange"]);
-            }
-            if (SettlementResult.Yellow)
-            {
-                stringBuilder.AppendLine(stringLocalizer["Yellow"]);
-            }
-            if (SettlementResult.Green)
-            {
-                stringBuilder.AppendLine(stringLocalizer["Green"]);
-            }
-            if (SettlementResult.Blue)
-            {
-                stringBuilder.AppendLine(stringLocalizer["Blue"]);
-            }
-            if (SettlementResult.Indigo)
-            {
-                stringBuilder.AppendLine(stringLocalizer["Indigo"]);
-            }
-            if (SettlementResult.Violet)
-            {
-                stringBuilder.AppendLine(stringLocalizer["Violet"]);
-            }
 
             return stringBuilder.ToString();
         }
@@ -85,12 +56,12 @@ namespace GameRoundResult.Web.Models
             var cell = new TagBuilder("td");
             cell.Attributes.Add("colspan", "2");
 
-            var playerSum = Result.Player.Sum(x => x);
-            var bankerSum = Result.Banker.Sum(x => x);
+            var BlueSum = Result.Blue.Sum(x => x);
+            var RedSum = Result.Red.Sum(x => x);
 
-            cell.InnerHtml.Append($"{stringLocalizer["Player"]} {playerSum}");
+            cell.InnerHtml.Append($"{stringLocalizer["Team Blue"]} {BlueSum}");
 
-            cell.InnerHtml.Append($" - {stringLocalizer["Total"]} {playerSum + bankerSum} - {stringLocalizer["Banker"]} {bankerSum}");
+            cell.InnerHtml.Append($" - {stringLocalizer["Total"]} {BlueSum + RedSum} - {stringLocalizer["Team Red"]} {RedSum}");
             row.InnerHtml.AppendHtml(cell);
 
             return row;
@@ -100,34 +71,34 @@ namespace GameRoundResult.Web.Models
         {
             var row = new TagBuilder("tr");
             var blueCell = new TagBuilder("td");
-            blueCell.InnerHtml.AppendHtml(GetNumbers(Result.Player));
+            blueCell.InnerHtml.AppendHtml(GetNumbers(Result.Blue));
             row.InnerHtml.AppendHtml(blueCell);
 
             var redCell = new TagBuilder("td");
-            redCell.InnerHtml.AppendHtml(GetNumbers(Result.Banker));
+            redCell.InnerHtml.AppendHtml(GetNumbers(Result.Red));
             row.InnerHtml.AppendHtml(redCell);
 
             return row;
         }
 
-        private string GetPlayerBankerSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetBlueRedSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            if (SettlementResult.Player)
+            if (SettlementResult.Blue)
             {
-                return stringLocalizer["Player"];
+                return stringLocalizer["Team Blue"];
             }
 
-            if (SettlementResult.Banker)
+            if (SettlementResult.Red)
             {
-                return stringLocalizer["Banker"];
+                return stringLocalizer["Team Red"];
             }
 
             return stringLocalizer["Draw"];
         }
 
-        private string GetPlayerSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetBlueSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            if (SettlementResult.PlayerBig)
+            if (SettlementResult.BlueBig)
             {
                 return stringLocalizer["Big"];
             }
@@ -135,9 +106,9 @@ namespace GameRoundResult.Web.Models
             return stringLocalizer["Small"];
         }
 
-        private string GetBankerSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetRedSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            if (SettlementResult.BankerBig)
+            if (SettlementResult.RedBig)
             {
                 return stringLocalizer["Big"];
             }
@@ -166,11 +137,11 @@ namespace GameRoundResult.Web.Models
             var row = new TagBuilder("tr");
             row.AddCssClass("bold");
             var blueCell = new TagBuilder("td");
-            blueCell.InnerHtml.Append(stringLocalizer["Player"]);
+            blueCell.InnerHtml.Append(stringLocalizer["Team Blue"]);
             row.InnerHtml.AppendHtml(blueCell);
 
             var redCell = new TagBuilder("td");
-            redCell.InnerHtml.Append(stringLocalizer["Banker"]);
+            redCell.InnerHtml.Append(stringLocalizer["Team Red"]);
             row.InnerHtml.AppendHtml(redCell);
 
             return row;
@@ -179,28 +150,21 @@ namespace GameRoundResult.Web.Models
 
     public class KenoPowerResultViewModel
     {
-        public IEnumerable<byte> Player { get; set; }
-        public IEnumerable<byte> Banker { get; set; }
+        public IEnumerable<byte> Blue { get; set; }
+        public IEnumerable<byte> Red { get; set; }
     }
 
     public class KenoPowerSettlementResultViewModel
     {
-        public bool Player { get; set; }
-        public bool Banker { get; set; }
+        public bool Blue { get; set; }
+        public bool Red { get; set; }
         public bool Big { get; set; }
         public bool Small { get; set; }
         public bool Odd { get; set; }
         public bool Even { get; set; }
-        public bool Red { get; set; }
-        public bool Orange { get; set; }
-        public bool Yellow { get; set; }
-        public bool Green { get; set; }
-        public bool Blue { get; set; }
-        public bool Indigo { get; set; }
-        public bool Violet { get; set; }
-        public bool PlayerBig { get; set; }
-        public bool PlayerSmall { get; set; }
-        public bool BankerBig { get; set; }
-        public bool BankerSmall { get; set; }
+        public bool BlueBig { get; set; }
+        public bool BlueSmall { get; set; }
+        public bool RedBig { get; set; }
+        public bool RedSmall { get; set; }
     }
 }

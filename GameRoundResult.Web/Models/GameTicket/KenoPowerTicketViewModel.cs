@@ -29,7 +29,7 @@ namespace GameRoundResult.Web.Models
 
         public decimal GetRefund(KenoPowerSettlementResultViewModel settlementResult)
         {
-            if (!settlementResult.Banker && !settlementResult.Player && (Choice == "player" || Choice == "banker"))
+            if (!settlementResult.Red && !settlementResult.Blue && (Choice == "blue" || Choice == "red"))
             {
                 return Amount;
             }

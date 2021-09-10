@@ -6,58 +6,50 @@
 @{
     var betChoiceMapper = new Dictionary<string, string>
 {
-        { "player", CommonLocalizer["Player"] },
-        { "banker", CommonLocalizer["Banker"] },
+        { "blue", Localizer["Team Blue"] },
+        { "red", Localizer["Team Red"] },
         { "big", CommonLocalizer["Big"] },
         { "small", CommonLocalizer["Small"] },
         { "odd", CommonLocalizer["Odd"] },
         { "even", CommonLocalizer["Even"] },
-        { "red", Localizer["Red"] },
-        { "orange", Localizer["Orange"] },
-        { "yellow", Localizer["Yellow"] },
-        { "green", Localizer["Green"] },
-        { "blue", Localizer["Blue"] },
-        { "indigo", Localizer["Indigo"] },
-        { "violet", Localizer["Violet"] },
+        { "blueBig", CommonLocalizer["Big"] },
+        { "blueSmal", CommonLocalizer["Big"] },
+        { "redBig", CommonLocalizer["Small"] },
+        { "redSmall", CommonLocalizer["Small"] },
     };
 
     var betTypeMapper = new Dictionary<string, string>
 {
-        { "player", Localizer["Player/Banker"] },
-        { "banker", Localizer["Banker/Banker"] },
+        { "blue", Localizer["Team Blue/Team Red"] },
+        { "red", Localizer["Team Blue/Team Red"] },
         { "big", Localizer["Sum Big/Small"] },
         { "small", Localizer["Sum Big/Small"] },
         { "odd", Localizer["Sum Even/Odd"] },
         { "even", Localizer["Sum Even/Odd"] },
-        { "red", Localizer["Sum Color"] },
-        { "orange", Localizer["Sum Color"] },
-        { "yellow", Localizer["Sum Color"] },
-        { "green", Localizer["Sum Color"] },
-        { "blue", Localizer["Sum Color"] },
-        { "indigo", Localizer["Sum Color"] },
-        { "violet", Localizer["Sum Color"] },
+        { "blueBig", Localizer["Team Blue Big/Small"] },
+        { "blueSmal", Localizer["Team Blue Big/Small"] },
+        { "redBig", Localizer["Team Red Big/Small"] },
+        { "redSmall", Localizer["Team Red Big/Small"] },
     };
 
     var result = Model.RoundResult.Result;
-    var playerSum = result.Player.Sum(x => x);
-    var bankerSum = result.Banker.Sum(x => x);
+    var blueSum = result.Blue.Sum(x => x);
+    var redSum = result.Red.Sum(x => x);
     var settlementResult = Model.RoundResult.SettlementResult;
 
     var settlementResultMapper = new Dictionary<string, bool>
 {
-        { "player", settlementResult.Player },
-        { "banker", settlementResult.Banker },
+        { "blue", settlementResult.Blue },
+        { "red", settlementResult.Red },
         { "big", settlementResult.Big },
         { "small", settlementResult.Small },
         { "odd", settlementResult.Odd },
         { "even", settlementResult.Even },
         { "red", settlementResult.Red },
-        { "orange", settlementResult.Orange },
-        { "yellow", settlementResult.Yellow },
-        { "green", settlementResult.Green },
-        { "blue", settlementResult.Blue },
-        { "indigo", settlementResult.Indigo },
-        { "violet", settlementResult.Violet },
+        { "blueBig", settlementResult.BlueBig },
+        { "blueSmal", settlementResult.BlueSmall },
+        { "redBig",settlementResult.RedBig },
+        { "redSmall", settlementResult.RedSmall },
     };
 }
 
@@ -70,9 +62,9 @@
             <th colspan="2">@CommonLocalizer["WinningOptions"]</th>
         </tr>
         <tr>
-            <th>@Localizer["Player"]/@Localizer["Banker"]</th>
-            <th>@Localizer["Player"]</th>
-            <th>@Localizer["Banker"]</th>
+            <th>@Localizer["Team Blue"]/@Localizer["Team Red"]</th>
+            <th>@Localizer["Team Blue"]</th>
+            <th>@Localizer["Team Red"]</th>
             <th>@Localizer["Total"]</th>
         </tr>
     </thead>
@@ -90,13 +82,13 @@
                     <table class="table table-bordered table-hover">
                         <tbody>
                             <tr class="bold">
-                                <td>@Localizer["Player"]</td>
-                                <td>@Localizer["Banker"]</td>
+                                <td>@Localizer["Team Blue"]</td>
+                                <td>@Localizer["Team Red"]</td>
                             </tr>
                             <tr>
                                 <td>
                                     <div class="number-list">
-                                        @foreach (var number in result.Player)
+                                        @foreach (var number in result.Blue)
                                         {
                                             <span class="number blue">@number</span>
                                         }
@@ -105,7 +97,7 @@
 
                                 <td>
                                     <div class="number-list">
-                                        @foreach (var number in result.Banker)
+                                        @foreach (var number in result.Red)
                                         {
                                             <span class="number red">@number</span>
                                         }
@@ -113,37 +105,37 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>@Localizer["Player"] @playerSum - @Localizer["Total"] @(playerSum + bankerSum) - @Localizer["Banker"] @bankerSum</td>
+                                <td>@Localizer["Team Blue"] @blueSum - @Localizer["Total"] @(blueSum + redSum) - @Localizer["Team Red"] @redSum</td>
                             </tr>
                         </tbody>
                     </table>
                 </td>
                 <td>
-                    @if (settlementResult.Player)
+                    @if (settlementResult.Blue)
                     {
-                        @Localizer["Player"]
+                        @Localizer["Team Blue"]
                     }
-                    @if (settlementResult.Banker)
+                    @if (settlementResult.Red)
                     {
-                        @Localizer["Banker"]
+                        @Localizer["Team Red"]
                     }
                 </td>
                 <td>
-                    @if (settlementResult.PlayerBig)
+                    @if (settlementResult.BlueBig)
                     {
                         @CommonLocalizer["Big"]
                     }
-                    @if (settlementResult.PlayerSmall)
+                    @if (settlementResult.BlueSmall)
                     {
                         @CommonLocalizer["Small"]
                     }
                 </td>
                 <td>
-                    @if (settlementResult.BankerBig)
+                    @if (settlementResult.RedBig)
                     {
                         @CommonLocalizer["Big"]
                     }
-                    @if (settlementResult.BankerSmall)
+                    @if (settlementResult.RedSmall)
                     {
                         @CommonLocalizer["Small"]
                     }
@@ -169,35 +161,6 @@
                             @CommonLocalizer["Odd"]
                         }
                     </div>
-
-                    @if (settlementResult.Red)
-                    {
-                        @Localizer["Red"]
-                    }
-                    @if (settlementResult.Orange)
-                    {
-                        @Localizer["Orange"]
-                    }
-                    @if (settlementResult.Yellow)
-                    {
-                        @Localizer["Yellow"]
-                    }
-                    @if (settlementResult.Green)
-                    {
-                        @Localizer["Green"]
-                    }
-                    @if (settlementResult.Blue)
-                    {
-                        @Localizer["Blue"]
-                    }
-                    @if (settlementResult.Indigo)
-                    {
-                        @Localizer["Indigo"]
-                    }
-                    @if (settlementResult.Violet)
-                    {
-                        @Localizer["Violet"]
-                    }
                 </td>
             </tr>
         }

@@ -22,10 +22,6 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
-    <None Include="Resources\Models\RoundResultViewModel.vi-VN.resx">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Resources\Models\RoundResultViewModel.en-US.resx" />
     <None Include="wwwroot\js\game-round-result.min.js" />
     <None Include="wwwroot\lib\flatpickr\dist\flatpickr.js" />
     <None Include="wwwroot\lib\flatpickr\dist\flatpickr.min.js" />
@@ -208,6 +204,9 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Resources\Models\BlackjackTicketViewModel.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Models\RoundResultViewModel.vi-VN.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\GameRoundResult\Index.en-US.resx">
