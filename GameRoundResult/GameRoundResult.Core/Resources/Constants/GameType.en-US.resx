@@ -198,4 +198,7 @@
   <data name="ThreeCards" xml:space="preserve">
     <value>Three Cards</value>
   </data>
+  <data name="HeroesSlot" xml:space="preserve">
+    <value>The Legend of Heroes</value>
+  </data>
 </root>
