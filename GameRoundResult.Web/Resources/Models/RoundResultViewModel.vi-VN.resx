@@ -321,4 +321,7 @@
   <data name="Yellow" xml:space="preserve">
     <value>Vàng</value>
   </data>
+  <data name="Sum" xml:space="preserve">
+    <value>Tổng</value>
+  </data>
 </root>

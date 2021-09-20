@@ -18,9 +18,9 @@ namespace GameRoundResult.Web.Models
             {
                 GeResultContent(stringLocalizer),
                 GetBlueRedSettlementResultContent(stringLocalizer),
+                GetTotalSettlementResultContent(stringLocalizer),
                 GetBlueSettlementResultContent(stringLocalizer),
                 GetRedSettlementResultContent(stringLocalizer),
-                GetTotalSettlementResultContent(stringLocalizer),
             };
 
             return result;
@@ -93,7 +93,7 @@ namespace GameRoundResult.Web.Models
                 return stringLocalizer["Team Red"];
             }
 
-            return stringLocalizer["Draw"];
+            return string.Empty;
         }
 
         private string GetBlueSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
