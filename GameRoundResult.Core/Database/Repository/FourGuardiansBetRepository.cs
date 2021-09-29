@@ -6,7 +6,7 @@ namespace GameRoundResult.Core.Database.Repository
 {
     public interface IFourGuardiansBetRepository
     {
-        Task<FourGuardiansRound> GetAsync(long roundId, int memberId);
+        Task<SlotRound> GetAsync<SlotRound>(long roundId, int memberId) where SlotRound : FourGuardiansRound;
     }
 
     public class FourGuardiansBetRepository : GameBetRepository, IFourGuardiansBetRepository
@@ -15,9 +15,9 @@ namespace GameRoundResult.Core.Database.Repository
         {
         }
 
-        public async Task<FourGuardiansRound> GetAsync(long roundId, int memberId)
+        public async Task<SlotRound> GetAsync<SlotRound>(long roundId, int memberId) where SlotRound: FourGuardiansRound
         {
-            return await database.GetCollection<FourGuardiansRound>(Document.GetCollectionName(typeof(FourGuardiansRound)))
+            return await database.GetCollection<SlotRound>(Document.GetCollectionName(typeof(SlotRound)))
                .Find(x => x.Round == roundId && x.MemberId == memberId).FirstOrDefaultAsync();
         }
     }

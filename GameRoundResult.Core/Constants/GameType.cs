@@ -34,7 +34,7 @@
         ThreeCards = 35,
         KenoMatch1,
         KenoMatch2,
-        HeroesSlot
+        HeroesSlot,
         KenoPower1 = 40,
         KenoPower2
     }

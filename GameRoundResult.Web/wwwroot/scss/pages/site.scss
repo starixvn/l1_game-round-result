@@ -504,19 +504,3 @@ body {
         }
     }
 }
-
-.table-keno-match {
-    tr {
-        td:nth-child(4), td:nth-child(5) {
-            white-space: pre-wrap;
-        }
-    }
-}
-
-.table-keno-power {
-    tr {
-        td:nth-child(7) {
-            white-space: pre-wrap;
-        }
-    }
-}

@@ -45,6 +45,8 @@ namespace GameRoundResult.Web.Accessor
             { GameType.KenoMatch2, typeof(KenoMatchTicketAccessor<KenoMatch2Round, KenoMatch2One, KenoMatch2Bet>) },
             { GameType.KenoPower1, typeof(KenoPowerTicketAccessor<KenoPower1Round, KenoPower1One, KenoPower1Bet>) },
             { GameType.KenoPower2, typeof(KenoPowerTicketAccessor<KenoPower2Round, KenoPower2One, KenoPower2Bet>) },
+            { GameType.HeroesSlot, typeof(FourGuardiansTicketAccessor<HeroesSlotRound>) },
+            { GameType.FourGuardians, typeof(FourGuardiansTicketAccessor<FourGuardiansRound>) },
         };
 
         private readonly IServiceProvider serviceProvider;

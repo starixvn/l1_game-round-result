@@ -15,8 +15,6 @@ namespace GameRoundResult.Core.Services
         Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, int memberId, bool freeBet)
            where TRoundEntity : GameRound
            where TBetEntity : BaseBetEntity;
-
-        Task<HeroesSlotRound> GetHeroesSlotAsync(long roundId, int memberId);
     }
 
     public class GameBetService : IGameBetService
@@ -41,11 +39,6 @@ namespace GameRoundResult.Core.Services
             where TBetEntity : BaseBetEntity
         {
             return await repository.GetAsync<TRoundEntity, TBetEntity>(roundId, memberId, freeBet);
-        }
-
-        public async Task<HeroesSlotRound> GetHeroesSlotAsync(long roundId, int memberId)
-        {
-            return await repository.GetHeroesSlotAsync(roundId, memberId);
         }
     }
 }

@@ -27,14 +27,14 @@ namespace GameRoundResult.Core.UnitTests.Services
         {
             //Arrnage
             var roundEntity = fixture.Create<FourGuardiansRound>();
-            gameBetRepository.GetAsync(roundId, memberId).Returns(roundEntity);
+            gameBetRepository.GetAsync<FourGuardiansRound>(roundId, memberId).Returns(roundEntity);
 
             //Act
-            var result = await gameBetService.GetAsync(roundId, memberId);
+            var result = await gameBetService.GetAsync<FourGuardiansRound>(roundId, memberId);
 
             //Assert
             Assert.StrictEqual(roundEntity, result);
-            gameBetRepository.Received(1).GetAsync(roundId, memberId);
+            gameBetRepository.Received(1).GetAsync<FourGuardiansRound>(roundId, memberId);
         }
     }
 }

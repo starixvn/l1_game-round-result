@@ -54,7 +54,7 @@
     var ftSettlementResult = Model.RoundResult.FullTime.SettlementResult;
 
     var settlmentResultMapper = new Dictionary<string, bool>
-    {
+{
         { "fhBlue", htSettlementResult.Blue },
         { "fhRed", htSettlementResult.Red },
         { "fhOver", htSettlementResult.Over},
@@ -76,7 +76,7 @@
     };
 
     var settlmentResultRefund = new Dictionary<string, KenoMatchPeriodSettlementResultViewModel>
-    {
+{
         { "fhBlue", htSettlementResult },
         { "fhRed", htSettlementResult },
         { "ftBlue", ftSettlementResult },
@@ -139,7 +139,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>@Localizer["Team Blue"] @htResult.Result.Blue.Sum() - @Localizer["Total"] @htResult.Total - @Localizer["Team Red"] @htResult.Result.Red.Sum()</td>
+                                <td colspan="2">@Localizer["Team Blue"] @htResult.Result.Blue.Sum() - @Localizer["Total"] @htResult.Total - @Localizer["Team Red"] @htResult.Result.Red.Sum()</td>
                             </tr>
                             <tr>
                                 <td class="bold" colspan="2">@Localizer["Full Time"]</td>
@@ -164,35 +164,36 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>@Localizer["Team Blue"] @(htResult.Result.Blue.Sum() + ftResult.Result.Blue.Sum()) - @Localizer["Total"] @ftResult.Total - @Localizer["Team Red"] @(ftResult.Result.Red.Sum() + ftResult.Result.Red.Sum())</td>
+                                <td colspan="2">@Localizer["Team Blue"] @(htResult.Result.Blue.Sum() + ftResult.Result.Blue.Sum()) - @Localizer["Total"] @ftResult.Total - @Localizer["Team Red"] @(ftResult.Result.Red.Sum() + ftResult.Result.Red.Sum())</td>
                             </tr>
                         </tbody>
                     </table>
                 </td>
                 <td>
-                    @{
-                        if (htSettlementResult.Blue)
+                    <div>
+                        @if (htSettlementResult.Blue)
                         {
                             @Localizer["Team Blue"]
-                            <br />
                         }
 
-                        if (htSettlementResult.Red)
+                        @if (htSettlementResult.Red)
                         {
                             @Localizer["Team Red"]
-                            <br />
                         }
+                    </div>
 
-                        if (htSettlementResult.Over)
+                    <div>
+                        @if (htSettlementResult.Over)
                         {
-                            @Localizer["Over"]<br />
+                            @Localizer["Over"]
                         }
                         else
                         {
-                            @Localizer["Under"]<br />
+                            @Localizer["Under"]
                         }
-
-                        if (htSettlementResult.Odd)
+                    </div>
+                    <div>
+                        @if (htSettlementResult.Odd)
                         {
                             @Localizer["Odd"]
                         }
@@ -200,33 +201,34 @@
                         {
                             @Localizer["Even"]
                         }
-                    }
+                    </div>
                 </td>
 
                 <td>
-                    @{
-                        if (ftSettlementResult.Blue)
+                    <div>
+                        @if (ftSettlementResult.Blue)
                         {
                             @Localizer["Team Blue"]
-                            <br />
                         }
 
-                        if (ftSettlementResult.Red)
+                        @if (ftSettlementResult.Red)
                         {
                             @Localizer["Team Red"]
-                            <br />
                         }
+                    </div>
 
-                        if (ftSettlementResult.Over)
+                    <div>
+                        @if (ftSettlementResult.Over)
                         {
-                            @Localizer["Over"]<br />
+                            @Localizer["Over"]
                         }
                         else
                         {
-                            @Localizer["Under"]<br />
+                            @Localizer["Under"]
                         }
-
-                        if (ftSettlementResult.Odd)
+                    </div>
+                    <div>
+                        @if (ftSettlementResult.Odd)
                         {
                             @Localizer["Odd"]
                         }
@@ -234,7 +236,8 @@
                         {
                             @Localizer["Even"]
                         }
-                    }
+                    </div>
+
                 </td>
             </tr>
         }
@@ -294,14 +297,17 @@
             <tr>
                 <td colspan="4" class="text-right">@CommonLocalizer["Total"]</td>
                 <td class="text-right">@Model.TotalBet.Format()</td>
+                <td></td>
             </tr>
             <tr>
                 <td colspan="4" class="text-right">@Localizer["TotalWin"]</td>
                 <td class="text-right">@Model.TotalBetWin.Format()</td>
+                <td></td>
             </tr>
             <tr class="total">
                 <td colspan="4" class="bold text-right">@CommonLocalizer["WinLoss"]</td>
                 <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+                <td></td>
             </tr>
         }
         else

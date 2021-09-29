@@ -21,13 +21,6 @@ namespace GameRoundResult.Web.Handlers
             var service = serviceFactory.GetService(request.GameType);
 
             return await service.GetAsync(request);
-
-                case GameType.HeroesSlot:
-                    var heroesSlotResult = await service.GetHeroesSlotAsync(request.RoundId, request.MemberId);
-                    return new HeroesSlotTicketViewModel
-                    {
-                        RoundResult = heroesSlotResult?.ToViewModel(mapper, request.TimeZoneInfo),
-                    };
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace GameRoundResult.Web.Models
@@ -13,9 +12,8 @@ namespace GameRoundResult.Web.Models
         public decimal WinLoss => RoundResult.FreeSpin ? BetWin : BetWin - RoundResult.TotalAmount;
     }
 
-    public class FourGuardiansRoundResultViewModel :RoundResultViewModel
+    public class FourGuardiansRoundResultViewModel : RoundResultViewModel
     {
-
         public decimal Bet { get; set; }
 
         public decimal TotalAmount { get; set; }

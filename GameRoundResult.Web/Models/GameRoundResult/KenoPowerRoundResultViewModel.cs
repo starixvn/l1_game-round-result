@@ -28,11 +28,13 @@ namespace GameRoundResult.Web.Models
 
         private string GetTotalSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            var stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine(SettlementResult.Big ? stringLocalizer["Big"] : stringLocalizer["Small"]);
-            stringBuilder.AppendLine(SettlementResult.Odd ? stringLocalizer["Odd"] : stringLocalizer["Even"]);
+            var div1 = new TagBuilder("div");
+            var div2 = new TagBuilder("div");
 
-            return stringBuilder.ToString();
+            div1.InnerHtml.Append(SettlementResult.Big ? stringLocalizer["Big"] : stringLocalizer["Small"]);
+            div2.InnerHtml.Append(SettlementResult.Odd ? stringLocalizer["Odd"] : stringLocalizer["Even"]);
+
+            return $"{div1.GetHtmlString()}{div2.GetHtmlString()}";
         }
 
         private string GeResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)

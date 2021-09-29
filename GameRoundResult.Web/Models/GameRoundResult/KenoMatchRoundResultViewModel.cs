@@ -87,23 +87,26 @@ namespace GameRoundResult.Web.Models
         private static string GetPeriodSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer,
             KenoMatchPeriodSettlementResultViewModel settlementResult)
         {
-            var stringBuilder = new StringBuilder();
+            var div1 = new TagBuilder("div");
+            var div2 = new TagBuilder("div");
+            var div3 = new TagBuilder("div");
+
             if (settlementResult.Blue)
             {
-                stringBuilder.AppendLine(stringLocalizer["Team Blue"]);
+                div1.InnerHtml.Append(stringLocalizer["Team Blue"]);
             }
             else
             {
                 if (settlementResult.Red)
                 {
-                    stringBuilder.AppendLine(stringLocalizer["Team Red"]);
+                    div1.InnerHtml.Append(stringLocalizer["Team Red"]);
                 }
             }
 
-            stringBuilder.AppendLine(settlementResult.Over ? stringLocalizer["Over"] : stringLocalizer["Under"]);
-            stringBuilder.AppendLine(settlementResult.Even ? stringLocalizer["Even"] : stringLocalizer["Odd"]);
+            div2.InnerHtml.Append(settlementResult.Over ? stringLocalizer["Over"] : stringLocalizer["Under"]);
+            div3.InnerHtml.Append(settlementResult.Even ? stringLocalizer["Even"] : stringLocalizer["Odd"]);
 
-            return stringBuilder.ToString();
+            return $"{div1.GetHtmlString()}{div2.GetHtmlString()}{div3.GetHtmlString()}";
         }
 
         private TagBuilder GetHalfTimeSummary(IStringLocalizer<RoundResultViewModel> stringLocalizer)

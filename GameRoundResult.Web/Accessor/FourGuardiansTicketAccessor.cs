@@ -8,7 +8,8 @@ using GameRoundResult.Web.Requests;
 
 namespace GameRoundResult.Web.Accessor
 {
-    public class FourGuardiansTicketAccessor : IGameTicketAccessor
+    public class FourGuardiansTicketAccessor<SlotRound> : IGameTicketAccessor
+        where SlotRound : FourGuardiansRound
     {
         private readonly IFourGuardiansTicketService gameBetService;
         private readonly IMapper mapper;
@@ -21,11 +22,11 @@ namespace GameRoundResult.Web.Accessor
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
-            var result = await gameBetService.GetAsync(request.RoundId, request.MemberId);
+            var result = await gameBetService.GetAsync<SlotRound>(request.RoundId, request.MemberId);
 
             return new FourGuardiansTicketViewModel
             {
-                RoundResult = result?.ToViewModel<FourGuardiansRound, FourGuardiansRoundResultViewModel>(mapper, request.TimeZoneInfo),
+                RoundResult = result?.ToViewModel<SlotRound, FourGuardiansRoundResultViewModel>(mapper, request.TimeZoneInfo),
             };
         }
     }

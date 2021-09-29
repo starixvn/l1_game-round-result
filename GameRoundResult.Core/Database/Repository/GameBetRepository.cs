@@ -17,8 +17,8 @@ namespace GameRoundResult.Core.Database.Repository
             where TBetEntity : BaseBetLogEntity;
 
         Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, int memberId, bool freeBet)
-
-        Task<HeroesSlotRound> GetHeroesSlotAsync(long roundId, int memberId);
+            where TRoundEntity : GameRound
+            where TBetEntity : BaseBetEntity;
     }
 
     public class GameBetRepository : IGameBetRepository
@@ -76,12 +76,5 @@ namespace GameRoundResult.Core.Database.Repository
 
             return (round, bet);
         }
-
-        }
-
-        public async Task<HeroesSlotRound> GetHeroesSlotAsync(long roundId, int memberId)
-        {
-            return await database.GetCollection<HeroesSlotRound>(MiniGameRoundCollections.HeroesSlotRounds)
-                .Find(x => x.Round == roundId && x.MemberId == memberId).FirstOrDefaultAsync();
     }
 }
