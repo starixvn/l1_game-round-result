@@ -289,7 +289,14 @@
                         @bet.Amount.Format()
                     </td>
                     <td class="text-right @cssClass">
-                        @bet.GetRefund(settlmentResultRefund[bet.Choice]).Format()
+                        @if (settlmentResultRefund.ContainsKey(bet.Choice))
+                        {
+                            @bet.GetRefund(settlmentResultRefund[bet.Choice]).Format()
+                        }
+                        else
+                        {
+                            @(0)
+                        }
                     </td>
                 </tr>
             }
