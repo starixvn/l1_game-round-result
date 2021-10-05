@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace GameRoundResult.Core.Database.Entities
+{
+    public class BitcoinMasterRound : GameRound
+    {
+        public BitcoinMasterRoundResult Result { get; set; }
+
+        public Dictionary<string, bool> SettlementResult { get; set; }
+    }
+
+    public class BitcoinMasterRoundResult
+    {
+        [BsonElement("open")]
+        public decimal BettingPrice { get; set; }
+
+        [BsonElement("close")]
+        public decimal ResultPrice { get; set; }
+
+        public bool IsUp => ResultPrice > BettingPrice;
+
+        public decimal PriceDiff => Math.Abs(ResultPrice - BettingPrice);
+    }
+}

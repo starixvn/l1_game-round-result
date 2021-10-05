@@ -183,6 +183,9 @@
   <data name="Diamonds" xml:space="preserve">
     <value>Rô</value>
   </data>
+  <data name="Down" xml:space="preserve">
+    <value>Giảm</value>
+  </data>
   <data name="Dragon" xml:space="preserve">
     <value>Rồng</value>
   </data>
@@ -281,6 +284,9 @@
   </data>
   <data name="TotalOdd" xml:space="preserve">
     <value>Tổng Lẻ</value>
+  </data>
+  <data name="Up" xml:space="preserve">
+    <value>Tăng</value>
   </data>
   <data name="TotalPoints" xml:space="preserve">
     <value>Tổng</value>
