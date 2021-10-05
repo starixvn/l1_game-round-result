@@ -175,11 +175,19 @@
                         {
                             @Localizer["Team Blue"]
                         }
-
-                        @if (htSettlementResult.Red)
+                        else
                         {
-                            @Localizer["Team Red"]
+                            if (htSettlementResult.Red)
+                            {
+                                @Localizer["Team Red"]
+                            }
+                            else
+                            {
+                                @Localizer["Tie"]
+
+                            }
                         }
+
                     </div>
 
                     <div>
@@ -210,11 +218,18 @@
                         {
                             @Localizer["Team Blue"]
                         }
-
-                        @if (ftSettlementResult.Red)
+                        else
                         {
-                            @Localizer["Team Red"]
+                            if (ftSettlementResult.Red)
+                            {
+                                @Localizer["Team Red"]
+                            }
+                            else
+                            {
+                                @Localizer["Tie"]
+                            }
                         }
+
                     </div>
 
                     <div>

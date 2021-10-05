@@ -115,9 +115,16 @@
                     {
                         @Localizer["Team Blue"]
                     }
-                    @if (settlementResult.Red)
+                    else
                     {
-                        @Localizer["Team Red"]
+                        if (settlementResult.Red)
+                        {
+                            @Localizer["Team Red"]
+                        }
+                        else
+                        {
+                            @Localizer["Tie"]
+                        }
                     }
                 </td>
                 <td>

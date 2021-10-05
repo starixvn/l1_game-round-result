@@ -150,6 +150,9 @@
   <data name="Team Red Big/Small" xml:space="preserve">
     <value>Đội Đỏ Tài/Xỉu</value>
   </data>
+  <data name="Tie" xml:space="preserve">
+    <value>Hòa</value>
+  </data>
   <data name="Total" xml:space="preserve">
     <value>Tổng cộng</value>
   </data>

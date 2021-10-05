@@ -97,10 +97,7 @@ namespace GameRoundResult.Web.Models
             }
             else
             {
-                if (settlementResult.Red)
-                {
-                    div1.InnerHtml.Append(stringLocalizer["Team Red"]);
-                }
+                div1.InnerHtml.Append(settlementResult.Red ? stringLocalizer["Team Red"] : stringLocalizer["Tie"]);
             }
 
             div2.InnerHtml.Append(settlementResult.Over ? stringLocalizer["Over"] : stringLocalizer["Under"]);
@@ -133,8 +130,8 @@ namespace GameRoundResult.Web.Models
             var cell = new TagBuilder("td");
             cell.Attributes.Add("colspan", "2");
 
-            var blueFTSum = FullTime.Result.Blue.Sum();
-            var redFTSum = FullTime.Result.Red.Sum();
+            var blueFTSum = FullTime.Result.Blue.Sum() + HalfTime.Result.Blue.Sum();
+            var redFTSum = FullTime.Result.Red.Sum() + HalfTime.Result.Red.Sum();
 
             cell.InnerHtml.Append($"{stringLocalizer["Team Blue"]} {blueFTSum}");
 

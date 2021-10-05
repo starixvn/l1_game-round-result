@@ -89,13 +89,11 @@ namespace GameRoundResult.Web.Models
             {
                 return stringLocalizer["Team Blue"];
             }
-
-            if (SettlementResult.Red)
+            else
             {
-                return stringLocalizer["Team Red"];
+                return SettlementResult.Red ? stringLocalizer["Team Red"] : stringLocalizer["Tie"];
             }
 
-            return string.Empty;
         }
 
         private string GetBlueSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
