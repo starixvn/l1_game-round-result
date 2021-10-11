@@ -31,12 +31,13 @@ namespace GameRoundResult.Web.Configuration
 
     public class GameTypeLocalization : EnumLocalization<GameType>
     {
-        private readonly IEnumerable<GameType> excludeGames = new List<GameType> 
+        private readonly IEnumerable<GameType> excludeGames = new List<GameType>
         {
             GameType.Blackjack,
             GameType.FourGuardians,
             GameType.OddEven,
-            GameType.KenoProViet
+            GameType.KenoProViet,
+            GameType.HeroesSlot
         };
 
         private readonly IGlobalConfigService globalConfigService;
@@ -50,7 +51,7 @@ namespace GameRoundResult.Web.Configuration
         {
             var configs = (await globalConfigService.GetAsync()).Configs;
             return GetSelectListItems()
-                .Where(x => !excludeGames.Any(e => e == (GameType) Enum.Parse(typeof(GameType), x.Value)) && 
+                .Where(x => !excludeGames.Any(e => e == (GameType)Enum.Parse(typeof(GameType), x.Value)) &&
                 !configs[x.Value].Any(excludedSite => excludedSite.Equals(siteName, StringComparison.InvariantCultureIgnoreCase)));
         }
     }
