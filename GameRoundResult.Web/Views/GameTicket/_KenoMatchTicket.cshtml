@@ -47,43 +47,6 @@
         { "liveFTOdd", Localizer["Full Time Even/Odd (Live)"] },
         { "liveFTEven", Localizer["Full Time Even/Odd (Live)"] },
     };
-
-    var htResult = Model.RoundResult.HalfTime;
-    var ftResult = Model.RoundResult.FullTime;
-    var htSettlementResult = Model.RoundResult.HalfTime.SettlementResult;
-    var ftSettlementResult = Model.RoundResult.FullTime.SettlementResult;
-
-    var settlmentResultMapper = new Dictionary<string, bool>
-{
-        { "fhBlue", htSettlementResult.Blue },
-        { "fhRed", htSettlementResult.Red },
-        { "fhOver", htSettlementResult.Over},
-        { "fhUnder", htSettlementResult.Under },
-        { "fhOdd", htSettlementResult.Odd},
-        { "fhEven", htSettlementResult.Even },
-        { "ftBlue", ftSettlementResult.Blue },
-        { "ftRed", ftSettlementResult.Red },
-        { "ftOver", ftSettlementResult.Over},
-        { "ftUnder", ftSettlementResult.Under },
-        { "ftOdd", ftSettlementResult.Odd},
-        { "ftEven", ftSettlementResult.Even },
-        { "liveFTBlue", ftSettlementResult.Blue },
-        { "liveFTRed", ftSettlementResult.Red },
-        { "liveFTOver", ftSettlementResult.Over},
-        { "liveFTUnder", ftSettlementResult.Under },
-        { "liveFTOdd", ftSettlementResult.Odd},
-        { "liveFTEven", ftSettlementResult.Even },
-    };
-
-    var settlmentResultRefund = new Dictionary<string, KenoMatchPeriodSettlementResultViewModel>
-{
-        { "fhBlue", htSettlementResult },
-        { "fhRed", htSettlementResult },
-        { "ftBlue", ftSettlementResult },
-        { "ftRed", ftSettlementResult },
-        { "liveFTBlue", ftSettlementResult },
-        { "liveFTRed", ftSettlementResult },
-    };
 }
 
 <table class="table table-bordered table-keno-match">
@@ -102,6 +65,10 @@
     <tbody>
         @if (Model.RoundResult != null)
         {
+            var htResult = Model.RoundResult.HalfTime;
+            var ftResult = Model.RoundResult.FullTime;
+            var htSettlementResult = Model.RoundResult.HalfTime.SettlementResult;
+            var ftSettlementResult = Model.RoundResult.FullTime.SettlementResult;
             <tr>
                 <td>
                     @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
@@ -164,7 +131,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">@Localizer["Team Blue"] @(htResult.Result.Blue.Sum() + ftResult.Result.Blue.Sum()) - @Localizer["Total"] @ftResult.Total - @Localizer["Team Red"] @(ftResult.Result.Red.Sum() + ftResult.Result.Red.Sum())</td>
+                                <td colspan="2">@Localizer["Team Blue"] @(htResult.Result.Blue.Sum() + ftResult.Result.Blue.Sum()) - @Localizer["Total"] @ftResult.Total - @Localizer["Team Red"] @(htResult.Result.Red.Sum() + ftResult.Result.Red.Sum())</td>
                             </tr>
                         </tbody>
                     </table>
@@ -283,6 +250,39 @@
         {
             foreach (var bet in Model.Bets)
             {
+                var htSettlementResult = Model.RoundResult.HalfTime.SettlementResult;
+                var ftSettlementResult = Model.RoundResult.FullTime.SettlementResult; var settlmentResultMapper = new Dictionary<string, bool>
+            {
+                { "fhBlue", htSettlementResult.Blue },
+                { "fhRed", htSettlementResult.Red },
+                { "fhOver", htSettlementResult.Over},
+                { "fhUnder", htSettlementResult.Under },
+                { "fhOdd", htSettlementResult.Odd},
+                { "fhEven", htSettlementResult.Even },
+                { "ftBlue", ftSettlementResult.Blue },
+                { "ftRed", ftSettlementResult.Red },
+                { "ftOver", ftSettlementResult.Over},
+                { "ftUnder", ftSettlementResult.Under },
+                { "ftOdd", ftSettlementResult.Odd},
+                { "ftEven", ftSettlementResult.Even },
+                { "liveFTBlue", ftSettlementResult.Blue },
+                { "liveFTRed", ftSettlementResult.Red },
+                { "liveFTOver", ftSettlementResult.Over},
+                { "liveFTUnder", ftSettlementResult.Under },
+                { "liveFTOdd", ftSettlementResult.Odd},
+                { "liveFTEven", ftSettlementResult.Even },
+            };
+
+                var settlmentResultRefund = new Dictionary<string, KenoMatchPeriodSettlementResultViewModel>
+{
+                { "fhBlue", htSettlementResult },
+                { "fhRed", htSettlementResult },
+                { "ftBlue", ftSettlementResult },
+                { "ftRed", ftSettlementResult },
+                { "liveFTBlue", ftSettlementResult },
+                { "liveFTRed", ftSettlementResult },
+            };
+
                 var cssClass = settlmentResultMapper[bet.Choice] ? "text-blue bold" : string.Empty;
                 var choiceOdds = Model.RoundResult.Odds[bet.Choice];
                 <tr>
@@ -319,10 +319,10 @@
             <tr>
                 <td colspan="4" class="text-right">@CommonLocalizer["Total"]</td>
                 <td class="text-right">@Model.TotalBet.Format()</td>
-                <td></td>
+                <td class="text-right">@Model.Refund.Format()</td>
             </tr>
             <tr>
-                <td colspan="4" class="text-right">@Localizer["TotalWin"]</td>
+                <td colspan="4" class="text-right">@CommonLocalizer["TotalWin"]</td>
                 <td class="text-right">@Model.TotalBetWin.Format()</td>
                 <td></td>
             </tr>

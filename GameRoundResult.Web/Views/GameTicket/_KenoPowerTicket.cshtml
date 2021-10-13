@@ -32,25 +32,8 @@
         { "redSmall", Localizer["Team Red Big/Small"] },
     };
 
-    var result = Model.RoundResult.Result;
-    var blueSum = result.Blue.Sum(x => x);
-    var redSum = result.Red.Sum(x => x);
-    var settlementResult = Model.RoundResult.SettlementResult;
 
-    var settlementResultMapper = new Dictionary<string, bool>
-{
-        { "blue", settlementResult.Blue },
-        { "red", settlementResult.Red },
-        { "big", settlementResult.Big },
-        { "small", settlementResult.Small },
-        { "odd", settlementResult.Odd },
-        { "even", settlementResult.Even },
-        { "red", settlementResult.Red },
-        { "blueBig", settlementResult.BlueBig },
-        { "blueSmal", settlementResult.BlueSmall },
-        { "redBig",settlementResult.RedBig },
-        { "redSmall", settlementResult.RedSmall },
-    };
+
 }
 
 <table class="table table-bordered table-keno-power">
@@ -71,6 +54,10 @@
     <tbody>
         @if (Model.RoundResult != null)
         {
+            var result = Model.RoundResult.Result;
+            var blueSum = result.Blue.Sum(x => x);
+            var redSum = result.Red.Sum(x => x);
+            var settlementResult = Model.RoundResult.SettlementResult;
             <tr>
                 <td>
                     @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
@@ -196,6 +183,22 @@
     <tbody>
         @if (Model.Bets.Any() && Model.RoundResult != null)
         {
+            var settlementResult = Model.RoundResult.SettlementResult;
+
+            var settlementResultMapper = new Dictionary<string, bool>
+        {
+                { "blue", settlementResult.Blue },
+                { "red", settlementResult.Red },
+                { "big", settlementResult.Big },
+                { "small", settlementResult.Small },
+                { "odd", settlementResult.Odd },
+                { "even", settlementResult.Even },
+                { "red", settlementResult.Red },
+                { "blueBig", settlementResult.BlueBig },
+                { "blueSmal", settlementResult.BlueSmall },
+                { "redBig",settlementResult.RedBig },
+                { "redSmall", settlementResult.RedSmall },
+            };
             foreach (var bet in Model.Bets)
             {
                 var cssClass = settlementResultMapper[bet.Choice] ? "text-blue bold" : string.Empty;
@@ -227,9 +230,10 @@
             <tr>
                 <td colspan="4" class="text-right">@CommonLocalizer["Total"]</td>
                 <td class="text-right">@Model.TotalBet.Format()</td>
+                <td class="text-right">@Model.Refund.Format()</td>
             </tr>
             <tr>
-                <td colspan="4" class="text-right">@Localizer["TotalWin"]</td>
+                <td colspan="4" class="text-right">@CommonLocalizer["TotalWin"]</td>
                 <td class="text-right">@Model.TotalBetWin.Format()</td>
             </tr>
             <tr class="total">
