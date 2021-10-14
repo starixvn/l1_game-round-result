@@ -16,11 +16,13 @@ namespace GameRoundResult.Web.Models
 
         public decimal TotalBetWin { get; set; }
 
-<<<<<<< HEAD
+<<<<<<< HEAD:GameRoundResult.Web/Models/GameTicket/BitcoinMasterTicketViewModel.cs
         public decimal TotalWin => Bets.Sum(x => x.GrossWin);
 =======
-        public decimal TotalWin => TotalBetWin > 0 ? TotalBet + TotalBetWin - TotalRefund : 0;
->>>>>>> fix: update win fomula
+        public bool Win { get; set; }
+
+        public decimal TotalWin => Win ? TotalBet + TotalBetWin - TotalRefund : 0;
+>>>>>>> 7c651ad (fix: bitcoin master - rebase code on keno):GameRoundResult/GameRoundResult.Web/Models/GameTicket/BitcoinMasterTicketViewModel.cs
 
         public decimal WinLoss => TotalWin + TotalRefund - TotalBet;
     }

@@ -1,0 +1,55 @@
+﻿using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
+using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Services;
+using GameRoundResult.Web.Extensions;
+using GameRoundResult.Web.Models;
+using GameRoundResult.Web.Requests;
+
+namespace GameRoundResult.Web.Accessor
+{
+    public class BitcoinMasterTicketAccessor : IGameTicketAccessor
+    {
+<<<<<<< HEAD
+        private readonly IBitcoinMasterTicketService gameBetService;
+        private readonly IMapper mapper;
+
+        public BitcoinMasterTicketAccessor(IBitcoinMasterTicketService gameBetService, IMapper mapper)
+=======
+        private readonly IGameBetService gameBetService;
+        private readonly IMapper mapper;
+
+        public BitcoinMasterTicketAccessor(IGameBetService gameBetService, IMapper mapper)
+>>>>>>> 7c651ad (fix: bitcoin master - rebase code on keno)
+        {
+            this.gameBetService = gameBetService;
+            this.mapper = mapper;
+        }
+
+        public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
+        {
+<<<<<<< HEAD
+            var result = await gameBetService.GetAsync(request.RoundId, request.MemberId, request.PartnerId);
+=======
+            var result = await gameBetService.GetAsync<BitcoinMasterRound, BitcoinMasterOne, BitcoinMasterBet>(request.RoundId, request.MemberId, request.FreeBet);
+>>>>>>> 7c651ad (fix: bitcoin master - rebase code on keno)
+
+            return new BitcoinMasterTicketViewModel
+            {
+                RoundResult = result.Item1?.ToViewModel(mapper, request.TimeZoneInfo),
+                Bets = result.Item2?.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+<<<<<<< HEAD
+                TotalBet = result.Item3?.TotalAmount ?? 0,
+                TotalBetWin = result.Item3?.Betwin ?? 0,
+                TotalRefund = result.Item3?.Refund ?? 0
+=======
+                TotalBet = result.Item3?.Amount ?? 0,
+                TotalBetWin = result.Item3?.Betwin ?? 0,
+                TotalRefund = result.Item3?.Refund ?? 0,
+                Win = result.Item3?.Win ?? false
+>>>>>>> 7c651ad (fix: bitcoin master - rebase code on keno)
+            };
+        }
+    }
+}
