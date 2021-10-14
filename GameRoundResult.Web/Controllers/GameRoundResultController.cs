@@ -22,7 +22,7 @@ using TimeZoneConverter;
 
 namespace GameRoundResult.Web.Controllers
 {
-    // [Authorize]
+    [Authorize]
     public class GameRoundResultController : Controller
     {
         private readonly IMediator mediator;
@@ -64,9 +64,6 @@ namespace GameRoundResult.Web.Controllers
             if (Enum.IsDefined(typeof(GameType), gameType))
             {
                 return View(viewFactory.GetView(gameType));
-
-                case GameType.BitcoinMaster:
-                    return PartialView("_BitcoinMasterRoundResult");
             }
 
             throw new ArgumentException("Invalid game type", nameof(gameType));

@@ -505,14 +505,22 @@ body {
     }
 }
 
-// Baccarat
+// Bitcoin-Master
 .bitcoin-master-result {
     .up {
         color: #63E473;
+
+        img {
+            vertical-align: middle;
+        }
     }
 
     .down {
         color: #DF4A43;
+
+        img {
+            vertical-align: middle;
+        }
     }
 
     .result-detail {

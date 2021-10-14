@@ -35,7 +35,9 @@
     .table.table-keno-match {
       max-width: 100rem; }
     .table.table-keno-power {
-      max-width: 100rem; } }
+      max-width: 100rem; }
+    .table.table-bitcoin-master {
+      max-width: 66rem; } }
 
 .table-four-guardians .table-paylines {
   margin: auto; }

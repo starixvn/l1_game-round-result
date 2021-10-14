@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameRoundResult.Core._Share;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("bitcoinmaster_rounds")]
     public class BitcoinMasterRound : GameRound
     {
         public BitcoinMasterRoundResult Result { get; set; }

@@ -330,4 +330,7 @@
   <data name="Sum" xml:space="preserve">
     <value>Tổng</value>
   </data>
+  <data name="BettingPrice" xml:space="preserve">
+    <value>Giá Đặt Lệnh</value>
+  </data>
 </root>

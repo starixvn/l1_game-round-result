@@ -21,6 +21,8 @@ namespace GameRoundResult.Core.Database.Repository
 
         public async Task<GlobalConfig> GetAsync()
         {
+            var r = collection.Find(x => x.Type == GlobalConfigType.GameSiteExclusions).FirstOrDefault();
+
             return await collection.Find(x => x.Type == GlobalConfigType.GameSiteExclusions).FirstOrDefaultAsync();
         }
     }

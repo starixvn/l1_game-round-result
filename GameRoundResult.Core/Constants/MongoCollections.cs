@@ -64,7 +64,7 @@
 
         public const string HeroesSlotRounds = "heroesslot_rounds";
 
-        public const string BitcoinMasterRounds = "bitcoinmaster_phiens";
+        public const string BitcoinMasterRounds = "bitcoinmaster_rounds";
     }
 
     internal static class MiniGameBetCollections

@@ -485,3 +485,16 @@ body {
       border-color: #2a93d5; }
     .table-keno-match .number-list .number.red, .table-keno-power .number-list .number.red {
       border-color: #b53f39; }
+
+.bitcoin-master-result .up {
+  color: #63E473; }
+  .bitcoin-master-result .up img {
+    vertical-align: middle; }
+
+.bitcoin-master-result .down {
+  color: #DF4A43; }
+  .bitcoin-master-result .down img {
+    vertical-align: middle; }
+
+.bitcoin-master-result .result-detail {
+  margin-left: 5px; }

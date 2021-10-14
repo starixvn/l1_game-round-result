@@ -10,13 +10,15 @@ namespace GameRoundResult.Web.Models
 
         public IEnumerable<BitcoinMasterBetViewModel> Bets { get; set; }
 
-        public decimal TotalBet => Bets.Sum(x => x.Bet);
+        public decimal TotalBet { get; set; }
 
-        public decimal TotalRefund => Bets.Sum(x => x.Refund);
+        public decimal TotalRefund { get; set; }
 
-        public decimal TotalBetWin => Bets.Sum(x => x.BetWin);
+        public decimal TotalBetWin { get; set; }
 
-        public decimal TotalWin => TotalBetWin > 0 ? TotalBet + TotalBetWin - TotalRefund : 0;
+        public bool Win { get; set; }
+
+        public decimal TotalWin => Win ? TotalBet + TotalBetWin - TotalRefund : 0;
 
         public decimal WinLoss => TotalWin + TotalRefund - TotalBet;
     }

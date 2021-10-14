@@ -141,6 +141,9 @@
   <data name="BankerWhite4" xml:space="preserve">
     <value>Banker - 4 White</value>
   </data>
+  <data name="BettingPrice" xml:space="preserve">
+    <value>Betting Price</value>
+  </data>
   <data name="Big" xml:space="preserve">
     <value>Big</value>
   </data>
