@@ -16,11 +16,7 @@ namespace GameRoundResult.Web.Models
 
         public decimal TotalBetWin { get; set; }
 
-<<<<<<< HEAD
         public decimal TotalWin => Bets.Sum(x => x.GrossWin);
-=======
-        public decimal TotalWin => TotalBetWin > 0 ? TotalBet + TotalBetWin - TotalRefund : 0;
->>>>>>> fix: update win fomula
 
         public decimal WinLoss => TotalWin + TotalRefund - TotalBet;
     }
