@@ -63,7 +63,7 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.RoundResult != null)
+        @if (Model.RoundResult != null && Model.RoundResult.Settled)
         {
             var htResult = Model.RoundResult.HalfTime;
             var ftResult = Model.RoundResult.FullTime;
@@ -246,7 +246,7 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.Bets.Any() && Model.RoundResult != null)
+        @if (Model.Bets.Any() && Model.RoundResult != null && Model.RoundResult.Settled)
         {
             foreach (var bet in Model.Bets)
             {

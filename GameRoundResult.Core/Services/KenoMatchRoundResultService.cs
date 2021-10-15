@@ -24,7 +24,7 @@ namespace GameRoundResult.Core.Services
         public async Task<(long, IEnumerable<TRoundEntity>)> GetGameRoundResultAsync<TRoundEntity>(DateTime date, long roundId, int page, int pageSize)
             where TRoundEntity : KenoMatchRound
         {
-            return await repository.GetGameRoundResultAsync<TRoundEntity>(date, roundId, page, pageSize, x => x.FullTime != null);
+            return await repository.GetGameRoundResultAsync<TRoundEntity>(date, roundId, page, pageSize, x => x.FullTime != null && x.Settled);
         }
     }
 }

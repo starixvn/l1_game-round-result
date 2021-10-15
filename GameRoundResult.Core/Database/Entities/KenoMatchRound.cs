@@ -11,6 +11,8 @@ namespace GameRoundResult.Core.Database.Entities
         public KenoMatchPeriod HalfTime { get; set; }
         public KenoMatchPeriod FullTime { get; set; }
 
+        public bool Settled { get; set; }
+
         public Dictionary<string, decimal> Odds { get; set; }
     }
 

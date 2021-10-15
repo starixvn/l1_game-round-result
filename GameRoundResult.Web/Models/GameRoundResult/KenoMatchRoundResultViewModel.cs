@@ -14,6 +14,8 @@ namespace GameRoundResult.Web.Models
 
         public KenoMatchPeriodViewModel FullTime { get; set; }
 
+        public bool Settled { get; set; }
+
         public Dictionary<string, decimal> Odds { get; set; }
 
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
