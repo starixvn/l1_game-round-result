@@ -13,8 +13,8 @@
         { "odd", CommonLocalizer["Odd"] },
         { "even", CommonLocalizer["Even"] },
         { "blueBig", CommonLocalizer["Big"] },
-        { "blueSmall", CommonLocalizer["Big"] },
-        { "redBig", CommonLocalizer["Small"] },
+        { "blueSmall", CommonLocalizer["Small"] },
+        { "redBig", CommonLocalizer["Big"] },
         { "redSmall", CommonLocalizer["Small"] },
     };
 
@@ -42,7 +42,7 @@
             <th rowspan="2" class="col-date">@CommonLocalizer["Time"] (GMT-4)</th>
             <th rowspan="2" class="col-round-id">@CommonLocalizer["RoundId"]</th>
             <th rowspan="2">@CommonLocalizer["Result"]</th>
-            <th colspan="2">@CommonLocalizer["WinningOptions"]</th>
+            <th colspan="4">@CommonLocalizer["WinningOptions"]</th>
         </tr>
         <tr>
             <th>@Localizer["Team Blue"]/@Localizer["Team Red"]</th>
@@ -52,7 +52,7 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.RoundResult != null)
+        @if (Model.RoundResult != null && Model.RoundResult.Settled)
         {
             var result = Model.RoundResult.Result;
             var blueSum = result.Blue.Sum(x => x);
@@ -92,7 +92,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>@Localizer["Team Blue"] @blueSum - @Localizer["Total"] @(blueSum + redSum) - @Localizer["Team Red"] @redSum</td>
+                                <td colspan="2">@Localizer["Team Blue"] @blueSum - @Localizer["Total"] @(blueSum + redSum) - @Localizer["Team Red"] @redSum</td>
                             </tr>
                         </tbody>
                     </table>
@@ -181,7 +181,7 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.Bets.Any() && Model.RoundResult != null)
+        @if (Model.Bets.Any() && Model.RoundResult != null && Model.RoundResult.Settled)
         {
             var settlementResult = Model.RoundResult.SettlementResult;
 

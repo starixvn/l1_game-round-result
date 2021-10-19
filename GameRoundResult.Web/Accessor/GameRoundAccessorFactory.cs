@@ -44,8 +44,8 @@ namespace GameRoundResult.Web.Accessor
             { GameType.ThreeCards, typeof(GameRoundAccessor<ThreeCardsRound, ThreeCardsRoundResultViewModel>) },
             { GameType.KenoMatch1, typeof(KenoMatchRoundAccessor<KenoMatch1Round>) },
             { GameType.KenoMatch2, typeof(KenoMatchRoundAccessor<KenoMatch2Round>) },
-            { GameType.KenoPower1, typeof(GameRoundAccessor<KenoPower1Round, KenoPowerRoundResultViewModel>) },
-            { GameType.KenoPower2, typeof(GameRoundAccessor<KenoPower2Round, KenoPowerRoundResultViewModel>) },
+            { GameType.KenoPower1, typeof(KenoPowerRoundAccessor<KenoPower1Round>) },
+            { GameType.KenoPower2, typeof(KenoPowerRoundAccessor<KenoPower2Round>) },
 
         };
 

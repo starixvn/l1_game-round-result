@@ -7,6 +7,7 @@ namespace GameRoundResult.Core.Database.Entities
     {
         public KenoPowerResult Result { get; set; }
         public KenoPowerSettlementResult SettlementResult { get; set; }
+        public bool Settled { get; set; }
     }
 
     public class KenoPowerResult

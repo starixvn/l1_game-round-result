@@ -12,6 +12,8 @@ namespace GameRoundResult.Web.Models
         public KenoPowerResultViewModel Result { get; set; }
         public KenoPowerSettlementResultViewModel SettlementResult { get; set; }
 
+        public bool Settled { get; set; }
+
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))

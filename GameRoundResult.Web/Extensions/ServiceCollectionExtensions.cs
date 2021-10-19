@@ -59,7 +59,9 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IGameRoundAccessorFactory, GameRoundAccessorFactory>();
             services.AddScoped(typeof(GameRoundAccessor<,>));
             services.AddScoped(typeof(KenoMatchRoundAccessor<>));
+            services.AddScoped(typeof(KenoPowerRoundAccessor<>));
             services.AddScoped<IKenoMatchRoundResultService, KenoMatchRoundResultService>();
+            services.AddScoped<IKenoPowerRoundResultService, KenoPowerRoundResultService>();
             services.AddScoped<IRoundResultViewFactory, RoundResultViewFactory>();
             services.AddScoped<ILogRepository, LogRepository>();
             services.AddScoped<ILogService, LogService>();
