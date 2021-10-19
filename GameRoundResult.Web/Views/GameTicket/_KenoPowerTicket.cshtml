@@ -46,9 +46,9 @@
         </tr>
         <tr>
             <th>@Localizer["Team Blue"]/@Localizer["Team Red"]</th>
+            <th>@Localizer["Sum"]</th>
             <th>@Localizer["Team Blue"]</th>
             <th>@Localizer["Team Red"]</th>
-            <th>@Localizer["Total"]</th>
         </tr>
     </thead>
     <tbody>
@@ -115,26 +115,6 @@
                     }
                 </td>
                 <td>
-                    @if (settlementResult.BlueBig)
-                    {
-                        @CommonLocalizer["Big"]
-                    }
-                    @if (settlementResult.BlueSmall)
-                    {
-                        @CommonLocalizer["Small"]
-                    }
-                </td>
-                <td>
-                    @if (settlementResult.RedBig)
-                    {
-                        @CommonLocalizer["Big"]
-                    }
-                    @if (settlementResult.RedSmall)
-                    {
-                        @CommonLocalizer["Small"]
-                    }
-                </td>
-                <td>
                     <div>
                         @if (settlementResult.Big)
                         {
@@ -156,6 +136,27 @@
                         }
                     </div>
                 </td>
+                <td>
+                    @if (settlementResult.BlueBig)
+                    {
+                        @CommonLocalizer["Big"]
+                    }
+                    @if (settlementResult.BlueSmall)
+                    {
+                        @CommonLocalizer["Small"]
+                    }
+                </td>
+                <td>
+                    @if (settlementResult.RedBig)
+                    {
+                        @CommonLocalizer["Big"]
+                    }
+                    @if (settlementResult.RedSmall)
+                    {
+                        @CommonLocalizer["Small"]
+                    }
+                </td>
+
             </tr>
         }
         else
@@ -186,7 +187,7 @@
             var settlementResult = Model.RoundResult.SettlementResult;
 
             var settlementResultMapper = new Dictionary<string, bool>
-        {
+    {
                 { "blue", settlementResult.Blue },
                 { "red", settlementResult.Red },
                 { "big", settlementResult.Big },
