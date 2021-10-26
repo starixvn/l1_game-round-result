@@ -74,6 +74,8 @@ namespace GameRoundResult.Web.Extensions
 
             services.AddScoped<IBitcoinMasterTicketService, BitcoinMasterTicketService>();
             services.AddScoped<IBitcoinMasterBetRepository, BitcoinMasterBetRepository>();
+            services.AddScoped<IPartnerService, PartnerService>();
+            services.AddScoped<IPartnerRepository, PartnerRepository>();
 
             services.AddScoped(typeof(BigSmallTicketAccessor<,,>));
             services.AddScoped<BaccaratTicketAccessor>();
