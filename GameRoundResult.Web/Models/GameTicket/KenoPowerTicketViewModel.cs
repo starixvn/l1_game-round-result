@@ -14,7 +14,7 @@ namespace GameRoundResult.Web.Models
 
         public decimal TotalBetWin { get; set; }
 
-        public decimal WinLoss => TotalBetWin - TotalBet;
+        public decimal WinLoss => TotalBetWin - TotalBet + Refund;
 
         public Dictionary<string, decimal> Odds { get; set; }
     }
