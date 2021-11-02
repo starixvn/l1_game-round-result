@@ -26,7 +26,7 @@ namespace GameRoundResult.Web.Accessor
             return new SeDieTicketViewModel
             {
                 RoundResult = result.Item1?.ToViewModel<SeDieRound, SeDieRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bet = result.Item2.ToViewModel(mapper, request.TimeZoneInfo)
+                Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
             };
         }
     }

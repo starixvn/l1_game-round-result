@@ -27,7 +27,7 @@ namespace GameRoundResult.Web.Accessor
             return new DragonTigerTicketViewModel
             {
                 RoundResult = result.Item1?.ToViewModel<DragonTigerRound, DragonTigerRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bet = result.Item2.ToViewModel(mapper, request.TimeZoneInfo)
+                Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
             };
         }
     }

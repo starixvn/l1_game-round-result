@@ -26,7 +26,7 @@ namespace GameRoundResult.Web.Accessor
             return new FishPrawnCrabTicketViewModel
             {
                 RoundResult = result.Item1?.ToViewModel<FishPrawnCrabRound, FishPrawnCrabRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bet = result.Item2.ToViewModel(mapper, request.TimeZoneInfo)
+                Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
             };
         }
     }
