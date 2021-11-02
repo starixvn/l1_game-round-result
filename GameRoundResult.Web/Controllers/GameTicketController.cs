@@ -42,7 +42,7 @@ namespace GameRoundResult.Web.Controllers
 
         [HttpGet]
         [Route("{culture=vi-VN}/[controller]/{queryKey}", Order = 0)]
-        public async Task<IActionResult> Index(string queryKey)
+        public async Task<IActionResult> Index(string queryKey, [FromServices] IPartnerService partnerService)
         {
             try
             {
@@ -59,12 +59,14 @@ namespace GameRoundResult.Web.Controllers
                 }
 
                 var client = GetClient(partnerId, partnerSecret);
-                if (client != null)
+                var partner = await partnerService.Get(clientId, clientKey);
+
+                if (client != null || partner != null)
                 {
                     var viewModel = new GameTicketResultViewModel
                     {
                         GameType = gameType,
-                        GameTicketResult = await GetGameTicket(client, gameType, roundId, memberId)
+                        GameTicketResult = await GetGameTicket(gameType, roundId, memberId)
                     };
 
                     return View(viewModel);
@@ -125,9 +127,9 @@ namespace GameRoundResult.Web.Controllers
             return clients.FirstOrDefault(x => x.Key == partnerSecret && partnerId == x.Name && x.Name == "ONEworks1");
         }
 
-        private async Task<GameTicketViewModel> GetGameTicket(AuthenticationClient client, GameType gameType, long roundId, int memberId)
+        private async Task<GameTicketViewModel> GetGameTicket(GameType gameType, long roundId, int memberId)
         {
-            var timeZoneInfo = TZConvert.GetTimeZoneInfo(client.TimeZone);
+            var timeZoneInfo = TZConvert.GetTimeZoneInfo("SA Western Standard Time");
 
             return await mediator.Send(new GetGameTicketRequest(gameType, roundId, memberId, timeZoneInfo));
         }
