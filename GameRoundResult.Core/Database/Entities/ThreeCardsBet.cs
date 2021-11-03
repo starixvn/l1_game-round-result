@@ -2,7 +2,7 @@
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    [CollectionName("threecards_cuocss")]
+    [CollectionName("threecards_cuocs")]
     public class ThreeCardsBet : BaseBetEntity
     {
         public decimal Red { get; set; }

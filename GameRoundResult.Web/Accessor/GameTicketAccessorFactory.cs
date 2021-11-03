@@ -34,6 +34,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.KenoNorth, typeof(MiniKenoTicketAccessor<KenoNorthRound, KenoNorthOne, KenoNorthBet>) },
             { GameType.Roulette, typeof(RouletteTicketAccessor) },
             { GameType.VipSeDie, typeof(VipSeDieTicketAccessor) },
+            { GameType.Blackjack, typeof(BlackjackTicketAccessor) },
             { GameType.SpecialSeDie, typeof(SpecialSeDieTicketAccessor) },
             { GameType.SicBo, typeof(SicBoTicketAccessor) },
             { GameType.VipFishPrawnCrab, typeof(VipFishPrawnCrabTicketAccessor) },
