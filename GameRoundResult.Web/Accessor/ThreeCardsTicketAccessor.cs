@@ -26,7 +26,7 @@ namespace GameRoundResult.Web.Accessor
             return new ThreeCardsTicketViewModel
             {
                 RoundResult = result.Item1?.ToViewModel<ThreeCardsRound, ThreeCardsRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bet = result.Item2.ToViewModel(mapper, request.TimeZoneInfo)
+                Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
             };
         }
     }

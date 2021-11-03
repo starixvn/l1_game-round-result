@@ -22,6 +22,7 @@ namespace GameRoundResult.Core.Database.Entities
 
         public string SiteId { get; set; }
 
-        public virtual bool? FreeBet { get; set; }
+        [BsonDefaultValue(false)]
+        public bool? FreeBet { get; set; }
     }
 }

@@ -24,8 +24,5 @@ namespace GameRoundResult.Core.Database.Entities
 
         [BsonElement("white4")]
         public decimal FourWhite { get; set; }
-
-        [BsonDefaultValue(false)]
-        public override bool? FreeBet { get; set; }
     }
 }

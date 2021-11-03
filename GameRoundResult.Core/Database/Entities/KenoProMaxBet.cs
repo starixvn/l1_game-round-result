@@ -1,5 +1,8 @@
-﻿namespace GameRoundResult.Core.Database.Entities
+﻿using GameRoundResult.Core._Share;
+
+namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("kenopromax_cuocs")]
     public class KenoProMaxBet : BaseBetEntity
     {
         public decimal Big { get; set; }

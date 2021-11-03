@@ -27,7 +27,7 @@ namespace GameRoundResult.Web.Accessor
             return new MiniSeDieTicketViewModel
             {
                 RoundResult = result.Item1?.ToViewModel<MiniSeDieRound, MiniSeDieRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bet = result.Item2.ToViewModel(mapper, request.TimeZoneInfo)
+                Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
             };
         }
     }
