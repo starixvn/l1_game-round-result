@@ -7,13 +7,12 @@ namespace GameRoundResult.Web.Requests
 {
     public class GetGameTicketRequest : IRequest<GameTicketViewModel>
     {
-        public GetGameTicketRequest(GameType gameType, long roundId, int memberId, TimeZoneInfo timeZoneInfo, bool freeBet)
+        public GetGameTicketRequest(GameType gameType, long roundId, int memberId, TimeZoneInfo timeZoneInfo)
         {
             GameType = gameType;
             MemberId = memberId;
             RoundId = roundId;
             TimeZoneInfo = timeZoneInfo;
-            FreeBet = freeBet;
         }
 
         public long RoundId { get; }
