@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
@@ -20,7 +19,6 @@ namespace GameRoundResult.Web.Controllers
     public class GameTicketController : Controller
     {
         private readonly IMediator mediator;
-        private readonly IEnumerable<AuthenticationClient> clients;
         private readonly HostConfiguration hostConfiguration;
         private readonly ITimeLimitedDataProtector dataProtector;
         private const string dataProtectorKey = "game-ticket-data-key";
@@ -28,14 +26,13 @@ namespace GameRoundResult.Web.Controllers
         private readonly ILogService logService;
         private readonly IPartnerService partnerService;
 
-        public GameTicketController(IMediator mediator, IOptionsSnapshot<List<AuthenticationClient>> clientAccessor,
+        public GameTicketController(IMediator mediator,
             IDataProtectionProvider dataProtectionProvider,
             IOptionsSnapshot<HostConfiguration> hostConfigurationAccessor,
             ILogService logService,
             IPartnerService partnerService
             )
         {
-            clients = clientAccessor.Value;
             this.mediator = mediator;
             dataProtector = dataProtectionProvider.CreateProtector(dataProtectorKey).ToTimeLimitedDataProtector();
             hostConfiguration = hostConfigurationAccessor.Value;
@@ -67,7 +64,7 @@ namespace GameRoundResult.Web.Controllers
                     var viewModel = new GameTicketResultViewModel
                     {
                         GameType = gameType,
-                        GameTicketResult = await GetGameTicket(gameType, roundId, memberId)
+                        GameTicketResult = await GetGameTicket(gameType, roundId, memberId, partnerId)
                     };
 
                     return View(viewModel);
@@ -123,11 +120,11 @@ namespace GameRoundResult.Web.Controllers
             Language = model.Language,
         });
 
-        private async Task<GameTicketViewModel> GetGameTicket(GameType gameType, long roundId, int memberId)
+        private async Task<GameTicketViewModel> GetGameTicket(GameType gameType, long roundId, int memberId, string partnerId)
         {
             var timeZoneInfo = TZConvert.GetTimeZoneInfo("SA Western Standard Time");
 
-            return await mediator.Send(new GetGameTicketRequest(gameType, roundId, memberId, timeZoneInfo));
+            return await mediator.Send(new GetGameTicketRequest(gameType, roundId, memberId, timeZoneInfo, partnerId));
         }
     }
 }

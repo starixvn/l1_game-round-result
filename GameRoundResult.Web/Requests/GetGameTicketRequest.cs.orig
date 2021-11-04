@@ -1,0 +1,38 @@
+﻿using System;
+using GameRoundResult.Core.Constants;
+using GameRoundResult.Web.Models;
+using MediatR;
+
+namespace GameRoundResult.Web.Requests
+{
+    public class GetGameTicketRequest : IRequest<GameTicketViewModel>
+    {
+<<<<<<< HEAD
+        public GetGameTicketRequest(GameType gameType, long roundId, int memberId, TimeZoneInfo timeZoneInfo)
+=======
+        public GetGameTicketRequest(GameType gameType, long roundId, int memberId, TimeZoneInfo timeZoneInfo, string partnerId)
+>>>>>>> faf494f... feat: game ticket - add partnerId filter
+        {
+            GameType = gameType;
+            MemberId = memberId;
+            RoundId = roundId;
+            TimeZoneInfo = timeZoneInfo;
+<<<<<<< HEAD
+=======
+            PartnerId = partnerId;
+>>>>>>> faf494f... feat: game ticket - add partnerId filter
+        }
+
+        public long RoundId { get; }
+
+        public int MemberId { get; }
+
+        public GameType GameType { get; }
+
+        public TimeZoneInfo TimeZoneInfo { get; }
+
+        public bool FreeBet { get; }
+
+        public string PartnerId { get; }
+    }
+}
