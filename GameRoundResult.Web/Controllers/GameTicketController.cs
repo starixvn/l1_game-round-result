@@ -120,9 +120,9 @@ namespace GameRoundResult.Web.Controllers
             Language = model.Language,
         });
 
-        private AuthenticationClient GetClient(string clientId, string clientKey)
+        private AuthenticationClient GetClient(string partnerId, string partnerSecret)
         {
-            return clients.FirstOrDefault(x => x.Key == clientKey && clientId == x.Name && x.Name == "ONEworks1");
+            return clients.FirstOrDefault(x => x.Key == partnerSecret && partnerId == x.Name && x.Name == "ONEworks1");
         }
 
         private async Task<GameTicketViewModel> GetGameTicket(AuthenticationClient client, GameType gameType, long roundId, int memberId)
