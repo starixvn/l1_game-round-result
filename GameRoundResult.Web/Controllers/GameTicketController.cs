@@ -26,18 +26,20 @@ namespace GameRoundResult.Web.Controllers
         private const string dataProtectorKey = "game-ticket-data-key";
         private const int dataProtectorLifeTimeSecond = 30;
         private readonly ILogService logService;
+        private readonly IPartnerService partnerService;
 
         public GameTicketController(IMediator mediator, IOptionsSnapshot<List<AuthenticationClient>> clientAccessor,
             IDataProtectionProvider dataProtectionProvider,
             IOptionsSnapshot<HostConfiguration> hostConfigurationAccessor,
-            ILogService logService
+            ILogService logService,
+            IPartnerService partnerService
             )
         {
             clients = clientAccessor.Value;
             this.mediator = mediator;
             dataProtector = dataProtectionProvider.CreateProtector(dataProtectorKey).ToTimeLimitedDataProtector();
             hostConfiguration = hostConfigurationAccessor.Value;
-            this.logService = logService;
+            this.partnerService = partnerService;
         }
 
         [HttpGet]
@@ -58,10 +60,9 @@ namespace GameRoundResult.Web.Controllers
                     return View("GameNotSupported");
                 }
 
-                var client = GetClient(partnerId, partnerSecret);
-                var partner = await partnerService.Get(clientId, clientKey);
+                var partner = await partnerService.Get(partnerId, partnerSecret);
 
-                if (client != null || partner != null)
+                if (partner != null)
                 {
                     var viewModel = new GameTicketResultViewModel
                     {
@@ -82,24 +83,24 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult GetAccessUrl([FromBody] GameTicketAccessUrlRequestModel model)
+        public async Task<IActionResult> GetAccessUrl([FromBody] GameTicketAccessUrlRequestModel model)
         {
             var log = ConvertToLog(model);
 
             if (ModelState.IsValid)
             {
-                var client = GetClient(model.Auth.PartnerId, model.Auth.PartnerSecret);
+                var partner = await partnerService.Get(model.Auth.PartnerId, model.Auth.PartnerSecret);
 
-                if (client != null)
+                if (partner != null)
                 {
-                    var queryKey = dataProtector.Protect($"{model.Auth.PartnerId}_{model.Auth.PartnerSecret}_{model.GameTypeId}_{model.GameRoundId}_{model.ObCustId}",
+                    var queryKey = dataProtector.Protect($"{model.Auth.PartnerId}_{model.Auth.PartnerSecret}_{model.GameTypeId}_{model.GameRoundId}_{model.ObCustId}_{model.FreeBet}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
 
                     var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
 
                     log.Result = new AccessUrlResponse { RedirectUrl = redirectUrl };
                     log.ResponseTimeStamp = DateTimeOffset.UtcNow;
-                    logService.LogTicketDetailRequestAsync(log);
+                    await logService.LogTicketDetailRequestAsync(log);
 
                     return Ok(new GameTicketAccessUrlResultModel { RedirectUrl = redirectUrl });
                 }
@@ -107,7 +108,7 @@ namespace GameRoundResult.Web.Controllers
 
             log.ResponseTimeStamp = DateTimeOffset.UtcNow;
             log.Result = new AccessUrlResponse { Error = "BadRequest" };
-            logService.LogTicketDetailRequestAsync(log);
+            await logService.LogTicketDetailRequestAsync(log);
 
             return BadRequest();
         }
@@ -121,11 +122,6 @@ namespace GameRoundResult.Web.Controllers
             ObCustId = model.ObCustId,
             Language = model.Language,
         });
-
-        private AuthenticationClient GetClient(string partnerId, string partnerSecret)
-        {
-            return clients.FirstOrDefault(x => x.Key == partnerSecret && partnerId == x.Name && x.Name == "ONEworks1");
-        }
 
         private async Task<GameTicketViewModel> GetGameTicket(GameType gameType, long roundId, int memberId)
         {
