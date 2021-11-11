@@ -38,5 +38,6 @@
         KenoPower1 = 40,
         KenoPower2,
         BitcoinMaster = 43
+        CasinoHoldemPoker = 39
     }
 }

@@ -243,17 +243,12 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<KenoPowerRound, KenoPowerRoundResultViewModel>();
             CreateMap<KenoPowerResult, KenoPowerResultViewModel>();
             CreateMap<KenoPowerSettlementResult, KenoPowerSettlementResultViewModel>();
-<<<<<<< HEAD
-            CreateMap<HeroesSlotRound, HeroesSlotRoundResultViewModel>();
-            CreateMap<HeroesSlotSettlementResult, HeroesSlotSettlementResultViewModel>();
-            CreateMap<HeroesSlotFreeSpin, HeroesSlotFreeSpinViewModel>();
-            CreateMap<HeroesSlotBonus, HeroesSlotBonusViewModel>();
-            CreateMap<HeroesSlotWinningLine, HeroesSlotWinningLineViewModel>();
-            CreateMap<HeroesSlotBonusChest, HeroesSlotBonusChestViewModel>();
-            CreateMap<HeroesSlotJackpot, HeroesSlotJackpotViewModel>();
-=======
             CreateMap<KenoPowerBet, KenoPowerBetViewModel>();
->>>>>>> 2bcdbce... feat: keno power - ticket detail
+
+            CreateMap<CasinoHoldemPokerRound, CasinoHoldemPokerRoundResultViewModel>();
+            CreateMap<BitcoinMasterRound, BitcoinMasterRoundResultViewModel>();
+            CreateMap<BitcoinMasterBet, BitcoinMasterBetViewModel>()
+                .ForMember(x => x.Bet, opt => opt.MapFrom(x => x.Amount));
         }
     }
 }

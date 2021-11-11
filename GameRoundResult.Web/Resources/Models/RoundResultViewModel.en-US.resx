@@ -219,6 +219,9 @@
   <data name="Water" xml:space="preserve">
     <value>Water</value>
   </data>
+  <data name="WinLoss" xml:space="preserve">
+    <value>Win / Loss</value>
+  </data>
   <data name="WinningOptions" xml:space="preserve">
     <value>Winning Option(s)</value>
   </data>

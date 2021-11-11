@@ -333,4 +333,7 @@
   <data name="BettingPrice" xml:space="preserve">
     <value>Giá Đặt Lệnh</value>
   </data>
+  <data name="WinLoss" xml:space="preserve">
+    <value>Win / Loss</value>
+  </data>
 </root>
