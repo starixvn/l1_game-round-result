@@ -52,7 +52,10 @@ namespace GameRoundResult.Web.Controllers
         {
             var viewModel = new GameRoundResultViewModel
             {
-                GameTypes = await gameTypeLocalization.GetGameListAsync(User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.SiteName)?.Value),
+                GameTypes = await gameTypeLocalization.GetGameListAsync(
+                    User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.SiteName)?.Value,
+                    User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.PartnerId)?.Value
+                    ),
                 GameType = gameType
             };
             return View(viewModel);
