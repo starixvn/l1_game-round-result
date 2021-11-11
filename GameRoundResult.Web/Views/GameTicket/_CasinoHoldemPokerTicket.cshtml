@@ -1,1 +1,252 @@
-﻿
+﻿@using Microsoft.Extensions.Localization
+@using GameRoundResult.Core.Constants
+@using System.Globalization
+@model CasinoHoldemPokerTicketViewModel
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@Localizer["Time"] (GMT-4)</th>
+            <th class="col-round-id">@Localizer["RoundId"]</th>
+            <th>@Localizer["Player"]</th>
+            <th>@Localizer["Dealer"]</th>
+            <th>@Localizer["Stake"]</th>
+            <th>@Localizer["WinLoss"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Bet != null)
+        {
+            <tr>
+                <td>@Model.Round.Time.FormatDatTime()</td>
+                <td>@Model.Round.Round</td>
+                <td>@Localizer[Model.Player.Rank]</td>
+                @if (Model.Ended && !Model.IsFold)
+                {
+                    <td>@(Model.IsQualified ? Localizer[Model.Dealer.Rank] : Localizer["DoesNotQualify"])</td>
+                }
+                else
+                {
+                    <td>-</td>
+                }
+                <td class="bold">@Model.TotalBet.Format()</td>
+                <td class="@(Model.Ended && Model.WinLoss < 0 ? "text-red bold" : "bold")">
+                    @(Model.Ended ? Model.WinLoss.Format() : Localizer["UnfinishedGame"])
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">
+                    @Localizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <div>
+        <strong>@Localizer["Cards"]</strong>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>@Localizer["Cards"]</th>
+                    <th>@Localizer["Combination"]</th>
+                    <th>@Localizer["Result"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Bet != null)
+                {
+                    <tr>
+                        <td>@Localizer["Player"]</td>
+                        <td class="blackjack-result">
+                            <div class="cards">
+                                @foreach (var card in Model.Player.Cards)
+                                {
+                                    <div class="card card-type-@card.Suit">
+                                        <span>@Card.CardLabels[card.Rank]</span>
+                                        <img class="img" src="~/scss/images/card_@(card.Suit).png" />
+                                    </div>
+                                }
+                            </div>
+                        </td>
+                        <td class="blackjack-result">
+                            <div class="cards">
+                                @foreach (var card in Model.Player.CombinationCards)
+                                {
+                                    <div class="card card-type-@card.Suit">
+                                        <span>@Card.CardLabels[card.Rank]</span>
+                                        <img class="img" src="~/scss/images/card_@(card.Suit).png" />
+                                    </div>
+                                }
+                            </div>
+                        </td>
+                        <td>@Localizer[Model.Player.Rank]</td>
+                    </tr>
+                    <tr>
+                        <td>@Localizer["Dealer"]</td>
+                        <td class="blackjack-result">
+                            <div class="cards">
+                                @if (Model.Ended && !Model.IsFold)
+                                {
+                                    @foreach (var card in Model.Dealer.Cards)
+                                    {
+                                        <div class="card card-type-@card.Suit">
+                                            <span>@Card.CardLabels[card.Rank]</span>
+                                            <img class="img" src="~/scss/images/card_@(card.Suit).png" />
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <img class="card" src="~/scss/images/card_back.png" />
+                                    <img class="card" src="~/scss/images/card_back.png" />
+                                }
+                            </div>
+                        </td>
+                        <td class="blackjack-result">
+                            <div class="cards">
+                                @if (Model.Ended && !Model.IsFold)
+                                {
+                                    @foreach (var card in Model.Dealer.CombinationCards)
+                                    {
+                                        <div class="card card-type-@card.Suit">
+                                            <span>@Card.CardLabels[card.Rank]</span>
+                                            <img class="img" src="~/scss/images/card_@(card.Suit).png" />
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div>-</div>
+                                }
+                            </div>
+                        </td>
+                        @if (Model.Ended && !Model.IsFold)
+                        {
+                            @if (Model.IsQualified)
+                            {
+                                <td>@Localizer[Model.Dealer.Rank]</td>
+                            }
+                            else
+                            {
+                                <td>@Localizer["DoesNotQualify"]</td>
+                            }
+                        }
+                        else
+                        {
+
+                            <td>-</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>@Localizer["CommunityCards"]</td>
+                        <td class="blackjack-result">
+                            <div class="cards">
+                                @foreach (var card in Model.CommunityCards)
+                                {
+                                    <div class="card card-type-@card.Suit">
+                                        <span>@Card.CardLabels[card.Rank]</span>
+                                        <img class="img" src="~/scss/images/card_@(card.Suit).png" />
+                                    </div>
+                                }
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4" class="text-center">
+                            @Localizer["NoDataAvailable"]
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="mt-5">
+        <strong>@Localizer["Bets"]</strong>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>@Localizer["BettingOptions"]</th>
+                    <th>@Localizer["Stake"]</th>
+                    <th>@Localizer["WinningAmount"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Bet != null)
+                {
+                    var winAnte = (Model.Bet.SettlementResult?.Ante ?? 0);
+                    var winAA = (Model.Bet.SettlementResult?.Aa ?? 0);
+                    var winCall = (Model.Bet.SettlementResult?.Call ?? 0);
+                    <tr class="@(winAnte > 0 ? "text-blue bold" : "")">
+                        <td>@Localizer["Ante"]</td>
+                        <td>@Model.Bet.Ante.Format()</td>
+                        @if (Model.Ended)
+                        {
+                            <td>
+                                @(winAnte.Format())
+                            </td>
+                        }
+                        else
+                        {
+                            <td>@Localizer["UnfinishedGame"]</td>
+                        }
+                    </tr>
+                    <tr class="@(winAA > 0 ? "text-blue bold" : "")">
+                        <td>@Localizer["AA"]</td>
+                        <td>@Model.Bet.Aa.Format()</td>
+                        @if (Model.Ended)
+                        {
+                            <td>
+                                @(winAA.Format())
+                            </td>
+                        }
+                        else
+                        {
+                            <td>@Localizer["UnfinishedGame"]</td>
+                        }
+                    </tr>
+                    @if (Model.Ended)
+                    {
+                        <tr class="@(winCall > 0 ? "text-blue bold" : "")">
+                            <td>@Localizer["Call"]</td>
+                            <td>@Model.Bet.Call.Format()</td>
+                            <td>
+                                @(winCall.Format())
+                            </td>
+                        </tr>
+                    }
+                    <tr class="total">
+                        <td>@Localizer["Total"]</td>
+                        <td>@Model.TotalBet.Format()</td>
+                        @if (Model.Ended)
+                        {
+                            <td>@Model.TotalWin.Format()</td>
+                        }
+                        else
+                        {
+                            <td>@Localizer["UnfinishedGame"]</td>
+                        }
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3" class="text-center">
+                            @Localizer["NoDataAvailable"]
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

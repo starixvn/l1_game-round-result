@@ -170,21 +170,55 @@ namespace GameRoundResult.Web.Extensions
 
         public static KenoPowerBetViewModel ToViewModel(this KenoPowerBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-<<<<<<< HEAD
-        return mapper.Map<KenoMatchBet, KenoMatchetViewModel>(entity, opts =>
-                  {
+            return mapper.Map<KenoPowerBet, KenoPowerBetViewModel>(entity, opts =>
+            {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });
         }
+
         public static HeroesSlotRoundResultViewModel ToViewModel(this HeroesSlotRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            
+
             return mapper.Map<HeroesSlotRound, HeroesSlotRoundResultViewModel>(entity, opts =>
-=======
-            return mapper.Map<KenoPowerBet, KenoPowerBetViewModel>(entity, opts =>
->>>>>>> 2bcdbce... feat: keno power - ticket detail
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+<<<<<<< HEAD
+        public static BitcoinMasterRoundResultViewModel ToViewModel(this BitcoinMasterRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<BitcoinMasterRound, BitcoinMasterRoundResultViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static BitcoinMasterBetViewModel ToViewModel(this BitcoinMasterBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<BitcoinMasterBet, BitcoinMasterBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) =>
+                {
+                    dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo);
+                });
+=======
+        public static CasinoHoldemPokerBetViewModel ToViewModel(this CasinoHoldemPokerBet entity, IMapper mapper)
+        {
+            return mapper.Map<CasinoHoldemPokerBet, CasinoHoldemPokerBetViewModel>(entity);
+        }
+
+        public static CasinoHoldemPokerDetailBetViewModel ToViewModel(this CasinoHoldemPokerBetSettlementResult entity, IMapper mapper)
+        {
+            return mapper.Map<CasinoHoldemPokerBetSettlementResult, CasinoHoldemPokerDetailBetViewModel>(entity);
+        }
+
+        public static CasinoHoldemPokerRoundViewModel ToViewModel(this CasinoHoldemPokerRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<CasinoHoldemPokerRound, CasinoHoldemPokerRoundViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.RoundStartTime, timeZoneInfo));
+>>>>>>> cf1a066 (fix: casino holdem poker - game result entity)
             });
         }
     }
