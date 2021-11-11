@@ -21,7 +21,7 @@ namespace GameRoundResult.Web.Accessor
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
-            var result = await gameBetService.GetAsync<FishPrawnCrabRound, FishPrawnCrabBet>(request.RoundId, request.MemberId, request.FreeBet, request.PartnerId, request.PartnerId);
+            var result = await gameBetService.GetAsync<FishPrawnCrabRound, FishPrawnCrabBet>(request.RoundId, request.MemberId, request.FreeBet, request.PartnerId);
 
             return new FishPrawnCrabTicketViewModel
             {
