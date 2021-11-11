@@ -40,16 +40,16 @@ namespace GameRoundResult.Web.Configuration
             GameType.HeroesSlot
         };
 
-        private readonly IGlobalConfigService globalConfigService;
+        private readonly IPartnerConfigService PartnerConfigService;
 
-        public GameTypeLocalization(IStringLocalizer<GameType> localizer, IGlobalConfigService globalConfigService) : base(localizer)
+        public GameTypeLocalization(IStringLocalizer<GameType> localizer, IPartnerConfigService PartnerConfigService) : base(localizer)
         {
-            this.globalConfigService = globalConfigService;
+            this.PartnerConfigService = PartnerConfigService;
         }
 
-        public async Task<IEnumerable<SelectListItem>> GetGameListAsync(string siteName)
+        public async Task<IEnumerable<SelectListItem>> GetGameListAsync(string siteName, string partnerId)
         {
-            var configs = (await globalConfigService.GetAsync()).Configs;
+            var configs = (await PartnerConfigService.GetAsync(partnerId)).Value;
             return GetSelectListItems()
                 .Where(x => !excludeGames.Any(e => e == (GameType)Enum.Parse(typeof(GameType), x.Value)) &&
                 configs.ContainsKey(x.Value) &&

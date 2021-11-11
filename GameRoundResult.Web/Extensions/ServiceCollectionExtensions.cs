@@ -55,6 +55,8 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IGameBetService, GameBetService>();
             services.AddScoped<IGlobalConfigService, GlobalConfigService>();
             services.AddScoped<IGlobalConfigRepository, GlobalConfigRepository>();
+            services.AddScoped<IPartnerConfigService, PartnerConfigService>();
+            services.AddScoped<IPartnerConfigRepository, PartnerConfigRepository>();
 
             services.AddScoped<IGameRoundAccessorFactory, GameRoundAccessorFactory>();
             services.AddScoped(typeof(GameRoundAccessor<,>));
