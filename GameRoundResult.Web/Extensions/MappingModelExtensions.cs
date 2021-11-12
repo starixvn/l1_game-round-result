@@ -2,6 +2,7 @@
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Models;
+using GameRoundResult.Web.Models.GameRoundResult;
 
 namespace GameRoundResult.Web.Extensions
 {
@@ -214,9 +215,9 @@ namespace GameRoundResult.Web.Extensions
             return mapper.Map<CasinoHoldemPokerBetSettlementResult, CasinoHoldemPokerDetailBetViewModel>(entity);
         }
 
-        public static CasinoHoldemPokerRoundViewModel ToViewModel(this CasinoHoldemPokerRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        public static CasinoHoldemPokerRoundResultViewModel ToViewModel(this CasinoHoldemPokerRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return mapper.Map<CasinoHoldemPokerRound, CasinoHoldemPokerRoundViewModel>(entity, opts =>
+            return mapper.Map<CasinoHoldemPokerRound, CasinoHoldemPokerRoundResultViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.RoundStartTime, timeZoneInfo));
             });

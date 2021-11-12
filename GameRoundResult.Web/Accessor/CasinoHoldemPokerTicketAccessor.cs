@@ -1,17 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Models;
+using GameRoundResult.Web.Models.GameRoundResult;
 using GameRoundResult.Web.Requests;
 
 namespace GameRoundResult.Web.Accessor
 {
-    public class CasinoHoldemPokerTicketAccessor<TRoundEntity, TBetEntity> : IGameTicketAccessor
-        where TRoundEntity : CasinoHoldemPokerRound
-        where TBetEntity : CasinoHoldemPokerBet
+    public class CasinoHoldemPokerTicketAccessor : IGameTicketAccessor
     {
         private readonly IGameBetService gameBetService;
         private readonly IMapper mapper;
@@ -24,10 +23,12 @@ namespace GameRoundResult.Web.Accessor
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
-            var result = await gameBetService.GetAsync<TRoundEntity, TBetEntity>(request.RoundId, request.MemberId, request.FreeBet);
+            var result = await gameBetService.GetAsync<CasinoHoldemPokerRound, CasinoHoldemPokerBet>(request.RoundId, request.MemberId, request.FreeBet);
 
             return new CasinoHoldemPokerTicketViewModel
             {
+                Round = result.Item1?.ToViewModel<CasinoHoldemPokerRound, CasinoHoldemPokerRoundResultViewModel>(mapper, request.TimeZoneInfo),
+                Bet = result.Item2?.ToViewModel(mapper)
             };
         }
     }

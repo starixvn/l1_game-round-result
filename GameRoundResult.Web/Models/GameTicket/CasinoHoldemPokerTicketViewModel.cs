@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using GameRoundResult.Core.Constants;
+﻿using System.Collections.Generic;
+using GameRoundResult.Web.Models.GameRoundResult;
 
 namespace GameRoundResult.Web.Models
 {
@@ -9,7 +8,7 @@ namespace GameRoundResult.Web.Models
         
         public CasinoHoldemPokerBetViewModel Bet { get; set; }
 
-        public CasinoHoldemPokerRoundViewModel Round { get; set; }
+        public CasinoHoldemPokerRoundResultViewModel Round { get; set; }
 
         public CasinoHoldemPokerHandViewModel Player 
             => new CasinoHoldemPokerHandViewModel { Cards = Bet.PlayerCards, CombinationCards = Bet.CombinationCards, Id = Bet.HandRankId };
@@ -19,9 +18,9 @@ namespace GameRoundResult.Web.Models
 
         public IEnumerable<PokerCardViewModel> CommunityCards => Round.CommunityCards;
 
-        public bool Ended { get; set; }
+        public bool Ended => Round.Ended;
 
-        public bool IsFold { get; set; }
+        public bool IsFold => Round.IsFold;
 
         public bool IsQualified => Round.IsQualified;
 
@@ -53,17 +52,6 @@ namespace GameRoundResult.Web.Models
         public IEnumerable<PokerCardViewModel> Cards { get; set; }
         public IEnumerable<PokerCardViewModel> CombinationCards { get; set; }
         public string Rank => RankHandName[Id];
-    }
-
-    public class CasinoHoldemPokerRoundViewModel 
-    {
-        public DateTime Time { get; set; }
-        public long Round { get; set; }
-        public bool IsQualified { get; set; }
-        public IEnumerable<PokerCardViewModel> DealerCards { get; set; }
-        public IEnumerable<PokerCardViewModel> CommunityCards { get; set; }
-        public IEnumerable<PokerCardViewModel> DealerCombinationCards { get; set; }
-        public byte HandRankId { get; set; }
     }
 
     public class CasinoHoldemPokerBetViewModel

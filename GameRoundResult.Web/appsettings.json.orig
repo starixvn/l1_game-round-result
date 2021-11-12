@@ -1,0 +1,53 @@
+﻿{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "HostingPort": "7781",
+  "AllowedHosts": "*",
+  "SupportedCultures": [ "en-US", "vi-VN" ],
+  "DefaultCulture": "vi-VN",
+  "ApplicationName": "Game-Round-Result",
+  "AuthenticationClients": [
+    {
+      "Name": "Game Client",
+      "Key": "58148de3-b895-4f6b-82de-a35eed1b4b28",
+      "TimeZone": ""
+    },
+    {
+      "Name": "Game Admin 2",
+      "Key": "a3d39c90-df4e-4225-bf66-5fbecbdedc06",
+      "TimeZone": "SE Asia Standard Time"
+    },
+    {
+      "Name": "ONEworks",
+      "Key": "55ee763b-8575-4a91-8cfa-bf13a7c9974d",
+      "TimeZone": "SA Western Standard Time"
+    }
+  ],
+  "Sentry": {
+    "Dsn": "",
+    "IncludeRequestPayload": true,
+    "SendDefaultPii": false,
+    "MinimumBreadcrumbLevel": "Debug",
+    "MinimumEventLevel": "Warning",
+    "AttachStackTrace": true,
+    "Debug": true,
+    "DiagnosticsLevel": "Error"
+  },
+  "DatabaseSettings": {
+<<<<<<< HEAD
+    "ConnectionString": "mongodb://127.0.0.1:27017",
+=======
+    "ConnectionString": "mongodb://127.0.0.1:27017/",
+>>>>>>> 97be26f (fix: casino holdem poker - game ticket detail)
+    "DatabaseName": "minigame",
+    "KeyCollection": "data_protection_keys"
+  },
+  "HostConfiguration": {
+    "Domain": "http://localhost:7781/"
+  }
+}

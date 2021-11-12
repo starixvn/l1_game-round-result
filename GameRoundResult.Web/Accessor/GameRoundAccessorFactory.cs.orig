@@ -48,9 +48,9 @@ namespace GameRoundResult.Web.Accessor
             { GameType.KenoPower2, typeof(KenoPowerRoundAccessor<KenoPower2Round>) },
 <<<<<<< HEAD
             { GameType.BitcoinMaster, typeof(GameRoundAccessor<BitcoinMasterRound, BitcoinMasterRoundResultViewModel>) },
-=======
             { GameType.CasinoHoldemPoker, typeof(CasinoHoldemPokerRoundAccessor<CasinoHoldemPokerRound>) },
->>>>>>> 0af3fc8 (fix: casino holdem poker - game result)
+=======
+>>>>>>> 97be26f (fix: casino holdem poker - game ticket detail)
 
         };
 

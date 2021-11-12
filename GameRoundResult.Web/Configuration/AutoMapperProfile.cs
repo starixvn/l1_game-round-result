@@ -3,6 +3,7 @@ using System.Linq;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Models;
+using GameRoundResult.Web.Models.GameRoundResult;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -256,7 +257,7 @@ namespace GameRoundResult.Web.Configuration
                 .ForMember(x => x.PlayerCards, opt => opt.MapFrom(x => x.Cards))
                 .ForMember(x => x.HandRankId, opt => opt.MapFrom(x => x.Result.HandRankId))
                 .ForMember(x => x.SettlementResult, opt => opt.MapFrom(x => x.SettlementResult));
-            CreateMap<CasinoHoldemPokerRound, CasinoHoldemPokerRoundViewModel>()
+            CreateMap<CasinoHoldemPokerRound, CasinoHoldemPokerRoundResultViewModel>()
                 .ForMember(x => x.CommunityCards, opt => opt.MapFrom(x => x.Result.CommunityCards))
                 .ForMember(x => x.DealerCards, opt => opt.MapFrom(x => x.Result.Dealer))
                 .ForMember(x => x.DealerCombinationCards, opt

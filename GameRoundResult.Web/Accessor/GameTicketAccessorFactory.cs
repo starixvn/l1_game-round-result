@@ -49,7 +49,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.HeroesSlot, typeof(FourGuardiansTicketAccessor<HeroesSlotRound>) },
             { GameType.FourGuardians, typeof(FourGuardiansTicketAccessor<FourGuardiansRound>) },
             { GameType.BitcoinMaster, typeof(BitcoinMasterTicketAccessor) },
-            { GameType.CasinoHoldemPoker, typeof(CasinoHoldemPokerTicketAccessor<CasinoHoldemPokerRound, CasinoHoldemPokerBet>) },
+            { GameType.CasinoHoldemPoker, typeof(CasinoHoldemPokerTicketAccessor) },
         };
 
         private readonly IServiceProvider serviceProvider;
