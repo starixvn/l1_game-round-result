@@ -1,0 +1,20 @@
+﻿@inject IStringLocalizer<RoundResultViewModel> Localizer
+
+<table class="table table-bordered table-keno sticky-table" style="width:100%">
+    <thead>
+        <tr>
+            <th rowspan="2" class="col-date">@Localizer["Date"]</th>
+            <th rowspan="2">@Localizer["Round"]</th>
+            <th rowspan="2">@Localizer["Results"]</th>
+            <th rowspan="2">@Localizer["TotalPoints"]</th>
+            <th colspan="3">@Localizer["WinningOptions"]</th>
+        </tr>
+        <tr>
+            <th class="col-options">@Localizer["Big"]/@Localizer["Small"]</th>
+            <th class="col-options">@Localizer["Odd"]/@Localizer["Even"]</th>
+            <th class="col-options">@Localizer["Element"]</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
