@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GameRoundResult.Web.Models
 {
@@ -15,7 +16,9 @@ namespace GameRoundResult.Web.Models
 
         public decimal TotalBetWin { get; set; }
 
-        public decimal WinLoss => TotalBetWin + TotalRefund - TotalBet;
+        public decimal TotalWin => Bets.Sum(x => x.GrossWin);
+
+        public decimal WinLoss => TotalWin + TotalRefund - TotalBet;
     }
 
     public class BitcoinMasterBetViewModel
@@ -29,5 +32,9 @@ namespace GameRoundResult.Web.Models
         public decimal Refund { get; set; }
 
         public string Choice { get; set; }
+
+        public bool Win { get; set; }
+
+        public decimal GrossWin => Win ? Bet + BetWin - Refund : 0;
     }
 }

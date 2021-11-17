@@ -70,14 +70,14 @@
                     <td class="text-center">@Localizer[$"choice_{bet.Choice}"]</td>
                     <td class="text-right">@bet.Bet.Format()</td>
                     <td class="text-right">@bet.Refund.Format()</td>
-                    <td class="text-right">@bet.BetWin.Format()</td>
+                    <td class="text-right">@bet.GrossWin.Format()</td>
                 </tr>
             }
             <tr>
                 <td colspan="2" class="text-right">@CommonLocalizer["Total"]</td>
                 <td class="text-right">@Model.TotalBet.Format()</td>
                 <td class="text-right">@Model.TotalRefund.Format()</td>
-                <td class="text-right">@Model.TotalBetWin.Format()</td>
+                <td class="text-right">@Model.TotalWin.Format()</td>
             </tr>
 
             <tr class="total">
