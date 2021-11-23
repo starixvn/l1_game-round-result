@@ -24,9 +24,21 @@
                     @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
                 </td>
                 <td>@Model.RoundResult.Round</td>
-                <td>@Model.RoundResult.Result.BettingPrice.Format()</td>
+                <td>@Model.RoundResult.Result.BettingPrice.Format2Decimals()</td>
                 <td class="text-center bitcoin-master-result">
-                    <span>@Model.RoundResult.Result.ResultPrice.Format()</span> <span class="@(Model.RoundResult.Result.IsUp ? "up" :"down")">(<img src="~/scss/images/@(Model.RoundResult.Result.IsUp ? "up":"down").png" /><span class="result-detail">@Model.RoundResult.Result.PriceDiff.Format()</span>)</span>
+                    <span>@Model.RoundResult.Result.ResultPrice.Format2Decimals()</span>&nbsp;
+                    @if (Model.RoundResult.Result.IsUp)
+                    {
+                        <span class="up">(<img src="~/scss/images/up.png" /><span class="result-detail">@Model.RoundResult.Result.PriceDiff.Format2Decimals()</span>)</span>
+                    }
+                    else if (Model.RoundResult.Result.IsDown)
+                    {
+                        <span class="down">(<img src="~/scss/images/down.png" /><span class="result-detail">@Model.RoundResult.Result.PriceDiff.Format2Decimals()</span>)</span>
+                    }
+                    else
+                    {
+                        <span class="">(<span class="result-detail">@Model.RoundResult.Result.PriceDiff.Format2Decimals()</span>)</span>
+                    }
                 </td>
                 <td>
                     @string.Join(", ", Model.RoundResult.GetWinningOptionsContent().Select(s => Localizer[s]))
@@ -67,10 +79,10 @@
                         <br />
                         @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
-                    <td class="text-center">@Localizer[$"choice_{bet.Choice}"]</td>
-                    <td class="text-right">@bet.Bet.Format()</td>
-                    <td class="text-right">@bet.Refund.Format()</td>
-                    <td class="text-right">@bet.GrossWin.Format()</td>
+                    <td class="text-center @(bet.Win?"text-blue":"")">@Localizer[$"choice_{bet.Choice}"]</td>
+                    <td class="text-right @(bet.Win?"text-blue":"")">@bet.Bet.Format()</td>
+                    <td class="text-right @(bet.Win?"text-blue":"")">@bet.Refund.Format()</td>
+                    <td class="text-right @(bet.Win?"text-blue":"")">@bet.GrossWin.Format()</td>
                 </tr>
             }
             <tr>

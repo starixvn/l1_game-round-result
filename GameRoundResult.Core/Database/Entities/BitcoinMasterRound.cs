@@ -22,6 +22,7 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal ResultPrice { get; set; }
 
         public bool IsUp => ResultPrice > BettingPrice;
+        public bool IsDown => ResultPrice < BettingPrice;
 
         public decimal PriceDiff => Math.Abs(ResultPrice - BettingPrice);
     }
