@@ -20,7 +20,7 @@ namespace GameRoundResult.Web.Models
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
-                Result.BettingPrice.Format(),
+                Result.BettingPrice.Format2Decimals(),
                 GetResultContent(stringLocalizer),
                 string.Join(", ",  GetWinningOptionsContent().Select(s => stringLocalizer[s]))
             };
@@ -34,7 +34,7 @@ namespace GameRoundResult.Web.Models
             tagBuilder.AddCssClass($"bitcoin-master-result");
 
             var span = new TagBuilder("span");
-            span.InnerHtml.Append($"{Result.ResultPrice.Format()} ");
+            span.InnerHtml.Append($"{Result.ResultPrice.Format2Decimals()} ");
             tagBuilder.InnerHtml.AppendHtml(span);
 
             var amount = Result.ResultPrice - Result.BettingPrice;
@@ -43,19 +43,22 @@ namespace GameRoundResult.Web.Models
                 return tagBuilder.GetHtmlString();
             }
 
-            var direction = amount > 0 ? "up" : "down";
+            var direction = amount > 0 ? "up" : amount < 0 ? "down" : "tie";
             span = new TagBuilder("span");
             span.AddCssClass(direction);
             span.InnerHtml.Append("(");
 
-            var img = new TagBuilder("img");
-            img.AddCssClass($"img");
-            img.Attributes.Add("src", $"/scss/images/{direction}.png");
-            span.InnerHtml.AppendHtml(img);
+            if (!string.IsNullOrWhiteSpace(direction))
+            {
+                var img = new TagBuilder("img");
+                img.AddCssClass($"img");
+                img.Attributes.Add("src", $"/scss/images/{direction}.png");
+                span.InnerHtml.AppendHtml(img);
+            }
 
             var s2 = new TagBuilder("span");
             s2.AddCssClass("result-detail");
-            s2.InnerHtml.Append($"{Math.Abs(amount).Format()})");
+            s2.InnerHtml.Append($"{Math.Abs(amount).Format2Decimals()})");
             span.InnerHtml.AppendHtml(s2);
 
             tagBuilder.InnerHtml.AppendHtml(span);

@@ -526,4 +526,10 @@ body {
     .result-detail {
         margin-left: 5px;
     }
+
+    .tie {
+        .result-detail {
+            margin-left: 0;
+        }
+    }
 }

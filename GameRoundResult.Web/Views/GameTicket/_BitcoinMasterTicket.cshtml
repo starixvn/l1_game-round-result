@@ -37,7 +37,7 @@
                     }
                     else
                     {
-                        <span class="">(<span class="result-detail">@Model.RoundResult.Result.PriceDiff.Format2Decimals()</span>)</span>
+                        <span class="tie">(<span class="result-detail">@Model.RoundResult.Result.PriceDiff.Format2Decimals()</span>)</span>
                     }
                 </td>
                 <td>
@@ -79,10 +79,10 @@
                         <br />
                         @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
-                    <td class="text-center @(bet.Win?"text-blue":"")">@Localizer[$"choice_{bet.Choice}"]</td>
-                    <td class="text-right @(bet.Win?"text-blue":"")">@bet.Bet.Format()</td>
-                    <td class="text-right @(bet.Win?"text-blue":"")">@bet.Refund.Format()</td>
-                    <td class="text-right @(bet.Win?"text-blue":"")">@bet.GrossWin.Format()</td>
+                    <td class="text-center @(bet.Win ? "text-blue bold":"")">@Localizer[$"choice_{bet.Choice}"]</td>
+                    <td class="text-right @(bet.Win ? "text-blue bold":"")">@bet.Bet.Format()</td>
+                    <td class="text-right @(bet.Win ? "text-blue bold":"")">@bet.Refund.Format()</td>
+                    <td class="text-right @(bet.Win ? "text-blue bold":"")">@bet.GrossWin.Format()</td>
                 </tr>
             }
             <tr>
