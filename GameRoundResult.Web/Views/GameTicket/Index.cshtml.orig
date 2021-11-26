@@ -111,6 +111,9 @@
             <partial name="_KenoMatchTicket" for="GameTicketResult" />
 >>>>>>> 19d3fad... change keno soccer to keno match
             break;
+        case GameType.BitcoinMaster:
+            <partial name="_BitcoinMasterTicket" for="GameTicketResult" />
+            break;
     }
 </div>
 

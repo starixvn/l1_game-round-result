@@ -244,6 +244,10 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<KenoPowerResult, KenoPowerResultViewModel>();
             CreateMap<KenoPowerSettlementResult, KenoPowerSettlementResultViewModel>();
             CreateMap<KenoPowerBet, KenoPowerBetViewModel>();
+
+            CreateMap<BitcoinMasterRound, BitcoinMasterRoundResultViewModel>();
+            CreateMap<BitcoinMasterBet, BitcoinMasterBetViewModel>()
+                .ForMember(x => x.Bet, opt => opt.MapFrom(x => x.Amount));
         }
     }
-}   
+}

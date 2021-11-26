@@ -5,6 +5,7 @@ namespace GameRoundResult.Web.Configuration
     public static class ViewFormat
     {
         public const string NumberFormat = "#,##0.##";
+        public const string _2DecimalsFormat = "#,##0.00";
 
         public const string TicketDateFormat = "MM/dd/yyyy";
 
@@ -22,6 +23,11 @@ namespace GameRoundResult.Web.Configuration
         public static string Format(this decimal value)
         {
             return value.ToString(ViewFormat.NumberFormat, CultureInfo.InvariantCulture);
+        }
+
+        public static string Format2Decimals(this decimal value)
+        {
+            return value.ToString(ViewFormat._2DecimalsFormat, CultureInfo.InvariantCulture);
         }
     }
 }

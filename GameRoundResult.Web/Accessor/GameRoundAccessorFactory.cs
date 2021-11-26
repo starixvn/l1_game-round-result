@@ -46,6 +46,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.KenoMatch2, typeof(KenoMatchRoundAccessor<KenoMatch2Round>) },
             { GameType.KenoPower1, typeof(KenoPowerRoundAccessor<KenoPower1Round>) },
             { GameType.KenoPower2, typeof(KenoPowerRoundAccessor<KenoPower2Round>) },
+            { GameType.BitcoinMaster, typeof(GameRoundAccessor<BitcoinMasterRound, BitcoinMasterRoundResultViewModel>) },
 
         };
 

@@ -24,17 +24,18 @@ namespace GameRoundResult.Web.ViewFactory
         private const string lottery = "_LotteryRoundResult";
         private const string threeCards = "_ThreeCardsRoundResult";
         private const string kenoPower = "_KenoPowerRoundResult";
+        private const string bitcoinMaster = "_BitcoinMasterRoundResult";
 
         private readonly Dictionary<GameType, string> views = new()
         {
             { GameType.BigSmall, bigSmall },
-            { GameType.SeDie, sedie},
+            { GameType.SeDie, sedie },
             { GameType.FishPrawnCrab, fishPrawnCrab },
             { GameType.BigSmallTurbo, bigSmall },
             { GameType.OddEvenTurbo, oddEven },
             { GameType.DragonTiger, dragonTiger },
             { GameType.KenoProMax, keno },
-            { GameType.MiniSeDie, sedie},
+            { GameType.MiniSeDie, sedie },
             { GameType.Baccarat, baccarat },
             { GameType.KenoMax, keno },
             { GameType.KenoMax2, keno },
@@ -44,19 +45,20 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.KenoWest, keno },
             { GameType.KenoSouth, keno },
             { GameType.KenoNorth, keno },
-            { GameType.Roulette, roulette},
-            { GameType.VipSeDie, sedie},
-            { GameType.SpecialSeDie, sedie},
+            { GameType.Roulette, roulette },
+            { GameType.VipSeDie, sedie },
+            { GameType.SpecialSeDie, sedie },
             { GameType.SicBo, sicbo },
             { GameType.VipFishPrawnCrab, fishPrawnCrab },
             { GameType.VipBaccarat, baccarat },
             { GameType.SeDieWar, sedieWar },
             { GameType.Lottery, lottery },
-            { GameType.ThreeCards, threeCards},
+            { GameType.ThreeCards, threeCards },
             { GameType.KenoMatch1, kenoMatch },
             { GameType.KenoMatch2, kenoMatch },
             { GameType.KenoPower1, kenoPower },
             { GameType.KenoPower2, kenoPower },
+            { GameType.BitcoinMaster, bitcoinMaster },
         };
 
         public string GetView(GameType game) => views[game];
