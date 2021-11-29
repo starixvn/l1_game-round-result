@@ -1,0 +1,124 @@
+﻿@inject IViewLocalizer Localizer
+@using GameRoundResult.Core.Constants
+@model GameTicketResultViewModel
+
+@{
+    ViewData["Title"] = Localizer["GameTickets"];
+}
+
+@section Styles {
+    <environment include="Development">
+        <link href="~/scss/pages/game-ticket.css" rel="stylesheet" asp-append-version="true" />
+    </environment>
+    <environment exclude="Development">
+        <link href="~/scss/pages/game-ticket.min.css" rel="stylesheet" asp-append-version="true" />
+    </environment>
+}
+
+<div class="note"><span class="bold">@Localizer["Note"]:</span> @Localizer["NoteDetail"]</div>
+
+<div id="game-ticket">
+    @switch (Model.GameType)
+    {
+        case GameType.BigSmall:
+        case GameType.BigSmallTurbo:
+            <partial name="_BigSmallTicket" for="GameTicketResult" />
+            break;
+        case GameType.OddEven:
+        case GameType.OddEvenTurbo:
+            <partial name="_OddEvenTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.SeDie:
+            <partial name="_SeDieTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.MiniSeDie:
+            <partial name="_MiniSeDieTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.FishPrawnCrab:
+            <partial name="_FishPrawnCrabTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.DragonTiger:
+            <partial name="_DragonTigerTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.Baccarat:
+        case GameType.VipBaccarat:
+            <partial name="_BaccaratTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.KenoProMax:
+            <partial name="_KenoProMaxTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.KenoProViet:
+        case GameType.KenoMax:
+        case GameType.KenoMax2:
+        case GameType.KenoMini:
+        case GameType.KenoMini2:
+        case GameType.KenoEast:
+        case GameType.KenoWest:
+        case GameType.KenoSouth:
+        case GameType.KenoNorth:
+            <partial name="_RNGKenoTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.Roulette:
+            <partial name="_RouletteTicket" for="GameTicketResult" />
+            break;
+        case GameType.VipSeDie:
+            <partial name="_VipSeDieTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.Blackjack:
+            <partial name="_BlackjackTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.SpecialSeDie:
+            <partial name="_SpecialSeDieTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.VipFishPrawnCrab:
+            <partial name="_VipFishPrawnCrabTicket" for="GameTicketResult" />
+            break;
+        case GameType.SicBo:
+            <partial name="_SicBoTicket" for="GameTicketResult" />
+            break;
+        case GameType.SeDieWar:
+            <partial name="_VipSeDieWarTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.FourGuardians:
+            <partial name="_FourGuardiansTicket" for="GameTicketResult" />
+            break;
+
+        case GameType.Lottery:
+            <partial name="_LotteryTicket" for="GameTicketResult" />
+            break;
+        case GameType.ThreeCards:
+            <partial name="_ThreeCardsTicket" for="GameTicketResult" />
+            break;
+<<<<<<< HEAD
+
+        case GameType.HeroesSlot:
+            <partial name="_HeroesSlotTicket" for="GameTicketResult" />
+=======
+        case GameType.KenoMatch1:
+        case GameType.KenoMatch2:
+            <partial name="_KenoMatchTicket" for="GameTicketResult" />
+>>>>>>> 19d3fad... change keno soccer to keno match
+            break;
+    }
+</div>
+
+@section Scripts {
+    <environment include="Development">
+        <script src="~/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.min.js"></script>
+    </environment>
+}
