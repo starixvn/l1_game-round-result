@@ -32,7 +32,7 @@ namespace GameRoundResult.Core.Database.Repository
 
         protected async Task<IEnumerable<T>> GetBetsAsync<T>(long roundId, int memberId, bool freeBet, string collectionName, Expression<Func<T, bool>> filter = null) where T : BaseBetEntity
         {
-            Expression<Func<T, bool>> defaultExpression = bet => bet.MemberId == memberId && bet.Round == roundId && (bet.FreeBet.HasValue || bet.FreeBet == freeBet);
+            Expression<Func<T, bool>> defaultExpression = bet => bet.MemberId == memberId && bet.Round == roundId && (!bet.FreeBet.HasValue || bet.FreeBet == freeBet);
 
             return await database
                 .GetCollection<T>(collectionName)
