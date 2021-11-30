@@ -1,8 +1,8 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
+using System;
 
 namespace GameRoundResult.Web.Extensions
 {
@@ -185,8 +185,8 @@ namespace GameRoundResult.Web.Extensions
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });
         }
-        
-         public static BitcoinMasterRoundResultViewModel ToViewModel(this BitcoinMasterRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+
+        public static BitcoinMasterRoundResultViewModel ToViewModel(this BitcoinMasterRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<BitcoinMasterRound, BitcoinMasterRoundResultViewModel>(entity, opts =>
             {
@@ -221,7 +221,6 @@ namespace GameRoundResult.Web.Extensions
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.RoundStartTime, timeZoneInfo));
             });
-        }
         }
     }
 }

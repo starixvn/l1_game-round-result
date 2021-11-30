@@ -1,12 +1,11 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
 using GameRoundResult.Web.Requests;
+using System.Threading.Tasks;
 
 namespace GameRoundResult.Web.Accessor
 {
@@ -23,7 +22,7 @@ namespace GameRoundResult.Web.Accessor
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
-            var result = await gameBetService.GetAsync<CasinoHoldemPokerRound, CasinoHoldemPokerBet>(request.RoundId, request.MemberId, request.FreeBet);
+            var result = await gameBetService.GetAsync<CasinoHoldemPokerRound, CasinoHoldemPokerBet>(request.RoundId, request.MemberId, request.FreeBet, request.PartnerId);
 
             return new CasinoHoldemPokerTicketViewModel
             {

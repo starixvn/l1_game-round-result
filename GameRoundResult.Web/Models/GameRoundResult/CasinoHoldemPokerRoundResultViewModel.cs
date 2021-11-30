@@ -7,7 +7,6 @@ namespace GameRoundResult.Web.Models.GameRoundResult
     {
         public bool IsQualified { get; set; }
         public bool Ended { get; set; }
-        public bool IsFold { get; set; }
         public IEnumerable<PokerCardViewModel> DealerCards { get; set; }
         public IEnumerable<PokerCardViewModel> CommunityCards { get; set; }
         public IEnumerable<PokerCardViewModel> DealerCombinationCards { get; set; }
