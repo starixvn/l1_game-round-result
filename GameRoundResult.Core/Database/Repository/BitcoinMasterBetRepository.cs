@@ -22,7 +22,7 @@ namespace GameRoundResult.Core.Database.Repository
         public async Task<(BitcoinMasterRound, IEnumerable<BitcoinMasterBet>, BitcoinMasterOne)> GetAsync(long roundId, int memberId, string partnerId)
         {
             var round = await GetRoundAsync<BitcoinMasterRound>(roundId, Document.GetCollectionName(typeof(BitcoinMasterRound)));
-            var one = (await GetBetsAsync<BitcoinMasterOne>(roundId, memberId, Document.GetCollectionName(typeof(BitcoinMasterOne)), partnerId).FirstOrDefault();
+            var one = (await GetBetsAsync<BitcoinMasterOne>(roundId, memberId, Document.GetCollectionName(typeof(BitcoinMasterOne)), partnerId)).FirstOrDefault();
             var bets = await GetBetLogsAsync<BitcoinMasterBet>(roundId, memberId, Document.GetCollectionName(typeof(BitcoinMasterBet)), partnerId);
 
             return (round, bets, one);
