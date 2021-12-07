@@ -36,6 +36,7 @@ namespace GameRoundResult.Web.Controllers
             dataProtector = dataProtectionProvider.CreateProtector(dataProtectorKey).ToTimeLimitedDataProtector();
             hostConfiguration = hostConfigurationAccessor.Value;
             this.partnerService = partnerService;
+            this.logService = logService;
         }
 
         [HttpGet]
