@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
@@ -90,7 +89,7 @@ namespace GameRoundResult.Web.Controllers
 
                 if (partner != null)
                 {
-                    var queryKey = dataProtector.Protect($"{model.Auth.PartnerId}_{model.Auth.PartnerSecret}_{model.GameTypeId}_{model.GameRoundId}_{model.ObCustId}_{model.FreeBet}",
+                    var queryKey = dataProtector.Protect($"{model.Auth.PartnerId}_{model.Auth.PartnerSecret}_{model.GameTypeId}_{model.GameRoundId}_{model.ObCustId}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
 
                     var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);

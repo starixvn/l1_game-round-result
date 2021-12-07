@@ -10,7 +10,7 @@ namespace GameRoundResult.Core.Database.Repository
 {
     public interface IBitcoinMasterBetRepository
     {
-        Task<(BitcoinMasterRound, IEnumerable<BitcoinMasterBet>, BitcoinMasterOne)> GetAsync(long roundId, int memberId);
+        Task<(BitcoinMasterRound, IEnumerable<BitcoinMasterBet>, BitcoinMasterOne)> GetAsync(long roundId, int memberId, string partnerId);
     }
 
     public class BitcoinMasterBetRepository : GameBetRepository, IBitcoinMasterBetRepository
@@ -19,11 +19,11 @@ namespace GameRoundResult.Core.Database.Repository
         {
         }
 
-        public async Task<(BitcoinMasterRound, IEnumerable<BitcoinMasterBet>, BitcoinMasterOne)> GetAsync(long roundId, int memberId)
+        public async Task<(BitcoinMasterRound, IEnumerable<BitcoinMasterBet>, BitcoinMasterOne)> GetAsync(long roundId, int memberId, string partnerId)
         {
             var round = await GetRoundAsync<BitcoinMasterRound>(roundId, Document.GetCollectionName(typeof(BitcoinMasterRound)));
             var one = (await GetBetsAsync<BitcoinMasterOne>(roundId, memberId, Document.GetCollectionName(typeof(BitcoinMasterOne)))).FirstOrDefault();
-            var bets = await GetBetLogsAsync<BitcoinMasterBet>(roundId, memberId, Document.GetCollectionName(typeof(BitcoinMasterBet)));
+            var bets = await GetBetLogsAsync<BitcoinMasterBet>(roundId, memberId, Document.GetCollectionName(typeof(BitcoinMasterBet)), partnerId);
 
             return (round, bets, one);
         }
