@@ -1,0 +1,16 @@
+﻿{
+  "sEmptyTable": "ไม่มีข้อมูลที่สามารถใช้ได้",
+  "sLengthMenu": "แสดง _MENU_ รายการ",
+  "sZeroRecords": "ไม่พบบันทึกที่ตรงกัน",
+  "sInfo": "กำลังแสดง _START_ ถึง _END_ จาก _TOTAL_ รายการ",
+  "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 รายการ",
+  "sLoadingRecords": "กำลังดาวน์โหลด...",
+  "sProcessing": "กำลังดำเนินการ...",
+  "sSearch": "ค้นหา",
+  "oPaginate": {
+    "sFirst": "แรก",
+    "sPrevious": "ก่อนหน้า",
+    "sNext": "ถัดไป",
+    "sLast": "สุดท้าย"
+  }
+}

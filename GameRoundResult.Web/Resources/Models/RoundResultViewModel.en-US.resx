@@ -210,6 +210,9 @@
   <data name="TotalOdd" xml:space="preserve">
     <value>Total Odd</value>
   </data>
+  <data name="TotalPoints" xml:space="preserve">
+    <value>Points</value>
+  </data>
   <data name="Up" xml:space="preserve">
     <value>Up</value>
   </data>

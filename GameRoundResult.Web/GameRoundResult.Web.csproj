@@ -206,6 +206,9 @@
     <EmbeddedResource Update="Resources\Models\BlackjackTicketViewModel.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Models\RoundResultViewModel.id-ID.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Models\RoundResultViewModel.vi-VN.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

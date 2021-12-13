@@ -1,0 +1,16 @@
+﻿{
+  "sEmptyTable": "Tidak ada data yang tersedia",
+  "sLengthMenu": "Tampilkan _MENU_ entri",
+  "sZeroRecords": "Tidak ada catatan yang cocok ditemukan",
+  "sInfo": "Menampilkan _START_ hingga _END_ dari _TOTAL_ entri",
+  "sInfoEmpty": "Menampilkan 0 hingga 0 dari 0 entri",
+  "sLoadingRecords": "Memuat...",
+  "sProcessing": "Memproses...",
+  "sSearch": "Mencari",
+  "oPaginate": {
+    "sFirst": "Pertama",
+    "sPrevious": "Sebelumnya",
+    "sNext": "Lanjut",
+    "sLast": "Terakhir"
+  }
+}
