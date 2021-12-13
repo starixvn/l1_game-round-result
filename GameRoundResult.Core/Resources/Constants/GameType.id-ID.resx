@@ -153,9 +153,6 @@
   <data name="KenoProMax" xml:space="preserve">
     <value>Keno Pro Max</value>
   </data>
-  <data name="KenoProViet" xml:space="preserve">
-    <value>Keno Pro Viet</value>
-  </data>
   <data name="KenoSouth" xml:space="preserve">
     <value>Keno South</value>
   </data>
@@ -208,10 +205,10 @@
     <value>Keno Match MD5</value>
   </data>
   <data name="KenoPower1" xml:space="preserve">
-    <value>Keno Đối Kháng</value>
+    <value>Keno Power</value>
   </data>
   <data name="KenoPower2" xml:space="preserve">
-    <value>Keno Đối Kháng MD5</value>
+    <value>Keno Power MD5</value>
   </data>
   <data name="Roulette" xml:space="preserve">
     <value>Rolet</value>

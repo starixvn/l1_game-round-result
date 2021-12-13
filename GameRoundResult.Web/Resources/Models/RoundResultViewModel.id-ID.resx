@@ -139,7 +139,7 @@
     <value>Ketujuh</value>
   </data>
   <data name="Away" xml:space="preserve">
-    <value>Đội Khách</value>
+    <value>Away</value>
   </data>
   <data name="Banker" xml:space="preserve">
     <value>Banker</value>
@@ -177,9 +177,6 @@
   <data name="Date" xml:space="preserve">
     <value>Waktu</value>
   </data>
-  <data name="Detail" xml:space="preserve">
-    <value>Xem chi tiết</value>
-  </data>
   <data name="Diamonds" xml:space="preserve">
     <value>Berlian</value>
   </data>
@@ -202,19 +199,19 @@
     <value>Api</value>
   </data>
   <data name="Full Time" xml:space="preserve">
-    <value>Toàn Trận</value>
+    <value>Full Time</value>
   </data>
   <data name="Gold" xml:space="preserve">
     <value>Emas</value>
   </data>
   <data name="First Half" xml:space="preserve">
-    <value>Hiệp 1</value>
+    <value>First Half</value>
   </data>
   <data name="Hearts" xml:space="preserve">
     <value>Hati</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Đội Nhà</value>
+    <value>Home</value>
   </data>
   <data name="Odd" xml:space="preserve">
     <value>Ganjil</value>
@@ -265,10 +262,10 @@
     <value>Spesial</value>
   </data>
   <data name="Team Blue" xml:space="preserve">
-    <value>Đội Xanh</value>
+    <value>Team Blue</value>
   </data>
   <data name="Team Red" xml:space="preserve">
-    <value>Đội Đỏ</value>
+    <value>Team Red</value>
   </data>
   <data name="Tie" xml:space="preserve">
     <value>Seri</value>
@@ -313,7 +310,7 @@
     <value>Lam</value>
   </data>
   <data name="Sum" xml:space="preserve">
-    <value>Total</value>
+    <value>Sum</value>
   </data>
   <data name="BettingPrice" xml:space="preserve">
     <value>Nilai Taruhan</value>
