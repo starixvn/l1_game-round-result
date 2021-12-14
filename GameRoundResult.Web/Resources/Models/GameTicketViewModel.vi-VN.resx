@@ -117,35 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="1Red" xml:space="preserve">
-    <value>1 Đỏ</value>
-  </data>
-  <data name="2Red" xml:space="preserve">
-    <value>2 Đỏ</value>
-  </data>
-  <data name="3Red" xml:space="preserve">
-    <value>3 Đỏ</value>
-  </data>
-  <data name="3White" xml:space="preserve">
-    <value>3 Trắng</value>
-  </data>
-  <data name="4Red" xml:space="preserve">
-    <value>4 Đỏ</value>
-  </data>
-  <data name="4White" xml:space="preserve">
-    <value>4 Trắng</value>
-  </data>
-  <data name="5 Elements" xml:space="preserve">
-    <value>Ngũ Hành</value>
-  </data>
   <data name="AnyTriple" xml:space="preserve">
     <value>Bộ ba bất kỳ</value>
   </data>
   <data name="Banker" xml:space="preserve">
     <value>Nhà cái</value>
-  </data>
-  <data name="BankerPair" xml:space="preserve">
-    <value>Cái đôi</value>
   </data>
   <data name="BetAmount" xml:space="preserve">
     <value>Tiền Cược</value>
@@ -162,62 +138,26 @@
   <data name="Big" xml:space="preserve">
     <value>Tài</value>
   </data>
-  <data name="BigSmall" xml:space="preserve">
-    <value>Tài xỉu</value>
-  </data>
   <data name="Black" xml:space="preserve">
     <value>Đen</value>
-  </data>
-  <data name="Column" xml:space="preserve">
-    <value>Cược cột</value>
-  </data>
-  <data name="Column-1" xml:space="preserve">
-    <value>Cột 1</value>
-  </data>
-  <data name="Column-2" xml:space="preserve">
-    <value>Cột 2</value>
-  </data>
-  <data name="Column-3" xml:space="preserve">
-    <value>Cột 3</value>
-  </data>
-  <data name="Corner" xml:space="preserve">
-    <value>Cược góc</value>
   </data>
   <data name="Crab" xml:space="preserve">
     <value>Cua</value>
   </data>
-  <data name="Dozen" xml:space="preserve">
-    <value>Cược tá</value>
-  </data>
   <data name="Dragon" xml:space="preserve">
     <value>Rồng</value>
-  </data>
-  <data name="Earth" xml:space="preserve">
-    <value>Thổ</value>
   </data>
   <data name="Even" xml:space="preserve">
     <value>Chẵn</value>
   </data>
-  <data name="Fire" xml:space="preserve">
-    <value>Hỏa</value>
-  </data>
   <data name="Fish" xml:space="preserve">
     <value>Cá</value>
-  </data>
-  <data name="FourNumbers" xml:space="preserve">
-    <value>Cược bộ bốn</value>
   </data>
   <data name="GameNotSupported" xml:space="preserve">
     <value>Rất tiếc, chức năng này hiện chưa được hỗ trợ.</value>
   </data>
-  <data name="Gold" xml:space="preserve">
-    <value>Kim</value>
-  </data>
   <data name="Gourd" xml:space="preserve">
     <value>Bầu</value>
-  </data>
-  <data name="Line" xml:space="preserve">
-    <value>Cược 2 hàng</value>
   </data>
   <data name="Mountain" xml:space="preserve">
     <value>Trên cạn</value>
@@ -231,26 +171,17 @@
   <data name="Odd" xml:space="preserve">
     <value>Lẻ</value>
   </data>
-  <data name="OddEven" xml:space="preserve">
-    <value>Chẵn lẻ</value>
-  </data>
   <data name="Odds" xml:space="preserve">
     <value>Tỷ lệ cược</value>
   </data>
   <data name="Player" xml:space="preserve">
     <value>Nhà con</value>
   </data>
-  <data name="PlayerPair" xml:space="preserve">
-    <value>Con đôi</value>
-  </data>
   <data name="Prawn" xml:space="preserve">
     <value>Tôm</value>
   </data>
   <data name="Red" xml:space="preserve">
     <value>Đỏ</value>
-  </data>
-  <data name="RedBlack" xml:space="preserve">
-    <value>Đỏ đen</value>
   </data>
   <data name="Refund" xml:space="preserve">
     <value>Trả lại</value>
@@ -267,17 +198,8 @@
   <data name="Small" xml:space="preserve">
     <value>Xỉu</value>
   </data>
-  <data name="Split" xml:space="preserve">
-    <value>Cược đôi</value>
-  </data>
   <data name="Stag" xml:space="preserve">
     <value>Nai</value>
-  </data>
-  <data name="StraightUp" xml:space="preserve">
-    <value>Cược đơn</value>
-  </data>
-  <data name="Street" xml:space="preserve">
-    <value>Cược hàng</value>
   </data>
   <data name="Tie" xml:space="preserve">
     <value>Hòa</value>
@@ -294,12 +216,6 @@
   <data name="TotalWin" xml:space="preserve">
     <value>Tổng Thắng</value>
   </data>
-  <data name="Triangle" xml:space="preserve">
-    <value>Cược bộ ba</value>
-  </data>
-  <data name="Water" xml:space="preserve">
-    <value>Thủy</value>
-  </data>
   <data name="White" xml:space="preserve">
     <value>Trắng</value>
   </data>
@@ -311,8 +227,5 @@
   </data>
   <data name="WinningOptions" xml:space="preserve">
     <value>Cửa Thắng</value>
-  </data>
-  <data name="Wood" xml:space="preserve">
-    <value>Mộc</value>
   </data>
 </root>

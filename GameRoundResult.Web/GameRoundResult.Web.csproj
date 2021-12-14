@@ -206,6 +206,15 @@
     <EmbeddedResource Update="Resources\Models\BlackjackTicketViewModel.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Models\RoundResultViewModel.zh-TW.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Models\RoundResultViewModel.zh-CN.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Models\RoundResultViewModel.th-TH.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Models\RoundResultViewModel.id-ID.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

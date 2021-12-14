@@ -217,7 +217,7 @@
     <value>Ganjil</value>
   </data>
   <data name="Over" xml:space="preserve">
-    <value>Tài</value>
+    <value>Over</value>
   </data>
   <data name="Player" xml:space="preserve">
     <value>Player</value>
@@ -235,7 +235,7 @@
     <value>Player - 1 Merah</value>
   </data>
   <data name="PlayerRed3" xml:space="preserve">
-    <value>Player - 1 Merah</value>
+    <value>Player - 3 Merah</value>
   </data>
   <data name="PlayerRed4" xml:space="preserve">
     <value>Player - 4 Merah</value>
@@ -286,7 +286,7 @@
     <value>Poin</value>
   </data>
   <data name="Under" xml:space="preserve">
-    <value>Xỉu</value>
+    <value>Under</value>
   </data>
   <data name="Water" xml:space="preserve">
     <value>Air</value>
@@ -305,9 +305,6 @@
   </data>
   <data name="Total" xml:space="preserve">
     <value>Total</value>
-  </data>
-  <data name="Blue" xml:space="preserve">
-    <value>Lam</value>
   </data>
   <data name="Sum" xml:space="preserve">
     <value>Sum</value>

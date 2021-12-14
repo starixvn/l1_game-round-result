@@ -124,7 +124,7 @@
     <value>ผลรอบเกม</value>
   </data>
   <data name="GameType" xml:space="preserve">
-    <value>Trò chơi</value>
+    <value>เกม</value>
   </data>
   <data name="Note" xml:space="preserve">
     <value>หมายเหตุ</value>
@@ -133,7 +133,7 @@
     <value>ข้อมูลจะใช้ได้เฉพาะภายใน 7 วันที่ผ่านมานับจากวันที่ปัจจุบัน</value>
   </data>
   <data name="RoundId" xml:space="preserve">
-    <value>Phiên ID</value>
+    <value>รอบ</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>ค้นหา</value>

@@ -124,7 +124,7 @@
     <value>Hasil Putaran Game</value>
   </data>
   <data name="GameType" xml:space="preserve">
-    <value>Trò chơi</value>
+    <value>Permainan</value>
   </data>
   <data name="Note" xml:space="preserve">
     <value>Catatan</value>
@@ -133,7 +133,7 @@
     <value>Data hanya tersedia dalam 7 hari terakhir dari tanggal saat ini.</value>
   </data>
   <data name="RoundId" xml:space="preserve">
-    <value>Phiên ID</value>
+    <value>Babak</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Mencari</value>

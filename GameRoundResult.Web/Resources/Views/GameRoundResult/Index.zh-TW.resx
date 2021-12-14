@@ -124,7 +124,7 @@
     <value>遊戲回合結果</value>
   </data>
   <data name="GameType" xml:space="preserve">
-    <value>Trò chơi</value>
+    <value>遊戲</value>
   </data>
   <data name="Note" xml:space="preserve">
     <value>注意</value>
@@ -133,7 +133,7 @@
     <value>數據僅在從當前日期起的最後 7 天內可用。</value>
   </data>
   <data name="RoundId" xml:space="preserve">
-    <value>Phiên ID</value>
+    <value>回合</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>搜索</value>
