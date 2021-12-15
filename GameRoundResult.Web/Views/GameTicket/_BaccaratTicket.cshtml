@@ -9,7 +9,7 @@
         <tr>
             <th class="col-date">@CommonLocalizer["Time"] (GMT-4)</th>
             <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
-            <th>@CommonLocalizer["Result"] (@CommonLocalizer["Player"] | @CommonLocalizer["Banker"])</th>
+            <th>@CommonLocalizer["Result"] (@Localizer["Player"] | @Localizer["Banker"])</th>
             <th>@CommonLocalizer["WinningOptions"]</th>
         </tr>
     </thead>
@@ -48,13 +48,13 @@
                 <td>
                     @if (Model.RoundResult.Player)
                     {
-                        @CommonLocalizer["Player"]
+                        @Localizer["Player"]
                     }
                     else
                     {
                         if (Model.RoundResult.Banker)
                         {
-                            @CommonLocalizer["Banker"]
+                            @Localizer["Banker"]
                         }
                         else
                         {
@@ -100,7 +100,7 @@
             if (Model.Bet.Player > 0)
             {
                 <tr>
-                    <td>@CommonLocalizer["Player"]</td>
+                    <td>@Localizer["Player"]</td>
                     <td class="text-right">@Model.Bet.Player.Format()</td>
                 </tr>
             }
@@ -108,7 +108,7 @@
             if (Model.Bet.Banker > 0)
             {
                 <tr>
-                    <td>@CommonLocalizer["Banker"]</td>
+                    <td>@Localizer["Banker"]</td>
                     <td class="text-right">@Model.Bet.Banker.Format()</td>
                 </tr>
             }

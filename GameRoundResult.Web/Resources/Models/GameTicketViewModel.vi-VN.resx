@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AnyTriple" xml:space="preserve">
-    <value>Bộ ba bất kỳ</value>
-  </data>
-  <data name="Banker" xml:space="preserve">
-    <value>Nhà cái</value>
-  </data>
   <data name="BetAmount" xml:space="preserve">
     <value>Tiền Cược</value>
   </data>
@@ -141,44 +135,20 @@
   <data name="Black" xml:space="preserve">
     <value>Đen</value>
   </data>
-  <data name="Crab" xml:space="preserve">
-    <value>Cua</value>
-  </data>
-  <data name="Dragon" xml:space="preserve">
-    <value>Rồng</value>
-  </data>
   <data name="Even" xml:space="preserve">
     <value>Chẵn</value>
-  </data>
-  <data name="Fish" xml:space="preserve">
-    <value>Cá</value>
   </data>
   <data name="GameNotSupported" xml:space="preserve">
     <value>Rất tiếc, chức năng này hiện chưa được hỗ trợ.</value>
   </data>
-  <data name="Gourd" xml:space="preserve">
-    <value>Bầu</value>
-  </data>
-  <data name="Mountain" xml:space="preserve">
-    <value>Trên cạn</value>
-  </data>
   <data name="NoDataAvailable" xml:space="preserve">
     <value>Không có dữ liệu</value>
-  </data>
-  <data name="Ocean" xml:space="preserve">
-    <value>Dưới nước</value>
   </data>
   <data name="Odd" xml:space="preserve">
     <value>Lẻ</value>
   </data>
   <data name="Odds" xml:space="preserve">
     <value>Tỷ lệ cược</value>
-  </data>
-  <data name="Player" xml:space="preserve">
-    <value>Nhà con</value>
-  </data>
-  <data name="Prawn" xml:space="preserve">
-    <value>Tôm</value>
   </data>
   <data name="Red" xml:space="preserve">
     <value>Đỏ</value>
@@ -189,23 +159,14 @@
   <data name="Result" xml:space="preserve">
     <value>Kết Quả</value>
   </data>
-  <data name="Rooster" xml:space="preserve">
-    <value>Gà</value>
-  </data>
   <data name="RoundId" xml:space="preserve">
     <value>Phiên</value>
   </data>
   <data name="Small" xml:space="preserve">
     <value>Xỉu</value>
   </data>
-  <data name="Stag" xml:space="preserve">
-    <value>Nai</value>
-  </data>
   <data name="Tie" xml:space="preserve">
     <value>Hòa</value>
-  </data>
-  <data name="Tiger" xml:space="preserve">
-    <value>Hổ</value>
   </data>
   <data name="Time" xml:space="preserve">
     <value>Thời Gian</value>
