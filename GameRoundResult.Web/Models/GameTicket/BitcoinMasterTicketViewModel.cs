@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace GameRoundResult.Web.Models
+{
+    public class BitcoinMasterTicketViewModel : GameTicketViewModel
+    {
+        public BitcoinMasterRoundResultViewModel RoundResult { get; set; }
+
+        public IEnumerable<BitcoinMasterBetViewModel> Bets { get; set; }
+
+        public decimal TotalBet { get; set; }
+
+        public decimal TotalRefund { get; set; }
+
+        public decimal TotalBetWin { get; set; }
+
+        public decimal TotalWin => Bets.Sum(x => x.GrossWin);
+
+        public decimal WinLoss => TotalWin + TotalRefund - TotalBet;
+    }
+
+    public class BitcoinMasterBetViewModel
+    {
+        public DateTime Time { get; set; }
+
+        public decimal Bet { get; set; }
+
+        public decimal BetWin { get; set; }
+
+        public decimal Refund { get; set; }
+
+        public string Choice { get; set; }
+
+        public bool Win { get; set; }
+
+        public decimal GrossWin => Win ? Bet + BetWin - Refund : 0;
+    }
+}
