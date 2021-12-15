@@ -123,7 +123,7 @@ namespace GameRoundResult.Web.Controllers
 
         private AuthenticationClient GetClient(string partnerId, string partnerSecret)
         {
-            return clients.FirstOrDefault(x => x.Key == partnerSecret && partnerId == x.Name && x.Name == "ONEworks1");
+            return clients.FirstOrDefault(x => x.Key == partnerSecret && partnerId == x.Name);
         }
 
         private async Task<GameTicketViewModel> GetGameTicket(AuthenticationClient client, GameType gameType, long roundId, int memberId)
