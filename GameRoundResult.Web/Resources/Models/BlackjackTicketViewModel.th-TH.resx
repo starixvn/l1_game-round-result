@@ -129,10 +129,10 @@
   <data name="Player" xml:space="preserve">
     <value>ผู้เล่น</value>
   </data>
-  <data name="Running" xml:space="preserve">
-    <value>Running</value>
-  </data>
   <data name="Stake" xml:space="preserve">
     <value>เงินเดิมพัน</value>
+  </data>
+  <data name="Unfinished Game" xml:space="preserve">
+    <value>เกมที่ยังไม่เสร็จสิ้น</value>
   </data>
 </root>

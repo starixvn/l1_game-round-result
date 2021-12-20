@@ -142,7 +142,7 @@
     <value>Sorry! The function is currently not supported for this game.</value>
   </data>
   <data name="NoDataAvailable" xml:space="preserve">
-    <value>No data available</value>
+    <value>没有可用数据</value>
   </data>
   <data name="Odd" xml:space="preserve">
     <value>单</value>

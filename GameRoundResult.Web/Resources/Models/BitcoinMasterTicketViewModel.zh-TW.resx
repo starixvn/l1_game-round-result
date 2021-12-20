@@ -141,6 +141,9 @@
   <data name="Odd" xml:space="preserve">
     <value>單</value>
   </data>
+  <data name="Unfinished Game" xml:space="preserve">
+    <value>未完成遊戲</value>
+  </data>
   <data name="Up" xml:space="preserve">
     <value>上</value>
   </data>

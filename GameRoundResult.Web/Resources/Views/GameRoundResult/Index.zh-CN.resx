@@ -130,7 +130,7 @@
     <value>注意</value>
   </data>
   <data name="NoteDetail" xml:space="preserve">
-    <value>数据仅在从当前日期起的最后 7 天内可用。</value>
+    <value>数据仅在从当前日期起的最后 7 天内可用.</value>
   </data>
   <data name="RoundId" xml:space="preserve">
     <value>回合</value>

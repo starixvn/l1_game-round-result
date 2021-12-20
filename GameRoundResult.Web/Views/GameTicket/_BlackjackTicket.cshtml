@@ -107,7 +107,7 @@
                     }
                 </td>
                 <td class="text-right">@Model.Bet.Bet.Format()</td>
-                <td class="text-right">@(Model.Ended ? Model.WinLoss.Format() : BlackjackLocalizer["Running"])</td>
+                <td class="text-right">@(Model.Ended ? Model.WinLoss.Format() : BlackjackLocalizer["Unfinished Game"])</td>
             </tr>
         }
         else
