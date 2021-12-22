@@ -63,6 +63,9 @@ namespace GameRoundResult.Web
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseCustoRewriter();
+
             app.UseStaticFiles();
 
             app.UseRouting();
