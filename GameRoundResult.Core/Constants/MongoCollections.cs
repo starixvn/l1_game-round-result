@@ -63,6 +63,8 @@
         public const string ThreeCardsRound = "threecards_phiens";
 
         public const string HeroesSlotRounds = "heroesslot_rounds";
+
+        public const string BitcoinMasterRounds = "bitcoinmaster_rounds";
     }
 
     internal static class MiniGameBetCollections
@@ -154,6 +156,8 @@
         public const string ThreeCardsBet = "threecards_cuocs";
 
         public const string HeroesSlotRounds = "heroesslot_rounds";
+
+        public const string BitcoinMasterBet = "bitcoinmaster_cuocs";
     }
 
     internal static class CommonCollections

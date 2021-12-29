@@ -47,25 +47,24 @@ namespace GameRoundResult.Web.Controllers
             try
             {
                 var data = dataProtector.Unprotect(queryKey).Split('_');
-                var clientId = data[0];
-                var clientKey = data[1];
+                var partnerId = data[0];
+                var partnerSecret = data[1];
                 var gameType = Enum.Parse<GameType>(data[2]);
                 var roundId = long.Parse(data[3]);
                 var memberId = int.Parse(data[4]);
-                var freeBet = bool.Parse(data[5]);
 
                 if (!Enum.IsDefined(typeof(GameType), gameType))
                 {
                     return View("GameNotSupported");
                 }
 
-                var client = GetClient(clientId, clientKey);
+                var client = GetClient(partnerId, partnerSecret);
                 if (client != null)
                 {
                     var viewModel = new GameTicketResultViewModel
                     {
                         GameType = gameType,
-                        GameTicketResult = await GetGameTicket(client, gameType, roundId, memberId, freeBet)
+                        GameTicketResult = await GetGameTicket(client, gameType, roundId, memberId)
                     };
 
                     return View(viewModel);
@@ -87,11 +86,11 @@ namespace GameRoundResult.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                var client = GetClient(model.Auth.ClientID, model.Auth.ClientKey);
+                var client = GetClient(model.Auth.PartnerId, model.Auth.PartnerSecret);
 
                 if (client != null)
                 {
-                    var queryKey = dataProtector.Protect($"{model.Auth.ClientID}_{model.Auth.ClientKey}_{model.GameTypeId}_{model.GameRoundId}_{model.ObCustId}_{model.FreeBet}",
+                    var queryKey = dataProtector.Protect($"{model.Auth.PartnerId}_{model.Auth.PartnerSecret}_{model.GameTypeId}_{model.GameRoundId}_{model.ObCustId}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
 
                     var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
@@ -114,7 +113,7 @@ namespace GameRoundResult.Web.Controllers
         private static RequestLog ConvertToLog(GameTicketAccessUrlRequestModel model)
         => new RequestLog(DateTimeOffset.UtcNow, new AccessUrlRequest
         {
-            Auth = new Core.Database.Entities.AuthModel(model.Auth.ClientID, model.Auth.ClientKey),
+            Auth = new Core.Database.Entities.AuthModel(model.Auth.PartnerId, model.Auth.PartnerSecret),
             GameTypeId = model.GameTypeId,
             GameRoundId = model.GameRoundId,
             ObCustId = model.ObCustId,
@@ -122,16 +121,16 @@ namespace GameRoundResult.Web.Controllers
             FreeBet = model.FreeBet
         });
 
-        private AuthenticationClient GetClient(string clientId, string clientKey)
+        private AuthenticationClient GetClient(string partnerId, string partnerSecret)
         {
-            return clients.FirstOrDefault(x => x.Key == clientKey && clientId == x.Name && (x.Name == "ONEworks" || x.Name == "ONEworksVGCash"));
+            return clients.FirstOrDefault(x => x.Key == partnerSecret && partnerId == x.Name);
         }
 
-        private async Task<GameTicketViewModel> GetGameTicket(AuthenticationClient client, GameType gameType, long roundId, int memberId, bool freeBet)
+        private async Task<GameTicketViewModel> GetGameTicket(AuthenticationClient client, GameType gameType, long roundId, int memberId)
         {
             var timeZoneInfo = TZConvert.GetTimeZoneInfo(client.TimeZone);
 
-            return await mediator.Send(new GetGameTicketRequest(gameType, roundId, memberId, timeZoneInfo, freeBet));
+            return await mediator.Send(new GetGameTicketRequest(gameType, roundId, memberId, timeZoneInfo));
         }
     }
 }

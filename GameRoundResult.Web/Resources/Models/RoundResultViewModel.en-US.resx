@@ -141,8 +141,14 @@
   <data name="BankerWhite4" xml:space="preserve">
     <value>Banker - 4 White</value>
   </data>
+  <data name="BettingPrice" xml:space="preserve">
+    <value>Betting Price</value>
+  </data>
   <data name="Big" xml:space="preserve">
     <value>Big</value>
+  </data>
+  <data name="Down" xml:space="preserve">
+    <value>Down</value>
   </data>
   <data name="Dragon" xml:space="preserve">
     <value>Dragon</value>
@@ -203,6 +209,9 @@
   </data>
   <data name="TotalOdd" xml:space="preserve">
     <value>Total Odd</value>
+  </data>
+  <data name="Up" xml:space="preserve">
+    <value>Up</value>
   </data>
   <data name="Water" xml:space="preserve">
     <value>Water</value>

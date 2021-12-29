@@ -1,13 +1,24 @@
-﻿namespace GameRoundResult.Web.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GameRoundResult.Web.Models
 {
     public class GameRoundResultAccessUrlRequestModel
     {
-        public AuthModel Auth { get; set; }
+        public GameRoundResultAuthModel Auth { get; set; }
 
         public string Language { get; set; }
 
         public int GameId { get; set; }
 
         public string SiteName { get; set; }
+    }
+
+    public class GameRoundResultAuthModel
+    {
+        [Required]
+        public string ClientID { get; set; }
+
+        [Required]
+        public string ClientKey { get; set; }
     }
 }

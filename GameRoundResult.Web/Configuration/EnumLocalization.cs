@@ -51,8 +51,9 @@ namespace GameRoundResult.Web.Configuration
         {
             var configs = (await globalConfigService.GetAsync()).Configs;
             return GetSelectListItems()
-                .Where(x => !excludeGames.Any(e => e == (GameType) Enum.Parse(typeof(GameType), x.Value)) && 
-                !configs[x.Value].Any(excludedSite => excludedSite.Equals(siteName, StringComparison.InvariantCultureIgnoreCase)));
+                .Where(x => !excludeGames.Any(e => e == (GameType)Enum.Parse(typeof(GameType), x.Value)) &&
+                configs.ContainsKey(x.Value) &&
+                !configs[x.Value].Any(excludedSite => string.Equals(excludedSite, siteName, StringComparison.InvariantCultureIgnoreCase)));
         }
     }
 }

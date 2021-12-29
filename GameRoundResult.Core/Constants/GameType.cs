@@ -36,6 +36,7 @@
         KenoMatch2,
         HeroesSlot,
         KenoPower1 = 40,
-        KenoPower2
+        KenoPower2,
+        BitcoinMaster = 43
     }
 }
