@@ -52,7 +52,10 @@ namespace GameRoundResult.Web.Controllers
         {
             var viewModel = new GameRoundResultViewModel
             {
-                GameTypes = await gameTypeLocalization.GetGameListAsync(User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.SiteName)?.Value),
+                GameTypes = await gameTypeLocalization.GetGameListAsync(
+                    User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.SiteName)?.Value,
+                    User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.PartnerId)?.Value
+                    ),
                 GameType = gameType
             };
             return View(viewModel);
@@ -98,7 +101,7 @@ namespace GameRoundResult.Web.Controllers
 
                 if (client != null)
                 {
-                    var token = dataProtector.Protect($"{model.Auth.ClientID}_{model.Auth.ClientKey}_{model.GameId}_{model.SiteName}",
+                    var token = dataProtector.Protect($"{model.Auth.ClientID}_{model.Auth.ClientKey}_{model.GameId}_{model.SiteName}_{model.PartnerId}_{model.CurrencyGroupId}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
                     var redirectUrl = Url.Action("Auth", "GameRoundResult", new { culture = model.Language, token }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
                     return Ok(new GameRoundResultAccessUrlResultModel { RedirectUrl = redirectUrl });
@@ -129,6 +132,8 @@ namespace GameRoundResult.Web.Controllers
                 var clientId = data[0];
                 var clientKey = data[1];
                 var siteName = data[3];
+                var partnerId = data[4];
+                var currencyGroupId = data[5];
                 var client = GetClient(clientId, clientKey);
 
                 if (client != null)
@@ -137,7 +142,9 @@ namespace GameRoundResult.Web.Controllers
                     {
                         new Claim(ClaimTypes.Name, client.Name),
                         new Claim(CustomClaimTypes.TimeZone, client.TimeZone),
-                        new Claim(CustomClaimTypes.SiteName, siteName)
+                        new Claim(CustomClaimTypes.SiteName, siteName),
+                        new Claim(CustomClaimTypes.PartnerId, partnerId),
+                        new Claim(CustomClaimTypes.CurrencyGroupId, currencyGroupId),
                     };
                     var claimsIdentity = new ClaimsIdentity(
                         claims, CookieAuthenticationDefaults.AuthenticationScheme);

@@ -24,5 +24,11 @@ namespace GameRoundResult.Core.Database.Entities
 
         [BsonDefaultValue(false)]
         public bool? FreeBet { get; set; }
+
+        public string Currency { get; set; }
+
+        public string PartnerId { get; set; }
+
+        public decimal Rate { get; set; }
     }
 }

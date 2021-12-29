@@ -23,20 +23,20 @@ namespace GameRoundResult.Core.UnitTests.Services
         }
 
         [Theory, AutoData]
-        public async Task GetAsync_ReturnCorrectResult(long handId, int memberId)
+        public async Task GetAsync_ReturnCorrectResult(long handId, int memberId, string partnerId)
         {
             //Arrnage
             var roundEntity = fixture.Create<BlackjackRound>();
             var betEntity = fixture.Create<BlackjackBet>();
-            gameBetRepository.GetAsync(handId, memberId).Returns((roundEntity, betEntity));
+            gameBetRepository.GetAsync(handId, memberId, partnerId).Returns((roundEntity, betEntity));
 
             //Act
-            var result = await gameBetService.GetAsync(handId, memberId);
+            var result = await gameBetService.GetAsync(handId, memberId, partnerId);
 
             //Assert
             Assert.StrictEqual(roundEntity, result.Item1);
             Assert.StrictEqual(betEntity, result.Item2);
-            gameBetRepository.Received(1).GetAsync(handId, memberId);
+            gameBetRepository.Received(1).GetAsync(handId, memberId, partnerId);
         }
     }
 }

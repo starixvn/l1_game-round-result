@@ -23,15 +23,15 @@ namespace GameRoundResult.Core.UnitTests.Services
         }
 
         [Theory, AutoData]
-        public async Task GameBetService_ReturnCorrectResult(long roundId, int memberId, bool freeBet)
+        public async Task GameBetService_ReturnCorrectResult(long roundId, int memberId, bool freeBet, string partnerId)
         {
             //Arrnage
             var roundEntity = fixture.Create<SeDieRound>();
             var betEntity = fixture.Create<SeDieBet>();
-            gameBetRepository.GetAsync<SeDieRound, SeDieBet>(roundId, memberId, freeBet).Returns((roundEntity, betEntity));
+            gameBetRepository.GetAsync<SeDieRound, SeDieBet>(roundId, memberId, freeBet, partnerId).Returns((roundEntity, betEntity));
 
             //Act
-            var result = await gameBetService.GetAsync<SeDieRound, SeDieBet>(roundId, memberId, freeBet);
+            var result = await gameBetService.GetAsync<SeDieRound, SeDieBet>(roundId, memberId, freeBet, partnerId);
 
             //Assert
             Assert.StrictEqual(roundEntity, result.Item1);
@@ -40,16 +40,16 @@ namespace GameRoundResult.Core.UnitTests.Services
 
 
         [Theory, AutoData]
-        public async Task GameBetService_WithBetLogs_ReturnCorrectResult(long roundId, int memberId, bool freeBet)
+        public async Task GameBetService_WithBetLogs_ReturnCorrectResult(long roundId, int memberId, bool freeBet, string partnerId)
         {
             //Arrnage
             var roundEntity = fixture.Create<SicBoRound>();
             var betEntity = fixture.Create<SicBoOne>();
             var betLogsEntities = fixture.CreateMany<SicBoBet>();
-            gameBetRepository.GetAsync<SicBoRound, SicBoOne, SicBoBet>(roundId, memberId, freeBet).Returns((roundEntity, betLogsEntities, betEntity));
+            gameBetRepository.GetAsync<SicBoRound, SicBoOne, SicBoBet>(roundId, memberId, freeBet, partnerId).Returns((roundEntity, betLogsEntities, betEntity));
 
             //Act
-            var result = await gameBetService.GetAsync<SicBoRound, SicBoOne, SicBoBet>(roundId, memberId, freeBet);
+            var result = await gameBetService.GetAsync<SicBoRound, SicBoOne, SicBoBet>(roundId, memberId, freeBet, partnerId);
 
             //Assert
             Assert.StrictEqual(roundEntity, result.Item1);
