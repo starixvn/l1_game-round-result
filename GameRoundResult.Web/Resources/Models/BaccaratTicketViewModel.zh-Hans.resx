@@ -124,7 +124,7 @@
     <value>庄家一对</value>
   </data>
   <data name="Player" xml:space="preserve">
-    <value>闲家一对</value>
+    <value>闲家</value>
   </data>
   <data name="PlayerPair" xml:space="preserve">
     <value>闲家一对</value>

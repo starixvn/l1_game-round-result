@@ -220,7 +220,7 @@
     <value>Over</value>
   </data>
   <data name="Player" xml:space="preserve">
-    <value>闲家一对</value>
+    <value>闲家</value>
   </data>
   <data name="PlayerEven" xml:space="preserve">
     <value>玩家 - 双数</value>
