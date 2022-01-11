@@ -22,7 +22,7 @@ namespace GameRoundResult.Web.Accessor
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
-            var result = await gameBetService.GetAsync(request.RoundId, request.MemberId);
+            var result = await gameBetService.GetAsync(request.RoundId, request.MemberId, request.PartnerId);
 
             return new BitcoinMasterTicketViewModel
             {

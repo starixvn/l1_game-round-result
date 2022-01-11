@@ -7,12 +7,12 @@ namespace GameRoundResult.Core.Services
 {
     public interface IGameBetService
     {
-        Task<(TRoundEntity, IEnumerable<TBetEntity>, TOneEntity)> GetAsync<TRoundEntity, TOneEntity, TBetEntity>(long roundId, int memberId, bool freeBet)
+        Task<(TRoundEntity, IEnumerable<TBetEntity>, TOneEntity)> GetAsync<TRoundEntity, TOneEntity, TBetEntity>(long roundId, int memberId, bool freeBet, string partnerId)
             where TRoundEntity : GameRound
             where TOneEntity : BaseBetEntity
             where TBetEntity : BaseBetLogEntity;
 
-        Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, int memberId, bool freeBet)
+        Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, int memberId, bool freeBet, string partnerId)
            where TRoundEntity : GameRound
            where TBetEntity : BaseBetEntity;
     }
@@ -26,19 +26,19 @@ namespace GameRoundResult.Core.Services
             this.repository = repository;
         }
 
-        public async Task<(TRoundEntity, IEnumerable<TBetEntity>, TOneEntity)> GetAsync<TRoundEntity, TOneEntity, TBetEntity>(long roundId, int memberId, bool freeBet)
+        public async Task<(TRoundEntity, IEnumerable<TBetEntity>, TOneEntity)> GetAsync<TRoundEntity, TOneEntity, TBetEntity>(long roundId, int memberId, bool freeBet, string partnerId)
             where TRoundEntity : GameRound
             where TOneEntity : BaseBetEntity
             where TBetEntity : BaseBetLogEntity
         {
-            return await repository.GetAsync<TRoundEntity, TOneEntity, TBetEntity>(roundId, memberId, freeBet);
+            return await repository.GetAsync<TRoundEntity, TOneEntity, TBetEntity>(roundId, memberId, freeBet, partnerId);
         }
 
-        public async Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, int memberId, bool freeBet)
+        public async Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, int memberId, bool freeBet, string partnerId)
             where TRoundEntity : GameRound
             where TBetEntity : BaseBetEntity
         {
-            return await repository.GetAsync<TRoundEntity, TBetEntity>(roundId, memberId, freeBet);
+            return await repository.GetAsync<TRoundEntity, TBetEntity>(roundId, memberId, freeBet, partnerId);
         }
     }
 }

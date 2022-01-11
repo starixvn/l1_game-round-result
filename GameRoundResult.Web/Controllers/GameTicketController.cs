@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
@@ -20,29 +18,30 @@ namespace GameRoundResult.Web.Controllers
     public class GameTicketController : Controller
     {
         private readonly IMediator mediator;
-        private readonly IEnumerable<AuthenticationClient> clients;
         private readonly HostConfiguration hostConfiguration;
         private readonly ITimeLimitedDataProtector dataProtector;
         private const string dataProtectorKey = "game-ticket-data-key";
         private const int dataProtectorLifeTimeSecond = 30;
         private readonly ILogService logService;
+        private readonly IPartnerService partnerService;
 
-        public GameTicketController(IMediator mediator, IOptionsSnapshot<List<AuthenticationClient>> clientAccessor,
+        public GameTicketController(IMediator mediator,
             IDataProtectionProvider dataProtectionProvider,
             IOptionsSnapshot<HostConfiguration> hostConfigurationAccessor,
-            ILogService logService
+            ILogService logService,
+            IPartnerService partnerService
             )
         {
-            clients = clientAccessor.Value;
             this.mediator = mediator;
             dataProtector = dataProtectionProvider.CreateProtector(dataProtectorKey).ToTimeLimitedDataProtector();
             hostConfiguration = hostConfigurationAccessor.Value;
+            this.partnerService = partnerService;
             this.logService = logService;
         }
 
         [HttpGet]
         [Route("{culture=vi-VN}/[controller]/{queryKey}", Order = 0)]
-        public async Task<IActionResult> Index(string queryKey)
+        public async Task<IActionResult> Index(string queryKey, [FromServices] IPartnerService partnerService)
         {
             try
             {
@@ -58,13 +57,14 @@ namespace GameRoundResult.Web.Controllers
                     return View("GameNotSupported");
                 }
 
-                var client = GetClient(partnerId, partnerSecret);
-                if (client != null)
+                var partner = await partnerService.Get(partnerId, partnerSecret);
+
+                if (partner != null)
                 {
                     var viewModel = new GameTicketResultViewModel
                     {
                         GameType = gameType,
-                        GameTicketResult = await GetGameTicket(client, gameType, roundId, memberId)
+                        GameTicketResult = await GetGameTicket(gameType, roundId, memberId, partnerId)
                     };
 
                     return View(viewModel);
@@ -80,15 +80,15 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult GetAccessUrl([FromBody] GameTicketAccessUrlRequestModel model)
+        public async Task<IActionResult> GetAccessUrl([FromBody] GameTicketAccessUrlRequestModel model)
         {
             var log = ConvertToLog(model);
 
             if (ModelState.IsValid)
             {
-                var client = GetClient(model.Auth.PartnerId, model.Auth.PartnerSecret);
+                var partner = await partnerService.Get(model.Auth.PartnerId, model.Auth.PartnerSecret);
 
-                if (client != null)
+                if (partner != null)
                 {
                     var queryKey = dataProtector.Protect($"{model.Auth.PartnerId}_{model.Auth.PartnerSecret}_{model.GameTypeId}_{model.GameRoundId}_{model.ObCustId}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
@@ -97,7 +97,7 @@ namespace GameRoundResult.Web.Controllers
 
                     log.Result = new AccessUrlResponse { RedirectUrl = redirectUrl };
                     log.ResponseTimeStamp = DateTimeOffset.UtcNow;
-                    logService.LogTicketDetailRequestAsync(log);
+                    await logService.LogTicketDetailRequestAsync(log);
 
                     return Ok(new GameTicketAccessUrlResultModel { RedirectUrl = redirectUrl });
                 }
@@ -105,7 +105,7 @@ namespace GameRoundResult.Web.Controllers
 
             log.ResponseTimeStamp = DateTimeOffset.UtcNow;
             log.Result = new AccessUrlResponse { Error = "BadRequest" };
-            logService.LogTicketDetailRequestAsync(log);
+            await logService.LogTicketDetailRequestAsync(log);
 
             return BadRequest();
         }
@@ -121,16 +121,11 @@ namespace GameRoundResult.Web.Controllers
             FreeBet = model.FreeBet
         });
 
-        private AuthenticationClient GetClient(string partnerId, string partnerSecret)
+        private async Task<GameTicketViewModel> GetGameTicket(GameType gameType, long roundId, int memberId, string partnerId)
         {
-            return clients.FirstOrDefault(x => x.Key == partnerSecret && partnerId == x.Name);
-        }
+            var timeZoneInfo = TZConvert.GetTimeZoneInfo("SA Western Standard Time");
 
-        private async Task<GameTicketViewModel> GetGameTicket(AuthenticationClient client, GameType gameType, long roundId, int memberId)
-        {
-            var timeZoneInfo = TZConvert.GetTimeZoneInfo(client.TimeZone);
-
-            return await mediator.Send(new GetGameTicketRequest(gameType, roundId, memberId, timeZoneInfo));
+            return await mediator.Send(new GetGameTicketRequest(gameType, roundId, memberId, timeZoneInfo, partnerId));
         }
     }
 }
