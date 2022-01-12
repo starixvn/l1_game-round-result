@@ -51,6 +51,7 @@ namespace GameRoundResult.Web.Controllers
                 var gameType = Enum.Parse<GameType>(data[2]);
                 var roundId = long.Parse(data[3]);
                 var memberId = int.Parse(data[4]);
+                var freeBet = bool.Parse(data[5]);
 
                 if (!Enum.IsDefined(typeof(GameType), gameType))
                 {
@@ -64,7 +65,7 @@ namespace GameRoundResult.Web.Controllers
                     var viewModel = new GameTicketResultViewModel
                     {
                         GameType = gameType,
-                        GameTicketResult = await GetGameTicket(gameType, roundId, memberId, partnerId)
+                        GameTicketResult = await GetGameTicket(gameType, roundId, memberId, partnerId, freeBet)
                     };
 
                     return View(viewModel);
@@ -90,7 +91,7 @@ namespace GameRoundResult.Web.Controllers
 
                 if (partner != null)
                 {
-                    var queryKey = dataProtector.Protect($"{model.Auth.PartnerId}_{model.Auth.PartnerSecret}_{model.GameTypeId}_{model.GameRoundId}_{model.ObCustId}",
+                    var queryKey = dataProtector.Protect($"{model.Auth.PartnerId}_{model.Auth.PartnerSecret}_{model.GameTypeId}_{model.GameRoundId}_{model.ObCustId}_{model.FreeBet}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
 
                     var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
@@ -121,11 +122,11 @@ namespace GameRoundResult.Web.Controllers
             FreeBet = model.FreeBet
         });
 
-        private async Task<GameTicketViewModel> GetGameTicket(GameType gameType, long roundId, int memberId, string partnerId)
+        private async Task<GameTicketViewModel> GetGameTicket(GameType gameType, long roundId, int memberId, string partnerId, bool freeBet)
         {
             var timeZoneInfo = TZConvert.GetTimeZoneInfo("SA Western Standard Time");
 
-            return await mediator.Send(new GetGameTicketRequest(gameType, roundId, memberId, timeZoneInfo, partnerId));
+            return await mediator.Send(new GetGameTicketRequest(gameType, roundId, memberId, timeZoneInfo, partnerId, freeBet));
         }
     }
 }
