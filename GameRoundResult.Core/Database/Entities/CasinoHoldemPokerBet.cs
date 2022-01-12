@@ -1,4 +1,5 @@
 ﻿using GameRoundResult.Core._Share;
+using System;
 using System.Collections.Generic;
 
 namespace GameRoundResult.Core.Database.Entities
@@ -8,9 +9,17 @@ namespace GameRoundResult.Core.Database.Entities
     {
         public decimal Aa { get; set; }
 
+        public decimal AaOdds { get; set; }
+
         public decimal Ante { get; set; }
 
+        public decimal AnteOdds { get; set; }
+
         public decimal Call { get; set; }
+
+        public decimal CallOdss { get; set; }
+
+        public DateTime CallTime { get; set; }
 
         public bool IsFold { get; set; }
 

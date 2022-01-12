@@ -1,4 +1,5 @@
 ﻿using GameRoundResult.Web.Models.GameRoundResult;
+using System;
 using System.Collections.Generic;
 
 namespace GameRoundResult.Web.Models
@@ -57,9 +58,14 @@ namespace GameRoundResult.Web.Models
     public class CasinoHoldemPokerBetViewModel
     {
         public decimal Aa { get; set; }
+        public decimal AaOdds { get; set; }
         public decimal Ante { get; set; }
+        public decimal AnteOdds { get; set; }
         public decimal Call { get; set; }
+        public decimal CallOdss { get; set; }
         public bool IsFold { get; set; }
+        public DateTime CallTime { get; set; }
+        public DateTime Time { get; set; }
         public IEnumerable<PokerCardViewModel> PlayerCards { get; set; }
         public IEnumerable<PokerCardViewModel> CombinationCards { get; set; }
         public byte HandRankId { get; set; }

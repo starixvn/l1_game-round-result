@@ -117,7 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NoSymbol" xml:space="preserve">
-    <value>No.of Symbol</value>
+  <data name="CommunityCards" xml:space="preserve">
+    <value>Community Cards</value>
+  </data>
+  <data name="DoesNotQualify" xml:space="preserve">
+    <value>Does Not Qualify</value>
+  </data>
+  <data name="FourOfAKind" xml:space="preserve">
+    <value>Four of a Kind</value>
+  </data>
+  <data name="FullHouse" xml:space="preserve">
+    <value>Full House</value>
+  </data>
+  <data name="HighCard" xml:space="preserve">
+    <value>High Card</value>
+  </data>
+  <data name="RoyalFlush" xml:space="preserve">
+    <value>Royal Flush</value>
+  </data>
+  <data name="StraightFlush" xml:space="preserve">
+    <value>Straight Flush</value>
+  </data>
+  <data name="ThreeOfAKind" xml:space="preserve">
+    <value>Three of a Kind</value>
+  </data>
+  <data name="TwoPairs" xml:space="preserve">
+    <value>Two Pairs</value>
   </data>
 </root>

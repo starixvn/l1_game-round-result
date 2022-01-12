@@ -135,6 +135,12 @@
   <data name="Black" xml:space="preserve">
     <value>Đen</value>
   </data>
+  <data name="Cards" xml:space="preserve">
+    <value>Kết Quả</value>
+  </data>
+  </data>
+  <data name="Combination" xml:space="preserve">
+    <value>Bài Kết Hợp</value>
   <data name="Even" xml:space="preserve">
     <value>Chẵn</value>
   </data>
