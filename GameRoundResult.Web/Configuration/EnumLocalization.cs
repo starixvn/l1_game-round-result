@@ -39,6 +39,7 @@ namespace GameRoundResult.Web.Configuration
             GameType.KenoProViet,
             GameType.HeroesSlot,
             GameType.CasinoHoldemPoker
+            GameType.HiLo,
         };
 
         private readonly IPartnerConfigService partnerConfigService;

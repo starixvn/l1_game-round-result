@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace GameRoundResult.Core.Database.Entities
+{
+    public class HiLoBetLog : BaseBetLogEntity
+    {
+        public int Order { get; set; }
+
+        public decimal Amount { get; set; }
+
+        public string Choice { get; set; }
+
+        [BsonRepresentation(BsonType.Decimal128, AllowTruncation = true)]
+        public decimal Betwin { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+        public DateTime EndTime { get; set; }
+
+        public IEnumerable<Card> Cards { get; set; }
+    }
+}

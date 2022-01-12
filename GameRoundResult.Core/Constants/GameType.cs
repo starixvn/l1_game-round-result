@@ -39,5 +39,6 @@
         KenoPower2,
         BitcoinMaster = 43,
         CasinoHoldemPoker = 39
+        HiLo = 45
     }
 }
