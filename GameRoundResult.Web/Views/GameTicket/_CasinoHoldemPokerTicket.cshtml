@@ -17,7 +17,7 @@
         @if (Model.Bet != null)
         {
             <tr>
-                <td>@Model.Round.Time.FormatDatTime()</td>
+                <td>@Model.Round.Time.ToString(ViewFormat.TicketDateFormat)</td>
                 <td>@Model.Round.Round</td>
                 <td>@Localizer[Model.Player.Rank]</td>
                 @if (Model.Ended && !Model.IsFold)

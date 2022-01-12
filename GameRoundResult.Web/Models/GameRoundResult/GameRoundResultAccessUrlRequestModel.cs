@@ -25,13 +25,4 @@ namespace GameRoundResult.Web.Models
         [Required]
         public string ClientKey { get; set; }
     }
-
-    public class GameRoundResultAuthModel
-    {
-        [Required]
-        public string ClientID { get; set; }
-
-        [Required]
-        public string ClientKey { get; set; }
-    }
 }
