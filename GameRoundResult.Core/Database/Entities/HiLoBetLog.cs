@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameRoundResult.Core._Share;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
+    [CollectionName("hilo_betlogs")]
     public class HiLoBetLog : BaseBetLogEntity
     {
         public int Order { get; set; }
