@@ -14,5 +14,11 @@ namespace GameRoundResult.Core.Database.Entities
         public int? MemberId { get; set; }
 
         public string SiteId { get; set; }
+
+        public string Currency { get; set; }
+
+        public string PartnerId { get; set; }
+
+        public decimal Rate { get; set; }
     }
 }
