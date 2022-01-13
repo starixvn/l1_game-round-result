@@ -49,11 +49,23 @@ namespace GameRoundResult.Web.Configuration
 
         public async Task<IEnumerable<SelectListItem>> GetGameListAsync(string siteName, string partnerId)
         {
-            var configs = (await partnerConfigService.GetAsync(partnerId)).Value;
+            var configs = (await partnerConfigService.GetAsync(partnerId))?.Value;
+
+            if (configs != null)
+            {
+                return GetSelectListItems()
+                    .Where(x => !excludeGames.Any(e => e == (GameType)Enum.Parse(typeof(GameType), x.Value)) &&
+                    configs.ContainsKey(x.Value) &&
+                    !configs[x.Value].Any(excludedSite => string.Equals(excludedSite, siteName, StringComparison.InvariantCultureIgnoreCase)));
+            }
+
+            return GetGameList();
+        }
+
+        public IEnumerable<SelectListItem> GetGameList()
+        {
             return GetSelectListItems()
-                .Where(x => !excludeGames.Any(e => e == (GameType)Enum.Parse(typeof(GameType), x.Value)) &&
-                configs.ContainsKey(x.Value) &&
-                !configs[x.Value].Any(excludedSite => string.Equals(excludedSite, siteName, StringComparison.InvariantCultureIgnoreCase)));
+                .Where(x => !excludeGames.Any(e => e == (GameType)Enum.Parse(typeof(GameType), x.Value)));
         }
     }
 }
