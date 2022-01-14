@@ -142,6 +142,9 @@
     <value>Three of a Kind</value>
   </data>
   <data name="TwoPairs" xml:space="preserve">
-    <value>Two Pairs</value>
+    <value>Two Pair</value>
+  </data>
+  <data name="UnfinishedGame" xml:space="preserve">
+    <value>Unfinished Game</value>
   </data>
 </root>

@@ -3,7 +3,7 @@
 @inject IStringLocalizer<GameTicketViewModel> Localizer
 @inject IStringLocalizer<CasinoHoldemPokerTicketViewModel> CasinoHolemLocalizer
 <div>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-casino-holdem">
         <thead>
             <tr>
                 <th class="col-date">@Localizer["Time"] (GMT-4)</th>
@@ -18,7 +18,18 @@
             @if (Model.Bet != null)
             {
                 <tr>
-                    <td rowspan="3">@Model.Round.Time</td>
+                    <td rowspan="3">
+                        @if (Model.Ended)
+                        {
+                            @Model.Round.Time.ToString(ViewFormat.TicketDateFormat)
+                            <br />
+                            @Model.Round.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                        }
+                        else
+                        {
+                            <span>-</span>
+                        }
+                    </td>
                     <td rowspan="3">@Model.Round.Round</td>
                     <td>@CasinoHolemLocalizer["Player"]</td>
                     <td class="blackjack-result">
@@ -134,7 +145,7 @@
                 <th class="col-date">@Localizer["Time"] (GMT-4)</th>
                 <th>@Localizer["BetChoice"]</th>
                 <th>@Localizer["Odds"]</th>
-                <th>@CasinoHolemLocalizer["Stake"]</th>
+                <th>@Localizer["BetAmount"]</th>
                 <th>@Localizer["Win"]</th>
             </tr>
         </thead>
@@ -145,45 +156,57 @@
                 var winAA = (Model.Bet.SettlementResult?.Aa ?? 0);
                 var winCall = (Model.Bet.SettlementResult?.Call ?? 0);
                 <tr class="@(winAnte > 0 ? "text-blue bold" : "")">
-                    <td>@Model.Bet.Time</td>
-                    <td>@Localizer["Ante"]</td>
-                    <td>@Model.Bet.AnteOdds</td>
-                    <td>@Model.Bet.Ante.Format()</td>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["ANTE"]</td>
+                    <td>@(Model.Round.Ended ? Model.Bet.AnteOdds : "-")</td>
+                    <td class="text-right">@Model.Bet.Ante.Format()</td>
                     @if (Model.Ended)
                     {
-                        <td>
+                        <td class="text-right">
                             @(winAnte.Format())
                         </td>
                     }
                     else
                     {
-                        <td>@Localizer["UnfinishedGame"]</td>
+                        <td class="text-right">@CasinoHolemLocalizer["UnfinishedGame"]</td>
                     }
                 </tr>
                 <tr class="@(winAA > 0 ? "text-blue bold" : "")">
-                    <td>@Model.Bet.Time</td>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
                     <td>@Localizer["AA"]</td>
-                    <td>@Model.Bet.AaOdds</td>
-                    <td>@Model.Bet.Aa.Format()</td>
+                    <td>@(Model.Round.Ended ? Model.Bet.AaOdds : "-")</td>
+                    <td class="text-right">@Model.Bet.Aa.Format()</td>
                     @if (Model.Ended)
                     {
-                        <td>
+                        <td class="text-right">
                             @(winAA.Format())
                         </td>
                     }
                     else
                     {
-                        <td>@Localizer["UnfinishedGame"]</td>
+                        <td class="text-right">@CasinoHolemLocalizer["UnfinishedGame"]</td>
                     }
                 </tr>
-                @if (Model.Ended)
+                @if (Model.Ended && Model.Bet.Call > 0)
                 {
                     <tr class="@(winCall > 0 ? "text-blue bold" : "")">
-                        <td>@Model.Bet.CallTime</td>
-                        <td>@Localizer["Call"]</td>
-                        <td>@Model.Bet.CallOdss</td>
-                        <td>@Model.Bet.Call.Format()</td>
                         <td>
+                            @Model.Bet.CallTime.ToString(ViewFormat.TicketDateFormat)
+                            <br />
+                            @Model.Bet.CallTime.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                        </td>
+                        <td>@Localizer["CALL"]</td>
+                        <td>@(Model.Round.Ended ? Model.Bet.CallOdss : "-")</td>
+                        <td class="text-right">@Model.Bet.Call.Format()</td>
+                        <td class="text-right">
                             @(winCall.Format())
                         </td>
                     </tr>
@@ -192,21 +215,21 @@
                     <td></td>
                     <td></td>
                     <td>@Localizer["Total"]</td>
-                    <td>@Model.TotalBet.Format()</td>
+                    <td class="text-right">@Model.TotalBet.Format()</td>
                     @if (Model.Ended)
                     {
-                        <td>@Model.TotalWin.Format()</td>
+                        <td class="text-right">@Model.TotalWin.Format()</td>
                     }
                     else
                     {
-                        <td>@Localizer["UnfinishedGame"]</td>
+                        <td class="text-right">@CasinoHolemLocalizer["UnfinishedGame"]</td>
                     }
                 </tr>
                 <tr class="total">
                     <td></td>
                     <td></td>
                     <td>@Localizer["WinLoss"]</td>
-                    <td colspan="2">@(Model.TotalWin - Model.TotalBet)</td>
+                    <td colspan="2" class="text-right">@(Model.Round.Ended ? Model.TotalWin - Model.TotalBet : "")</td>
                 </tr>
             }
             else

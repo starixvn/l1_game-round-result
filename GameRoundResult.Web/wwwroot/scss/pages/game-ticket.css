@@ -37,7 +37,9 @@
     .table.table-keno-power {
       max-width: 100rem; }
     .table.table-bitcoin-master {
-      max-width: 66rem; } }
+      max-width: 66rem; }
+    .table.table-casino-holdem {
+      max-width: 90rem; } }
 
 .table-four-guardians .table-paylines {
   margin: auto; }

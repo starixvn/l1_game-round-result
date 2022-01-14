@@ -27,7 +27,7 @@ namespace GameRoundResult.Web.Accessor
             return new CasinoHoldemPokerTicketViewModel
             {
                 Round = result.Item1?.ToViewModel<CasinoHoldemPokerRound, CasinoHoldemPokerRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bet = result.Item2?.ToViewModel(mapper)
+                Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
             };
         }
     }

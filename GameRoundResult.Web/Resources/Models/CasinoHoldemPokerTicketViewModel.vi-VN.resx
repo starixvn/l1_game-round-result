@@ -165,4 +165,7 @@
   <data name="TwoPairs" xml:space="preserve">
     <value>Hai Đôi</value>
   </data>
+  <data name="UnfinishedGame" xml:space="preserve">
+    <value>Phiên chưa kết thúc</value>
+  </data>
 </root>

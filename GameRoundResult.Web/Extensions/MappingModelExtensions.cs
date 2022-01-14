@@ -205,9 +205,12 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
-        public static CasinoHoldemPokerBetViewModel ToViewModel(this CasinoHoldemPokerBet entity, IMapper mapper)
+        public static CasinoHoldemPokerBetViewModel ToViewModel(this CasinoHoldemPokerBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return mapper.Map<CasinoHoldemPokerBet, CasinoHoldemPokerBetViewModel>(entity);
+            return mapper.Map<CasinoHoldemPokerBet, CasinoHoldemPokerBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => { dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo); dest.CallTime = TimeZoneInfo.ConvertTimeFromUtc(source.CallTime, timeZoneInfo); });
+            });
         }
 
         public static CasinoHoldemPokerDetailBetViewModel ToViewModel(this CasinoHoldemPokerBetSettlementResult entity, IMapper mapper)
