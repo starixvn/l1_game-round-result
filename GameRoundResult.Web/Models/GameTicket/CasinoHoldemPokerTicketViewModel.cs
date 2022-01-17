@@ -1,4 +1,5 @@
-﻿using GameRoundResult.Web.Models.GameRoundResult;
+﻿using GameRoundResult.Web.Configuration;
+using GameRoundResult.Web.Models.GameRoundResult;
 using System;
 using System.Collections.Generic;
 
@@ -6,10 +7,13 @@ namespace GameRoundResult.Web.Models
 {
     public class CasinoHoldemPokerTicketViewModel : GameTicketViewModel
     {
+        private readonly string EmptyOdds = "-";
 
         public CasinoHoldemPokerBetViewModel Bet { get; set; }
 
         public CasinoHoldemPokerRoundResultViewModel Round { get; set; }
+
+        public CasinoHoldemPokerDetailBetViewModel SettlementResult { get; set; }
 
         public CasinoHoldemPokerHandViewModel Player
             => new CasinoHoldemPokerHandViewModel { Cards = Bet.PlayerCards, CombinationCards = Bet.CombinationCards, Id = Bet.HandRankId };
@@ -25,13 +29,19 @@ namespace GameRoundResult.Web.Models
 
         public bool IsQualified => Round.IsQualified;
 
+        public string AnteOddsDisplayed => Ended && (Bet.SettlementResult?.Ante > Bet.Ante) ? Bet.AnteOdds.ToString(ViewFormat.NumberFormat) : EmptyOdds;
+
+        public string AAOddsDisplayed => Ended && (Bet.SettlementResult?.Aa > Bet.Aa) ? Bet.AaOdds.ToString(ViewFormat.NumberFormat) : EmptyOdds;
+
+        public string CallOddsDisplayed => Ended && (Bet.SettlementResult?.Call > Bet.Call) ? Bet.CallOdds.ToString(ViewFormat.NumberFormat) : EmptyOdds;
+
         public decimal TotalBet => Bet.Ante + Bet.Aa + Bet.Call;
 
-        public decimal TotalWin => Ended || IsFold ? Bet.SettlementResult.Aa + Bet.SettlementResult.Ante + Bet.SettlementResult.Call : 0;
+        public decimal TotalWin => Ended ? Bet.SettlementResult.Aa + Bet.SettlementResult.Ante + Bet.SettlementResult.Call : 0;
 
-        public decimal WinLoss => TotalWin - TotalBet;
+        public string WinLossDisplayed => Ended ? WinLoss.ToString(ViewFormat.NumberFormat) : string.Empty;
 
-        public CasinoHoldemPokerDetailBetViewModel SettlementResult { get; set; }
+        private decimal WinLoss => Bet.SettlementResult.Aa + Bet.SettlementResult.Ante + Bet.SettlementResult.Call - TotalBet;
     }
 
     public class CasinoHoldemPokerHandViewModel
@@ -62,7 +72,7 @@ namespace GameRoundResult.Web.Models
         public decimal Ante { get; set; }
         public decimal AnteOdds { get; set; }
         public decimal Call { get; set; }
-        public decimal CallOdss { get; set; }
+        public decimal CallOdds { get; set; }
         public bool IsFold { get; set; }
         public DateTime CallTime { get; set; }
         public DateTime Time { get; set; }

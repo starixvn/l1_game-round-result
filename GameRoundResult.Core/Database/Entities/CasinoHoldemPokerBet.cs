@@ -17,7 +17,7 @@ namespace GameRoundResult.Core.Database.Entities
 
         public decimal Call { get; set; }
 
-        public decimal CallOdss { get; set; }
+        public decimal CallOdds { get; set; }
 
         public DateTime CallTime { get; set; }
 

@@ -129,6 +129,9 @@
   <data name="Flush" xml:space="preserve">
     <value>Thùng</value>
   </data>
+  <data name="Fold" xml:space="preserve">
+    <value>Bỏ Bài</value>
+  </data>
   <data name="FourOfAKind" xml:space="preserve">
     <value>Tứ Quý</value>
   </data>
