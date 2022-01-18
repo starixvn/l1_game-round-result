@@ -5,18 +5,29 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    [CollectionName("hilo_bets")]
-    public class HiLoBet : BaseBetEntity
+    [CollectionName("hilo_rounds")]
+    public class HiLoRound : GameRound
     {
         public decimal Amount { get; set; }
 
         public decimal TotalAmount { get; set; }
 
-
         [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime EndTime { get; set; }
 
         public int TotalTurns { get; set; }
+
+        public string Name { get; set; }
+
+        public int? MemberId { get; set; }
+
+        public string SiteId { get; set; }
+
+        public string Currency { get; set; }
+
+        public string PartnerId { get; set; }
+
+        public decimal Rate { get; set; }
 
         public IEnumerable<Card> Result { get; set; }
 
