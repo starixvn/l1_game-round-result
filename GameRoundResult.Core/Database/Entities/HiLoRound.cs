@@ -29,6 +29,8 @@ namespace GameRoundResult.Core.Database.Entities
 
         public decimal Rate { get; set; }
 
+        public bool Paid { get; set; }
+
         public IEnumerable<Card> Result { get; set; }
 
         public IEnumerable<string> SettlementResult { get; set; }
