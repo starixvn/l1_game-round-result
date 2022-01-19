@@ -132,9 +132,9 @@
   <data name="Cards" xml:space="preserve">
     <value>Card</value>
   </data>
-  </data>
   <data name="Combination" xml:space="preserve">
     <value>Combination</value>
+  </data>
   <data name="GameNotSupported" xml:space="preserve">
     <value>Sorry! The function is currently not supported for this game.</value>
   </data>
