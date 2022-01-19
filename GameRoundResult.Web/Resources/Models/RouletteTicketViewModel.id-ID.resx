@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BigSmall" xml:space="preserve">
-    <value>Besar Kecil</value>
+    <value>Besar/Kecil</value>
   </data>
   <data name="Black" xml:space="preserve">
     <value>Hitam</value>
@@ -148,13 +148,13 @@
     <value>Line</value>
   </data>
   <data name="OddEven" xml:space="preserve">
-    <value>Ganjil Genap</value>
+    <value>Ganjil/Genap</value>
   </data>
   <data name="Red" xml:space="preserve">
     <value>Merah</value>
   </data>
   <data name="RedBlack" xml:space="preserve">
-    <value>Merah Hitam</value>
+    <value>Merah/Hitam</value>
   </data>
   <data name="Split" xml:space="preserve">
     <value>Split</value>

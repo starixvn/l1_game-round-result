@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BigSmall" xml:space="preserve">
-    <value>大小</value>
+    <value>大/小</value>
   </data>
   <data name="Black" xml:space="preserve">
     <value>黑</value>
@@ -148,13 +148,13 @@
     <value>線</value>
   </data>
   <data name="OddEven" xml:space="preserve">
-    <value>單雙</value>
+    <value>单/双</value>
   </data>
   <data name="Red" xml:space="preserve">
     <value>红</value>
   </data>
   <data name="RedBlack" xml:space="preserve">
-    <value>红黑</value>
+    <value>红/黑</value>
   </data>
   <data name="Split" xml:space="preserve">
     <value>分牌</value>

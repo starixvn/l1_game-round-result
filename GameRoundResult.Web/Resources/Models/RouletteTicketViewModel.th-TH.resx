@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BigSmall" xml:space="preserve">
-    <value>ใหญ่ เล็ก</value>
+    <value>ใหญ่/เล็ก</value>
   </data>
   <data name="Black" xml:space="preserve">
     <value>ดำ</value>
@@ -148,13 +148,13 @@
     <value>เส้น</value>
   </data>
   <data name="OddEven" xml:space="preserve">
-    <value>คี่คู่</value>
+    <value>คี่/คู่</value>
   </data>
   <data name="Red" xml:space="preserve">
     <value>แดง</value>
   </data>
   <data name="RedBlack" xml:space="preserve">
-    <value>แดงดำ</value>
+    <value>แดง/ดำ</value>
   </data>
   <data name="Split" xml:space="preserve">
     <value>แยก</value>
