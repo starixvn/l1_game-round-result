@@ -176,19 +176,22 @@
                         @(Model.Ended ? winAnte.Format() : CasinoHolemLocalizer["UnfinishedGame"])
                     </td>
                 </tr>
-                <tr class="@(winAA > 0 ? "text-blue bold" : "")">
-                    <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
-                        <br />
-                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
-                    </td>
-                    <td>@Localizer["AA"]</td>
-                    <td>@Model.AAOddsDisplayed</td>
-                    <td class="text-right">@Model.Bet.Aa.Format()</td>
-                    <td class="text-right">
-                        @(Model.Ended? winAA.Format(): @CasinoHolemLocalizer["UnfinishedGame"])
-                    </td>
-                </tr>
+                @if (Model.Bet.Aa > 0)
+                {
+                    <tr class="@(winAA > 0 ? "text-blue bold" : "")">
+                        <td>
+                            @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                            <br />
+                            @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                        </td>
+                        <td>@Localizer["AA"]</td>
+                        <td>@Model.AAOddsDisplayed</td>
+                        <td class="text-right">@Model.Bet.Aa.Format()</td>
+                        <td class="text-right">
+                            @(Model.Ended ? winAA.Format() : @CasinoHolemLocalizer["UnfinishedGame"])
+                        </td>
+                    </tr>
+                }
                 @if (Model.Ended && !Model.IsFold)
                 {
                     <tr class="@(winCall > 0 ? "text-blue bold" : "")">
