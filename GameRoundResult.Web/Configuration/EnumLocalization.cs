@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using GameRoundResult.Core.Constants;
+﻿using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Services;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -37,7 +37,8 @@ namespace GameRoundResult.Web.Configuration
             GameType.FourGuardians,
             GameType.OddEven,
             GameType.KenoProViet,
-            GameType.HeroesSlot
+            GameType.HeroesSlot,
+            GameType.CasinoHoldemPoker
         };
 
         private readonly IPartnerConfigService partnerConfigService;
