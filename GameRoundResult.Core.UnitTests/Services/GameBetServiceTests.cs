@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
-using AutoFixture;
+﻿using AutoFixture;
 using AutoFixture.Xunit2;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
 using NSubstitute;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace GameRoundResult.Core.UnitTests.Services

@@ -216,4 +216,7 @@
   <data name="BitcoinMaster" xml:space="preserve">
     <value>Bitcoin Master</value>
   </data>
+  <data name="CasinoHoldemPoker" xml:space="preserve">
+    <value>Casino Hold'em Poker</value>
+  </data>
 </root>

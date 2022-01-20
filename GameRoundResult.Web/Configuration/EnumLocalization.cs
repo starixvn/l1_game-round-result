@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using GameRoundResult.Core.Constants;
+﻿using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Services;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -37,7 +37,8 @@ namespace GameRoundResult.Web.Configuration
             GameType.FourGuardians,
             GameType.OddEven,
             GameType.KenoProViet,
-            GameType.HeroesSlot
+            GameType.HeroesSlot,
+            GameType.CasinoHoldemPoker
         };
 
         private readonly IPartnerConfigService partnerConfigService;
@@ -55,8 +56,8 @@ namespace GameRoundResult.Web.Configuration
             {
                 return GetSelectListItems()
                     .Where(x => !excludeGames.Any(e => e == (GameType)Enum.Parse(typeof(GameType), x.Value)) &&
-                    configs.ContainsKey(x.Value) &&
-                    !configs[x.Value].Any(excludedSite => string.Equals(excludedSite, siteName, StringComparison.InvariantCultureIgnoreCase)));
+                    (!configs.ContainsKey(x.Value) ||
+                    !configs[x.Value].Any(excludedSite => string.Equals(excludedSite, siteName, StringComparison.InvariantCultureIgnoreCase))));
             }
 
             return GetGameList();

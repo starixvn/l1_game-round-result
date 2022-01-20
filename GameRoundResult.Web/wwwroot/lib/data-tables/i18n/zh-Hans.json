@@ -1,0 +1,16 @@
+﻿{
+  "sEmptyTable": "没有可用数据",
+  "sLengthMenu": "显示_MENU_条目",
+  "sZeroRecords": "没有找到匹配的记录",
+  "sInfo": "显示 _START_ 到 _END_ 个条目，共 _TOTAL_ 个条目",
+  "sInfoEmpty": "显示 0 到 0 个条目，共 0 个条目",
+  "sLoadingRecords": "正在加载...",
+  "sProcessing": "处理中...",
+  "sSearch": "搜索",
+  "oPaginate": {
+    "sFirst": "第一",
+    "sPrevious": "之前",
+    "sNext": "下一个",
+    "sLast": "最后"
+  }
+}

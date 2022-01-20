@@ -68,7 +68,7 @@ namespace GameRoundResult.Web.Controllers
         {
             if (Enum.IsDefined(typeof(GameType), gameType))
             {
-                return View(viewFactory.GetView(gameType));
+                return PartialView(viewFactory.GetView(gameType));
             }
 
             throw new ArgumentException("Invalid game type", nameof(gameType));

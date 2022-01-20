@@ -3,6 +3,7 @@ using System.Linq;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Models;
+using GameRoundResult.Web.Models.GameRoundResult;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -245,9 +246,26 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<KenoPowerSettlementResult, KenoPowerSettlementResultViewModel>();
             CreateMap<KenoPowerBet, KenoPowerBetViewModel>();
 
+            CreateMap<PokerCard, PokerCardViewModel>();
             CreateMap<BitcoinMasterRound, BitcoinMasterRoundResultViewModel>();
             CreateMap<BitcoinMasterBet, BitcoinMasterBetViewModel>()
                 .ForMember(x => x.Bet, opt => opt.MapFrom(x => x.Amount));
+                
+            CreateMap<CasinoHoldemPokerBetSettlementResult, CasinoHoldemPokerDetailBetViewModel>();
+            CreateMap<CasinoHoldemPokerBet, CasinoHoldemPokerBetViewModel>()
+                .ForMember(x => x.CombinationCards, opt => opt.MapFrom(x => x.Result.Cards))
+                .ForMember(x => x.PlayerCards, opt => opt.MapFrom(x => x.Cards))
+                .ForMember(x => x.HandRankId, opt => opt.MapFrom(x => x.Result.HandRankId))
+                .ForMember(x => x.SettlementResult, opt => opt.MapFrom(x => x.SettlementResult));
+            CreateMap<CasinoHoldemPokerRound, CasinoHoldemPokerRoundResultViewModel>()
+                .ForMember(x => x.CommunityCards, opt => opt.MapFrom(x => x.Result.CommunityCards))
+                .ForMember(x => x.DealerCards, opt => opt.MapFrom(x => x.Result.Dealer))
+                .ForMember(x => x.DealerCombinationCards, opt
+                    => opt.MapFrom(x => x.Ended ? x.SettlementResult.Cards : new List<PokerCard>()))
+                .ForMember(x => x.HandRankId, opt => opt.MapFrom(x
+                => x.Ended ? x.SettlementResult.HandRankId
+                : 0))
+                .ForMember(x => x.IsQualified, opt => opt.MapFrom(x => x.SettlementResult.IsQualified ?? false));
         }
     }
 }

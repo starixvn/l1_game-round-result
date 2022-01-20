@@ -1,10 +1,10 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace GameRoundResult.Web.Accessor
 {

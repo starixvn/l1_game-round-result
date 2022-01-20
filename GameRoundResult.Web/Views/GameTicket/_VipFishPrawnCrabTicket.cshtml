@@ -1,13 +1,14 @@
 ﻿@model VipFishPrawnCrabTicketViewModel
 
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<FishPrawnCrabTicketViewModel> Localizer
 
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th class="col-date">@Localizer["Time"] (GMT-4)</th>
-            <th class="col-round-id">@Localizer["RoundId"]</th>
-            <th>@Localizer["Result"]</th>
+            <th class="col-date">@CommonLocalizer["Time"] (GMT-4)</th>
+            <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
+            <th>@CommonLocalizer["Result"]</th>
         </tr>
     </thead>
     <tbody>
@@ -32,7 +33,7 @@
         {
             <tr>
                 <td colspan="3" class="text-center">
-                    @Localizer["NoDataAvailable"]
+                    @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>
         }
@@ -42,8 +43,8 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>@Localizer["BetChoice"]</th>
-            <th>@Localizer["BetAmount"]</th>
+            <th>@CommonLocalizer["BetChoice"]</th>
+            <th>@CommonLocalizer["BetAmount"]</th>
         </tr>
     </thead>
     <tbody>
@@ -114,15 +115,15 @@
                 </tr>
             }
             <tr>
-                <td class="text-right">@Localizer["Total"]</td>
+                <td class="text-right">@CommonLocalizer["Total"]</td>
                 <td class="text-right">@Model.TotalBet.Format()</td>
             </tr>
             <tr>
-                <td class="text-right">@Localizer["TotalWin"]</td>
+                <td class="text-right">@CommonLocalizer["TotalWin"]</td>
                 <td class="text-right">@Model.TotalWin.Format()</td>
             </tr>
             <tr class="total">
-                <td class="bold text-right">@Localizer["WinLoss"]</td>
+                <td class="bold text-right">@CommonLocalizer["WinLoss"]</td>
                 <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
             </tr>
         }
@@ -130,7 +131,7 @@
         {
             <tr>
                 <td colspan="2" class="text-center">
-                    @Localizer["NoDataAvailable"]
+                    @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>
         }

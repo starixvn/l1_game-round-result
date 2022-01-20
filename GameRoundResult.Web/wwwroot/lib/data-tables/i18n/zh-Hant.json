@@ -1,0 +1,16 @@
+﻿{
+  "sEmptyTable": "沒有可用數據",
+  "sLengthMenu": "顯示_MENU_條目",
+  "sZeroRecords": "沒有找到匹配的記錄",
+  "sInfo": "顯示 _START_ 到 _END_ 個條目，共 _TOTAL_ 個條目",
+  "sInfoEmpty": "顯示 0 到 0 個條目，共 0 個條目",
+  "sLoadingRecords": "正在加載...",
+  "sProcessing": "處理中...",
+  "sSearch": "搜索",
+  "oPaginate": {
+    "sFirst": "第一",
+    "sPrevious": "之前",
+    "sNext": "下一個",
+    "sLast": "最後"
+  }
+}

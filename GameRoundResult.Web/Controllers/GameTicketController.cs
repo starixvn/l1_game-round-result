@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using GameRoundResult.Core.Constants;
+﻿using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Configuration;
@@ -11,6 +9,8 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Sentry;
+using System;
+using System.Threading.Tasks;
 using TimeZoneConverter;
 
 namespace GameRoundResult.Web.Controllers
@@ -95,9 +95,9 @@ namespace GameRoundResult.Web.Controllers
 
                     var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
 
-                    log.Result = new AccessUrlResponse { RedirectUrl = redirectUrl };
-                    log.ResponseTimeStamp = DateTimeOffset.UtcNow;
-                    await logService.LogTicketDetailRequestAsync(log);
+                    //log.Result = new AccessUrlResponse { RedirectUrl = redirectUrl };
+                    //log.ResponseTimeStamp = DateTimeOffset.UtcNow;
+                    //await logService.LogTicketDetailRequestAsync(log);
 
                     return Ok(new GameTicketAccessUrlResultModel { RedirectUrl = redirectUrl });
                 }

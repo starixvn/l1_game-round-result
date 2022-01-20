@@ -1,85 +1,86 @@
 ﻿@model BaccaratTicketViewModel
 @using GameRoundResult.Core.Constants
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<BaccaratTicketViewModel> Localizer
 
 
 <table class="table table-bordered table-baccarat">
     <thead>
         <tr>
-            <th class="col-date">@Localizer["Time"] (GMT-4)</th>
-            <th class="col-round-id">@Localizer["RoundId"]</th>
-            <th>@Localizer["Result"] (@Localizer["Player"] | @Localizer["Banker"])</th>
-            <th>@Localizer["WinningOptions"]</th>
+            <th class="col-date">@CommonLocalizer["Time"] (GMT-4)</th>
+            <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
+            <th>@CommonLocalizer["Result"] (@Localizer["Player"] | @Localizer["Banker"])</th>
+            <th>@CommonLocalizer["WinningOptions"]</th>
         </tr>
     </thead>
     <tbody>
         @if (Model.RoundResult != null)
         {
-        <tr>
-            <td>
-                @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
-                <br />
-                @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
-            </td>
-            <td>@Model.RoundResult.Round</td>
-            <td>
-                <div class="baccarat-result">
-                    <div class="cards">
-                        @foreach (var card in Model.RoundResult.PlayerCards)
-                        {
-                            <div class="card card-type-@card.Type">
-                                <span>@Card.CardLabels[card.Number]</span>
-                                <img class="img" src="~/scss/images/card_@(card.Type).png" />
-                            </div>
-                        }
+            <tr>
+                <td>
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    <br />
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@Model.RoundResult.Round</td>
+                <td>
+                    <div class="baccarat-result">
+                        <div class="cards">
+                            @foreach (var card in Model.RoundResult.PlayerCards)
+                            {
+                                <div class="card card-type-@card.Type">
+                                    <span>@Card.CardLabels[card.Number]</span>
+                                    <img class="img" src="~/scss/images/card_@(card.Type).png" />
+                                </div>
+                            }
+                        </div>
+                        <div class="cards">
+                            @foreach (var card in Model.RoundResult.BankerCards)
+                            {
+                                <div class="card card-type-@card.Type">
+                                    <span>@Card.CardLabels[card.Number]</span>
+                                    <img class="img" src="~/scss/images/card_@(card.Type).png" />
+                                </div>
+                            }
+                        </div>
                     </div>
-                    <div class="cards">
-                        @foreach (var card in Model.RoundResult.BankerCards)
-                        {
-                            <div class="card card-type-@card.Type">
-                                <span>@Card.CardLabels[card.Number]</span>
-                                <img class="img" src="~/scss/images/card_@(card.Type).png" />
-                            </div>
-                        }
-                    </div>
-                </div>
-            </td>
-            <td>
-                @if (Model.RoundResult.Player)
-                {
-                    @Localizer["Player"]
-                }
-                else
-                {
-                    if (Model.RoundResult.Banker)
+                </td>
+                <td>
+                    @if (Model.RoundResult.Player)
                     {
-                        @Localizer["Banker"]
+                        @Localizer["Player"]
                     }
                     else
                     {
-                        @Localizer["Tie"];
+                        if (Model.RoundResult.Banker)
+                        {
+                            @Localizer["Banker"]
+                        }
+                        else
+                        {
+                            @CommonLocalizer["Tie"];
+                        }
                     }
-                }
 
-                @if (Model.RoundResult.PlayerPair)
-                {
-                    @($", {Localizer["PlayerPair"]}")
-                }
+                    @if (Model.RoundResult.PlayerPair)
+                    {
+                        @($", {Localizer["PlayerPair"]}")
+                    }
 
-                @if (Model.RoundResult.BankerPair)
-                {
-                    @($", {Localizer["BankerPair"]}")
-                }
+                    @if (Model.RoundResult.BankerPair)
+                    {
+                        @($", {Localizer["BankerPair"]}")
+                    }
 
-                @($", {(Model.RoundResult.Big ? Localizer["Big"] : Localizer["Small"])}")
-            </td>
-        </tr>
+                    @($", {(Model.RoundResult.Big ? CommonLocalizer["Big"] : CommonLocalizer["Small"])}")
+                </td>
+            </tr>
         }
         else
         {
             <tr>
                 <td colspan="4" class="text-center">
-                    @Localizer["NoDataAvailable"]
+                    @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>
         }
@@ -89,8 +90,8 @@
 <table class="table table-bordered table-baccarat">
     <thead>
         <tr>
-            <th>@Localizer["BetChoice"]</th>
-            <th>@Localizer["BetAmount"]</th>
+            <th>@CommonLocalizer["BetChoice"]</th>
+            <th>@CommonLocalizer["BetAmount"]</th>
         </tr>
     </thead>
     <tbody>
@@ -115,7 +116,7 @@
             if (Model.Bet.Tie > 0)
             {
                 <tr>
-                    <td>@Localizer["Tie"]</td>
+                    <td>@CommonLocalizer["Tie"]</td>
                     <td class="text-right">@Model.Bet.Tie.Format()</td>
                 </tr>
             }
@@ -139,27 +140,27 @@
             if (Model.Bet.Big > 0)
             {
                 <tr>
-                    <td>@Localizer["Big"]</td>
+                    <td>@CommonLocalizer["Big"]</td>
                     <td class="text-right">@Model.Bet.Big.Format()</td>
                 </tr>
             }
             if (Model.Bet.Small > 0)
             {
                 <tr>
-                    <td>@Localizer["Small"]</td>
+                    <td>@CommonLocalizer["Small"]</td>
                     <td class="text-right">@Model.Bet.Small.Format()</td>
                 </tr>
             }
             <tr>
-                <td class="text-right">@Localizer["Total"]</td>
+                <td class="text-right">@CommonLocalizer["Total"]</td>
                 <td class="text-right">@Model.TotalBet.Format()</td>
             </tr>
             <tr>
-                <td class="text-right">@Localizer["TotalWin"]</td>
+                <td class="text-right">@CommonLocalizer["TotalWin"]</td>
                 <td class="text-right">@Model.TotalWin.Format()</td>
             </tr>
             <tr class="total">
-                <td class="bold text-right">@Localizer["WinLoss"]</td>
+                <td class="bold text-right">@CommonLocalizer["WinLoss"]</td>
                 <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
             </tr>
         }
@@ -167,7 +168,7 @@
         {
             <tr>
                 <td colspan="2" class="text-center">
-                    @Localizer["NoDataAvailable"]
+                    @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>
         }
