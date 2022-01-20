@@ -120,14 +120,26 @@
   <data name="5 Elements" xml:space="preserve">
     <value>5 องค์ประกอบ</value>
   </data>
+  <data name="Big" xml:space="preserve">
+    <value>ใหญ่</value>
+  </data>
   <data name="Earth" xml:space="preserve">
     <value>โลก</value>
+  </data>
+  <data name="Even" xml:space="preserve">
+    <value>คุู่</value>
   </data>
   <data name="Fire" xml:space="preserve">
     <value>ไฟ</value>
   </data>
   <data name="Gold" xml:space="preserve">
     <value>ทอง</value>
+  </data>
+  <data name="Odd" xml:space="preserve">
+    <value>คี่</value>
+  </data>
+  <data name="Small" xml:space="preserve">
+    <value>เล็ก</value>
   </data>
   <data name="Water" xml:space="preserve">
     <value>น้ำ</value>

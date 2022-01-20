@@ -120,14 +120,26 @@
   <data name="5 Elements" xml:space="preserve">
     <value>Ngũ Hành</value>
   </data>
+  <data name="Big" xml:space="preserve">
+    <value>Tài</value>
+  </data>
   <data name="Earth" xml:space="preserve">
     <value>Thổ</value>
+  </data>
+  <data name="Even" xml:space="preserve">
+    <value>Chẵn</value>
   </data>
   <data name="Fire" xml:space="preserve">
     <value>Hỏa</value>
   </data>
   <data name="Gold" xml:space="preserve">
     <value>Kim</value>
+  </data>
+  <data name="Odd" xml:space="preserve">
+    <value>Lẻ</value>
+  </data>
+  <data name="Small" xml:space="preserve">
+    <value>Xỉu</value>
   </data>
   <data name="Water" xml:space="preserve">
     <value>Thủy</value>

@@ -120,14 +120,26 @@
   <data name="5 Elements" xml:space="preserve">
     <value>5 Elemen</value>
   </data>
+  <data name="Big" xml:space="preserve">
+    <value>Besar</value>
+  </data>
   <data name="Earth" xml:space="preserve">
     <value>Bumi</value>
+  </data>
+  <data name="Even" xml:space="preserve">
+    <value>Genap</value>
   </data>
   <data name="Fire" xml:space="preserve">
     <value>Api</value>
   </data>
   <data name="Gold" xml:space="preserve">
     <value>Emas</value>
+  </data>
+  <data name="Odd" xml:space="preserve">
+    <value>Ganjil</value>
+  </data>
+  <data name="Small" xml:space="preserve">
+    <value>Kecil</value>
   </data>
   <data name="Water" xml:space="preserve">
     <value>Air</value>
