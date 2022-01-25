@@ -45,7 +45,7 @@
                     <td>@HiLoLocalizer[betLog.Choice]</td>
                     @foreach (var card in betLog.Cards)
                     {
-                        <td>
+                        <td class="blackjack-result">
                             <div class="cards">
 
                                 <div class="card card-type-@card.Suit">
@@ -55,8 +55,8 @@
                             </div>
                         </td>
                     }
-                    <td class="text-right">@betLog.Amount.Format()</td>
-                    <td class="text-right">@betLog.Betwin.Format()</td>
+                    <td class="text-right bold">@betLog.Amount.Format()</td>
+                    <td class="text-right bold">@betLog.Betwin.Format()</td>
                 </tr>
             }
             <tr>

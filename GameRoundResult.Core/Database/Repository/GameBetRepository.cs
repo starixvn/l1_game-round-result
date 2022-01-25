@@ -43,7 +43,7 @@ namespace GameRoundResult.Core.Database.Repository
                 .ToListAsync();
         }
 
-        protected async Task<IEnumerable<T>> GetBetLogsAsync<T>(long roundId, int memberId, string collectionName, string partnerId, 
+        protected virtual async Task<IEnumerable<T>> GetBetLogsAsync<T>(long roundId, int memberId, string collectionName, string partnerId, 
             Expression<Func<T, bool>> filter = null) where T : BaseBetLogEntity
         {
             Expression<Func<T, bool>> defaultExpression = bet => bet.MemberId == memberId && bet.Round == roundId && bet.PartnerId == partnerId;
