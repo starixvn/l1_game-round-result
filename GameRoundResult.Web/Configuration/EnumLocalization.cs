@@ -38,7 +38,7 @@ namespace GameRoundResult.Web.Configuration
             GameType.OddEven,
             GameType.KenoProViet,
             GameType.HeroesSlot,
-            GameType.CasinoHoldemPoker
+            GameType.CasinoHoldemPoker,
             GameType.HiLo,
         };
 
