@@ -5,7 +5,7 @@ namespace GameRoundResult.Web.Models
 {
     public class HiLoRoundResultViewModel : RoundResultViewModel
     {
-        public DateTime EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
 
         public int TotalTurns { get; set; }
 

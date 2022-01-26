@@ -61,9 +61,9 @@
             }
             <tr>
                 <td>
-                    @Model.RoundResult.EndTime.ToString(ViewFormat.TicketDateFormat)
+                    @Model.RoundResult.EndTime?.ToString(ViewFormat.TicketDateFormat)
                     <br />
-                    @Model.RoundResult.EndTime.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    @Model.RoundResult.EndTime?.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                 </td>
 
                 <td colspan="4">@HiLoLocalizer["End Round"]</td>
