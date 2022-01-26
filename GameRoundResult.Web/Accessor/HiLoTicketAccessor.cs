@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
@@ -23,11 +24,20 @@ namespace GameRoundResult.Web.Accessor
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
             var hiloResult = await gameBetService.GetAsync(request.RoundId, request.MemberId, request.PartnerId);
+            var roundResult = hiloResult.Item1?.ToViewModel<HiLoRound, HiLoRoundResultViewModel>(mapper, request.TimeZoneInfo);
+
+            if (roundResult != null && roundResult.EndTime.HasValue)
+            {
+                roundResult.EndTime = TimeZoneInfo.ConvertTimeFromUtc(roundResult.EndTime.Value, request.TimeZoneInfo);
+            }
 
             return new HiLoTicketViewModel
             {
-                RoundResult = hiloResult.Item1?.ToViewModel<HiLoRound, HiLoRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                BetLogs = hiloResult.Item2.Select(x => mapper.Map<HiLoBetLogViewModel>(x))
+                RoundResult = roundResult,
+                BetLogs = hiloResult.Item2.Select(x => mapper.Map<HiLoBetLog, HiLoBetLogViewModel>(x, opts =>
+                {
+                    opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, request.TimeZoneInfo));
+                }))
             };
         }
     }
