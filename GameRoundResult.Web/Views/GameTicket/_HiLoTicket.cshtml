@@ -70,6 +70,11 @@
                 <td></td>
                 <td class="bold text-right text-blue">@Model.RoundResult.Betwin.Format()</td>
             </tr>
+            <tr class="total">
+                <td class="bold text-right" colspan="6">@CommonLocalizer["WinLoss"]</td>
+                <td class="bold text-right"></td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+            </tr>
         }
         else
         {

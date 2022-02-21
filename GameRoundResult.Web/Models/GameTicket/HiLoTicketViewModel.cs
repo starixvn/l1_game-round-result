@@ -8,6 +8,9 @@ namespace GameRoundResult.Web.Models
         public HiLoRoundResultViewModel RoundResult { get; set; }
 
         public IEnumerable<HiLoBetLogViewModel> BetLogs { get; set; }
+
+        public decimal WinLoss => RoundResult.Betwin - RoundResult.Amount;
+
     }
 
     public class HiLoBetLogViewModel
