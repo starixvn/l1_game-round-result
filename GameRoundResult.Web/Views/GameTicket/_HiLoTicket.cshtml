@@ -4,7 +4,7 @@
 @inject IStringLocalizer<GameTicketViewModel> CommonLocalizer
 @inject IStringLocalizer<HiLoTicketViewModel> HiLoLocalizer
 
-<table class="table table-bordered table-blackjack">
+<table class="table table-bordered table-hilo">
     <thead>
         <tr>
             <th class="col-date">@CommonLocalizer["Time"] (GMT-4)</th>
@@ -30,7 +30,7 @@
                     @Model.RoundResult.Round
                 </td>
                 <td colspan="4">@HiLoLocalizer["Start Round"]</td>
-                <td class="bold text-right">@Model.RoundResult.Amount.Format()</td>
+                <td class="bold text-right text-blue">@Model.RoundResult.Amount.Format()</td>
                 <td></td>
             </tr>
             @foreach (var betLog in Model.BetLogs)
@@ -68,7 +68,7 @@
 
                 <td colspan="4">@HiLoLocalizer["End Round"]</td>
                 <td></td>
-                <td class="bold text-right">@Model.RoundResult.Betwin.Format()</td>
+                <td class="bold text-right text-blue">@Model.RoundResult.Betwin.Format()</td>
             </tr>
         }
         else
