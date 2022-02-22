@@ -3,7 +3,6 @@
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
 @inject Microsoft.Extensions.Localization.IStringLocalizer<BaccaratTicketViewModel> Localizer
 
-
 <table class="table table-bordered table-baccarat">
     <thead>
         <tr>
@@ -30,7 +29,7 @@
                             {
                                 <div class="card card-type-@card.Type">
                                     <span>@Card.CardLabels[card.Number]</span>
-                                    <img class="img" src="~/scss/images/card_@(card.Type).png" />
+                                    <img class="img" src="~/scss/images/card_@(card.Type).png" asp-append-version="true" />
                                 </div>
                             }
                         </div>
@@ -39,7 +38,7 @@
                             {
                                 <div class="card card-type-@card.Type">
                                     <span>@Card.CardLabels[card.Number]</span>
-                                    <img class="img" src="~/scss/images/card_@(card.Type).png" />
+                                    <img class="img" src="~/scss/images/card_@(card.Type).png" asp-append-version="true" />
                                 </div>
                             }
                         </div>

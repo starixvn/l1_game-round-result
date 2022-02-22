@@ -25,11 +25,11 @@
                     <div class="cards">
                         <div class="card card-type-@Model.RoundResult.Dragon.Type">
                             <span>@Card.CardLabels[Model.RoundResult.Dragon.Number]</span>
-                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Dragon.Type).png" />
+                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Dragon.Type).png" asp-append-version="true" />
                         </div>
                         <div class="card card-type-@Model.RoundResult.Tiger.Type">
                             <span>@Card.CardLabels[Model.RoundResult.Tiger.Number]</span>
-                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Tiger.Type).png" />
+                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Tiger.Type).png" asp-append-version="true" />
                         </div>
                     </div>
                 </td>

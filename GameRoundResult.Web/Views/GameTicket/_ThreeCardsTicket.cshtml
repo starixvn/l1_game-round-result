@@ -32,7 +32,7 @@
                         {
                             <div class="card card-type-@card.Suit">
                                 <span>@card.Rank</span>
-                                <img class="img" src="~/scss/images/card_@(card.Suit).png" />
+                                <img class="img" src="~/scss/images/card_@(card.Suit).png" asp-append-version="true" />
                             </div>
                         }
                     </div>
@@ -49,22 +49,22 @@
 
                     @if (settlementResult.Diamonds)
                     {
-                        <img class="img card-suit" src="~/scss/images/card_1.png" />
+                        <img class="img card-suit" src="~/scss/images/card_1.png" asp-append-version="true" />
                     }
 
                     @if (settlementResult.Hearts)
                     {
-                        <img class="img card-suit" src="~/scss/images/card_0.png" />
+                        <img class="img card-suit" src="~/scss/images/card_0.png" asp-append-version="true" />
                     }
 
                     @if (settlementResult.Spades)
                     {
-                        <img class="img card-suit" src="~/scss/images/card_3.png" />
+                        <img class="img card-suit" src="~/scss/images/card_3.png" asp-append-version="true" />
                     }
 
                     @if (settlementResult.Clubs)
                     {
-                        <img class="img card-suit" src="~/scss/images/card_2.png" />
+                        <img class="img card-suit" src="~/scss/images/card_2.png" asp-append-version="true" />
                     }
 
                 </td>

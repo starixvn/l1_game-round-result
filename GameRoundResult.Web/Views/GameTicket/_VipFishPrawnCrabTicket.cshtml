@@ -24,7 +24,7 @@
                 <td>
                     @foreach (var dice in Model.RoundResult.Dices)
                     {
-                        <img class="vip-animal" src="~/scss/images/vip_animal_@(dice).png" />
+                        <img class="vip-animal" src="~/scss/images/vip_animal_@(dice).png" asp-append-version="true" />
                     }
                 </td>
             </tr>

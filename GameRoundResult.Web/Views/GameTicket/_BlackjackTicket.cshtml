@@ -35,7 +35,7 @@
                     @Model.Bet.HandId
                     @if (isSplittedHand)
                     {
-                        <img class="split-hand" src="~/scss/images/split_hand.png" />
+                        <img class="split-hand" src="~/scss/images/split_hand.png" asp-append-version="true" />
                     }
                 </td>
                 <td class="blackjack-result">
@@ -46,7 +46,7 @@
                             {
                                 <div class="card card-type-@card.Suit">
                                     <span>@card.Rank</span>
-                                    <img class="img" src="~/scss/images/card_@(card.Suit).png" />
+                                    <img class="img" src="~/scss/images/card_@(card.Suit).png" asp-append-version="true" />
                                 </div>
                             }
                         }
@@ -55,7 +55,7 @@
                             var card = Model.DealerCards.FirstOrDefault();
                             <div class="card card-type-@card.Suit">
                                 <span>@card.Rank</span>
-                                <img class="img" src="~/scss/images/card_@(card.Suit).png" />
+                                <img class="img" src="~/scss/images/card_@(card.Suit).png" asp-append-version="true" />
                             </div>
                             <img class="card" src="~/scss/images/card_back.png" />
                         }
@@ -84,7 +84,7 @@
                         {
                             <div class="card card-type-@card.Suit">
                                 <span>@card.Rank</span>
-                                <img class="img" src="~/scss/images/card_@(card.Suit).png" />
+                                <img class="img" src="~/scss/images/card_@(card.Suit).png" asp-append-version="true" />
                             </div>
                         }
                     </div>
