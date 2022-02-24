@@ -109,7 +109,16 @@
 
                 <tr>
                     <td><img class="payline" src="~/scss/images/four-guardians/dong@(payline + 1).png" asp-append-version="true" /></td>
-                    <td><img class="symbol" src="~/scss/images/four-guardians/@(winningPayline.Symbol).png" asp-append-version="true" /></td>
+                    <td>
+                        @if (CultureInfo.CurrentUICulture.Name == "vi-VN" && winningPayline.Symbol == "10")
+                        {
+                            <img class="symbol" src="~/scss/images/four-guardians/10.vi-VN.png" alt="" asp-append-version="true" />
+                        }
+                        else
+                        {
+                            <img class="symbol" src="~/scss/images/four-guardians/@(winningPayline.Symbol).png" asp-append-version="true" />
+                        }
+                    </td>
                     <td>@winningPayline.Count</td>
                     <td>x@(winningPayline.Odds)</td>
                     <td class="text-right">@roundResult.Bet.Format()</td>
