@@ -68,12 +68,26 @@
 
                 <td colspan="4">@HiLoLocalizer["End Round"]</td>
                 <td></td>
-                <td class="bold text-right text-blue">@Model.RoundResult.Betwin.Format()</td>
+                <td class="bold text-right text-blue">
+                    @if (Model.RoundResult.Paid)
+                    {
+                        @(Model.RoundResult.Betwin.Format())
+                    }
+                    else
+                    {
+                        @(HiLoLocalizer["Running"])
+                    }
+                </td>
             </tr>
             <tr class="total">
                 <td class="bold text-right" colspan="6">@CommonLocalizer["WinLoss"]</td>
                 <td class="bold text-right"></td>
-                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">
+                    @if (Model.RoundResult.Paid)
+                    {
+                        @(Model.WinLoss.Format())
+                    }
+                </td>
             </tr>
         }
         else

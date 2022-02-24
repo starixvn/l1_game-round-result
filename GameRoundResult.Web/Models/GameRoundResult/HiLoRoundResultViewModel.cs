@@ -13,6 +13,8 @@ namespace GameRoundResult.Web.Models
 
         public decimal Betwin { get; set; }
 
+        public bool Paid { get; set; }
+
         public IEnumerable<CardViewModel> Result { get; set; }
     }
 }
