@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Jackpot" xml:space="preserve">
-    <value>头奖</value>
+    <value>Jackpot</value>
   </data>
   <data name="NoSymbol" xml:space="preserve">
     <value>数量</value>
