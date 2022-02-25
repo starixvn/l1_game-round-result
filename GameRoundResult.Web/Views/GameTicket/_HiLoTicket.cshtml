@@ -82,12 +82,20 @@
             <tr class="total">
                 <td class="bold text-right" colspan="6">@CommonLocalizer["WinLoss"]</td>
                 <td class="bold text-right"></td>
-                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">
-                    @if (Model.RoundResult.Paid)
-                    {
+                @if (Model.RoundResult.Paid)
+                {
+                    <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">
+
                         @(Model.WinLoss.Format())
-                    }
-                </td>
+                    </td>
+                }
+                else
+                {
+                    <td class="bold">
+
+                        @("-")
+                    </td>
+                }
             </tr>
         }
         else
