@@ -132,11 +132,11 @@
   <data name="Result Card" xml:space="preserve">
     <value>Kết Quả</value>
   </data>
+  <data name="Running" xml:space="preserve">
+    <value>Đang chơi</value>
+  </data>
   <data name="Start Round" xml:space="preserve">
     <value>Bắt đầu phiên</value>
-  </data>
-  <data name="String1" xml:space="preserve">
-    <value>Đang chơi</value>
   </data>
   <data name="Turn" xml:space="preserve">
     <value>Bước</value>
