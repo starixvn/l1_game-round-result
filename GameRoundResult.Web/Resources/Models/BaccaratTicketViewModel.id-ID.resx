@@ -124,9 +124,9 @@
     <value>Banker Pair</value>
   </data>
   <data name="Player" xml:space="preserve">
-    <value>Player Pair</value>
+    <value>Player</value>
   </data>
   <data name="PlayerPair" xml:space="preserve">
-    <value>Con đôi</value>
+    <value>Player Pair</value>
   </data>
 </root>
