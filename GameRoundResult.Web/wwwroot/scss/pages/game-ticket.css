@@ -39,7 +39,9 @@
     .table.table-bitcoin-master {
       max-width: 66rem; }
     .table.table-casino-holdem {
-      max-width: 90rem; } }
+      max-width: 90rem; }
+    .table.table-hilo {
+      max-width: 80rem; } }
 
 .table-four-guardians .table-paylines {
   margin: auto; }
