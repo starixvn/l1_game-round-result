@@ -33,7 +33,7 @@ namespace GameRoundResult.Web.Controllers
             IOptionsSnapshot<HostConfiguration> hostConfigurationAccessor,
             ILogService logService,
             IPartnerService partnerService,
-            IOptionsSnapshot<IEnumerable<OperatorConfig>> operatorConfigsAccessor
+            IOptions<List<OperatorConfig>> operatorConfigsAccessor
 
             )
         {
