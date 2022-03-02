@@ -192,7 +192,7 @@
   <data name="Earth" xml:space="preserve">
     <value>Thổ</value>
   </data>
-  <data name="Element" xml:space="preserve">
+  <data name="5 Elements" xml:space="preserve">
     <value>Ngũ Hành</value>
   </data>
   <data name="Even" xml:space="preserve">
@@ -249,7 +249,7 @@
   <data name="Red" xml:space="preserve">
     <value>Đỏ</value>
   </data>
-  <data name="Results" xml:space="preserve">
+  <data name="Result" xml:space="preserve">
     <value>Kết Quả</value>
   </data>
   <data name="Round" xml:space="preserve">
@@ -310,7 +310,7 @@
     <value>{0} trắng</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>Tổng Cộng</value>
+    <value>Tổng</value>
   </data>
   <data name="Blue" xml:space="preserve">
     <value>Lam</value>
@@ -332,5 +332,8 @@
   </data>
   <data name="BettingPrice" xml:space="preserve">
     <value>Giá Đặt Lệnh</value>
+  </data>
+  <data name="WinLoss" xml:space="preserve">
+    <value>Win / Loss</value>
   </data>
 </root>

@@ -210,11 +210,17 @@
   <data name="TotalOdd" xml:space="preserve">
     <value>Total Odd</value>
   </data>
+  <data name="TotalPoints" xml:space="preserve">
+    <value>Points</value>
+  </data>
   <data name="Up" xml:space="preserve">
     <value>Up</value>
   </data>
   <data name="Water" xml:space="preserve">
     <value>Water</value>
+  </data>
+  <data name="WinLoss" xml:space="preserve">
+    <value>Win / Loss</value>
   </data>
   <data name="WinningOptions" xml:space="preserve">
     <value>Winning Option(s)</value>
