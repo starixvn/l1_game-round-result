@@ -1,4 +1,8 @@
-﻿using GameRoundResult.Core.Constants;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Configuration;
@@ -9,15 +13,11 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Sentry;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TimeZoneConverter;
 
 namespace GameRoundResult.Web.Controllers
 {
-    public class GameTicketController : Controller
+    public class BetHistoryController : Controller
     {
         private readonly IMediator mediator;
         private readonly HostConfiguration hostConfiguration;
@@ -28,12 +28,12 @@ namespace GameRoundResult.Web.Controllers
         private readonly IPartnerService partnerService;
         private readonly IEnumerable<OperatorConfig> operatorConfigs;
 
-        public GameTicketController(IMediator mediator,
+        public BetHistoryController(IMediator mediator,
             IDataProtectionProvider dataProtectionProvider,
             IOptionsSnapshot<HostConfiguration> hostConfigurationAccessor,
             ILogService logService,
             IPartnerService partnerService,
-            IOptions<List<OperatorConfig>> operatorConfigsAccessor
+            IOptionsSnapshot<List<OperatorConfig>> operatorConfigsAccessor
 
             )
         {
@@ -87,7 +87,7 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetAccessUrl([FromBody] GameTicketAccessUrlRequestModel model)
+        public async Task<IActionResult> GetAccessUrl([FromBody] GameTicketAccessUrlRequestModelV2 model)
         {
             var log = ConvertToLog(model);
 
@@ -97,10 +97,10 @@ namespace GameRoundResult.Web.Controllers
 
                 if (@operator != null)
                 {
-                    var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}_{model.Auth.OperatorSecret}_{model.GameTypeId}_{model.GameRoundId}_{model.ObCustId}_{model.FreeBet}",
+                    var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}_{model.Auth.OperatorSecret}_{model.GameTypeId}_{model.GameRoundId}_{model.PlayerId}_{model.FreeBet}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
 
-                    var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
+                    var redirectUrl = Url.Action("Index", "BetHistory", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
 
                     log.Result = new AccessUrlResponse { RedirectUrl = redirectUrl };
                     log.ResponseTimeStamp = DateTimeOffset.UtcNow;
@@ -117,13 +117,13 @@ namespace GameRoundResult.Web.Controllers
             return BadRequest();
         }
 
-        private static RequestLog ConvertToLog(GameTicketAccessUrlRequestModel model)
+        private static RequestLog ConvertToLog(GameTicketAccessUrlRequestModelV2 model)
         => new RequestLog(DateTimeOffset.UtcNow, new AccessUrlRequest
         {
             Auth = new Core.Database.Entities.AuthModel(model.Auth.OperatorId, model.Auth.OperatorSecret),
             GameTypeId = model.GameTypeId,
             GameRoundId = model.GameRoundId,
-            ObCustId = model.ObCustId,
+            PlayerId = model.PlayerId,
             Language = model.Language,
             FreeBet = model.FreeBet
         });
@@ -132,7 +132,7 @@ namespace GameRoundResult.Web.Controllers
         {
             var config = operatorConfigs.FirstOrDefault(x => x.OperatorId == operatorId);
             var timeZoneInfo = TZConvert.GetTimeZoneInfo(config.TimeZone);
-            
+
             return await mediator.Send(new GetGameTicketRequest(gameType, roundId, memberId, timeZoneInfo, operatorId, freeBet));
         }
     }

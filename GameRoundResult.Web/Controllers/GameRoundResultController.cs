@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
+using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
@@ -33,18 +34,21 @@ namespace GameRoundResult.Web.Controllers
         private const string dataProtectorKey = "game-round-result-data-key";
         private const int dataProtectorLifeTimeSecond = 10;
         public const int dataCacheDuration = 15;
+        private readonly IPartnerService partnerService;
 
         public GameRoundResultController(IMediator mediator,
             GameTypeLocalization gameTypeLocalization,
             IOptionsSnapshot<List<AuthenticationClient>> clientAccessor,
             IOptionsSnapshot<HostConfiguration> hostConfigurationAccessor,
-            IDataProtectionProvider dataProtectionProvider)
+            IDataProtectionProvider dataProtectionProvider,
+            IPartnerService partnerService)
         {
             this.mediator = mediator;
             this.gameTypeLocalization = gameTypeLocalization;
             dataProtector = dataProtectionProvider.CreateProtector(dataProtectorKey).ToTimeLimitedDataProtector();
             clients = clientAccessor.Value;
             hostConfiguration = hostConfigurationAccessor.Value;
+            this.partnerService = partnerService;
         }
 
         [HttpGet]
@@ -95,15 +99,23 @@ namespace GameRoundResult.Web.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult GetAccessUrl([FromBody] GameRoundResultAccessUrlRequestModel model)
+        public async Task<IActionResult> GetAccessUrl([FromBody] GameRoundResultAccessUrlRequestModel model)
         {
             if (ModelState.IsValid)
             {
                 var client = GetClient(model.Auth.ClientID, model.Auth.ClientKey);
+                var @operator = await partnerService.Get(model.Auth.OperatorId, model.Auth.OperatorSecret);
 
                 if (client != null)
                 {
                     var token = dataProtector.Protect($"{model.Auth.ClientID}_{model.Auth.ClientKey}_{model.GameId}_{model.SiteName}_{model.PartnerId}_{model.CurrencyGroupId}",
+                        TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
+                    var redirectUrl = Url.Action("Auth", "GameRoundResult", new { culture = model.Language, token }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
+                    return Ok(new GameRoundResultAccessUrlResultModel { RedirectUrl = redirectUrl });
+                }
+                if (@operator != null)
+                {
+                    var token = dataProtector.Protect($"{@operator.PartnerId}_{@operator.SecretKey}_{model.GameId}_{model.SiteName}_{model.PartnerId}_{model.CurrencyGroupId}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
                     var redirectUrl = Url.Action("Auth", "GameRoundResult", new { culture = model.Language, token }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
                     return Ok(new GameRoundResultAccessUrlResultModel { RedirectUrl = redirectUrl });
@@ -138,9 +150,7 @@ namespace GameRoundResult.Web.Controllers
                 var currencyGroupId = data[5];
                 var client = GetClient(clientId, clientKey);
 
-                if (client != null)
-                {
-                    var claims = new List<Claim>
+                var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, client.Name),
                         new Claim(CustomClaimTypes.TimeZone, client.TimeZone),
@@ -148,23 +158,22 @@ namespace GameRoundResult.Web.Controllers
                         new Claim(CustomClaimTypes.PartnerId, partnerId),
                         new Claim(CustomClaimTypes.CurrencyGroupId, currencyGroupId),
                     };
-                    var claimsIdentity = new ClaimsIdentity(
-                        claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var claimsIdentity = new ClaimsIdentity(
+                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                    var authProperties = new AuthenticationProperties
-                    {
-                        AllowRefresh = true
-                    };
+                var authProperties = new AuthenticationProperties
+                {
+                    AllowRefresh = true
+                };
 
-                    await HttpContext.SignInAsync(
-                        CookieAuthenticationDefaults.AuthenticationScheme,
-                        new ClaimsPrincipal(claimsIdentity),
-                        authProperties);
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIdentity),
+                    authProperties);
 
-                    var gameType = Enum.Parse<GameType>(data[2]);
+                var gameType = Enum.Parse<GameType>(data[2]);
 
-                    return Enum.IsDefined(typeof(GameType), gameType) ? RedirectToAction("Index", new { gameType }) : RedirectToAction("Index");
-                }
+                return Enum.IsDefined(typeof(GameType), gameType) ? RedirectToAction("Index", new { gameType }) : RedirectToAction("Index");
             }
             catch (Exception exception)
             {

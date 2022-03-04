@@ -18,7 +18,11 @@ namespace GameRoundResult.Core.Database.Entities
         [BsonElement("phien")]
         public long Round { get; set; }
 
+        public long RoundId { get; set; }
+
         public int? MemberId { get; set; }
+
+        public int? PlayerId { get; set; }
 
         public string SiteId { get; set; }
 
@@ -28,6 +32,8 @@ namespace GameRoundResult.Core.Database.Entities
         public string Currency { get; set; }
 
         public string PartnerId { get; set; }
+
+        public string OperatorId { get; set; }
 
         public decimal Rate { get; set; }
     }
