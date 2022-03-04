@@ -30,7 +30,7 @@ namespace GameRoundResult.Web.Models
         public string OperatorSecret { get; set; }
     }
 
-    public class GameTicketAccessUrlRequestModelV2
+    public class BetHistoryAccessUrlRequestModel
     {
         [Required]
         public GameType GameTypeId { get; set; }

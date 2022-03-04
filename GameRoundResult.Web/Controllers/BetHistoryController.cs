@@ -87,7 +87,7 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetAccessUrl([FromBody] GameTicketAccessUrlRequestModelV2 model)
+        public async Task<IActionResult> GetAccessUrl([FromBody] BetHistoryAccessUrlRequestModel model)
         {
             var log = ConvertToLog(model);
 
@@ -117,7 +117,7 @@ namespace GameRoundResult.Web.Controllers
             return BadRequest();
         }
 
-        private static RequestLog ConvertToLog(GameTicketAccessUrlRequestModelV2 model)
+        private static RequestLog ConvertToLog(BetHistoryAccessUrlRequestModel model)
         => new RequestLog(DateTimeOffset.UtcNow, new AccessUrlRequest
         {
             Auth = new Core.Database.Entities.AuthModel(model.Auth.OperatorId, model.Auth.OperatorSecret),
