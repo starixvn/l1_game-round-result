@@ -102,9 +102,9 @@ namespace GameRoundResult.Web.Controllers
 
                     var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
 
-                    //log.Result = new AccessUrlResponse { RedirectUrl = redirectUrl };
-                    //log.ResponseTimeStamp = DateTimeOffset.UtcNow;
-                    //await logService.LogTicketDetailRequestAsync(log);
+                    log.Result = new AccessUrlResponse { RedirectUrl = redirectUrl };
+                    log.ResponseTimeStamp = DateTimeOffset.UtcNow;
+                    await logService.LogTicketDetailRequestAsync(log);
 
                     return Ok(new GameTicketAccessUrlResultModel { RedirectUrl = redirectUrl });
                 }
