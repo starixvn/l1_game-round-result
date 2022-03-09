@@ -25,7 +25,7 @@
                     @roundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
                 </td>
                 <td>
-                    @roundResult.Round
+                    @roundResult.RoundId
                     <div>@(roundResult.FreeSpin ? $"({Localizer["Free spin"]})" : string.Empty)</div>
                 </td>
                 <td>

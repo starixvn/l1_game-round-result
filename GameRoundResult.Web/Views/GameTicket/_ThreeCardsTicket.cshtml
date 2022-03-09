@@ -25,7 +25,7 @@
                     <br />
                     @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
                 </td>
-                <td>@Model.RoundResult.Round</td>
+                <td>@Model.RoundResult.RoundId</td>
                 <td class="three-cards-result">
                     <div class="cards">
                         @foreach (var card in Model.RoundResult.Result)

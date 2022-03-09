@@ -21,7 +21,7 @@ namespace GameRoundResult.Web.Accessor
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
-            var blackjackResult = await gameBetService.GetAsync(request.RoundId, request.MemberId, request.PartnerId);
+            var blackjackResult = await gameBetService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId);
 
             return new BlackjackTicketViewModel
             {

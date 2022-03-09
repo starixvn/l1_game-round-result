@@ -23,7 +23,7 @@
                     <br />
                     @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
                 </td>
-                <td>@Model.RoundResult.Round</td>
+                <td>@Model.RoundResult.RoundId</td>
                 <td>@Model.RoundResult.Result.BettingPrice.Format2Decimals()</td>
                 <td class="text-center bitcoin-master-result">
                     <span>@Model.RoundResult.Result.ResultPrice.Format2Decimals()</span>&nbsp;

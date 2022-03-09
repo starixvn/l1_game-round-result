@@ -25,7 +25,7 @@
                     @roundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
                 </td>
                 <td>
-                    @roundResult.Round
+                    @roundResult.RoundId
                     <div>@(roundResult.FreeSpin ? $"({Localizer["Free spin"]})" : string.Empty)</div>
                 </td>
                 <td>
@@ -38,7 +38,7 @@
                                     <tr>
                                         @for (var column = 0; column < array.GetLength(1); column++)
                                         {
-                                            <td><img class="symbol" src="~/scss/images/heroes-slot/@(array[row,column]).png" asp-append-version="true" /></td>
+                                            <td><img class="symbol" src="~/scss/images/heroes-slot/@(array[row,column]).png" /></td>
                                         }
                                     </tr>
 
@@ -77,8 +77,8 @@
             if (roundResult.SettlementResult.Jackpot != null)
             {
                 <tr>
-                    <td><img class="payline" src="~/scss/images/heroes-slot/dong@(roundResult.SettlementResult.Jackpot.WinningLine + 1).png" asp-append-version="true" /></td>
-                    <td><img class="symbol" src="~/scss/images/heroes-slot/10.png" asp-append-version="true" /></td>
+                    <td><img class="payline" src="~/scss/images/heroes-slot/dong@(roundResult.SettlementResult.Jackpot.WinningLine + 1).png" /></td>
+                    <td><img class="symbol" src="~/scss/images/heroes-slot/10.png" /></td>
                     <td>5</td>
                     <td>@Localizer["Jackpot"]</td>
                     <td class="text-right">@roundResult.Bet.Format()</td>
@@ -90,8 +90,8 @@
                 var winningPayline = roundResult.SettlementResult.WinningPaylines.FirstOrDefault(x => x.Payline == payline);
 
                 <tr>
-                    <td><img class="payline" src="~/scss/images/heroes-slot/dong@(payline + 1).png" asp-append-version="true" /></td>
-                    <td><img class="symbol" src="~/scss/images/heroes-slot/@(winningPayline.Symbol).png" asp-append-version="true" /></td>
+                    <td><img class="payline" src="~/scss/images/heroes-slot/dong@(payline + 1).png" /></td>
+                    <td><img class="symbol" src="~/scss/images/heroes-slot/@(winningPayline.Symbol).png" /></td>
                     <td>@winningPayline.Count</td>
                     <td>x@(winningPayline.Odds)</td>
                     <td class="text-right">@roundResult.Bet.Format()</td>
@@ -103,7 +103,7 @@
             {
                 <tr>
                     <td></td>
-                    <td><img class="symbol" src="~/scss/images/heroes-slot/8.png" asp-append-version="true" /></td>
+                    <td><img class="symbol" src="~/scss/images/heroes-slot/8.png" /></td>
                     <td>@roundResult.SettlementResult.Bonus.Count</td>
                     <td>@roundResult.SettlementResult.Bonus.Odds @Localizer["Bonus"]</td>
                     <td>-</td>
@@ -115,7 +115,7 @@
             {
                 <tr>
                     <td></td>
-                    <td><img class="symbol" src="~/scss/images/heroes-slot/7.png" asp-append-version="true" /></td>
+                    <td><img class="symbol" src="~/scss/images/heroes-slot/7.png" /></td>
                     <td>@roundResult.SettlementResult.FreeSpins.Count</td>
                     <td>@roundResult.SettlementResult.FreeSpins.Odds @Localizer["Free spins"]</td>
                     <td>-</td>
@@ -127,7 +127,7 @@
             {
 
                 <tr>
-                    <td><img class="payline" src="~/scss/images/heroes-slot/dong@(payline + 1).png" asp-append-version="true" /></td>
+                    <td><img class="payline" src="~/scss/images/heroes-slot/dong@(payline + 1).png" /></td>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>

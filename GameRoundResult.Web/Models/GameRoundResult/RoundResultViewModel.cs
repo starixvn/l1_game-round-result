@@ -10,11 +10,11 @@ namespace GameRoundResult.Web.Models
     {
         public DateTimeOffset Time { get; set; }
 
-        public long Round { get; set; }
+        public long RoundId { get; set; }
 
         public virtual IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            return new[] { $"{Time.ToString(ViewFormat.RoundDateFormat)}<br/ >{Time.ToString(ViewFormat.RoundTimeFormat, CultureInfo.InvariantCulture)}", Round.ToString() };
+            return new[] { $"{Time.ToString(ViewFormat.RoundDateFormat)}<br/ >{Time.ToString(ViewFormat.RoundTimeFormat, CultureInfo.InvariantCulture)}", RoundId.ToString() };
         }
     }
 }

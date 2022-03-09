@@ -55,7 +55,7 @@
                     <br />
                     @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
                 </td>
-                <td>@Model.RoundResult.Round</td>
+                <td>@Model.RoundResult.RoundId</td>
                 <td>
                     <div class="numbers">
                         @foreach (var number in Model.RoundResult.Result)

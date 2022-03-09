@@ -15,7 +15,7 @@ namespace GameRoundResult.Web.Models
 
     public class HeroesSlotRoundResultViewModel
     {
-        public long Round { get; set; }
+        public long RoundId { get; set; }
 
         public DateTime Time { get; set; }
 
