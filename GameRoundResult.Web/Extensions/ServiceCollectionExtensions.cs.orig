@@ -55,29 +55,42 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IGameBetService, GameBetService>();
             services.AddScoped<IGlobalConfigService, GlobalConfigService>();
             services.AddScoped<IGlobalConfigRepository, GlobalConfigRepository>();
+            services.AddScoped<IPartnerConfigService, PartnerConfigService>();
+            services.AddScoped<IPartnerConfigRepository, PartnerConfigRepository>();
 
             services.AddScoped<IGameRoundAccessorFactory, GameRoundAccessorFactory>();
             services.AddScoped(typeof(GameRoundAccessor<,>));
-            services.AddScoped(typeof(KenoSoccerRoundAccessor<>));
-            services.AddScoped<IKenoSoccerRoundResultService, KenoSoccerRoundResultService>();
+            services.AddScoped(typeof(KenoMatchRoundAccessor<>));
+            services.AddScoped(typeof(KenoPowerRoundAccessor<>));
+            services.AddScoped<IKenoMatchRoundResultService, KenoMatchRoundResultService>();
+            services.AddScoped<IKenoPowerRoundResultService, KenoPowerRoundResultService>();
             services.AddScoped<IRoundResultViewFactory, RoundResultViewFactory>();
-<<<<<<< HEAD
             services.AddScoped<ILogRepository, LogRepository>();
             services.AddScoped<ILogService, LogService>();
-=======
 
             services.AddScoped<IBlackjackTicketService, BlackjackTicketService>();
-            services.AddScoped<BlackjackBetRepository>();
+            services.AddScoped<IBlackjackBetRepository, BlackjackBetRepository>();
+
+            services.AddScoped<IHiLoTicketService, HiLoTicketService>();
+            services.AddScoped<IHiLoBetRepository, HiLoBetRepository>();
 
             services.AddScoped<IFourGuardiansTicketService, FourGuardiansTicketService>();
-            services.AddScoped<FourGuardiansBetRepository>();
+            services.AddScoped<IFourGuardiansBetRepository, FourGuardiansBetRepository>();
+
+            services.AddScoped<IBitcoinMasterTicketService, BitcoinMasterTicketService>();
+            services.AddScoped<IBitcoinMasterBetRepository, BitcoinMasterBetRepository>();
+            services.AddScoped<IPartnerService, PartnerService>();
+            services.AddScoped<IPartnerRepository, PartnerRepository>();
+
+            services.AddScoped<IPartnerService, PartnerService>();
+            services.AddScoped<IPartnerRepository, PartnerRepository>();
 
             services.AddScoped(typeof(BigSmallTicketAccessor<,,>));
             services.AddScoped<BaccaratTicketAccessor>();
             services.AddScoped<BlackjackTicketAccessor>();
             services.AddScoped<DragonTigerTicketAccessor>();
             services.AddScoped<FishPrawnCrabTicketAccessor>();
-            services.AddScoped<FourGuardiansTicketAccessor>();
+            services.AddScoped(typeof(FourGuardiansTicketAccessor<>));
             services.AddScoped<KenoProMaxTicketAccessor>();
             services.AddScoped<LotteryTicketAccessor>();
             services.AddScoped(typeof(MiniKenoTicketAccessor<,,>));
@@ -91,9 +104,54 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<VipFishPrawnCrabTicketAccessor>();
             services.AddScoped<VipSeDieTicketAccessor>();
             services.AddScoped<VipSeDieWarTicketAccessor>();
+            services.AddScoped(typeof(KenoMatchTicketAccessor<,,>));
+            services.AddScoped(typeof(KenoPowerTicketAccessor<,,>));
+            services.AddScoped<ThreeCardsTicketAccessor>();
+            services.AddScoped(typeof(BitcoinMasterTicketAccessor));
+            services.AddScoped<CasinoHoldemPokerTicketAccessor>();
+            services.AddScoped<HiLoTicketAccessor>();
+            services.AddScoped<TexasHoldemPokerTicketAccessor>();
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
->>>>>>> 44a79b0... refactor game ticket
+
+<<<<<<< HEAD
+          
+=======
+            services.AddScoped<IEndGameInfoServiceFactory, EndGameInfoServiceFactory>();
+            services.AddScoped<BigSmallEndGameInfoService>();
+            services.AddScoped<BigSmallTurboEndGameInfoService>();
+            services.AddScoped<OddEvenTurboEndGameInfoService>();
+            services.AddScoped<FishPrawnCrabEndGameInfoService>();
+            services.AddScoped<SeDieEndGameInfoService>();
+            services.AddScoped<MiniSeDieEndGameInfoService>();
+            services.AddScoped<DragonTigerEndGameInfoService>();
+            services.AddScoped<BaccaratEndGameInfoService>();
+            services.AddScoped<VipBaccaratEndGameInfoService>();
+            services.AddScoped<KenoProMaxEndGameInfoService>();
+            services.AddScoped<KenoMaxEndGameInfoService>();
+            services.AddScoped<KenoMax2EndGameInfoService>();
+            services.AddScoped<KenoMiniEndGameInfoService>();
+            services.AddScoped<KenoMini2EndGameInfoService>();
+            services.AddScoped<KenoEastEndGameInfoService>();
+            services.AddScoped<KenoWestEndGameInfoService>();
+            services.AddScoped<KenoSouthEndGameInfoService>();
+            services.AddScoped<KenoNorthEndGameInfoService>();
+            services.AddScoped<RouletteEndGameInfoService>();
+            services.AddScoped<VipSeDieEndGameInfoService>();
+            services.AddScoped<BlackjackEndGameInfoService>();
+            services.AddScoped<SpecialSeDieEndGameInfoService>();
+            services.AddScoped<VipFishPrawnCrabEndGameInfoService>();
+            services.AddScoped<SicBoEndGameInfoService>();
+            services.AddScoped<VipSeDieWarEndGameInfoService>();
+            services.AddScoped<FourGuardiansEndGameInfoService>();
+            services.AddScoped<LotteryEndGameInfoService>();
+            services.AddScoped<ThreeCardsEndGameInfoService>();
+            services.AddScoped<HeroesSlotEndGameInfoService>();
+            services.AddScoped<BitcoinMasterEndGameInfoService>();
+            services.AddScoped(typeof(KenoMatchEndGameInfoService<,>));
+            services.AddScoped(typeof(KenoPowerEndGameInfoService<,>));
+            services.AddScoped<CasinoHoldemPokerEndGameInfoService>();
+>>>>>>> 1c16f7a... feat: retrieve end game
         }
     }
 }
