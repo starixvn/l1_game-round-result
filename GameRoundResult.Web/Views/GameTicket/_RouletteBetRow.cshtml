@@ -1,5 +1,6 @@
 ﻿@model RouletteBetRowViewModel
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<RouletteTicketViewModel> Localizer
 
 @{
     var bet = Model.Bet;
@@ -358,7 +359,7 @@
         }
         <td>@Localizer["OddEven"]</td>
         <td class="@winningCssClass">
-            @Localizer[oddEvenResource[betChoice.Key]]
+            @CommonLocalizer[oddEvenResource[betChoice.Key]]
         </td>
         <td class="text-right @winningCssClass">
             @betChoice.Value.Format()

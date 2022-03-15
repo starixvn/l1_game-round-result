@@ -27,6 +27,7 @@ namespace GameRoundResult.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<List<AuthenticationClient>>(Configuration.GetSection("AuthenticationClients"));
+            services.Configure<List<OperatorConfig>>(Configuration.GetSection("OperatorConfigs"));
             services.Configure<HostConfiguration>(Configuration.GetSection("HostConfiguration"));
             services.AddAutoMapper(typeof(Startup));
             services.AddMediatR(typeof(Startup));
@@ -63,6 +64,9 @@ namespace GameRoundResult.Web
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseCustoRewriter();
+
             app.UseStaticFiles();
 
             app.UseRouting();

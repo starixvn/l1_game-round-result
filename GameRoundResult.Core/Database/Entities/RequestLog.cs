@@ -52,14 +52,14 @@ namespace GameRoundResult.Core.Database.Entities
 
     public class AuthModel
     {
-        public AuthModel(string partnerId, string partnerSecret)
+        public AuthModel(string operatorId, string operatorSecret)
         {
-            PartnerId = partnerId;
-            PartnerSecret = partnerSecret;
+            OperatorId = operatorId;
+            OperatorSecret = operatorSecret;
         }
 
-        public string PartnerId { get; set; }
+        public string OperatorId { get; set; }
 
-        public string PartnerSecret { get; set; }
+        public string OperatorSecret { get; set; }
     }
 }

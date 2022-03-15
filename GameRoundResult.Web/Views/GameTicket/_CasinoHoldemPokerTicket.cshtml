@@ -1,0 +1,235 @@
+﻿@using GameRoundResult.Core.Constants
+@model CasinoHoldemPokerTicketViewModel
+@inject IStringLocalizer<GameTicketViewModel> Localizer
+@inject IStringLocalizer<CasinoHoldemPokerTicketViewModel> CasinoHolemLocalizer
+
+<div>
+    <table class="table table-bordered table-casino-holdem">
+        <thead>
+            <tr>
+                <th class="col-date">@Localizer["Time"]</th>
+                <th class="col-round-id">@Localizer["RoundId"]</th>
+                <th></th>
+                <th>@CasinoHolemLocalizer["Card"]</th>
+                <th>@CasinoHolemLocalizer["Combination"]</th>
+                <th>@Localizer["Result"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Bet != null)
+            {
+                <tr>
+                    <td rowspan="3">
+                        @if (Model.Ended)
+                        {
+                            @Model.Round.Time.ToString(ViewFormat.TicketDateFormat)
+                            <br />
+                            @Model.Round.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                        }
+                        else
+                        {
+                            <span>-</span>
+                        }
+                    </td>
+                    <td rowspan="3">@Model.Round.Round</td>
+                    <td>@CasinoHolemLocalizer["Player"]</td>
+                    <td class="blackjack-result">
+                        <div class="cards">
+                            @foreach (var card in Model.Player.Cards)
+                            {
+                                <div class="card card-type-@card.Suit">
+                                    <span>@Card.CardLabels[card.Rank]</span>
+                                    <img class="img" src="~/scss/images/card_@(card.Suit).png" asp-append-version="true" />
+                                </div>
+                            }
+                        </div>
+                    </td>
+                    <td class="blackjack-result">
+                        @if (Model.IsFold)
+                        {
+                            <div>-</div>
+                        }
+                        else
+                        {
+                            <div class="cards">
+                                @foreach (var card in Model.Player.CombinationCards)
+                                {
+                                    <div class="card card-type-@card.Suit">
+                                        <span>@Card.CardLabels[card.Rank]</span>
+                                        <img class="img" src="~/scss/images/card_@(card.Suit).png" asp-append-version="true" />
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </td>
+                    <td>@(Model.IsFold ? CasinoHolemLocalizer["Fold"] : CasinoHolemLocalizer[Model.Player.Rank])</td>
+                </tr>
+                <tr>
+                    <td>@CasinoHolemLocalizer["Dealer"]</td>
+                    <td class="blackjack-result">
+                        <div class="cards">
+                            @if (Model.Ended && !Model.IsFold)
+                            {
+                                @foreach (var card in Model.Dealer.Cards)
+                                {
+                                    <div class="card card-type-@card.Suit">
+                                        <span>@Card.CardLabels[card.Rank]</span>
+                                        <img class="img" src="~/scss/images/card_@(card.Suit).png" asp-append-version="true" />
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <img class="card" src="~/scss/images/card_back.png" asp-append-version="true" />
+                                <img class="card" src="~/scss/images/card_back.png" asp-append-version="true" />
+                            }
+                        </div>
+                    </td>
+                    <td class="blackjack-result">
+                        <div class="cards">
+                            @if (Model.Ended && !Model.IsFold)
+                            {
+                                @foreach (var card in Model.Dealer.CombinationCards)
+                                {
+                                    <div class="card card-type-@card.Suit">
+                                        <span>@Card.CardLabels[card.Rank]</span>
+                                        <img class="img" src="~/scss/images/card_@(card.Suit).png" asp-append-version="true" />
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div>-</div>
+                            }
+                        </div>
+                    </td>
+                    @if (Model.Ended && !Model.IsFold)
+                    {
+                        @if (Model.IsQualified)
+                        {
+                            <td>@CasinoHolemLocalizer[Model.Dealer.Rank]</td>
+                        }
+                        else
+                        {
+                            <td>@CasinoHolemLocalizer["DoesNotQualify"]</td>
+                        }
+                    }
+                    else
+                    {
+
+                        <td>-</td>
+                    }
+                </tr>
+                <tr>
+                    <td>@CasinoHolemLocalizer["CommunityCards"]</td>
+                    <td class="blackjack-result">
+                        <div class="cards">
+                            @foreach (var card in Model.CommunityCards)
+                            {
+                                <div class="card card-type-@card.Suit">
+                                    <span>@Card.CardLabels[card.Rank]</span>
+                                    <img class="img" src="~/scss/images/card_@(card.Suit).png" asp-append-version="true" />
+                                </div>
+                            }
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-center">
+                        @Localizer["NoDataAvailable"]
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="col-date">@Localizer["Time"]</th>
+                <th>@Localizer["BetChoice"]</th>
+                <th>@Localizer["Odds"]</th>
+                <th>@Localizer["BetAmount"]</th>
+                <th>@Localizer["Win"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Bet != null)
+            {
+                var winAnte = (Model.Bet.SettlementResult?.Ante ?? 0);
+                var winAA = (Model.Bet.SettlementResult?.Aa ?? 0);
+                var winCall = (Model.Bet.SettlementResult?.Call ?? 0);
+                <tr class="@(winAnte > 0 ? "text-blue bold" : "")">
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["ANTE"]</td>
+                    <td>@Model.AnteOddsDisplayed</td>
+                    <td class="text-right">@Model.Bet.Ante.Format()</td>
+                    <td class="text-right">
+                        @(Model.Ended ? winAnte.Format() : CasinoHolemLocalizer["UnfinishedGame"])
+                    </td>
+                </tr>
+                @if (Model.Bet.Aa > 0)
+                {
+                    <tr class="@(winAA > 0 ? "text-blue bold" : "")">
+                        <td>
+                            @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                            <br />
+                            @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                        </td>
+                        <td>@Localizer["AA"]</td>
+                        <td>@Model.AAOddsDisplayed</td>
+                        <td class="text-right">@Model.Bet.Aa.Format()</td>
+                        <td class="text-right">
+                            @(Model.Ended ? winAA.Format() : @CasinoHolemLocalizer["UnfinishedGame"])
+                        </td>
+                    </tr>
+                }
+                @if (Model.Ended && !Model.IsFold)
+                {
+                    <tr class="@(winCall > 0 ? "text-blue bold" : "")">
+                        <td>
+                            @Model.Bet.CallTime.ToString(ViewFormat.TicketDateFormat)
+                            <br />
+                            @Model.Bet.CallTime.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                        </td>
+                        <td>@Localizer["CALL"]</td>
+                        <td>@Model.CallOddsDisplayed</td>
+                        <td class="text-right">@Model.Bet.Call.Format()</td>
+                        <td class="text-right">
+                            @winCall.Format()
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>@Localizer["Total"]</td>
+                    <td class="text-right">@Model.TotalBet.Format()</td>
+                    <td class="text-right">@(Model.Ended ? Model.TotalWin.Format(): @CasinoHolemLocalizer["UnfinishedGame"])</td>
+                </tr>
+                <tr class="total">
+                    <td></td>
+                    <td></td>
+                    <td>@Localizer["WinLoss"]</td>
+                    <td colspan="2" class="text-right">@Model.WinLossDisplayed</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center">
+                        @Localizer["NoDataAvailable"]
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

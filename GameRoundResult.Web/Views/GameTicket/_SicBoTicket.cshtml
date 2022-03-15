@@ -28,7 +28,7 @@
         { "total17", "17" },
         { "big", Localizer["Big"] },
         { "small", Localizer["Small"] },
-        { "anyTriple", Localizer["AnyTriple"] },
+        { "anyTriple", SicBoLocalizer["AnyTriple"] },
     };
 
     var betTypeDisplayDictionary = new Dictionary<string, string>
@@ -55,14 +55,14 @@
         { "total17", SicBoLocalizer["Total"] },
         { "big", $"{Localizer["Big"]}/{Localizer["Small"]}" },
         { "small", $"{Localizer["Big"]}/{Localizer["Small"]}" },
-        { "anyTriple", Localizer["AnyTriple"] },
+        { "anyTriple", SicBoLocalizer["AnyTriple"] },
     };
 }
 
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th class="col-date">@Localizer["Time"] (GMT-4)</th>
+            <th class="col-date">@Localizer["Time"]</th>
             <th class="col-round-id">@Localizer["RoundId"]</th>
             <th>@Localizer["Result"]</th>
             <th>@Localizer["Total"]</th>
@@ -81,7 +81,7 @@
                 <td>
                     @foreach (var dice in Model.RoundResult.Dices)
                     {
-                        <img class="dice sicbo" src="/scss/images/sicbo_dice_@(dice).png">
+                        <img class="dice sicbo" src="/scss/images/sicbo_dice_@(dice).png" asp-append-version="true">
                     }
                 </td>
                 <td>@Model.RoundResult.Total</td>
@@ -101,7 +101,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th class="col-date">@Localizer["BetTime"] (GMT-4)</th>
+            <th class="col-date">@Localizer["BetTime"]</th>
             <th>@Localizer["BetType"]</th>
             <th>@Localizer["BetChoice"]</th>
             <th>@Localizer["BetAmount"]</th>

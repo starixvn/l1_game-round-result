@@ -1,14 +1,15 @@
 ﻿@model MiniSeDieTicketViewModel
 
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SeDieTicketViewModel> Localizer
 
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th class="col-date">@Localizer["Time"] (GMT-4)</th>
-            <th class="col-round-id">@Localizer["RoundId"]</th>
-            <th>@Localizer["Result"]</th>
-            <th>@Localizer["WinningOptions"]</th>
+            <th class="col-date">@CommonLocalizer["Time"]</th>
+            <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
+            <th>@CommonLocalizer["Result"]</th>
+            <th>@CommonLocalizer["WinningOptions"]</th>
         </tr>
     </thead>
     <tbody>
@@ -28,13 +29,13 @@
                     }
                 </td>
                 <td class="bold @(Model.RoundResult.IsEven ? "text-blue" : "text-red")">
-                    @(Model.RoundResult.IsEven ? Localizer["Even"] : Localizer["Odd"])
+                    @(Model.RoundResult.IsEven ? CommonLocalizer["Even"] : CommonLocalizer["Odd"])
 
                     @if (Model.RoundResult.TotalRed != 2)
                     {
                         var totalRed = Model.RoundResult.TotalRed;
 
-                        @(totalRed > 0 ? $", {totalRed} {Localizer["Red"]}" : $", 4 {Localizer["White"]}")
+                        @(totalRed > 0 ? $", {totalRed} {CommonLocalizer["Red"]}" : $", 4 {CommonLocalizer["White"]}")
                     }
                 </td>
             </tr>
@@ -43,7 +44,7 @@
         {
             <tr>
                 <td colspan="4" class="text-center">
-                    @Localizer["NoDataAvailable"]
+                    @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>
         }
@@ -53,8 +54,8 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>@Localizer["BetChoice"]</th>
-            <th>@Localizer["BetAmount"]</th>
+            <th>@CommonLocalizer["BetChoice"]</th>
+            <th>@CommonLocalizer["BetAmount"]</th>
         </tr>
     </thead>
     <tbody>
@@ -63,17 +64,17 @@
             if (Model.Bet.Even > 0)
             {
                 <tr>
-                    <td>@Localizer["Even"]</td>
+                    <td>@CommonLocalizer["Even"]</td>
                     <td class="text-right">@Model.Bet.Even.Format()</td>
                 </tr>
             }
             if (Model.Bet.Odd > 0)
             {
                 <tr>
-                    <td>@Localizer["Odd"]</td>
+                    <td>@CommonLocalizer["Odd"]</td>
                     <td class="text-right">@Model.Bet.Odd.Format()</td>
                 </tr>
-            }     
+            }
 
             if (Model.Bet.ThreeRed > 0)
             {
@@ -106,17 +107,17 @@
             }
 
             <tr>
-                <td class="text-right">@Localizer["Total"]</td>
+                <td class="text-right">@CommonLocalizer["Total"]</td>
                 <td class="text-right">@Model.TotalBet.Format() @(Model.Bet.FreeBet ? "(Scoin)": string.Empty)</td>
             </tr>
             <tr>
-                <td class="text-right">@Localizer["TotalWin"]</td>
+                <td class="text-right">@CommonLocalizer["TotalWin"]</td>
                 <td class="text-right">@Model.TotalWin.Format()</td>
             </tr>
             @if (!Model.Bet.FreeBet)
             {
                 <tr class="total">
-                    <td class="bold text-right">@Localizer["WinLoss"]</td>
+                    <td class="bold text-right">@CommonLocalizer["WinLoss"]</td>
                     <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
                 </tr>
             }
@@ -125,7 +126,7 @@
         {
             <tr>
                 <td colspan="2" class="text-center">
-                    @Localizer["NoDataAvailable"]
+                    @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>
         }

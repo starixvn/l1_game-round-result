@@ -24,9 +24,9 @@ namespace GameRoundResult.Web.Models
     public class AuthModel
     {
         [Required]
-        public string PartnerId { get; set; }
+        public string OperatorId { get; set; }
 
         [Required]
-        public string PartnerSecret { get; set; }
+        public string OperatorSecret { get; set; }
     }
 }

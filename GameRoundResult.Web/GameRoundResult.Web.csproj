@@ -206,16 +206,24 @@
     <EmbeddedResource Update="Resources\Models\BlackjackTicketViewModel.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Models\RoundResultViewModel.zh-Hant.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Models\RoundResultViewModel.zh-Hans.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Models\RoundResultViewModel.th-TH.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Models\RoundResultViewModel.id-ID.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Models\RoundResultViewModel.vi-VN.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\GameRoundResult\Index.en-US.resx">
       <Generator></Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\scss\images\four-guardians\" />
   </ItemGroup>
 
 

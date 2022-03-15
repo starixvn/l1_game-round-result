@@ -7,7 +7,7 @@
 <table class="table table-bordered table-bitcoin-master">
     <thead>
         <tr>
-            <th class="col-date">@CommonLocalizer["Time"] (GMT-4)</th>
+            <th class="col-date">@CommonLocalizer["Time"]</th>
             <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
             <th>@Localizer["BettingPrice"]</th>
             <th>@CommonLocalizer["Result"]</th>
@@ -29,11 +29,11 @@
                     <span>@Model.RoundResult.Result.ResultPrice.Format2Decimals()</span>&nbsp;
                     @if (Model.RoundResult.Result.IsUp)
                     {
-                        <span class="up">(<img src="~/scss/images/up.png" /><span class="result-detail">@Model.RoundResult.Result.PriceDiff.Format2Decimals()</span>)</span>
+                        <span class="up">(<img src="~/scss/images/up.png" asp-append-version="true" /><span class="result-detail">@Model.RoundResult.Result.PriceDiff.Format2Decimals()</span>)</span>
                     }
                     else if (Model.RoundResult.Result.IsDown)
                     {
-                        <span class="down">(<img src="~/scss/images/down.png" /><span class="result-detail">@Model.RoundResult.Result.PriceDiff.Format2Decimals()</span>)</span>
+                        <span class="down">(<img src="~/scss/images/down.png" asp-append-version="true" /><span class="result-detail">@Model.RoundResult.Result.PriceDiff.Format2Decimals()</span>)</span>
                     }
                     else
                     {
@@ -60,7 +60,7 @@
 <table class="table table-bordered table-bitcoin-master">
     <thead>
         <tr>
-            <th class="col-date">@CommonLocalizer["BetTime"] (GMT-4)</th>
+            <th class="col-date">@CommonLocalizer["BetTime"]</th>
             <th>@CommonLocalizer["BetChoice"]</th>
             <th>@CommonLocalizer["BetAmount"]</th>
             <th>@CommonLocalizer["Refund"]</th>

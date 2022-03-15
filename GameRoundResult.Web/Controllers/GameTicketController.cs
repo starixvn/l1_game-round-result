@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using GameRoundResult.Core.Constants;
+﻿using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Configuration;
@@ -11,6 +9,10 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Sentry;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using TimeZoneConverter;
 
 namespace GameRoundResult.Web.Controllers
@@ -24,12 +26,15 @@ namespace GameRoundResult.Web.Controllers
         private const int dataProtectorLifeTimeSecond = 30;
         private readonly ILogService logService;
         private readonly IPartnerService partnerService;
+        private readonly IEnumerable<OperatorConfig> operatorConfigs;
 
         public GameTicketController(IMediator mediator,
             IDataProtectionProvider dataProtectionProvider,
             IOptionsSnapshot<HostConfiguration> hostConfigurationAccessor,
             ILogService logService,
-            IPartnerService partnerService
+            IPartnerService partnerService,
+            IOptions<List<OperatorConfig>> operatorConfigsAccessor
+
             )
         {
             this.mediator = mediator;
@@ -37,17 +42,18 @@ namespace GameRoundResult.Web.Controllers
             hostConfiguration = hostConfigurationAccessor.Value;
             this.partnerService = partnerService;
             this.logService = logService;
+            operatorConfigs = operatorConfigsAccessor.Value;
         }
 
         [HttpGet]
         [Route("{culture=vi-VN}/[controller]/{queryKey}", Order = 0)]
-        public async Task<IActionResult> Index(string queryKey, [FromServices] IPartnerService partnerService)
+        public async Task<IActionResult> Index(string queryKey)
         {
             try
             {
                 var data = dataProtector.Unprotect(queryKey).Split('_');
-                var partnerId = data[0];
-                var partnerSecret = data[1];
+                var operatorId = data[0];
+                var operatorSecret = data[1];
                 var gameType = Enum.Parse<GameType>(data[2]);
                 var roundId = long.Parse(data[3]);
                 var memberId = int.Parse(data[4]);
@@ -58,14 +64,14 @@ namespace GameRoundResult.Web.Controllers
                     return View("GameNotSupported");
                 }
 
-                var partner = await partnerService.Get(partnerId, partnerSecret);
+                var @operator = await partnerService.Get(operatorId, operatorSecret);
 
-                if (partner != null)
+                if (@operator != null)
                 {
                     var viewModel = new GameTicketResultViewModel
                     {
                         GameType = gameType,
-                        GameTicketResult = await GetGameTicket(gameType, roundId, memberId, partnerId, freeBet)
+                        GameTicketResult = await GetGameTicket(gameType, roundId, memberId, operatorId, freeBet)
                     };
 
                     return View(viewModel);
@@ -87,11 +93,11 @@ namespace GameRoundResult.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                var partner = await partnerService.Get(model.Auth.PartnerId, model.Auth.PartnerSecret);
+                var @operator = await partnerService.Get(model.Auth.OperatorId, model.Auth.OperatorSecret);
 
-                if (partner != null)
+                if (@operator != null)
                 {
-                    var queryKey = dataProtector.Protect($"{model.Auth.PartnerId}_{model.Auth.PartnerSecret}_{model.GameTypeId}_{model.GameRoundId}_{model.ObCustId}_{model.FreeBet}",
+                    var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}_{model.Auth.OperatorSecret}_{model.GameTypeId}_{model.GameRoundId}_{model.ObCustId}_{model.FreeBet}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
 
                     var redirectUrl = Url.Action("Index", "GameTicket", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
@@ -114,7 +120,7 @@ namespace GameRoundResult.Web.Controllers
         private static RequestLog ConvertToLog(GameTicketAccessUrlRequestModel model)
         => new RequestLog(DateTimeOffset.UtcNow, new AccessUrlRequest
         {
-            Auth = new Core.Database.Entities.AuthModel(model.Auth.PartnerId, model.Auth.PartnerSecret),
+            Auth = new Core.Database.Entities.AuthModel(model.Auth.OperatorId, model.Auth.OperatorSecret),
             GameTypeId = model.GameTypeId,
             GameRoundId = model.GameRoundId,
             ObCustId = model.ObCustId,
@@ -122,11 +128,12 @@ namespace GameRoundResult.Web.Controllers
             FreeBet = model.FreeBet
         });
 
-        private async Task<GameTicketViewModel> GetGameTicket(GameType gameType, long roundId, int memberId, string partnerId, bool freeBet)
+        private async Task<GameTicketViewModel> GetGameTicket(GameType gameType, long roundId, int memberId, string operatorId, bool freeBet)
         {
-            var timeZoneInfo = TZConvert.GetTimeZoneInfo("SA Western Standard Time");
-
-            return await mediator.Send(new GetGameTicketRequest(gameType, roundId, memberId, timeZoneInfo, partnerId, freeBet));
+            var config = operatorConfigs.FirstOrDefault(x => x.OperatorId == operatorId);
+            var timeZoneInfo = TZConvert.GetTimeZoneInfo(config.TimeZone);
+            
+            return await mediator.Send(new GetGameTicketRequest(gameType, roundId, memberId, timeZoneInfo, operatorId, freeBet));
         }
     }
 }

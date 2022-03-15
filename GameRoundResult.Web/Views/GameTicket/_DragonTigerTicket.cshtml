@@ -1,13 +1,14 @@
 ﻿@model DragonTigerTicketViewModel
 @using GameRoundResult.Core.Constants
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<DragonTigerTicketViewModel> Localizer
 
 <table class="table table-bordered table-dragon-tiger">
     <thead>
         <tr>
-            <th class="col-date">@Localizer["Time"] (GMT-4)</th>
-            <th>@Localizer["RoundId"]</th>
-            <th>@Localizer["Result"] (@Localizer["Dragon"] | @Localizer["Tiger"])</th>
+            <th class="col-date">@CommonLocalizer["Time"]</th>
+            <th>@CommonLocalizer["RoundId"]</th>
+            <th>@CommonLocalizer["Result"] (@Localizer["Dragon"] | @Localizer["Tiger"])</th>
         </tr>
     </thead>
     <tbody>
@@ -24,11 +25,11 @@
                     <div class="cards">
                         <div class="card card-type-@Model.RoundResult.Dragon.Type">
                             <span>@Card.CardLabels[Model.RoundResult.Dragon.Number]</span>
-                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Dragon.Type).png" />
+                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Dragon.Type).png" asp-append-version="true" />
                         </div>
                         <div class="card card-type-@Model.RoundResult.Tiger.Type">
                             <span>@Card.CardLabels[Model.RoundResult.Tiger.Number]</span>
-                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Tiger.Type).png" />
+                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Tiger.Type).png" asp-append-version="true" />
                         </div>
                     </div>
                 </td>
@@ -38,7 +39,7 @@
         {
             <tr>
                 <td colspan="3" class="text-center">
-                    @Localizer["NoDataAvailable"]
+                    @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>
         }
@@ -48,8 +49,8 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>@Localizer["BetChoice"]</th>
-            <th>@Localizer["BetAmount"]</th>
+            <th>@CommonLocalizer["BetChoice"]</th>
+            <th>@CommonLocalizer["BetAmount"]</th>
         </tr>
     </thead>
     <tbody>
@@ -72,21 +73,21 @@
             if (Model.Bet.Tie > 0)
             {
                 <tr>
-                    <td>@Localizer["Tie"]</td>
+                    <td>@CommonLocalizer["Tie"]</td>
                     <td class="text-right">@Model.Bet.Tie.Format()</td>
                 </tr>
             }
 
             <tr>
-                <td class="text-right">@Localizer["Total"]</td>
+                <td class="text-right">@CommonLocalizer["Total"]</td>
                 <td class="text-right">@Model.TotalBet.Format()</td>
             </tr>
             <tr>
-                <td class="text-right">@Localizer["TotalWin"]</td>
+                <td class="text-right">@CommonLocalizer["TotalWin"]</td>
                 <td class="text-right">@Model.TotalWin.Format()</td>
             </tr>
             <tr class="total">
-                <td class="bold text-right">@Localizer["WinLoss"]</td>
+                <td class="bold text-right">@CommonLocalizer["WinLoss"]</td>
                 <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
             </tr>
         }
@@ -94,7 +95,7 @@
         {
             <tr>
                 <td colspan="2" class="text-center">
-                    @Localizer["NoDataAvailable"]
+                    @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>
         }

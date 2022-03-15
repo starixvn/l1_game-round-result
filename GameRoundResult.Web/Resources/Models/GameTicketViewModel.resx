@@ -117,30 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="1Red" xml:space="preserve">
-    <value>1 Red</value>
-  </data>
-  <data name="2Red" xml:space="preserve">
-    <value>2 Red</value>
-  </data>
-  <data name="3Red" xml:space="preserve">
-    <value>3 Red</value>
-  </data>
-  <data name="3White" xml:space="preserve">
-    <value>3 White</value>
-  </data>
-  <data name="4Red" xml:space="preserve">
-    <value>4 Red</value>
-  </data>
-  <data name="4White" xml:space="preserve">
-    <value>4 White</value>
-  </data>
-  <data name="AnyTriple" xml:space="preserve">
-    <value>Any Triple</value>
-  </data>
-  <data name="BankerPair" xml:space="preserve">
-    <value>Banker Pair</value>
-  </data>
   <data name="BetAmount" xml:space="preserve">
     <value>Bet Amount</value>
   </data>
@@ -153,20 +129,11 @@
   <data name="BetType" xml:space="preserve">
     <value>Bet Type</value>
   </data>
-  <data name="BigSmall" xml:space="preserve">
-    <value>Big/Small</value>
+  <data name="Cards" xml:space="preserve">
+    <value>Card</value>
   </data>
-  <data name="Column-1" xml:space="preserve">
-    <value>1st Column</value>
-  </data>
-  <data name="Column-2" xml:space="preserve">
-    <value>2nd Column</value>
-  </data>
-  <data name="Column-3" xml:space="preserve">
-    <value>3rd Column</value>
-  </data>
-  <data name="FourNumbers" xml:space="preserve">
-    <value>Four Numbers</value>
+  <data name="Combination" xml:space="preserve">
+    <value>Combination</value>
   </data>
   <data name="GameNotSupported" xml:space="preserve">
     <value>Sorry! The function is currently not supported for this game.</value>
@@ -174,20 +141,8 @@
   <data name="NoDataAvailable" xml:space="preserve">
     <value>No data available</value>
   </data>
-  <data name="OddEven" xml:space="preserve">
-    <value>Odd/Even</value>
-  </data>
-  <data name="PlayerPair" xml:space="preserve">
-    <value>Player Pair</value>
-  </data>
-  <data name="RedBlack" xml:space="preserve">
-    <value>Red/Black</value>
-  </data>
   <data name="RoundId" xml:space="preserve">
     <value>Round ID</value>
-  </data>
-  <data name="StraightUp" xml:space="preserve">
-    <value>Straight Up</value>
   </data>
   <data name="TotalWin" xml:space="preserve">
     <value>Total Win</value>

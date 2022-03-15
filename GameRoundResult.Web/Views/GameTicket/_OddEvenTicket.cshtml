@@ -5,7 +5,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th class="col-date">@Localizer["Time"] (GMT-4)</th>
+            <th class="col-date">@Localizer["Time"]</th>
             <th class="col-round-id">@Localizer["RoundId"]</th>
             <th>@Localizer["Result"]</th>
             <th>@Localizer["Total"]</th>
@@ -24,7 +24,7 @@
                 <td>
                     @foreach (var dice in Model.RoundResult.Dices)
                     {
-                        <img class="dice" src="/scss/images/dice_@(dice).png">
+                        <img class="dice" src="/scss/images/dice_@(dice).png" asp-append-version="true">
                     }
                 </td>
                 <td>@Model.RoundResult.Total</td>
@@ -44,7 +44,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th class="col-date">@Localizer["BetTime"] (GMT-4)</th>
+            <th class="col-date">@Localizer["BetTime"]</th>
             <th>@Localizer["BetChoice"]</th>
             <th>@Localizer["BetAmount"]</th>
             <th>@Localizer["Refund"]</th>

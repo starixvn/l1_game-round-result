@@ -65,6 +65,7 @@
         public const string HeroesSlotRounds = "heroesslot_rounds";
 
         public const string BitcoinMasterRounds = "bitcoinmaster_rounds";
+        public const string CasinoHoldemPokerRound = "casinoholdempoker_phiens";
     }
 
     internal static class MiniGameBetCollections
@@ -158,6 +159,7 @@
         public const string HeroesSlotRounds = "heroesslot_rounds";
 
         public const string BitcoinMasterBet = "bitcoinmaster_cuocs";
+        public const string CasinoHoldemPokerBet = "casinoholdempoker_cuocs";
     }
 
     internal static class CommonCollections
