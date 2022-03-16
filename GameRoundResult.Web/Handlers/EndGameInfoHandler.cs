@@ -8,7 +8,7 @@ using Sentry;
 
 namespace GameRoundResult.Web.Handlers
 {
-    public class EndGameInfoHandler : IRequestHandler<Requests.RetrieveEndGameInfoRequest, EndGameInfoResult>
+    public class EndGameInfoHandler : IRequestHandler<Requests.RetrieveEndRoundInfoRequest, EndRoundInfoResult>
     {
         private readonly IEndGameInfoServiceFactory factory;
 
@@ -17,7 +17,7 @@ namespace GameRoundResult.Web.Handlers
             this.factory = factory;
         }
 
-        public async Task<EndGameInfoResult> Handle(Requests.RetrieveEndGameInfoRequest request, CancellationToken cancellationToken)
+        public async Task<EndRoundInfoResult> Handle(Requests.RetrieveEndRoundInfoRequest request, CancellationToken cancellationToken)
         {
             try
             {
