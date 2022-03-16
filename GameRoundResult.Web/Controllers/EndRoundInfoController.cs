@@ -17,6 +17,7 @@ namespace GameRoundResult.Web.Controllers
             this.partnerService = partnerService;
         }
 
+        [HttpPost]
         public async Task<IActionResult> Index([FromBody] Requests.RetrieveEndRoundInfoRequest request)
         {
             var @operator = await partnerService.Get(request.Auth?.OperatorId, request.Auth?.OperatorSecret);

@@ -8,11 +8,11 @@ using Sentry;
 
 namespace GameRoundResult.Web.Handlers
 {
-    public class EndGameInfoHandler : IRequestHandler<Requests.RetrieveEndRoundInfoRequest, EndRoundInfoResult>
+    public class EndRoundInfoHandler : IRequestHandler<Requests.RetrieveEndRoundInfoRequest, EndRoundInfoResult>
     {
         private readonly IEndGameInfoServiceFactory factory;
 
-        public EndGameInfoHandler(IEndGameInfoServiceFactory factory)
+        public EndRoundInfoHandler(IEndGameInfoServiceFactory factory)
         {
             this.factory = factory;
         }
