@@ -40,6 +40,7 @@ namespace GameRoundResult.Web.Configuration
             GameType.HeroesSlot,
             GameType.CasinoHoldemPoker,
             GameType.HiLo,
+            GameType.TexasHoldemPoker,
         };
 
         private readonly IPartnerConfigService partnerConfigService;
