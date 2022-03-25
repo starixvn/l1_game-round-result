@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GameRoundResult.Web.Controllers
 {
-    [ApiController]
+    [ApiController, Route("[controller]")]
     public class EndRoundInfoController : ControllerBase
     {
         private readonly IMediator mediator;
