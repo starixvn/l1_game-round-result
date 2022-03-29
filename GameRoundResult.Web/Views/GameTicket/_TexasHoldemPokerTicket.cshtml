@@ -3,6 +3,12 @@
 @inject IStringLocalizer<GameTicketViewModel> Localizer
 @inject IStringLocalizer<CasinoHoldemPokerTicketViewModel> CasinoHolemLocalizer
 
+@{
+    var isFinishRoundAndNotFold = Model.Ended && !Model.IsFold;
+    var isRunningRoundAndNotPassSwapStep = Model.IsSwappedOrHold.HasValue && !Model.IsSwappedOrHold.Value && !Model.Ended;
+    var isRunningRoundOrFold = Model.IsFold || (Model.IsSwappedOrHold.HasValue && !Model.IsSwappedOrHold.Value);
+}
+
 <div>
     <table class="table table-bordered table-casino-holdem">
         <thead>
@@ -34,97 +40,73 @@
                     <td rowspan="3">@Model.Round.Round</td>
                     <td>@CasinoHolemLocalizer["Player"]</td>
                     <td class="blackjack-result">
-                        <div class="cards">
-                            @foreach (var card in Model.Player.Cards)
-                            {
-                                <div class="card card-type-@card.Suit">
-                                    <span>@Card.CardLabels[card.Rank]</span>
-                                    <img class="img" src="~/scss/images/card_@(card.Suit).png" />
-                                </div>
-                            }
-                        </div>
-                    </td>
-                    <td class="blackjack-result">
-                        @if (Model.IsFold)
+                        @if (isRunningRoundAndNotPassSwapStep)
                         {
-                            <div>-</div>
+                            await RenderEmptyCards();
                         }
                         else
                         {
-                            <div class="cards">
-                                @foreach (var card in Model.Player.CombinationCards)
-                                {
-                                    <div class="card card-type-@card.Suit">
-                                        <span>@Card.CardLabels[card.Rank]</span>
-                                        <img class="img" src="~/scss/images/card_@(card.Suit).png" />
-                                    </div>
-                                }
-                            </div>
+                            await RenderCards(Model.Player.Cards);
                         }
                     </td>
-                    <td>@(Model.IsFold ? CasinoHolemLocalizer["Fold"] : CasinoHolemLocalizer[Model.Player.Rank])</td>
+                    <td class="blackjack-result">
+                        @if (isRunningRoundOrFold)
+                        {
+                            RenderEmptyCell();
+                        }
+                        else
+                        {
+                            await RenderCards(Model.Player.CombinationCards);
+                        }
+                    </td>
+                    <td>
+                        @if (isRunningRoundAndNotPassSwapStep)
+                        {
+                            RenderEmptyCell();
+                        }
+                        else
+                        {
+                            @(Model.IsFold ? CasinoHolemLocalizer["Fold"] : CasinoHolemLocalizer[Model.Player.Rank])
+                        }
+                    </td>
                 </tr>
                 <tr>
                     <td>@CasinoHolemLocalizer["Dealer"]</td>
                     <td class="blackjack-result">
-                        <div class="cards">
-                            @if (Model.Ended && !Model.IsFold)
-                            {
-                                @foreach (var card in Model.Dealer.Cards)
-                                {
-                                    <div class="card card-type-@card.Suit">
-                                        <span>@Card.CardLabels[card.Rank]</span>
-                                        <img class="img" src="~/scss/images/card_@(card.Suit).png" />
-                                    </div>
-                                }
-                            }
-                            else
-                            {
-                                <img class="card" src="~/scss/images/card_back.png" />
-                                <img class="card" src="~/scss/images/card_back.png" />
-                            }
-                        </div>
+                        @if (isFinishRoundAndNotFold)
+                        {
+                            await RenderCards(Model.Dealer.Cards);
+                        }
+                        else
+                        {
+                            await RenderEmptyCards();
+                        }
                     </td>
                     <td class="blackjack-result">
-                        <div class="cards">
-                            @if (Model.Ended && !Model.IsFold)
-                            {
-                                @foreach (var card in Model.Dealer.CombinationCards)
-                                {
-                                    <div class="card card-type-@card.Suit">
-                                        <span>@Card.CardLabels[card.Rank]</span>
-                                        <img class="img" src="~/scss/images/card_@(card.Suit).png" />
-                                    </div>
-                                }
-                            }
-                            else
-                            {
-                                <div>-</div>
-                            }
-                        </div>
+                        @if (isFinishRoundAndNotFold)
+                        {
+                            await RenderCards(Model.Dealer.CombinationCards);
+                        }
+                        else
+                        {
+                            RenderEmptyCell();
+                        }
                     </td>
-                    @if (Model.Ended && !Model.IsFold)
-                    {
-                        <td>@CasinoHolemLocalizer[Model.Dealer.Rank]</td>
-                    }
-                    else
-                    {
-                        <td>-</td>
-                    }
+                    <td>
+                        @if (isFinishRoundAndNotFold)
+                        {
+                            @CasinoHolemLocalizer[Model.Dealer.Rank];
+                        }
+                        else
+                        {
+
+                            RenderEmptyCell();
+                        }
+                    </td>
                 </tr>
                 <tr>
                     <td>@CasinoHolemLocalizer["CommunityCards"]</td>
-                    <td class="blackjack-result">
-                        <div class="cards">
-                            @foreach (var card in Model.CommunityCards)
-                            {
-                                <div class="card card-type-@card.Suit">
-                                    <span>@Card.CardLabels[card.Rank]</span>
-                                    <img class="img" src="~/scss/images/card_@(card.Suit).png" />
-                                </div>
-                            }
-                        </div>
-                    </td>
+                    <td class="blackjack-result">@{await RenderCards(Model.CommunityCards);}</td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -170,7 +152,7 @@
                     </td>
                 </tr>
 
-                @if (Model.Ended && !Model.IsFold)
+                @if (Model.Bet.Call > 0)
                 {
                     <tr class="@(winCall > 0 ? "text-blue bold" : "")">
                         <td>
@@ -182,7 +164,7 @@
                         <td>@Model.CallOddsDisplayed</td>
                         <td class="text-right">@Model.Bet.Call.Format()</td>
                         <td class="text-right">
-                            @winCall.Format()
+                            @(Model.Ended ? winCall.Format() : @CasinoHolemLocalizer["UnfinishedGame"])
                         </td>
                     </tr>
                 }
@@ -245,3 +227,32 @@
         </tbody>
     </table>
 </div>
+
+@functions
+{
+    private async Task RenderCards(IEnumerable<PokerCardViewModel> cards)
+    {
+        <div class="cards">
+            @foreach (var card in cards)
+            {
+                <div class="card card-type-@card.Suit">
+                    <span>@Card.CardLabels[card.Rank]</span>
+                    <img class="img" src="~/scss/images/card_@(card.Suit).png" />
+                </div>
+            }
+        </div>
+    }
+
+    private void RenderEmptyCell()
+    {
+        <div class="cards text-center">-</div>
+    }
+
+    private async Task RenderEmptyCards()
+    {
+        <div class="cards">
+            <img class="card" src="~/scss/images/card_back.png" />
+            <img class="card" src="~/scss/images/card_back.png" />
+        </div>
+    }
+}

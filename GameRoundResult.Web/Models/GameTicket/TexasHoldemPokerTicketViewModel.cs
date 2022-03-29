@@ -2,12 +2,14 @@
 using GameRoundResult.Web.Models.GameRoundResult;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GameRoundResult.Web.Models
 {
     public class TexasHoldemPokerTicketViewModel : GameTicketViewModel
     {
         private readonly string EmptyOdds = "-";
+        private readonly IEnumerable<PokerCardViewModel> DefaultPokerCards = Enumerable.Empty<PokerCardViewModel>();
 
         public TexasHoldemPokerBetViewModel Bet { get; set; }
 
@@ -16,16 +18,28 @@ namespace GameRoundResult.Web.Models
         public TexasHoldemPokerDetailBetViewModel SettlementResult { get; set; }
 
         public TexasHoldemPokerHandViewModel Player
-            => new TexasHoldemPokerHandViewModel { Cards = Bet.PlayerCards, CombinationCards = Bet.CombinationCards, Id = Bet.HandRankId };
+            => new TexasHoldemPokerHandViewModel
+            {
+                Cards = Bet?.PlayerCards ?? DefaultPokerCards,
+                CombinationCards = Bet?.CombinationCards ?? DefaultPokerCards,
+                Id = Bet?.HandRankId ?? 0
+            };
 
         public TexasHoldemPokerHandViewModel Dealer
-            => new TexasHoldemPokerHandViewModel { Cards = Round.DealerCards, CombinationCards = Round.DealerCombinationCards, Id = Round.HandRankId };
+            => new TexasHoldemPokerHandViewModel
+            {
+                Cards = Round?.DealerCards ?? DefaultPokerCards,
+                CombinationCards = Round?.DealerCombinationCards ?? DefaultPokerCards,
+                Id = Round?.HandRankId ?? 0
+            };
 
         public IEnumerable<PokerCardViewModel> CommunityCards => Round.CommunityCards;
 
         public bool Ended => Round.Ended;
 
         public bool IsFold => Bet.IsFold;
+
+        public bool? IsSwappedOrHold => Round.IsSwappedOrHold;
 
         public string AnteOddsDisplayed => Ended && (Bet.SettlementResult?.Ante > Bet.Ante) ? Bet.AnteOdds.ToString(ViewFormat.NumberFormat) : EmptyOdds;
 
