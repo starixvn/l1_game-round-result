@@ -11,6 +11,7 @@ namespace GameRoundResult.Web.Models.GameRoundResult
         public IEnumerable<PokerCardViewModel> CommunityCards { get; set; }
         public IEnumerable<PokerCardViewModel> DealerCombinationCards { get; set; }
         public byte HandRankId { get; set; }
+        public bool? IsSwappedOrHold { get; set; }
 
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {

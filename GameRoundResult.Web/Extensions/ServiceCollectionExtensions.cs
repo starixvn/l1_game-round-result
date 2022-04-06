@@ -1,9 +1,8 @@
-﻿using System.Globalization;
-using System.Linq;
-using GameRoundResult.Core.Database.Repository;
+﻿using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
-using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Accessor;
+using GameRoundResult.Web.Configuration;
+using GameRoundResult.Web.ViewFactory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Localization.Routing;
@@ -11,7 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
-using GameRoundResult.Web.ViewFactory;
+using System.Globalization;
+using System.Linq;
 
 namespace GameRoundResult.Web.Extensions
 {
@@ -110,10 +110,11 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(BitcoinMasterTicketAccessor));
             services.AddScoped<CasinoHoldemPokerTicketAccessor>();
             services.AddScoped<HiLoTicketAccessor>();
+            services.AddScoped<TexasHoldemPokerTicketAccessor>();
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
 
-          
+
         }
     }
 }

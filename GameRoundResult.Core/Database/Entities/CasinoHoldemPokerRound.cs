@@ -19,6 +19,8 @@ namespace GameRoundResult.Core.Database.Entities
         public string Uid { get; set; }
 
         public string Name { get; set; }
+
+        public bool? IsSwappedOrHold { get; set; }
     }
     public class CasinoHoldemPokerResult
     {
