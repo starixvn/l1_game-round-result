@@ -50,6 +50,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.FourGuardians, typeof(FourGuardiansTicketAccessor<FourGuardiansRound>) },
             { GameType.BitcoinMaster, typeof(BitcoinMasterTicketAccessor) },
             { GameType.CasinoHoldemPoker, typeof(CasinoHoldemPokerTicketAccessor) },
+            { GameType.TexasHoldemPoker, typeof(TexasHoldemPokerTicketAccessor) },
         };
 
         private readonly IServiceProvider serviceProvider;
