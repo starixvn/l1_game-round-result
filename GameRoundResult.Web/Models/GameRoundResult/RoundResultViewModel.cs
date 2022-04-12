@@ -8,7 +8,7 @@ namespace GameRoundResult.Web.Models
 {
     public class RoundResultViewModel
     {
-        public DateTime Time { get; set; }
+        public DateTimeOffset Time { get; set; }
 
         public long Round { get; set; }
 
