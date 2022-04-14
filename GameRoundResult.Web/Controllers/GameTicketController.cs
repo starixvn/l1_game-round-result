@@ -45,6 +45,7 @@ namespace GameRoundResult.Web.Controllers
         {
             try
             {
+                var str = dataProtector.Protect($"ONEworks1_ONEworks1@20luminet&_47_2523_70000");
                 var data = dataProtector.Unprotect(queryKey).Split('_');
                 var partnerId = data[0];
                 var partnerSecret = data[1];

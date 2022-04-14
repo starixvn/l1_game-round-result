@@ -1,4 +1,6 @@
-﻿using GameRoundResult.Core.Database.Repository;
+﻿using System.Globalization;
+using System.Linq;
+using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.Configuration;
@@ -10,8 +12,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
-using System.Globalization;
-using System.Linq;
 
 namespace GameRoundResult.Web.Extensions
 {
@@ -82,6 +82,9 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IPartnerService, PartnerService>();
             services.AddScoped<IPartnerRepository, PartnerRepository>();
 
+            services.AddScoped<ITreasureIslandTicketService, TreasureIslandTicketService>();
+            services.AddScoped<ITreasureIslandBetRepository, TreasureIslandBetRepository>();
+
             services.AddScoped<IPartnerService, PartnerService>();
             services.AddScoped<IPartnerRepository, PartnerRepository>();
 
@@ -111,6 +114,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<CasinoHoldemPokerTicketAccessor>();
             services.AddScoped<HiLoTicketAccessor>();
             services.AddScoped<TexasHoldemPokerTicketAccessor>();
+            services.AddScoped<TreasureIslandTicketAccessor>();
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
 

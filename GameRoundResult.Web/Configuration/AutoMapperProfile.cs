@@ -1,9 +1,9 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -285,6 +285,8 @@ namespace GameRoundResult.Web.Configuration
                 .ForMember(x => x.HandRankId, opt => opt.MapFrom(x
                 => x.Ended ? x.SettlementResult.HandRankId
                 : 0));
+
+            CreateMap<TreasureIslandRound, TreasureIslandRoundResultViewModel>();
         }
     }
 }

@@ -1,0 +1,210 @@
+﻿@using System.Text;
+@model TreasureIslandTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<TreasureIslandTicketViewModel> Localizer
+
+@{
+    var roundResult = Model.RoundResult;
+
+    var spinWinningIcons = roundResult.WinningIcons[0];
+}
+
+@functions {
+    public string RenderBoard(IEnumerable<byte> board)
+    {
+        var sb = new StringBuilder();
+        var iconPerRow = 6;
+        var col = iconPerRow;
+
+        foreach (var b in board)
+        {
+            if (col == 1)
+            {
+                sb.AppendLine("<br />");
+                col = iconPerRow;
+            }
+
+            sb.AppendLine("<img class='symbol' src='/scss/images/treasureisland/" + b + ".png' />");
+            col--;
+        }
+
+        return sb.ToString();
+    }
+}
+
+<table class="table table-bordered table-four-guardians">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["Time"] (GMT-4)</th>
+            <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
+            <th class="col-round-id">@Localizer["BetLevel"]</th>
+            <th class="col-round-id">@Localizer["CoinValue"]</th>
+            <th class="col-round-id">@Localizer["TotalStake"]</th>
+            <th class="col-round-id">@CommonLocalizer["TotalWin"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (roundResult != null)
+        {
+            <tr>
+                <td>
+                    @roundResult.Time.ToString(ViewFormat.RoundDateFormat) @roundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@roundResult.Round</td>
+                <td>@roundResult.BetLevel</td>
+                <td>@roundResult.CoinValue</td>
+                <td>@roundResult.TotalAmount.Format()</td>
+                <td>@roundResult.BetWin.Format()</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered table-four-guardians">
+    <thead>
+        <tr>
+            <th>@Localizer["No"]</th>
+            <th>@Localizer["Type"]</th>
+            <th>@Localizer["Board"]</th>
+            <th>@Localizer["Symbol"]</th>
+            <th>@Localizer["NumberOfSymbol"]</th>
+            <th>@Localizer["WinAmount"]</th>
+            <th>@Localizer["TumbleWin"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (roundResult == null)
+        {
+            <tr>
+                <td colspan="7" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+        else
+        {
+            if (spinWinningIcons == null || spinWinningIcons.Count <= 1)
+            {
+                <tr>
+                    <td class="text-center">1</td>
+                    <td class="text-center">@Localizer["Spin"]</td>
+                    <td class="text-center">@Html.Raw(RenderBoard(roundResult.Boards[0]))</td>
+                    <td class="text-center">-</td>
+                    <td class="text-center">-</td>
+                    <td class="text-center">-</td>
+                    <td class="text-center">
+                        @(roundResult.TumbleMultipliers[0] > 1 ? Localizer["Multiplier"] + " X" + roundResult.TumbleMultipliers[0] : "")
+                        @(((decimal)roundResult.TumbleWins[0] * roundResult.TumbleMultipliers[0]).Format())
+                        @(roundResult.TumbleMultipliers[0] > 1 ? " = " + ((decimal)roundResult.TumbleWins[0]).Format() + " * " + roundResult.TumbleMultipliers[0] : "")
+                    </td>
+                </tr>
+            }
+            else
+            {
+                var i = 0;
+                foreach (var icon in spinWinningIcons)
+                {
+                    if (i == 0)
+                    {
+                        <tr>
+                            <td class="text-center" rowspan="@spinWinningIcons.Count">1</td>
+                            <td class="text-center" rowspan="@spinWinningIcons.Count">@Localizer["Spin"]</td>
+                            <td class="text-center" rowspan="@spinWinningIcons.Count">@Html.Raw(RenderBoard(roundResult.Boards[0]))</td>
+                            <td class="text-center"><img class="symbol" src="~/scss/images/treasureisland/@(icon.Key).png" /></td>
+                            <td class="text-center">@icon.Value</td>
+                            <td class="text-center">@roundResult.WinningAmounts[0][icon.Key]</td>
+                            <td class="text-center" rowspan="@spinWinningIcons.Count">
+                                @(roundResult.TumbleMultipliers[0] > 1 ? Localizer["Multiplier"] + " X" + roundResult.TumbleMultipliers[0] : "")
+                                @(((decimal)roundResult.TumbleWins[0] * roundResult.TumbleMultipliers[0]).Format())
+                                @(roundResult.TumbleMultipliers[0] > 1 ? " = " + ((decimal)roundResult.TumbleWins[0]).Format() + " * " + roundResult.TumbleMultipliers[0] : "")
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td class="text-center"><img class="symbol" src="~/scss/images/treasureisland/@(icon.Key).png" /></td>
+                            <td class="text-center">@icon.Value</td>
+                            <td class="text-center">@roundResult.WinningAmounts[0][icon.Key]</td>
+                        </tr>
+                    }
+
+                    i++;
+                }
+            }
+
+            @for (var j = 1; j < roundResult.TumbleWins.Count; j++)
+            {
+                var winningIcons = roundResult.WinningIcons[j];
+                var multiplier = roundResult.TumbleMultipliers[j];
+                var tw = multiplier > 1 ? roundResult.TumbleWins[j] * multiplier : roundResult.TumbleWins[j];
+
+                if (winningIcons == null || winningIcons.Count <= 1)
+                {
+                    <tr>
+                        <td class="text-center">@(j+1)</td>
+                        <td class="text-center">@Localizer["Tumbling"]</td>
+                        <td class="text-center">@Html.Raw(RenderBoard(roundResult.Boards[j]))</td>
+                        <td class="text-center">-</td>
+                        <td class="text-center">-</td>
+                        <td class="text-center">-</td>
+                        <td class="text-center">
+                            @(multiplier > 1 ? "Multiplier X" + multiplier : "")
+                            <br />
+                            @(((decimal)tw).Format())
+                            @(multiplier > 1 ? " = " + ((decimal)roundResult.TumbleWins[j]).Format() + " * " + multiplier : "")
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    var i = 0;
+                    foreach (var icon in winningIcons)
+                    {
+                        if (i == 0)
+                        {
+                            <tr>
+                                <td class="text-center" rowspan="@winningIcons.Count">@(j+1)</td>
+                                <td class="text-center" rowspan="@winningIcons.Count">@Localizer["Tumbling"]</td>
+                                <td class="text-center" rowspan="@winningIcons.Count">@Html.Raw(RenderBoard(roundResult.Boards[j]))</td>
+                                <td class="text-center"><img class="symbol" src="~/scss/images/treasureisland/@(icon.Key).png" /></td>
+                                <td class="text-center">@icon.Value</td>
+                                <td class="text-center">@roundResult.WinningAmounts[j][icon.Key]</td>
+                                <td class="text-center" rowspan="@winningIcons.Count">
+                                    @(multiplier > 1 ? "Multiplier X" + multiplier : "")
+                                    <br />
+                                    @(((decimal)tw).Format())
+                                    @(multiplier > 1 ? " = " + ((decimal)roundResult.TumbleWins[j]).Format() + " * " + multiplier : "")
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td class="text-center"><img class="symbol" src="~/scss/images/treasureisland/@(icon.Key).png" /></td>
+                                <td class="text-center">@icon.Value</td>
+                                <td class="text-center">@roundResult.WinningAmounts[j][icon.Key]</td>
+                            </tr>
+                        }
+
+                        i++;
+                    }
+                }
+            }
+
+            <tr class="total">
+                <td colspan="6" class="text-right">@CommonLocalizer["TotalWin"]</td>
+                <td class="bold text-center">@Model.WinLoss.Format()</td>
+            </tr>
+        }
+    </tbody>
+</table>

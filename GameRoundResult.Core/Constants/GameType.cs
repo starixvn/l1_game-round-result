@@ -40,6 +40,7 @@
         KenoPower2,
         TexasHoldemPoker = 42,
         BitcoinMaster = 43,
-        HiLo = 45
+        HiLo = 45,
+        TreasureIsland = 47
     }
 }
