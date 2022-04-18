@@ -51,6 +51,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.BitcoinMaster, typeof(BitcoinMasterTicketAccessor) },
             { GameType.CasinoHoldemPoker, typeof(CasinoHoldemPokerTicketAccessor) },
             { GameType.TexasHoldemPoker, typeof(TexasHoldemPokerTicketAccessor) },
+            { GameType.HiLo, typeof(HiLoTicketAccessor) },
         };
 
         private readonly IServiceProvider serviceProvider;

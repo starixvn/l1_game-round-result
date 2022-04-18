@@ -266,6 +266,9 @@ namespace GameRoundResult.Web.Configuration
                 => x.Ended ? x.SettlementResult.HandRankId
                 : 0))
                 .ForMember(x => x.IsQualified, opt => opt.MapFrom(x => x.SettlementResult.IsQualified ?? false));
+                
+            CreateMap<HiLoRound, HiLoRoundResultViewModel>();
+            CreateMap<HiLoBetLog, HiLoBetLogViewModel>();
 
             CreateMap<TexasHoldemPokerBetSettlementResult, TexasHoldemPokerDetailBetViewModel>();
             CreateMap<TexasHoldemPokerBet, TexasHoldemPokerBetViewModel>()
