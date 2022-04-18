@@ -27,7 +27,7 @@
                     @Model.RoundResult.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                 </td>
                 <td rowspan="@(Model.BetLogs.Count() + 2)">
-                    @Model.RoundResult.Round
+                    @Model.RoundResult.RoundId
                 </td>
                 <td colspan="4">@HiLoLocalizer["Start Round"]</td>
                 <td class="bold text-right text-blue">@Model.RoundResult.Amount.Format()</td>

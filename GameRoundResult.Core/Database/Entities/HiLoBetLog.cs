@@ -9,8 +9,6 @@ namespace GameRoundResult.Core.Database.Entities
     [CollectionName("hilo_betlogs")]
     public class HiLoBetLog : BaseBetLogEntity
     {
-        public long RoundId { get; set; }
-
         public int Order { get; set; }
 
         public decimal Amount { get; set; }

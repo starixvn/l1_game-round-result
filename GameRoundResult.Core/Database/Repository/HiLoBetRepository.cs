@@ -11,7 +11,7 @@ namespace GameRoundResult.Core.Database.Repository
 {
     public interface IHiLoBetRepository
     {
-        Task<(HiLoRound, IEnumerable<HiLoBetLog>)> GetAsync(long roundId, int memberId, string parterId);
+        Task<(HiLoRound, IEnumerable<HiLoBetLog>)> GetAsync(long roundId, int playerId, string operatorId);
     }
 
     public class HiLoBetRepository : GameBetRepository, IHiLoBetRepository
@@ -20,15 +20,15 @@ namespace GameRoundResult.Core.Database.Repository
         {
         }
 
-        public async Task<(HiLoRound, IEnumerable<HiLoBetLog>)> GetAsync(long roundId, int memberId, string parterId)
+        public async Task<(HiLoRound, IEnumerable<HiLoBetLog>)> GetAsync(long roundId, int playerId, string operatorId)
         {
             var round = await database.GetCollection<HiLoRound>(Document.GetCollectionName(typeof(HiLoRound)))
-                .Find(x => x.Round == roundId && x.MemberId == memberId && x.PartnerId == parterId)
+                .Find(x => x.Round == roundId && x.PlayerId == playerId && x.OperatorId == operatorId)
                 .FirstOrDefaultAsync();
 
             if (round != null)
             {
-                var betLogs = await GetBetLogsAsync<HiLoBetLog>(roundId, memberId, Document.GetCollectionName(typeof(HiLoBetLog)), parterId, x => x.RoundId == roundId);
+                var betLogs = await GetBetLogsAsync<HiLoBetLog>(roundId, playerId, Document.GetCollectionName(typeof(HiLoBetLog)), operatorId, x => x.RoundId == roundId);
 
                 return (round, betLogs);
             }
@@ -36,9 +36,9 @@ namespace GameRoundResult.Core.Database.Repository
             return (null, Enumerable.Empty<HiLoBetLog>());
         }
 
-        protected override async Task<IEnumerable<T>> GetBetLogsAsync<T>(long roundId, int memberId, string collectionName, string partnerId, Expression<Func<T, bool>> filter = null)
+        protected override async Task<IEnumerable<T>> GetBetLogsAsync<T>(long roundId, int playerId, string collectionName, string operatorId, Expression<Func<T, bool>> filter = null)
         {
-            Expression<Func<T, bool>> defaultExpression = bet => bet.MemberId == memberId && bet.PartnerId == partnerId;
+            Expression<Func<T, bool>> defaultExpression = bet => bet.PlayerId == playerId && bet.OperatorId == operatorId;
 
             return await database
                 .GetCollection<T>(collectionName)
