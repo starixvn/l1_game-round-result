@@ -148,6 +148,8 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(KenoMatchEndGameInfoService<,>));
             services.AddScoped(typeof(KenoPowerEndGameInfoService<,>));
             services.AddScoped<CasinoHoldemPokerEndGameInfoService>();
+            services.AddScoped<HiLoEndGameInfoService>();
+            services.AddScoped<TexasHoldemPokerEndGameInfoService>();
         }
     }
 }

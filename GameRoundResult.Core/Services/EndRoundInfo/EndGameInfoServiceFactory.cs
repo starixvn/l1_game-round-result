@@ -49,6 +49,8 @@ namespace GameRoundResult.Core.Services
             { GameType.KenoPower1, typeof(KenoPowerEndGameInfoService<KenoPower1Round, KenoPower1One>) },
             { GameType.KenoPower2, typeof(KenoPowerEndGameInfoService<KenoPower2Round, KenoPower2One>) },
             { GameType.CasinoHoldemPoker, typeof(CasinoHoldemPokerEndGameInfoService) },
+            { GameType.HiLo, typeof(HiLoEndGameInfoService) },
+            { GameType.TexasHoldemPoker, typeof(TexasHoldemPokerEndGameInfoService) },
         };
 
         private readonly IServiceProvider serviceProvider;
