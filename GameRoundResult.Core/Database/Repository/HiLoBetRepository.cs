@@ -23,7 +23,7 @@ namespace GameRoundResult.Core.Database.Repository
         public async Task<(HiLoRound, IEnumerable<HiLoBetLog>)> GetAsync(long roundId, int playerId, string operatorId)
         {
             var round = await database.GetCollection<HiLoRound>(Document.GetCollectionName(typeof(HiLoRound)))
-                .Find(x => x.Round == roundId && x.PlayerId == playerId && x.OperatorId == operatorId)
+                .Find(x => x.RoundId == roundId && x.PlayerId == playerId && x.OperatorId == operatorId)
                 .FirstOrDefaultAsync();
 
             if (round != null)

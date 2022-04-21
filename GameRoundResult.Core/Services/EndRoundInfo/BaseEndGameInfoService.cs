@@ -24,7 +24,7 @@ namespace GameRoundResult.Core.Services
 
         protected virtual async Task<TRounEntity> GetRoundAsync(long gameRoundId)
         {
-            var roundEntity = await roundCollection.Find(x => x.Round == gameRoundId).FirstOrDefaultAsync();
+            var roundEntity = await roundCollection.Find(x => x.RoundId == gameRoundId).FirstOrDefaultAsync();
 
             return roundEntity;
         }
@@ -38,7 +38,7 @@ namespace GameRoundResult.Core.Services
         }
 
         protected virtual Expression<Func<TRounEntity, bool>> GetRoundFilterExpression(RetrieveEndGameInfoRequest request)
-            => (round) => round.Round == request.GameRoundId;
+            => (round) => round.RoundId == request.GameRoundId;
     }
 
     public abstract class BaseEndGameInfoService<TRounEntity, TBetEntity> : RoundOnlyEndGameInfoService<TRounEntity> where TRounEntity : GameRound where TBetEntity : BaseBetEntity

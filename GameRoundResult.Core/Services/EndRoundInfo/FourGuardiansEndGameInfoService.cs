@@ -36,6 +36,6 @@ namespace GameRoundResult.Core.Services
         }
 
         protected override Expression<Func<FourGuardiansRound, bool>> GetRoundFilterExpression(RetrieveEndGameInfoRequest request)
-            => (round) => round.Round == request.GameRoundId && round.PlayerId == request.PlayerId && round.SiteId == request.SiteId;
+            => (round) => round.RoundId == request.GameRoundId && round.PlayerId == request.PlayerId && round.SiteId == request.SiteId;
     }
 }

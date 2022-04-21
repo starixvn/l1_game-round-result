@@ -56,7 +56,7 @@ namespace GameRoundResult.Core.Database.Repository
         }
 
         protected async Task<T> GetRoundAsync<T>(long roundId, string collectionName) where T : GameRound
-            => await database.GetCollection<T>(collectionName).Find(x => x.Round == roundId).FirstOrDefaultAsync();
+            => await database.GetCollection<T>(collectionName).Find(x => x.RoundId == roundId).FirstOrDefaultAsync();
 
         public virtual async Task<(TRoundEntity, IEnumerable<TBetEntity>, TOneEntity)> GetAsync<TRoundEntity, TOneEntity, TBetEntity>(long roundId, int playerId, bool freeBet, string operatorId)
             where TRoundEntity : GameRound

@@ -37,6 +37,6 @@ namespace GameRoundResult.Core.Services
         }
 
         protected override Expression<Func<HiLoRound, bool>> GetRoundFilterExpression(RetrieveEndGameInfoRequest request)
-            => (round) => round.Round == request.GameRoundId && round.OperatorId == request.OperatorId;
+            => (round) => round.RoundId == request.GameRoundId && round.OperatorId == request.OperatorId;
     }
 }
