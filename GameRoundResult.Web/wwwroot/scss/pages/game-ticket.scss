@@ -77,6 +77,14 @@
         &.table-hilo {
             max-width: 80rem;
         }
+
+        &.table-night-club {
+            max-width: 90rem;
+
+            .col-round-id {
+                width: 9rem;
+            }
+        }
     }
 }
 

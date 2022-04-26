@@ -41,7 +41,11 @@
     .table.table-casino-holdem {
       max-width: 90rem; }
     .table.table-hilo {
-      max-width: 80rem; } }
+      max-width: 80rem; }
+    .table.table-night-club {
+      max-width: 90rem; }
+      .table.table-night-club .col-round-id {
+        width: 9rem; } }
 
 .table-four-guardians .table-paylines {
   margin: auto; }
