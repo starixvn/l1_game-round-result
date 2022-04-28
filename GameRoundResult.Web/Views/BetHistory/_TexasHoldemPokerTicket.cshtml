@@ -40,7 +40,7 @@
                     <td rowspan="3">@Model.Round.RoundId</td>
                     <td>@CasinoHolemLocalizer["Player"]</td>
                     <td class="blackjack-result">
-                        @if (isRunningRoundAndNotPassSwapStep)
+                        @if (isRunningRoundAndNotPassSwapStep || !Model.Player.Cards.Any())
                         {
                             await RenderEmptyCards();
                         }
