@@ -35,9 +35,11 @@
         KenoMatch1,
         KenoMatch2,
         HeroesSlot,
+        CasinoHoldemPoker = 39,
         KenoPower1 = 40,
         KenoPower2,
+        TexasHoldemPoker = 42,
         BitcoinMaster = 43,
-        CasinoHoldemPoker = 39
+        HiLo = 45
     }
 }

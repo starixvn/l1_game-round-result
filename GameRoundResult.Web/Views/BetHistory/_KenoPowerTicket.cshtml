@@ -1,0 +1,253 @@
+﻿@model KenoPowerTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<KenoPowerTicketViewModel> Localizer
+
+@{
+    var betChoiceMapper = new Dictionary<string, string>
+{
+        { "blue", Localizer["Team Blue"] },
+        { "red", Localizer["Team Red"] },
+        { "big", CommonLocalizer["Big"] },
+        { "small", CommonLocalizer["Small"] },
+        { "odd", CommonLocalizer["Odd"] },
+        { "even", CommonLocalizer["Even"] },
+        { "blueBig", CommonLocalizer["Big"] },
+        { "blueSmall", CommonLocalizer["Small"] },
+        { "redBig", CommonLocalizer["Big"] },
+        { "redSmall", CommonLocalizer["Small"] },
+    };
+
+    var betTypeMapper = new Dictionary<string, string>
+{
+        { "blue", Localizer["Team Blue/Team Red"] },
+        { "red", Localizer["Team Blue/Team Red"] },
+        { "big", Localizer["Sum Big/Small"] },
+        { "small", Localizer["Sum Big/Small"] },
+        { "odd", Localizer["Sum Even/Odd"] },
+        { "even", Localizer["Sum Even/Odd"] },
+        { "blueBig", Localizer["Team Blue Big/Small"] },
+        { "blueSmall", Localizer["Team Blue Big/Small"] },
+        { "redBig", Localizer["Team Red Big/Small"] },
+        { "redSmall", Localizer["Team Red Big/Small"] },
+    };
+
+
+
+}
+
+<table class="table table-bordered table-keno-power">
+    <thead>
+        <tr>
+            <th rowspan="2" class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th rowspan="2" class="col-round-id">@CommonLocalizer["RoundId"]</th>
+            <th rowspan="2">@CommonLocalizer["Result"]</th>
+            <th colspan="4">@CommonLocalizer["WinningOptions"]</th>
+        </tr>
+        <tr>
+            <th>@Localizer["Team Blue"]/@Localizer["Team Red"]</th>
+            <th>@Localizer["Sum"]</th>
+            <th>@Localizer["Team Blue"]</th>
+            <th>@Localizer["Team Red"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null && Model.RoundResult.Settled)
+        {
+            var result = Model.RoundResult.Result;
+            var blueSum = result.Blue.Sum(x => x);
+            var redSum = result.Red.Sum(x => x);
+            var settlementResult = Model.RoundResult.SettlementResult;
+            <tr>
+                <td>
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    <br />
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@Model.RoundResult.RoundId</td>
+                <td>
+                    <table class="table table-bordered table-hover">
+                        <tbody>
+                            <tr class="bold">
+                                <td>@Localizer["Team Blue"]</td>
+                                <td>@Localizer["Team Red"]</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="number-list">
+                                        @foreach (var number in result.Blue)
+                                        {
+                                            <span class="number blue">@number</span>
+                                        }
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="number-list">
+                                        @foreach (var number in result.Red)
+                                        {
+                                            <span class="number red">@number</span>
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">@Localizer["Team Blue"] @blueSum - @Localizer["Total"] @(blueSum + redSum) - @Localizer["Team Red"] @redSum</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td>
+                    @if (settlementResult.Blue)
+                    {
+                        @Localizer["Team Blue"]
+                    }
+                    else
+                    {
+                        if (settlementResult.Red)
+                        {
+                            @Localizer["Team Red"]
+                        }
+                        else
+                        {
+                            @Localizer["Tie"]
+                        }
+                    }
+                </td>
+                <td>
+                    <div>
+                        @if (settlementResult.Big)
+                        {
+                            @CommonLocalizer["Big"]
+                        }
+                        else
+                        {
+                            @CommonLocalizer["Small"]
+                        }
+                    </div>
+                    <div>
+                        @if (settlementResult.Even)
+                        {
+                            @CommonLocalizer["Even"]
+                        }
+                        else
+                        {
+                            @CommonLocalizer["Odd"]
+                        }
+                    </div>
+                </td>
+                <td>
+                    @if (settlementResult.BlueBig)
+                    {
+                        @CommonLocalizer["Big"]
+                    }
+                    @if (settlementResult.BlueSmall)
+                    {
+                        @CommonLocalizer["Small"]
+                    }
+                </td>
+                <td>
+                    @if (settlementResult.RedBig)
+                    {
+                        @CommonLocalizer["Big"]
+                    }
+                    @if (settlementResult.RedSmall)
+                    {
+                        @CommonLocalizer["Small"]
+                    }
+                </td>
+
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="7" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["BetTime"] (@Model.TimeOffsetString)</th>
+            <th>@CommonLocalizer["BetType"]</th>
+            <th>@CommonLocalizer["BetChoice"]</th>
+            <th>@CommonLocalizer["Odds"]</th>
+            <th>@CommonLocalizer["BetAmount"]</th>
+            <th>@CommonLocalizer["Refund"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Bets.Any() && Model.RoundResult != null && Model.RoundResult.Settled)
+        {
+            var settlementResult = Model.RoundResult.SettlementResult;
+
+            var settlementResultMapper = new Dictionary<string, bool>
+    {
+                { "blue", settlementResult.Blue },
+                { "red", settlementResult.Red },
+                { "big", settlementResult.Big },
+                { "small", settlementResult.Small },
+                { "odd", settlementResult.Odd },
+                { "even", settlementResult.Even },
+                { "blueBig", settlementResult.BlueBig },
+                { "blueSmall", settlementResult.BlueSmall },
+                { "redBig",settlementResult.RedBig },
+                { "redSmall", settlementResult.RedSmall },
+            };
+            foreach (var bet in Model.Bets)
+            {
+                var cssClass = settlementResultMapper[bet.Choice] ? "text-blue bold" : string.Empty;
+                var choiceOdds = Model.Odds[bet.Choice];
+                <tr>
+                    <td>
+                        @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td class="@cssClass">
+                        @betTypeMapper[bet.Choice]
+                    </td>
+                    <td class="@cssClass">
+                        @betChoiceMapper[bet.Choice]
+                    </td>
+                    <td class="@cssClass">
+                        @choiceOdds.Format()
+                    </td>
+                    <td class="text-right @cssClass">
+                        @bet.Amount.Format()
+                    </td>
+                    <td class="text-right @cssClass">
+                        @bet.GetRefund(settlementResult).Format()
+                    </td>
+                </tr>
+            }
+
+            <tr>
+                <td colspan="4" class="text-right">@CommonLocalizer["Total"]</td>
+                <td class="text-right">@Model.TotalBet.Format()</td>
+                <td class="text-right">@Model.Refund.Format()</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="text-right">@CommonLocalizer["TotalWin"]</td>
+                <td class="text-right">@Model.TotalBetWin.Format()</td>
+            </tr>
+            <tr class="total">
+                <td colspan="4" class="bold text-right">@CommonLocalizer["WinLoss"]</td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

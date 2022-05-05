@@ -7,7 +7,7 @@ namespace GameRoundResult.Core.Services
 {
     public interface IBitcoinMasterTicketService
     {
-        Task<(BitcoinMasterRound, IEnumerable<BitcoinMasterBet>, BitcoinMasterOne)> GetAsync(long roundId, int memberId, string partnerId);
+        Task<(BitcoinMasterRound, IEnumerable<BitcoinMasterBet>, BitcoinMasterOne)> GetAsync(long roundId, int playerId, string operatorId);
     }
 
     public class BitcoinMasterTicketService : IBitcoinMasterTicketService
@@ -19,9 +19,9 @@ namespace GameRoundResult.Core.Services
             this.repository = repository;
         }
 
-        public async Task<(BitcoinMasterRound, IEnumerable<BitcoinMasterBet>, BitcoinMasterOne)> GetAsync(long roundId, int memberId, string partnerId)
+        public async Task<(BitcoinMasterRound, IEnumerable<BitcoinMasterBet>, BitcoinMasterOne)> GetAsync(long roundId, int playerId, string operatorId)
         {
-            return await repository.GetAsync(roundId, memberId, partnerId);
+            return await repository.GetAsync(roundId, playerId, operatorId);
         }
     }
 }

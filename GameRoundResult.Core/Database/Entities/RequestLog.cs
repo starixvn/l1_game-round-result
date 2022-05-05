@@ -38,6 +38,8 @@ namespace GameRoundResult.Core.Database.Entities
 
         public int ObCustId { get; set; }
 
+        public int PlayerId { get; set; }
+
         public string Language { get; set; }
 
         public bool FreeBet { get; set; }

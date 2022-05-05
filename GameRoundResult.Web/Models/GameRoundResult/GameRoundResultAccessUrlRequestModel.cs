@@ -19,10 +19,12 @@ namespace GameRoundResult.Web.Models
 
     public class GameRoundResultAuthModel
     {
-        [Required]
+        public string OperatorId { get; set; }
+
+        public string OperatorSecret { get; set; }
+
         public string ClientID { get; set; }
 
-        [Required]
         public string ClientKey { get; set; }
     }
 }

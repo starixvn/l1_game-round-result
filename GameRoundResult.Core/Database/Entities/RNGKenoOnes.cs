@@ -21,6 +21,8 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal Water { get; set; }
 
         public decimal Wood { get; set; }
+
+        public decimal TotalAmount => Big + Small + Odd + Even + Gold + Earth + Fire + Water + Wood;
     }
 
 

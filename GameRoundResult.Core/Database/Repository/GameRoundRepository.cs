@@ -33,7 +33,7 @@ namespace GameRoundResult.Core.Database.Repository
             var fromDate = date;
             var toDate = fromDate.AddDays(1);
 
-            Expression<Func<T, bool>> defaultExpression = x => (roundId == 0 && x.Time >= fromDate && x.Time < toDate) || x.Round == roundId;
+            Expression<Func<T, bool>> defaultExpression = x => (roundId == 0 && x.Time >= fromDate && x.Time < toDate) || x.RoundId == roundId;
 
             var finalExpression = filter != null ? defaultExpression.And(filter) : defaultExpression;
 

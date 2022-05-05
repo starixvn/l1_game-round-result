@@ -1,0 +1,240 @@
+﻿@model KenoProMaxTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<KenoProMaxTicketViewModel> Localizer
+
+<table class="table table-bordered table-keno">
+    <thead>
+        <tr>
+            <th rowspan="2" class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th rowspan="2" class="col-round-id">@CommonLocalizer["RoundId"]</th>
+            <th rowspan="2">@CommonLocalizer["Result"]</th>
+            <th rowspan="2">@CommonLocalizer["Total"]</th>
+            <th colspan="3">@CommonLocalizer["WinningOptions"]</th>
+        </tr>
+        <tr>
+            <th>@CommonLocalizer["Big"]/@CommonLocalizer["Small"]</th>
+            <th>@CommonLocalizer["Odd"]/@CommonLocalizer["Even"]</th>
+            <th>@Localizer["5 Elements"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null)
+        {
+
+            var elementClass = string.Empty;
+            var element = string.Empty;
+
+            if (Model.RoundResult.IsEarth)
+            {
+                elementClass = "text-earth";
+                element = Localizer["Earth"];
+            }
+            if (Model.RoundResult.IsGold)
+            {
+                elementClass = "text-gold";
+                element = Localizer["Gold"];
+            }
+            if (Model.RoundResult.IsWood)
+            {
+                elementClass = "text-wod";
+                element = Localizer["Wood"];
+            }
+            if (Model.RoundResult.IsWater)
+            {
+                elementClass = "text-water";
+                element = Localizer["Water"];
+            }
+            if (Model.RoundResult.IsFire)
+            {
+                elementClass = "text-fire";
+                element = Localizer["Fire"];
+            }
+
+            <tr>
+                <td>
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    <br />
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@Model.RoundResult.RoundId</td>
+                <td>
+                    <div class="numbers">
+                        @foreach (var number in Model.RoundResult.Result)
+                        {
+                            <span class="circle">@number</span>
+                        }
+                    </div>
+                </td>
+                <td>@Model.RoundResult.Total</td>
+                <td class="bold @(Model.RoundResult.IsBig ? "text-blue" : "text-red")">
+                    @(Model.RoundResult.IsBig ? CommonLocalizer["Big"] : CommonLocalizer["Small"])
+                </td>
+                <td class="bold @(Model.RoundResult.IsEven ? "text-blue" : "text-red")">
+                    @(Model.RoundResult.IsEven ? CommonLocalizer["Even"] : CommonLocalizer["Odd"])
+                </td>
+                <td class="bold @elementClass">
+                    @element
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="7" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered table-keno">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["BetTime"] (@Model.TimeOffsetString)</th>
+            <th>@CommonLocalizer["BetChoice"]</th>
+            <th>@CommonLocalizer["BetAmount"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Bet != null && Model.RoundResult != null)
+        {
+            if (Model.Bet.Big > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@CommonLocalizer["Big"]</td>
+                    <td class="text-right">@Model.Bet.Big.Format()</td>
+                </tr>
+            }
+            if (Model.Bet.Small > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@CommonLocalizer["Small"]</td>
+                    <td class="text-right">@Model.Bet.Small.Format()</td>
+                </tr>
+            }
+            if (Model.Bet.Even > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@CommonLocalizer["Even"]</td>
+                    <td class="text-right">@Model.Bet.Even.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Odd > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@CommonLocalizer["Odd"]</td>
+                    <td class="text-right">@Model.Bet.Odd.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Gold > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["Gold"]</td>
+                    <td class="text-right">@Model.Bet.Gold.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Wood > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["Wood"]</td>
+                    <td class="text-right">@Model.Bet.Wood.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Water > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["Water"]</td>
+                    <td class="text-right">@Model.Bet.Water.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Fire > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["Fire"]</td>
+                    <td class="text-right">@Model.Bet.Fire.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Earth > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["Earth"]</td>
+                    <td class="text-right">@Model.Bet.Earth.Format()</td>
+                </tr>
+            }
+
+            <tr>
+                <td colspan="2" class="text-right">@CommonLocalizer["Total"]</td>
+                <td class="text-right">@Model.TotalBet.Format()</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-right">@CommonLocalizer["TotalWin"]</td>
+                <td class="text-right">@Model.TotalWin.Format()</td>
+            </tr>
+            <tr class="total">
+                <td colspan="2" class="bold text-right">@CommonLocalizer["WinLoss"]</td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

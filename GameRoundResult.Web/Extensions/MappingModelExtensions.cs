@@ -193,7 +193,7 @@ namespace GameRoundResult.Web.Extensions
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });
         }
-        
+
         public static BitcoinMasterBetViewModel ToViewModel(this BitcoinMasterBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<BitcoinMasterBet, BitcoinMasterBetViewModel>(entity, opts =>
@@ -219,6 +219,32 @@ namespace GameRoundResult.Web.Extensions
         }
 
         public static CasinoHoldemPokerRoundResultViewModel ToViewModel(this CasinoHoldemPokerRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<CasinoHoldemPokerRound, CasinoHoldemPokerRoundResultViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.RoundStartTime, timeZoneInfo));
+            });
+        }
+
+        public static TexasHoldemPokerBetViewModel ToViewModel(this TexasHoldemPokerBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<TexasHoldemPokerBet, TexasHoldemPokerBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => { 
+                    dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo); 
+                    dest.CallTime = TimeZoneInfo.ConvertTimeFromUtc(source.CallTime, timeZoneInfo); 
+                    dest.RiverTime = TimeZoneInfo.ConvertTimeFromUtc(source.RiverTime, timeZoneInfo);
+                    dest.TurnTime = TimeZoneInfo.ConvertTimeFromUtc(source.TurnTime, timeZoneInfo);
+                });
+            });
+        }
+
+        public static TexasHoldemPokerDetailBetViewModel ToViewModel(this TexasHoldemPokerBetSettlementResult entity, IMapper mapper)
+        {
+            return mapper.Map<TexasHoldemPokerBetSettlementResult, TexasHoldemPokerDetailBetViewModel>(entity);
+        }
+
+        public static CasinoHoldemPokerRoundResultViewModel ToViewModel(this TexasHoldemPokerRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<CasinoHoldemPokerRound, CasinoHoldemPokerRoundResultViewModel>(entity, opts =>
             {

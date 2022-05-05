@@ -250,7 +250,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<BitcoinMasterRound, BitcoinMasterRoundResultViewModel>();
             CreateMap<BitcoinMasterBet, BitcoinMasterBetViewModel>()
                 .ForMember(x => x.Bet, opt => opt.MapFrom(x => x.Amount));
-                
+
             CreateMap<CasinoHoldemPokerBetSettlementResult, CasinoHoldemPokerDetailBetViewModel>();
             CreateMap<CasinoHoldemPokerBet, CasinoHoldemPokerBetViewModel>()
                 .ForMember(x => x.CombinationCards, opt => opt.MapFrom(x => x.Result.Cards))
@@ -266,6 +266,24 @@ namespace GameRoundResult.Web.Configuration
                 => x.Ended ? x.SettlementResult.HandRankId
                 : 0))
                 .ForMember(x => x.IsQualified, opt => opt.MapFrom(x => x.SettlementResult.IsQualified ?? false));
+                
+            CreateMap<HiLoRound, HiLoRoundResultViewModel>();
+            CreateMap<HiLoBetLog, HiLoBetLogViewModel>();
+
+            CreateMap<TexasHoldemPokerBetSettlementResult, TexasHoldemPokerDetailBetViewModel>();
+            CreateMap<TexasHoldemPokerBet, TexasHoldemPokerBetViewModel>()
+                .ForMember(x => x.CombinationCards, opt => opt.MapFrom(x => x.Result.Cards))
+                .ForMember(x => x.PlayerCards, opt => opt.MapFrom(x => x.Cards))
+                .ForMember(x => x.HandRankId, opt => opt.MapFrom(x => x.Result.HandRankId))
+                .ForMember(x => x.SettlementResult, opt => opt.MapFrom(x => x.SettlementResult));
+            CreateMap<TexasHoldemPokerRound, CasinoHoldemPokerRoundResultViewModel>()
+                .ForMember(x => x.CommunityCards, opt => opt.MapFrom(x => x.Result.CommunityCards))
+                .ForMember(x => x.DealerCards, opt => opt.MapFrom(x => x.Result.Dealer))
+                .ForMember(x => x.DealerCombinationCards, opt
+                    => opt.MapFrom(x => x.Ended ? x.SettlementResult.Cards : new List<PokerCard>()))
+                .ForMember(x => x.HandRankId, opt => opt.MapFrom(x
+                => x.Ended ? x.SettlementResult.HandRankId
+                : 0));
         }
     }
-}   
+}
