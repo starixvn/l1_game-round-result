@@ -77,6 +77,9 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IFourGuardiansTicketService, FourGuardiansTicketService>();
             services.AddScoped<IFourGuardiansBetRepository, FourGuardiansBetRepository>();
 
+            services.AddScoped<IBaseCascadingSlotTicketService, BaseCascadingSlotTicketService>();
+            services.AddScoped<IBaseCascadingSlotBetRepository, BaseCascadingSlotBetRepository>();
+
             services.AddScoped<IBitcoinMasterTicketService, BitcoinMasterTicketService>();
             services.AddScoped<IBitcoinMasterBetRepository, BitcoinMasterBetRepository>();
             services.AddScoped<IPartnerService, PartnerService>();
@@ -91,6 +94,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<DragonTigerTicketAccessor>();
             services.AddScoped<FishPrawnCrabTicketAccessor>();
             services.AddScoped(typeof(FourGuardiansTicketAccessor<>));
+            services.AddScoped(typeof(BaseCascadingSlotTicketAccessor<,>));
             services.AddScoped<KenoProMaxTicketAccessor>();
             services.AddScoped<LotteryTicketAccessor>();
             services.AddScoped(typeof(MiniKenoTicketAccessor<,,>));

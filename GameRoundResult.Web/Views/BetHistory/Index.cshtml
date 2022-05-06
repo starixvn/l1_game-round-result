@@ -4,6 +4,7 @@
 
 @{
     ViewData["Title"] = Localizer["GameTickets"];
+    ViewData["GameName"] = Enum.GetName(typeof(GameType), Model.GameType).ToLowerInvariant();
 }
 
 @section Styles {
@@ -126,6 +127,9 @@
             break;
         case GameType.NightClub:
             <partial name="_NightClubTicket" for="GameTicketResult" />
+            break;
+        case GameType.TreasureIsland:
+            <partial name="_CascadingSlotTicket" for="GameTicketResult"  view-data="ViewData"/>
             break;
     }
 </div>

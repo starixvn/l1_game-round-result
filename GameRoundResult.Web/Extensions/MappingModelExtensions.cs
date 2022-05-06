@@ -251,5 +251,21 @@ namespace GameRoundResult.Web.Extensions
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.RoundStartTime, timeZoneInfo));
             });
         }
+
+        public static BaseCascadingSlotRoundViewModel ToViewModel(this BaseCascadingSlotRoundEntity entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<BaseCascadingSlotRoundEntity, BaseCascadingSlotRoundViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static BaseCascadingSlotRoundMultiplierViewModel ToViewModel(this BaseCascadingSlotRoundMultiplier entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<BaseCascadingSlotRoundMultiplier, BaseCascadingSlotRoundMultiplierViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) =>  dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
     }
 }

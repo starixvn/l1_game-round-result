@@ -138,4 +138,7 @@
   <data name="Search" xml:space="preserve">
     <value>Tìm kiếm</value>
   </data>
+  <data name="Stake" xml:space="preserve">
+    <value>Tiền cược</value>
+  </data>
 </root>
