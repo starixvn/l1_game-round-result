@@ -230,7 +230,12 @@ namespace GameRoundResult.Web.Extensions
         {
             return mapper.Map<TexasHoldemPokerBet, TexasHoldemPokerBetViewModel>(entity, opts =>
             {
-                opts.AfterMap((source, dest) => { dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo); dest.CallTime = TimeZoneInfo.ConvertTimeFromUtc(source.CallTime, timeZoneInfo); });
+                opts.AfterMap((source, dest) => { 
+                    dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo); 
+                    dest.CallTime = TimeZoneInfo.ConvertTimeFromUtc(source.CallTime, timeZoneInfo); 
+                    dest.RiverTime = TimeZoneInfo.ConvertTimeFromUtc(source.RiverTime, timeZoneInfo);
+                    dest.TurnTime = TimeZoneInfo.ConvertTimeFromUtc(source.TurnTime, timeZoneInfo);
+                });
             });
         }
 
