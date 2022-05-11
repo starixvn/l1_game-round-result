@@ -155,7 +155,7 @@
                                 <td rowspan="@rowspan">@Html.Raw(RenderBoard(tumbles[index].Board, imageFolder, tumbles[index].Multipliers))</td>
                                 <td>@Html.Raw(RenderSymbol(item.key, imageFolder))</td>
                                 <td>@tumbles[index].Icons[item.key].Count</td>
-                                <td>@((tumbles[index].Icons[item.key].Odds * roundResult.TotalAmount).Format())</td>
+                                <td>@tumbles[index].Icons[item.key].Win.Format()</td>
                                 <td rowspan="@rowspan">@tumbleWin.Format()</td>
                             </tr>
                         }
@@ -164,7 +164,7 @@
                             <tr>
                                 <td>@Html.Raw(RenderSymbol(item.key, imageFolder))</td>
                                 <td>@tumbles[index].Icons[item.key].Count</td>
-                                <td>@((tumbles[index].Icons[item.key].Odds * roundResult.TotalAmount).Format())</td>
+                                <td>@tumbles[index].Icons[item.key].Win.Format()</td>
                             </tr>
                         }
 
