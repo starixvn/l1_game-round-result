@@ -150,6 +150,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<CasinoHoldemPokerEndGameInfoService>();
             services.AddScoped<HiLoEndGameInfoService>();
             services.AddScoped<TexasHoldemPokerEndGameInfoService>();
+            services.AddScoped<NightClubEndRoundInfoService>();
         }
     }
 }
