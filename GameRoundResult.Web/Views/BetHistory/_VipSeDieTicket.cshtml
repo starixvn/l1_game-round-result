@@ -1,0 +1,154 @@
+﻿@model VipSeDieTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SeDieTicketViewModel> Localizer
+
+@{
+    var betChoiceDictionary = new Dictionary<string, string>
+{
+        { "odd", "Odd" },
+        { "even", "Even" },
+        { "white3", "1Red" },
+        { "red2", "2Red" },
+        { "red3", "3Red" },
+        { "red4", "4Red" },
+        { "white4", "4White" },
+    };
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
+            <th>@CommonLocalizer["Result"]</th>
+            <th>@CommonLocalizer["WinningOptions"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null)
+        {
+            <tr>
+                <td>
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    <br />
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@Model.RoundResult.RoundId</td>
+                <td>
+                    @foreach (var chip in Model.RoundResult.RedChips)
+                    {
+                        <i class="@(chip ? "red-chip" : "white-chip")"></i>
+                    }
+                </td>
+                <td class="bold @(Model.RoundResult.IsEven ? "text-blue" : "text-red")">
+                    @(Model.RoundResult.IsEven ? CommonLocalizer["Even"] : CommonLocalizer["Odd"])
+
+                    @{
+                        var totalRed = Model.RoundResult.TotalRed;
+
+                        @(totalRed > 0 ? $", {totalRed} {CommonLocalizer["Red"]}" : $", 4 {CommonLocalizer["White"]}")
+                    }
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@CommonLocalizer["BetChoice"]</th>
+            <th>@CommonLocalizer["BetAmount"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Bet != null && Model.RoundResult != null)
+        {
+            if (Model.Bet.Even > 0)
+            {
+                <tr>
+                    <td>@CommonLocalizer["Even"]</td>
+                    <td class="text-right">@Model.Bet.Even.Format()</td>
+                </tr>
+            }
+            if (Model.Bet.Odd > 0)
+            {
+                <tr>
+                    <td>@CommonLocalizer["Odd"]</td>
+                    <td class="text-right">@Model.Bet.Odd.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.FourRed > 0)
+            {
+                <tr>
+                    <td>@Localizer["4Red"]</td>
+                    <td class="text-right">@Model.Bet.FourRed.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.ThreeRed > 0)
+            {
+                <tr>
+                    <td>@Localizer["3Red"]</td>
+                    <td class="text-right">@Model.Bet.ThreeRed.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.TwoRed > 0)
+            {
+                <tr>
+                    <td>@Localizer["2Red"]</td>
+                    <td class="text-right">@Model.Bet.TwoRed.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.ThreeWhite > 0)
+            {
+                <tr>
+                    <td>@Localizer["1Red"]</td>
+                    <td class="text-right">@Model.Bet.ThreeWhite.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.FourWhite > 0)
+            {
+                <tr>
+                    <td>@Localizer["4White"]</td>
+                    <td class="text-right">@Model.Bet.FourWhite.Format()</td>
+                </tr>
+            }
+
+            <tr>
+                <td class="text-right">@CommonLocalizer["Total"]</td>
+                <td class="text-right">@Model.TotalBet.Format()</td>
+            </tr>
+            <tr>
+                <td class="text-right">@CommonLocalizer["TotalWin"]</td>
+                <td class="text-right">@Model.Bet.BetWin.Format()</td>
+            </tr>
+
+            <tr class="total">
+                <td class="bold text-right">@CommonLocalizer["WinLoss"]</td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="2" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

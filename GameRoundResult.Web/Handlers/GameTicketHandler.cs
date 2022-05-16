@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.Models;
@@ -20,7 +21,10 @@ namespace GameRoundResult.Web.Handlers
         {
             var service = serviceFactory.GetService(request.GameType);
 
-            return await service.GetAsync(request);
+            var gameTicket = await service.GetAsync(request);
+            gameTicket.TimeZoneOffset = request.TimeZoneInfo.GetUtcOffset(DateTimeOffset.UtcNow.AddMonths(7));
+
+            return gameTicket;
         }
     }
 }

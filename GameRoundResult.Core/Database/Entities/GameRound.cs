@@ -5,6 +5,6 @@ namespace GameRoundResult.Core.Database.Entities
     public class GameRound : Document
     {
         [BsonElement("id")]
-        public long Round { get; set; }       
+        public long RoundId { get; set; }       
     }
 }

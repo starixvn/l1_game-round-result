@@ -124,7 +124,7 @@
     <value>爆掉</value>
   </data>
   <data name="Dealer" xml:space="preserve">
-    <value>發牌者</value>
+    <value>莊家</value>
   </data>
   <data name="HandId" xml:space="preserve">
     <value>手ID</value>

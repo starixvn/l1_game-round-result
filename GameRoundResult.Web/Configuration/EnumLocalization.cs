@@ -39,6 +39,7 @@ namespace GameRoundResult.Web.Configuration
             GameType.KenoProViet,
             GameType.HeroesSlot,
             GameType.CasinoHoldemPoker,
+            GameType.TexasHoldemPoker,
             GameType.HiLo,
             GameType.TexasHoldemPoker,
             GameType.NightClub,

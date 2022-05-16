@@ -1,0 +1,258 @@
+﻿@using GameRoundResult.Core.Constants
+@model TexasHoldemPokerTicketViewModel
+@inject IStringLocalizer<GameTicketViewModel> Localizer
+@inject IStringLocalizer<CasinoHoldemPokerTicketViewModel> CasinoHolemLocalizer
+
+@{
+    var isFinishRoundAndNotFold = Model.Ended && !Model.IsFold;
+    var isRunningRoundAndNotPassSwapStep = Model.IsSwappedOrHold.HasValue && !Model.IsSwappedOrHold.Value && !Model.Ended;
+    var isRunningRoundOrFold = Model.IsFold || (Model.IsSwappedOrHold.HasValue && !Model.IsSwappedOrHold.Value);
+}
+
+<div>
+    <table class="table table-bordered table-casino-holdem">
+        <thead>
+            <tr>
+                <th class="col-date">@Localizer["Time"] (GMT-4)</th>
+                <th class="col-round-id">@Localizer["RoundId"]</th>
+                <th></th>
+                <th>@Localizer["Cards"]</th>
+                <th>@Localizer["Combination"]</th>
+                <th>@Localizer["Result"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Bet != null)
+            {
+                <tr>
+                    <td rowspan="3">
+                        @if (Model.Ended)
+                        {
+                            @Model.Round.Time.ToString(ViewFormat.TicketDateFormat)
+                            <br />
+                            @Model.Round.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                        }
+                        else
+                        {
+                            <span>-</span>
+                        }
+                    </td>
+                    <td rowspan="3">@Model.Round.RoundId</td>
+                    <td>@CasinoHolemLocalizer["Player"]</td>
+                    <td class="blackjack-result">
+                        @if (isRunningRoundAndNotPassSwapStep || !Model.Player.Cards.Any())
+                        {
+                            await RenderEmptyCards();
+                        }
+                        else
+                        {
+                            await RenderCards(Model.Player.Cards);
+                        }
+                    </td>
+                    <td class="blackjack-result">
+                        @if (isRunningRoundOrFold)
+                        {
+                            RenderEmptyCell();
+                        }
+                        else
+                        {
+                            await RenderCards(Model.Player.CombinationCards);
+                        }
+                    </td>
+                    <td>
+                        @if (isRunningRoundAndNotPassSwapStep)
+                        {
+                            RenderEmptyCell();
+                        }
+                        else
+                        {
+                            @(Model.IsFold ? CasinoHolemLocalizer["Fold"] : CasinoHolemLocalizer[Model.Player.Rank])
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>@CasinoHolemLocalizer["Dealer"]</td>
+                    <td class="blackjack-result">
+                        @if (isFinishRoundAndNotFold)
+                        {
+                            await RenderCards(Model.Dealer.Cards);
+                        }
+                        else
+                        {
+                            await RenderEmptyCards();
+                        }
+                    </td>
+                    <td class="blackjack-result">
+                        @if (isFinishRoundAndNotFold)
+                        {
+                            await RenderCards(Model.Dealer.CombinationCards);
+                        }
+                        else
+                        {
+                            RenderEmptyCell();
+                        }
+                    </td>
+                    <td>
+                        @if (isFinishRoundAndNotFold)
+                        {
+                            @CasinoHolemLocalizer[Model.Dealer.Rank];
+                        }
+                        else
+                        {
+
+                            RenderEmptyCell();
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>@CasinoHolemLocalizer["CommunityCards"]</td>
+                    <td class="blackjack-result">@{await RenderCards(Model.CommunityCards);}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-center">
+                        @Localizer["NoDataAvailable"]
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="col-date">@Localizer["Time"] (GMT-4)</th>
+                <th>@Localizer["BetChoice"]</th>
+                <th>@Localizer["Odds"]</th>
+                <th>@Localizer["BetAmount"]</th>
+                <th>@Localizer["Win"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Bet != null)
+            {
+                var winAnte = (Model.Bet.SettlementResult?.Ante ?? 0);
+                var winTurn = (Model.Bet.SettlementResult?.Turn ?? 0);
+                var winRiver = (Model.Bet.SettlementResult?.River ?? 0);
+                var winCall = (Model.Bet.SettlementResult?.Call ?? 0);
+                <tr class="@(winAnte > 0 ? "text-blue bold" : "")">
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["ANTE"]</td>
+                    <td>@Model.AnteOddsDisplayed</td>
+                    <td class="text-right">@Model.Bet.Ante.Format()</td>
+                    <td class="text-right">
+                        @(Model.Ended ? winAnte.Format() : CasinoHolemLocalizer["UnfinishedGame"])
+                    </td>
+                </tr>
+
+                @if (Model.Bet.Call > 0)
+                {
+                    <tr class="@(winCall > 0 ? "text-blue bold" : "")">
+                        <td>
+                            @Model.Bet.CallTime.ToString(ViewFormat.TicketDateFormat)
+                            <br />
+                            @Model.Bet.CallTime.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                        </td>
+                        <td>@Localizer["CALL"]</td>
+                        <td>@Model.CallOddsDisplayed</td>
+                        <td class="text-right">@Model.Bet.Call.Format()</td>
+                        <td class="text-right">
+                            @(Model.Ended ? winCall.Format() : @CasinoHolemLocalizer["UnfinishedGame"])
+                        </td>
+                    </tr>
+                }
+
+                @if (Model.Bet.Turn > 0)
+                {
+                    <tr class="@(winTurn > 0 ? "text-blue bold" : "")">
+                        <td>
+                            @Model.Bet.TurnTime.ToString(ViewFormat.TicketDateFormat)
+                            <br />
+                            @Model.Bet.TurnTime.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                        </td>
+                        <td>@Localizer["TURN"]</td>
+                        <td>@Model.TurnOddsDisplayed</td>
+                        <td class="text-right">@Model.Bet.Turn.Format()</td>
+                        <td class="text-right">
+                            @(Model.Ended ? winTurn.Format() : @CasinoHolemLocalizer["UnfinishedGame"])
+                        </td>
+                    </tr>
+                }
+
+                @if (Model.Bet.River > 0)
+                {
+                    <tr class="@(winRiver > 0 ? "text-blue bold" : "")">
+                        <td>
+                            @Model.Bet.RiverTime.ToString(ViewFormat.TicketDateFormat)
+                            <br />
+                            @Model.Bet.RiverTime.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                        </td>
+                        <td>@Localizer["RIVER"]</td>
+                        <td>@Model.RiverOddsDisplayed</td>
+                        <td class="text-right">@Model.Bet.River.Format()</td>
+                        <td class="text-right">
+                            @(Model.Ended ? winRiver.Format() : @CasinoHolemLocalizer["UnfinishedGame"])
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>@Localizer["Total"]</td>
+                    <td class="text-right">@Model.TotalBet.Format()</td>
+                    <td class="text-right">@(Model.Ended ? Model.TotalWin.Format(): @CasinoHolemLocalizer["UnfinishedGame"])</td>
+                </tr>
+                <tr class="total">
+                    <td></td>
+                    <td></td>
+                    <td>@Localizer["WinLoss"]</td>
+                    <td colspan="2" class="text-right">@Model.WinLossDisplayed</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center">
+                        @Localizer["NoDataAvailable"]
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@functions
+{
+    private async Task RenderCards(IEnumerable<PokerCardViewModel> cards)
+    {
+        <div class="cards">
+            @foreach (var card in cards)
+            {
+                <div class="card card-type-@card.Suit">
+                    <span>@Card.CardLabels[card.Rank]</span>
+                    <img class="img" src="~/scss/images/card_@(card.Suit).png" />
+                </div>
+            }
+        </div>
+    }
+
+    private void RenderEmptyCell()
+    {
+        <div class="cards text-center">-</div>
+    }
+
+    private async Task RenderEmptyCards()
+    {
+        <div class="cards">
+            <img class="card" src="~/scss/images/card_back.png" />
+            <img class="card" src="~/scss/images/card_back.png" />
+        </div>
+    }
+}

@@ -235,6 +235,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<ThreeCardsBet, ThreeCardsBetViewModel>();
             CreateMap<ThreeCardsOdds, ThreeCardsOddsViewModel>();
 
+            CreateMap<HeroesSlotRound, HeroesSlotRoundResultViewModel>();
             CreateMap<KenoMatchRound, KenoMatchRoundResultViewModel>();
             CreateMap<KenoMatchPeriod, KenoMatchPeriodViewModel>();
             CreateMap<KenoMatchPeriodResult, KenoMatchPeriodResultViewModel>();
@@ -245,7 +246,6 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<KenoPowerResult, KenoPowerResultViewModel>();
             CreateMap<KenoPowerSettlementResult, KenoPowerSettlementResultViewModel>();
             CreateMap<KenoPowerBet, KenoPowerBetViewModel>();
-
             CreateMap<PokerCard, PokerCardViewModel>();
             CreateMap<BitcoinMasterRound, BitcoinMasterRoundResultViewModel>();
             CreateMap<BitcoinMasterBet, BitcoinMasterBetViewModel>()
@@ -269,7 +269,6 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<HiLoRound, HiLoRoundResultViewModel>();
             CreateMap<HiLoBetLog, HiLoBetLogViewModel>();
-
 
             CreateMap<TexasHoldemPokerBetSettlementResult, TexasHoldemPokerDetailBetViewModel>();
             CreateMap<TexasHoldemPokerBet, TexasHoldemPokerBetViewModel>()
