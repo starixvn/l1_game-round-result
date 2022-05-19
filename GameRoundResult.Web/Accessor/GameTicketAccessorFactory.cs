@@ -52,7 +52,6 @@ namespace GameRoundResult.Web.Accessor
             { GameType.CasinoHoldemPoker, typeof(CasinoHoldemPokerTicketAccessor) },
             { GameType.TexasHoldemPoker, typeof(TexasHoldemPokerTicketAccessor) },
             { GameType.HiLo, typeof(HiLoTicketAccessor) },
-            { GameType.TexasHoldemPoker, typeof(TexasHoldemPokerTicketAccessor) },
             { GameType.NightClub, typeof(FourGuardiansTicketAccessor<NightClubRound>) },
         };
 
