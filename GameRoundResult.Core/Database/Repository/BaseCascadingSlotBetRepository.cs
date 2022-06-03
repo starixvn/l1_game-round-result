@@ -22,7 +22,7 @@
             where TotalMultiplier : BaseCascadingSlotTotalMultiplierEntity
         {
             var round =  await database.GetCollection<SlotRound>(Document.GetCollectionName(typeof(SlotRound)))
-               .Find(x => x.Round == roundId && x.PlayerId == playerId).FirstOrDefaultAsync();
+               .Find(x => x.RoundId == roundId && x.PlayerId == playerId).FirstOrDefaultAsync();
 
             if(round != null)
             {

@@ -24,7 +24,7 @@
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
-            var result = await gameBetService.GetAsync<SlotRound, ToalMultiplier>(request.RoundId, request.MemberId);
+            var result = await gameBetService.GetAsync<SlotRound, ToalMultiplier>(request.RoundId, request.PlayerId);
 
             return new BaseCascadingSlotTicketViewModel
             {
