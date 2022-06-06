@@ -289,7 +289,6 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<BaseCascadingSlotSettlementResult, BaseCascadingSlotSettlementResultViewModel>();
             CreateMap<BaseCascadingSlotRoundMultiplier, BaseCascadingSlotRoundMultiplierViewModel>();
             CreateMap<BaseCascadingSlotFreeSpin, BaseCascadingSlotFreeSpinViewModel>();
-            CreateMap<BaseCascadingSlotMultiplier, BaseCascadingSlotMultiplierViewModel>();
             CreateMap<BaseCascadingSlotWinningSymbol, BaseCascadingSlotWinningSymbolViewModel>();
             CreateMap<BaseCascadingSlotTumble, BaseCascadingSlotTumbleViewModel>();
         }

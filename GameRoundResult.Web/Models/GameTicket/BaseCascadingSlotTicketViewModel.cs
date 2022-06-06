@@ -17,8 +17,6 @@
 
         public decimal CoinValue { get; set; }
 
-        public decimal Bet { get; set; }
-
         public decimal TotalAmount { get; set; }
 
         public decimal BetWin { get; set; }
@@ -57,7 +55,6 @@
 
         public BaseCascadingSlotFreeSpinViewModel FreeSpins { get; set; }
 
-        public BaseCascadingSlotFreeSpinViewModel AdditionalFreeSpins { get; set; }
     }
 
     public class BaseCascadingSlotTumbleViewModel
@@ -68,7 +65,7 @@
 
         public string OriginalBoard { get; set; }
 
-        public IEnumerable<BaseCascadingSlotMultiplierViewModel> Multipliers { get; set; }
+        public IEnumerable<byte> Multipliers { get; set; }
 
         public IEnumerable<byte> Board => OriginalBoard.Split(',').Select(value => byte.Parse(value));
     }
@@ -87,12 +84,5 @@
         public byte Count { get; set; }
 
         public byte Odds { get; set; }
-    }
-
-    public class BaseCascadingSlotMultiplierViewModel
-    {
-        public byte Index { get; set; }
-
-        public byte Value { get; set; }
     }
 }

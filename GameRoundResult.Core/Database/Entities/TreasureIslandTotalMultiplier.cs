@@ -2,7 +2,7 @@
 {
     using GameRoundResult.Core._Share;
 
-    [CollectionName("treasureisland_total_multipliers")]
+    [CollectionName("treasureisland_multipliers")]
     public class TreasureIslandTotalMultiplier : BaseCascadingSlotTotalMultiplierEntity
     {
     }

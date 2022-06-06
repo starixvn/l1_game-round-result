@@ -6,8 +6,6 @@
 
     public class BaseCascadingSlotRoundEntity : GameRound
     {
-        public decimal Bet { get; set; }
-
         [BsonRepresentation(BsonType.Decimal128, AllowTruncation = true)]
         public decimal TotalAmount { get; set; }
 
@@ -22,7 +20,7 @@
         public string Result { get; set; }
 
         [BsonRepresentation(BsonType.Decimal128, AllowTruncation = true)]
-        public decimal BetWin { get; set; }
+        public decimal Betwin { get; set; }
 
         public byte TotalMultiplier { get; set; }
 
@@ -37,8 +35,6 @@
 
         public string Name { get; set; }
 
-        public int? MemberId { get; set; }
-
         public string SiteId { get; set; }
 
         public int PlayerId { get; set; }
@@ -52,7 +48,6 @@
 
         public BaseCascadingSlotFreeSpin FreeSpins { get; set; }
 
-        public BaseCascadingSlotFreeSpin AdditionalFreeSpins { get; set; }
     }
 
     public class BaseCascadingSlotTumble
@@ -64,7 +59,7 @@
 
         public string OriginalBoard { get; set; }
 
-        public IEnumerable<BaseCascadingSlotMultiplier> Multipliers { get; set; }
+        public IEnumerable<byte> Multipliers { get; set; }
     }
 
     public class BaseCascadingSlotWinningSymbol
@@ -81,12 +76,5 @@
         public byte Count { get; set; }
 
         public byte Odds { get; set; }
-    }
-
-    public class BaseCascadingSlotMultiplier
-    {
-        public byte Index { get; set; }
-
-        public byte Value { get; set; }
     }
 }
