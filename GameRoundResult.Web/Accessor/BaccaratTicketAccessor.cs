@@ -8,7 +8,9 @@ using GameRoundResult.Web.Requests;
 
 namespace GameRoundResult.Web.Accessor
 {
-    public class BaccaratTicketAccessor : IGameTicketAccessor
+    public class BaccaratTicketAccessor<TBaseRoundEntity, TBaseBetEntity> : IGameTicketAccessor
+          where TBaseRoundEntity : BaseBaccaratRoundEntity
+        where TBaseBetEntity : BaccaratBet
     {
         private readonly IGameBetService gameBetService;
         private readonly IMapper mapper;
@@ -21,11 +23,11 @@ namespace GameRoundResult.Web.Accessor
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
-            var result = await gameBetService.GetAsync<BaccaratRound, BaccaratBet>(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId);
+            var result = await gameBetService.GetAsync<TBaseRoundEntity, TBaseBetEntity>(request.RoundId, request.MemberId, request.FreeBet, request.PartnerId);
 
             return new BaccaratTicketViewModel
             {
-                RoundResult = result.Item1?.ToViewModel<BaccaratRound, BaccaratRoundResultViewModel>(mapper, request.TimeZoneInfo),
+                RoundResult = result.Item1?.ToViewModel<TBaseRoundEntity, BaccaratRoundResultViewModel>(mapper, request.TimeZoneInfo),
                 Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
             };
         }

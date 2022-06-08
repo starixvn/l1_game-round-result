@@ -3,7 +3,7 @@
 namespace GameRoundResult.Core.Database.Entities
 {
     [CollectionName("vipbaccarat_phiens")]
-    public class VipBaccaratRound : GameRound
+    public class VipBaccaratRound : BaseBaccaratRoundEntity
     {
         public VipBaccaratResult Result { get; set; }
 
