@@ -155,6 +155,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<HiLoEndGameInfoService>();
             services.AddScoped<TexasHoldemPokerEndGameInfoService>();
             services.AddScoped<NightClubEndRoundInfoService>();
+            services.AddScoped<TreasureIslandEndRoundInfoService>();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace GameRoundResult.Core.Database.Entities
 {
+    using System;
     using System.Collections.Generic;
     using MongoDB.Bson;
     using MongoDB.Bson.Serialization.Attributes;
@@ -40,6 +41,9 @@
         public int PlayerId { get; set; }
 
         public BaseCascadingSlotSettlementResult SettlementResult { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+        public DateTime EndTime { get; set; }
     }
 
     public class BaseCascadingSlotSettlementResult
