@@ -35,17 +35,25 @@
                     <td>@CasinoHolemLocalizer["Player"]</td>
                     <td class="blackjack-result">
                         <div class="cards">
-                            @foreach (var card in Model.Player.Cards)
+                            @if (!Model.Player.Cards.Any())
                             {
-                                <div class="card card-type-@card.Suit">
-                                    <span>@Card.CardLabels[card.Rank]</span>
-                                    <img class="img" src="~/scss/images/card_@(card.Suit).png" />
-                                </div>
+                                <img class="card" src="~/scss/images/card_back.png" />
+                                <img class="card" src="~/scss/images/card_back.png" />
+                            }
+                            else
+                            {
+                                @foreach (var card in Model.Player.Cards)
+                                {
+                                    <div class="card card-type-@card.Suit">
+                                        <span>@Card.CardLabels[card.Rank]</span>
+                                        <img class="img" src="~/scss/images/card_@(card.Suit).png" />
+                                    </div>
+                                }
                             }
                         </div>
                     </td>
                     <td class="blackjack-result">
-                        @if (Model.IsFold)
+                        @if (Model.IsFold || !Model.Player.CombinationCards.Any())
                         {
                             <div>-</div>
                         }
@@ -62,7 +70,14 @@
                             </div>
                         }
                     </td>
-                    <td>@(Model.IsFold ? CasinoHolemLocalizer["Fold"] : CasinoHolemLocalizer[Model.Player.Rank])</td>
+                    @if (Model.Player.Cards.Any())
+                    {
+                        <td>@(Model.IsFold ? CasinoHolemLocalizer["Fold"] : CasinoHolemLocalizer[Model.Player.Rank])</td>
+                    }
+                    else
+                    {
+                        <td>-</td>
+                    }
                 </tr>
                 <tr>
                     <td>@CasinoHolemLocalizer["Dealer"]</td>
