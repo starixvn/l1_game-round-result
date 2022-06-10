@@ -1,8 +1,9 @@
-﻿using GameRoundResult.Core.Database.Repository;
+﻿using System.Globalization;
+using System.Linq;
+using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
-using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.Configuration;
-using GameRoundResult.Web.ViewFactory;
+using GameRoundResult.Web.Accessor;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Localization.Routing;
@@ -10,8 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
-using System.Globalization;
-using System.Linq;
+using GameRoundResult.Web.ViewFactory;
 
 namespace GameRoundResult.Web.Extensions
 {

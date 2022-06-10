@@ -1,8 +1,8 @@
-﻿using GameRoundResult.Core.Constants;
+﻿using System;
+using System.Collections.Generic;
+using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
 
 namespace GameRoundResult.Web.Accessor
 {

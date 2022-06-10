@@ -1,9 +1,9 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -266,7 +266,7 @@ namespace GameRoundResult.Web.Configuration
                 => x.Ended ? x.SettlementResult.HandRankId
                 : 0))
                 .ForMember(x => x.IsQualified, opt => opt.MapFrom(x => x.SettlementResult.IsQualified ?? false));
-
+                
             CreateMap<HiLoRound, HiLoRoundResultViewModel>();
             CreateMap<HiLoBetLog, HiLoBetLogViewModel>();
 

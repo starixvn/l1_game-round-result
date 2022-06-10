@@ -138,7 +138,7 @@
                 var winTurn = (Model.Bet.SettlementResult?.Turn ?? 0);
                 var winRiver = (Model.Bet.SettlementResult?.River ?? 0);
                 var winCall = (Model.Bet.SettlementResult?.Call ?? 0);
-                <tr class="@(winAnte > 0 ? "text-blue bold" : "")">
+                <tr class="@(winAnte > 0 ? " text-blue bold" : "" )">
                     <td>
                         @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
                         <br />
@@ -154,7 +154,7 @@
 
                 @if (Model.Bet.Call > 0)
                 {
-                    <tr class="@(winCall > 0 ? "text-blue bold" : "")">
+                    <tr class="@(winCall > 0 ? " text-blue bold" : "" )">
                         <td>
                             @Model.Bet.CallTime.ToString(ViewFormat.TicketDateFormat)
                             <br />
@@ -171,7 +171,7 @@
 
                 @if (Model.Bet.Turn > 0)
                 {
-                    <tr class="@(winTurn > 0 ? "text-blue bold" : "")">
+                    <tr class="@(winTurn > 0 ? " text-blue bold" : "" )">
                         <td>
                             @Model.Bet.TurnTime.ToString(ViewFormat.TicketDateFormat)
                             <br />
@@ -188,7 +188,7 @@
 
                 @if (Model.Bet.River > 0)
                 {
-                    <tr class="@(winRiver > 0 ? "text-blue bold" : "")">
+                    <tr class="@(winRiver > 0 ? " text-blue bold" : "" )">
                         <td>
                             @Model.Bet.RiverTime.ToString(ViewFormat.TicketDateFormat)
                             <br />
@@ -229,8 +229,9 @@
 </div>
 
 @functions
-{
-    private async Task RenderCards(IEnumerable<PokerCardViewModel> cards)
+        {
+    private async Task RenderCards(IEnumerable<PokerCardViewModel>
+        cards)
     {
         <div class="cards">
             @foreach (var card in cards)
