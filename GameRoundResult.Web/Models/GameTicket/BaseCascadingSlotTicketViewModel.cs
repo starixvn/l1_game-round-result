@@ -36,6 +36,8 @@
         public decimal WinLoss => FreeSpin ? BetWin : BetWin - TotalAmount;
 
         public IEnumerable<byte> Board => Result.Split(',').Select(value => byte.Parse(value));
+
+        public bool ReachMaxWin { get; set; }
     }
 
     public class BaseCascadingSlotRoundMultiplierViewModel

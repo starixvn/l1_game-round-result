@@ -10,7 +10,7 @@
 @functions{
     public string RenderBoard(IEnumerable<byte> board, string folder, IEnumerable<byte> multipliers)
     {
-        var sb = new StringBuilder("<table class='table-recored-screen'><tbody>");
+        var sb = new StringBuilder("<table class='table-result-board'><tbody>");
         var iconPerCol = 5;
         var indexMultiplier = 0;
         var tempMultiplier = multipliers.ToList();
@@ -20,7 +20,7 @@
         {
             if (item.value >= 10)
             {
-                rows[item.index % iconPerCol] += "<td class='recored-screen'>" + GetImageMultiplier(tempMultiplier[indexMultiplier], folder) + "</td>";
+                rows[item.index % iconPerCol] += "<td class='result-board'>" + GetImageMultiplier(tempMultiplier[indexMultiplier], folder) + "</td>";
                 indexMultiplier++;
             }
             else
@@ -79,7 +79,7 @@
             <th>@Localizer["BetLevel"]</th>
             <th>@Localizer["CoinValue"]</th>
             <th>@CommonLocalizer["Stake"]</th>
-            <th>@CommonLocalizer["TotalWin"]</th>
+            <th>@CommonLocalizer["Win"]</th>
         </tr>
     </thead>
     <tbody>
@@ -126,8 +126,8 @@
     <thead>
         <tr>
             <th>No.</th>
-            <th>@Localizer["RecoredScreen"]</th>
-            <th colspan="2">@Localizer["SymbolAndNumberSymbols"]</th>
+            <th>@Localizer["ResultBoard"]</th>
+            <th colspan="2">@Localizer["WinSymbols"]</th>
             <th>@Localizer["WinAmount"]</th>
             <th>@Localizer["TumbleWin"]</th>
         </tr>
@@ -223,12 +223,15 @@
                     }
                 }
             }
+            @if (roundResult.BetWin > 0 && (roundResult.TotalMultiplier > 0 || roundResult.Multiplier > 0))
+            {
+                <tr>
+                    <td colspan="5" class="text-right">@Localizer["TotalMultiplier"]</td>
+                    <td>@(roundResult.FreeSpin ? roundResult.TotalMultiplier : roundResult.Multiplier)</td>
+                </tr>
+            }
             <tr>
-                <td colspan="5" class="text-right">@Localizer["TotalMultiplier"]</td>
-                <td>@(roundResult.FreeSpin ? roundResult.TotalMultiplier : roundResult.Multiplier)</td>
-            </tr>
-            <tr>
-                <td colspan="5" class="text-right">@CommonLocalizer["TotalWin"]</td>
+                <td colspan="5" class="text-right">@(roundResult.ReachMaxWin ? $"({Localizer["ReachMaxWin"]}) {CommonLocalizer["Win"]}" : CommonLocalizer["Win"])</td>
                 <td>@roundResult.BetWin.Format()</td>
             </tr>
         }

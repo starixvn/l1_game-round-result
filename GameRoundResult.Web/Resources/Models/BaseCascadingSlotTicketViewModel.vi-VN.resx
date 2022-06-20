@@ -118,33 +118,36 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BetLevel" xml:space="preserve">
-    <value>Bet Level</value>
+    <value>Mức Cược</value>
   </data>
   <data name="CoinValue" xml:space="preserve">
-    <value>Coin Value</value>
+    <value>Gái Trị Xu</value>
   </data>
   <data name="ExtraFreeSpin" xml:space="preserve">
-    <value>Extra Free Spin</value>
+    <value>Free Spins Thêm</value>
   </data>
   <data name="FreeSpin" xml:space="preserve">
-    <value>Free Spin</value>
+    <value>Free Spins</value>
   </data>
   <data name="Multiplier" xml:space="preserve">
-    <value>Multiplier</value>
+    <value>Số Nhân</value>
   </data>
-  <data name="RecoredScreen" xml:space="preserve">
-    <value>Recored Screen</value>
+  <data name="ReachMaxWin" xml:space="preserve">
+    <value>Bạn Đã Đạt Mức Tiền Thắng Tối Đa</value>
   </data>
-  <data name="SymbolAndNumberSymbols" xml:space="preserve">
-    <value>Symbol &amp; Number of Symbols</value>
+  <data name="ResultBoard" xml:space="preserve">
+    <value>Bảng Kết Quả</value>
   </data>
   <data name="TotalMultiplier" xml:space="preserve">
-    <value>Total Multiplier</value>
+    <value>Tổng Số Nhân</value>
   </data>
   <data name="TumbleWin" xml:space="preserve">
-    <value>Tumble win</value>
+    <value>Thắng Tumble</value>
   </data>
   <data name="WinAmount" xml:space="preserve">
-    <value>Win Amount</value>
+    <value>Tiền Thắng</value>
+  </data>
+  <data name="WinSymbols" xml:space="preserve">
+    <value>Biểu Tượng Thắng</value>
   </data>
 </root>

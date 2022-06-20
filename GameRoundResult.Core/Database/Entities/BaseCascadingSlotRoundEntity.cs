@@ -44,6 +44,8 @@
 
         [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime EndTime { get; set; }
+
+        public bool ReachMaxWin { get; set; }
     }
 
     public class BaseCascadingSlotSettlementResult
@@ -72,6 +74,7 @@
 
         public decimal Odds { get; set; }
 
+        [BsonRepresentation(BsonType.Decimal128, AllowTruncation = true)]
         public decimal Win { get; set; }
     }
 

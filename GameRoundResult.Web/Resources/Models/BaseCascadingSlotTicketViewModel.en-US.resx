@@ -124,19 +124,19 @@
     <value>Coin Value</value>
   </data>
   <data name="ExtraFreeSpin" xml:space="preserve">
-    <value>Extra Free Spin</value>
+    <value>Extra Free Spins</value>
   </data>
   <data name="FreeSpin" xml:space="preserve">
-    <value>Free Spin</value>
+    <value>Free Spins</value>
   </data>
   <data name="Multiplier" xml:space="preserve">
     <value>Multiplier</value>
   </data>
-  <data name="RecoredScreen" xml:space="preserve">
-    <value>Recored Screen</value>
+  <data name="ReachMaxWin" xml:space="preserve">
+    <value>You reached the Max Win</value>
   </data>
-  <data name="SymbolAndNumberSymbols" xml:space="preserve">
-    <value>Symbol &amp; Number of Symbols</value>
+  <data name="ResultBoard" xml:space="preserve">
+    <value>Result Board</value>
   </data>
   <data name="TotalMultiplier" xml:space="preserve">
     <value>Total Multiplier</value>
@@ -146,5 +146,8 @@
   </data>
   <data name="WinAmount" xml:space="preserve">
     <value>Win Amount</value>
+  </data>
+  <data name="WinSymbols" xml:space="preserve">
+    <value>Win Symbols</value>
   </data>
 </root>

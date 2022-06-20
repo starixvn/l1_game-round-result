@@ -147,6 +147,9 @@
   <data name="TotalWin" xml:space="preserve">
     <value>Total Win</value>
   </data>
+  <data name="Win" xml:space="preserve">
+    <value>Win</value>
+  </data>
   <data name="WinLoss" xml:space="preserve">
     <value>Win Loss</value>
   </data>
