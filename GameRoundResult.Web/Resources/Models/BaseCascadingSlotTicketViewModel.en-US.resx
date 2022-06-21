@@ -132,6 +132,9 @@
   <data name="Multiplier" xml:space="preserve">
     <value>Multiplier</value>
   </data>
+  <data name="No" xml:space="preserve">
+    <value>No.</value>
+  </data>
   <data name="ReachMaxWin" xml:space="preserve">
     <value>You reached the Max Win</value>
   </data>

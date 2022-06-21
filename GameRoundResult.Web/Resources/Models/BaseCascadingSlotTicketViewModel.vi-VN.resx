@@ -121,7 +121,7 @@
     <value>Mức Cược</value>
   </data>
   <data name="CoinValue" xml:space="preserve">
-    <value>Gái Trị Xu</value>
+    <value>Giá Trị Xu</value>
   </data>
   <data name="ExtraFreeSpin" xml:space="preserve">
     <value>Free Spins Thêm</value>
@@ -131,6 +131,9 @@
   </data>
   <data name="Multiplier" xml:space="preserve">
     <value>Số Nhân</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Stt</value>
   </data>
   <data name="ReachMaxWin" xml:space="preserve">
     <value>Bạn Đã Đạt Mức Tiền Thắng Tối Đa</value>

@@ -125,7 +125,7 @@
 <table class="table table-bordered table-cascading-slot">
     <thead>
         <tr>
-            <th>No.</th>
+            <th>@Localizer["No"]</th>
             <th>@Localizer["ResultBoard"]</th>
             <th colspan="2">@Localizer["WinSymbols"]</th>
             <th>@Localizer["WinAmount"]</th>
@@ -223,7 +223,7 @@
                     }
                 }
             }
-            @if (roundResult.BetWin > 0 && (roundResult.TotalMultiplier > 0 || roundResult.Multiplier > 0))
+            @if (roundResult.BetWin > 0 && (roundResult.TotalMultiplier > 0 && roundResult.Multiplier > 0))
             {
                 <tr>
                     <td colspan="5" class="text-right">@Localizer["TotalMultiplier"]</td>
@@ -252,7 +252,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>No.</th>
+                <th>@Localizer["No"]</th>
                 <th class="col-date">@CommonLocalizer["Time"] (GMT-4)</th>
                 <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
                 <th>@Localizer["Multiplier"]</th>

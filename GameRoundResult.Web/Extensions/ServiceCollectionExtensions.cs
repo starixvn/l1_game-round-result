@@ -9,7 +9,11 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Localization.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
+using MongoDB.Bson.Serialization.Options;
+using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using GameRoundResult.Web.ViewFactory;
 
@@ -21,6 +25,8 @@ namespace GameRoundResult.Web.Extensions
         {
             var conventionPack = new ConventionPack { new CamelCaseElementNameConvention(), new IgnoreExtraElementsConvention(true) };
             ConventionRegistry.Register("camelCase", conventionPack, t => true);
+            var decimalSerializer = new DecimalSerializer(BsonType.Decimal128, new RepresentationConverter(allowOverflow: false, allowTruncation: true));
+            BsonSerializer.RegisterSerializer(decimalSerializer);
             var mongoClient = new MongoClient(configuration["DatabaseSettings:ConnectionString"]);
             services.AddSingleton<IMongoClient>(mongoClient);
             var mongoDatabase = mongoClient.GetDatabase(configuration["DatabaseSettings:DatabaseName"]);
