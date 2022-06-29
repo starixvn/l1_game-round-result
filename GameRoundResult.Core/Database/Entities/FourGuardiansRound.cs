@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GameRoundResult.Core._Share;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -30,7 +31,11 @@ namespace GameRoundResult.Core.Database.Entities
 
         public string Name { get; set; }
 
-        public int? MemberId { get; set; }
+        public int? PlayerId { get; set; }
+
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+        public DateTime EndTime { get; set; }
 
         public string SiteId { get; set; }
     }

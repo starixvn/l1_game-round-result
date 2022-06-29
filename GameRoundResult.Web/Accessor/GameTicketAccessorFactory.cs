@@ -1,8 +1,8 @@
-﻿using GameRoundResult.Core.Constants;
+﻿using System;
+using System.Collections.Generic;
+using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
 
 namespace GameRoundResult.Web.Accessor
 {
@@ -50,8 +50,8 @@ namespace GameRoundResult.Web.Accessor
             { GameType.FourGuardians, typeof(FourGuardiansTicketAccessor<FourGuardiansRound>) },
             { GameType.BitcoinMaster, typeof(BitcoinMasterTicketAccessor) },
             { GameType.CasinoHoldemPoker, typeof(CasinoHoldemPokerTicketAccessor) },
-            { GameType.HiLo, typeof(HiLoTicketAccessor) },
             { GameType.TexasHoldemPoker, typeof(TexasHoldemPokerTicketAccessor) },
+            { GameType.HiLo, typeof(HiLoTicketAccessor) },
             { GameType.NightClub, typeof(FourGuardiansTicketAccessor<NightClubRound>) },
         };
 

@@ -1,8 +1,9 @@
-﻿using GameRoundResult.Core.Database.Repository;
+﻿using System.Globalization;
+using System.Linq;
+using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
-using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.Configuration;
-using GameRoundResult.Web.ViewFactory;
+using GameRoundResult.Web.Accessor;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Localization.Routing;
@@ -10,8 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
-using System.Globalization;
-using System.Linq;
+using GameRoundResult.Web.ViewFactory;
 
 namespace GameRoundResult.Web.Extensions
 {
@@ -114,7 +114,43 @@ namespace GameRoundResult.Web.Extensions
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
 
-
+            services.AddScoped<IEndGameInfoServiceFactory, EndGameInfoServiceFactory>();
+            services.AddScoped<BigSmallEndGameInfoService>();
+            services.AddScoped<BigSmallTurboEndGameInfoService>();
+            services.AddScoped<OddEvenTurboEndGameInfoService>();
+            services.AddScoped<FishPrawnCrabEndGameInfoService>();
+            services.AddScoped<SeDieEndGameInfoService>();
+            services.AddScoped<MiniSeDieEndGameInfoService>();
+            services.AddScoped<DragonTigerEndGameInfoService>();
+            services.AddScoped<BaccaratEndGameInfoService>();
+            services.AddScoped<VipBaccaratEndGameInfoService>();
+            services.AddScoped<KenoProMaxEndGameInfoService>();
+            services.AddScoped<KenoMaxEndGameInfoService>();
+            services.AddScoped<KenoMax2EndGameInfoService>();
+            services.AddScoped<KenoMiniEndGameInfoService>();
+            services.AddScoped<KenoMini2EndGameInfoService>();
+            services.AddScoped<KenoEastEndGameInfoService>();
+            services.AddScoped<KenoWestEndGameInfoService>();
+            services.AddScoped<KenoSouthEndGameInfoService>();
+            services.AddScoped<KenoNorthEndGameInfoService>();
+            services.AddScoped<RouletteEndGameInfoService>();
+            services.AddScoped<VipSeDieEndGameInfoService>();
+            services.AddScoped<BlackjackEndGameInfoService>();
+            services.AddScoped<SpecialSeDieEndGameInfoService>();
+            services.AddScoped<VipFishPrawnCrabEndGameInfoService>();
+            services.AddScoped<SicBoEndGameInfoService>();
+            services.AddScoped<VipSeDieWarEndGameInfoService>();
+            services.AddScoped<FourGuardiansEndGameInfoService>();
+            services.AddScoped<LotteryEndGameInfoService>();
+            services.AddScoped<ThreeCardsEndGameInfoService>();
+            services.AddScoped<HeroesSlotEndGameInfoService>();
+            services.AddScoped<BitcoinMasterEndGameInfoService>();
+            services.AddScoped(typeof(KenoMatchEndGameInfoService<,>));
+            services.AddScoped(typeof(KenoPowerEndGameInfoService<,>));
+            services.AddScoped<CasinoHoldemPokerEndGameInfoService>();
+            services.AddScoped<HiLoEndGameInfoService>();
+            services.AddScoped<TexasHoldemPokerEndGameInfoService>();
+            services.AddScoped<NightClubEndRoundInfoService>();
         }
     }
 }

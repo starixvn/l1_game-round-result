@@ -17,14 +17,34 @@ namespace GameRoundResult.Web.Models
         public int ObCustId { get; set; }
 
         public string Language { get; set; }
+
+        public bool FreeBet { get; set; }
     }
 
     public class AuthModel
     {
         [Required]
-        public string PartnerId { get; set; }
+        public string OperatorId { get; set; }
 
         [Required]
-        public string PartnerSecret { get; set; }
+        public string OperatorSecret { get; set; }
+    }
+
+    public class BetHistoryAccessUrlRequestModel
+    {
+        [Required]
+        public GameType GameTypeId { get; set; }
+
+        public AuthModel Auth { get; set; }
+
+        [Required]
+        public long GameRoundId { get; set; }
+
+        [Required]
+        public int PlayerId { get; set; }
+
+        public string Language { get; set; }
+
+        public bool FreeBet { get; set; }
     }
 }

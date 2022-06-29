@@ -1,0 +1,467 @@
+﻿@model LotteryTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<LotteryTicketViewModel> LotteryLocalizer
+
+@{
+    var settlementResult = Model.SettlementResult;
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@Localizer["Time"] (@Model.TimeOffsetString)</th>
+            <th class="col-round-id">@Localizer["RoundId"]</th>
+            <th>@Localizer["Result"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null && Model.Choices != null)
+        {
+            <tr>
+                <td>
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    <br />
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@Model.RoundResult.RoundId</td>
+                <td>
+                    <table class="table table-bordered table-hover bold">
+                        <tbody>
+                            <partial name="LotteryResult/_SpecialPrize" model="Model" />
+                            <partial name="LotteryResult/_FirstPrize" model="Model" />
+                            <partial name="LotteryResult/_SecondPrize" model="Model" />
+                            <partial name="LotteryResult/_ThirdPrize" model="Model" />
+                            <partial name="LotteryResult/_FourthPrize" model="Model" />
+                            <partial name="LotteryResult/_FifthPrize" model="Model" />
+                            <partial name="LotteryResult/_SixthPrize" model="Model" />
+                            <partial name="LotteryResult/_SeventhPrize" model="Model" />
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="3">
+                    @Localizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@Localizer["BetTime"] (@Model.TimeOffsetString)</th>
+            <th>@Localizer["BetType"]</th>
+            <th>@Localizer["BetChoice"]</th>
+            <th>@Localizer["Odds"]</th>
+            <th>@Localizer["BetAmount"]</th>
+            <th>@Localizer["Win"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Bets.Any() && Model.RoundResult != null)
+        {
+
+            foreach (var bet in Model.Bets)
+            {
+                var renderGroupInfo = true;
+
+                foreach (var betChoice in bet.Choices.FourSets)
+                {
+                    var rowSpan = bet.Choices.FourSets.Count();
+                    byte occurence = settlementResult.Occurrences.Seventh.ContainsKey(betChoice.Key) ? settlementResult.Occurrences.Seventh[betChoice.Key] : (byte)0;
+                    var cssClass = occurence > 0 ? "text-blue bold" : string.Empty;
+
+                    <tr>
+                        @if (renderGroupInfo)
+                        {
+                            renderGroupInfo = false;
+                            <td rowspan="@rowSpan">
+                                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                                <br />
+                                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                            </td>
+
+                        }
+                        <td class="@cssClass">
+                            @LotteryLocalizer["4 Sets"]
+                        </td>
+                        <td class="@cssClass">
+                            @betChoice.Key
+                        </td>
+                        <td class="@cssClass">
+                            @Model.Odds.FourSets.Format()
+                            @if (occurence > 1)
+                            {
+                                @("(")<span class="text-red">@($"x{occurence}")</span>@(")")
+                            }
+                        </td>
+
+                        <td class="text-right @cssClass">
+                            @betChoice.Value.Format()
+                        </td>
+                        <td class="text-right @cssClass">
+                            @((betChoice.Value * Model.Odds.FourSets * occurence).Format())
+                        </td>
+                    </tr>
+                }
+
+                foreach (var betChoice in bet.Choices.Special)
+                {
+                    var rowSpan = bet.Choices.Special.Count();
+                    var cssClass = settlementResult.Special == betChoice.Key ? "text-blue bold" : string.Empty;
+
+                    <tr>
+                        @if (renderGroupInfo)
+                        {
+                            renderGroupInfo = false;
+                            <td rowspan="@rowSpan">
+                                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                                <br />
+                                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                            </td>
+
+                        }
+                        <td class="@cssClass">
+                            @LotteryLocalizer["Special"]
+                        </td>
+                        <td class="@cssClass">
+                            @betChoice.Key
+                        </td>
+                        <td class="@cssClass">
+                            @Model.Odds.Special.Format()
+                        </td>
+                        <td class="text-right @cssClass">
+                            @betChoice.Value.Format()
+                        </td>
+                        <td class="text-right @cssClass">
+                            @if (settlementResult.Special == betChoice.Key)
+                            {
+                                @((betChoice.Value * Model.Odds.Special).Format())
+                            }
+                            else
+                            {
+                                @(0)
+                            }
+                        </td>
+                    </tr>
+                }
+
+                foreach (var betChoice in bet.Choices.Head)
+                {
+                    var rowSpan = bet.Choices.Head.Count();
+                    var cssClass = settlementResult.Head == betChoice.Key ? "text-blue bold" : string.Empty;
+
+                    <tr>
+                        @if (renderGroupInfo)
+                        {
+                            renderGroupInfo = false;
+                            <td rowspan="@rowSpan">
+                                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                                <br />
+                                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                            </td>
+
+                        }
+
+                        <td class="@cssClass">
+                            @LotteryLocalizer["Head"]
+                        </td>
+                        <td class="@cssClass">
+                            @betChoice.Key
+                        </td>
+                        <td class="@cssClass">
+                            @Model.Odds.Head.Format()
+                        </td>
+                        <td class="text-right @cssClass">
+                            @betChoice.Value.Format()
+                        </td>
+                        <td class="text-right @cssClass">
+                            @if (settlementResult.Head == betChoice.Key)
+                            {
+                                @((betChoice.Value * Model.Odds.Head).Format())
+                            }
+                            else
+                            {
+                                @(0)
+                            }
+                        </td>
+                    </tr>
+                }
+
+                foreach (var betChoice in bet.Choices.Tail)
+                {
+                    var rowSpan = bet.Choices.Tail.Count();
+                    var cssClass = settlementResult.Tail == betChoice.Key ? "text-blue bold" : string.Empty;
+                    <tr>
+                        @if (renderGroupInfo)
+                        {
+                            renderGroupInfo = false;
+                            <td rowspan="@rowSpan">
+                                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                                <br />
+                                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                            </td>
+                        }
+                        <td class="@cssClass">
+                            @LotteryLocalizer["Tail"]
+                        </td>
+                        <td class="@cssClass">
+                            @betChoice.Key
+                        </td>
+                        <td class="@cssClass">
+                            @Model.Odds.Tail.Format()
+                        </td>
+                        <td class="text-right @cssClass">
+                            @betChoice.Value.Format()
+                        </td>
+                        <td class="text-right @cssClass">
+                            @if (settlementResult.Tail == betChoice.Key)
+                            {
+                                @((betChoice.Value * Model.Odds.Tail).Format())
+                            }
+                            else
+                            {
+                                @(0)
+                            }
+                        </td>
+                    </tr>
+                }
+
+                foreach (var betChoice in bet.Choices.TwentySevenSets)
+                {
+                    var rowSpan = bet.Choices.TwentySevenSets.Count();
+                    byte occurence = settlementResult.Occurrences.All.ContainsKey(betChoice.Key) ? settlementResult.Occurrences.All[betChoice.Key] : (byte)0;
+                    var cssClass = occurence > 0 ? "text-blue bold" : string.Empty;
+                    <tr>
+                        @if (renderGroupInfo)
+                        {
+                            renderGroupInfo = false;
+                            <td rowspan="@rowSpan">
+                                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                                <br />
+                                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                            </td>
+
+                        }
+
+                        <td class="@cssClass">
+                            @LotteryLocalizer["27 Sets"]
+                        </td>
+                        <td class="@cssClass">
+                            @betChoice.Key
+                        </td>
+                        <td class="@cssClass">
+                            @Model.Odds.TwentySevenSets.Format()
+                            @if (occurence > 1)
+                            {
+                                @("(")<span class="text-red">@($"x{occurence}")</span>@(")")
+                            }
+                        </td>
+
+                        <td class="text-right @cssClass">
+                            @betChoice.Value.Format()
+                        </td>
+                        <td class="text-right @cssClass">
+                            @((betChoice.Value * Model.Odds.TwentySevenSets * occurence).Format())
+                        </td>
+                    </tr>
+                }
+
+                foreach (var betChoice in bet.Choices.Parlay2)
+                {
+                    var rowSpan = bet.Choices.Parlay2.Count();
+                    var win = betChoice.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number));
+                    var cssClass = win ? "text-blue bold" : string.Empty;
+
+                    <tr>
+                        @if (renderGroupInfo)
+                        {
+                            renderGroupInfo = false;
+                            <td rowspan="@rowSpan">
+                                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                                <br />
+                                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                            </td>
+
+                        }
+                        <td class="@cssClass">
+                            @LotteryLocalizer["Parlay 2"]
+                        </td>
+                        <td class="@cssClass">
+                            @betChoice.Key.Replace("-", ", ")
+                        </td>
+                        <td class="@cssClass">
+                            @Model.Odds.Parlay2.Format()
+                        </td>
+                        <td class="text-right @cssClass">
+                            @betChoice.Value.Format()
+                        </td>
+                        <td class="text-right @cssClass">
+                            @if (win)
+                            {
+                                @((betChoice.Value * Model.Odds.Parlay2).Format())
+                            }
+                            else
+                            {
+                                @(0)
+                            }
+                        </td>
+                    </tr>
+                }
+
+                foreach (var betChoice in bet.Choices.Parlay3)
+                {
+                    var rowSpan = bet.Choices.Parlay3.Count();
+                    var win = betChoice.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number));
+                    var cssClass = win ? "text-blue bold" : string.Empty;
+
+                    <tr>
+                        @if (renderGroupInfo)
+                        {
+                            renderGroupInfo = false;
+                            <td rowspan="@rowSpan">
+                                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                                <br />
+                                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                            </td>
+
+                        }
+                        <td class="@cssClass">
+                            @LotteryLocalizer["Parlay 3"]
+                        </td>
+                        <td class="@cssClass">
+                            @betChoice.Key.Replace("-", ", ")
+                        </td>
+                        <td class="@cssClass">
+                            @Model.Odds.Parlay3.Format()
+                        </td>
+                        <td class="text-right @cssClass">
+                            @betChoice.Value.Format()
+                        </td>
+                        <td class="text-right @cssClass">
+                            @if (win)
+                            {
+                                @((betChoice.Value * Model.Odds.Parlay3).Format())
+                            }
+                            else
+                            {
+                                @(0)
+                            }
+                        </td>
+                    </tr>
+                }
+
+                foreach (var betChoice in bet.Choices.Parlay4)
+                {
+                    var rowSpan = bet.Choices.Parlay4.Count();
+                    var win = betChoice.Key.Split("-").All(number => settlementResult.TwentySevenSets.Contains(number));
+                    var cssClass = win ? "text-blue bold" : string.Empty;
+
+                    <tr>
+                        @if (renderGroupInfo)
+                        {
+                            renderGroupInfo = false;
+                            <td rowspan="@rowSpan">
+                                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                                <br />
+                                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                            </td>
+
+                        }
+                        <td class="@cssClass">
+                            @LotteryLocalizer["Parlay 4"]
+                        </td>
+                        <td class="@cssClass">
+                            @betChoice.Key.Replace("-", ", ")
+                        </td>
+                        <td class="@cssClass">
+                            @Model.Odds.Parlay4.Format()
+                        </td>
+                        <td class="text-right @cssClass">
+                            @betChoice.Value.Format()
+                        </td>
+                        <td class="text-right @cssClass">
+                            @if (win)
+                            {
+                                @((betChoice.Value * Model.Odds.Parlay4).Format())
+                            }
+                            else
+                            {
+                                @(0)
+                            }
+                        </td>
+                    </tr>
+                }
+
+                foreach (var betChoice in bet.Choices.Others)
+                {
+                    var rowSpan = bet.Choices.Others.Count();
+                    var win = settlementResult.Others[betChoice.Key];
+                    var cssClass = win ? "text-blue bold" : string.Empty;
+
+                    <tr>
+                        @if (renderGroupInfo)
+                        {
+                            renderGroupInfo = false;
+                            <td rowspan="@rowSpan">
+                                @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                                <br />
+                                @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                            </td>
+
+                        }
+                        <td class="@cssClass">
+                            @LotteryLocalizer["Others"]
+                        </td>
+                        <td class="text-capitalize @cssClass">
+                            @LotteryLocalizer[@betChoice.Key]
+                        </td>
+                        <td class="@cssClass">
+                            @Model.Odds.Others.Format()
+                        </td>
+                        <td class="text-right @cssClass">
+                            @betChoice.Value.Format()
+                        </td>
+                        <td class="text-right @cssClass">
+                            @if (win)
+                            {
+                                @((betChoice.Value * Model.Odds.Others).Format())
+                            }
+                            else
+                            {
+                                @(0)
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+
+            <tr class="total">
+                <td colspan="4" class="text-right">@Localizer["Total"]</td>
+                <td class="text-right">@Model.TotalBet.Format()</td>
+                <td class="text-right">@Model.TotalBetWin.Format()</td>
+            </tr>
+
+            <tr class="total">
+
+                <td colspan="4" class="bold text-right">@Localizer["WinLoss"]</td>
+                <td></td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="6">
+                    @Localizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -226,10 +226,6 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\scss\images\four-guardians\" />
-  </ItemGroup>
-
 
 
 </Project>

@@ -22,11 +22,13 @@ namespace GameRoundResult.Core.Database.Entities
 
         public bool? IsSwappedOrHold { get; set; }
     }
+
     public class CasinoHoldemPokerResult
     {
         public IEnumerable<PokerCard> Dealer { get; set; }
         public IEnumerable<PokerCard> CommunityCards { get; set; }
     }
+
     public class CombinationCard
     {
         public IEnumerable<PokerCard> Cards { get; set; }
@@ -35,6 +37,7 @@ namespace GameRoundResult.Core.Database.Entities
         [BsonElement("id")]
         public int HandRankId { get; set; }
     }
+
     public class PokerCard
     {
         public byte Rank { get; set; }

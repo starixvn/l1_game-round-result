@@ -10,5 +10,7 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal Amount { get; set; }
 
         public decimal Refund { get; set; }
+
+        public bool Win { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace GameRoundResult.Web.Accessor
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
-            var result = await gameBetService.GetAsync<DragonTigerRound, DragonTigerBet>(request.RoundId, request.MemberId, request.FreeBet, request.PartnerId);
+            var result = await gameBetService.GetAsync<DragonTigerRound, DragonTigerBet>(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId);
 
             return new DragonTigerTicketViewModel
             {

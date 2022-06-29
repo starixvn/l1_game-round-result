@@ -23,7 +23,7 @@ namespace GameRoundResult.Web.Accessor
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
-            var hiloResult = await gameBetService.GetAsync(request.RoundId, request.MemberId, request.PartnerId);
+            var hiloResult = await gameBetService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId);
             var roundResult = hiloResult.Item1?.ToViewModel<HiLoRound, HiLoRoundResultViewModel>(mapper, request.TimeZoneInfo);
 
             if (roundResult != null && roundResult.EndTime.HasValue)

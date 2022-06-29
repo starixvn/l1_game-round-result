@@ -1,0 +1,122 @@
+﻿@using Microsoft.Extensions.Localization
+@using GameRoundResult.Core.Constants
+@model BlackjackTicketViewModel
+
+@inject IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IStringLocalizer<BlackjackTicketViewModel> BlackjackLocalizer
+
+@{
+    var blackjackValue = 21;
+}
+
+<table class="table table-bordered table-blackjack">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th class="col-round-id">@BlackjackLocalizer["HandId"]</th>
+            <th colspan="2">@BlackjackLocalizer["Dealer"]</th>
+            <th colspan="2">@BlackjackLocalizer["Player"]</th>
+            <th>@BlackjackLocalizer["Stake"]</th>
+            <th>@CommonLocalizer["WinLoss"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Bet != null)
+        {
+            var isSplittedHand = Model.Bet.SplitFrom.HasValue || Model.Bet.Actions.Any(x => x == BlackjackAction.Split);
+
+            <tr>
+                <td>
+                    @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                    <br />
+                    @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>
+                    @Model.Bet.HandId
+                    @if (isSplittedHand)
+                    {
+                        <img class="split-hand" src="~/scss/images/split_hand.png" asp-append-version="true" />
+                    }
+                </td>
+                <td class="blackjack-result">
+                    <div class="cards">
+                        @if (Model.Ended)
+                        {
+                            @foreach (var card in Model.DealerCards)
+                            {
+                                <div class="card card-type-@card.Suit">
+                                    <span>@card.Rank</span>
+                                    <img class="img" src="~/scss/images/card_@(card.Suit).png" asp-append-version="true" />
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            var card = Model.DealerCards.FirstOrDefault();
+                            <div class="card card-type-@card.Suit">
+                                <span>@card.Rank</span>
+                                <img class="img" src="~/scss/images/card_@(card.Suit).png" asp-append-version="true" />
+                            </div>
+                            <img class="card" src="~/scss/images/card_back.png" />
+                        }
+                    </div>
+                </td>
+                <td>
+                    @if (Model.Ended)
+                    {
+                        if (Model.DealerPoint == blackjackValue && Model.DealerCards.Count() == 2)
+                        {
+                            @BlackjackLocalizer["Blackjack"]
+                        }
+                        else
+                        {
+                            @(Model.DealerPoint > blackjackValue ? BlackjackLocalizer["Bust"] : Model.DealerPoint.ToString())
+                        }
+                    }
+                    else
+                    {
+                        @("-")
+                    }
+                </td>
+                <td class="blackjack-result">
+                    <div class="cards">
+                        @foreach (var card in Model.Bet.Cards)
+                        {
+                            <div class="card card-type-@card.Suit">
+                                <span>@card.Rank</span>
+                                <img class="img" src="~/scss/images/card_@(card.Suit).png" asp-append-version="true" />
+                            </div>
+                        }
+                    </div>
+                </td>
+                <td>
+                    @if (Model.Bet.Total == blackjackValue && Model.Bet.Cards.Count() == 2 && !isSplittedHand)
+                    {
+                        @BlackjackLocalizer["Blackjack"]
+                    }
+                    else
+                    {
+                        @if (Model.Ended)
+                        {
+                            @(Model.Bet.Total > blackjackValue ? BlackjackLocalizer["Bust"] : Model.Bet.Total.ToString())
+                        }
+                        else
+                        {
+                            @(Model.Bet.Total > blackjackValue ? BlackjackLocalizer["Bust"] : string.Join("/", Model.Bet.SoftPoints))
+                        }
+                    }
+                </td>
+                <td class="text-right">@Model.Bet.Bet.Format()</td>
+                <td class="text-right">@(Model.Ended ? Model.WinLoss.Format() : BlackjackLocalizer["Unfinished Game"])</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="8" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

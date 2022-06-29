@@ -1,9 +1,9 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -235,6 +235,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<ThreeCardsBet, ThreeCardsBetViewModel>();
             CreateMap<ThreeCardsOdds, ThreeCardsOddsViewModel>();
 
+            CreateMap<HeroesSlotRound, HeroesSlotRoundResultViewModel>();
             CreateMap<KenoMatchRound, KenoMatchRoundResultViewModel>();
             CreateMap<KenoMatchPeriod, KenoMatchPeriodViewModel>();
             CreateMap<KenoMatchPeriodResult, KenoMatchPeriodResultViewModel>();
@@ -245,7 +246,6 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<KenoPowerResult, KenoPowerResultViewModel>();
             CreateMap<KenoPowerSettlementResult, KenoPowerSettlementResultViewModel>();
             CreateMap<KenoPowerBet, KenoPowerBetViewModel>();
-
             CreateMap<PokerCard, PokerCardViewModel>();
             CreateMap<BitcoinMasterRound, BitcoinMasterRoundResultViewModel>();
             CreateMap<BitcoinMasterBet, BitcoinMasterBetViewModel>()
@@ -266,10 +266,9 @@ namespace GameRoundResult.Web.Configuration
                 => x.Ended ? x.SettlementResult.HandRankId
                 : 0))
                 .ForMember(x => x.IsQualified, opt => opt.MapFrom(x => x.SettlementResult.IsQualified ?? false));
-
+                
             CreateMap<HiLoRound, HiLoRoundResultViewModel>();
             CreateMap<HiLoBetLog, HiLoBetLogViewModel>();
-
 
             CreateMap<TexasHoldemPokerBetSettlementResult, TexasHoldemPokerDetailBetViewModel>();
             CreateMap<TexasHoldemPokerBet, TexasHoldemPokerBetViewModel>()

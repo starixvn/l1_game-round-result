@@ -1,0 +1,45 @@
+﻿using System;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
+using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Extensions;
+using MongoDB.Driver;
+
+namespace GameRoundResult.Core.Services
+{
+    public class KenoMatchEndGameInfoService<TKenoMatchRoundEntity, TKenoMatchOneEntity> : BaseEndGameInfoService<TKenoMatchRoundEntity, TKenoMatchOneEntity>, IEndGameInfoService
+        where TKenoMatchRoundEntity : KenoMatchRound
+        where TKenoMatchOneEntity : KenoMatchOne
+    {
+        public KenoMatchEndGameInfoService(IMongoDatabase database) : base(database)
+        {
+        }
+
+        public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request)
+        {
+            var round = await GetRoundAsync(request);
+            var bets = await GetBetsAsync(request);
+
+            if (round == null || !bets.Any())
+            {
+                return EndGameInfoError.SB1001;
+            }
+
+            var totalBetAmount = bets.Sum(x => x.TotalAmount);
+            var totalBetWin = bets.Sum(x => x.Betwin);
+            var totalRefund = bets.Sum(x => x.Refund);
+
+            return new EndRoundInfoResult
+            {
+                EndTime = round.Time,
+                ValidBetAmount = totalBetAmount,
+                TotalAmount = totalBetAmount,
+                TotalWin = totalBetWin > 0 ? totalBetWin + totalRefund : totalRefund
+            };
+        }
+
+        protected override Expression<Func<TKenoMatchOneEntity, bool>> GetBetFilterExpression(RetrieveEndGameInfoRequest request)
+           => base.GetBetFilterExpression(request).And(FreeBetExpression(request));
+    }
+}
