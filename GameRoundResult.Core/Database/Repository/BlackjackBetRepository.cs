@@ -17,7 +17,9 @@ namespace GameRoundResult.Core.Database.Repository
         public async Task<(BlackjackRound, BlackjackBet)> GetAsync(long handId, int memberId, string parterId)
         {
             var bet = await database.GetCollection<BlackjackBet>(Document.GetCollectionName(typeof(BlackjackBet)))
-                .Find(x => x.HandId == handId && x.PlayerId == memberId && x.OperatorId == parterId)
+                .Find(x => x.HandId == handId 
+                && (x.PlayerId == memberId || x.MemberId == memberId)
+                && (x.OperatorId == parterId || x.PartnerId == parterId))
                 .SortByDescending(x => x.Id).FirstOrDefaultAsync();
 
             if (bet != null)

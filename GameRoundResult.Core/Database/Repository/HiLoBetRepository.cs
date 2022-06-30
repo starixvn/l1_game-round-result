@@ -23,7 +23,9 @@ namespace GameRoundResult.Core.Database.Repository
         public async Task<(HiLoRound, IEnumerable<HiLoBetLog>)> GetAsync(long roundId, int playerId, string operatorId)
         {
             var round = await database.GetCollection<HiLoRound>(Document.GetCollectionName(typeof(HiLoRound)))
-                .Find(x => x.RoundId == roundId && x.PlayerId == playerId && x.OperatorId == operatorId)
+                .Find(x => x.RoundId == roundId
+                && (x.PlayerId == playerId || x.MemberId == playerId)
+                && (x.OperatorId == operatorId || x.PartnerId == operatorId))
                 .FirstOrDefaultAsync();
 
             if (round != null)
@@ -38,7 +40,9 @@ namespace GameRoundResult.Core.Database.Repository
 
         protected override async Task<IEnumerable<T>> GetBetLogsAsync<T>(long roundId, int playerId, string collectionName, string operatorId, Expression<Func<T, bool>> filter = null)
         {
-            Expression<Func<T, bool>> defaultExpression = bet => bet.PlayerId == playerId && bet.OperatorId == operatorId;
+            Expression<Func<T, bool>> defaultExpression = bet =>
+                (bet.PlayerId == playerId || bet.MemberId == playerId)
+                && (bet.OperatorId == operatorId || bet.PartnerId == operatorId);
 
             return await database
                 .GetCollection<T>(collectionName)

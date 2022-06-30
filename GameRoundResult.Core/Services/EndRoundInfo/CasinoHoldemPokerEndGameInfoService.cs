@@ -1,10 +1,9 @@
-﻿
-using GameRoundResult.Core.Database.Entities;
-using MongoDB.Driver;
-using System;
+﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using GameRoundResult.Core.Database.Entities;
+using MongoDB.Driver;
 
 namespace GameRoundResult.Core.Services
 {
@@ -44,7 +43,11 @@ namespace GameRoundResult.Core.Services
 
         protected override Expression<Func<CasinoHoldemPokerBet, bool>> GetBetFilterExpression(RetrieveEndGameInfoRequest request)
         {
-            return (bet) => bet.RoundId == request.GameRoundId && bet.PlayerId == request.PlayerId && bet.SiteId == request.SiteId;
+#pragma warning disable S1067 // Expressions should not be too complex
+            return (bet) => (bet.RoundId == request.GameRoundId || bet.Phien == request.GameRoundId)
+            && (bet.PlayerId == request.PlayerId || bet.MemberId == request.PlayerId)
+            && bet.SiteId == request.SiteId;
+#pragma warning restore S1067 // Expressions should not be too complex
         }
     }
 }

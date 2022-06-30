@@ -33,8 +33,10 @@ namespace GameRoundResult.Core.Database.Repository
         protected async Task<IEnumerable<T>> GetBetsAsync<T>(long roundId, int playerId, bool freeBet, string collectionName, string operatorId,
             Expression<Func<T, bool>> filter = null) where T : BaseBetEntity
         {
-            Expression<Func<T, bool>> defaultExpression = bet => bet.PlayerId == playerId && bet.RoundId == roundId 
-            && (!bet.FreeBet.HasValue || bet.FreeBet == freeBet) && bet.OperatorId == operatorId;
+            Expression<Func<T, bool>> defaultExpression = bet => (bet.PlayerId == playerId || bet.MemberId == playerId)
+            && (bet.RoundId == roundId || bet.Phien == roundId)
+            && (!bet.FreeBet.HasValue || bet.FreeBet == freeBet)
+            && (bet.OperatorId == operatorId || bet.PartnerId == operatorId);
 
             return await database
                 .GetCollection<T>(collectionName)
@@ -43,10 +45,13 @@ namespace GameRoundResult.Core.Database.Repository
                 .ToListAsync();
         }
 
-        protected virtual async Task<IEnumerable<T>> GetBetLogsAsync<T>(long roundId, int playerId, string collectionName, string operatorId, 
+        protected virtual async Task<IEnumerable<T>> GetBetLogsAsync<T>(long roundId, int playerId, string collectionName, string operatorId,
             Expression<Func<T, bool>> filter = null) where T : BaseBetLogEntity
         {
-            Expression<Func<T, bool>> defaultExpression = bet => bet.PlayerId == playerId && bet.RoundId == roundId && bet.OperatorId == operatorId;
+            Expression<Func<T, bool>> defaultExpression = bet =>
+            (bet.PlayerId == playerId || bet.MemberId == playerId)
+            && (bet.RoundId == roundId || bet.Phien == roundId)
+            && (bet.OperatorId == operatorId || bet.PartnerId == operatorId);
 
             return await database
                 .GetCollection<T>(collectionName)

@@ -1,6 +1,4 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-
-namespace GameRoundResult.Core.Database.Entities
+﻿namespace GameRoundResult.Core.Database.Entities
 {
     public class BaseBetLogEntity : Document
     {
@@ -19,5 +17,9 @@ namespace GameRoundResult.Core.Database.Entities
         public string OperatorId { get; set; }
 
         public decimal Rate { get; set; }
+
+        public int? MemberId { get; set; }
+        public string PartnerId { get; set; }
+        public long Phien { get; set; }
     }
 }
