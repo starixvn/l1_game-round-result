@@ -22,6 +22,7 @@ namespace GameRoundResult.Core.Database.Entities
         public FourGuardiansSettlementResult SettlementResult { get; set; }
 
         public IEnumerable<FourGuardiansBonusChest> BonusChests { get; set; }
+
         public bool Paid { get; set; }
 
         [BsonRepresentation(BsonType.Decimal128, AllowTruncation = true)]
@@ -32,6 +33,8 @@ namespace GameRoundResult.Core.Database.Entities
         public string Name { get; set; }
 
         public int? PlayerId { get; set; }
+
+        public int? MemberId { get; set; }
 
 
         [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
