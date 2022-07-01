@@ -42,27 +42,27 @@
       max-width: 90rem; }
     .table.table-hilo {
       max-width: 80rem; }
-    .table.table-night-club {
+    .table.table-night-club, .table.table-way-to-goal {
       max-width: 90rem; }
-      .table.table-night-club .col-round-id {
+      .table.table-night-club .col-round-id, .table.table-way-to-goal .col-round-id {
         width: 9rem; }
     .table.table-cascading-slot {
       max-width: 100rem; } }
 
-.table-four-guardians .table-paylines, .table-night-club .table-paylines {
+.table-four-guardians .table-paylines, .table-night-club .table-paylines, .table-way-to-goal .table-paylines {
   margin: auto; }
-  .table-four-guardians .table-paylines td, .table-night-club .table-paylines td {
+  .table-four-guardians .table-paylines td, .table-night-club .table-paylines td, .table-way-to-goal .table-paylines td {
     border: none; }
 
-.table-four-guardians .col-round-id, .table-night-club .col-round-id {
+.table-four-guardians .col-round-id, .table-night-club .col-round-id, .table-way-to-goal .col-round-id {
   width: 10rem; }
 
-.table-four-guardians .payline, .table-night-club .payline {
+.table-four-guardians .payline, .table-night-club .payline, .table-way-to-goal .payline {
   width: 50px; }
 
-.table-four-guardians .symbol, .table-night-club .symbol {
-  width: 50px;
-  height: 50px; }
+.table-four-guardians .symbol, .table-night-club .symbol, .table-way-to-goal .symbol {
+  height: 50px;
+  width: 50px; }
 
 .table-cascading-slot .table-result-board {
   margin: auto; }

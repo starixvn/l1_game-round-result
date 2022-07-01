@@ -42,13 +42,14 @@
         BitcoinMaster = 43,
         HiLo = 45,
         NightClub = 46,
+        WayToGoal = 49,
         TreasureIsland = 47,
-        BlockchainBaccarat = 48,     
+        BlockchainBaccarat = 48,
         UnbalancedBigSmall1 = 50,
         UnbalancedBigSmall2 = 51,
         MegaKeno = 52,
         MegaKeno2 = 53,
         UnbalancedBigSmall3 = 54,
-        UnbalancedBigSmall4 = 55,     
+        UnbalancedBigSmall4 = 55,
     }
 }
