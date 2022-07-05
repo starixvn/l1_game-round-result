@@ -36,12 +36,12 @@ namespace GameRoundResult.Web.Handlers
                     return EndGameInfoError.SB1004;
                 }
 
-                if (!Enum.TryParse(request.GameTypeId.ToString(), out GameType gameType))
+                if (!Enum.IsDefined(typeof(GameType) ,request.GameTypeId.ToString()))
                 {
-                    return EndGameInfoError.SB1006;
+                    return EndGameInfoError.SB1001;
                 }
 
-                var service = factory.GetService(gameType);
+                var service = factory.GetService(Enum.Parse<GameType>(request.GameTypeId.ToString()));
                 return await service.GetAsync(new RetrieveEndGameInfoRequest
                 {
                     GameRoundId = request.GameRoundId,
