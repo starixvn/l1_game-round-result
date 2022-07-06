@@ -102,7 +102,7 @@
             </tr>
             <tr class="bold">
                 <td colspan="4" class="text-right">@CommonLocalizer["Total"]</td>
-                <td>@(roundResult.FreeSpin ? 0 : roundResult.TotalAmount)</td>
+                <td>@((roundResult.FreeSpin ? 0 : roundResult.TotalAmount).Format())</td>
                 <td>@roundResult.BetWin.Format()</td>
             </tr>
             <tr class="total">
@@ -205,7 +205,7 @@
                                 <td rowspan="@rowspan">@Html.Raw(RenderBoard(tumbles[index].Board, imageFolder, tumbles[index].Multipliers))</td>
                                 <td>@Html.Raw(RenderSymbol(9, imageFolder))</td>
                                 <td>@freeSpins.Count</td>
-                                <td>@freeSpins.Odds @Localizer["FreeSpin"]</td>
+                                <td>@freeSpins.Odds @Localizer["FreeSpins"]</td>
                                 <td rowspan="@rowspan">@tumbleWin.Format()</td>
                             </tr>
                         }

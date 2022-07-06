@@ -127,6 +127,9 @@
     <value>Free Spins Thêm</value>
   </data>
   <data name="FreeSpin" xml:space="preserve">
+    <value>Free Spin</value>
+  </data>
+  <data name="FreeSpins" xml:space="preserve">
     <value>Free Spins</value>
   </data>
   <data name="Multiplier" xml:space="preserve">
