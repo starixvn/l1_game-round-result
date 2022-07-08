@@ -222,8 +222,14 @@
   <data name="BlockchainBaccarat" xml:space="preserve">
     <value>Blockchain Baccarat</value>
   </data>
+  <data name="TurboUnbalancedBigSmall" xml:space="preserve">
+    <value>Turbo Big Small 2</value>
+  </data>
   <data name="MegaKeno" xml:space="preserve">
     <value>Mega Keno</value>
+  </data>
+  <data name="UnbalancedBigSmall" xml:space="preserve">
+    <value>Big Small 2</value>
   </data>
   <data name="MegaKeno2" xml:space="preserve">
     <value>Mega Keno 2</value>

@@ -268,5 +268,13 @@ namespace GameRoundResult.Web.Extensions
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });
         }
+
+        public static UnbalancedBigSmallBetLogViewModel ToViewModel(this UnbalancedBigSmallBetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<UnbalancedBigSmallBetLog, UnbalancedBigSmallBetLogViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
     }
 }

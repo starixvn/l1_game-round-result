@@ -1,0 +1,93 @@
+﻿@using GameRoundResult.Core.Constants
+@model UnbalancedBigSmallTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@Localizer["Time"] (@Model.TimeOffsetString)</th>
+            <th class="col-round-id">@Localizer["RoundId"]</th>
+            <th>@Localizer["Result"]</th>
+            <th>@Localizer["Total"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null)
+        {
+            <tr>
+                <td>
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    <br />
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@Model.RoundResult.RoundId</td>
+                <td>
+                    @foreach (var dice in Model.RoundResult.Dices)
+                    {
+                        <img class="dice" src="/scss/images/dice_@(dice).png" asp-append-version="true">
+                    }
+                </td>
+                <td>@Model.RoundResult.Total</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center">
+                    @Localizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@Localizer["BetTime"]</th>
+            <th>@Localizer["BetChoice"]</th>
+            <th>@Localizer["BetAmount"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.BetLogs.Any() && Model.RoundResult != null)
+        {
+            foreach (var bet in Model.BetLogs)
+            {
+                <tr>
+                    <td>
+                        @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@(bet.Choice == BigSmallBetChoice.Big ? Localizer["Big"]: Localizer["Small"])</td>
+                    <td class="text-right">@bet.Amount.Format()</td>
+                </tr>
+            }
+            <tr>
+                <td></td>
+                <td class="text-right">@Localizer["Total"]</td>
+                <td class="text-right">@Model.TotalBetAmount.Format()</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="text-right">@Localizer["TotalWin"]</td>
+                <td class="text-right">@Model.TotalBetWin.Format()</td>
+            </tr>
+            <tr class="total">
+                <td></td>
+                <td class="bold text-right">@Localizer["WinLoss"]</td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    @Localizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

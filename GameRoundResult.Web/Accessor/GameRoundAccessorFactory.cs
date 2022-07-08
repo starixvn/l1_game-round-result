@@ -49,8 +49,9 @@ namespace GameRoundResult.Web.Accessor
             { GameType.BitcoinMaster, typeof(GameRoundAccessor<BitcoinMasterRound, BitcoinMasterRoundResultViewModel>) },
             { GameType.BlockchainBaccarat, typeof(GameRoundAccessor<BlockchainBaccaratRound, BaccaratRoundResultViewModel>) },
             { GameType.MegaKeno, typeof(GameRoundAccessor<MegaKenoRound, KenoRoundResultViewModel>) },
+            { GameType.UnbalancedBigSmall, typeof(GameRoundAccessor<UnbalancedBigSmallRound, BigSmallRoundResultViewModel>) },
+            { GameType.TurboUnbalancedBigSmall, typeof(GameRoundAccessor<TurboUnbalancedBigSmallRound, BigSmallRoundResultViewModel>) },
             { GameType.MegaKeno2, typeof(GameRoundAccessor<MegaKeno2Round, KenoRoundResultViewModel>) },
-
         };
 
         private readonly IServiceProvider serviceProvider;

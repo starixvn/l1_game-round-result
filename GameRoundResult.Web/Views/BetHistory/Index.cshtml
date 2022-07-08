@@ -132,7 +132,12 @@
             <partial name="_NightClubTicket" for="GameTicketResult" />
             break;
         case GameType.TreasureIsland:
-            <partial name="_CascadingSlotTicket" for="GameTicketResult"  view-data="ViewData"/>
+            <partial name="_CascadingSlotTicket" for="GameTicketResult" view-data="ViewData" />
+            break;
+
+        case GameType.UnbalancedBigSmall:
+        case GameType.TurboUnbalancedBigSmall:
+            <partial name="_UnbalancedBigSmallTicket" for="GameTicketResult" view-data="ViewData" />
             break;
     }
 </div>

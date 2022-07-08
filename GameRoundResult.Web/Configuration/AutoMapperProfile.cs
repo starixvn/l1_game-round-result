@@ -14,6 +14,8 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<BigSmallRound, BigSmallRoundResultViewModel>()
                 .ForMember(x => x.Dices, opt => opt.MapFrom(x => new[] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice }));
 
+            CreateMap<BigSmallSettlementResult, BigSmallSettlementResultViewModel>();
+
             CreateMap<OddEvenRound, OddEvenRoundResultViewModel>()
               .ForMember(x => x.Dices, opt => opt.MapFrom(x => new[] { x.Result.FirstDice, x.Result.SecondDice, x.Result.ThirdDice }));
 
@@ -291,6 +293,9 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<BaseCascadingSlotFreeSpin, BaseCascadingSlotFreeSpinViewModel>();
             CreateMap<BaseCascadingSlotWinningSymbol, BaseCascadingSlotWinningSymbolViewModel>();
             CreateMap<BaseCascadingSlotTumble, BaseCascadingSlotTumbleViewModel>();
+
+            CreateMap<UnbalancedBigSmallBetLog, UnbalancedBigSmallBetLogViewModel>()
+
             
             CreateMap<BlockchainBaccaratCard, DragonTigerCardViewModel>();
             CreateMap<BlockchainBaccaratRound, BaccaratRoundResultViewModel>()

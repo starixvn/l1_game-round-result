@@ -8,11 +8,10 @@ namespace GameRoundResult.Web.Models
 {
     public class BigSmallRoundResultViewModel : RoundResultViewModel
     {
+        public BigSmallSettlementResultViewModel SettlementResult { get; set; }
         public IEnumerable<byte> Dices { get; set; }
 
         public int Total => Dices.Sum(x => x);
-
-        public bool IsBig => Total > maximumSmallNumber;
 
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
@@ -26,7 +25,6 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        private const int maximumSmallNumber = 10;
         private string GetDiceContent()
         {
             var div = new TagBuilder("div");
@@ -49,7 +47,7 @@ namespace GameRoundResult.Web.Models
             var tagBuilder = new TagBuilder("span");
 
             tagBuilder.AddCssClass("bold");
-            if (IsBig)
+            if (SettlementResult.Big)
             {
                 tagBuilder.AddCssClass("text-red");
                 tagBuilder.InnerHtml.Append(stringLocalizer["Big"]);
@@ -62,5 +60,12 @@ namespace GameRoundResult.Web.Models
 
             return tagBuilder.GetHtmlString();
         }
+    }
+
+    public class BigSmallSettlementResultViewModel
+    {
+        public bool Big { get; set; }
+
+        public bool Small { get; set; }
     }
 }
