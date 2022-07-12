@@ -9,7 +9,11 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Localization.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
+using MongoDB.Bson.Serialization.Options;
+using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using GameRoundResult.Web.ViewFactory;
 
@@ -21,6 +25,8 @@ namespace GameRoundResult.Web.Extensions
         {
             var conventionPack = new ConventionPack { new CamelCaseElementNameConvention(), new IgnoreExtraElementsConvention(true) };
             ConventionRegistry.Register("camelCase", conventionPack, t => true);
+            var decimalSerializer = new DecimalSerializer(BsonType.Decimal128, new RepresentationConverter(allowOverflow: false, allowTruncation: true));
+            BsonSerializer.RegisterSerializer(decimalSerializer);
             var mongoClient = new MongoClient(configuration["DatabaseSettings:ConnectionString"]);
             services.AddSingleton<IMongoClient>(mongoClient);
             var mongoDatabase = mongoClient.GetDatabase(configuration["DatabaseSettings:DatabaseName"]);
@@ -77,6 +83,9 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IFourGuardiansTicketService, FourGuardiansTicketService>();
             services.AddScoped<IFourGuardiansBetRepository, FourGuardiansBetRepository>();
 
+            services.AddScoped<IBaseCascadingSlotTicketService, BaseCascadingSlotTicketService>();
+            services.AddScoped<IBaseCascadingSlotBetRepository, BaseCascadingSlotBetRepository>();
+
             services.AddScoped<IBitcoinMasterTicketService, BitcoinMasterTicketService>();
             services.AddScoped<IBitcoinMasterBetRepository, BitcoinMasterBetRepository>();
             services.AddScoped<IPartnerService, PartnerService>();
@@ -91,6 +100,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<DragonTigerTicketAccessor>();
             services.AddScoped<FishPrawnCrabTicketAccessor>();
             services.AddScoped(typeof(FourGuardiansTicketAccessor<>));
+            services.AddScoped(typeof(BaseCascadingSlotTicketAccessor<,>));
             services.AddScoped<KenoProMaxTicketAccessor>();
             services.AddScoped<LotteryTicketAccessor>();
             services.AddScoped(typeof(MiniKenoTicketAccessor<,,>));
@@ -151,6 +161,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<HiLoEndGameInfoService>();
             services.AddScoped<TexasHoldemPokerEndGameInfoService>();
             services.AddScoped<NightClubEndRoundInfoService>();
+            services.AddScoped<TreasureIslandEndRoundInfoService>();
         }
     }
 }

@@ -1,0 +1,278 @@
+﻿@model BaseCascadingSlotTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<BaseCascadingSlotTicketViewModel> Localizer
+
+@{
+    var roundResult = Model.Round;
+    var imageFolder = ViewData["GameName"].ToString();
+}
+@functions{
+    public string RenderBoard(IEnumerable<byte> board, string folder, IEnumerable<byte> multipliers)
+    {
+        var sb = new StringBuilder("<table class='table-result-board'><tbody>");
+        var iconPerCol = 5;
+        var indexMultiplier = 0;
+        var tempMultiplier = multipliers.ToList();
+        var rows = new string[] { "<tr>", "<tr>", "<tr>", "<tr>", "<tr>" };
+
+        foreach (var item in board.Select((value, index)=> new { index, value }))
+        {
+            if (item.value >= 10)
+            {
+                rows[item.index % iconPerCol] += "<td class='result-board'>" + GetImageMultiplier(tempMultiplier[indexMultiplier], folder) + "</td>";
+                indexMultiplier++;
+            }
+            else
+            {
+                rows[item.index % iconPerCol] += "<td>" + RenderSymbol(item.value, folder) + "</td>";
+            }
+        }
+        foreach (var row in rows)
+        {
+            sb.Append(row);
+            sb.Append("</tr>");
+        }
+        sb.Append("</tbody></table>");
+
+        return sb.ToString();
+    }
+
+    public string RenderSymbol(byte value, string folder)
+    {
+        return "<img class='symbol' src='/scss/images/" + folder + "/" + value + ".png' />";
+    }
+
+    public string GetImageMultiplier(byte value, string folder)
+    {
+        var sb = new StringBuilder("<img class='symbol' src='/scss/images/");
+        sb.Append(folder);
+        var imgae = "/10";
+        if (value <= 10)
+        {
+            imgae = "/13";
+        }
+        else
+        {
+            if (value <= 20)
+            {
+                imgae = "/11";
+            }
+            else
+            {
+                if (value <= 30)
+                {
+                    imgae = "/12";
+                }
+            }
+        }
+        sb.Append(imgae + ".png' />");
+        sb.Append("<div class='multiplier " + folder + "'>x" + value + "</div>");
+        return sb.ToString();
+    }
+}
+<table class="table table-bordered table-cascading-slot">
+    <thead>
+        <tr>
+            <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
+            <th class="col-date">@CommonLocalizer["Time"] (GMT-4)</th>
+            <th>@Localizer["BetLevel"]</th>
+            <th>@Localizer["CoinValue"]</th>
+            <th>@CommonLocalizer["Stake"]</th>
+            <th>@CommonLocalizer["Win"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (roundResult != null)
+        {
+            <tr>
+                <td>
+                    @roundResult.RoundId
+                    <div>@(roundResult.FreeSpin ? $"({Localizer["FreeSpin"]})" : string.Empty)</div>
+                </td>
+                <td>
+                    @roundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    <br />
+                    @roundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@roundResult.BetLevel</td>
+                <td>@roundResult.CoinValue.Format()</td>
+                <td>@roundResult.TotalAmount.Format()</td>
+                <td>@roundResult.BetWin.Format()</td>
+            </tr>
+            <tr class="bold">
+                <td colspan="4" class="text-right">@CommonLocalizer["Total"]</td>
+                <td>@((roundResult.FreeSpin ? 0 : roundResult.TotalAmount).Format())</td>
+                <td>@roundResult.BetWin.Format()</td>
+            </tr>
+            <tr class="total">
+                <td colspan="4" class="text-right">@CommonLocalizer["WinLoss"]</td>
+                <td></td>
+                <td class='@(roundResult.WinLoss < 0 ? "text-red" : string.Empty)'>@roundResult.WinLoss.Format()</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered table-cascading-slot">
+    <thead>
+        <tr>
+            <th>@Localizer["No"]</th>
+            <th>@Localizer["ResultBoard"]</th>
+            <th colspan="2">@Localizer["WinSymbols"]</th>
+            <th>@Localizer["WinAmount"]</th>
+            <th>@Localizer["TumbleWin"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (roundResult != null)
+        {
+            var tumbles = roundResult.SettlementResult.Tumbles.ToList();
+            decimal tumbleWin = 0;
+            for (byte index = 0; index < tumbles.Count; index++)
+            {
+                var rowspan = tumbles[index].Icons.Keys.Count > 0 ? tumbles[index].Icons.Keys.Count : 1;
+                tumbleWin += tumbles[index].Win;
+                if (tumbles[index].Icons.Any())
+                {
+                    foreach (var item in tumbles[index].Icons.Keys.Select((key, i) => new { index = i, key }))
+                    {
+                        if (item.index == 0)
+                        {
+                            <tr>
+                                <td rowspan="@rowspan">@(index+1)</td>
+                                <td rowspan="@rowspan">@Html.Raw(RenderBoard(tumbles[index].Board, imageFolder, tumbles[index].Multipliers))</td>
+                                <td>@Html.Raw(RenderSymbol(item.key, imageFolder))</td>
+                                <td>@tumbles[index].Icons[item.key].Count</td>
+                                <td>@tumbles[index].Icons[item.key].Win.Format()</td>
+                                <td rowspan="@rowspan">@tumbleWin.Format()</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td>@Html.Raw(RenderSymbol(item.key, imageFolder))</td>
+                                <td>@tumbles[index].Icons[item.key].Count</td>
+                                <td>@tumbles[index].Icons[item.key].Win.Format()</td>
+                            </tr>
+                        }
+
+                    }
+                }
+                else
+                {
+                    if (roundResult.FreeSpin)
+                    {
+                        var additionalFreeSpins = roundResult.SettlementResult.FreeSpins;
+                        if (additionalFreeSpins.Odds > 0)
+                        {
+                            <tr>
+                                <td rowspan="@rowspan">@(index+1)</td>
+                                <td rowspan="@rowspan">@Html.Raw(RenderBoard(tumbles[index].Board, imageFolder, tumbles[index].Multipliers))</td>
+                                <td>@Html.Raw(RenderSymbol(9, imageFolder))</td>
+                                <td>@additionalFreeSpins.Count</td>
+                                <td>@additionalFreeSpins.Odds @Localizer["ExtraFreeSpin"]</td>
+                                <td rowspan="@rowspan">@tumbleWin.Format()</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td rowspan="@rowspan">@(index+1)</td>
+                                <td rowspan="@rowspan">@Html.Raw(RenderBoard(tumbles[index].Board, imageFolder, tumbles[index].Multipliers))</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td rowspan="@rowspan">@tumbleWin.Format()</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        var freeSpins = roundResult.SettlementResult.FreeSpins;
+                        if (freeSpins.Odds > 0)
+                        {
+                            <tr>
+                                <td rowspan="@rowspan">@(index+1)</td>
+                                <td rowspan="@rowspan">@Html.Raw(RenderBoard(tumbles[index].Board, imageFolder, tumbles[index].Multipliers))</td>
+                                <td>@Html.Raw(RenderSymbol(9, imageFolder))</td>
+                                <td>@freeSpins.Count</td>
+                                <td>@freeSpins.Odds @Localizer["FreeSpins"]</td>
+                                <td rowspan="@rowspan">@tumbleWin.Format()</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td rowspan="@rowspan">@(index+1)</td>
+                                <td rowspan="@rowspan">@Html.Raw(RenderBoard(tumbles[index].Board, imageFolder, tumbles[index].Multipliers))</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td rowspan="@rowspan">@tumbleWin.Format()</td>
+                            </tr>
+                        }
+                    }
+                }
+            }
+            @if (roundResult.BetWin > 0 && (roundResult.TotalMultiplier > 0 && roundResult.Multiplier > 0))
+            {
+                <tr>
+                    <td colspan="5" class="text-right">@Localizer["TotalMultiplier"]</td>
+                    <td>@(roundResult.FreeSpin ? roundResult.TotalMultiplier : roundResult.Multiplier)</td>
+                </tr>
+            }
+            <tr>
+                <td colspan="5" class="text-right">@(roundResult.ReachMaxWin ? $"({Localizer["ReachMaxWin"]}) {CommonLocalizer["Win"]}" : CommonLocalizer["Win"])</td>
+                <td>@roundResult.BetWin.Format()</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+    </table>
+
+@if (roundResult != null && roundResult.FreeSpin && Model.Multipliers != null && Model.Multipliers.Any())
+{
+    <strong>@Localizer["TotalMultiplier"]</strong>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>@Localizer["No"]</th>
+                <th class="col-date">@CommonLocalizer["Time"] (GMT-4)</th>
+                <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
+                <th>@Localizer["Multiplier"]</th>
+                <th>@Localizer["TotalMultiplier"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                var multipliers = Model.Multipliers.ToList();
+                for (byte i = 0; i < multipliers.Count; i++)
+                {
+                    <tr>
+                        <td>@(i+1)</td>
+                        <td>@multipliers[i].Time.ToString(ViewFormat.RoundDateFormat) @multipliers[i].Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)</td>
+                        <td>@multipliers[i].RoundId</td>
+                        <td>@multipliers[i].Multiplier</td>
+                        <td>@multipliers[i].TotalMultiplier</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}

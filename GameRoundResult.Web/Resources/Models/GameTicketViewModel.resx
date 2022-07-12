@@ -144,8 +144,14 @@
   <data name="RoundId" xml:space="preserve">
     <value>Round ID</value>
   </data>
+  <data name="Stake" xml:space="preserve">
+    <value>Stake</value>
+  </data>
   <data name="TotalWin" xml:space="preserve">
     <value>Total Win</value>
+  </data>
+  <data name="Win" xml:space="preserve">
+    <value>Win</value>
   </data>
   <data name="WinLoss" xml:space="preserve">
     <value>Win Loss</value>

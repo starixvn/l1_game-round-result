@@ -284,6 +284,13 @@ namespace GameRoundResult.Web.Configuration
                 .ForMember(x => x.HandRankId, opt => opt.MapFrom(x
                 => x.Ended ? x.SettlementResult.HandRankId
                 : 0));
+
+            CreateMap<BaseCascadingSlotRoundEntity, BaseCascadingSlotRoundViewModel>();
+            CreateMap<BaseCascadingSlotSettlementResult, BaseCascadingSlotSettlementResultViewModel>();
+            CreateMap<BaseCascadingSlotRoundMultiplier, BaseCascadingSlotRoundMultiplierViewModel>();
+            CreateMap<BaseCascadingSlotFreeSpin, BaseCascadingSlotFreeSpinViewModel>();
+            CreateMap<BaseCascadingSlotWinningSymbol, BaseCascadingSlotWinningSymbolViewModel>();
+            CreateMap<BaseCascadingSlotTumble, BaseCascadingSlotTumbleViewModel>();
         }
     }
 }

@@ -52,6 +52,7 @@ namespace GameRoundResult.Core.Services
             { GameType.HiLo, typeof(HiLoEndGameInfoService) },
             { GameType.TexasHoldemPoker, typeof(TexasHoldemPokerEndGameInfoService) },
             { GameType.NightClub, typeof(NightClubEndRoundInfoService) },
+            { GameType.TreasureIsland, typeof(TreasureIslandEndRoundInfoService)}
         };
 
         private readonly IServiceProvider serviceProvider;

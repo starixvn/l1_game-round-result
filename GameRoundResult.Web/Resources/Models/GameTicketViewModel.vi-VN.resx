@@ -171,6 +171,9 @@
   <data name="Small" xml:space="preserve">
     <value>Xỉu</value>
   </data>
+  <data name="Stake" xml:space="preserve">
+    <value>Tiền Cược</value>
+  </data>
   <data name="Tie" xml:space="preserve">
     <value>Hòa</value>
   </data>

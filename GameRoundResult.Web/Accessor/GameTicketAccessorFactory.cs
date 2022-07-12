@@ -53,6 +53,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.TexasHoldemPoker, typeof(TexasHoldemPokerTicketAccessor) },
             { GameType.HiLo, typeof(HiLoTicketAccessor) },
             { GameType.NightClub, typeof(FourGuardiansTicketAccessor<NightClubRound>) },
+            { GameType.TreasureIsland, typeof(BaseCascadingSlotTicketAccessor<TreasureIslandRound, TreasureIslandTotalMultiplier>)}
         };
 
         private readonly IServiceProvider serviceProvider;
