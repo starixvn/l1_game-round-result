@@ -50,7 +50,7 @@ namespace GameRoundResult.Core.Services
             { GameType.HiLo, typeof(HiLoEndGameInfoService) },
             { GameType.TexasHoldemPoker, typeof(TexasHoldemPokerEndGameInfoService) },
             { GameType.NightClub, typeof(NightClubEndRoundInfoService) },
-            { GameType.TreasureIsland, typeof(TreasureIslandEndRoundInfoService)}
+            { GameType.TreasureIsland, typeof(TreasureIslandEndRoundInfoService) },
             { GameType.Baccarat, typeof(BaccaratEndGameInfoService<BaccaratRound, BaccaratBet>) },
             { GameType.VipBaccarat, typeof(BaccaratEndGameInfoService<VipBaccaratRound, VipBaccaratBet>) },
             { GameType.BlockchainBaccarat, typeof(BaccaratEndGameInfoService<BlockchainBaccaratRound, BlockchainBaccaratBet>) },
