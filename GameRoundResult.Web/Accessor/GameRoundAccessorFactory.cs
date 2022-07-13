@@ -48,6 +48,8 @@ namespace GameRoundResult.Web.Accessor
             { GameType.KenoPower2, typeof(KenoPowerRoundAccessor<KenoPower2Round>) },
             { GameType.BitcoinMaster, typeof(GameRoundAccessor<BitcoinMasterRound, BitcoinMasterRoundResultViewModel>) },
             { GameType.BlockchainBaccarat, typeof(GameRoundAccessor<BlockchainBaccaratRound, BaccaratRoundResultViewModel>) },
+            { GameType.MegaKeno, typeof(GameRoundAccessor<MegaKenoRound, KenoRoundResultViewModel>) },
+            { GameType.MegaKeno2, typeof(GameRoundAccessor<MegaKeno2Round, KenoRoundResultViewModel>) },
 
         };
 

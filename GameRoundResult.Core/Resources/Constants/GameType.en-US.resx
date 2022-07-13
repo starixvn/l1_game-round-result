@@ -222,4 +222,10 @@
   <data name="BlockchainBaccarat" xml:space="preserve">
     <value>Blockchain Baccarat</value>
   </data>
+  <data name="MegaKeno" xml:space="preserve">
+    <value>Mega Keno</value>
+  </data>
+  <data name="MegaKeno2" xml:space="preserve">
+    <value>Mega Keno 2</value>
+  </data>
 </root>

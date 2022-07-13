@@ -54,7 +54,9 @@ namespace GameRoundResult.Web.Accessor
             { GameType.TexasHoldemPoker, typeof(TexasHoldemPokerTicketAccessor) },
             { GameType.HiLo, typeof(HiLoTicketAccessor) },
             { GameType.NightClub, typeof(FourGuardiansTicketAccessor<NightClubRound>) },
-            { GameType.TreasureIsland, typeof(BaseCascadingSlotTicketAccessor<TreasureIslandRound, TreasureIslandTotalMultiplier>)}
+            { GameType.TreasureIsland, typeof(BaseCascadingSlotTicketAccessor<TreasureIslandRound, TreasureIslandTotalMultiplier>) },
+            { GameType.MegaKeno, typeof(MiniKenoTicketAccessor<MegaKenoRound, MegaKenoOne, MegaKenoBet>) },
+            { GameType.MegaKeno2, typeof(MiniKenoTicketAccessor<MegaKeno2Round, MegaKeno2One, MegaKeno2Bet>) },
         };
 
         private readonly IServiceProvider serviceProvider;

@@ -48,4 +48,14 @@ namespace GameRoundResult.Core.Database.Entities
     public class KenoNorthBet : RNGKenoBet
     {
     }
+
+    [CollectionName("megakeno_bets")]
+    public class MegaKenoBet : RNGKenoBet
+    {
+    }
+
+    [CollectionName("megakeno2_bets")]
+    public class MegaKeno2Bet : RNGKenoBet
+    {
+    }
 }

@@ -134,14 +134,6 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<MiniSeDieEndGameInfoService>();
             services.AddScoped<DragonTigerEndGameInfoService>();
             services.AddScoped<KenoProMaxEndGameInfoService>();
-            services.AddScoped<KenoMaxEndGameInfoService>();
-            services.AddScoped<KenoMax2EndGameInfoService>();
-            services.AddScoped<KenoMiniEndGameInfoService>();
-            services.AddScoped<KenoMini2EndGameInfoService>();
-            services.AddScoped<KenoEastEndGameInfoService>();
-            services.AddScoped<KenoWestEndGameInfoService>();
-            services.AddScoped<KenoSouthEndGameInfoService>();
-            services.AddScoped<KenoNorthEndGameInfoService>();
             services.AddScoped<RouletteEndGameInfoService>();
             services.AddScoped<VipSeDieEndGameInfoService>();
             services.AddScoped<BlackjackEndGameInfoService>();
@@ -165,11 +157,20 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<BaccaratTicketAccessor<VipBaccaratRound, VipBaccaratBet>>();
             services.AddScoped<BaccaratTicketAccessor<BlockchainBaccaratRound, BlockchainBaccaratBet>>();
 
-
             services.AddScoped<BaccaratEndGameInfoService<BaccaratRound, BaccaratBet>>();
             services.AddScoped<BaccaratEndGameInfoService<VipBaccaratRound, VipBaccaratBet>>();
             services.AddScoped<BaccaratEndGameInfoService<BlockchainBaccaratRound, BlockchainBaccaratBet>>();
 
+            services.AddScoped<MiniKenoEndGameInfoService<KenoMaxRound, KenoMaxOne>>();
+            services.AddScoped<MiniKenoEndGameInfoService<KenoMax2Round, KenoMax2One>>();
+            services.AddScoped<MiniKenoEndGameInfoService<KenoMiniRound, KenoMiniOne>>();
+            services.AddScoped<MiniKenoEndGameInfoService<KenoMini2Round, KenoMini2One>>();
+            services.AddScoped<MiniKenoEndGameInfoService<KenoEastRound, KenoEastOne>>();
+            services.AddScoped<MiniKenoEndGameInfoService<KenoWestRound, KenoWestOne>>();
+            services.AddScoped<MiniKenoEndGameInfoService<KenoSouthRound, KenoSouthOne>>();
+            services.AddScoped<MiniKenoEndGameInfoService<KenoNorthRound, KenoNorthOne>>();
+            services.AddScoped<MiniKenoEndGameInfoService<MegaKenoRound, MegaKenoOne>>();
+            services.AddScoped<MiniKenoEndGameInfoService<MegaKeno2Round, MegaKeno2One>>();
         }
     }
 }

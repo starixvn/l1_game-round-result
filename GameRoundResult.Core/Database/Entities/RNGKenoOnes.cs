@@ -73,4 +73,16 @@ namespace GameRoundResult.Core.Database.Entities
     {
 
     }
+
+    [CollectionName("megakeno_ones")]
+    public class MegaKenoOne : RNGKenoOnes
+    {
+
+    }
+
+    [CollectionName("megakeno2_ones")]
+    public class MegaKeno2One : RNGKenoOnes
+    {
+
+    }
 }

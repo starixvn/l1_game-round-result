@@ -11,7 +11,7 @@ namespace GameRoundResult.Core.Database.Entities
     }
 
     [CollectionName("kenopromax_phiens")]
-    public class KenoProMaxRound: KenoRound
+    public class KenoProMaxRound : KenoRound
     {
 
     }
@@ -64,6 +64,17 @@ namespace GameRoundResult.Core.Database.Entities
 
     }
 
+    [CollectionName("megakeno_rounds")]
+    public class MegaKenoRound : KenoRound
+    {
+
+    }
+
+    [CollectionName("megakeno2_rounds")]
+    public class MegaKeno2Round : KenoRound
+    {
+
+    }
 
     public class SettlementResult
     {
