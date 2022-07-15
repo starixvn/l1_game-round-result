@@ -62,6 +62,7 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.BitcoinMaster, bitcoinMaster },
             { GameType.CasinoHoldemPoker, casinoHoldemPoker },
             { GameType.UnbalancedBigSmall, bigSmall },
+            { GameType.UnbalancedBigSmall2, bigSmall },
             { GameType.BlockchainBaccarat, baccarat },
             { GameType.MegaKeno, keno },
             { GameType.MegaKeno2, keno },

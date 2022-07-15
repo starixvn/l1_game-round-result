@@ -2,13 +2,27 @@
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    [CollectionName("unbalancedbigsmall_rounds")]
     public class UnbalancedBigSmallRound : BigSmallRound
     {
     }
 
-    [CollectionName("turbounbalancedbigsmall_rounds")]
-    public class TurboUnbalancedBigSmallRound : UnbalancedBigSmallRound
+    [CollectionName("unbalancedbigsmall1_rounds")]
+    public class UnbalancedBigSmall1Round : UnbalancedBigSmallRound
+    {
+    }
+
+    [CollectionName("unbalancedbigsmall2_rounds")]
+    public class UnbalancedBigSmall2Round : UnbalancedBigSmallRound
+    {
+    }
+
+    [CollectionName("unbalancedbigsmall3_rounds")]
+    public class UnbalancedBigSmall3Round : UnbalancedBigSmallRound
+    {
+    }
+
+    [CollectionName("unbalancedbigsmall4_rounds")]
+    public class UnbalancedBigSmall4Round : UnbalancedBigSmallRound
     {
     }
 }

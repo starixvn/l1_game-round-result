@@ -294,7 +294,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<BaseCascadingSlotWinningSymbol, BaseCascadingSlotWinningSymbolViewModel>();
             CreateMap<BaseCascadingSlotTumble, BaseCascadingSlotTumbleViewModel>();
 
-            CreateMap<UnbalancedBigSmallBetLog, UnbalancedBigSmallBetLogViewModel>()
+            CreateMap<UnbalancedBigSmallBetLog, UnbalancedBigSmallBetLogViewModel>();
 
             
             CreateMap<BlockchainBaccaratCard, DragonTigerCardViewModel>();

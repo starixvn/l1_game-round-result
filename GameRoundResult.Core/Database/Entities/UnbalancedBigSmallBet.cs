@@ -2,7 +2,6 @@
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    [CollectionName("unbalancedbigsmall_bets")]
     public class UnbalancedBigSmallBet : BaseBetEntity
     {
         public decimal Big { get; set; }
@@ -12,9 +11,23 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal TotalAmount { get; set; }
     }
 
-    [CollectionName("turbounbalancedbigsmall_bets")]
-    public class TurboUnbalancedBigSmallBet : UnbalancedBigSmallBet
+    [CollectionName("unbalancedbigsmall1_bets")]
+    public class UnbalancedBigSmall1Bet : UnbalancedBigSmallBet
     {
+    }
 
+    [CollectionName("unbalancedbigsmall2_bets")]
+    public class UnbalancedBigSmall2Bet : UnbalancedBigSmallBet
+    {
+    }
+
+    [CollectionName("unbalancedbigsmall3_bets")]
+    public class UnbalancedBigSmall3Bet : UnbalancedBigSmallBet
+    {
+    }
+
+    [CollectionName("unbalancedbigsmall4_bets")]
+    public class UnbalancedBigSmall4Bet : UnbalancedBigSmallBet
+    {
     }
 }

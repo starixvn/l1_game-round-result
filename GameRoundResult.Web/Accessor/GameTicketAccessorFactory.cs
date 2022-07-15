@@ -57,8 +57,10 @@ namespace GameRoundResult.Web.Accessor
             { GameType.TreasureIsland, typeof(BaseCascadingSlotTicketAccessor<TreasureIslandRound, TreasureIslandTotalMultiplier>) },
             { GameType.MegaKeno, typeof(MiniKenoTicketAccessor<MegaKenoRound, MegaKenoOne, MegaKenoBet>) },
             { GameType.MegaKeno2, typeof(MiniKenoTicketAccessor<MegaKeno2Round, MegaKeno2One, MegaKeno2Bet>) },
-            { GameType.UnbalancedBigSmall, typeof(UnbalancedBigSmallTicketAccessor<UnbalancedBigSmallRound, UnbalancedBigSmallBet, UnbalancedBigSmallBetLog>) },
-            { GameType.TurboUnbalancedBigSmall, typeof(UnbalancedBigSmallTicketAccessor<TurboUnbalancedBigSmallRound, TurboUnbalancedBigSmallBet, TurboUnbalancedBigSmallBetLog>) },
+            { GameType.UnbalancedBigSmall1, typeof(UnbalancedBigSmallTicketAccessor<UnbalancedBigSmall1Round, UnbalancedBigSmall1Bet, UnbalancedBigSmall1BetLog>) },
+            { GameType.UnbalancedBigSmall2, typeof(UnbalancedBigSmallTicketAccessor<UnbalancedBigSmall2Round, UnbalancedBigSmall2Bet, UnbalancedBigSmall2BetLog>) },
+            { GameType.UnbalancedBigSmall3, typeof(UnbalancedBigSmallTicketAccessor<UnbalancedBigSmall3Round, UnbalancedBigSmall3Bet, UnbalancedBigSmall3BetLog>) },
+            { GameType.UnbalancedBigSmall4, typeof(UnbalancedBigSmallTicketAccessor<UnbalancedBigSmall4Round, UnbalancedBigSmall4Bet, UnbalancedBigSmall4BetLog>) },
         };
 
         private readonly IServiceProvider serviceProvider;
