@@ -153,6 +153,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<TexasHoldemPokerEndGameInfoService>();
             services.AddScoped<NightClubEndRoundInfoService>();
             services.AddScoped<TreasureIslandEndRoundInfoService>();
+            services.AddScoped(typeof(UnbalancedBigSmallEndGameInfoService<,>));
             services.AddScoped<BaccaratTicketAccessor<BaccaratRound, BaccaratBet>>();
             services.AddScoped<BaccaratTicketAccessor<VipBaccaratRound, VipBaccaratBet>>();
             services.AddScoped<BaccaratTicketAccessor<BlockchainBaccaratRound, BlockchainBaccaratBet>>();

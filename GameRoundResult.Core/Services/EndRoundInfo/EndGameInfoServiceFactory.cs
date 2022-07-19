@@ -56,6 +56,10 @@ namespace GameRoundResult.Core.Services
             { GameType.KenoNorth, typeof(MiniKenoEndGameInfoService<KenoNorthRound, KenoNorthOne>) },
             { GameType.MegaKeno, typeof(MiniKenoEndGameInfoService<MegaKenoRound, MegaKenoOne>) },
             { GameType.MegaKeno2, typeof(MiniKenoEndGameInfoService<MegaKeno2Round, MegaKeno2One>) },
+            { GameType.UnbalancedBigSmall1, typeof(UnbalancedBigSmallEndGameInfoService<UnbalancedBigSmall1Round, UnbalancedBigSmall1Bet>) },
+            { GameType.UnbalancedBigSmall2, typeof(UnbalancedBigSmallEndGameInfoService<UnbalancedBigSmall2Round, UnbalancedBigSmall2Bet>) },
+            { GameType.UnbalancedBigSmall3, typeof(UnbalancedBigSmallEndGameInfoService<UnbalancedBigSmall3Round, UnbalancedBigSmall3Bet>) },
+            { GameType.UnbalancedBigSmall4, typeof(UnbalancedBigSmallEndGameInfoService<UnbalancedBigSmall4Round, UnbalancedBigSmall4Bet>) },
         };
 
         private readonly IServiceProvider serviceProvider;
