@@ -37,6 +37,7 @@ namespace GameRoundResult.Core.Services
         }
 
         protected override Expression<Func<TreasureIslandRound, bool>> GetRoundFilterExpression(RetrieveEndGameInfoRequest request)
-            => (round) => round.RoundId == request.GameRoundId && round.PlayerId == request.PlayerId && round.SiteId == request.SiteId;
+            => (round) => round.RoundId == request.GameRoundId && round.PlayerId == request.PlayerId && round.SiteId == request.SiteId
+            && round.OperatorId == request.OperatorId;
     }
 }

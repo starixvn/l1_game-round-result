@@ -6,7 +6,7 @@ namespace GameRoundResult.Core.Services
 {
     public interface IFourGuardiansTicketService
     {
-        Task<SlotRound> GetAsync<SlotRound>(long roundId, int playerId) where SlotRound : FourGuardiansRound;
+        Task<SlotRound> GetAsync<SlotRound>(long roundId, int playerId, string operatorId) where SlotRound : FourGuardiansRound;
     }
 
     public class FourGuardiansTicketService : IFourGuardiansTicketService
@@ -18,9 +18,9 @@ namespace GameRoundResult.Core.Services
             this.repository = repository;
         }
 
-        public async Task<SlotRound> GetAsync<SlotRound>(long roundId, int playerId) where SlotRound : FourGuardiansRound
+        public async Task<SlotRound> GetAsync<SlotRound>(long roundId, int playerId, string operatorId) where SlotRound : FourGuardiansRound
         {
-            return await repository.GetAsync<SlotRound>(roundId, playerId);
+            return await repository.GetAsync<SlotRound>(roundId, playerId, operatorId);
         }
     }
 }

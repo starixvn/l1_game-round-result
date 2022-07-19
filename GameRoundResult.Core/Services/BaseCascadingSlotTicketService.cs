@@ -6,7 +6,7 @@
 
     public interface IBaseCascadingSlotTicketService
     {
-        Task<(SlotRound, TotalMultiplier)> GetAsync<SlotRound, TotalMultiplier>(long roundId, int playerId) 
+        Task<(SlotRound, TotalMultiplier)> GetAsync<SlotRound, TotalMultiplier>(long roundId, int playerId, string operatorId) 
             where SlotRound : BaseCascadingSlotRoundEntity where TotalMultiplier : BaseCascadingSlotTotalMultiplierEntity;
     }
 
@@ -19,8 +19,8 @@
             this.repository = repository;
         }
 
-        public async Task<(SlotRound, TotalMultiplier)> GetAsync<SlotRound, TotalMultiplier>(long roundId, int playerId)
+        public async Task<(SlotRound, TotalMultiplier)> GetAsync<SlotRound, TotalMultiplier>(long roundId, int playerId, string operatorId)
             where SlotRound : BaseCascadingSlotRoundEntity
-            where TotalMultiplier : BaseCascadingSlotTotalMultiplierEntity => await repository.GetAsync<SlotRound, TotalMultiplier>(roundId, playerId);
+            where TotalMultiplier : BaseCascadingSlotTotalMultiplierEntity => await repository.GetAsync<SlotRound, TotalMultiplier>(roundId, playerId, operatorId);
     }
 }

@@ -37,6 +37,9 @@ namespace GameRoundResult.Core.Services
         }
 
         protected override Expression<Func<NightClubRound, bool>> GetRoundFilterExpression(RetrieveEndGameInfoRequest request)
-            => (round) => round.RoundId == request.GameRoundId && round.PlayerId == request.PlayerId && round.SiteId == request.SiteId;
+#pragma warning disable S1067 // Expressions should not be too complex
+            => (round) => round.RoundId == request.GameRoundId && round.PlayerId == request.PlayerId && round.SiteId == request.SiteId
+            && (round.PartnerId == request.OperatorId || round.OperatorId == request.OperatorId);
+#pragma warning restore S1067 // Expressions should not be too complex
     }
 }

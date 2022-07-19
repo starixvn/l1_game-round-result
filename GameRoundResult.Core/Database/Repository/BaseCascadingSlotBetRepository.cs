@@ -7,7 +7,7 @@
 
     public interface IBaseCascadingSlotBetRepository
     {
-        Task<(SlotRound, TotalMultiplier)> GetAsync<SlotRound, TotalMultiplier>(long roundId, int playerId) 
+        Task<(SlotRound, TotalMultiplier)> GetAsync<SlotRound, TotalMultiplier>(long roundId, int playerId, string operatorId) 
             where SlotRound : BaseCascadingSlotRoundEntity where TotalMultiplier : BaseCascadingSlotTotalMultiplierEntity;
     }
 
@@ -17,12 +17,13 @@
         {
         }
 
-        public async Task<(SlotRound, TotalMultiplier)> GetAsync<SlotRound, TotalMultiplier>(long roundId, int playerId) 
+        public async Task<(SlotRound, TotalMultiplier)> GetAsync<SlotRound, TotalMultiplier>(long roundId, int playerId, string operatorId) 
             where SlotRound : BaseCascadingSlotRoundEntity
             where TotalMultiplier : BaseCascadingSlotTotalMultiplierEntity
         {
             var round =  await database.GetCollection<SlotRound>(Document.GetCollectionName(typeof(SlotRound)))
-               .Find(x => x.RoundId == roundId && x.PlayerId == playerId).FirstOrDefaultAsync();
+               .Find(x => x.RoundId == roundId && x.PlayerId == playerId
+                && x.OperatorId == operatorId).FirstOrDefaultAsync();
 
             if(round != null)
             {

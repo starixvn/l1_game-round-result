@@ -41,6 +41,11 @@ namespace GameRoundResult.Core.Database.Entities
         public DateTime EndTime { get; set; }
 
         public string SiteId { get; set; }
+
+        public string PartnerId { get; set; }
+
+        public string OperatorId { get; set; }
+
     }
 
     public class FourGuardiansBonusChest
