@@ -6,7 +6,7 @@ namespace GameRoundResult.Core.Database.Repository
 {
     public interface IBlackjackBetRepository
     {
-        Task<(BlackjackRound, BlackjackBet)> GetAsync(long handId, int memberId, string parterId);
+        Task<(BlackjackRound, BlackjackBet)> GetAsync(long handId, int playerId, string operatorId);
     }
     public class BlackjackBetRepository : GameBetRepository, IBlackjackBetRepository
     {
@@ -14,12 +14,10 @@ namespace GameRoundResult.Core.Database.Repository
         {
         }
 
-        public async Task<(BlackjackRound, BlackjackBet)> GetAsync(long handId, int memberId, string parterId)
+        public async Task<(BlackjackRound, BlackjackBet)> GetAsync(long handId, int playerId, string operatorId)
         {
             var bet = await database.GetCollection<BlackjackBet>(Document.GetCollectionName(typeof(BlackjackBet)))
-                .Find(x => x.HandId == handId 
-                && (x.PlayerId == memberId || x.MemberId == memberId)
-                && (x.OperatorId == parterId || x.PartnerId == parterId))
+                .Find(x => x.HandId == handId && x.PlayerId == playerId && x.OperatorId == operatorId)
                 .SortByDescending(x => x.Id).FirstOrDefaultAsync();
 
             if (bet != null)

@@ -39,7 +39,14 @@
                                         @for (var column = 0; column < array.GetLength(1); column++)
                                         {
                                             <td>
-                                                <img class="symbol" src="~/scss/images/four-guardians/@(array[row,column]).png" alt="" asp-append-version="true" />
+                                                @if(array[row, column] == 10)
+                                                {
+                                                    @Html.Raw(Model.GetImageJackpot());
+                                                }
+                                                else
+                                                {
+                                                    <img class="symbol" src="~/scss/images/four-guardians/@(array[row,column]).png" alt="" asp-append-version="true" />
+                                                }
                                             </td>
                                         }
                                     </tr>

@@ -11,6 +11,7 @@ using GameRoundResult.Web.Requests;
 using MediatR;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Sentry;
 using TimeZoneConverter;
@@ -27,14 +28,15 @@ namespace GameRoundResult.Web.Controllers
         private readonly ILogService logService;
         private readonly IPartnerService partnerService;
         private readonly IEnumerable<OperatorConfig> operatorConfigs;
+        private readonly string systemType;
 
         public BetHistoryController(IMediator mediator,
             IDataProtectionProvider dataProtectionProvider,
             IOptionsSnapshot<HostConfiguration> hostConfigurationAccessor,
             ILogService logService,
             IPartnerService partnerService,
-            IOptionsSnapshot<List<OperatorConfig>> operatorConfigsAccessor
-
+            IOptionsSnapshot<List<OperatorConfig>> operatorConfigsAccessor,
+            IConfiguration configuration
             )
         {
             this.mediator = mediator;
@@ -43,6 +45,7 @@ namespace GameRoundResult.Web.Controllers
             this.partnerService = partnerService;
             this.logService = logService;
             operatorConfigs = operatorConfigsAccessor.Value;
+            this.systemType = configuration["SystemType"];
         }
 
         [HttpGet]
@@ -56,7 +59,7 @@ namespace GameRoundResult.Web.Controllers
                 var operatorSecret = data[1];
                 var gameType = Enum.Parse<GameType>(data[2]);
                 var roundId = long.Parse(data[3]);
-                var memberId = int.Parse(data[4]);
+                var playerId = int.Parse(data[4]);
                 var freeBet = bool.Parse(data[5]);
 
                 if (!Enum.IsDefined(typeof(GameType), gameType))
@@ -71,7 +74,7 @@ namespace GameRoundResult.Web.Controllers
                     var viewModel = new GameTicketResultViewModel
                     {
                         GameType = gameType,
-                        GameTicketResult = await GetGameTicket(gameType, roundId, memberId, operatorId, freeBet)
+                        GameTicketResult = await GetGameTicket(gameType, roundId, playerId, operatorId, freeBet)
                     };
 
                     return View(viewModel);
@@ -133,7 +136,7 @@ namespace GameRoundResult.Web.Controllers
             var config = operatorConfigs.FirstOrDefault(x => x.OperatorId == operatorId);
             var timeZoneInfo = TZConvert.GetTimeZoneInfo(config.TimeZone);
 
-            return await mediator.Send(new GetGameTicketRequest(gameType, roundId, playerId, timeZoneInfo, operatorId, freeBet));
+            return await mediator.Send(new GetGameTicketRequest(gameType, roundId, playerId, timeZoneInfo, operatorId, freeBet, systemType));
         }
     }
 }

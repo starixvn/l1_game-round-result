@@ -17,9 +17,5 @@
         public string OperatorId { get; set; }
 
         public decimal Rate { get; set; }
-
-        public int? MemberId { get; set; }
-        public string PartnerId { get; set; }
-        public long Phien { get; set; }
     }
 }

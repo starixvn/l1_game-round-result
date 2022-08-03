@@ -60,14 +60,10 @@ namespace GameRoundResult.Core.Services
         }
 
         protected virtual Expression<Func<TBetEntity, bool>> GetBetFilterExpression(RetrieveEndGameInfoRequest request)
-#pragma warning disable S1067 // Expressions should not be too complex
-            => (bet) => (bet.RoundId == request.GameRoundId || bet.Phien == request.GameRoundId) 
-            && (bet.PlayerId == request.PlayerId || bet.MemberId == request.PlayerId)
-            && bet.SiteId == request.SiteId && (bet.Paid || bet.OldPaid);
-#pragma warning restore S1067 // Expressions should not be too complex
+            => (bet) => bet.RoundId == request.GameRoundId&& bet.PlayerId == request.PlayerId  && bet.SiteId == request.SiteId && bet.Paid;
 
         protected virtual Expression<Func<TBetEntity, bool>> PartnerFilterExpression(RetrieveEndGameInfoRequest request)
-            => (bet) => string.Equals(request.OperatorId, bet.OperatorId) || string.Equals(request.OperatorId, bet.PartnerId);
+            => (bet) => string.Equals(request.OperatorId, bet.OperatorId) || string.Equals(request.OperatorId, bet.OperatorId, StringComparison.Ordinal);
 
         protected virtual Expression<Func<TBetEntity, bool>> FreeBetExpression(RetrieveEndGameInfoRequest request)
             => bet => !bet.FreeBet.HasValue || bet.FreeBet.Value == request.FreeBet;

@@ -7,9 +7,6 @@ namespace GameRoundResult.Core.Database.Entities
     {
         public bool Paid { get; set; }
 
-        [BsonElement("thanhtoan")]
-        public bool OldPaid { get; set; }
-
         [BsonRepresentation(BsonType.Decimal128, AllowTruncation = true)]
         public decimal Betwin { get; set; }
 
@@ -17,13 +14,9 @@ namespace GameRoundResult.Core.Database.Entities
 
         public string Name { get; set; }
 
-        public long Phien { get; set; }
-
         public long RoundId { get; set; }
 
         public int? PlayerId { get; set; }
-
-        public int? MemberId { get; set; }
 
         public string SiteId { get; set; }
 
@@ -33,8 +26,6 @@ namespace GameRoundResult.Core.Database.Entities
         public string Currency { get; set; }
 
         public string OperatorId { get; set; }
-
-        public string PartnerId { get; set; }
 
         public decimal Rate { get; set; }
     }

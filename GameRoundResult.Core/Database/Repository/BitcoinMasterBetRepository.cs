@@ -10,7 +10,7 @@ namespace GameRoundResult.Core.Database.Repository
 {
     public interface IBitcoinMasterBetRepository
     {
-        Task<(BitcoinMasterRound, IEnumerable<BitcoinMasterBet>, BitcoinMasterOne)> GetAsync(long roundId, int memberId, string partnerId);
+        Task<(BitcoinMasterRound, IEnumerable<BitcoinMasterBet>, BitcoinMasterOne)> GetAsync(long roundId, int playerId, string operatorId);
     }
 
     public class BitcoinMasterBetRepository : GameBetRepository, IBitcoinMasterBetRepository
@@ -19,21 +19,18 @@ namespace GameRoundResult.Core.Database.Repository
         {
         }
 
-        public async Task<(BitcoinMasterRound, IEnumerable<BitcoinMasterBet>, BitcoinMasterOne)> GetAsync(long roundId, int memberId, string partnerId)
+        public async Task<(BitcoinMasterRound, IEnumerable<BitcoinMasterBet>, BitcoinMasterOne)> GetAsync(long roundId, int playerId, string operatorId)
         {
             var round = await GetRoundAsync<BitcoinMasterRound>(roundId, Document.GetCollectionName(typeof(BitcoinMasterRound)));
-            var one = (await GetBetsAsync<BitcoinMasterOne>(roundId, memberId, Document.GetCollectionName(typeof(BitcoinMasterOne)), partnerId)).FirstOrDefault();
-            var bets = await GetBetLogsAsync<BitcoinMasterBet>(roundId, memberId, Document.GetCollectionName(typeof(BitcoinMasterBet)), partnerId);
+            var one = (await GetBetsAsync<BitcoinMasterOne>(roundId, playerId, Document.GetCollectionName(typeof(BitcoinMasterOne)), operatorId)).FirstOrDefault();
+            var bets = await GetBetLogsAsync<BitcoinMasterBet>(roundId, playerId, Document.GetCollectionName(typeof(BitcoinMasterBet)), operatorId);
 
             return (round, bets, one);
         }
 
-        private async Task<IEnumerable<T>> GetBetsAsync<T>(long roundId, int memberId, string collectionName, string partnerId) where T : BaseBetEntity
+        private async Task<IEnumerable<T>> GetBetsAsync<T>(long roundId, int playerId, string collectionName, string operatorId) where T : BaseBetEntity
         {
-            Expression<Func<T, bool>> defaultExpression = bet =>
-            (bet.PlayerId == memberId || bet.MemberId == memberId)
-            && (bet.RoundId == roundId || bet.Phien == roundId)
-            && (bet.OperatorId == partnerId || bet.PartnerId == partnerId);
+            Expression<Func<T, bool>> defaultExpression = bet => bet.PlayerId == playerId && bet.RoundId == roundId && bet.OperatorId == operatorId;
 
             return await database
                 .GetCollection<T>(collectionName)

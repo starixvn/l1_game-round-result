@@ -7,7 +7,7 @@ namespace GameRoundResult.Core.Services
 {
     public interface IHiLoTicketService
     {
-        Task<(HiLoRound, IEnumerable<HiLoBetLog>)> GetAsync(long handId, int memberId, string parterId);
+        Task<(HiLoRound, IEnumerable<HiLoBetLog>)> GetAsync(long handId, int playerId, string parterId);
     }
 
     public class HiLoTicketService : IHiLoTicketService
@@ -19,9 +19,9 @@ namespace GameRoundResult.Core.Services
             this.repository = repository;
         }
 
-        public Task<(HiLoRound, IEnumerable<HiLoBetLog>)> GetAsync(long handId, int memberId, string parterId)
+        public Task<(HiLoRound, IEnumerable<HiLoBetLog>)> GetAsync(long handId, int playerId, string parterId)
         {
-            return repository.GetAsync(handId, memberId, parterId);
+            return repository.GetAsync(handId, playerId, parterId);
         }
     }
 }

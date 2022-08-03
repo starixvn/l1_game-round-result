@@ -6,7 +6,7 @@ namespace GameRoundResult.Core.Database.Repository
 {
     public interface IFourGuardiansBetRepository
     {
-        Task<SlotRound> GetAsync<SlotRound>(long roundId, int memberId, string operatorId) where SlotRound : FourGuardiansRound;
+        Task<SlotRound> GetAsync<SlotRound>(long roundId, int playerId, string operatorId) where SlotRound : FourGuardiansRound;
     }
 
     public class FourGuardiansBetRepository : GameBetRepository, IFourGuardiansBetRepository
@@ -15,15 +15,11 @@ namespace GameRoundResult.Core.Database.Repository
         {
         }
 
-        public async Task<SlotRound> GetAsync<SlotRound>(long roundId, int memberId, string operatorId) where SlotRound: FourGuardiansRound
+        public async Task<SlotRound> GetAsync<SlotRound>(long roundId, int playerId, string operatorId) where SlotRound: FourGuardiansRound
         {
             return await database.GetCollection<SlotRound>(Document.GetCollectionName(typeof(SlotRound)))
-#pragma warning disable S1067 // Expressions should not be too complex
-               .Find(x => x.RoundId == roundId 
-                    && (x.PlayerId == memberId || x.MemberId == memberId)
-                    && (x.PartnerId == operatorId || x.OperatorId == operatorId)
-#pragma warning restore S1067 // Expressions should not be too complex
-                ).FirstOrDefaultAsync();
+               .Find(x => x.RoundId == roundId && x.PlayerId == playerId&& x.OperatorId == operatorId)
+               .FirstOrDefaultAsync();
         }
     }
 }

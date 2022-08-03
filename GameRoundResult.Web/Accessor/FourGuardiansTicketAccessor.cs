@@ -27,6 +27,7 @@ namespace GameRoundResult.Web.Accessor
             return new FourGuardiansTicketViewModel
             {
                 RoundResult = result?.ToViewModel<SlotRound, FourGuardiansRoundResultViewModel>(mapper, request.TimeZoneInfo),
+                SystemType = request.SystemType
             };
         }
     }

@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using GameRoundResult.Web.Extensions;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GameRoundResult.Web.Models
 {
@@ -10,6 +14,32 @@ namespace GameRoundResult.Web.Models
         public decimal BetWin => RoundResult.BetWin + (RoundResult.SettlementResult.Jackpot?.WinningAmount ?? 0);
 
         public decimal WinLoss => RoundResult.FreeSpin ? BetWin : BetWin - RoundResult.TotalAmount;
+
+        public string SystemType { get; set; }
+
+        public string GetImageJackpot()
+        {
+            var img = new TagBuilder("img");
+            img.AddCssClass($"symbol");
+            var ticks = DateTime.Now.Ticks;
+            if (SystemType.Equals("SC1"))
+            {
+                img.Attributes.Add("src", $"/scss/images/four-guardians/10.png?v={ticks}");
+            }
+            else
+            {
+                if (CultureInfo.CurrentUICulture.Name == "vi-VN")
+                {
+                    img.Attributes.Add("src", $"/scss/images/four-guardians/10.vi-VN.png?v={ticks}");
+                }
+                else
+                {
+                    img.Attributes.Add("src", $"/scss/images/four-guardians/10.jackpot.png?v={ticks}");
+                }
+            }
+           
+            return img.GetHtmlString();
+        }
     }
 
     public class FourGuardiansRoundResultViewModel : RoundResultViewModel

@@ -34,15 +34,10 @@ namespace GameRoundResult.Core.Database.Entities
 
         public int? PlayerId { get; set; }
 
-        public int? MemberId { get; set; }
-
-
         [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime EndTime { get; set; }
 
         public string SiteId { get; set; }
-
-        public string PartnerId { get; set; }
 
         public string OperatorId { get; set; }
 
