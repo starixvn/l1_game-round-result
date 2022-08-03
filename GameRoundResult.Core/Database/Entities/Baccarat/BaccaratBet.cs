@@ -21,8 +21,12 @@ namespace GameRoundResult.Core.Database.Entities
     }
 
     [CollectionName("vipbaccarat_cuocs")]
-    public class VipBaccaratBet: BaccaratBet
+    public class VipBaccaratBet : BaccaratBet
     {
+    }
 
+    [CollectionName("blockchainbaccarat_bets")]
+    public class BlockchainBaccaratBet : BaccaratBet
+    {
     }
 }

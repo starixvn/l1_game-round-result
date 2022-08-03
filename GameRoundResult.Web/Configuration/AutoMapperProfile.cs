@@ -291,6 +291,47 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<BaseCascadingSlotFreeSpin, BaseCascadingSlotFreeSpinViewModel>();
             CreateMap<BaseCascadingSlotWinningSymbol, BaseCascadingSlotWinningSymbolViewModel>();
             CreateMap<BaseCascadingSlotTumble, BaseCascadingSlotTumbleViewModel>();
+            
+            CreateMap<BlockchainBaccaratCard, DragonTigerCardViewModel>();
+            CreateMap<BlockchainBaccaratRound, BaccaratRoundResultViewModel>()
+             .ForMember(x => x.PlayerCards, opt => opt.MapFrom((source, destination, i, context) =>
+             {
+                 var mapper = context.Mapper;
+                 var result = new List<DragonTigerCardViewModel>
+                 {
+                        mapper.Map<DragonTigerCardViewModel>(source.Result.Player.FirstCard),
+                        mapper.Map<DragonTigerCardViewModel>(source.Result.Player.SecondCard)
+                 };
+                 if (source.Result.Player.ThirdCard != null)
+                 {
+                     result.Add(mapper.Map<DragonTigerCardViewModel>(source.Result.Player.ThirdCard));
+                 }
+
+                 return result;
+             }))
+             .ForMember(x => x.BankerCards, opt => opt.MapFrom((source, destination, i, context) =>
+             {
+                 var mapper = context.Mapper;
+                 var result = new List<DragonTigerCardViewModel> {
+                        mapper.Map<DragonTigerCardViewModel>(source.Result.Banker.FirstCard),
+                        mapper.Map<DragonTigerCardViewModel>(source.Result.Banker.SecondCard)
+                 };
+
+                 if (source.Result.Banker.ThirdCard != null)
+                 {
+                     result.Add(mapper.Map<DragonTigerCardViewModel>(source.Result.Banker.ThirdCard));
+                 }
+
+                 return result;
+             }))
+             .ForMember(x => x.Player, opt => opt.MapFrom(x => x.SettlementResult.Player))
+             .ForMember(x => x.Banker, opt => opt.MapFrom(x => x.SettlementResult.Banker))
+             .ForMember(x => x.Tie, opt => opt.MapFrom(x => x.SettlementResult.Tie))
+             .ForMember(x => x.Big, opt => opt.MapFrom(x => x.SettlementResult.Big))
+             .ForMember(x => x.Small, opt => opt.MapFrom(x => x.SettlementResult.Small))
+             .ForMember(x => x.PlayerPair, opt => opt.MapFrom(x => x.SettlementResult.PlayerPair))
+             .ForMember(x => x.BankerPair, opt => opt.MapFrom(x => x.SettlementResult.BankerPair))
+             .ForMember(x => x.Natural, opt => opt.MapFrom(x => x.SettlementResult.Natural));
         }
     }
 }

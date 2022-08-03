@@ -42,6 +42,7 @@
         BitcoinMaster = 43,
         HiLo = 45,
         NightClub = 46,
-        TreasureIsland
+        TreasureIsland = 47,
+        BlockchainBaccarat = 48
     }
 }

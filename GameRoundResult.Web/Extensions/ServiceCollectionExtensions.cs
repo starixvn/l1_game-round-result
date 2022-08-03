@@ -1,9 +1,11 @@
 ﻿using System.Globalization;
 using System.Linq;
+using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
-using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Accessor;
+using GameRoundResult.Web.Configuration;
+using GameRoundResult.Web.ViewFactory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Localization.Routing;
@@ -15,7 +17,6 @@ using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Bson.Serialization.Options;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
-using GameRoundResult.Web.ViewFactory;
 
 namespace GameRoundResult.Web.Extensions
 {
@@ -95,7 +96,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IPartnerRepository, PartnerRepository>();
 
             services.AddScoped(typeof(BigSmallTicketAccessor<,,>));
-            services.AddScoped<BaccaratTicketAccessor>();
+
             services.AddScoped<BlackjackTicketAccessor>();
             services.AddScoped<DragonTigerTicketAccessor>();
             services.AddScoped<FishPrawnCrabTicketAccessor>();
@@ -110,7 +111,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<SeDieTicketAccessor>();
             services.AddScoped<SicBoTicketAccessor>();
             services.AddScoped<SpecialSeDieTicketAccessor>();
-            services.AddScoped<VipBaccaratTicketAccessor>();
+
             services.AddScoped<VipFishPrawnCrabTicketAccessor>();
             services.AddScoped<VipSeDieTicketAccessor>();
             services.AddScoped<VipSeDieWarTicketAccessor>();
@@ -132,8 +133,6 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<SeDieEndGameInfoService>();
             services.AddScoped<MiniSeDieEndGameInfoService>();
             services.AddScoped<DragonTigerEndGameInfoService>();
-            services.AddScoped<BaccaratEndGameInfoService>();
-            services.AddScoped<VipBaccaratEndGameInfoService>();
             services.AddScoped<KenoProMaxEndGameInfoService>();
             services.AddScoped<KenoMaxEndGameInfoService>();
             services.AddScoped<KenoMax2EndGameInfoService>();
@@ -162,6 +161,15 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<TexasHoldemPokerEndGameInfoService>();
             services.AddScoped<NightClubEndRoundInfoService>();
             services.AddScoped<TreasureIslandEndRoundInfoService>();
+            services.AddScoped<BaccaratTicketAccessor<BaccaratRound, BaccaratBet>>();
+            services.AddScoped<BaccaratTicketAccessor<VipBaccaratRound, VipBaccaratBet>>();
+            services.AddScoped<BaccaratTicketAccessor<BlockchainBaccaratRound, BlockchainBaccaratBet>>();
+
+
+            services.AddScoped<BaccaratEndGameInfoService<BaccaratRound, BaccaratBet>>();
+            services.AddScoped<BaccaratEndGameInfoService<VipBaccaratRound, VipBaccaratBet>>();
+            services.AddScoped<BaccaratEndGameInfoService<BlockchainBaccaratRound, BlockchainBaccaratBet>>();
+
         }
     }
 }

@@ -46,6 +46,8 @@
         public DateTime EndTime { get; set; }
 
         public bool ReachMaxWin { get; set; }
+
+        public string OperatorId { get; set; }
     }
 
     public class BaseCascadingSlotSettlementResult

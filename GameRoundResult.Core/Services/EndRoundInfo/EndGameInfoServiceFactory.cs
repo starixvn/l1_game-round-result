@@ -20,7 +20,6 @@ namespace GameRoundResult.Core.Services
             { GameType.FishPrawnCrab, typeof(FishPrawnCrabEndGameInfoService) },
             { GameType.SeDie, typeof(SeDieEndGameInfoService) },
             { GameType.MiniSeDie, typeof(MiniSeDieEndGameInfoService) },
-            { GameType.Baccarat, typeof(BaccaratEndGameInfoService) },
             { GameType.DragonTiger, typeof(DragonTigerEndGameInfoService) },
             { GameType.KenoProMax, typeof(KenoProMaxEndGameInfoService) },
             { GameType.KenoMax, typeof(KenoMaxEndGameInfoService) },
@@ -37,7 +36,6 @@ namespace GameRoundResult.Core.Services
             { GameType.Blackjack, typeof(BlackjackEndGameInfoService) },
             { GameType.VipFishPrawnCrab, typeof(VipFishPrawnCrabEndGameInfoService) },
             { GameType.SicBo, typeof(SicBoEndGameInfoService) },
-            { GameType.VipBaccarat, typeof(VipBaccaratEndGameInfoService) },
             { GameType.SeDieWar, typeof(VipSeDieWarEndGameInfoService) },
             { GameType.FourGuardians, typeof(FourGuardiansEndGameInfoService) },
             { GameType.Lottery, typeof(LotteryEndGameInfoService) },
@@ -52,7 +50,10 @@ namespace GameRoundResult.Core.Services
             { GameType.HiLo, typeof(HiLoEndGameInfoService) },
             { GameType.TexasHoldemPoker, typeof(TexasHoldemPokerEndGameInfoService) },
             { GameType.NightClub, typeof(NightClubEndRoundInfoService) },
-            { GameType.TreasureIsland, typeof(TreasureIslandEndRoundInfoService)}
+            { GameType.TreasureIsland, typeof(TreasureIslandEndRoundInfoService) },
+            { GameType.Baccarat, typeof(BaccaratEndGameInfoService<BaccaratRound, BaccaratBet>) },
+            { GameType.VipBaccarat, typeof(BaccaratEndGameInfoService<VipBaccaratRound, VipBaccaratBet>) },
+            { GameType.BlockchainBaccarat, typeof(BaccaratEndGameInfoService<BlockchainBaccaratRound, BlockchainBaccaratBet>) },
         };
 
         private readonly IServiceProvider serviceProvider;

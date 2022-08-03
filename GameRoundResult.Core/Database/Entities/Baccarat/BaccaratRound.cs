@@ -4,13 +4,17 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace GameRoundResult.Core.Database.Entities
 {
     [CollectionName("baccarat_phiens")]
-    public class BaccaratRound : GameRound
+    public class BaccaratRound : BaseBaccaratRoundEntity
     {
         public Side Player { get; set; }
 
         public Side Banker { get; set; }
 
         public BaccaratResult Result { get; set; }
+    }
+
+    public class BaseBaccaratRoundEntity : GameRound
+    {
     }
 
     public class BaccaratResult

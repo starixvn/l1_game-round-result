@@ -23,20 +23,20 @@ namespace GameRoundResult.Core.UnitTests.Services
         }
 
         [Theory, AutoData]
-        public async Task GetAsync_ReturnCorrectResult(long roundId, int memberId)
+        public async Task GetAsync_ReturnCorrectResult(long roundId, int memberId, string operatorId)
         {
             //Arrnage
             var roundEntity = fixture.Create<BaseCascadingSlotRoundEntity>();
             var totalMultiplierEntity = fixture.Create<BaseCascadingSlotTotalMultiplierEntity>();
-            gameBetRepository.GetAsync<BaseCascadingSlotRoundEntity , BaseCascadingSlotTotalMultiplierEntity> (roundId, memberId).Returns((roundEntity, totalMultiplierEntity));
+            gameBetRepository.GetAsync<BaseCascadingSlotRoundEntity , BaseCascadingSlotTotalMultiplierEntity> (roundId, memberId, operatorId).Returns((roundEntity, totalMultiplierEntity));
 
             //Act
-            var result = await gameBetService.GetAsync<BaseCascadingSlotRoundEntity, BaseCascadingSlotTotalMultiplierEntity>(roundId, memberId);
+            var result = await gameBetService.GetAsync<BaseCascadingSlotRoundEntity, BaseCascadingSlotTotalMultiplierEntity>(roundId, memberId, operatorId);
 
             //Assert
             Assert.StrictEqual(roundEntity, result.Item1);
             Assert.StrictEqual(totalMultiplierEntity, result.Item2);
-            await gameBetRepository.Received(1).GetAsync<BaseCascadingSlotRoundEntity, BaseCascadingSlotTotalMultiplierEntity>(roundId, memberId);
+            await gameBetRepository.Received(1).GetAsync<BaseCascadingSlotRoundEntity, BaseCascadingSlotTotalMultiplierEntity>(roundId, memberId, operatorId);
         }
     }
 }

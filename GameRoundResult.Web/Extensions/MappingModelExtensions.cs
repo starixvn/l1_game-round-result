@@ -1,8 +1,8 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
-using System;
 
 namespace GameRoundResult.Web.Extensions
 {
@@ -230,9 +230,10 @@ namespace GameRoundResult.Web.Extensions
         {
             return mapper.Map<TexasHoldemPokerBet, TexasHoldemPokerBetViewModel>(entity, opts =>
             {
-                opts.AfterMap((source, dest) => { 
-                    dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo); 
-                    dest.CallTime = TimeZoneInfo.ConvertTimeFromUtc(source.CallTime, timeZoneInfo); 
+                opts.AfterMap((source, dest) =>
+                {
+                    dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo);
+                    dest.CallTime = TimeZoneInfo.ConvertTimeFromUtc(source.CallTime, timeZoneInfo);
                     dest.RiverTime = TimeZoneInfo.ConvertTimeFromUtc(source.RiverTime, timeZoneInfo);
                     dest.TurnTime = TimeZoneInfo.ConvertTimeFromUtc(source.TurnTime, timeZoneInfo);
                 });
@@ -264,7 +265,7 @@ namespace GameRoundResult.Web.Extensions
         {
             return mapper.Map<BaseCascadingSlotRoundMultiplier, BaseCascadingSlotRoundMultiplierViewModel>(entity, opts =>
             {
-                opts.AfterMap((source, dest) =>  dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });
         }
     }

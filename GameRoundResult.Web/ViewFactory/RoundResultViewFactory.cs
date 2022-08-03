@@ -61,6 +61,7 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.KenoPower2, kenoPower },
             { GameType.BitcoinMaster, bitcoinMaster },
             { GameType.CasinoHoldemPoker, casinoHoldemPoker },
+            { GameType.BlockchainBaccarat, baccarat },
         };
 
         public string GetView(GameType game) => views[game];

@@ -216,4 +216,7 @@
   <data name="BitcoinMaster" xml:space="preserve">
     <value>Bitcoin Master</value>
   </data>
+  <data name="BlockchainBaccarat" xml:space="preserve">
+    <value>Blockchain Baccarat</value>
+  </data>
 </root>

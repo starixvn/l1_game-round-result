@@ -23,7 +23,9 @@ namespace GameRoundResult.Web.Accessor
             { GameType.DragonTiger, typeof(DragonTigerTicketAccessor) },
             { GameType.KenoProMax, typeof(KenoProMaxTicketAccessor) },
             { GameType.MiniSeDie, typeof(MiniSeDieTicketAccessor) },
-            { GameType.Baccarat, typeof(BaccaratTicketAccessor) },
+            { GameType.Baccarat, typeof(BaccaratTicketAccessor<BaccaratRound, BaccaratBet>) },
+            { GameType.VipBaccarat, typeof(BaccaratTicketAccessor<VipBaccaratRound, VipBaccaratBet>) },
+            { GameType.BlockchainBaccarat, typeof(BaccaratTicketAccessor<BlockchainBaccaratRound, BlockchainBaccaratBet>) },
             { GameType.KenoMax, typeof(MiniKenoTicketAccessor<KenoMaxRound, KenoMaxOne, KenoMaxBet>) },
             { GameType.KenoMax2, typeof(MiniKenoTicketAccessor<KenoMax2Round, KenoMax2One, KenoMax2Bet>) },
             { GameType.KenoMini, typeof(MiniKenoTicketAccessor<KenoMiniRound, KenoMiniOne, KenoMiniBet>) },
@@ -38,7 +40,6 @@ namespace GameRoundResult.Web.Accessor
             { GameType.SpecialSeDie, typeof(SpecialSeDieTicketAccessor) },
             { GameType.SicBo, typeof(SicBoTicketAccessor) },
             { GameType.VipFishPrawnCrab, typeof(VipFishPrawnCrabTicketAccessor) },
-            { GameType.VipBaccarat, typeof(VipBaccaratTicketAccessor) },
             { GameType.SeDieWar, typeof(VipSeDieWarTicketAccessor) },
             { GameType.Lottery, typeof(LotteryTicketAccessor) },
             { GameType.ThreeCards, typeof(ThreeCardsTicketAccessor) },
@@ -64,6 +65,6 @@ namespace GameRoundResult.Web.Accessor
         }
 
         public IGameTicketAccessor GetService(GameType game)
-        => (IGameTicketAccessor)serviceProvider.GetRequiredService(services[game]);
+            => (IGameTicketAccessor)serviceProvider.GetRequiredService(services[game]);
     }
 }
