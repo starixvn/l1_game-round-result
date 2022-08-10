@@ -225,22 +225,22 @@
   <data name="BlockchainBaccarat" xml:space="preserve">
     <value>Blockchain Baccarat</value>
     </data>
-  <data name="UnbalancedBigSmall1" xml:space="preserve">
-    <value>Tài Xỉu 2</value>
-  </data>
-  <data name="UnbalancedBigSmall2" xml:space="preserve">
-    <value>Tài Xỉu Siêu Tốc 2</value>
-  </data>
-  <data name="UnbalancedBigSmall3" xml:space="preserve">
-    <value>Tài Xỉu 3</value>
-  </data>
   <data name="MegaKeno" xml:space="preserve">
     <value>Mega Keno</value>
     </data>
-  <data name="UnbalancedBigSmall4" xml:space="preserve">
-    <value>Tài Xỉu Siêu Tốc 3</value>
-  </data>
   <data name="MegaKeno2" xml:space="preserve">
     <value>Mega Keno 2</value>
+  </data>
+  <data name="UnbalancedBigSmall1" xml:space="preserve">
+    <value>Las Vegas</value>
+  </data>
+  <data name="UnbalancedBigSmall2" xml:space="preserve">
+    <value>Marina Bay</value>
+  </data>
+  <data name="UnbalancedBigSmall3" xml:space="preserve">
+    <value>Macau</value>
+  </data>
+  <data name="UnbalancedBigSmall4" xml:space="preserve">
+    <value>Monte Carlo</value>
   </data>
 </root>
