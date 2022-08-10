@@ -61,11 +61,13 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.KenoPower2, kenoPower },
             { GameType.BitcoinMaster, bitcoinMaster },
             { GameType.CasinoHoldemPoker, casinoHoldemPoker },
-            { GameType.UnbalancedBigSmall, bigSmall },
-            { GameType.UnbalancedBigSmall2, bigSmall },
             { GameType.BlockchainBaccarat, baccarat },
             { GameType.MegaKeno, keno },
             { GameType.MegaKeno2, keno },
+            { GameType.UnbalancedBigSmall1, bigSmall },
+            { GameType.UnbalancedBigSmall2, bigSmall },
+            { GameType.UnbalancedBigSmall3, bigSmall },
+            { GameType.UnbalancedBigSmall4, bigSmall },
         };
 
         public string GetView(GameType game) => views[game];
