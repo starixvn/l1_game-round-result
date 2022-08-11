@@ -22,4 +22,19 @@ namespace GameRoundResult.Core.Database.Entities
         [BsonElement("white4")]
         public decimal FourWhite { get; set; }
     }
+
+    [CollectionName("minisedie2_bets")]
+    public class MiniSeDie2Bet : MiniSeDieBet
+    {
+    }
+
+    [CollectionName("minisedie3_bets")]
+    public class MiniSeDie3Bet : MiniSeDieBet
+    {
+    }
+
+    [CollectionName("minisedie4_bets")]
+    public class MiniSeDie4Bet : MiniSeDieBet
+    {
+    }
 }

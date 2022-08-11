@@ -23,6 +23,21 @@ namespace GameRoundResult.Core.Database.Entities
         public MiniSeDieSettlementResultEntity SettlementResult { get; set; }
     }
 
+    [CollectionName("minisedie2_rounds")]
+    public class MiniSeDie2Round : MiniSeDieRound
+    {
+    }
+
+    [CollectionName("minisedie3_rounds")]
+    public class MiniSeDie3Round : MiniSeDieRound
+    {
+    }
+
+    [CollectionName("minisedie4_rounds")]
+    public class MiniSeDie4Round : MiniSeDieRound
+    {
+    }
+
     public class MiniSeDieResult
     {
         [BsonElement("red1")]

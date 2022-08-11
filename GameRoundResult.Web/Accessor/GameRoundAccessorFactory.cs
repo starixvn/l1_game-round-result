@@ -54,6 +54,9 @@ namespace GameRoundResult.Web.Accessor
             { GameType.UnbalancedBigSmall2, typeof(GameRoundAccessor<UnbalancedBigSmall2Round, BigSmallRoundResultViewModel>) },
             { GameType.UnbalancedBigSmall3, typeof(GameRoundAccessor<UnbalancedBigSmall3Round, BigSmallRoundResultViewModel>) },
             { GameType.UnbalancedBigSmall4, typeof(GameRoundAccessor<UnbalancedBigSmall4Round, BigSmallRoundResultViewModel>) },
+            { GameType.MiniSeDie2, typeof(GameRoundAccessor<MiniSeDie2Round, MiniSeDieRoundResultViewModel>) },
+            { GameType.MiniSeDie3, typeof(GameRoundAccessor<MiniSeDie3Round, MiniSeDieRoundResultViewModel>) },
+            { GameType.MiniSeDie4, typeof(GameRoundAccessor<MiniSeDie4Round, MiniSeDieRoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;

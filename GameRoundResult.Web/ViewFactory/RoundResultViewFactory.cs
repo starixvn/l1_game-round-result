@@ -68,6 +68,9 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.UnbalancedBigSmall2, bigSmall },
             { GameType.UnbalancedBigSmall3, bigSmall },
             { GameType.UnbalancedBigSmall4, bigSmall },
+            { GameType.MiniSeDie2, sedie },
+            { GameType.MiniSeDie3, sedie },
+            { GameType.MiniSeDie4, sedie },
         };
 
         public string GetView(GameType game) => views[game];

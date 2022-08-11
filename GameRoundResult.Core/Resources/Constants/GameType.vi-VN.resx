@@ -224,10 +224,10 @@
   </data>
   <data name="BlockchainBaccarat" xml:space="preserve">
     <value>Blockchain Baccarat</value>
-    </data>
+  </data>
   <data name="MegaKeno" xml:space="preserve">
     <value>Mega Keno</value>
-    </data>
+  </data>
   <data name="MegaKeno2" xml:space="preserve">
     <value>Mega Keno 2</value>
   </data>
@@ -242,5 +242,14 @@
   </data>
   <data name="UnbalancedBigSmall4" xml:space="preserve">
     <value>Monte Carlo</value>
+  </data>
+  <data name="MiniSeDie2" xml:space="preserve">
+    <value>Xóc Đĩa Mini 2</value>
+  </data>
+  <data name="MiniSeDie3" xml:space="preserve">
+    <value>Xóc Đĩa Mini 3</value>
+  </data>
+  <data name="MiniSeDie4" xml:space="preserve">
+    <value>Xóc Đĩa Mini 4</value>
   </data>
 </root>

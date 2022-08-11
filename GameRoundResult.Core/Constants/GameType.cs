@@ -51,5 +51,8 @@
         MegaKeno2 = 53,
         UnbalancedBigSmall3 = 54,
         UnbalancedBigSmall4 = 55,
+        MiniSeDie2 = 56,
+        MiniSeDie3 = 57,
+        MiniSeDie4 = 58,
     }
 }

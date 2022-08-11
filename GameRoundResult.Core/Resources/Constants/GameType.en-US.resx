@@ -240,4 +240,13 @@
   <data name="UnbalancedBigSmall4" xml:space="preserve">
     <value>Monte Carlo</value>
   </data>
+  <data name="MiniSeDie2" xml:space="preserve">
+    <value>Mini Se Die 2</value>
+  </data>
+  <data name="MiniSeDie3" xml:space="preserve">
+    <value>Mini Se Die 3</value>
+  </data>
+  <data name="MiniSeDie4" xml:space="preserve">
+    <value>Mini Se Die 4</value>
+  </data>
 </root>
