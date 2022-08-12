@@ -19,7 +19,7 @@ namespace GameRoundResult.Core.Services
             { GameType.OddEvenTurbo, typeof(OddEvenTurboEndGameInfoService) },
             { GameType.FishPrawnCrab, typeof(FishPrawnCrabEndGameInfoService) },
             { GameType.SeDie, typeof(SeDieEndGameInfoService) },
-            { GameType.MiniSeDie, typeof(MiniSeDieEndGameInfoService) },
+            { GameType.MiniSeDie, typeof(MiniSeDieEndGameInfoService<MiniSeDieRound, MiniSeDieBet>) },
             { GameType.DragonTiger, typeof(DragonTigerEndGameInfoService) },
             { GameType.KenoProMax, typeof(KenoProMaxEndGameInfoService) },
             { GameType.Roulette, typeof(RouletteEndGameInfoService) },
@@ -61,6 +61,9 @@ namespace GameRoundResult.Core.Services
             { GameType.UnbalancedBigSmall2, typeof(UnbalancedBigSmallEndGameInfoService<UnbalancedBigSmall2Round, UnbalancedBigSmall2Bet>) },
             { GameType.UnbalancedBigSmall3, typeof(UnbalancedBigSmallEndGameInfoService<UnbalancedBigSmall3Round, UnbalancedBigSmall3Bet>) },
             { GameType.UnbalancedBigSmall4, typeof(UnbalancedBigSmallEndGameInfoService<UnbalancedBigSmall4Round, UnbalancedBigSmall4Bet>) },
+            { GameType.MiniSeDie2, typeof(MiniSeDieEndGameInfoService<MiniSeDie2Round, MiniSeDie2Bet>) },
+            { GameType.MiniSeDie3, typeof(MiniSeDieEndGameInfoService<MiniSeDie3Round, MiniSeDie3Bet>) },
+            { GameType.MiniSeDie4, typeof(MiniSeDieEndGameInfoService<MiniSeDie4Round, MiniSeDie4Bet>) },
         };
 
         private readonly IServiceProvider serviceProvider;

@@ -105,7 +105,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<KenoProMaxTicketAccessor>();
             services.AddScoped<LotteryTicketAccessor>();
             services.AddScoped(typeof(MiniKenoTicketAccessor<,,>));
-            services.AddScoped<MiniSeDieTicketAccessor>();
+            services.AddScoped(typeof(MiniSeDieTicketAccessor<,>));
             services.AddScoped<OddEvenTicketAccessor>();
             services.AddScoped<RouletteTicketAccessor>();
             services.AddScoped<SeDieTicketAccessor>();
@@ -132,7 +132,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<OddEvenTurboEndGameInfoService>();
             services.AddScoped<FishPrawnCrabEndGameInfoService>();
             services.AddScoped<SeDieEndGameInfoService>();
-            services.AddScoped<MiniSeDieEndGameInfoService>();
+            services.AddScoped(typeof(MiniSeDieEndGameInfoService<,>));
             services.AddScoped<DragonTigerEndGameInfoService>();
             services.AddScoped<KenoProMaxEndGameInfoService>();
             services.AddScoped<RouletteEndGameInfoService>();

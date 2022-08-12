@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Services;
@@ -9,7 +8,9 @@ using GameRoundResult.Web.Requests;
 
 namespace GameRoundResult.Web.Accessor
 {
-    public class MiniSeDieTicketAccessor : IGameTicketAccessor
+    public class MiniSeDieTicketAccessor<TMiniSeDieRound, TMiniSeDieBet> : IGameTicketAccessor
+        where TMiniSeDieRound : MiniSeDieRound
+        where TMiniSeDieBet : MiniSeDieBet
     {
         private readonly IGameBetService gameBetService;
         private readonly IMapper mapper;
@@ -22,11 +23,11 @@ namespace GameRoundResult.Web.Accessor
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
-            var result = await gameBetService.GetAsync<MiniSeDieRound, MiniSeDieBet>(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId);
+            var result = await gameBetService.GetAsync<TMiniSeDieRound, TMiniSeDieBet>(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId);
 
             return new MiniSeDieTicketViewModel
             {
-                RoundResult = result.Item1?.ToViewModel<MiniSeDieRound, MiniSeDieRoundResultViewModel>(mapper, request.TimeZoneInfo),
+                RoundResult = result.Item1?.ToViewModel<TMiniSeDieRound, MiniSeDieRoundResultViewModel>(mapper, request.TimeZoneInfo),
                 Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
             };
         }

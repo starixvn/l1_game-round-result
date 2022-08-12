@@ -5,7 +5,9 @@ using MongoDB.Driver;
 
 namespace GameRoundResult.Core.Services
 {
-    public class MiniSeDieEndGameInfoService : BaseEndGameInfoService<MiniSeDieRound, MiniSeDieBet>, IEndGameInfoService
+    public class MiniSeDieEndGameInfoService<TMiniSeDieRound, TMiniSeDieBet> : BaseEndGameInfoService<TMiniSeDieRound, TMiniSeDieBet>, IEndGameInfoService
+        where TMiniSeDieRound: MiniSeDieRound
+        where TMiniSeDieBet : MiniSeDieBet
     {
         public MiniSeDieEndGameInfoService(IMongoDatabase database) : base(database)
         {

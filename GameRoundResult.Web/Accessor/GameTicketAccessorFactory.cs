@@ -22,7 +22,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.OddEvenTurbo, typeof(OddEvenTicketAccessor) },
             { GameType.DragonTiger, typeof(DragonTigerTicketAccessor) },
             { GameType.KenoProMax, typeof(KenoProMaxTicketAccessor) },
-            { GameType.MiniSeDie, typeof(MiniSeDieTicketAccessor) },
+            { GameType.MiniSeDie, typeof(MiniSeDieTicketAccessor<MiniSeDieRound, MiniSeDieBet>) },
             { GameType.Baccarat, typeof(BaccaratTicketAccessor<BaccaratRound, BaccaratBet>) },
             { GameType.VipBaccarat, typeof(BaccaratTicketAccessor<VipBaccaratRound, VipBaccaratBet>) },
             { GameType.BlockchainBaccarat, typeof(BaccaratTicketAccessor<BlockchainBaccaratRound, BlockchainBaccaratBet>) },
@@ -62,6 +62,9 @@ namespace GameRoundResult.Web.Accessor
             { GameType.UnbalancedBigSmall2, typeof(UnbalancedBigSmallTicketAccessor<UnbalancedBigSmall2Round, UnbalancedBigSmall2Bet, UnbalancedBigSmall2BetLog>) },
             { GameType.UnbalancedBigSmall3, typeof(UnbalancedBigSmallTicketAccessor<UnbalancedBigSmall3Round, UnbalancedBigSmall3Bet, UnbalancedBigSmall3BetLog>) },
             { GameType.UnbalancedBigSmall4, typeof(UnbalancedBigSmallTicketAccessor<UnbalancedBigSmall4Round, UnbalancedBigSmall4Bet, UnbalancedBigSmall4BetLog>) },
+            { GameType.MiniSeDie2, typeof(MiniSeDieTicketAccessor<MiniSeDie2Round, MiniSeDie2Bet>) },
+            { GameType.MiniSeDie3, typeof(MiniSeDieTicketAccessor<MiniSeDie3Round, MiniSeDie3Bet>) },
+            { GameType.MiniSeDie4, typeof(MiniSeDieTicketAccessor<MiniSeDie4Round, MiniSeDie4Bet>) },
         };
 
         private readonly IServiceProvider serviceProvider;
