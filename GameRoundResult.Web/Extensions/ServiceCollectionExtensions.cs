@@ -122,6 +122,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<CasinoHoldemPokerTicketAccessor>();
             services.AddScoped<HiLoTicketAccessor>();
             services.AddScoped<TexasHoldemPokerTicketAccessor>();
+            services.AddScoped(typeof(UnbalancedBigSmallTicketAccessor<,,>));
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
 
