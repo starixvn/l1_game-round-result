@@ -252,4 +252,7 @@
   <data name="MiniSeDie4" xml:space="preserve">
     <value>Xóc Đĩa Mini 4</value>
   </data>
+  <data name="FruitSlot" xml:space="preserve">
+    <value>Xèng Hoa Quả</value>
+  </data>
 </root>

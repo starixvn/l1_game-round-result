@@ -312,4 +312,10 @@
   <data name="BettingPrice" xml:space="preserve">
     <value>Nilai Taruhan</value>
   </data>
+  <data name="ExtraSpin" xml:space="preserve">
+    <value>Extra Spin</value>
+  </data>
+  <data name="SpinResult" xml:space="preserve">
+    <value>Spin Result</value>
+  </data>
 </root>

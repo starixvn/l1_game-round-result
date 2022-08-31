@@ -246,4 +246,7 @@
   <data name="MiniSeDie4" xml:space="preserve">
     <value>迷你色碟 4</value>
   </data>
+  <data name="FruitSlot" xml:space="preserve">
+    <value>Fruit Slot</value>
+  </data>
 </root>

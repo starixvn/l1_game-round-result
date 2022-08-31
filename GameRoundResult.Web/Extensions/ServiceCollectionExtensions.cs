@@ -124,6 +124,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<TexasHoldemPokerTicketAccessor>();
             services.AddScoped(typeof(UnbalancedBigSmallTicketAccessor<,,>));
             services.AddScoped(typeof(MiniSeDieTicketAccessor<,>));
+            services.AddScoped(typeof(FruitSlotTicketAccessor<,,>));
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
 
@@ -175,6 +176,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<MiniKenoEndGameInfoService<KenoNorthRound, KenoNorthOne>>();
             services.AddScoped<MiniKenoEndGameInfoService<MegaKenoRound, MegaKenoOne>>();
             services.AddScoped<MiniKenoEndGameInfoService<MegaKeno2Round, MegaKeno2One>>();
+            services.AddScoped<FruitSlotEndGameInfoService>();
         }
     }
 }

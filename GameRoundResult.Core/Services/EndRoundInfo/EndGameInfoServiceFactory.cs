@@ -64,6 +64,7 @@ namespace GameRoundResult.Core.Services
             { GameType.MiniSeDie2, typeof(MiniSeDieEndGameInfoService<MiniSeDie2Round, MiniSeDie2Bet>) },
             { GameType.MiniSeDie3, typeof(MiniSeDieEndGameInfoService<MiniSeDie3Round, MiniSeDie3Bet>) },
             { GameType.MiniSeDie4, typeof(MiniSeDieEndGameInfoService<MiniSeDie4Round, MiniSeDie4Bet>) },
+            { GameType.FruitSlot, typeof(FruitSlotEndGameInfoService) }
         };
 
         private readonly IServiceProvider serviceProvider;

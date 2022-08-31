@@ -57,6 +57,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.MiniSeDie2, typeof(GameRoundAccessor<MiniSeDie2Round, MiniSeDieRoundResultViewModel>) },
             { GameType.MiniSeDie3, typeof(GameRoundAccessor<MiniSeDie3Round, MiniSeDieRoundResultViewModel>) },
             { GameType.MiniSeDie4, typeof(GameRoundAccessor<MiniSeDie4Round, MiniSeDieRoundResultViewModel>) },
+            { GameType.FruitSlot, typeof(GameRoundAccessor<FruitSlotRound, FruitSlotRoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;

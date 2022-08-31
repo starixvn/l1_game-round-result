@@ -183,6 +183,9 @@
   <data name="Win" xml:space="preserve">
     <value>Menang</value>
   </data>
+  <data name="WinAmount" xml:space="preserve">
+    <value>Win Amount</value>
+  </data>
   <data name="WinLoss" xml:space="preserve">
     <value>Menang Kalah</value>
   </data>

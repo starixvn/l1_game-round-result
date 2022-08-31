@@ -336,4 +336,10 @@
   <data name="WinLoss" xml:space="preserve">
     <value>Win / Loss</value>
   </data>
+  <data name="ExtraSpin" xml:space="preserve">
+    <value>Vòng Quay Thêm</value>
+  </data>
+  <data name="SpinResult" xml:space="preserve">
+    <value>Kết Quả Quay</value>
+  </data>
 </root>

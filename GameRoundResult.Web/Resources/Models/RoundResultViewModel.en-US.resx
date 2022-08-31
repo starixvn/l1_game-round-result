@@ -159,6 +159,9 @@
   <data name="Even" xml:space="preserve">
     <value>Even</value>
   </data>
+  <data name="ExtraSpin" xml:space="preserve">
+    <value>Extra Spin</value>
+  </data>
   <data name="Fire" xml:space="preserve">
     <value>Fire</value>
   </data>
@@ -197,6 +200,9 @@
   </data>
   <data name="Small" xml:space="preserve">
     <value>Small</value>
+  </data>
+  <data name="SpinResult" xml:space="preserve">
+    <value>Spin Result</value>
   </data>
   <data name="Tie" xml:space="preserve">
     <value>Tie</value>

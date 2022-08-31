@@ -179,7 +179,6 @@ namespace GameRoundResult.Web.Extensions
 
         public static HeroesSlotRoundResultViewModel ToViewModel(this HeroesSlotRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-
             return mapper.Map<HeroesSlotRound, HeroesSlotRoundResultViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
@@ -272,6 +271,22 @@ namespace GameRoundResult.Web.Extensions
         public static UnbalancedBigSmallBetLogViewModel ToViewModel(this UnbalancedBigSmallBetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<UnbalancedBigSmallBetLog, UnbalancedBigSmallBetLogViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static FruitSlotRoundResultViewModel ToViewModel(this FruitSlotRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<FruitSlotRound, FruitSlotRoundResultViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static FruitSlotBetLogViewModel ToViewModel(this FruitSlotBetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<FruitSlotBetLog, FruitSlotBetLogViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });

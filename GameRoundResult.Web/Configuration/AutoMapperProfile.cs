@@ -268,7 +268,7 @@ namespace GameRoundResult.Web.Configuration
                 => x.Ended ? x.SettlementResult.HandRankId
                 : 0))
                 .ForMember(x => x.IsQualified, opt => opt.MapFrom(x => x.SettlementResult.IsQualified ?? false));
-                
+
             CreateMap<HiLoRound, HiLoRoundResultViewModel>();
             CreateMap<HiLoBetLog, HiLoBetLogViewModel>();
 
@@ -296,7 +296,6 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<UnbalancedBigSmallBetLog, UnbalancedBigSmallBetLogViewModel>();
 
-            
             CreateMap<BlockchainBaccaratCard, DragonTigerCardViewModel>();
             CreateMap<BlockchainBaccaratRound, BaccaratRoundResultViewModel>()
              .ForMember(x => x.PlayerCards, opt => opt.MapFrom((source, destination, i, context) =>
@@ -337,6 +336,11 @@ namespace GameRoundResult.Web.Configuration
              .ForMember(x => x.PlayerPair, opt => opt.MapFrom(x => x.SettlementResult.PlayerPair))
              .ForMember(x => x.BankerPair, opt => opt.MapFrom(x => x.SettlementResult.BankerPair))
              .ForMember(x => x.Natural, opt => opt.MapFrom(x => x.SettlementResult.Natural));
+
+            CreateMap<FruitSlotRound, FruitSlotRoundResultViewModel>()
+                .ForMember(x => x.SymbolsResult, opt => opt.MapFrom(x => x.Result.Symbols))
+                .ForMember(x => x.NumberResult, opt => opt.MapFrom(x => x.Result.Number));
+            CreateMap<FruitSlotBetLog, FruitSlotBetLogViewModel>();
         }
     }
 }
