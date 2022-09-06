@@ -237,4 +237,13 @@
   <data name="UnbalancedBigSmall4" xml:space="preserve">
     <value>Monte Carlo</value>
   </data>
+  <data name="MiniSeDie2" xml:space="preserve">
+    <value>迷你色碟 2</value>
+  </data>
+  <data name="MiniSeDie3" xml:space="preserve">
+    <value>迷你色碟 3</value>
+  </data>
+  <data name="MiniSeDie4" xml:space="preserve">
+    <value>迷你色碟 4</value>
+  </data>
 </root>
