@@ -199,16 +199,16 @@
     <value>เดอะ เลเจนด์ ออฟ ฮีโร่</value>
   </data>
   <data name="KenoMatch1" xml:space="preserve">
-    <value>Keno Match</value>
+    <value>Keno Soccer</value>
   </data>
   <data name="KenoMatch2" xml:space="preserve">
-    <value>Keno Match MD5</value>
+    <value>Keno Soccer 2</value>
   </data>
   <data name="KenoPower1" xml:space="preserve">
     <value>Keno Power</value>
   </data>
   <data name="KenoPower2" xml:space="preserve">
-    <value>Keno Power MD5</value>
+    <value>Keno Power 2</value>
   </data>
   <data name="Roulette" xml:space="preserve">
     <value>กมรูเล็ต</value>
