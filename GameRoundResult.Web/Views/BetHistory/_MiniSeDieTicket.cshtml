@@ -3,6 +3,10 @@
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SeDieTicketViewModel> Localizer
 
+@{ 
+    var settlementResult = Model.RoundResult.SettlementResult;
+}
+
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -28,8 +32,8 @@
                         <i class="@(chip ? "red-chip" : "white-chip")"></i>
                     }
                 </td>
-                <td class="bold @(Model.RoundResult.IsEven ? "text-blue" : "text-red")">
-                    @(Model.RoundResult.IsEven ? CommonLocalizer["Even"] : CommonLocalizer["Odd"])
+                <td class="bold @(settlementResult.Even ? "text-blue" : "text-red")">
+                    @(settlementResult.Even ? CommonLocalizer["Even"] : CommonLocalizer["Odd"])
 
                     @if (Model.RoundResult.TotalRed != 2)
                     {
@@ -63,14 +67,14 @@
         {
             if (Model.Bet.Even > 0)
             {
-                <tr>
+                <tr class="@(settlementResult.Even ? "bold text-blue" : string.Empty)">
                     <td>@CommonLocalizer["Even"]</td>
                     <td class="text-right">@Model.Bet.Even.Format()</td>
                 </tr>
             }
             if (Model.Bet.Odd > 0)
             {
-                <tr>
+                <tr class="@(settlementResult.Odd ? "bold text-blue" : string.Empty)">
                     <td>@CommonLocalizer["Odd"]</td>
                     <td class="text-right">@Model.Bet.Odd.Format()</td>
                 </tr>
@@ -78,21 +82,21 @@
 
             if (Model.Bet.ThreeRed > 0)
             {
-                <tr>
+                <tr class="@(settlementResult.ThreeRed ? "bold text-blue" : string.Empty)">
                     <td>@Localizer["3Red"]</td>
                     <td class="text-right">@Model.Bet.ThreeRed.Format()</td>
                 </tr>
             }
             if (Model.Bet.FourRed > 0)
             {
-                <tr>
+                <tr class="@(settlementResult.FourRed ? "bold text-blue" : string.Empty)">
                     <td>@Localizer["4Red"]</td>
                     <td class="text-right">@Model.Bet.FourRed.Format()</td>
                 </tr>
             }
             if (Model.Bet.ThreeWhite > 0)
             {
-                <tr>
+                <tr class="@(settlementResult.ThreeWhite ? "bold text-blue" : string.Empty)">
                     <td>@Localizer["1Red"]</td>
                     <td class="text-right">@Model.Bet.ThreeWhite.Format()</td>
                 </tr>
@@ -100,7 +104,7 @@
 
             if (Model.Bet.FourWhite > 0)
             {
-                <tr>
+                <tr class="@(settlementResult.FourWhite ? "bold text-blue" : string.Empty)">
                     <td>@Localizer["4White"]</td>
                     <td class="text-right">@Model.Bet.FourWhite.Format()</td>
                 </tr>

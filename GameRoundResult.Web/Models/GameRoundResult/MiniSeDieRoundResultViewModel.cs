@@ -14,8 +14,6 @@ namespace GameRoundResult.Web.Models
 
         public int TotalRed => RedChips.Count(x => x);
 
-        public bool IsEven => TotalRed % 2 == 0;
-
         public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
