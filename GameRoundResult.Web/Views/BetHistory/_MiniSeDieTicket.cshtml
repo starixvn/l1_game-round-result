@@ -4,7 +4,7 @@
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SeDieTicketViewModel> Localizer
 
 @{ 
-    var settlementResult = Model.RoundResult.SettlementResult;
+    var settlementResult = Model.RoundResult?.SettlementResult;
 }
 
 <table class="table table-bordered">
