@@ -114,7 +114,7 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<BaccaratBet, BaccaratBetViewModel>();
             CreateMap<KenoProMaxBet, KenoProMaxBetViewModel>();
-            CreateMap<RNGKenoBet, RNGKenoBetViewModel>();
+            CreateMap<RNGKenoOnes, RNGKenoBetViewModel>();
             CreateMap<RouletteBet, RouletteBetViewModel>();
 
             CreateMap<VipSeDieRound, VipSeDieRoundResultViewModel>()

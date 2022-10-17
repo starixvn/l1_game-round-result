@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Services;
@@ -9,7 +8,7 @@ using GameRoundResult.Web.Requests;
 
 namespace GameRoundResult.Web.Accessor
 {
-    public class MiniKenoTicketAccessor<TKenoRound, TKenoOne, TKenoBet> : IGameTicketAccessor
+    public class MiniKenoTicketAccessor<TKenoRound, TKenoOne> : IGameTicketAccessor
         where TKenoRound : KenoRound
         where TKenoOne : RNGKenoOnes
         where TKenoBet : RNGKenoBet
@@ -25,13 +24,12 @@ namespace GameRoundResult.Web.Accessor
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
-            var result = await gameBetService.GetAsync<TKenoRound, TKenoOne, TKenoBet>(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId);
+            var result = await gameBetService.GetAsync<TKenoRound, TKenoOne>(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId);
 
             return new RNGKenoTicketViewModel
             {
                 RoundResult = result.Item1?.ToViewModel<TKenoRound, KenoRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bets = result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
-                TotalWin = result.Item3?.Betwin ?? 0
+                Bet = result.Item3.ToViewModel(mapper, request.TimeZoneInfo)
             };
         }
     }

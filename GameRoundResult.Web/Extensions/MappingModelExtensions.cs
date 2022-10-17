@@ -81,9 +81,9 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
-        public static RNGKenoBetViewModel ToViewModel(this RNGKenoBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        public static RNGKenoBetViewModel ToViewModel(this RNGKenoOnes entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return mapper.Map<RNGKenoBet, RNGKenoBetViewModel>(entity, opts =>
+            return mapper.Map<RNGKenoOnes, RNGKenoBetViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });

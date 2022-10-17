@@ -8,21 +8,35 @@ namespace GameRoundResult.Web.Models
     {
         public KenoRoundResultViewModel RoundResult { get; set; }
 
-        public IEnumerable<RNGKenoBetViewModel> Bets { get; set; }
+        public RNGKenoBetViewModel Bet { get; set; }
 
-        public decimal TotalBet => Bets.Sum(x => x.Amount);
-
-        public decimal TotalWin { get; set; }
-
-        public decimal WinLoss => TotalWin - TotalBet;
+        public decimal WinLoss => Bet.Betwin - Bet.TotalAmount;
     }
 
     public class RNGKenoBetViewModel
     {
         public DateTime Time { get; set; }
 
-        public string Choice { get; set; }
+        public decimal Betwin { get; set; }
 
-        public decimal Amount { get; set; }
+        public decimal Big { get; set; }
+
+        public decimal Small { get; set; }
+
+        public decimal Odd { get; set; }
+
+        public decimal Even { get; set; }
+
+        public decimal Gold { get; set; }
+
+        public decimal Earth { get; set; }
+
+        public decimal Fire { get; set; }
+
+        public decimal Water { get; set; }
+
+        public decimal Wood { get; set; }
+
+        public decimal TotalAmount { get; set; }
     }
 }
