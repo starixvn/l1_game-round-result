@@ -104,7 +104,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(BaseCascadingSlotTicketAccessor<,>));
             services.AddScoped<KenoProMaxTicketAccessor>();
             services.AddScoped<LotteryTicketAccessor>();
-            services.AddScoped(typeof(MiniKenoTicketAccessor<,,>));
+            services.AddScoped(typeof(MiniKenoTicketAccessor<,>));
             services.AddScoped(typeof(MiniSeDieTicketAccessor<,>));
             services.AddScoped<OddEvenTicketAccessor>();
             services.AddScoped<RouletteTicketAccessor>();

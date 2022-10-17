@@ -11,7 +11,6 @@ namespace GameRoundResult.Web.Accessor
     public class MiniKenoTicketAccessor<TKenoRound, TKenoOne> : IGameTicketAccessor
         where TKenoRound : KenoRound
         where TKenoOne : RNGKenoOnes
-        where TKenoBet : RNGKenoBet
     {
         private readonly IGameBetService gameBetService;
         private readonly IMapper mapper;
@@ -29,7 +28,7 @@ namespace GameRoundResult.Web.Accessor
             return new RNGKenoTicketViewModel
             {
                 RoundResult = result.Item1?.ToViewModel<TKenoRound, KenoRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bet = result.Item3.ToViewModel(mapper, request.TimeZoneInfo)
+                Bet = result.Item2.ToViewModel(mapper, request.TimeZoneInfo)
             };
         }
     }
