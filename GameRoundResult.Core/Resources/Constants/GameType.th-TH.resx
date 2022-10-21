@@ -249,4 +249,7 @@
   <data name="FruitSlot" xml:space="preserve">
     <value>Fruit Slot</value>
   </data>
+  <data name="FanTan" xml:space="preserve">
+    <value>Fan Tan</value>
+  </data>
 </root>

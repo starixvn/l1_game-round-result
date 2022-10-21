@@ -337,6 +337,9 @@ namespace GameRoundResult.Web.Configuration
              .ForMember(x => x.BankerPair, opt => opt.MapFrom(x => x.SettlementResult.BankerPair))
              .ForMember(x => x.Natural, opt => opt.MapFrom(x => x.SettlementResult.Natural));
 
+            CreateMap<FanTanRound, FanTanRoundResultViewModel>();
+            CreateMap<FanTanSettlementResult, FanTanSettlementResultViewModel>();
+            
             CreateMap<FruitSlotRound, FruitSlotRoundResultViewModel>()
                 .ForMember(x => x.SymbolsResult, opt => opt.MapFrom(x => x.Result.Symbols))
                 .ForMember(x => x.NumberResult, opt => opt.MapFrom(x => x.Result.Number));

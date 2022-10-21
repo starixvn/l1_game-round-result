@@ -336,10 +336,58 @@
   <data name="WinLoss" xml:space="preserve">
     <value>Win / Loss</value>
   </data>
+  <data name="Chun" xml:space="preserve">
+    <value>Chun</value>
+    </data>
   <data name="ExtraSpin" xml:space="preserve">
     <value>Vòng Quay Thêm</value>
   </data>
+  <data name="Fan" xml:space="preserve">
+    <value>Fan</value>
+    </data>
   <data name="SpinResult" xml:space="preserve">
     <value>Kết Quả Quay</value>
+  </data>
+  <data name="Kwok" xml:space="preserve">
+    <value>Kwok</value>
+  </data>
+  <data name="WinningOption" xml:space="preserve">
+    <value>Winning Option</value>
+  </data>
+  <data name="Chun123" xml:space="preserve">
+    <value>1 2 3 Chun</value>
+  </data>
+  <data name="Chun124" xml:space="preserve">
+    <value>1 2 4 Chun</value>
+  </data>
+  <data name="Chun134" xml:space="preserve">
+    <value>1 3 4 Chun</value>
+  </data>
+  <data name="Chun234" xml:space="preserve">
+    <value>2 3 4 Chun</value>
+  </data>
+  <data name="Fan1" xml:space="preserve">
+    <value>1 Fan</value>
+  </data>
+  <data name="Fan2" xml:space="preserve">
+    <value>2 Fan</value>
+  </data>
+  <data name="Fan3" xml:space="preserve">
+    <value>3 Fan</value>
+  </data>
+  <data name="Fan4" xml:space="preserve">
+    <value>4 Fan</value>
+  </data>
+  <data name="Kwok12" xml:space="preserve">
+    <value>1 2 Kwok</value>
+  </data>
+  <data name="Kwok23" xml:space="preserve">
+    <value>2 3 Kwok</value>
+  </data>
+  <data name="Kwok34" xml:space="preserve">
+    <value>3 4 Kwok</value>
+  </data>
+  <data name="Kwok41" xml:space="preserve">
+    <value>4 1 Kwok</value>
   </data>
 </root>

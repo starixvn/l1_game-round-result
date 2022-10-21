@@ -255,4 +255,7 @@
   <data name="FruitSlot" xml:space="preserve">
     <value>Xèng Hoa Quả</value>
   </data>
+  <data name="FanTan" xml:space="preserve">
+    <value>Fan Tan</value>
+  </data>
 </root>

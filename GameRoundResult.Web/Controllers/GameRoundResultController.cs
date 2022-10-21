@@ -23,7 +23,7 @@ using TimeZoneConverter;
 
 namespace GameRoundResult.Web.Controllers
 {
-    [Authorize]
+    //  [Authorize]
     public class GameRoundResultController : Controller
     {
         private readonly IMediator mediator;
@@ -56,6 +56,8 @@ namespace GameRoundResult.Web.Controllers
         {
             var clientName = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
 
+            clientName = "Game Admin 2";
+
             var viewModel = new GameRoundResultViewModel
             {
                 GameTypes = clientName == "Game Admin 2" ? gameTypeLocalization.GetGameList() : await gameTypeLocalization.GetGameListAsync(
@@ -87,6 +89,7 @@ namespace GameRoundResult.Web.Controllers
                  TZConvert.GetTimeZoneInfo(userTimeZone) : TZConvert.GetTimeZoneInfo(clientTimeZone);
 
             var result = await mediator.Send(new GetRoundResultRequest(gameType, date, roundId, timeZoneInfo, start, length));
+
             var data = result.Item2.Select(x => x.ToDataTableArray(stringLocalizer));
 
             return Json(new
