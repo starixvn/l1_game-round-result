@@ -1,0 +1,253 @@
+﻿@model FanTanTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<FanTanTicketViewModel> Localizer
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
+            <th>@CommonLocalizer["Result"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null)
+        {
+            <tr>
+                <td>
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    <br />
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@Model.RoundResult.RoundId</td>
+                <td>
+                    @Model.RoundResult.Result
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th>@CommonLocalizer["BetChoice"]</th>
+            <th>@CommonLocalizer["BetAmount"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Bet != null && Model.RoundResult != null)
+        {
+            if (Model.Bet.Even > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@CommonLocalizer["Even"]</td>
+                    <td class="text-right">@Model.Bet.Even.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Odd > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@CommonLocalizer["Odd"]</td>
+                    <td class="text-right">@Model.Bet.Odd.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Fan1 > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["1 Fan"]</td>
+                    <td class="text-right">@Model.Bet.Fan1.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Fan2 > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["2 Fan"]</td>
+                    <td class="text-right">@Model.Bet.Fan2.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Fan3 > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["3 Fan"]</td>
+                    <td class="text-right">@Model.Bet.Fan3.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Fan4 > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["4 Fan"]</td>
+                    <td class="text-right">@Model.Bet.Fan4.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Kwok12 > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["1 2 Kwok"]</td>
+                    <td class="text-right">@Model.Bet.Kwok12.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Kwok23 > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["2 3 Kwok"]</td>
+                    <td class="text-right">@Model.Bet.Kwok23.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Kwok34 > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["3 4 Kwok"]</td>
+                    <td class="text-right">@Model.Bet.Kwok34.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Kwok41 > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["4 1 Kwok"]</td>
+                    <td class="text-right">@Model.Bet.Kwok41.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Chun123 > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["1 2 3 Chun"]</td>
+                    <td class="text-right">@Model.Bet.Chun123.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Chun124 > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["1 2 4 Chun"]</td>
+                    <td class="text-right">@Model.Bet.Chun124.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Chun134 > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["1 3 4 Chun"]</td>
+                    <td class="text-right">@Model.Bet.Chun134.Format()</td>
+                </tr>
+            }
+
+            if (Model.Bet.Chun234 > 0)
+            {
+                <tr>
+                    <td>
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        <br />
+                        @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer["2 3 4 Chun"]</td>
+                    <td class="text-right">@Model.Bet.Chun234.Format()</td>
+                </tr>
+            }
+
+            <tr class="total">
+                <td colspan="3" class="bold text-right">@CommonLocalizer["Total"]</td>
+                <td class="bold">@Model.Bet.TotalAmount.Format()</td>
+                <td class="bold">@Model.Bet.Betwin.Format()</td>
+            </tr>
+            <tr class="total">
+                <td colspan="3" class="bold text-right">@CommonLocalizer["WinLoss"]</td>
+                <td colspan="2" class="bold@(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+            </tr>
+
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

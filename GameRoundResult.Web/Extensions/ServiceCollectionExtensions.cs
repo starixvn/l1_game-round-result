@@ -125,6 +125,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(UnbalancedBigSmallTicketAccessor<,,>));
             services.AddScoped(typeof(MiniSeDieTicketAccessor<,>));
             services.AddScoped(typeof(FruitSlotTicketAccessor<,,>));
+            services.AddScoped<FanTanTicketAccessor>();
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
 
@@ -161,6 +162,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<BaccaratTicketAccessor<BaccaratRound, BaccaratBet>>();
             services.AddScoped<BaccaratTicketAccessor<VipBaccaratRound, VipBaccaratBet>>();
             services.AddScoped<BaccaratTicketAccessor<BlockchainBaccaratRound, BlockchainBaccaratBet>>();
+
 
             services.AddScoped<BaccaratEndGameInfoService<BaccaratRound, BaccaratBet>>();
             services.AddScoped<BaccaratEndGameInfoService<VipBaccaratRound, VipBaccaratBet>>();
