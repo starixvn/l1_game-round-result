@@ -1,0 +1,13 @@
+{
+  "data": [
+    [
+      "11/01/2022<br/>03:00 PM",
+      "1",
+      "<div class=\"dice-list\"><img class=\"dice\" src=\"/scss/images/dice_1.png\"></img><img class=\"dice\" src=\"/scss/images/dice_3.png\"></img><img class=\"dice\" src=\"/scss/images/dice_6.png\"></img></div>",
+      "10",
+      "<span class=\"text-bluebold\">Small</span>"
+    ]
+  ],
+  "recordsFiltered": 1,
+  "recordsTotal": 1
+}

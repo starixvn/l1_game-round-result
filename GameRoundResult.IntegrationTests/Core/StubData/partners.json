@@ -1,0 +1,77 @@
+[
+  {
+    "partnerId": "ONEworks1",
+    "name": "2W",
+    "secretKey": "ONEworks1@20luminet&",
+    "clubVersionUrl": "https://games.lumigame.com/",
+    "mobiVersionUrl": "http://l1-m.lumigame.com/",
+    "miniVersionUrl": "https://l1-mini.lumigame.com/",
+    "apiUrl": "http://l1-m.lumigame.com/",
+    "testCurrencyUrl": "https://l1-proxy.lumigame.com/user/CurrencyGroup"
+  },
+  {
+    "partnerId": "sbogamesimulator",
+    "name": "BBO",
+    "secretKey": "sbo_gamesimulator@20luminet&",
+    "clubVersionUrl": "http://l1-games.lumigame.com/",
+    "mobiVersionUrl": null,
+    "miniVersionUrl": null,
+    "apiUrl": "http://l1-games.lumigame.com/",
+    "testCurrencyUrl": "http://l1-games.lumigame.com/"
+  },
+  {
+    "partnerId": "testPartner",
+    "name": "TestPartner",
+    "secretKey": "TestPartner",
+    "clubVersionUrl": "http://l1-games1.lumigame.com/",
+    "mobiVersionUrl": "http://demo.com",
+    "miniVersionUrl": null,
+    "apiUrl": "http://demo.comtesst",
+    "testCurrencyUrl": "http://demo.com"
+  },
+  {
+    "partnerId": "partner1",
+    "name": "partner1",
+    "secretKey": "partner1",
+    "clubVersionUrl": "http://l1-games.lumigame.com/",
+    "mobiVersionUrl": null,
+    "miniVersionUrl": "https://l1-mini.lumigame.com/",
+    "testCurrencyUrl": "http://l1-games.lumigame.com/"
+  },
+  {
+    "partnerId": "SBO",
+    "name": "SPart",
+    "secretKey": "SBO@20luminet&%^",
+    "clubVersionUrl": "https://games.lumigame.com/",
+    "mobiVersionUrl": null,
+    "miniVersionUrl": null,
+    "testCurrencyUrl": "https://games.lumigame.com/"
+  },
+  {
+    "partnerId": "2Wgroup1",
+    "name": "2Wgroup",
+    "secretKey": "2Wgroup1",
+    "clubVersionUrl": "test",
+    "mobiVersionUrl": "m.test",
+    "miniVersionUrl": "test",
+    "testCurrencyUrl": "testcurrency"
+  },
+  {
+    "partnerId": "2Wgroup2",
+    "name": "2Wgroup2",
+    "secretKey": "2Wgroup1",
+    "clubVersionUrl": "test",
+    "mobiVersionUrl": null,
+    "miniVersionUrl": null,
+    "testCurrencyUrl": "testcurrency"
+  },
+  {
+    "partnerId": "ONEworksVGCash",
+    "name": "VG",
+    "secretKey": "VG@SC123",
+    "clubVersionUrl": "https://l2-games1.lumigame.com",
+    "mobiVersionUrl": "http://l2-m1.lumigame.com",
+    "miniVersionUrl": "https://l2-mini1.lumigame.com",
+    "testCurrencyUrl": "https://l2-proxy1.lumigame.com/user/CurrencyGroup"
+  }
+]

@@ -6,3 +6,33 @@ include:
   - project: "ci/repos-ci/pentagon_l2_game_result"
     ref: master
     file: "gitlab-ci-mixing.yml"
+
+unit-test-dotnet:
+  variables:
+    TESTS_PATH: "**/bin/debug/*/*UnitTests.dll"
+    TESTS_DLL: "*UnitTests.dll"
+  script:
+    - dotnet build
+    - dotnet test $TESTS_PATH --logger:"trx" || true
+    - for path in $(find ./ -name $TESTS_DLL);
+      do
+      if echo $path | grep 'bin';
+      then
+      coverlet $path --target "dotnet" --targetargs "test $TESTS_PATH --no-build" --format opencover --output "${path##*/}-$(date +%s).coverage.opencover.xml";
+      fi
+      done
+
+integration-test-dotnet:
+  variables:
+    TESTS_PATH: "**/bin/debug/*/*IntegrationTests.dll"
+    TESTS_DLL: "*IntegrationTests.dll"
+  services:
+    - name: registry.nexdev.net:5050/docker/database/mongo:4.4.8
+      alias: mongo
+  before_script:
+    - dotnet tool install --global coverlet.console --version 3.1.0
+    - export PATH="$PATH:/root/.dotnet/tools"
+    - dotnet nuget add source http://nuget.nexdev.net/api/v2
+    - cp ./GameRoundResult.IntegrationTests/appsettings.IGT.json ./GameRoundResult.IntegrationTests/appsettings.IGT.original.json
+    - cp ./GameRoundResult.IntegrationTests/appsettings.IGT.CI.json ./GameRoundResult.IntegrationTests/appsettings.IGT.json
+  extends: unit-test-dotnet
