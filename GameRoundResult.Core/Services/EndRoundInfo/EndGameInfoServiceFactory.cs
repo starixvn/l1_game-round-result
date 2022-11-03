@@ -66,6 +66,7 @@ namespace GameRoundResult.Core.Services
             { GameType.MiniSeDie4, typeof(MiniSeDieEndGameInfoService<MiniSeDie4Round, MiniSeDie4Bet>) },
             { GameType.FruitSlot, typeof(FruitSlotEndGameInfoService) },
             { GameType.FanTan, typeof(FanTanEndGameInfoService) },
+            { GameType.Win3Cards, typeof(Win3CardsGameInfoService)},
             { GameType.FortuneCat, typeof(FortuneCatEndGameInfoService) },
         };
 

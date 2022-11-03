@@ -252,6 +252,9 @@
   <data name="FanTan" xml:space="preserve">
     <value>Fan Tan</value>
   </data>
+  <data name="Win3Cards" xml:space="preserve">
+    <value>Win 3 Cards</value>
+  </data>
   <data name="FortuneCat" xml:space="preserve">
     <value>Fortune Cat</value>
   </data>

@@ -346,6 +346,11 @@ namespace GameRoundResult.Web.Configuration
                 .ForMember(x => x.SymbolsResult, opt => opt.MapFrom(x => x.Result.Symbols))
                 .ForMember(x => x.NumberResult, opt => opt.MapFrom(x => x.Result.Number));
             CreateMap<FruitSlotBetLog, FruitSlotBetLogViewModel>();
+
+            CreateMap<Win3CardsRound, Win3CardsRoundResultViewModel>();
+            CreateMap<Win3CardsSettlementResult, Win3CardsSettlementResultViewModel>();
+            CreateMap<Win3CardsBet, Win3CardsBetViewModel>();
+
         }
     }
 }

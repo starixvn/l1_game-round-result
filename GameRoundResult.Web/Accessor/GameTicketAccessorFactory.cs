@@ -67,6 +67,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.MiniSeDie4, typeof(MiniSeDieTicketAccessor<MiniSeDie4Round, MiniSeDie4Bet>) },
             { GameType.FruitSlot, typeof(FruitSlotTicketAccessor<FruitSlotRound, FruitSlotBet, FruitSlotBetLog>) },
             { GameType.FanTan, typeof(FanTanTicketAccessor) },
+            { GameType.Win3Cards, typeof(Win3CardsTicketAccessor) },
             { GameType.FortuneCat, typeof(FourGuardiansTicketAccessor<FortuneCatRound>) },
         };
 
