@@ -7,7 +7,7 @@ namespace GameRoundResult.Web.Models
 {
     public class FanTanRoundResultViewModel : RoundResultViewModel
     {
-        public byte Result { get; set; }
+        public FanTanResultViewModel Result { get; set; }
 
         public FanTanSettlementResultViewModel SettlementResult { get; set; }
 
@@ -18,8 +18,8 @@ namespace GameRoundResult.Web.Models
                 GetResultString(),
                 stringLocalizer[GetFanWinChoice()],
                 stringLocalizer[GetOddEvenWinChoice()],
-                stringLocalizer[GetKwokWinChoice()],
-                stringLocalizer[GetChunWinChoice()]
+                GetKwokWinChoice(stringLocalizer),
+                GetChunWinChoice(stringLocalizer)
             };
 
             return result;
@@ -29,8 +29,8 @@ namespace GameRoundResult.Web.Models
         {
             var span = new TagBuilder("span");
             span.AddCssClass("bold");
-            span.AddCssClass("result-" + Result);
-            span.InnerHtml.Append(Result.ToString());
+            span.AddCssClass("result-" + Result.FinalBeads);
+            span.InnerHtml.Append(string.Empty);
 
             return span.GetHtmlString();
         }
@@ -65,45 +65,65 @@ namespace GameRoundResult.Web.Models
             return "Even";
         }
 
-        private string GetKwokWinChoice()
+        private string GetKwokWinChoice(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
+            var result = new List<string>();
+
             if (SettlementResult.Kwok12)
             {
-                return "Kwok12";
+                result.Add(stringLocalizer["Kwok12"]);
             }
 
             if (SettlementResult.Kwok23)
             {
-                return "Kwok23";
+                result.Add(stringLocalizer["Kwok23"]);
             }
 
             if (SettlementResult.Kwok34)
             {
-                return "Kwok34";
+                result.Add(stringLocalizer["Kwok34"]);
             }
 
-            return "Kwok41";
+            if (SettlementResult.Kwok41)
+            {
+                result.Add(stringLocalizer["Kwok41"]);
+            }
+
+            return string.Join(",<br />", result);
         }
 
-        private string GetChunWinChoice()
+        private string GetChunWinChoice(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
+            var result = new List<string>();
+
             if (SettlementResult.Chun123)
             {
-                return "Chun123";
+                result.Add(stringLocalizer["Chun123"]);
             }
 
             if (SettlementResult.Chun124)
             {
-                return "Chun124";
+                result.Add(stringLocalizer["Chun124"]);
             }
 
             if (SettlementResult.Chun134)
             {
-                return "Chun134";
+                result.Add(stringLocalizer["Chun134"]);
             }
 
-            return "Chun234";
+            if (SettlementResult.Chun234)
+            {
+                result.Add(stringLocalizer["Chun234"]);
+            }
+
+            return string.Join(",<br />", result);
         }
+    }
+
+    public class FanTanResultViewModel
+    {
+        public byte TotalBeads { get; set; }
+        public byte FinalBeads { get; set; }
     }
 
     public class FanTanSettlementResultViewModel

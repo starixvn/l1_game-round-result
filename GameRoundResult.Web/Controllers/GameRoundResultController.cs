@@ -56,8 +56,6 @@ namespace GameRoundResult.Web.Controllers
         {
             var clientName = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
 
-            clientName = "Game Admin 2";
-
             var viewModel = new GameRoundResultViewModel
             {
                 GameTypes = clientName == "Game Admin 2" ? gameTypeLocalization.GetGameList() : await gameTypeLocalization.GetGameListAsync(

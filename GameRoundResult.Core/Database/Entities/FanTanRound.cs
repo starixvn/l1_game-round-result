@@ -5,9 +5,15 @@ namespace GameRoundResult.Core.Database.Entities
     [CollectionName("fantan_rounds")]
     public class FanTanRound : GameRound
     {
-        public byte Result { get; set; }
+        public FanTanResultEntity Result { get; set; }
 
         public FanTanSettlementResult SettlementResult { get; set; }
+    }
+
+    public class FanTanResultEntity
+    {
+        public byte TotalBeads { get; set; }
+        public byte FinalBeads { get; set; }
     }
 
     public class FanTanSettlementResult
