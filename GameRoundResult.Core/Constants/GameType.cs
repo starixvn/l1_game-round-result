@@ -56,5 +56,6 @@
         MiniSeDie4 = 58,
         FruitSlot = 59,
         FanTan = 60,
+        FortuneCat = 62,
     }
 }

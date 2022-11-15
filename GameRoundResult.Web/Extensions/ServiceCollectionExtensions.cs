@@ -185,6 +185,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<MiniKenoEndGameInfoService<MegaKeno2Round, MegaKeno2One>>();
             services.AddScoped<FruitSlotEndGameInfoService>();
             services.AddScoped<FanTanEndGameInfoService>();
+            services.AddScoped<FortuneCatEndGameInfoService>();
         }
     }
 }

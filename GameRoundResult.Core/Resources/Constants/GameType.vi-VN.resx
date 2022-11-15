@@ -258,4 +258,7 @@
   <data name="FanTan" xml:space="preserve">
     <value>Fan Tan</value>
   </data>
+  <data name="FortuneCat" xml:space="preserve">
+    <value>Mèo Thần Tài</value>
+  </data>
 </root>
