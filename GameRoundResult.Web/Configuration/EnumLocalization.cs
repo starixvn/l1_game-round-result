@@ -44,6 +44,7 @@ namespace GameRoundResult.Web.Configuration
             GameType.NightClub,
             GameType.TreasureIsland,
             GameType.WayToGoal,
+            GameType.FortuneCat,
         };
 
         private readonly IPartnerConfigService partnerConfigService;

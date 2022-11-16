@@ -47,20 +47,22 @@
       .table.table-night-club .col-round-id, .table.table-way-to-goal .col-round-id {
         width: 9rem; }
     .table.table-cascading-slot {
+      max-width: 100rem; }
+    .table.table-fortune-cat {
       max-width: 100rem; } }
 
-.table-four-guardians .table-paylines, .table-night-club .table-paylines, .table-way-to-goal .table-paylines {
+.table-four-guardians .table-paylines, .table-night-club .table-paylines, .table-way-to-goal .table-paylines, .table-fortune-cat .table-paylines {
   margin: auto; }
-  .table-four-guardians .table-paylines td, .table-night-club .table-paylines td, .table-way-to-goal .table-paylines td {
+  .table-four-guardians .table-paylines td, .table-night-club .table-paylines td, .table-way-to-goal .table-paylines td, .table-fortune-cat .table-paylines td {
     border: none; }
 
-.table-four-guardians .col-round-id, .table-night-club .col-round-id, .table-way-to-goal .col-round-id {
+.table-four-guardians .col-round-id, .table-night-club .col-round-id, .table-way-to-goal .col-round-id, .table-fortune-cat .col-round-id {
   width: 10rem; }
 
-.table-four-guardians .payline, .table-night-club .payline, .table-way-to-goal .payline {
+.table-four-guardians .payline, .table-night-club .payline, .table-way-to-goal .payline, .table-fortune-cat .payline {
   width: 50px; }
 
-.table-four-guardians .symbol, .table-night-club .symbol, .table-way-to-goal .symbol {
+.table-four-guardians .symbol, .table-night-club .symbol, .table-way-to-goal .symbol, .table-fortune-cat .symbol {
   height: 50px;
   width: 50px; }
 

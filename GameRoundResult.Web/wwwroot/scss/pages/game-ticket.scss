@@ -90,10 +90,14 @@
         &.table-cascading-slot {
             max-width: 100rem;
         }
+
+        &.table-fortune-cat {
+            max-width: 100rem;
+        }
     }
 }
 
-.table-four-guardians, .table-night-club, .table-way-to-goal {
+.table-four-guardians, .table-night-club, .table-way-to-goal, .table-fortune-cat {
     .table-paylines {
         margin: auto;
 

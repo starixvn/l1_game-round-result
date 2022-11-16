@@ -66,6 +66,8 @@
 
         public const string BitcoinMasterRounds = "bitcoinmaster_rounds";
         public const string CasinoHoldemPokerRound = "casinoholdempoker_phiens";
+
+        public const string FortuneCatRounds = "fortunecat_rounds";
     }
 
     internal static class MiniGameBetCollections
