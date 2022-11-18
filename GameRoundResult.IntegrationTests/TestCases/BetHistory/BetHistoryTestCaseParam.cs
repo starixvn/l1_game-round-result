@@ -2,9 +2,9 @@
 
 namespace GameRoundResult.IntegrationTests
 {
-    public class BetHistoryModel
+    public class BetHistoryTestCaseParam
     {
-        public BetHistoryModel(GameType game, int playerId, long roundId, string language, string fileName)
+        public BetHistoryTestCaseParam(GameType game, int playerId, long roundId, string language, string fileName)
         {
             Game = game;
             PlayerId = playerId;

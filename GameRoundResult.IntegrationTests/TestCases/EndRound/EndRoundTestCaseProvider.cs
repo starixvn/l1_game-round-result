@@ -4,18 +4,21 @@ using System.Linq;
 
 namespace GameRoundResult.IntegrationTests
 {
-    public class BetHistoryGenerator : BaseTestDataGenerator<BetHistoryModel>, IEnumerable<object[]>
+    public class EndRoundTestCaseProvider : TestCaseDataProviderBase<EndRoundTestCaseParam>, IEnumerable<object[]>
     {
-        public IEnumerator<object[]> GetEnumerator() => GetData()
+        public IEnumerator<object[]> GetEnumerator() => GetTestCaseParams()
             .Select(e =>
             {
                 return new object[] {
                     e.Game,
                     e.PlayerId,
                     e.RoundId,
-                    e.Language,
-                    e.FileName,
-                };
+                    e.TotalAmount,
+                    e.TotalWin,
+                    e.ValidBet,
+                    e.EndTime,
+                    e.ErrorCode,
+                    e.ErrorDescription};
             }).GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

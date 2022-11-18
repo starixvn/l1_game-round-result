@@ -9,11 +9,11 @@ using Xunit;
 namespace GameRoundResult.IntegrationTests
 {
     [Collection("IntergrationTest")]
-    public class IntegrationTestBase
+    public abstract class IntegrationTestBase
     {
-        protected readonly HttpClient TestClient;
+        protected readonly HttpClient TestDriver;
         protected readonly IConfigurationRoot Config;
-        protected string Domain;
+        protected string ResultServiceDomain;
         protected string ProjectDir = Directory.GetCurrentDirectory();
 
         protected IntegrationTestBase()
@@ -27,9 +27,9 @@ namespace GameRoundResult.IntegrationTests
                     config.AddJsonFile(configPath);
                 });
             });
-            TestClient = appFactory.CreateClient();
+            TestDriver = appFactory.CreateClient();
             Config = new ConfigurationBuilder().AddJsonFile(configPath).Build();
-            Domain = Config["HostConfiguration:Domain"];
+            ResultServiceDomain = Config["HostConfiguration:Domain"];
         }
 
         protected const string OperatorId = "ONEworks1";

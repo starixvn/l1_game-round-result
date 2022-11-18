@@ -72,7 +72,7 @@ namespace GameRoundResult.IntegrationTests
             // assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             var result = JsonConvert.DeserializeObject<GameTicketAccessUrlResultModel>(response.Content.ReadAsStringAsync().Result);
-            Assert.StartsWith($"{Domain}en-US/BetHistory/", result.RedirectUrl);
+            Assert.StartsWith($"{ResultServiceDomain}en-US/BetHistory/", result.RedirectUrl);
         }
 
         #endregion GetAccessURL
@@ -88,7 +88,7 @@ namespace GameRoundResult.IntegrationTests
             var url = await BuildAccessUrl(model);
 
             // act
-            var response = await TestClient.GetAsync(url);
+            var response = await TestDriver.GetAsync(url);
 
             // assert
             Assert.Equal(expectedContentType, response.Content.Headers.ContentType.ToString());
@@ -97,7 +97,7 @@ namespace GameRoundResult.IntegrationTests
         }
 
         [Theory]
-        [ClassData(typeof(BetHistoryGenerator))]
+        [ClassData(typeof(BetHistoryTestCaseProvider))]
         public async Task Index_ValidData_RenderExpectedInfo(
             GameType gameType,
             int playerId,
@@ -115,7 +115,7 @@ namespace GameRoundResult.IntegrationTests
             var expected = ReadTextFromFile(gameType, fileName);
 
             // act
-            var response = await TestClient.GetAsync(url);
+            var response = await TestDriver.GetAsync(url);
 
             // assert
             Assert.Equal(expected, RemoveWhiteSpaces(response.Content.ReadAsStringAsync().Result));
@@ -151,7 +151,7 @@ namespace GameRoundResult.IntegrationTests
         private async Task<HttpResponseMessage> SendRequestGetAccessURL(BetHistoryAccessUrlRequestModel model)
         {
             var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
-            var response = await this.TestClient.PostAsync("/BetHistory/GetAccessUrl", content);
+            var response = await this.TestDriver.PostAsync("/BetHistory/GetAccessUrl", content);
             return response;
         }
 

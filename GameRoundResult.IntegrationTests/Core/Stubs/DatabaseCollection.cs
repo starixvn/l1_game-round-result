@@ -3,7 +3,7 @@
 namespace GameRoundResult.IntegrationTests
 {
     [CollectionDefinition("IntergrationTest")]
-    public class DatabaseCollection : ICollectionFixture<DbFixture>
+    public class DatabaseCollection : ICollectionFixture<DatabaseFixture>
     {
     }
 }

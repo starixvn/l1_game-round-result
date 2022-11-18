@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Resource Include="Core\Stubs\partners.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.17.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="5.0.17" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
@@ -25,12 +29,6 @@
     <ProjectReference Include="..\GameRoundResult.Web\GameRoundResult.Web.csproj" />
   </ItemGroup>
     <ItemGroup>
-	    <Folder Include="Core\StubData\" />
-    </ItemGroup>
-	<ItemGroup>
-		<Folder Include="Games\" />
-	</ItemGroup>
-    <ItemGroup>
 	    <Content Update="appsettings.json">
 		    <TransformOnBuild>true</TransformOnBuild>
 	    </Content>
@@ -42,7 +40,25 @@
       <None Update="appsettings.IGT.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Core\StubData\*.json">
+      <None Update="Games\BigSmall\DatabaseStubs\taixiu_cuocs.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Games\BigSmall\DatabaseStubs\taixiu_ones.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Games\BigSmall\DatabaseStubs\taixiu_phiens.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Games\FruitSlot\DatabaseStubs\fruitslot_betlogs.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Games\FruitSlot\DatabaseStubs\fruitslot_bets.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Games\FruitSlot\DatabaseStubs\fruitslot_rounds.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Core\Stubs\*.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="Games\**\Data\*.json">
@@ -51,5 +67,10 @@
 	  <None Update="Games\**\Expected\**\*.*">
 		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Core\Stubs\DatabaseFixture.cs">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Compile>
     </ItemGroup>
 </Project>

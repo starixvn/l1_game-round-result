@@ -58,7 +58,7 @@ namespace GameRoundResult.IntegrationTests
             var result = JsonConvert.DeserializeObject<GameTicketAccessUrlResultModel>(response.Content.ReadAsStringAsync().Result);
             Assert.NotNull(result.RedirectUrl);
             Assert.NotEmpty(result.RedirectUrl);
-            Assert.StartsWith($"{Domain}vi-VN/GameRoundResult/Auth/", result.RedirectUrl);
+            Assert.StartsWith($"{ResultServiceDomain}vi-VN/GameRoundResult/Auth/", result.RedirectUrl);
         }
 
         [Fact]
@@ -73,7 +73,7 @@ namespace GameRoundResult.IntegrationTests
             // assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             var result = JsonConvert.DeserializeObject<GameTicketAccessUrlResultModel>(response.Content.ReadAsStringAsync().Result);
-            Assert.StartsWith($"{Domain}en-US/GameRoundResult/Auth/", result.RedirectUrl);
+            Assert.StartsWith($"{ResultServiceDomain}en-US/GameRoundResult/Auth/", result.RedirectUrl);
         }
 
         #endregion GetAccessURL
@@ -89,7 +89,7 @@ namespace GameRoundResult.IntegrationTests
             var url = await BuildAccessUrl(model);
 
             // act
-            var response = await TestClient.GetAsync(url);
+            var response = await TestDriver.GetAsync(url);
 
             // assert
             Assert.Equal(expectedContentType, response.Content.Headers.ContentType.ToString());
@@ -102,7 +102,7 @@ namespace GameRoundResult.IntegrationTests
         #region GetData
 
         [Theory]
-        [ClassData(typeof(RoundResultGenerator))]
+        [ClassData(typeof(RoundResultTestCaseProvider))]
         public async Task GetRoundResult_ValidData_ReturnExpectedInfo(
             GameType game,
             int roundId,
@@ -114,11 +114,11 @@ namespace GameRoundResult.IntegrationTests
             var expected = ReadTextFromFile(game, fileName);
             var model = GetRoundResultAccessUrlRequestModel();
             var url = await BuildAccessUrl(model);
-            await TestClient.GetAsync(url);
+            await TestDriver.GetAsync(url);
             var gameId = (int)game;
 
             // act
-            var response = await TestClient.GetAsync($"/GameRoundResult/GetData?gameType={gameId}&roundId={roundId}&date={date}");
+            var response = await TestDriver.GetAsync($"/GameRoundResult/GetData?gameType={gameId}&roundId={roundId}&date={date}");
 
             // assert
             var result = RemoveWhiteSpaces(JsonConvert.DeserializeObject<object>(response.Content.ReadAsStringAsync().Result).ToString());
@@ -151,7 +151,7 @@ namespace GameRoundResult.IntegrationTests
         private async Task<HttpResponseMessage> SendRequestGetAccessURL(GameRoundResultAccessUrlRequestModel model)
         {
             var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
-            var response = await this.TestClient.PostAsync("/GameRoundResult/GetAccessUrl", content);
+            var response = await this.TestDriver.PostAsync("/GameRoundResult/GetAccessUrl", content);
             return response;
         }
 

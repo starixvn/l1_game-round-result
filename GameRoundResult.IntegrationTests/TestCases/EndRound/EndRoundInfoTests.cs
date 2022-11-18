@@ -16,7 +16,7 @@ namespace GameRoundResult.IntegrationTests
         #region Index
 
         [Theory]
-        [ClassData(typeof(EndRoundGenerator))]
+        [ClassData(typeof(EndRoundTestCaseProvider))]
         public async Task Index_ReturnExpectedInfo(
             GameType game,
             int playerId,
@@ -37,7 +37,7 @@ namespace GameRoundResult.IntegrationTests
             var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
 
             // act
-            var response = await this.TestClient.PostAsync("/EndRoundInfo", content);
+            var response = await this.TestDriver.PostAsync("/EndRoundInfo", content);
             var actual = JsonConvert.DeserializeObject<EndRoundInfoResult>(response.Content.ReadAsStringAsync().Result);
 
             // assert

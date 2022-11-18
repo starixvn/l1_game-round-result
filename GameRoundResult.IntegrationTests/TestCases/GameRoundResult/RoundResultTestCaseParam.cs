@@ -2,9 +2,9 @@
 
 namespace GameRoundResult.IntegrationTests
 {
-    public class RoundResultModel
+    public class RoundResultTestCaseParam
     {
-        public RoundResultModel(GameType game, long roundId, string date, string fileName)
+        public RoundResultTestCaseParam(GameType game, long roundId, string date, string fileName)
         {
             Game = game;
             RoundId = roundId;

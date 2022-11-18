@@ -3,9 +3,9 @@ using GameRoundResult.Core.Constants;
 
 namespace GameRoundResult.IntegrationTests
 {
-    public class EndRoundModel
+    public class EndRoundTestCaseParam
     {
-        public EndRoundModel(
+        public EndRoundTestCaseParam(
             GameType game,
             int playerId,
             int roundId,
