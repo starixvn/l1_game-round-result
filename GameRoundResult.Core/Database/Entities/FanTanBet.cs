@@ -1,10 +1,12 @@
-﻿using GameRoundResult.Core._Share;
+﻿using System.Collections.Generic;
+using GameRoundResult.Core._Share;
 
 namespace GameRoundResult.Core.Database.Entities
 {
     [CollectionName("fantan_bets")]
     public class FanTanBet : BaseBetEntity
     {
+        public Dictionary<string, decimal> Odds { get; set; }
         public decimal Odd { get; set; }
         public decimal Even { get; set; }
 

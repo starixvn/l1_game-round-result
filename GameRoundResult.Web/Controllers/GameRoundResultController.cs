@@ -23,7 +23,7 @@ using TimeZoneConverter;
 
 namespace GameRoundResult.Web.Controllers
 {
-    //  [Authorize]
+    [Authorize]
     public class GameRoundResultController : Controller
     {
         private readonly IMediator mediator;

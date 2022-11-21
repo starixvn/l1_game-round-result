@@ -7,7 +7,7 @@
     <thead>
         <tr>
             <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
-            <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
+            <th class="col-round-id">@CommonLocalizer["Round"]</th>
             <th>@CommonLocalizer["Result"]</th>
         </tr>
     </thead>
@@ -21,8 +21,8 @@
                     @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
                 </td>
                 <td>@Model.RoundResult.RoundId</td>
-                <td>
-                    @Model.RoundResult.Result
+                <td class="fan-tan-result">
+                    <span class="result-@Model.RoundResult.Result.FinalBeads"></span>
                 </td>
             </tr>
         }
@@ -42,7 +42,9 @@
         <tr>
             <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
             <th>@CommonLocalizer["BetChoice"]</th>
-            <th>@CommonLocalizer["BetAmount"]</th>
+            <th>@CommonLocalizer["Odds"]</th>
+            <th>@CommonLocalizer["Stake"]</th>
+            <th>@CommonLocalizer["Win"]</th>
         </tr>
     </thead>
     <tbody>
@@ -50,6 +52,9 @@
         {
             if (Model.Bet.Even > 0)
             {
+                var odds = Model.Bet.Odds["even"];
+                var win = Model.RoundResult.SettlementResult.Even ? Model.Bet.Even * odds : 0;
+
                 <tr>
                     <td>
                         @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
@@ -57,12 +62,17 @@
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
                     <td>@CommonLocalizer["Even"]</td>
+                    <td class="text-right">@odds.Format()</td>
                     <td class="text-right">@Model.Bet.Even.Format()</td>
+                    <td class="text-right">@win.Format()</td>
                 </tr>
             }
 
             if (Model.Bet.Odd > 0)
             {
+                var odds = Model.Bet.Odds["odd"];
+                var win = Model.RoundResult.SettlementResult.Odd ? Model.Bet.Odd * odds : 0;
+
                 <tr>
                     <td>
                         @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
@@ -70,12 +80,16 @@
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
                     <td>@CommonLocalizer["Odd"]</td>
+                    <td class="text-right">@odds.Format()</td>
                     <td class="text-right">@Model.Bet.Odd.Format()</td>
+                    <td class="text-right">@win.Format()</td>
                 </tr>
             }
 
             if (Model.Bet.Fan1 > 0)
             {
+                var odds = Model.Bet.Odds["fan1"];
+                var win = Model.RoundResult.SettlementResult.Fan1 ? Model.Bet.Fan1 * odds : 0;
                 <tr>
                     <td>
                         @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
@@ -83,12 +97,16 @@
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
                     <td>@Localizer["1 Fan"]</td>
+                    <td class="text-right">@odds.Format()</td>
                     <td class="text-right">@Model.Bet.Fan1.Format()</td>
+                    <td class="text-right">@win.Format()</td>
                 </tr>
             }
 
             if (Model.Bet.Fan2 > 0)
             {
+                var odds = Model.Bet.Odds["fan2"];
+                var win = Model.RoundResult.SettlementResult.Fan2 ? Model.Bet.Fan2 * odds : 0;
                 <tr>
                     <td>
                         @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
@@ -96,12 +114,16 @@
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
                     <td>@Localizer["2 Fan"]</td>
+                    <td class="text-right">@odds.Format()</td>
                     <td class="text-right">@Model.Bet.Fan2.Format()</td>
+                    <td class="text-right">@win.Format()</td>
                 </tr>
             }
 
             if (Model.Bet.Fan3 > 0)
             {
+                var odds = Model.Bet.Odds["fan3"];
+                var win = Model.RoundResult.SettlementResult.Fan3 ? Model.Bet.Fan3 * odds : 0;
                 <tr>
                     <td>
                         @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
@@ -109,12 +131,16 @@
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
                     <td>@Localizer["3 Fan"]</td>
+                    <td class="text-right">@odds.Format()</td>
                     <td class="text-right">@Model.Bet.Fan3.Format()</td>
+                    <td class="text-right">@win.Format()</td>
                 </tr>
             }
 
             if (Model.Bet.Fan4 > 0)
             {
+                var odds = Model.Bet.Odds["fan4"];
+                var win = Model.RoundResult.SettlementResult.Fan4 ? Model.Bet.Fan4 * odds : 0;
                 <tr>
                     <td>
                         @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
@@ -122,12 +148,16 @@
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
                     <td>@Localizer["4 Fan"]</td>
+                    <td class="text-right">@odds.Format()</td>
                     <td class="text-right">@Model.Bet.Fan4.Format()</td>
+                    <td class="text-right">@win.Format()</td>
                 </tr>
             }
 
             if (Model.Bet.Kwok12 > 0)
             {
+                var odds = Model.Bet.Odds["kwok12"];
+                var win = Model.RoundResult.SettlementResult.Kwok12 ? Model.Bet.Kwok12 * odds : 0;
                 <tr>
                     <td>
                         @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
@@ -135,12 +165,16 @@
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
                     <td>@Localizer["1 2 Kwok"]</td>
+                    <td class="text-right">@odds.Format()</td>
                     <td class="text-right">@Model.Bet.Kwok12.Format()</td>
+                    <td class="text-right">@win.Format()</td>
                 </tr>
             }
 
             if (Model.Bet.Kwok23 > 0)
             {
+                var odds = Model.Bet.Odds["kwok23"];
+                var win = Model.RoundResult.SettlementResult.Kwok23 ? Model.Bet.Kwok23 * odds : 0;
                 <tr>
                     <td>
                         @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
@@ -148,12 +182,16 @@
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
                     <td>@Localizer["2 3 Kwok"]</td>
+                    <td class="text-right">@odds.Format()</td>
                     <td class="text-right">@Model.Bet.Kwok23.Format()</td>
+                    <td class="text-right">@win.Format()</td>
                 </tr>
             }
 
             if (Model.Bet.Kwok34 > 0)
             {
+                var odds = Model.Bet.Odds["kwok34"];
+                var win = Model.RoundResult.SettlementResult.Kwok34 ? Model.Bet.Kwok34 * odds : 0;
                 <tr>
                     <td>
                         @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
@@ -161,12 +199,16 @@
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
                     <td>@Localizer["3 4 Kwok"]</td>
+                    <td class="text-right">@odds.Format()</td>
                     <td class="text-right">@Model.Bet.Kwok34.Format()</td>
+                    <td class="text-right">@win.Format()</td>
                 </tr>
             }
 
             if (Model.Bet.Kwok41 > 0)
             {
+                var odds = Model.Bet.Odds["kwok41"];
+                var win = Model.RoundResult.SettlementResult.Kwok41 ? Model.Bet.Kwok41 * odds : 0;
                 <tr>
                     <td>
                         @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
@@ -174,12 +216,16 @@
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
                     <td>@Localizer["4 1 Kwok"]</td>
+                    <td class="text-right">@odds.Format()</td>
                     <td class="text-right">@Model.Bet.Kwok41.Format()</td>
+                    <td class="text-right">@win.Format()</td>
                 </tr>
             }
 
             if (Model.Bet.Chun123 > 0)
             {
+                var odds = Model.Bet.Odds["chun123"];
+                var win = Model.RoundResult.SettlementResult.Chun123 ? Model.Bet.Chun123 * odds : 0;
                 <tr>
                     <td>
                         @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
@@ -187,12 +233,16 @@
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
                     <td>@Localizer["1 2 3 Chun"]</td>
+                    <td class="text-right">@odds.Format()</td>
                     <td class="text-right">@Model.Bet.Chun123.Format()</td>
+                    <td class="text-right">@win.Format()</td>
                 </tr>
             }
 
             if (Model.Bet.Chun124 > 0)
             {
+                var odds = Model.Bet.Odds["chun124"];
+                var win = Model.RoundResult.SettlementResult.Chun124 ? Model.Bet.Chun124 * odds : 0;
                 <tr>
                     <td>
                         @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
@@ -200,12 +250,16 @@
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
                     <td>@Localizer["1 2 4 Chun"]</td>
-                    <td class="text-right">@Model.Bet.Chun124.Format()</td>
+                    <td class="text-right">@odds.Format()</td>
+                    <td class="text-right">@Model.Bet.Chun234.Format()</td>
+                    <td class="text-right">@win.Format()</td>
                 </tr>
             }
 
             if (Model.Bet.Chun134 > 0)
             {
+                var odds = Model.Bet.Odds["chun134"];
+                var win = Model.RoundResult.SettlementResult.Chun134 ? Model.Bet.Chun134 * odds : 0;
                 <tr>
                     <td>
                         @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
@@ -213,12 +267,16 @@
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
                     <td>@Localizer["1 3 4 Chun"]</td>
+                    <td class="text-right">@odds.Format()</td>
                     <td class="text-right">@Model.Bet.Chun134.Format()</td>
+                    <td class="text-right">@win.Format()</td>
                 </tr>
             }
 
             if (Model.Bet.Chun234 > 0)
             {
+                var odds = Model.Bet.Odds["chun234"];
+                var win = Model.RoundResult.SettlementResult.Chun234 ? Model.Bet.Chun234 * odds : 0;
                 <tr>
                     <td>
                         @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
@@ -226,7 +284,9 @@
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
                     <td>@Localizer["2 3 4 Chun"]</td>
+                    <td class="text-right">@odds.Format()</td>
                     <td class="text-right">@Model.Bet.Chun234.Format()</td>
+                    <td class="text-right">@win.Format()</td>
                 </tr>
             }
 
