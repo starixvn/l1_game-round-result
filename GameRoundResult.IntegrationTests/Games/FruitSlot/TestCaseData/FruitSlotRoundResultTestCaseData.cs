@@ -9,7 +9,7 @@ namespace GameRoundResult.IntegrationTests
         {
             return new List<RoundResultTestCaseParam>
             {
-                new RoundResultTestCaseParam (GameType.FruitSlot, 1, "2022-10-25", "FruitSlotRound1"),
+                new RoundResultTestCaseParam (GameType.FruitSlot, 1, "2022-10-25", "GetData_Round1"),
             };
         }
     }

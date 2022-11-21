@@ -103,7 +103,7 @@ namespace GameRoundResult.IntegrationTests
 
         [Theory]
         [ClassData(typeof(RoundResultTestCaseProvider))]
-        public async Task GetRoundResult_ValidData_ReturnExpectedInfo(
+        public async Task GetData_ValidData_ReturnExpectedInfo(
             GameType game,
             int roundId,
             string date,
