@@ -13,6 +13,7 @@ namespace GameRoundResult.IntegrationTests
                     e.Game,
                     e.RoundId,
                     e.Date,
+                    e.Language,
                     e.FileName,
                 };
             }).GetEnumerator();

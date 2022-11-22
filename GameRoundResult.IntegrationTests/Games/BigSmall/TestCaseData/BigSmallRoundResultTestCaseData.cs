@@ -9,8 +9,8 @@ namespace GameRoundResult.IntegrationTests
         {
             return new List<RoundResultTestCaseParam>
             {
-                new RoundResultTestCaseParam (GameType.BigSmall, 1, "2022-11-01", "GetData_Round1"),
-                new RoundResultTestCaseParam (GameType.BigSmall, 0, "2022-11-01", "GetData_Date1"),
+                new RoundResultTestCaseParam (GameType.BigSmall, 1, "2022-11-01", "en-US", "GetData_Round1"),
+                new RoundResultTestCaseParam (GameType.BigSmall, 0, "2022-11-01", "en-US", "GetData_Date1"),
             };
         }
     }

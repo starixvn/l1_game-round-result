@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.IntegrationTests.Helpers;
 using GameRoundResult.Web.Models;
@@ -107,22 +108,22 @@ namespace GameRoundResult.IntegrationTests
             GameType game,
             int roundId,
             string date,
+            string language,
             string fileName
             )
         {
             // arrange
             var expected = ReadTextFromFile(game, fileName);
-            var model = GetRoundResultAccessUrlRequestModel();
+            var model = GetRoundResultAccessUrlRequestModel(language);
             var url = await BuildAccessUrl(model);
             await TestDriver.GetAsync(url);
             var gameId = (int)game;
 
             // act
-            var response = await TestDriver.GetAsync($"/GameRoundResult/GetData?gameType={gameId}&roundId={roundId}&date={date}");
-
+            var response = await TestDriver.GetAsync($"{language}/GameRoundResult/GetData?gameType={gameId}&roundId={roundId}&date={date}");
             // assert
             var result = RemoveWhiteSpaces(JsonConvert.DeserializeObject<object>(response.Content.ReadAsStringAsync().Result).ToString());
-            Assert.Equal(expected, result);
+            Assert.Equal(expected, HttpUtility.HtmlDecode(result));
         }
 
         #endregion GetData
@@ -135,7 +136,7 @@ namespace GameRoundResult.IntegrationTests
             return RemoveWhiteSpaces(File.ReadAllText(path));
         }
 
-        private GameRoundResultAccessUrlRequestModel GetRoundResultAccessUrlRequestModel()
+        private GameRoundResultAccessUrlRequestModel GetRoundResultAccessUrlRequestModel(string language = "")
         {
             return new GameRoundResultAccessUrlRequestModel
             {
@@ -144,7 +145,7 @@ namespace GameRoundResult.IntegrationTests
                     ClientID = "Game Admin 2",
                     ClientKey = "a3d39c90-df4e-4225-bf66-5fbecbdedc06"
                 },
-                Language = "en-US",
+                Language = string.IsNullOrEmpty(language) ? "en-US" : language,
             };
         }
 
@@ -159,7 +160,7 @@ namespace GameRoundResult.IntegrationTests
         {
             var response = await SendRequestGetAccessURL(model);
             var redirectUrl = JsonConvert.DeserializeObject<GameTicketAccessUrlResultModel>(response.Content.ReadAsStringAsync().Result).RedirectUrl;
-            var index = redirectUrl.IndexOf("/en-US");
+            var index = redirectUrl.IndexOf($"/{model.Language}");
             return redirectUrl.Substring(index);
         }
 
