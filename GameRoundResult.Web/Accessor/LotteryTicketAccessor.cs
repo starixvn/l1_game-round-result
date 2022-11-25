@@ -13,11 +13,15 @@ namespace GameRoundResult.Web.Accessor
     {
         private readonly IGameBetService gameBetService;
         private readonly IMapper mapper;
+        private readonly ICurrencyGroupService currencyGroupService;
 
-        public LotteryTicketAccessor(IGameBetService gameBetService, IMapper mapper)
+        public LotteryTicketAccessor(IGameBetService gameBetService,
+            IMapper mapper,
+            ICurrencyGroupService currencyGroupService)
         {
             this.gameBetService = gameBetService;
             this.mapper = mapper;
+            this.currencyGroupService = currencyGroupService;
         }
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
@@ -27,8 +31,12 @@ namespace GameRoundResult.Web.Accessor
             var ticketViewModel = new LotteryTicketViewModel
             {
                 Bets = result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
-
             };
+
+            if (result.Item2.Any())
+            {
+                ticketViewModel.FractionalOddsFormat = await currencyGroupService.GetFractionalOddsFormat(result.Item2.First().Currency, request.OperatorId);
+            }
 
             if (result.Item1 != null)
             {

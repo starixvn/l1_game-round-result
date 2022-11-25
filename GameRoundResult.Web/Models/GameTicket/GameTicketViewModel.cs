@@ -7,5 +7,7 @@ namespace GameRoundResult.Web.Models
         public TimeSpan TimeZoneOffset { get; set; }
 
         public string TimeOffsetString => $"GMT{TimeZoneOffset.Hours:+#;-#}";
+
+        public bool? FractionalOddsFormat { get; set; }
     }
 }

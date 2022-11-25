@@ -154,7 +154,6 @@
 
                             }
                         }
-
                     </div>
 
                     <div>
@@ -196,7 +195,6 @@
                                 @Localizer["Tie"]
                             }
                         }
-
                     </div>
 
                     <div>
@@ -219,7 +217,6 @@
                             @Localizer["Even"]
                         }
                     </div>
-
                 </td>
             </tr>
         }
@@ -252,7 +249,7 @@
             {
                 var htSettlementResult = Model.RoundResult.HalfTime.SettlementResult;
                 var ftSettlementResult = Model.RoundResult.FullTime.SettlementResult; var settlmentResultMapper = new Dictionary<string, bool>
-            {
+        {
                 { "fhBlue", htSettlementResult.Blue },
                 { "fhRed", htSettlementResult.Red },
                 { "fhOver", htSettlementResult.Over},
@@ -298,7 +295,7 @@
                         @betChoiceMapper[bet.Choice]
                     </td>
                     <td class="@cssClass">
-                        @choiceOdds.Format()
+                        @choiceOdds.FormatOdds(Model.FractionalOddsFormat)
                     </td>
                     <td class="text-right @cssClass">
                         @bet.Amount.Format()

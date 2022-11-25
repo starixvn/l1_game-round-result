@@ -3,7 +3,6 @@
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
 @inject Microsoft.Extensions.Localization.IStringLocalizer<ThreeCardsTicketViewModel> Localizer
 
-
 <table class="table table-bordered table-three-cards">
     <thead>
         <tr>
@@ -66,7 +65,6 @@
                     {
                         <img class="img card-suit" src="~/scss/images/card_2.png" asp-append-version="true" />
                     }
-
                 </td>
             </tr>
         }
@@ -98,7 +96,7 @@
             {
                 <tr class="@(settlementResult.Red ? "bold text-blue" : string.Empty)">
                     <td>@Localizer["Red"]</td>
-                    <td class="text-right">@Model.Bet.Odds.Red</td>
+                    <td class="text-right">@Model.Bet.Odds.Red.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Red.Format()</td>
                 </tr>
             }
@@ -106,7 +104,7 @@
             {
                 <tr class="@(settlementResult.Black ? "bold text-blue" : string.Empty)">
                     <td>@Localizer["Black"]</td>
-                    <td class="text-right">@Model.Bet.Odds.Black</td>
+                    <td class="text-right">@Model.Bet.Odds.Black.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Black.Format()</td>
                 </tr>
             }
@@ -114,7 +112,7 @@
             {
                 <tr class="@(settlementResult.Diamonds ? "bold text-blue" : string.Empty)">
                     <td>@Localizer["Diamonds"]</td>
-                    <td class="text-right">@Model.Bet.Odds.Diamonds</td>
+                    <td class="text-right">@Model.Bet.Odds.Diamonds.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Diamonds.Format()</td>
                 </tr>
             }
@@ -123,7 +121,7 @@
             {
                 <tr class="@(settlementResult.Hearts ? "bold text-blue" : string.Empty)">
                     <td>@Localizer["Hearts"]</td>
-                    <td class="text-right">@Model.Bet.Odds.Hearts</td>
+                    <td class="text-right">@Model.Bet.Odds.Hearts.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Hearts.Format()</td>
                 </tr>
             }
@@ -132,17 +130,16 @@
             {
                 <tr class="@(settlementResult.Spades ? "bold text-blue" : string.Empty)">
                     <td>@Localizer["Spades"]</td>
-                    <td class="text-right">@Model.Bet.Odds.Spades</td>
+                    <td class="text-right">@Model.Bet.Odds.Spades.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Spades.Format()</td>
                 </tr>
             }
-
 
             if (Model.Bet.Clubs > 0)
             {
                 <tr class="@(settlementResult.Clubs ? "bold text-blue" : string.Empty)">
                     <td>@Localizer["Clubs"]</td>
-                    <td class="text-right">@Model.Bet.Odds.Clubs</td>
+                    <td class="text-right">@Model.Bet.Odds.Clubs.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Clubs.Format()</td>
                 </tr>
             }

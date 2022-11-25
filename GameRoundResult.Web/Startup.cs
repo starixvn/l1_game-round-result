@@ -36,6 +36,7 @@ namespace GameRoundResult.Web
             services.AddLocalizationSettings(Configuration);
             services.AddResponseCaching();
             services.AddHealthChecks();
+            services.AddMemoryCache();
 
             services.AddDataProtection()
               .PersistKeysToMongoDb(Configuration)

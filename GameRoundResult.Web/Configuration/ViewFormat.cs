@@ -29,5 +29,11 @@ namespace GameRoundResult.Web.Configuration
         {
             return value.ToString(ViewFormat._2DecimalsFormat, CultureInfo.InvariantCulture);
         }
+
+        public static string FormatOdds(this decimal value, bool? frationalFormat)
+        {
+            var odds = frationalFormat == true ? value - 1 : value;
+            return odds.ToString(ViewFormat.NumberFormat, CultureInfo.InvariantCulture);
+        }
     }
 }

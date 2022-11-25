@@ -95,7 +95,7 @@
                             @betChoice.Key
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.FourSets.Format()
+                            @Model.Odds.FourSets.FormatOdds(Model.FractionalOddsFormat)
                             @if (occurence > 1)
                             {
                                 @("(")<span class="text-red">@($"x{occurence}")</span>@(")")
@@ -134,7 +134,7 @@
                             @betChoice.Key
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.Special.Format()
+                            @Model.Odds.Special.FormatOdds(Model.FractionalOddsFormat)
                         </td>
                         <td class="text-right @cssClass">
                             @betChoice.Value.Format()
@@ -176,7 +176,7 @@
                             @betChoice.Key
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.Head.Format()
+                            @Model.Odds.Head.FormatOdds(Model.FractionalOddsFormat)
                         </td>
                         <td class="text-right @cssClass">
                             @betChoice.Value.Format()
@@ -215,7 +215,7 @@
                             @betChoice.Key
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.Tail.Format()
+                            @Model.Odds.Tail.FormatOdds(Model.FractionalOddsFormat)
                         </td>
                         <td class="text-right @cssClass">
                             @betChoice.Value.Format()
@@ -257,7 +257,7 @@
                             @betChoice.Key
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.TwentySevenSets.Format()
+                            @Model.Odds.TwentySevenSets.FormatOdds(Model.FractionalOddsFormat)
                             @if (occurence > 1)
                             {
                                 @("(")<span class="text-red">@($"x{occurence}")</span>@(")")
@@ -297,7 +297,7 @@
                             @betChoice.Key.Replace("-", ", ")
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.Parlay2.Format()
+                            @Model.Odds.Parlay2.FormatOdds(Model.FractionalOddsFormat)
                         </td>
                         <td class="text-right @cssClass">
                             @betChoice.Value.Format()
@@ -339,7 +339,7 @@
                             @betChoice.Key.Replace("-", ", ")
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.Parlay3.Format()
+                            @Model.Odds.Parlay3.FormatOdds(Model.FractionalOddsFormat)
                         </td>
                         <td class="text-right @cssClass">
                             @betChoice.Value.Format()
@@ -381,7 +381,7 @@
                             @betChoice.Key.Replace("-", ", ")
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.Parlay4.Format()
+                            @Model.Odds.Parlay4.FormatOdds(Model.FractionalOddsFormat)
                         </td>
                         <td class="text-right @cssClass">
                             @betChoice.Value.Format()
@@ -423,7 +423,7 @@
                             @LotteryLocalizer[@betChoice.Key]
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.Others.Format()
+                            @Model.Odds.Others.FormatOdds(Model.FractionalOddsFormat)
                         </td>
                         <td class="text-right @cssClass">
                             @betChoice.Value.Format()

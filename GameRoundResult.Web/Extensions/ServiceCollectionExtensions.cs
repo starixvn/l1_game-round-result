@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Linq;
+using GameRoundResult.Core._Share;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
@@ -55,6 +56,7 @@ namespace GameRoundResult.Web.Extensions
 
         public static void AddServices(this IServiceCollection services)
         {
+            services.AddSingleton<ICacheManager, CacheManager>();
             services.AddScoped<IGameRoundResultService, GameRoundResultService>();
             services.AddScoped<IGameRoundRepository, GameRoundRepository>();
             services.AddScoped<GameTypeLocalization>();
@@ -93,7 +95,10 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IPartnerRepository, PartnerRepository>();
 
             services.AddScoped<IPartnerService, PartnerService>();
+            services.AddScoped<ICurrencyGroupService, CurrencyGroupService>();
             services.AddScoped<IPartnerRepository, PartnerRepository>();
+            services.AddScoped<ICurrencyGroupRepository, CurrencyGroupRepository>();
+            services.AddScoped<ICurrencyRepository, CurrencyRepository>();
 
             services.AddScoped(typeof(BigSmallTicketAccessor<,,>));
 

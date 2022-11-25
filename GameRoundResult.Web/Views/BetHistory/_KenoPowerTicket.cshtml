@@ -32,8 +32,6 @@
         { "redSmall", Localizer["Team Red Big/Small"] },
     };
 
-
-
 }
 
 <table class="table table-bordered table-keno-power">
@@ -156,7 +154,6 @@
                         @CommonLocalizer["Small"]
                     }
                 </td>
-
             </tr>
         }
         else
@@ -187,7 +184,7 @@
             var settlementResult = Model.RoundResult.SettlementResult;
 
             var settlementResultMapper = new Dictionary<string, bool>
-    {
+{
                 { "blue", settlementResult.Blue },
                 { "red", settlementResult.Red },
                 { "big", settlementResult.Big },
@@ -216,7 +213,7 @@
                         @betChoiceMapper[bet.Choice]
                     </td>
                     <td class="@cssClass">
-                        @choiceOdds.Format()
+                        @choiceOdds.FormatOdds(Model.FractionalOddsFormat)
                     </td>
                     <td class="text-right @cssClass">
                         @bet.Amount.Format()

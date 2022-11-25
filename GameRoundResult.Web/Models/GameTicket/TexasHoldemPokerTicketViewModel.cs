@@ -41,13 +41,13 @@ namespace GameRoundResult.Web.Models
 
         public bool? IsSwappedOrHold => Round.IsSwappedOrHold;
 
-        public string AnteOddsDisplayed => Ended && (Bet.SettlementResult?.Ante > Bet.Ante) ? Bet.AnteOdds.ToString(ViewFormat.NumberFormat) : EmptyOdds;
+        public string AnteOddsDisplayed => Ended && (Bet.SettlementResult?.Ante > Bet.Ante) ? Bet.AnteOdds.FormatOdds(FractionalOddsFormat) : EmptyOdds;
 
-        public string TurnOddsDisplayed => Ended && (Bet.SettlementResult?.Turn > Bet.Turn) ? Bet.TurnOdds.ToString(ViewFormat.NumberFormat) : EmptyOdds;
+        public string TurnOddsDisplayed => Ended && (Bet.SettlementResult?.Turn > Bet.Turn) ? Bet.TurnOdds.FormatOdds(FractionalOddsFormat) : EmptyOdds;
 
-        public string RiverOddsDisplayed => Ended && (Bet.SettlementResult?.River > Bet.River) ? Bet.RiverOdds.ToString(ViewFormat.NumberFormat) : EmptyOdds;
+        public string RiverOddsDisplayed => Ended && (Bet.SettlementResult?.River > Bet.River) ? Bet.RiverOdds.FormatOdds(FractionalOddsFormat) : EmptyOdds;
 
-        public string CallOddsDisplayed => Ended && (Bet.SettlementResult?.Call > Bet.Call) ? Bet.CallOdds.ToString(ViewFormat.NumberFormat) : EmptyOdds;
+        public string CallOddsDisplayed => Ended && (Bet.SettlementResult?.Call > Bet.Call) ? Bet.CallOdds.FormatOdds(FractionalOddsFormat) : EmptyOdds;
 
         public decimal TotalBet => Bet.Ante + Bet.Turn + Bet.River + Bet.Call;
 
@@ -73,6 +73,7 @@ namespace GameRoundResult.Web.Models
                         "StraightFlush",
                         "RoyalFlush",
                     };
+
         public byte Id { get; set; }
         public IEnumerable<PokerCardViewModel> Cards { get; set; }
         public IEnumerable<PokerCardViewModel> CombinationCards { get; set; }
