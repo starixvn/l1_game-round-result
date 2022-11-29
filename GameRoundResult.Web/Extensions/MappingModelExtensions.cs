@@ -276,18 +276,10 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
-        public static FanTanBetViewModel ToViewModel(this FanTanBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
-        {
-            return mapper.Map<FanTanBet, FanTanBetViewModel>(entity, opts =>
-            return mapper.Map<FruitSlotRound, FruitSlotRoundResultViewModel>(entity, opts =>
-            {
-                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
-            });
-        }
-        
+                
         public static FruitSlotRoundResultViewModel ToViewModel(this FruitSlotRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return mapper.Map<FanTanBet, FanTanBetViewModel>(entity, opts =>
+            return mapper.Map<FruitSlotRound, FruitSlotRoundResultViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });
@@ -296,6 +288,14 @@ namespace GameRoundResult.Web.Extensions
         public static FruitSlotBetLogViewModel ToViewModel(this FruitSlotBetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<FruitSlotBetLog, FruitSlotBetLogViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static FanTanBetViewModel ToViewModel(this FanTanBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<FanTanBet, FanTanBetViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });

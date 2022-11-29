@@ -73,7 +73,7 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.MiniSeDie2, sedie },
             { GameType.MiniSeDie3, sedie },
             { GameType.MiniSeDie4, sedie },
-            { GameType.FruitSlot, fruitSlot }
+            { GameType.FruitSlot, fruitSlot },
             { GameType.FanTan, fantan },
         };
 
