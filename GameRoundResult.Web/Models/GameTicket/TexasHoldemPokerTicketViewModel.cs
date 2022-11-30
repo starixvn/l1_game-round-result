@@ -33,13 +33,13 @@ namespace GameRoundResult.Web.Models
                 Id = Round?.HandRankId ?? 0
             };
 
-        public IEnumerable<PokerCardViewModel> CommunityCards => Round.CommunityCards;
+        public IEnumerable<PokerCardViewModel> CommunityCards => Round?.CommunityCards;
 
-        public bool Ended => Round.Ended;
+        public bool Ended => Round?.Ended ?? false;
 
-        public bool IsFold => Bet.IsFold;
+        public bool IsFold => Bet?.IsFold ?? false;
 
-        public bool? IsSwappedOrHold => Round.IsSwappedOrHold;
+        public bool? IsSwappedOrHold => Round?.IsSwappedOrHold;
 
         public string AnteOddsDisplayed => Ended && (Bet.SettlementResult?.Ante > Bet.Ante) ? Bet.AnteOdds.FormatOdds(FractionalOddsFormat) : EmptyOdds;
 
