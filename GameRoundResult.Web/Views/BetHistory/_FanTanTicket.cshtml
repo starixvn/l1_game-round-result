@@ -297,7 +297,7 @@
             </tr>
             <tr class="total">
                 <td colspan="3" class="bold text-right">@CommonLocalizer["WinLoss"]</td>
-                <td colspan="2" class="bold@(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+                <td colspan="2" class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
             </tr>
 
         }
