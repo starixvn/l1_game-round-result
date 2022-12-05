@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
-using GameRoundResult.Web.SlotGames.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GameRoundResult.Web.Accessor
@@ -10,8 +9,6 @@ namespace GameRoundResult.Web.Accessor
     public interface IGameTicketAccessorFactory
     {
         IGameTicketAccessor GetService(GameType game);
-
-        IGameTicketAccessor GetSlotGameService();
     }
 
     public class GameTicketAccessorFactory : IGameTicketAccessorFactory
@@ -50,11 +47,15 @@ namespace GameRoundResult.Web.Accessor
             { GameType.KenoMatch2, typeof(KenoMatchTicketAccessor<KenoMatch2Round, KenoMatch2One, KenoMatch2Bet>) },
             { GameType.KenoPower1, typeof(KenoPowerTicketAccessor<KenoPower1Round, KenoPower1One, KenoPower1Bet>) },
             { GameType.KenoPower2, typeof(KenoPowerTicketAccessor<KenoPower2Round, KenoPower2One, KenoPower2Bet>) },
+            { GameType.HeroesSlot, typeof(FourGuardiansTicketAccessor<HeroesSlotRound>) },
+            { GameType.FourGuardians, typeof(FourGuardiansTicketAccessor<FourGuardiansRound>) },
             { GameType.BitcoinMaster, typeof(BitcoinMasterTicketAccessor) },
             { GameType.CasinoHoldemPoker, typeof(CasinoHoldemPokerTicketAccessor) },
             { GameType.TexasHoldemPoker, typeof(TexasHoldemPokerTicketAccessor) },
             { GameType.HiLo, typeof(HiLoTicketAccessor) },
-            { GameType.TreasureIsland, typeof(BaseCascadingSlotTicketAccessor<TreasureIslandRound, TreasureIslandTotalMultiplier>) },
+            { GameType.NightClub, typeof(FourGuardiansTicketAccessor<NightClubRound>) },
+            { GameType.TreasureIsland, typeof(BaseCascadingSlotTicketAccessor<TreasureIslandRound, TreasureIslandTotalMultiplier>)},
+            { GameType.WayToGoal, typeof(FourGuardiansTicketAccessor<WayToGoalRound>) },
             { GameType.MegaKeno, typeof(MiniKenoTicketAccessor<MegaKenoRound, MegaKenoOne>) },
             { GameType.MegaKeno2, typeof(MiniKenoTicketAccessor<MegaKeno2Round, MegaKeno2One>) },
             { GameType.UnbalancedBigSmall1, typeof(UnbalancedBigSmallTicketAccessor<UnbalancedBigSmall1Round, UnbalancedBigSmall1Bet, UnbalancedBigSmall1BetLog>) },
@@ -78,8 +79,5 @@ namespace GameRoundResult.Web.Accessor
 
         public IGameTicketAccessor GetService(GameType game)
             => (IGameTicketAccessor)serviceProvider.GetRequiredService(services[game]);
-
-        public IGameTicketAccessor GetSlotGameService()
-            => serviceProvider.GetService<SlotGameHandler>();
     }
 }
