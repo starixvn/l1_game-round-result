@@ -7,7 +7,7 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace GameRoundResult.Core.Database.Entities
 {
     [CollectionName("fourguardians_rounds")]
-    public class FourGuardiansRound : GameRound
+    public class SlotGameRound : GameRound
     {
         public decimal Bet { get; set; }
 
@@ -19,9 +19,9 @@ namespace GameRoundResult.Core.Database.Entities
 
         public IEnumerable<byte> Result { get; set; }
 
-        public FourGuardiansSettlementResult SettlementResult { get; set; }
+        public SlotGameSettlementResult SettlementResult { get; set; }
 
-        public IEnumerable<FourGuardiansBonusChest> BonusChests { get; set; }
+        public IEnumerable<SlotGameBonusChest> BonusChests { get; set; }
 
         public bool Paid { get; set; }
 
@@ -43,25 +43,25 @@ namespace GameRoundResult.Core.Database.Entities
 
     }
 
-    public class FourGuardiansBonusChest
+    public class SlotGameBonusChest
     {
         public decimal Amount { get; set; }
 
         public bool Picked { get; set; }
     }
 
-    public class FourGuardiansSettlementResult
+    public class SlotGameSettlementResult
     {
-        public IEnumerable<FourGuardiansWinningLine> WinningPaylines { get; set; }
+        public IEnumerable<SlotGameWinningLine> WinningPaylines { get; set; }
 
-        public FourGuardiansBonus Bonus { get; set; }
+        public SlotGameBonus Bonus { get; set; }
 
-        public FourGuardiansFreeSpin FreeSpins { get; set; }
+        public SlotGameFreeSpin FreeSpins { get; set; }
 
-        public FourGuardiansJackpot Jackpot { get; set; }
+        public SlotGameJackpot Jackpot { get; set; }
     }
 
-    public class FourGuardiansJackpot
+    public class SlotGameJackpot
     {
         public byte WinningLine { get; set; }
 
@@ -69,7 +69,7 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal WinningAmount { get; set; }
     }
 
-    public class FourGuardiansWinningLine
+    public class SlotGameWinningLine
     {
         public byte Payline { get; set; }
 
@@ -80,14 +80,14 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal Odds { get; set; }
     }
 
-    public class FourGuardiansBonus
+    public class SlotGameBonus
     {
         public byte Count { get; set; }
 
         public decimal Odds { get; set; }
     }
 
-    public class FourGuardiansFreeSpin
+    public class SlotGameFreeSpin
     {
         public byte Count { get; set; }
 

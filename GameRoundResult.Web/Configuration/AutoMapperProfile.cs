@@ -152,13 +152,13 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<SicBoBet, SicBoBetViewModel>();
 
-            CreateMap<FourGuardiansRound, FourGuardiansRoundResultViewModel>();
-            CreateMap<FourGuardiansSettlementResult, FourGuardiansSettlementResultViewModel>();
-            CreateMap<FourGuardiansFreeSpin, FourGuardiansFreeSpinViewModel>();
-            CreateMap<FourGuardiansBonus, FourGuardiansBonusViewModel>();
-            CreateMap<FourGuardiansWinningLine, FourGuardiansWinningLineViewModel>();
-            CreateMap<FourGuardiansBonusChest, FourGuardiansBonusChestViewModel>();
-            CreateMap<FourGuardiansJackpot, FourGuardiansJackpotViewModel>();
+            CreateMap<SlotGameRound, SlotGameRoundResultViewModel>();
+            CreateMap<SlotGameSettlementResult, FourGuardiansSettlementResultViewModel>();
+            CreateMap<SlotGameFreeSpin, FourGuardiansFreeSpinViewModel>();
+            CreateMap<SlotGameBonus, FourGuardiansBonusViewModel>();
+            CreateMap<SlotGameWinningLine, FourGuardiansWinningLineViewModel>();
+            CreateMap<SlotGameBonusChest, FourGuardiansBonusChestViewModel>();
+            CreateMap<SlotGameJackpot, FourGuardiansJackpotViewModel>();
             CreateMap<VipSeDieWarRound, VipSeDieWarRoundResultViewModel>()
               .ForMember(x => x.PlayerChips, opt => opt.MapFrom(x => new[]
               {

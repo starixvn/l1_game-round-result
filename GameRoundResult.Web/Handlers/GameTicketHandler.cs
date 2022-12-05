@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
@@ -19,12 +20,29 @@ namespace GameRoundResult.Web.Handlers
 
         public async Task<GameTicketViewModel> Handle(GetGameTicketRequest request, CancellationToken cancellationToken)
         {
-            var service = serviceFactory.GetService(request.GameType);
+            IGameTicketAccessor service;
+            if (Enum.IsDefined(typeof(GameType), request.GameType))
+            {
+                service = serviceFactory.GetService(request.GameType);
+            }
+            else
+            {
+                service = serviceFactory.GetSlotGameService();
+            }
 
-            var gameTicket = await service.GetAsync(request);
-            gameTicket.TimeZoneOffset = request.TimeZoneInfo.GetUtcOffset(DateTimeOffset.UtcNow.AddMonths(7));
+            if (service != null)
+            {
+                var gameTicket = await service.GetAsync(request);
 
-            return gameTicket;
+                if (gameTicket != null)
+                {
+                    gameTicket.TimeZoneOffset = request.TimeZoneInfo.GetUtcOffset(DateTimeOffset.UtcNow.AddMonths(7));
+                }
+
+                return gameTicket;
+            }
+
+            return null;
         }
     }
 }

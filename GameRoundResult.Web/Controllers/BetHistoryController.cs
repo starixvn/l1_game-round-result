@@ -62,11 +62,6 @@ namespace GameRoundResult.Web.Controllers
                 var playerId = int.Parse(data[4]);
                 var freeBet = bool.Parse(data[5]);
 
-                if (!Enum.IsDefined(typeof(GameType), gameType))
-                {
-                    return View("GameNotSupported");
-                }
-
                 var @operator = await partnerService.Get(operatorId, operatorSecret);
 
                 if (@operator != null)
@@ -76,6 +71,11 @@ namespace GameRoundResult.Web.Controllers
                         GameType = gameType,
                         GameTicketResult = await GetGameTicket(gameType, roundId, playerId, operatorId, freeBet)
                     };
+
+                    if (viewModel.GameTicketResult == null)
+                    {
+                        return View("GameNotSupported");
+                    }
 
                     return View(viewModel);
                 }

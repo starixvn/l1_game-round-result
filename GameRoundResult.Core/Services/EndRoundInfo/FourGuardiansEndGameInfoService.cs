@@ -6,7 +6,7 @@ using MongoDB.Driver;
 
 namespace GameRoundResult.Core.Services
 {
-    public class FourGuardiansEndGameInfoService : RoundOnlyEndGameInfoService<FourGuardiansRound>, IEndGameInfoService
+    public class FourGuardiansEndGameInfoService : RoundOnlyEndGameInfoService<SlotGameRound>, IEndGameInfoService
     {
         public FourGuardiansEndGameInfoService(IMongoDatabase database) : base(database)
         {
@@ -35,7 +35,7 @@ namespace GameRoundResult.Core.Services
             };
         }
 
-        protected override Expression<Func<FourGuardiansRound, bool>> GetRoundFilterExpression(RetrieveEndGameInfoRequest request)
+        protected override Expression<Func<SlotGameRound, bool>> GetRoundFilterExpression(RetrieveEndGameInfoRequest request)
             => (round) => round.RoundId == request.GameRoundId 
             && round.PlayerId == request.PlayerId 
             && round.SiteId == request.SiteId 

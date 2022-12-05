@@ -62,6 +62,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IGlobalConfigRepository, GlobalConfigRepository>();
             services.AddScoped<IPartnerConfigService, PartnerConfigService>();
             services.AddScoped<IPartnerConfigRepository, PartnerConfigRepository>();
+            services.AddScoped<IGameConfigsRepository, GameConfigsRepository>();
 
             services.AddScoped<IGameRoundAccessorFactory, GameRoundAccessorFactory>();
             services.AddScoped(typeof(GameRoundAccessor<,>));
@@ -79,8 +80,8 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IHiLoTicketService, HiLoTicketService>();
             services.AddScoped<IHiLoBetRepository, HiLoBetRepository>();
 
-            services.AddScoped<IFourGuardiansTicketService, FourGuardiansTicketService>();
-            services.AddScoped<IFourGuardiansBetRepository, FourGuardiansBetRepository>();
+            services.AddScoped<ISlotGameTicketService, SlotGameTicketService>();
+            services.AddScoped<ISlotGameBetRepository, SlotGameBetRepository>();
 
             services.AddScoped<IBaseCascadingSlotTicketService, BaseCascadingSlotTicketService>();
             services.AddScoped<IBaseCascadingSlotBetRepository, BaseCascadingSlotBetRepository>();
@@ -101,7 +102,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<BlackjackTicketAccessor>();
             services.AddScoped<DragonTigerTicketAccessor>();
             services.AddScoped<FishPrawnCrabTicketAccessor>();
-            services.AddScoped(typeof(FourGuardiansTicketAccessor<>));
+            services.AddScoped<SlotGameTicketAccessor>();
             services.AddScoped(typeof(BaseCascadingSlotTicketAccessor<,>));
             services.AddScoped<KenoProMaxTicketAccessor>();
             services.AddScoped<LotteryTicketAccessor>();

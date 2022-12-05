@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GameRoundResult.Web.Models
 {
-    public class FourGuardiansTicketViewModel : GameTicketViewModel
+    public class SlotGameTicketViewModel : GameTicketViewModel
     {
-        public FourGuardiansRoundResultViewModel RoundResult { get; set; }
+        public string ConfigName { get; set; }
+
+        public SlotGameRoundResultViewModel RoundResult { get; set; }
 
         public decimal BetWin => RoundResult.BetWin + (RoundResult.SettlementResult.Jackpot?.WinningAmount ?? 0);
 
@@ -42,7 +44,7 @@ namespace GameRoundResult.Web.Models
         }
     }
 
-    public class FourGuardiansRoundResultViewModel : RoundResultViewModel
+    public class SlotGameRoundResultViewModel : RoundResultViewModel
     {
         public decimal Bet { get; set; }
 
