@@ -11,14 +11,14 @@ namespace GameRoundResult.Core.UnitTests.Services
 {
     public class FourGuardiansTicketServiceTests
     {
-        private readonly IFourGuardiansTicketService gameBetService;
-        private readonly IFourGuardiansBetRepository gameBetRepository;
+        private readonly ISlotGameTicketService gameBetService;
+        private readonly ISlotGameBetRepository gameBetRepository;
         private readonly Fixture fixture;
 
         public FourGuardiansTicketServiceTests()
         {
-            gameBetRepository = Substitute.For<IFourGuardiansBetRepository>();
-            gameBetService = new FourGuardiansTicketService(gameBetRepository);
+            gameBetRepository = Substitute.For<ISlotGameBetRepository>();
+            gameBetService = new SlotGameTicketService(gameBetRepository);
             fixture = new Fixture();
         }
 
@@ -26,15 +26,16 @@ namespace GameRoundResult.Core.UnitTests.Services
         public async Task GetAsync_ReturnCorrectResult(long roundId, int memberId, string operatorId)
         {
             //Arrnage
-            var roundEntity = fixture.Create<FourGuardiansRound>();
-            gameBetRepository.GetAsync<FourGuardiansRound>(roundId, memberId, operatorId).Returns(roundEntity);
+            var roundEntity = fixture.Create<SlotGameRound>();
+            var gameConfigs = fixture.Create<GameConfigs>();
+            gameBetRepository.GetAsync(roundId, memberId, operatorId, gameConfigs).Returns(roundEntity);
 
             //Act
-            var result = await gameBetService.GetAsync<FourGuardiansRound>(roundId, memberId, operatorId);
+            var result = await gameBetService.GetAsync(roundId, memberId, operatorId, gameConfigs);
 
             //Assert
             Assert.StrictEqual(roundEntity, result);
-            gameBetRepository.Received(1).GetAsync<FourGuardiansRound>(roundId, memberId, operatorId);
+            gameBetRepository.Received(1).GetAsync(roundId, memberId, operatorId, gameConfigs);
         }
     }
 }

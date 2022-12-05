@@ -3,7 +3,7 @@
 namespace GameRoundResult.Core.Database.Entities
 {
     [CollectionName("waytogoal_rounds")]
-    public class WayToGoalRound : FourGuardiansRound
+    public class WayToGoalRound : SlotGameRound
     {
     }
 }
