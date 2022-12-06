@@ -148,17 +148,14 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<SlotGameEndGameInfoService>();
             services.AddScoped<LotteryEndGameInfoService>();
             services.AddScoped<ThreeCardsEndGameInfoService>();
-            services.AddScoped<HeroesSlotEndGameInfoService>();
             services.AddScoped<BitcoinMasterEndGameInfoService>();
             services.AddScoped(typeof(KenoMatchEndGameInfoService<,>));
             services.AddScoped(typeof(KenoPowerEndGameInfoService<,>));
             services.AddScoped<CasinoHoldemPokerEndGameInfoService>();
             services.AddScoped<HiLoEndGameInfoService>();
             services.AddScoped<TexasHoldemPokerEndGameInfoService>();
-            services.AddScoped<NightClubEndRoundInfoService>();
             services.AddScoped<TreasureIslandEndRoundInfoService>();
             services.AddScoped(typeof(UnbalancedBigSmallEndGameInfoService<,>));
-            services.AddScoped<WayToGoalEndRoundInfoService>();
             services.AddScoped<BaccaratTicketAccessor<BaccaratRound, BaccaratBet>>();
             services.AddScoped<BaccaratTicketAccessor<VipBaccaratRound, VipBaccaratBet>>();
             services.AddScoped<BaccaratTicketAccessor<BlockchainBaccaratRound, BlockchainBaccaratBet>>();
