@@ -177,14 +177,6 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
-        public static HeroesSlotRoundResultViewModel ToViewModel(this HeroesSlotRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
-        {
-            return mapper.Map<HeroesSlotRound, HeroesSlotRoundResultViewModel>(entity, opts =>
-            {
-                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
-            });
-        }
-
         public static BitcoinMasterRoundResultViewModel ToViewModel(this BitcoinMasterRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<BitcoinMasterRound, BitcoinMasterRoundResultViewModel>(entity, opts =>
