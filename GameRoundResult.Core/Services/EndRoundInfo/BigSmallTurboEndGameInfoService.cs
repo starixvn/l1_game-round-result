@@ -18,7 +18,7 @@ namespace GameRoundResult.Core.Services
             var bets = await GetBetsAsync(request);
             if (round == null || !bets.Any())
             {
-                return EndGameInfoError.SB1001;
+                return EndRoundInfoError.SB1001;
             }
 
             var bet = bets.FirstOrDefault();

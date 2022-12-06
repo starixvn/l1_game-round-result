@@ -19,12 +19,12 @@ namespace GameRoundResult.Core.Services
 
             if (round == null)
             {
-                return EndGameInfoError.SB1001;
+                return EndRoundInfoError.SB1001;
             }
 
             if (!round.Paid)
             {
-                return EndGameInfoError.SB1005;
+                return EndRoundInfoError.SB1005;
             }
 
             return new EndRoundInfoResult

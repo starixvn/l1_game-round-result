@@ -20,13 +20,13 @@ namespace GameRoundResult.Core.Services
 
             if (!bets.Any())
             {
-                return EndGameInfoError.SB1001;
+                return EndRoundInfoError.SB1001;
             }
 
             var round = await GetRoundAsync(request.GameRoundId);
             if (!round.Ended)
             {
-                return EndGameInfoError.SB1005;
+                return EndRoundInfoError.SB1005;
             }
 
             var bet = bets.FirstOrDefault();

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Services;
+using GameRoundResult.Web.Validators;
 using MediatR;
 using Sentry;
 
@@ -21,47 +23,46 @@ namespace GameRoundResult.Web.Handlers
         {
             try
             {
-                if (request.GameRoundId == 0)
+                var validator = new RetrieveEndRoundInfoRequestValidator();
+                var validatorResult = validator.Validate(request);
+
+                if (validatorResult.IsValid)
                 {
-                    return EndGameInfoError.SB1002;
+                    var gameType = Enum.Parse<GameType>(request.GameTypeId.ToString());
+                    IEndGameInfoService service;
+
+                    if (Enum.IsDefined(typeof(GameType), gameType))
+                    {
+                        service = factory.GetService(gameType);
+                    }
+                    else
+                    {
+                        service = factory.GetSlotGameService();
+                    }
+
+                    return await service.GetAsync(new RetrieveEndGameInfoRequest
+                    {
+                        GameRoundId = request.GameRoundId,
+                        GameTypeId = request.GameTypeId,
+                        OperatorId = request.Auth.OperatorId,
+                        PlayerId = request.PlayerId,
+                        SiteId = request.SiteId,
+                        FreeBet = request.FreeBet
+                    });
                 }
 
-                if (string.IsNullOrWhiteSpace(request.SiteId))
-                {
-                    return EndGameInfoError.SB1003;
-                }
+                var error = validatorResult.Errors.FirstOrDefault();
 
-                if (request.PlayerId == 0)
+                return new()
                 {
-                    return EndGameInfoError.SB1004;
-                }
-
-                var gameType = Enum.Parse<GameType>(request.GameTypeId.ToString());
-                IEndGameInfoService service;
-
-                if (Enum.IsDefined(typeof(GameType), gameType))
-                {
-                    service = factory.GetService(gameType);
-                }
-                else
-                {
-                    service = factory.GetSlotGameService();
-                }
-
-                return await service.GetAsync(new RetrieveEndGameInfoRequest
-                {
-                    GameRoundId = request.GameRoundId,
-                    GameTypeId = request.GameTypeId,
-                    OperatorId = request.Auth.OperatorId,
-                    PlayerId = request.PlayerId,
-                    SiteId = request.SiteId,
-                    FreeBet = request.FreeBet
-                });
+                    ErrorCode = error.ErrorCode,
+                    ErrorDescription = error.ErrorMessage,
+                };
             }
             catch (Exception ex)
             {
                 SentrySdk.CaptureException(ex);
-                return EndGameInfoError.SB1000;
+                return EndRoundInfoError.SB1000;
             }
         }
     }

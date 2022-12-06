@@ -19,12 +19,12 @@ namespace GameRoundResult.Core.Services
 
             if (!bets.Any())
             {
-                return EndGameInfoError.SB1001;
+                return EndRoundInfoError.SB1001;
             }
 
             if (bets.Any(x => !x.Paid))
             {
-                return EndGameInfoError.SB1005;
+                return EndRoundInfoError.SB1005;
             }
 
             var round = await GetRoundAsync(bets.FirstOrDefault().RoundId);
