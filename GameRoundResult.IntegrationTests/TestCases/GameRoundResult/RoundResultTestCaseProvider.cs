@@ -20,4 +20,19 @@ namespace GameRoundResult.IntegrationTests
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
+
+    public class RoundResultSelectOptionsTestCaseProvider : TestCaseDataProviderBase<RoundResultSelectOptionsTestCaseParam>, IEnumerable<object[]>
+    {
+        public IEnumerator<object[]> GetEnumerator() => GetTestCaseParams()
+            .Select(e =>
+            {
+                return new object[] {
+                    e.Game,
+                    e.GameName,
+                    e.Language,
+                };
+            }).GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    }
 }

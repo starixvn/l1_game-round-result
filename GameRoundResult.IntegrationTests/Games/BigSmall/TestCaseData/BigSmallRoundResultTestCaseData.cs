@@ -9,8 +9,20 @@ namespace GameRoundResult.IntegrationTests
         {
             return new List<RoundResultTestCaseParam>
             {
-                new RoundResultTestCaseParam (GameType.BigSmall, 1, "2022-11-01", "en-US", "GetData_Round1"),
-                new RoundResultTestCaseParam (GameType.BigSmall, 0, "2022-11-01", "en-US", "GetData_Date1"),
+                new RoundResultTestCaseParam (GameType.BigSmall, 1, "2022-11-01", Language.EN, "GetData_Round1"),
+                new RoundResultTestCaseParam (GameType.BigSmall, 0, "2022-11-01", Language.EN, "GetData_Date1"),
+            };
+        }
+    }
+
+    public class BigSmallRoundResultSelectOptionTestCaseData : TestCaseDataProvider<RoundResultSelectOptionsTestCaseParam>
+    {
+        public override List<RoundResultSelectOptionsTestCaseParam> GetTestCaseParams()
+        {
+            return new List<RoundResultSelectOptionsTestCaseParam>
+            {
+                new RoundResultSelectOptionsTestCaseParam(GameType.BigSmall, "Big Small", Language.EN),
+                new RoundResultSelectOptionsTestCaseParam(GameType.BigSmall, "Tài Xỉu", Language.VN),
             };
         }
     }

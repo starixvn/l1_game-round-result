@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.IntegrationTests.Helpers;
 using GameRoundResult.Web.Models;
@@ -118,7 +119,7 @@ namespace GameRoundResult.IntegrationTests
             var response = await TestDriver.GetAsync(url);
 
             // assert
-            Assert.Equal(expected, RemoveWhiteSpaces(response.Content.ReadAsStringAsync().Result));
+            Assert.Equal(expected, HttpUtility.HtmlDecode(RemoveWhiteSpaces(response.Content.ReadAsStringAsync().Result)));
         }
 
         #endregion Index
@@ -159,7 +160,7 @@ namespace GameRoundResult.IntegrationTests
         {
             var response = await SendRequestGetAccessURL(model);
             var redirectUrl = JsonConvert.DeserializeObject<GameTicketAccessUrlResultModel>(response.Content.ReadAsStringAsync().Result).RedirectUrl;
-            var index = redirectUrl.IndexOf("/en-US/BetHistory/");
+            var index = redirectUrl.IndexOf($"/{model.Language}/BetHistory/");
             return redirectUrl.Substring(index);
         }
 

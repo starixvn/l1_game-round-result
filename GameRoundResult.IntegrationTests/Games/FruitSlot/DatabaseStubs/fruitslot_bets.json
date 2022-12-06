@@ -1,7 +1,7 @@
 [
   {
     "uid": "62342b4ac46c7910b22b3b35",
-    "name": "Dwight",
+    "name": "Player",
     "roundId": 1,
     "bar": 0,
     "tripleSeven": 0,
@@ -53,7 +53,7 @@
   },
   {
     "uid": "62342b4ac46c7910b22b3b35",
-    "name": "Dwight",
+    "name": "Player",
     "roundId": 2,
     "bar": 10,
     "tripleSeven": 0,

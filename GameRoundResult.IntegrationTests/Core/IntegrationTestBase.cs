@@ -24,11 +24,11 @@ namespace GameRoundResult.IntegrationTests
             {
                 builder.ConfigureAppConfiguration((context, config) =>
                 {
-                    config.AddJsonFile(configPath);
+                    config.AddJsonFile(configPath, true, false);
                 });
             });
             TestDriver = appFactory.CreateClient();
-            Config = new ConfigurationBuilder().AddJsonFile(configPath).Build();
+            Config = new ConfigurationBuilder().AddJsonFile(configPath, true, false).Build();
             ResultServiceDomain = Config["HostConfiguration:Domain"];
         }
 
@@ -38,7 +38,7 @@ namespace GameRoundResult.IntegrationTests
         protected string RemoveWhiteSpaces(string content)
         {
             var result = Regex.Replace(content, @"\s+", string.Empty);
-            return Regex.Replace(result, @"\?v=(.*?)\""", "\"");
+            return Regex.Replace(result, @"\?v=(.*?)\""", "\"").Replace("</img>", string.Empty);
         }
     }
 }

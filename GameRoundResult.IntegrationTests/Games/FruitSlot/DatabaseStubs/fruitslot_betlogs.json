@@ -1,7 +1,7 @@
 [
   {
     "uid": "62342b4ac46c7910b22b3b35",
-    "name": "Dwight",
+    "name": "Player",
     "roundId": 1,
     "choice": "big",
     "subChoices": [],
@@ -20,7 +20,7 @@
   },
   {
     "uid": "62342b4ac46c7910b22b3b35",
-    "name": "Dwight",
+    "name": "Player",
     "roundId": 2,
     "choice": "bar",
     "subChoices": [
@@ -42,7 +42,7 @@
   },
   {
     "uid": "62342b4ac46c7910b22b3b35",
-    "name": "Dwight",
+    "name": "Player",
     "roundId": 2,
     "choice": "cherry",
     "subChoices": [
@@ -63,7 +63,7 @@
   },
   {
     "uid": "62342b4ac46c7910b22b3b35",
-    "name": "Dwight",
+    "name": "Player",
     "roundId": 2,
     "choice": "big",
     "subChoices": [],

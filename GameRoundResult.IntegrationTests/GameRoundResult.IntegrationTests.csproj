@@ -40,28 +40,10 @@
       <None Update="appsettings.IGT.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Games\BigSmall\DatabaseStubs\taixiu_cuocs.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="Games\BigSmall\DatabaseStubs\taixiu_ones.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="Games\BigSmall\DatabaseStubs\taixiu_phiens.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="Games\FruitSlot\DatabaseStubs\fruitslot_betlogs.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="Games\FruitSlot\DatabaseStubs\fruitslot_bets.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="Games\FruitSlot\DatabaseStubs\fruitslot_rounds.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
       <None Update="Core\Stubs\*.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Games\**\Data\*.json">
+      <None Update="Games\**\DatabaseStubs\*.json">
 		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
 	  <None Update="Games\**\Expected\**\*.*">

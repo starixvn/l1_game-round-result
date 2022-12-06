@@ -9,6 +9,7 @@ using GameRoundResult.IntegrationTests.Helpers;
 using GameRoundResult.Web.Models;
 using Newtonsoft.Json;
 using Xunit;
+using AngleSharp.Html.Dom;
 
 namespace GameRoundResult.IntegrationTests
 {
@@ -96,6 +97,25 @@ namespace GameRoundResult.IntegrationTests
             Assert.Equal(expectedContentType, response.Content.Headers.ContentType.ToString());
             var indexView = (await HtmlHelpers.GetDocumentAsync(response)).Item1;
             Assert.NotNull(indexView.GetElementById("round-result"));
+        }
+
+        [Theory]
+        [ClassData(typeof(RoundResultSelectOptionsTestCaseProvider))]
+        public async Task Index_ExistGameOption(GameType game, string gameName, string language)
+        {
+            // arrange
+            var model = GetRoundResultAccessUrlRequestModel();
+            model.Language = language;
+            var url = await BuildAccessUrl(model);
+
+            // act
+            var response = await TestDriver.GetAsync(url);
+            var indexView = (await HtmlHelpers.GetDocumentAsync(response)).Item1;
+            var options = (IHtmlOptionElement)indexView.QuerySelector($"option[value={((byte)game)}]");
+
+            // assert
+            Assert.NotNull(options);
+            Assert.Equal(gameName, options.Text);
         }
 
         #endregion Index
