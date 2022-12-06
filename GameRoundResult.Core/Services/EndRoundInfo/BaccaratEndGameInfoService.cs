@@ -24,7 +24,7 @@ namespace GameRoundResult.Core.Services
             var bets = await GetBetsAsync(request);
             if (round == null || !bets.Any())
             {
-                return EndGameInfoError.SB1001;
+                return EndRoundInfoError.SB1001;
             }
 
             var totalBetAmount = bets.Sum(x => x.Player + x.PlayerPair + x.Banker + x.BankerPair + x.Tie + x.Big + x.Small);

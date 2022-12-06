@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameRoundResult.Core.Services
 {
@@ -21,45 +17,45 @@ namespace GameRoundResult.Core.Services
         public DateTimeOffset? EndTime { get; set; }
     }
 
-    public static class EndGameInfoError
+    public static class EndRoundInfoError
     {
-        public readonly static EndRoundInfoResult SB1000 = new EndRoundInfoResult
+        public static readonly EndRoundInfoResult SB1000 = new()
         {
             ErrorCode = "SB1000",
             ErrorDescription = "An Error has occurred."
         };
 
-        public readonly static EndRoundInfoResult SB1001 = new EndRoundInfoResult
+        public static readonly EndRoundInfoResult SB1001 = new()
         {
             ErrorCode = "SB1001",
             ErrorDescription = "The game round does not exist."
         };
 
-        public readonly static EndRoundInfoResult SB1002 = new EndRoundInfoResult
+        public static readonly EndRoundInfoResult SB1002 = new()
         {
             ErrorCode = "SB1002",
             ErrorDescription = "Game round id is required."
         };
 
-        public readonly static EndRoundInfoResult SB1003 = new EndRoundInfoResult
+        public static readonly EndRoundInfoResult SB1003 = new()
         {
             ErrorCode = "SB1003",
             ErrorDescription = "Site Id is required."
         };
 
-        public readonly static EndRoundInfoResult SB1004 = new EndRoundInfoResult
+        public static readonly EndRoundInfoResult SB1004 = new()
         {
             ErrorCode = "SB1004",
             ErrorDescription = "ObCustId is required."
         };
 
-        public readonly static EndRoundInfoResult SB1005 = new EndRoundInfoResult
+        public static readonly EndRoundInfoResult SB1005 = new()
         {
             ErrorCode = "SB1005",
             ErrorDescription = "Game round is running."
         };
 
-        public readonly static EndRoundInfoResult SB1006 = new EndRoundInfoResult
+        public static readonly EndRoundInfoResult SB1006 = new()
         {
             ErrorCode = "SB1006",
             ErrorDescription = "GameTypeId is invalid."

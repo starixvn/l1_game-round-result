@@ -18,14 +18,14 @@ namespace GameRoundResult.Core.Services
 
             if (round == null || !bets.Any())
             {
-                return EndGameInfoError.SB1001;
+                return EndRoundInfoError.SB1001;
             }
 
             var bet = bets.FirstOrDefault();
 
             if (!bet.Paid)
             {
-                return EndGameInfoError.SB1005;
+                return EndRoundInfoError.SB1005;
             }
 
             return new EndRoundInfoResult

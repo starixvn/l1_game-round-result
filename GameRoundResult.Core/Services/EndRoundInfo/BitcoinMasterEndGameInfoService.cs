@@ -22,7 +22,7 @@ namespace GameRoundResult.Core.Services
 
             if (round == null || !betLogs.Any())
             {
-                return EndGameInfoError.SB1001;
+                return EndRoundInfoError.SB1001;
             }
 
             var amount = betLogs.Sum(x => x.Amount);

@@ -26,17 +26,17 @@ namespace GameRoundResult.Web.Models
             var ticks = DateTime.Now.Ticks;
             if (SystemType.Equals("SC1"))
             {
-                img.Attributes.Add("src", $"/scss/images/four-guardians/10.png?v={ticks}");
+                img.Attributes.Add("src", $"/scss/images/{ConfigName}/10.png?v={ticks}");
             }
             else
             {
                 if (CultureInfo.CurrentUICulture.Name == "vi-VN")
                 {
-                    img.Attributes.Add("src", $"/scss/images/four-guardians/10.vi-VN.png?v={ticks}");
+                    img.Attributes.Add("src", $"/scss/images/{ConfigName}/10.vi-VN.png?v={ticks}");
                 }
                 else
                 {
-                    img.Attributes.Add("src", $"/scss/images/four-guardians/10.jackpot.png?v={ticks}");
+                    img.Attributes.Add("src", $"/scss/images/{ConfigName}/10.jackpot.png?v={ticks}");
                 }
             }
            

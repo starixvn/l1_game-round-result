@@ -18,7 +18,7 @@ namespace GameRoundResult.Core.Services
 
             if (round == null || one == null)
             {
-                return EndGameInfoError.SB1001;
+                return EndRoundInfoError.SB1001;
             }
 
             return new EndRoundInfoResult

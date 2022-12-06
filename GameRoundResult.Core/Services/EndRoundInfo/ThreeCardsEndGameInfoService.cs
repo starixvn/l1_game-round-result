@@ -21,7 +21,7 @@ namespace GameRoundResult.Core.Services
 
             if (round == null || !bets.Any())
             {
-                return EndGameInfoError.SB1001;
+                return EndRoundInfoError.SB1001;
             }
 
             var totalBetAmount = bets.Sum(x => x.Red + x.Black + x.Diamonds + x.Hearts + x.Spades + x.Clubs);

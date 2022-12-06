@@ -20,7 +20,7 @@ namespace GameRoundResult.Core.Services
 
             if (round == null || bet == null)
             {
-                return EndGameInfoError.SB1001;
+                return EndRoundInfoError.SB1001;
             }
 
             return new EndRoundInfoResult

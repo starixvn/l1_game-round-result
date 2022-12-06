@@ -121,7 +121,7 @@ namespace GameRoundResult.Web.Controllers
         }
 
         private static RequestLog ConvertToLog(BetHistoryAccessUrlRequestModel model)
-        => new RequestLog(DateTimeOffset.UtcNow, new AccessUrlRequest
+        => new(DateTimeOffset.UtcNow, new AccessUrlRequest
         {
             Auth = new Core.Database.Entities.AuthModel(model.Auth.OperatorId, model.Auth.OperatorSecret),
             GameTypeId = model.GameTypeId,
