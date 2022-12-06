@@ -33,6 +33,5 @@ integration-test-dotnet:
     - dotnet tool install --global coverlet.console --version 3.1.0
     - export PATH="$PATH:/root/.dotnet/tools"
     - dotnet nuget add source http://nuget.nexdev.net/api/v2
-    - cp ./GameRoundResult.IntegrationTests/appsettings.IGT.json ./GameRoundResult.IntegrationTests/appsettings.IGT.original.json
     - cp ./GameRoundResult.IntegrationTests/appsettings.IGT.CI.json ./GameRoundResult.IntegrationTests/appsettings.IGT.json
   extends: unit-test-dotnet

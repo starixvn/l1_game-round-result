@@ -10,7 +10,6 @@ namespace GameRoundResult.IntegrationTests
 {
     public class DatabaseFixture : IDisposable
     {
-
         private readonly string ProjectDir = Directory.GetCurrentDirectory();
 
         private string databaseName;
@@ -18,6 +17,7 @@ namespace GameRoundResult.IntegrationTests
         public DatabaseFixture()
         {
             ConnectToDatabase();
+            ClearAllData();
             InsertOperators();
             InsertOtherGameDataStubs();
         }
@@ -26,21 +26,20 @@ namespace GameRoundResult.IntegrationTests
         {
             var configPath = Path.Combine(ProjectDir, "appsettings.IGT.json");
             var config = new ConfigurationBuilder()
-                .AddJsonFile(configPath)
+                .AddJsonFile(configPath, true, false)
                 .Build();
 
             mongoClient = new MongoClient(config["DatabaseSettings:ConnectionString"]);
             databaseName = config["DatabaseSettings:DatabaseName"];
-            clearAllData();
             mongoDb = mongoClient.GetDatabase(databaseName);
         }
 
         public void Dispose()
         {
-            clearAllData();
+            ClearAllData();
         }
 
-        private void clearAllData()
+        private void ClearAllData()
         {
             mongoClient.DropDatabase(databaseName);
         }
@@ -48,7 +47,6 @@ namespace GameRoundResult.IntegrationTests
         public IMongoDatabase mongoDb { get; private set; }
 
         public MongoClient mongoClient { get; private set; }
-
 
         private void InsertOtherGameDataStubs()
         {

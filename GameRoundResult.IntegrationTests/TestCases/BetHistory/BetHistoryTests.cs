@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.IntegrationTests.Helpers;
+using GameRoundResult.Web;
 using GameRoundResult.Web.Models;
 using Newtonsoft.Json;
 using Xunit;
@@ -14,6 +15,10 @@ namespace GameRoundResult.IntegrationTests
 {
     public class BetHistoryTests : IntegrationTestBase
     {
+        public BetHistoryTests(CustomWebApplicationFactory<Program> factory) : base(factory)
+        {
+        }
+
         #region GetAccessURL
 
         [Fact]
@@ -62,7 +67,7 @@ namespace GameRoundResult.IntegrationTests
         }
 
         [Fact]
-        public async Task GetAccessUrl_ValidModel_ReturnRedirectUrl()
+        public async Task GetAccessUrl_ValidModel_ReceiveSuccessCodeAndBetHistoryUrl()
         {
             // arrange
             var model = GetBetHistoryAccessUrlRequestModel();
@@ -73,7 +78,7 @@ namespace GameRoundResult.IntegrationTests
             // assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             var result = JsonConvert.DeserializeObject<GameTicketAccessUrlResultModel>(response.Content.ReadAsStringAsync().Result);
-            Assert.StartsWith($"{ResultServiceDomain}en-US/BetHistory/", result.RedirectUrl);
+            Assert.StartsWith($"{ResultServiceDomain}{model.Language}/BetHistory/", result.RedirectUrl);
         }
 
         #endregion GetAccessURL

@@ -2,38 +2,24 @@
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using GameRoundResult.Web;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.Configuration;
 using Xunit;
 
 namespace GameRoundResult.IntegrationTests
 {
     [Collection("IntergrationTest")]
-    public abstract class IntegrationTestBase
+    public class IntegrationTestBase : IClassFixture<CustomWebApplicationFactory<Program>>
     {
         protected readonly HttpClient TestDriver;
-        protected readonly IConfigurationRoot Config;
-        protected string ResultServiceDomain;
         protected string ProjectDir = Directory.GetCurrentDirectory();
 
-        protected IntegrationTestBase()
+        public IntegrationTestBase(CustomWebApplicationFactory<Program> factory)
         {
-            var configPath = Path.Combine(ProjectDir, "appsettings.IGT.json");
-            var appFactory = new WebApplicationFactory<Program>()
-            .WithWebHostBuilder(builder =>
-            {
-                builder.ConfigureAppConfiguration((context, config) =>
-                {
-                    config.AddJsonFile(configPath, true, false);
-                });
-            });
-            TestDriver = appFactory.CreateClient();
-            Config = new ConfigurationBuilder().AddJsonFile(configPath, true, false).Build();
-            ResultServiceDomain = Config["HostConfiguration:Domain"];
+            TestDriver = factory.CreateClient();
         }
 
         protected const string OperatorId = "ONEworks1";
         protected const string OperatorSecret = "ONEworks1@20luminet&";
+        protected const string ResultServiceDomain = "http://localhost:7781/";
 
         protected string RemoveWhiteSpaces(string content)
         {

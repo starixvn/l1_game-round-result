@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Services;
+using GameRoundResult.Web;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
 using Newtonsoft.Json;
@@ -13,6 +14,10 @@ namespace GameRoundResult.IntegrationTests
 {
     public class EndRoundInfoTests : IntegrationTestBase
     {
+        public EndRoundInfoTests(CustomWebApplicationFactory<Program> factory) : base(factory)
+        {
+        }
+
         #region Index
 
         [Theory]

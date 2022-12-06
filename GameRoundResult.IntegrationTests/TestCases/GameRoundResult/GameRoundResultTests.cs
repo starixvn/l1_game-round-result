@@ -10,11 +10,16 @@ using GameRoundResult.Web.Models;
 using Newtonsoft.Json;
 using Xunit;
 using AngleSharp.Html.Dom;
+using GameRoundResult.Web;
 
 namespace GameRoundResult.IntegrationTests
 {
     public class GameRoundResultTests : IntegrationTestBase
     {
+        public GameRoundResultTests(CustomWebApplicationFactory<Program> factory) : base(factory)
+        {
+        }
+
         #region GetAccessURL
 
         [Fact]
@@ -40,7 +45,7 @@ namespace GameRoundResult.IntegrationTests
         }
 
         [Fact]
-        public async Task GetAccessUrl_ExistOperator_ReturnRedirectUrl()
+        public async Task GetAccessUrl_ExistOperator_ReceiveSuccessCodeAndRoundResultUrl()
         {
             // arrange
             var model = new GameRoundResultAccessUrlRequestModel
@@ -64,7 +69,7 @@ namespace GameRoundResult.IntegrationTests
         }
 
         [Fact]
-        public async Task GetAccessUrl_ExistClient_ReturnRedirectUrl()
+        public async Task GetAccessUrl_ExistClient_ReceiveSuccessCodeAndRoundResultUrl()
         {
             // arrange
             var model = GetRoundResultAccessUrlRequestModel();
@@ -115,6 +120,7 @@ namespace GameRoundResult.IntegrationTests
 
             // assert
             Assert.NotNull(options);
+            Assert.False(options.IsDisabled);
             Assert.Equal(gameName, options.Text);
         }
 
