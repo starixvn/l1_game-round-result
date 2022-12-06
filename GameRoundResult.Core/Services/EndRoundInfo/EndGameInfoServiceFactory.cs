@@ -8,6 +8,7 @@ namespace GameRoundResult.Core.Services
     public interface IEndGameInfoServiceFactory
     {
         IEndGameInfoService GetService(GameType game);
+        IEndGameInfoService GetSlotGameService();
     }
 
     public class EndGameInfoServiceFactory : IEndGameInfoServiceFactory
@@ -29,10 +30,10 @@ namespace GameRoundResult.Core.Services
             { GameType.VipFishPrawnCrab, typeof(VipFishPrawnCrabEndGameInfoService) },
             { GameType.SicBo, typeof(SicBoEndGameInfoService) },
             { GameType.SeDieWar, typeof(VipSeDieWarEndGameInfoService) },
-            { GameType.FourGuardians, typeof(FourGuardiansEndGameInfoService) },
+            { GameType.FourGuardians, typeof(SlotGameEndGameInfoService) },
             { GameType.Lottery, typeof(LotteryEndGameInfoService) },
             { GameType.ThreeCards, typeof(ThreeCardsEndGameInfoService) },
-            { GameType.HeroesSlot, typeof(HeroesSlotEndGameInfoService) },
+            { GameType.HeroesSlot, typeof(SlotGameEndGameInfoService) },
             { GameType.BitcoinMaster, typeof(BitcoinMasterEndGameInfoService) },
             { GameType.KenoMatch1, typeof(KenoMatchEndGameInfoService<KenoMatch1Round, KenoMatch1One>) },
             { GameType.KenoMatch2, typeof(KenoMatchEndGameInfoService<KenoMatch2Round, KenoMatch2One>) },
@@ -41,9 +42,9 @@ namespace GameRoundResult.Core.Services
             { GameType.CasinoHoldemPoker, typeof(CasinoHoldemPokerEndGameInfoService) },
             { GameType.HiLo, typeof(HiLoEndGameInfoService) },
             { GameType.TexasHoldemPoker, typeof(TexasHoldemPokerEndGameInfoService) },
-            { GameType.NightClub, typeof(NightClubEndRoundInfoService) },
+            { GameType.NightClub, typeof(SlotGameEndGameInfoService) },
             { GameType.TreasureIsland, typeof(TreasureIslandEndRoundInfoService)},
-            { GameType.WayToGoal, typeof(WayToGoalEndRoundInfoService) },
+            { GameType.WayToGoal, typeof(SlotGameEndGameInfoService) },
             { GameType.Baccarat, typeof(BaccaratEndGameInfoService<BaccaratRound, BaccaratBet>) },
             { GameType.VipBaccarat, typeof(BaccaratEndGameInfoService<VipBaccaratRound, VipBaccaratBet>) },
             { GameType.BlockchainBaccarat, typeof(BaccaratEndGameInfoService<BlockchainBaccaratRound, BlockchainBaccaratBet>) },
@@ -76,5 +77,8 @@ namespace GameRoundResult.Core.Services
 
         public IEndGameInfoService GetService(GameType game)
         => serviceProvider.GetService(services[game]) as IEndGameInfoService;
+
+        public IEndGameInfoService GetSlotGameService()
+        => serviceProvider.GetService(typeof(SlotGameEndGameInfoService)) as IEndGameInfoService;
     }
 }

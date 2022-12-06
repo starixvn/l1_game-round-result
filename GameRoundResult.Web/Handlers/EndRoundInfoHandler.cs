@@ -37,13 +37,17 @@ namespace GameRoundResult.Web.Handlers
                 }
 
                 var gameType = Enum.Parse<GameType>(request.GameTypeId.ToString());
+                IEndGameInfoService service;
 
-                if (!Enum.IsDefined(typeof(GameType), gameType))
+                if (Enum.IsDefined(typeof(GameType), gameType))
                 {
-                    return EndGameInfoError.SB1001;
+                    service = factory.GetService(gameType);
+                }
+                else
+                {
+                    service = factory.GetSlotGameService();
                 }
 
-                var service = factory.GetService(gameType);
                 return await service.GetAsync(new RetrieveEndGameInfoRequest
                 {
                     GameRoundId = request.GameRoundId,
