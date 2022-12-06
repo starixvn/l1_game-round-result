@@ -148,7 +148,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<VipFishPrawnCrabEndGameInfoService>();
             services.AddScoped<SicBoEndGameInfoService>();
             services.AddScoped<VipSeDieWarEndGameInfoService>();
-            services.AddScoped<FourGuardiansEndGameInfoService>();
+            services.AddScoped<SlotGameEndGameInfoService>();
             services.AddScoped<LotteryEndGameInfoService>();
             services.AddScoped<ThreeCardsEndGameInfoService>();
             services.AddScoped<HeroesSlotEndGameInfoService>();
