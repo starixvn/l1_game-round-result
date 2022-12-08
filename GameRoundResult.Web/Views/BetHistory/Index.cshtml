@@ -99,7 +99,10 @@
             break;
 
         case GameType.FourGuardians:
-            <partial name="_FourGuardiansTicket" for="GameTicketResult" />
+        case GameType.HeroesSlot:
+        case GameType.NightClub:
+        case GameType.WayToGoal:
+            <partial name="_SlotGameTicket" for="GameTicketResult" />
             break;
 
         case GameType.Lottery:
@@ -116,9 +119,7 @@
         case GameType.KenoPower2:
             <partial name="_KenoPowerTicket" for="GameTicketResult" />
             break;
-        case GameType.HeroesSlot:
-            <partial name="_HeroesSlotTicket" for="GameTicketResult" />
-            break;
+
         case GameType.BitcoinMaster:
             <partial name="_BitcoinMasterTicket" for="GameTicketResult" />
             break;
@@ -131,9 +132,7 @@
         case GameType.TexasHoldemPoker:
             <partial name="_TexasHoldemPokerTicket" for="GameTicketResult" />
             break;
-        case GameType.NightClub:
-            <partial name="_NightClubTicket" for="GameTicketResult" />
-            break;
+     
         case GameType.TreasureIsland:
             <partial name="_CascadingSlotTicket" for="GameTicketResult" view-data="ViewData" />
             break;
@@ -144,10 +143,6 @@
         case GameType.UnbalancedBigSmall4:
             <partial name="_UnbalancedBigSmallTicket" for="GameTicketResult" view-data="ViewData" />
             break;
-        case GameType.WayToGoal:
-            <partial name="_WayToGoalTicket" for="GameTicketResult" />
-            break;
-
         case GameType.FruitSlot:
             <partial name="_FruitSlotTicket" for="GameTicketResult" view-data="ViewData" />
             break;
