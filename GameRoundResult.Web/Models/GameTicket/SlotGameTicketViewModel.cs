@@ -7,126 +7,130 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GameRoundResult.Web.Models
 {
-    public class SlotGameTicketViewModel : GameTicketViewModel
-    {
-        public string ConfigName { get; set; }
+	public class SlotGameTicketViewModel : GameTicketViewModel
+	{
+		public string ConfigName { get; set; }
 
-        public SlotGameRoundResultViewModel RoundResult { get; set; }
+		public SlotGameRoundResultViewModel RoundResult { get; set; }
 
-        public decimal BetWin => RoundResult.BetWin + (RoundResult.SettlementResult.Jackpot?.WinningAmount ?? 0);
+		public decimal BetWin => RoundResult.BetWin + (RoundResult.SettlementResult.Jackpot?.WinningAmount ?? 0);
 
-        public decimal WinLoss => RoundResult.FreeSpin ? BetWin : BetWin - RoundResult.TotalAmount;
+		public decimal WinLoss => RoundResult.FreeSpin ? BetWin : BetWin - RoundResult.TotalAmount;
 
-        public string SystemType { get; set; }
+		public string SystemType { get; set; }
 
-        public string GetImageJackpot()
-        {
-            var img = new TagBuilder("img");
-            img.AddCssClass($"symbol");
-            var ticks = DateTime.Now.Ticks;
-            if (SystemType.Equals("SC1"))
-            {
-                img.Attributes.Add("src", $"/scss/images/{ConfigName}/10.png?v={ticks}");
-            }
-            else
-            {
-                if (CultureInfo.CurrentUICulture.Name == "vi-VN")
-                {
-                    img.Attributes.Add("src", $"/scss/images/{ConfigName}/10.vi-VN.png?v={ticks}");
-                }
-                else
-                {
-                    img.Attributes.Add("src", $"/scss/images/{ConfigName}/10.jackpot.png?v={ticks}");
-                }
-            }
-           
-            return img.GetHtmlString();
-        }
-    }
+		public string GetImageJackpot()
+		{
+			var img = new TagBuilder("img");
+			img.AddCssClass($"symbol");
+			var ticks = DateTime.Now.Ticks;
+			if (SystemType.Equals("SC1"))
+			{
+				img.Attributes.Add("src", $"/scss/images/{ConfigName}/10.png?v={ticks}");
+			}
+			else
+			{
+				if (CultureInfo.CurrentUICulture.Name == "vi-VN")
+				{
+					img.Attributes.Add("src", $"/scss/images/{ConfigName}/10.vi-VN.png?v={ticks}");
+				}
+				else
+				{
+					img.Attributes.Add("src", $"/scss/images/{ConfigName}/10.jackpot.png?v={ticks}");
+				}
+			}
 
-    public class SlotGameRoundResultViewModel : RoundResultViewModel
-    {
-        public decimal Bet { get; set; }
+			return img.GetHtmlString();
+		}
+	}
 
-        public decimal TotalAmount { get; set; }
+	public class SlotGameRoundResultViewModel : RoundResultViewModel
+	{
+		public decimal Bet { get; set; }
 
-        public IEnumerable<byte> Paylines { get; set; }
+		public decimal TotalAmount { get; set; }
 
-        public bool FreeSpin { get; set; }
+		public IEnumerable<byte> Paylines { get; set; }
 
-        public IEnumerable<byte> Result { get; set; }
+		public bool FreeSpin { get; set; }
 
-        public IEnumerable<FourGuardiansBonusChestViewModel> BonusChests { get; set; }
+		public IEnumerable<byte> Result { get; set; }
 
-        public FourGuardiansSettlementResultViewModel SettlementResult { get; set; }
+		public IEnumerable<FourGuardiansBonusChestViewModel> BonusChests { get; set; }
 
-        public decimal BetWin { get; set; }
+		public FourGuardiansSettlementResultViewModel SettlementResult { get; set; }
 
-        public byte[,] GetFormatResults()
-        {
-            var array = Result.ToArray();
+		public decimal BetWin { get; set; }
 
-            var formatResult = new byte[3, 5];
+		public byte[,] GetFormatResults()
+		{
+			var array = Result.ToArray();
 
-            for (var row = 0; row < 3; row++)
-            {
-                for (var column = 0; column < 5; column++)
-                {
-                    formatResult[row, column] = array[row + column * 3];
-                }
-            }
+			var formatResult = new byte[3, 5];
 
-            return formatResult;
-        }
-    }
+			for (var row = 0; row < 3; row++)
+			{
+				for (var column = 0; column < 5; column++)
+				{
+					formatResult[row, column] = array[row + column * 3];
+				}
+			}
 
-    public class FourGuardiansBonusChestViewModel
-    {
-        public decimal Amount { get; set; }
+			return formatResult;
+		}
 
-        public bool Picked { get; set; }
-    }
+		public decimal PickedBonusChestsTotalAmount => BonusChests.Where(x => x.Picked).Sum(x => x.Amount);
 
-    public class FourGuardiansSettlementResultViewModel
-    {
-        public IEnumerable<FourGuardiansWinningLineViewModel> WinningPaylines { get; set; }
+		public IEnumerable<byte> NotWinningPaylines => Paylines.Where(x => SettlementResult.WinningPaylines.All(y => y.Payline != x) && x != SettlementResult.Jackpot?.WinningLine);
+	}
 
-        public FourGuardiansBonusViewModel Bonus { get; set; }
+	public class FourGuardiansBonusChestViewModel
+	{
+		public decimal Amount { get; set; }
 
-        public FourGuardiansFreeSpinViewModel FreeSpins { get; set; }
+		public bool Picked { get; set; }
+	}
 
-        public FourGuardiansJackpotViewModel Jackpot { get; set; }
-    }
+	public class FourGuardiansSettlementResultViewModel
+	{
+		public IEnumerable<FourGuardiansWinningLineViewModel> WinningPaylines { get; set; }
 
-    public class FourGuardiansJackpotViewModel
-    {
-        public byte WinningLine { get; set; }
+		public FourGuardiansBonusViewModel Bonus { get; set; }
 
-        public decimal WinningAmount { get; set; }
-    }
+		public FourGuardiansFreeSpinViewModel FreeSpins { get; set; }
 
-    public class FourGuardiansWinningLineViewModel
-    {
-        public byte Payline { get; set; }
+		public FourGuardiansJackpotViewModel Jackpot { get; set; }
+	}
 
-        public string Symbol { get; set; }
+	public class FourGuardiansJackpotViewModel
+	{
+		public byte WinningLine { get; set; }
 
-        public byte Count { get; set; }
+		public decimal WinningAmount { get; set; }
+	}
 
-        public decimal Odds { get; set; }
-    }
+	public class FourGuardiansWinningLineViewModel
+	{
+		public byte Payline { get; set; }
 
-    public class FourGuardiansBonusViewModel
-    {
-        public byte Count { get; set; }
+		public string Symbol { get; set; }
 
-        public decimal Odds { get; set; }
-    }
+		public byte Count { get; set; }
 
-    public class FourGuardiansFreeSpinViewModel
-    {
-        public byte Count { get; set; }
+		public decimal Odds { get; set; }
+	}
 
-        public decimal Odds { get; set; }
-    }
+	public class FourGuardiansBonusViewModel
+	{
+		public byte Count { get; set; }
+
+		public decimal Odds { get; set; }
+	}
+
+	public class FourGuardiansFreeSpinViewModel
+	{
+		public byte Count { get; set; }
+
+		public decimal Odds { get; set; }
+	}
 }
