@@ -94,12 +94,11 @@
                     <td class="text-right">@roundResult.SettlementResult.Jackpot.WinningAmount.Format()</td>
                 </tr>
             }
-            foreach (var payline in roundResult.Paylines.Where(x => roundResult.SettlementResult.WinningPaylines.Any(y => y.Payline == x)))
-            {
-                var winningPayline = roundResult.SettlementResult.WinningPaylines.FirstOrDefault(x => x.Payline == payline);
 
+            foreach (var winningPayline in roundResult.SettlementResult.WinningPaylines)
+            {
                 <tr>
-                    <td><img class="payline" src="~/scss/images/four-guardians/dong@(payline + 1).png" asp-append-version="true" /></td>
+                    <td><img class="payline" src="~/scss/images/four-guardians/dong@(winningPayline.Payline + 1).png" asp-append-version="true" /></td>
                     <td>
                         @if (winningPayline.Symbol == "10")
                         {
@@ -125,7 +124,7 @@
                     <td>@roundResult.SettlementResult.Bonus.Count</td>
                     <td>@roundResult.SettlementResult.Bonus.Odds @Localizer["Bonus"]</td>
                     <td>-</td>
-                    <td class="text-right">@roundResult.BonusChests.Where(x => x.Picked).Sum(x => x.Amount).Format()</td>
+                    <td class="text-right">@roundResult.PickedBonusChestsTotalAmount.Format()</td>
                 </tr>
             }
 
@@ -141,7 +140,7 @@
                 </tr>
             }
 
-            foreach (var payline in roundResult.Paylines.Where(x => !roundResult.SettlementResult.WinningPaylines.Any(y => y.Payline == x) && x != roundResult.SettlementResult.Jackpot?.WinningLine))
+            foreach (var payline in roundResult.NotWinningPaylines)
             {
 
                 <tr>
