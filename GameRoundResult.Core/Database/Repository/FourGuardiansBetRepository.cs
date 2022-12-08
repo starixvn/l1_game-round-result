@@ -18,7 +18,7 @@ namespace GameRoundResult.Core.Database.Repository
         public async Task<SlotRound> GetAsync<SlotRound>(long roundId, int playerId, string operatorId) where SlotRound: FourGuardiansRound
         {
             return await database.GetCollection<SlotRound>(Document.GetCollectionName(typeof(SlotRound)))
-               .Find(x => x.RoundId == roundId && x.PlayerId == playerId&& x.OperatorId == operatorId)
+               .Find(x => x.RoundId == roundId && x.PlayerId == playerId&& x.OperatorId == operatorId && x.Paid)
                .FirstOrDefaultAsync();
         }
     }
