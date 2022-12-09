@@ -22,5 +22,29 @@ namespace GameRoundResult.Core.Database.Entities
         public byte RandomMode { get; set; }
 
         public string RoundCollectionSuffix { get; set; }
+
+        public SlotsConfig SlotsConfig { get; set; }
+    }
+
+    public class SlotsConfig
+    {
+        public byte Mode { get; set; }
+        public double BigWinRatio { get; set; }
+        public Jackpot Jackpot { get; set; }
+    }
+
+    public class Jackpot
+    {
+        public bool Enabled { get; set; }
+
+        public bool ExcludeTestCurrency { get; set; }
+
+        public double WinningRatio { get; set; }
+
+        public double PlayerContributionRatio { get; set; }
+
+        public double BotContributionRatio { get; set; }
+
+        public string AllowedCurrency { get; set; }
     }
 }

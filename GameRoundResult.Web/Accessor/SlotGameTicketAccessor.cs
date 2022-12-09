@@ -11,13 +11,13 @@ namespace GameRoundResult.Web.Accessor
 {
     public class SlotGameTicketAccessor : IGameTicketAccessor
     {
-        private readonly ISlotGameTicketService gameBetService;
+        private readonly ISlotGameTicketService slotGameTicketService;
         private readonly IGameConfigsRepository gameConfigsRepository;
         private readonly IMapper mapper;
 
         public SlotGameTicketAccessor(ISlotGameTicketService gameBetService, IGameConfigsRepository gameConfigsRepository, IMapper mapper)
         {
-            this.gameBetService = gameBetService;
+            this.slotGameTicketService = gameBetService;
             this.gameConfigsRepository = gameConfigsRepository;
             this.mapper = mapper;
         }
@@ -27,11 +27,12 @@ namespace GameRoundResult.Web.Accessor
             var gameConfigs = await gameConfigsRepository.GetByIdAsync((int)request.GameType);
             if (gameConfigs != null)
             {
-                var result = await gameBetService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId, gameConfigs);
+                var result = await slotGameTicketService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId, gameConfigs);
 
                 return new SlotGameTicketViewModel
                 {
                     ConfigName = gameConfigs.Name,
+                    EnabledJackpot = gameConfigs.SlotsConfig.Jackpot.Enabled,
                     RoundResult = result?.ToViewModel<SlotGameRound, SlotGameRoundResultViewModel>(mapper, request.TimeZoneInfo),
                     SystemType = request.SystemType
                 };
