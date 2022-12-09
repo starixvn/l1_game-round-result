@@ -9,13 +9,13 @@ using Xunit;
 
 namespace GameRoundResult.Core.UnitTests.Services
 {
-    public class FourGuardiansTicketServiceTests
+    public class SlotGameTicketServiceTests
     {
         private readonly ISlotGameTicketService gameBetService;
         private readonly ISlotGameBetRepository gameBetRepository;
         private readonly Fixture fixture;
 
-        public FourGuardiansTicketServiceTests()
+        public SlotGameTicketServiceTests()
         {
             gameBetRepository = Substitute.For<ISlotGameBetRepository>();
             gameBetService = new SlotGameTicketService(gameBetRepository);
