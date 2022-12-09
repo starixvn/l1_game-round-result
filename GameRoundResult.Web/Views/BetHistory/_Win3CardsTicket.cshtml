@@ -19,36 +19,6 @@
         </div>
     }
 
-    private void RenderBet(string choice)
-    {
-        var stake = Model.Bet.GetValueBet(choice);
-        if (stake == 0)
-        {
-            return;
-        }
-        var oddsName = choice.Substring(0, 1).ToLower() + choice.Substring(1);
-        <tr>
-            <td>
-                @Model.Bet.Time.ToString(ViewFormat.RoundDateFormat)
-                <br />
-                @Model.Bet.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
-            </td>
-            <td>@Localizer[choice == "Dragon" ? "DragonWin3Cards" : choice]</td>
-            <td>@Model.Bet.Odds[oddsName].Format()</td>
-            <td>@stake.Format()</td>
-            <td>
-                @if (IsWinningChoice(choice))
-                {
-                    <span>@((Model.Bet.Odds[oddsName] * stake).Format())</span>
-                }
-                else
-                {
-                    <span>0</span>
-                }
-            </td>
-        </tr>
-    }
-
     private bool IsWinningChoice(string choice)
     {
         var settlementResult = Model.RoundResult.SettlementResult;
@@ -105,19 +75,33 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.Bet != null && Model.RoundResult != null)
+        @if (Model.BetLogs.Any() && Model.RoundResult != null)
         {
-            RenderBet("Dragon");
-            RenderBet("Phoenix");
-            RenderBet("Pair8Plus");
-            RenderBet("Straight");
-            RenderBet("Flush");
-            RenderBet("StraightFlush");
-            RenderBet("ThreeOfAKind");
+            foreach (var bet in Model.BetLogs)
+            {
+                <tr>
+                    <td>
+                        @bet.Time.ToString(ViewFormat.RoundDateFormat)
+                        <br />
+                        @bet.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                    </td>
+                    <td>@Localizer[bet.ChoiceDisplay == "Dragon" ? "DragonWin3Cards" : bet.ChoiceDisplay]</td>
+                    <td>@Model.Odds[bet.Choice].Format()</td>
+                    <td>@bet.Amount.Format()</td>
+                    <td>
+                        @if (IsWinningChoice(bet.ChoiceDisplay))
+                        {
+                            <span>@((Model.Odds[bet.Choice] * bet.Amount).Format())</span> }
+                        else
+                        {
+                            <span>0</span>}
+                    </td>
+                </tr>
+            }
             <tr>
                 <td class="text-right bold" colspan="3">@CommonLocalizer["Total"]</td>
-                <td>@Model.Bet.TotalAmount.Format()</td>
-                <td>@Model.Bet.Betwin.Format()</td>
+                <td>@Model.TotalBet.Format()</td>
+                <td>@Model.BetWin.Format()</td>
             </tr>
             <tr>
                 <td colspan="3" class="text-right bold">@CommonLocalizer["WinLoss"]</td>

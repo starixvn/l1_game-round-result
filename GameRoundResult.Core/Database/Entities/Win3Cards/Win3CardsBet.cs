@@ -21,5 +21,7 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal StraightFlush { get; set; }
 
         public decimal ThreeOfAKind { get; set; }
+
+        public decimal TotalBet => Dragon + Phoenix + Pair8Plus + Straight + Flush + StraightFlush + ThreeOfAKind;
     }
 }
