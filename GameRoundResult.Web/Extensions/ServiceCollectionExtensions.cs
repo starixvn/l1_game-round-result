@@ -1,11 +1,14 @@
 ﻿using System.Globalization;
 using System.Linq;
+using FluentValidation;
 using GameRoundResult.Core._Share;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.Configuration;
+using GameRoundResult.Web.Requests;
+using GameRoundResult.Web.Validators;
 using GameRoundResult.Web.ViewFactory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
@@ -88,8 +91,6 @@ namespace GameRoundResult.Web.Extensions
 
             services.AddScoped<IBitcoinMasterTicketService, BitcoinMasterTicketService>();
             services.AddScoped<IBitcoinMasterBetRepository, BitcoinMasterBetRepository>();
-            services.AddScoped<IPartnerService, PartnerService>();
-            services.AddScoped<IPartnerRepository, PartnerRepository>();
 
             services.AddScoped<IPartnerService, PartnerService>();
             services.AddScoped<ICurrencyGroupService, CurrencyGroupService>();
@@ -182,6 +183,11 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<FanTanEndGameInfoService>();
             services.AddScoped<Win3CardsEndGameInfoService>();
             services.AddScoped<FortuneCatEndGameInfoService>();
+        }
+
+        public static void AddValidators(this IServiceCollection services)
+        {
+            services.AddScoped<IValidator<RetrieveEndRoundInfoRequest>, RetrieveEndRoundInfoRequestValidator>();
         }
     }
 }

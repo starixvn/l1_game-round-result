@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using FluentValidation;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Services;
-using GameRoundResult.Web.Validators;
 using MediatR;
 using Sentry;
 
@@ -13,17 +13,18 @@ namespace GameRoundResult.Web.Handlers
     public class EndRoundInfoHandler : IRequestHandler<Requests.RetrieveEndRoundInfoRequest, EndRoundInfoResult>
     {
         private readonly IEndGameInfoServiceFactory factory;
+        private readonly IValidator<Requests.RetrieveEndRoundInfoRequest> validator;
 
-        public EndRoundInfoHandler(IEndGameInfoServiceFactory factory)
+        public EndRoundInfoHandler(IEndGameInfoServiceFactory factory, IValidator<Requests.RetrieveEndRoundInfoRequest> validator)
         {
             this.factory = factory;
+            this.validator = validator;
         }
 
         public async Task<EndRoundInfoResult> Handle(Requests.RetrieveEndRoundInfoRequest request, CancellationToken cancellationToken)
         {
             try
             {
-                var validator = new RetrieveEndRoundInfoRequestValidator();
                 var validatorResult = validator.Validate(request);
 
                 if (validatorResult.IsValid)
@@ -31,14 +32,7 @@ namespace GameRoundResult.Web.Handlers
                     var gameType = Enum.Parse<GameType>(request.GameTypeId.ToString());
                     IEndGameInfoService service;
 
-                    if (Enum.IsDefined(typeof(GameType), gameType))
-                    {
-                        service = factory.GetService(gameType);
-                    }
-                    else
-                    {
-                        service = factory.GetSlotGameService();
-                    }
+                    service = Enum.IsDefined(typeof(GameType), gameType) ? factory.GetService(gameType) : factory.GetSlotGameService();
 
                     return await service.GetAsync(new RetrieveEndGameInfoRequest
                     {

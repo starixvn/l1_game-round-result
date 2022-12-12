@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using GameRoundResult.Core._Share;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    [CollectionName("fourguardians_rounds")]
     public class SlotGameRound : GameRound
     {
         public decimal Bet { get; set; }
@@ -41,6 +39,7 @@ namespace GameRoundResult.Core.Database.Entities
 
         public string OperatorId { get; set; }
 
+        public static readonly string CollectionSuffix = "_rounds";
     }
 
     public class SlotGameBonusChest

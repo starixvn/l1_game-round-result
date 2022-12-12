@@ -33,6 +33,7 @@ namespace GameRoundResult.Web
             services.AddMediatR(typeof(Startup));
             services.AddMongoDatabase(Configuration);
             services.AddServices();
+            services.AddValidators();
             services.AddLocalizationSettings(Configuration);
             services.AddResponseCaching();
             services.AddHealthChecks();
