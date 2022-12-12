@@ -38,6 +38,7 @@ namespace GameRoundResult.Core.Database.Entities
         public string SiteId { get; set; }
 
         public string OperatorId { get; set; }
+        public static readonly string CollectionSuffix = "_rounds";
     }
 
     public class SlotGameBonusChest
