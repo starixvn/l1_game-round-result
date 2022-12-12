@@ -20,7 +20,14 @@ namespace GameRoundResult.Core.Services
 
         public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request)
         {
-            var round = await GetRoundAsync(request);
+            var gameConfigs = await gameConfigsRepository.GetByIdAsync(request.GameTypeId);
+
+            if (gameConfigs == null)
+            {
+                return EndRoundInfoError.SB1006;
+            }
+
+            var round = await GetRoundAsync(request, gameConfigs);
 
             if (round == null)
             {
@@ -41,21 +48,14 @@ namespace GameRoundResult.Core.Services
             };
         }
 
-        protected override async Task<SlotGameRound> GetRoundAsync(RetrieveEndGameInfoRequest request)
+        protected async Task<SlotGameRound> GetRoundAsync(RetrieveEndGameInfoRequest request, GameConfigs gameConfigs)
         {
-            var gameConfigs = await gameConfigsRepository.GetByIdAsync(request.GameTypeId);
+            var collection = database.GetCollection<SlotGameRound>($"{gameConfigs.Name}{SlotGameRound.CollectionSuffix}");
+            var expression = GetRoundFilterExpression(request);
 
-            if (gameConfigs != null)
-            {
-                var collection = database.GetCollection<SlotGameRound>($"{gameConfigs.Name}{gameConfigs.RoundCollectionSuffix}");
-                var expression = GetRoundFilterExpression(request);
+            var roundEntity = await collection.Find(expression).FirstOrDefaultAsync();
 
-                var roundEntity = await collection.Find(expression).FirstOrDefaultAsync();
-
-                return roundEntity;
-            }
-
-            return null;
+            return roundEntity;
         }
 
         protected override Expression<Func<SlotGameRound, bool>> GetRoundFilterExpression(RetrieveEndGameInfoRequest request)

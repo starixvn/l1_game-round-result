@@ -51,7 +51,7 @@ namespace GameRoundResult.Web.UnitTests.Accessor
             var round = fixture.Create<SlotGameRound>();
 
             gameConfigsRepository.GetByIdAsync((int)request.GameType).Returns(gameConfigs);
-            slotGameTicketService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId, gameConfigs).Returns(round);
+            slotGameTicketService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId, gameConfigs.Name).Returns(round);
 
             //Act
             var result = await accessor.GetAsync(request);

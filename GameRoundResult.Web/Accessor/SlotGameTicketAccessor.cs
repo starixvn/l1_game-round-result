@@ -27,7 +27,7 @@ namespace GameRoundResult.Web.Accessor
             var gameConfigs = await gameConfigsRepository.GetByIdAsync((int)request.GameType);
             if (gameConfigs != null)
             {
-                var result = await slotGameTicketService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId, gameConfigs);
+                var result = await slotGameTicketService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId, gameConfigs.Name);
 
                 return new SlotGameTicketViewModel
                 {
