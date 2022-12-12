@@ -219,8 +219,8 @@
       "tie": false,
       "threeOfAKind": false,
       "straightFlush": true,
-      "flush": true,
-      "straight": true,
+      "flush": false,
+      "straight": false,
       "pair8Plus": true,
       "killer235": false,
       "highCard": false

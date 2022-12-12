@@ -25,7 +25,7 @@ namespace GameRoundResult.IntegrationTests
         {
             return new List<RoundResultSelectOptionsTestCaseParam>
             {
-                new RoundResultSelectOptionsTestCaseParam(GameType.Win3Cards, "Win 3 Cards", Language.EN),
+                new RoundResultSelectOptionsTestCaseParam(GameType.Win3Cards, "Win Three Cards", Language.EN),
                 new RoundResultSelectOptionsTestCaseParam(GameType.Win3Cards, "Trác Kim Hoa", Language.VN),
             };
         }
