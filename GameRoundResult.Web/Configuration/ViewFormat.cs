@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -28,6 +29,16 @@ namespace GameRoundResult.Web.Configuration
         public static string Format2Decimals(this decimal value)
         {
             return value.ToString(ViewFormat._2DecimalsFormat, CultureInfo.InvariantCulture);
+        }
+
+        public static string RoundDateFormat(this DateTimeOffset dateTime)
+        {
+            return dateTime.ToString(ViewFormat.RoundDateFormat);
+        }
+
+        public static string RoundTimeWithSecondFormat(this DateTimeOffset dateTime)
+        {
+            return dateTime.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture);
         }
 
         public static string FormatOdds(this decimal value, bool? frationalFormat)

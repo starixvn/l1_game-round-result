@@ -1,0 +1,23 @@
+﻿@model SlotGameTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SlotGameTicketViewModel> Localizer
+
+
+@{
+    var roundResult = Model.RoundResult;
+}
+
+@if (roundResult.SettlementResult.Jackpot != null)
+{
+    <tr>
+        <td><img class="payline" src="~/scss/images/@Model.ConfigName/dong@(roundResult.SettlementResult.Jackpot.WinningLine + 1).png" asp-append-version="true" /></td>
+        <td>
+            <img class="symbol" src="~/scss/images/@Model.ConfigName/@(SlotGameTicketViewModel.GetJackpotSymbolFile()).png" alt="" asp-append-version="true" />
+        </td>
+        <td>5</td>
+        <td>@Localizer["Jackpot"]</td>
+        <td class="text-right">@roundResult.Bet.Format()</td>
+        <td class="text-right">@roundResult.SettlementResult.Jackpot.WinningAmount.Format()</td>
+    </tr>
+
+}

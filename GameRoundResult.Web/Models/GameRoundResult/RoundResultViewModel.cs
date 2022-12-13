@@ -8,7 +8,11 @@ namespace GameRoundResult.Web.Models
 {
     public class RoundResultViewModel
     {
-        public DateTimeOffset Time { get; set; }
+        public DateTime Time { get; set; }
+
+        public DateTimeOffset UserTime => TimeZoneInfo.ConvertTimeFromUtc(Time, TimeZone);
+
+        public TimeZoneInfo TimeZone { get; set; }
 
         public string DateDisplay => Time.ToString(ViewFormat.RoundDateFormat);
         public string TimeDisplay => Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture);
