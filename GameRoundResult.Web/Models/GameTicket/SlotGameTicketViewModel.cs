@@ -20,6 +20,11 @@ namespace GameRoundResult.Web.Models
 
         public bool EnabledJackpot { get; set; }
 
+        public string SymbolImageName(string symbol) 
+        {
+            return IsJackpotSymbol(byte.Parse(symbol)) ? GetJackpotSymbolFile() : symbol;
+        }
+
         public static string GetJackpotSymbolFile()
         {
             var jackpotSymbol = new StringBuilder($"{SlotGameConstant.JackpotSymbol}.jackpot");
