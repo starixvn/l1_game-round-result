@@ -1,0 +1,18 @@
+﻿@model SlotGameTicketViewModel
+
+@{
+    var roundResult = Model.RoundResult;
+}
+
+@foreach (var payline in roundResult.NotWinningPaylines)
+{
+
+    <tr>
+        <td><img class="payline" src="~/scss/images/@Model.ConfigName/dong@(payline + 1).png" asp-append-version="true" /></td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td class="text-right">@roundResult.Bet.Format()</td>
+        <td class="text-right">0</td>
+    </tr>
+}

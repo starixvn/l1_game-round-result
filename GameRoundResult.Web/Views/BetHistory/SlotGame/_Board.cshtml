@@ -1,0 +1,32 @@
+﻿@model SlotGameTicketViewModel
+
+@{
+    var roundResult = Model.RoundResult;
+}
+
+<table class="table-paylines">
+    <tbody>
+        @{
+            var array = roundResult.GetFormatResults();
+            for (var row = 0; row < array.GetLength(0); row++)
+            {
+                <tr>
+                    @for (var column = 0; column < array.GetLength(1); column++)
+                    {
+                        <td>
+                            @if (Model.IsJackpotSymbol(array[row, column]))
+                            {
+                                <img class="symbol" src="~/scss/images/@Model.ConfigName/@(SlotGameTicketViewModel.GetJackpotSymbolFile()).png" alt="" asp-append-version="true" />
+                            }
+                            else
+                            {
+                                <img class="symbol" src="~/scss/images/@Model.ConfigName/@(array[row,column]).png" alt="" asp-append-version="true" />
+                            }
+                        </td>
+                    }
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>

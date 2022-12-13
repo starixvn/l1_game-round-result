@@ -3,7 +3,6 @@ using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
-using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
 
@@ -25,17 +24,25 @@ namespace GameRoundResult.Web.Accessor
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
             var gameConfigs = await gameConfigsRepository.GetByIdAsync((int)request.GameType);
+
             if (gameConfigs != null)
             {
                 var result = await slotGameTicketService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId, gameConfigs.Name);
 
-                return new SlotGameTicketViewModel
+                var viewModel = new SlotGameTicketViewModel
                 {
                     ConfigName = gameConfigs.Name,
                     EnabledJackpot = gameConfigs.SlotsConfig.Jackpot.Enabled,
-                    RoundResult = result?.ToViewModel<SlotGameRound, SlotGameRoundResultViewModel>(mapper, request.TimeZoneInfo),
                     SystemType = request.SystemType
                 };
+
+                if (result != null)
+                {
+                    viewModel.RoundResult = mapper.Map<SlotGameRound, SlotGameRoundResultViewModel>(result);
+                    viewModel.RoundResult.TimeZone = request.TimeZoneInfo;
+                }
+
+                return viewModel;
             }
 
             return null;

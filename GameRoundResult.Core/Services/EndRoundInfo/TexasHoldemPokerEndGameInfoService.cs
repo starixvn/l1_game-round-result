@@ -23,7 +23,7 @@ namespace GameRoundResult.Core.Services
                 return EndRoundInfoError.SB1001;
             }
 
-            var round = await GetRoundAsync(request.GameRoundId);
+            var round = await GetRoundAsync(request);
             if (!round.Ended)
             {
                 return EndRoundInfoError.SB1005;
