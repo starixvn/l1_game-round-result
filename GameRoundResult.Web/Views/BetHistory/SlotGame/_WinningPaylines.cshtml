@@ -1,0 +1,26 @@
+﻿@model SlotGameTicketViewModel
+
+@{
+    var roundResult = Model.RoundResult;
+}
+
+@foreach (var winningPayline in roundResult.SettlementResult.WinningPaylines)
+{
+    <tr>
+        <td><img class="payline" src="~/scss/images/@Model.ConfigName/dong@(winningPayline.Payline + 1).png" asp-append-version="true" /></td>
+        <td>
+            @if (Model.IsJackpotSymbol(byte.Parse(winningPayline.Symbol)))
+            {
+                <img class="symbol" src="~/scss/images/@Model.ConfigName/@(SlotGameTicketViewModel.GetJackpotSymbolFile()).png" alt="" asp-append-version="true" />
+            }
+            else
+            {
+                <img class="symbol" src="~/scss/images/@Model.ConfigName/@(winningPayline.Symbol).png" asp-append-version="true" />
+            }
+        </td>
+        <td>@winningPayline.Count</td>
+        <td>x@(winningPayline.Odds)</td>
+        <td class="text-right">@roundResult.Bet.Format()</td>
+        <td class="text-right">@((roundResult.Bet * winningPayline.Odds).Format())</td>
+    </tr>
+}

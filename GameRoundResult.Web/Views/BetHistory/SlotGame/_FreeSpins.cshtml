@@ -1,0 +1,20 @@
+﻿@model SlotGameTicketViewModel
+@using GameRoundResult.Core.Constants
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SlotGameTicketViewModel> Localizer
+
+@{
+    var roundResult = Model.RoundResult;
+}
+
+@if (roundResult.SettlementResult.FreeSpins.Odds > 0)
+{
+    <tr>
+        <td></td>
+        <td><img class="symbol" src="~/scss/images/@Model.ConfigName/@(SlotGameConstant.FreeSpinSymbol).png" asp-append-version="true" /></td>
+        <td>@roundResult.SettlementResult.FreeSpins.Count</td>
+        <td>@roundResult.SettlementResult.FreeSpins.Odds @Localizer["Free spins"]</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+}

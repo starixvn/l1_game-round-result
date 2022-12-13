@@ -1,0 +1,21 @@
+﻿@model SlotGameTicketViewModel
+
+@using GameRoundResult.Core.Constants
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SlotGameTicketViewModel> Localizer
+
+@{
+    var roundResult = Model.RoundResult;
+}
+
+@if (roundResult.SettlementResult.Bonus.Odds > 0)
+{
+    <tr>
+        <td></td>
+        <td><img class="symbol" src="~/scss/images/@Model.ConfigName/@(SlotGameConstant.BonusSymbol).png" asp-append-version="true" /></td>
+        <td>@roundResult.SettlementResult.Bonus.Count</td>
+        <td>@roundResult.SettlementResult.Bonus.Odds @Localizer["Bonus"]</td>
+        <td>-</td>
+        <td class="text-right">@roundResult.PickedBonusChestsTotalAmount.Format()</td>
+    </tr>
+}
