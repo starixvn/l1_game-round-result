@@ -12,16 +12,9 @@
             {
                 <tr>
                     @for (var column = 0; column < array.GetLength(1); column++)
-                    {
+                    {                        
                         <td>
-                            @if (Model.IsJackpotSymbol(array[row, column]))
-                            {
-                                <img class="symbol" src="~/scss/images/@Model.ConfigName/@(SlotGameTicketViewModel.GetJackpotSymbolFile()).png" alt="" asp-append-version="true" />
-                            }
-                            else
-                            {
-                                <img class="symbol" src="~/scss/images/@Model.ConfigName/@(array[row,column]).png" alt="" asp-append-version="true" />
-                            }
+                            <img class="symbol" src="~/scss/images/@Model.ConfigName/@(Model.SymbolImageName(array[row,column].ToString())).png" alt="" asp-append-version="true" />
                         </td>
                     }
                 </tr>

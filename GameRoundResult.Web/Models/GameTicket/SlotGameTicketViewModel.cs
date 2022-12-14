@@ -21,9 +21,7 @@ namespace GameRoundResult.Web.Models
         public bool EnabledJackpot { get; set; }
 
         public string SymbolImageName(string symbol) 
-        {
-            return IsJackpotSymbol(byte.Parse(symbol)) ? GetJackpotSymbolFile() : symbol;
-        }
+        => IsJackpotSymbol(byte.Parse(symbol)) ? GetJackpotSymbolFile() : symbol;
 
         public static string GetJackpotSymbolFile()
         {
@@ -38,6 +36,10 @@ namespace GameRoundResult.Web.Models
         }
 
         public bool IsJackpotSymbol(byte number) => number == SlotGameConstant.JackpotSymbol && EnabledJackpot;
+
+        public bool HasBonus => RoundResult.SettlementResult.Bonus.Odds > 0;
+
+        public bool HasFreeSpins => RoundResult.SettlementResult.FreeSpins.Odds > 0;
     }
 
     public class SlotGameRoundResultViewModel : RoundResultViewModel
