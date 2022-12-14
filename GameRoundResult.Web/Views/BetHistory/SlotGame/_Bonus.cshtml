@@ -4,12 +4,10 @@
 
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SlotGameTicketViewModel> Localizer
 
-@{
-    var roundResult = Model.RoundResult;
-}
 
-@if (roundResult.SettlementResult.Bonus.Odds > 0)
+@if (Model.HasBonus)
 {
+    var roundResult = Model.RoundResult;
     <tr>
         <td></td>
         <td><img class="symbol" src="~/scss/images/@Model.ConfigName/@(SlotGameConstant.BonusSymbol).png" asp-append-version="true" /></td>
