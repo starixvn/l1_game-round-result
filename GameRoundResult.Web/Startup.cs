@@ -87,6 +87,9 @@ namespace GameRoundResult.Web
                 endpoints.MapControllerRoute(
                    name: "default",
                    pattern: "{controller=GameRoundResult}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                   name: "demo",
+                   pattern: "{controller=Demo}/{action=Index}");
             });
         }
     }

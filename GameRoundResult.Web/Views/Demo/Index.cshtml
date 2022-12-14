@@ -1,0 +1,63 @@
+﻿@model DemoViewModel;
+
+@section Styles {
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" rel="stylesheet" />
+    <link href="~/scss/pages/demo.min.css" rel="stylesheet" />
+}
+
+<div class="container-fluid content">
+    <div class="row">
+        <div class="col bg-light">
+            <button class="btn btn-danger mt-3 mb-3" onclick="demo.openRoundResultPage()">Round Result</button>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-5 pt-3 pb-3">
+            <form class="bg-light pb-1 pr-5" id="form-demo">
+                <div class="form-group">
+                    <label asp-for="OperatorId"></label>
+                    <select class="form-control" asp-items="Model.OperatorItem" asp-for="OperatorId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="GameTypeId">Game Type</label>
+                    <select class="form-control" asp-items="Model.GameTypeItem" asp-for="GameTypeId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="GameRoundId">Round ID</label>
+                    <input type="number" asp-for="GameRoundId" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="PlayerId"></label>
+                    <input type="number" asp-for="PlayerId" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Language"></label>
+                    <select asp-items="Model.LanguageItem" asp-for="Language" class="form-control"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SiteId"></label>
+                    <input type="text" asp-for="SiteId" class="form-control " />
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" asp-for="FreeBet" />
+                    <label class="form-check-label ml-2" asp-for="FreeBet">Free Bet</label>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" asp-for="OperatorSecret" class="form-control " hidden />
+                    <button class="btn btn-primary" onclick="demo.getBetDetails()">Get Bet Details</button>
+                    <button class="btn btn-primary" onclick="demo.getEndRoundInfo()">End Round Info</button>
+                </div>
+            </form>
+        </div>
+        <fieldset class="col-5 retrieve-end-round-result-field d-none ml-5 bg-light mt-3 mb-3">
+            <pre id="retrieve-end-round-result"></pre>
+        </fieldset>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/demo.js"></script>
+}

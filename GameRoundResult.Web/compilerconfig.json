@@ -38,5 +38,9 @@
   {
     "outputFile": "wwwroot/scss/pages/game-ticket.css",
     "inputFile": "wwwroot/scss/pages/game-ticket.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/pages/demo.css",
+    "inputFile": "wwwroot/scss/pages/demo.scss"
   }
 ]

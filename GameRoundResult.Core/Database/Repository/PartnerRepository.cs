@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using GameRoundResult.Core.Database.Entities;
 using MongoDB.Driver;
 
@@ -7,6 +8,10 @@ namespace GameRoundResult.Core.Database.Repository
     public interface IPartnerRepository
     {
         Task<Partner> Get(string partnerId, string partnerSecret);
+
+        Task<Partner> GetById(string operatorId);
+
+        Task<IEnumerable<Partner>> GetAll();
     }
 
     public class PartnerRepository : IPartnerRepository
@@ -21,6 +26,16 @@ namespace GameRoundResult.Core.Database.Repository
         public Task<Partner> Get(string partnerId, string partnerSecret)
         {
             return collection.Find(x => x.PartnerId == partnerId && x.SecretKey == partnerSecret).FirstOrDefaultAsync();
+        }
+
+        public Task<Partner> GetById(string operatorId)
+        {
+            return collection.Find(x => x.PartnerId == operatorId).FirstOrDefaultAsync();
+        }
+
+        public async Task<IEnumerable<Partner>> GetAll()
+        {
+            return await collection.Find(_ => true).ToListAsync();
         }
     }
 }
