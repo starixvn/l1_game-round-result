@@ -100,6 +100,9 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IGameConfigsRepository, GameConfigsRepository>();
             services.AddScoped<IGameConfigsService, GameConfigsService>();
 
+            services.AddScoped<IGameConfigsRepository, GameConfigsRepository>();
+            services.AddScoped<IGameConfigsService, GameConfigsService>();
+
             services.AddScoped(typeof(BigSmallTicketAccessor<,,>));
 
             services.AddScoped<BlackjackTicketAccessor>();
