@@ -20,15 +20,7 @@ namespace GameRoundResult.Web.Handlers
 
         public async Task<GameTicketViewModel> Handle(GetGameTicketRequest request, CancellationToken cancellationToken)
         {
-            IGameTicketAccessor service;
-            if (Enum.IsDefined(typeof(GameType), request.GameType))
-            {
-                service = serviceFactory.GetService(request.GameType);
-            }
-            else
-            {
-                service = serviceFactory.GetSlotGameService();
-            }
+            var service = Enum.IsDefined(typeof(GameType), request.GameType) ? serviceFactory.GetService(request.GameType) : serviceFactory.GetSlotGameService();
 
             if (service != null)
             {

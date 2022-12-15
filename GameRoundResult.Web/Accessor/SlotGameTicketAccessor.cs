@@ -11,19 +11,19 @@ namespace GameRoundResult.Web.Accessor
     public class SlotGameTicketAccessor : IGameTicketAccessor
     {
         private readonly ISlotGameTicketService slotGameTicketService;
-        private readonly IGameConfigsRepository gameConfigsRepository;
+        private readonly IGameConfigsService gameConfigsService;
         private readonly IMapper mapper;
 
-        public SlotGameTicketAccessor(ISlotGameTicketService gameBetService, IGameConfigsRepository gameConfigsRepository, IMapper mapper)
+        public SlotGameTicketAccessor(ISlotGameTicketService gameBetService, IGameConfigsService gameConfigsService, IMapper mapper)
         {
             this.slotGameTicketService = gameBetService;
-            this.gameConfigsRepository = gameConfigsRepository;
+            this.gameConfigsService = gameConfigsService;
             this.mapper = mapper;
         }
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
-            var gameConfigs = await gameConfigsRepository.GetByIdAsync((int)request.GameType);
+            var gameConfigs = await gameConfigsService.GetByIdAsync((int)request.GameType);
 
             if (gameConfigs != null)
             {

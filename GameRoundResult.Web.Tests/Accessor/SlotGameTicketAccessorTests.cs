@@ -2,7 +2,6 @@
 using AutoFixture;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
-using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.Models;
@@ -16,16 +15,16 @@ namespace GameRoundResult.Web.UnitTests.Accessor
     {
         private readonly SlotGameTicketAccessor accessor;
         private readonly ISlotGameTicketService slotGameTicketService;
-        private readonly IGameConfigsRepository gameConfigsRepository;
+        private readonly IGameConfigsService gameConfigsService;
         private readonly IMapper mapper;
         private readonly Fixture fixture;
 
         public SlotGameTicketAccessorTests()
         {
             slotGameTicketService = Substitute.For<ISlotGameTicketService>();
-            gameConfigsRepository = Substitute.For<IGameConfigsRepository>();
+            gameConfigsService = Substitute.For<IGameConfigsService>();
             mapper = Substitute.For<IMapper>();
-            accessor = new SlotGameTicketAccessor(slotGameTicketService, gameConfigsRepository, mapper);
+            accessor = new SlotGameTicketAccessor(slotGameTicketService, gameConfigsService, mapper);
             fixture = new Fixture();
         }
 
@@ -50,8 +49,9 @@ namespace GameRoundResult.Web.UnitTests.Accessor
             var gameConfigs = fixture.Create<GameConfigs>();
             var round = fixture.Create<SlotGameRound>();
 
-            gameConfigsRepository.GetByIdAsync((int)request.GameType).Returns(gameConfigs);
+            gameConfigsService.GetByIdAsync((int)request.GameType).Returns(gameConfigs);
             slotGameTicketService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId, gameConfigs.Name).Returns(round);
+            mapper.Map<SlotGameRound, SlotGameRoundResultViewModel>(round).Returns(fixture.Create<SlotGameRoundResultViewModel>());
 
             //Act
             var result = await accessor.GetAsync(request);
