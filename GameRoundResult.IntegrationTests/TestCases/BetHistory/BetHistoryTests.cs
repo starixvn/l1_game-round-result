@@ -105,7 +105,7 @@ namespace GameRoundResult.IntegrationTests
         [Theory]
         [ClassData(typeof(BetHistoryTestCaseProvider))]
         public async Task Index_ValidData_RenderExpectedInfo(
-            GameType gameType,
+            GameType game,
             int playerId,
             long roundId,
             string language,
@@ -113,12 +113,12 @@ namespace GameRoundResult.IntegrationTests
         {
             // arrange
             var model = GetBetHistoryAccessUrlRequestModel();
-            model.GameTypeId = gameType;
+            model.GameTypeId = game;
             model.PlayerId = playerId;
             model.Language = language;
             model.GameRoundId = roundId;
             var url = await BuildAccessUrl(model);
-            var expected = ReadTextFromFile(gameType, fileName);
+            var expected = ReadTextFromFile(game, fileName);
 
             // act
             var response = await TestDriver.GetAsync(url);

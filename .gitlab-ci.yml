@@ -11,9 +11,10 @@ unit-test-dotnet:
   variables:
     TESTS_PATH: "**/bin/debug/*/*UnitTests.dll"
     TESTS_DLL: "*UnitTests.dll"
+    TEST_LOGGER: "trx"
   script:
     - dotnet build
-    - dotnet test $TESTS_PATH --logger:"trx" || true
+    - dotnet test $TESTS_PATH --logger:$TEST_LOGGER || true
     - for path in $(find ./ -name $TESTS_DLL);
       do
       if echo $path | grep 'bin';
@@ -23,9 +24,12 @@ unit-test-dotnet:
       done
 
 integration-test-dotnet:
+  extends: unit-test-dotnet
   variables:
+    LOG_TEST_PATH: ./TestResults/integration-tests
     TESTS_PATH: "**/bin/debug/*/*IntegrationTests.dll"
     TESTS_DLL: "*IntegrationTests.dll"
+    TEST_LOGGER: "junit;LogFilePath=${LOG_TEST_PATH}/{assembly}-tests.xml;MethodFormat=Class;FailureBodyFormat=Verbose --logger:trx"
   services:
     - name: registry.nexdev.net:5050/docker/database/mongo:4.4.8
       alias: mongo
@@ -34,4 +38,10 @@ integration-test-dotnet:
     - export PATH="$PATH:/root/.dotnet/tools"
     - dotnet nuget add source http://nuget.nexdev.net/api/v2
     - cp ./GameRoundResult.IntegrationTests/appsettings.IGT.CI.json ./GameRoundResult.IntegrationTests/appsettings.IGT.json
-  extends: unit-test-dotnet
+    - mkdir -p $LOG_TEST_PATH && cp -a ./GameRoundResult.IntegrationTests/Games/. $LOG_TEST_PATH && rm -r $LOG_TEST_PATH/**/TestCaseData
+  artifacts:
+    paths:
+      - $LOG_TEST_PATH
+    reports:
+      junit:
+        - $LOG_TEST_PATH/*.xml
