@@ -98,6 +98,9 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<ICurrencyGroupRepository, CurrencyGroupRepository>();
             services.AddScoped<ICurrencyRepository, CurrencyRepository>();
 
+            services.AddScoped<IGameConfigsRepository, GameConfigsRepository>();
+            services.AddScoped<IGameConfigsService, GameConfigsService>();
+
             services.AddScoped(typeof(BigSmallTicketAccessor<,,>));
 
             services.AddScoped<BlackjackTicketAccessor>();
