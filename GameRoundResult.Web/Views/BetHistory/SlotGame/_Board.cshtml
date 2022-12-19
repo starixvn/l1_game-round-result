@@ -1,13 +1,9 @@
 ﻿@model SlotGameTicketViewModel
 
-@{
-    var roundResult = Model.RoundResult;
-}
-
 <table class="table-paylines">
     <tbody>
         @{
-            var array = roundResult.GetFormatResults();
+            var array = Model.RoundResult.GetFormatResults();
             for (var row = 0; row < array.GetLength(0); row++)
             {
                 <tr>

@@ -44,6 +44,8 @@ namespace GameRoundResult.Web.Models
         public bool HasData => RoundResult != null;
 
         public string FreeSpinsLabel => HasFreeSpins ? "Free Spins" : string.Empty;
+
+        public bool HasJackpot => RoundResult.SettlementResult.Jackpot != null;
     }
 
     public class SlotGameRoundResultViewModel : RoundResultViewModel
