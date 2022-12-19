@@ -8,11 +8,13 @@
 @if (Model.HasBonus)
 {
     var roundResult = Model.RoundResult;
+    var bonus = Model.RoundResult.SettlementResult.Bonus;
+
     <tr>
         <td></td>
         <td><img class="symbol" src="~/scss/images/@Model.ConfigName/@(SlotGameConstant.BonusSymbol).png" asp-append-version="true" /></td>
-        <td>@roundResult.SettlementResult.Bonus.Count</td>
-        <td>@roundResult.SettlementResult.Bonus.Odds @Localizer["Bonus"]</td>
+        <td>@bonus.Count</td>
+        <td>@bonus.Odds @Localizer["Bonus"]</td>
         <td>-</td>
         <td class="text-right">@roundResult.PickedBonusChestsTotalAmount.Format()</td>
     </tr>
