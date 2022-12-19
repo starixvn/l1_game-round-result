@@ -25,12 +25,6 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal Chun134 { get; set; }
         public decimal Chun234 { get; set; }
 
-        public decimal TotalAmount
-        {
-            get
-            {
-                return Odd + Even + Fan1 + Fan2 + Fan3 + Fan4 + Kwok12 + Kwok23 + Kwok34 + Kwok41 + Chun123 + Chun124 + Chun134 + Chun234;
-            }
-        }
+        public decimal TotalAmount { get; set; }
     }
 }
