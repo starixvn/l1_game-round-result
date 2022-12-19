@@ -20,8 +20,10 @@ namespace GameRoundResult.Web.Models
 
         public bool EnabledJackpot { get; set; }
 
-        public string SymbolImageName(string symbol) 
+        public string SymbolImageName(string symbol)
         => IsJackpotSymbol(byte.Parse(symbol)) ? GetJackpotSymbolFile() : symbol;
+
+        public bool IsJackpotSymbol(byte number) => number == SlotGameConstant.JackpotSymbol && EnabledJackpot;
 
         public static string GetJackpotSymbolFile()
         {
@@ -35,11 +37,13 @@ namespace GameRoundResult.Web.Models
             return jackpotSymbol.ToString();
         }
 
-        public bool IsJackpotSymbol(byte number) => number == SlotGameConstant.JackpotSymbol && EnabledJackpot;
-
         public bool HasBonus => RoundResult.SettlementResult.Bonus.Odds > 0;
 
         public bool HasFreeSpins => RoundResult.SettlementResult.FreeSpins.Odds > 0;
+
+        public bool HasData => RoundResult != null;
+
+        public string FreeSpinsLabel => HasFreeSpins ? "Free Spins" : string.Empty;
     }
 
     public class SlotGameRoundResultViewModel : RoundResultViewModel
@@ -80,6 +84,8 @@ namespace GameRoundResult.Web.Models
         public decimal PickedBonusChestsTotalAmount => BonusChests.Where(x => x.Picked).Sum(x => x.Amount);
 
         public IEnumerable<byte> NotWinningPaylines => Paylines.Where(x => SettlementResult.WinningPaylines.All(y => y.Payline != x) && x != SettlementResult.Jackpot?.WinningLine);
+
+        public decimal DisplayTotalAmount => FreeSpin ? 0 : TotalAmount;
     }
 
     public class SlotGameBonusChestViewModel

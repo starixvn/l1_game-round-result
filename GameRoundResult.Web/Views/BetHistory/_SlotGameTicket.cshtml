@@ -1,12 +1,7 @@
 ﻿@model SlotGameTicketViewModel
 
-
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SlotGameTicketViewModel> Localizer
-
-@{
-    var roundResult = Model.RoundResult;
-}
 
 <table class="table table-bordered table-four-guardians">
     <thead>
@@ -17,17 +12,17 @@
         </tr>
     </thead>
     <tbody>
-        @if (roundResult != null)
+        @if(Model.HasData)
         {
             <tr>
                 <td>
-                    @roundResult.UserTime.RoundDateFormat()
+                    @Model.RoundResult.UserTime.RoundDateFormat()
                     <br />
-                    @roundResult.UserTime.RoundTimeWithSecondFormat()
+                    @Model.RoundResult.UserTime.RoundTimeWithSecondFormat()
                 </td>
                 <td>
-                    @roundResult.RoundId
-                    <div>@(roundResult.FreeSpin ? $"({Localizer["Free spin"]})" : string.Empty)</div>
+                    @Model.RoundResult.RoundId
+                    <div>@Model.FreeSpinsLabel</div>
                 </td>
                 <td>
                     <partial name="SlotGame/_Board" model="Model" />
@@ -57,7 +52,7 @@
         </tr>
     </thead>
     <tbody>
-        @if (roundResult != null)
+        @if (Model.HasData)
         {
 
             <partial name="SlotGame/_Jackpot" model="Model" />
@@ -71,7 +66,7 @@
                 <td></td>
                 <td></td>
                 <td class="bold text-right">@CommonLocalizer["Total"]</td>
-                <td class="bold text-right">@(roundResult.FreeSpin ? "0" : roundResult.TotalAmount.Format())</td>
+                <td class="bold text-right">@Model.RoundResult.DisplayTotalAmount.Format()</td>
                 <td class="bold text-right">@Model.BetWin.Format()</td>
             </tr>
             <tr class="total">
