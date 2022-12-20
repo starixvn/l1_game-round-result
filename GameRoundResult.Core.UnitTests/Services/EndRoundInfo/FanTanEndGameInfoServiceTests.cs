@@ -66,7 +66,7 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
             var betAmount = fixture.Create<decimal>();
 
             endGameInfoService.Bets = new List<FanTanBet> {
-                new FanTanBet { Odd  = betAmount }
+                new FanTanBet { Odd  = betAmount, TotalAmount = betAmount }
             };
 
             var expectedInfo = new EndRoundInfoResult
