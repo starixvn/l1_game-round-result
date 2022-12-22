@@ -3,7 +3,9 @@
 namespace GameRoundResult.Core.Database.Entities
 {
     [CollectionName("winthreecards_betlogs")]
-    public class Win3CardsBetLog : UnbalancedBigSmallBetLog
+    public class Win3CardsBetLog : BaseBetLogEntity
     {
+        public decimal Amount { get; set; }
+        public string Choice { get; set; }
     }
 }

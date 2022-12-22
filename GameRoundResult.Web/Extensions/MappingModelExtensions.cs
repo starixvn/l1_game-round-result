@@ -300,5 +300,13 @@ namespace GameRoundResult.Web.Extensions
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });
         }
+
+        public static Win3CardsBetLogViewModel ToViewModel(this Win3CardsBetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<Win3CardsBetLog, Win3CardsBetLogViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
     }
 }

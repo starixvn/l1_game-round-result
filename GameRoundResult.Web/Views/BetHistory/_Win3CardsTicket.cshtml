@@ -1,30 +1,7 @@
-﻿@using GameRoundResult.Core.Constants
-@model Win3CardsTicketViewModel
+﻿@model Win3CardsTicketViewModel
 
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
 @inject IStringLocalizer<RoundResultViewModel> Localizer
-
-@functions{
-    private async Task RenderCards(IEnumerable<PokerCardViewModel> cards, string handRank, int cardRankId, bool isHighlight)
-    {
-        <div class="cards">
-            @foreach (var card in cards)
-            {
-                <div class="card card-type-@card.Suit">
-                    <span>@Card.CardLabels[card.Rank]</span>
-                    <img class="img" src="~/scss/images/card_@(card.Suit).png" />
-                </div>
-            }
-            <span class="@(isHighlight ? "bold" : string.Empty)">@Localizer[handRank] @(cardRankId >= 0 ? Card.CardLabels[cardRankId] : string.Empty)</span>
-        </div>
-    }
-
-    private bool IsWinningChoice(string choice)
-    {
-        var settlementResult = Model.RoundResult.SettlementResult;
-        return bool.Parse(settlementResult.GetType().GetProperty(choice).GetValue(settlementResult, null).ToString());
-    }
-}
 
 <table class="table table-bordered table-win3cards">
     <thead>
@@ -34,34 +11,7 @@
             <th>@CommonLocalizer["Result"] (@Localizer["DragonWin3Cards"] | @Localizer["Phoenix"])</th>
         </tr>
     </thead>
-    <tbody>
-        @if (Model.RoundResult != null)
-        {
-            var roundResult = Model.RoundResult;
-            <tr>
-                <td>
-                    @roundResult.Time.ToString(ViewFormat.RoundDateFormat)
-                    <br />
-                    @roundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
-                </td>
-                <td>@roundResult.RoundId</td>
-                <td>
-                    <div class="win3cards-result">
-                        @{await RenderCards(roundResult.Result.Dragon.Cards, roundResult.Result.Dragon.HandRank, roundResult.Result.Dragon.CardRankId, roundResult.SettlementResult.Dragon);}
-                        @{await RenderCards(roundResult.Result.Phoenix.Cards, roundResult.Result.Phoenix.HandRank, roundResult.Result.Phoenix.CardRankId, roundResult.SettlementResult.Phoenix);}
-                    </div>
-                </td>
-            </tr>
-        }
-        else
-        {
-            <tr>
-                <td colspan="3" class="text-center">
-                    @CommonLocalizer["NoDataAvailable"]
-                </td>
-            </tr>
-        }
-    </tbody>
+    <tbody>@Html.Raw(Model.RenderResult(CommonLocalizer, Localizer))</tbody>
 </table>
 
 <table class="table table-bordered">
@@ -74,44 +24,5 @@
             <th>@CommonLocalizer["Win"]</th>
         </tr>
     </thead>
-    <tbody>
-        @if (Model.BetLogs.Any() && Model.RoundResult != null)
-        {
-            foreach (var bet in Model.BetLogs)
-            {
-                var isWin = IsWinningChoice(bet.ChoiceDisplay);
-                var className = isWin ? "bold" : string.Empty;
-                <tr class="@className">
-                    <td>
-                        @bet.Time.ToString(ViewFormat.RoundDateFormat)
-                        <br />
-                        @bet.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
-                    </td>
-                    <td>@Localizer[bet.ChoiceDisplay == "Dragon" ? "DragonWin3Cards" : bet.ChoiceDisplay]</td>
-                    <td>@Model.Odds[bet.Choice].FormatOdds(Model.FractionalOddsFormat)</td>
-                    <td>@bet.Amount.Format()</td>
-                    <td>
-                        @(isWin ? (Model.Odds[bet.Choice] * bet.Amount).Format() : 0)
-                    </td>
-                </tr>
-            }
-            <tr class="total">
-                <td class="text-right" colspan="3">@CommonLocalizer["Total"]</td>
-                <td>@Model.TotalBet.Format()</td>
-                <td>@Model.BetWin.Format()</td>
-            </tr>
-            <tr class="total">
-                <td colspan="3" class="text-right">@CommonLocalizer["WinLoss"]</td>
-                <td colspan="2" class="@(Model.WinLoss<0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
-            </tr>
-        }
-        else
-        {
-            <tr>
-                <td colspan="5" class="text-center">
-                    @CommonLocalizer["NoDataAvailable"]
-                </td>
-            </tr>
-        }
-    </tbody>
+    <tbody>@Html.Raw(Model.RenderBets(CommonLocalizer, Localizer))</tbody>
 </table>

@@ -67,7 +67,7 @@ namespace GameRoundResult.Web.Models
             return string.Join(", ", result);
         }
 
-        private string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"win3cards-result");
@@ -114,6 +114,11 @@ namespace GameRoundResult.Web.Models
             tagBuilder.InnerHtml.AppendHtml(img);
 
             return tagBuilder;
+        }
+
+        public bool IsWinningChoice(string choice)
+        {
+            return bool.Parse(SettlementResult.GetType().GetProperty(choice).GetValue(SettlementResult, null).ToString());
         }
     }
 

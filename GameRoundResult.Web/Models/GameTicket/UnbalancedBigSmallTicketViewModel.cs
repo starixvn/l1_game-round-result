@@ -23,7 +23,5 @@ namespace GameRoundResult.Web.Models
         public string Choice { get; set; }
 
         public decimal Amount { get; set; }
-
-        public string ChoiceDisplay => char.ToUpper(Choice[0]) + Choice.Substring(1);
     }
 }

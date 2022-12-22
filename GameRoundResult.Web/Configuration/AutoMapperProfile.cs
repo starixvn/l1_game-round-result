@@ -361,6 +361,7 @@ namespace GameRoundResult.Web.Configuration
                         };
                     }));
             CreateMap<Win3CardsSettlementResult, Win3CardsSettlementResultViewModel>();
+            CreateMap<Win3CardsBetLog, Win3CardsBetLogViewModel>();
         }
     }
 }
