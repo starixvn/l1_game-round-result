@@ -228,7 +228,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="SlotGames\Resources\" />
+    <Folder Include="SlotGames\Requests\" />
+    <Folder Include="SlotGames\Views\Partials\" />
   </ItemGroup>
 
 
