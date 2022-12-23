@@ -20,17 +20,19 @@ namespace GameRoundResult.Web.Controllers
 {
     public class BetHistoryController : Controller
     {
+        private const string dataProtectorKey = "game-ticket-data-key";
+        private const int dataProtectorLifeTimeSecond = 30;
+
         private readonly IMediator mediator;
         private readonly HostConfiguration hostConfiguration;
         private readonly ITimeLimitedDataProtector dataProtector;
-        private const string dataProtectorKey = "game-ticket-data-key";
-        private const int dataProtectorLifeTimeSecond = 30;
         private readonly ILogService logService;
         private readonly IPartnerService partnerService;
         private readonly IEnumerable<OperatorConfig> operatorConfigs;
         private readonly string systemType;
 
-        public BetHistoryController(IMediator mediator,
+        public BetHistoryController(
+            IMediator mediator,
             IDataProtectionProvider dataProtectionProvider,
             IOptionsSnapshot<HostConfiguration> hostConfigurationAccessor,
             ILogService logService,

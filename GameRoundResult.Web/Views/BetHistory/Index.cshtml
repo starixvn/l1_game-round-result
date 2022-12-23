@@ -4,7 +4,8 @@
 
 @{
     ViewData["Title"] = Localizer["GameTickets"];
-    ViewData["GameName"] = Enum.GetName(typeof(GameType), Model.GameType).ToLowerInvariant();
+    //ViewData["GameName"] = Enum.GetName(typeof(GameType), Model.GameType).ToLowerInvariant();
+    ViewData["GameName"] = "game";
 }
 
 @section Styles {
@@ -98,7 +99,7 @@
             <partial name="_VipSeDieWarTicket" for="GameTicketResult" />
             break;
 
-        case GameType.FourGuardians:
+        @*case GameType.FourGuardians:*@
         case GameType.HeroesSlot:
         case GameType.NightClub:
         case GameType.WayToGoal:
@@ -145,6 +146,9 @@
             break;
         case GameType.FruitSlot:
             <partial name="_FruitSlotTicket" for="GameTicketResult" view-data="ViewData" />
+            break;
+        default:
+            <partial name="_SlotGameTicket" for="GameTicketResult" />
             break;
         case GameType.FanTan:
             <partial name="_FanTanTicket" for="GameTicketResult" />

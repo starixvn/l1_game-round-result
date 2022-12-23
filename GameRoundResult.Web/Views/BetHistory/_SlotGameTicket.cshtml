@@ -1,90 +1,91 @@
-﻿@model SlotGameTicketViewModel
+﻿@model ClassicSlotTicketViewModel
 
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<SlotGameTicketViewModel> Localizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<ClassicSlotTicketViewModel> Localizer
 
-<table class="table table-bordered table-four-guardians">
-    <thead>
-        <tr>
-            <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
-            <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
-            <th>@CommonLocalizer["Result"]</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if(Model.HasData)
-        {
-            <tr>
-                <td>
-                    @Model.RoundResult.UserTime.RoundDateFormat()
-                    <br />
-                    @Model.RoundResult.UserTime.RoundTimeWithSecondFormat()
-                </td>
-                <td>
-                    @Model.RoundResult.RoundId
-                    <div>@Model.FreeSpinsLabel</div>
-                </td>
-                <td>
-                    <partial name="SlotGame/_Board" model="Model" />
-                </td>
-            </tr>
-        }
-        else
-        {
-            <tr>
-                <td colspan="3" class="text-center">
-                    @CommonLocalizer["NoDataAvailable"]
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+@if (Model.HasData)
+{
 
-<table class="table table-bordered table-four-guardians">
-    <thead>
-        <tr>
-            <th>@Localizer["Payline"]</th>
-            <th>@Localizer["Symbol"]</th>
-            <th>@Localizer["NoSymbol"]</th>
-            <th>@Localizer["Odds"]</th>
-            <th>@Localizer["Stake"]</th>
-            <th>@CommonLocalizer["Win"]</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model.HasData)
-        {
-
-            <partial name="SlotGame/_Jackpot" model="Model" />
-            <partial name="SlotGame/_WinningPaylines" model="Model" />
-            <partial name="SlotGame/_Bonus" model="Model" />
-            <partial name="SlotGame/_FreeSpins" model="Model" />
-            <partial name="SlotGame/_NotWinningPaylines" model="Model" />
-
+    <table class="table table-bordered table-four-guardians">
+        <thead>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="bold text-right">@CommonLocalizer["Total"]</td>
-                <td class="bold text-right">@Model.RoundResult.DisplayTotalAmount.Format()</td>
-                <td class="bold text-right">@Model.BetWin.Format()</td>
+                <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+                <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
+                <th>@CommonLocalizer["Result"]</th>
             </tr>
-            <tr class="total">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="bold text-right">@CommonLocalizer["WinLoss"]</td>
-                <td></td>
-                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
-            </tr>
-        }
-        else
-        {
+        </thead>
+        <tbody>
+           
+                <tr>
+                    <td>
+                        @Model.RoundResult.UserTime.RoundDateFormat()
+                        <br />
+                        @Model.RoundResult.UserTime.RoundTimeWithSecondFormat()
+                    </td>
+                    <td>
+                        @Model.RoundResult.RoundId
+                        <div>@Model.FreeSpinsLabel</div>
+                    </td>
+                    <td>
+                        <partial name="SlotGame/_Board" model="Model" />
+                    </td>
+                </tr>
+         
+        </tbody>
+    </table>
+
+    <table class="table table-bordered table-four-guardians">
+        <thead>
             <tr>
-                <td colspan="6" class="text-center">
-                    @CommonLocalizer["NoDataAvailable"]
-                </td>
+                <th>@Localizer["Payline"]</th>
+                <th>@Localizer["Symbol"]</th>
+                <th>@Localizer["NoSymbol"]</th>
+                <th>@Localizer["Odds"]</th>
+                <th>@Localizer["Stake"]</th>
+                <th>@CommonLocalizer["Win"]</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            
+
+                <partial name="SlotGame/_Jackpot" model="Model" />
+                <partial name="SlotGame/_WinningPaylines" model="Model" />
+                <partial name="SlotGame/_Bonus" model="Model" />
+                <partial name="SlotGame/_FreeSpins" model="Model" />
+                <partial name="SlotGame/_NotWinningPaylines" model="Model" />
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="bold text-right">@CommonLocalizer["Total"]</td>
+                    <td class="bold text-right">@Model.RoundResult.DisplayTotalAmount.Format()</td>
+                    <td class="bold text-right">@Model.RoundResult.TotalBetWin.Format()</td>
+                </tr>
+
+                <tr class="total">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="bold text-right">@CommonLocalizer["WinLoss"]</td>
+                    <td></td>
+                    <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+          
+        </tbody>
+    </table>
+}
+else
+{
+
+    <table class="table table-bordered table-four-guardians">       
+        <tbody>
+           
+                <tr>
+                    <td colspan="3" class="text-center">
+                        @CommonLocalizer["NoDataAvailable"]
+                    </td>
+                </tr>
+            
+        </tbody>
+    </table>
+}

@@ -1,6 +1,6 @@
-﻿@model SlotGameTicketViewModel
+﻿@model ClassicSlotTicketViewModel
 
-@inject Microsoft.Extensions.Localization.IStringLocalizer<SlotGameTicketViewModel> Localizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<ClassicSlotTicketViewModel> Localizer
 
 @if (Model.HasJackpot)
 {
@@ -10,7 +10,7 @@
     <tr>
         <td><img class="payline" src="~/scss/images/@Model.ConfigName/dong@(jackpot.WinningLine + 1).png" asp-append-version="true" /></td>
         <td>
-            <img class="symbol" src="~/scss/images/@Model.ConfigName/@(SlotGameTicketViewModel.GetJackpotSymbolFile()).png" alt="" asp-append-version="true" />
+            <img class="symbol" src="~/scss/images/@Model.ConfigName/@(ClassicSlotTicketViewModel.GetJackpotSymbolFile()).png" alt="" asp-append-version="true" />
         </td>
         <td>5</td>
         <td>@Localizer["Jackpot"]</td>

@@ -1,24 +1,36 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using GameRoundResult.Core.Constants;
+using GameRoundResult.Core.Database.Entities;
+using Sentry.Protocol;
 
 namespace GameRoundResult.Web.Models
 {
     public class SlotGameTicketViewModel : GameTicketViewModel
     {
-        public string ConfigName { get; set; }
+        public SlotGameTicketViewModel(string configName, bool enabledJackpot, string systemType)
+        {
+            ConfigName = configName;
+            EnabledJackpot = enabledJackpot;
+            SystemType = systemType;
+        }
+
+        public string ConfigName { get; }
+
+        public string SystemType { get; }
+
+        public bool EnabledJackpot { get; }
 
         public SlotGameRoundResultViewModel RoundResult { get; set; }
 
+        //TODO remove that
         public decimal BetWin => RoundResult.BetWin + (RoundResult.SettlementResult.Jackpot?.WinningAmount ?? 0);
 
-        public decimal WinLoss => RoundResult.FreeSpin ? BetWin : BetWin - RoundResult.TotalAmount;
-
-        public string SystemType { get; set; }
-
-        public bool EnabledJackpot { get; set; }
+        //TODO it should be in RoundResultViewModel
+        public decimal WinLoss => RoundResult.FreeSpin ? RoundResult.TotalBetWin : RoundResult.TotalBetWin - RoundResult.TotalAmount;
 
         public string SymbolImageName(string symbol)
         => IsJackpotSymbol(byte.Parse(symbol)) ? GetJackpotSymbolFile() : symbol;
@@ -88,6 +100,8 @@ namespace GameRoundResult.Web.Models
         public IEnumerable<byte> NotWinningPaylines => Paylines.Where(x => SettlementResult.WinningPaylines.All(y => y.Payline != x) && x != SettlementResult.Jackpot?.WinningLine);
 
         public decimal DisplayTotalAmount => FreeSpin ? 0 : TotalAmount;
+
+        public decimal TotalBetWin => BetWin + (SettlementResult.Jackpot?.WinningAmount ?? 0);
     }
 
     public class SlotGameBonusChestViewModel

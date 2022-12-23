@@ -8,6 +8,7 @@ using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Requests;
+using GameRoundResult.Web.SlotGames.Handlers;
 using GameRoundResult.Web.Validators;
 using GameRoundResult.Web.ViewFactory;
 using Microsoft.AspNetCore.Builder;
@@ -83,9 +84,6 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IHiLoTicketService, HiLoTicketService>();
             services.AddScoped<IHiLoBetRepository, HiLoBetRepository>();
 
-            services.AddScoped<ISlotGameTicketService, SlotGameTicketService>();
-            services.AddScoped<ISlotGameBetRepository, SlotGameBetRepository>();
-
             services.AddScoped<IBaseCascadingSlotTicketService, BaseCascadingSlotTicketService>();
             services.AddScoped<IBaseCascadingSlotBetRepository, BaseCascadingSlotBetRepository>();
 
@@ -106,7 +104,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<BlackjackTicketAccessor>();
             services.AddScoped<DragonTigerTicketAccessor>();
             services.AddScoped<FishPrawnCrabTicketAccessor>();
-            services.AddScoped<SlotGameTicketAccessor>();
+
             services.AddScoped(typeof(BaseCascadingSlotTicketAccessor<,>));
             services.AddScoped<KenoProMaxTicketAccessor>();
             services.AddScoped<LotteryTicketAccessor>();
@@ -152,7 +150,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<VipFishPrawnCrabEndGameInfoService>();
             services.AddScoped<SicBoEndGameInfoService>();
             services.AddScoped<VipSeDieWarEndGameInfoService>();
-            services.AddScoped<SlotGameEndGameInfoService>();
+
             services.AddScoped<LotteryEndGameInfoService>();
             services.AddScoped<ThreeCardsEndGameInfoService>();
             services.AddScoped<BitcoinMasterEndGameInfoService>();
@@ -186,6 +184,17 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<FanTanEndGameInfoService>();
             services.AddScoped<Win3CardsEndGameInfoService>();
             services.AddScoped<FortuneCatEndGameInfoService>();
+
+            AddSlotGames(services);
+        }
+
+        public static void AddSlotGames(this IServiceCollection services)
+        {
+            services.AddScoped<SlotGameEndGameInfoService>();
+            services.AddScoped<ISlotGameTicketService, SlotGameTicketService>();
+            services.AddScoped<ISlotGameBetRepository, SlotGameBetRepository>();
+            services.AddScoped<SlotGameTicketAccessor>();
+            services.AddScoped<SlotGameHandler>();
         }
 
         public static void AddValidators(this IServiceCollection services)

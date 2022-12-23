@@ -1,10 +1,9 @@
-﻿using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
-using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
+using System.Threading.Tasks;
 
 namespace GameRoundResult.Web.Accessor
 {
@@ -25,27 +24,27 @@ namespace GameRoundResult.Web.Accessor
         {
             var gameConfigs = await gameConfigsService.GetByIdAsync((int)request.GameType);
 
-            if (gameConfigs != null)
+            if (gameConfigs == null)
             {
-                var result = await slotGameTicketService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId, gameConfigs.Name);
-
-                var viewModel = new SlotGameTicketViewModel
-                {
-                    ConfigName = gameConfigs.Name,
-                    EnabledJackpot = gameConfigs.SlotsConfig.Jackpot.Enabled,
-                    SystemType = request.SystemType
-                };
-
-                if (result != null)
-                {
-                    viewModel.RoundResult = mapper.Map<SlotGameRound, SlotGameRoundResultViewModel>(result);
-                    viewModel.RoundResult.TimeZone = request.TimeZoneInfo;
-                }
-
-                return viewModel;
+                return null;
             }
 
-            return null;
+            var result = await slotGameTicketService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId, gameConfigs.Name);
+
+            var viewModel = new SlotGameTicketViewModel
+            (
+                gameConfigs.Name,
+                gameConfigs.SlotsConfig.Jackpot.Enabled,
+                request.SystemType
+            );
+
+            if (result != null)
+            {
+                viewModel.RoundResult = mapper.Map<SlotGameRound, SlotGameRoundResultViewModel>(result);
+                viewModel.RoundResult.TimeZone = request.TimeZoneInfo;
+            }
+
+            return viewModel;
         }
     }
 }

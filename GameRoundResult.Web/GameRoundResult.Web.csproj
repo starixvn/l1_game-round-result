@@ -227,6 +227,11 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SlotGames\Requests\" />
+    <Folder Include="SlotGames\Views\Partials\" />
+  </ItemGroup>
+
 
 
 </Project>
