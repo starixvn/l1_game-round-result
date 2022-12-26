@@ -1,0 +1,351 @@
+[
+  {
+    "name": "$US",
+    "code": "USD",
+    "multiplier": 1,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "61765beed2b6510001f18bd6"
+    },
+    "isUncountOnTotal": false
+  },
+  {
+    "name": "EUR",
+    "code": "EUR",
+    "multiplier": 1,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "6177cd71d6c6210001d30af9"
+    },
+    "isUncountOnTotal": false
+  },
+  {
+    "name": "$US",
+    "code": "USD",
+    "multiplier": 1,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "sbogamesimulator",
+    "groupId": {
+      "$oid": "000000000000000000000000"
+    }
+  },
+  {
+    "name": "TestCurrency",
+    "code": "JPY",
+    "multiplier": 1.5,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "testPartner",
+    "groupId": {
+      "$oid": "000000000000000000000000"
+    }
+  },
+  {
+    "name": "US$",
+    "code": "USD",
+    "multiplier": 1,
+    "enabled": true,
+    "isTest": true,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "6177cc2dd6c6210001d30af7"
+    },
+    "isUncountOnTotal": false
+  },
+  {
+    "name": "NTD",
+    "code": "USD",
+    "multiplier": 1,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "sbogamesimulator",
+    "groupId": {
+      "$oid": "617660d8d2b6510001f18bdc"
+    }
+  },
+  {
+    "name": "123",
+    "code": "EURO",
+    "multiplier": 1,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "sbogamesimulator",
+    "groupId": {
+      "$oid": "617e6ad336210e00016bcf76"
+    }
+  },
+  {
+    "name": "TH",
+    "code": "THB",
+    "multiplier": 0.36,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "testPartner",
+    "groupId": {
+      "$oid": "000000000000000000000000"
+    }
+  },
+  {
+    "name": "AUD",
+    "code": "AUD",
+    "multiplier": 1,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "6177cd71d6c6210001d30af9"
+    }
+  },
+  {
+    "name": "INH3",
+    "code": "AUD",
+    "multiplier": 1000,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "6177cd71d6c6210001d30af9"
+    }
+  },
+  {
+    "name": "INH",
+    "code": "VND",
+    "multiplier": 1000,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "sbogamesimulator",
+    "groupId": {
+      "$oid": "61810ecf74e7860001936f14"
+    }
+  },
+  {
+    "name": "IND1",
+    "code": "IDR",
+    "multiplier": 0.5,
+    "enabled": true,
+    "isTest": true,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "6183a5a986e9c100011c42dd"
+    },
+    "isUncountOnTotal": false
+  },
+  {
+    "name": "IND2",
+    "code": "IDR",
+    "multiplier": 0.6,
+    "enabled": true,
+    "isTest": true,
+    "partnerId": "partner1",
+    "groupId": {
+      "$oid": "6183a88286e9c100011c42e5"
+    }
+  },
+  {
+    "name": "AUD1",
+    "code": "AUD",
+    "multiplier": 1.5,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "6183a5a986e9c100011c42dd"
+    },
+    "isUncountOnTotal": false
+  },
+  {
+    "name": "IND3",
+    "code": "AUD",
+    "multiplier": 2,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "6183a5a986e9c100011c42dd"
+    },
+    "isUncountOnTotal": false
+  },
+  {
+    "name": "IND",
+    "code": "AUD",
+    "multiplier": 0.1,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "6183a5a986e9c100011c42dd"
+    },
+    "isUncountOnTotal": false
+  },
+  {
+    "name": "IND4",
+    "code": "AUD",
+    "multiplier": 1.2,
+    "enabled": false,
+    "isTest": false,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "000000000000000000000000"
+    }
+  },
+  {
+    "name": "IND5",
+    "code": "AUD",
+    "multiplier": 0.5,
+    "enabled": true,
+    "isTest": true,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "6183a5e786e9c100011c42df"
+    },
+    "isUncountOnTotal": true
+  },
+  {
+    "name": "SCAD",
+    "code": "CAD",
+    "multiplier": 2,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "SBO",
+    "groupId": {
+      "$oid": "618389b7b27f5a0001f9adcc"
+    },
+    "isUncountOnTotal": false
+  },
+  {
+    "name": "GroupUUS",
+    "code": "VND",
+    "multiplier": 10000,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "6183a3cf86e9c100011c42d9"
+    }
+  },
+  {
+    "name": "yen",
+    "code": "AUD",
+    "multiplier": 1,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "000000000000000000000000"
+    },
+    "isUncountOnTotal": false
+  },
+  {
+    "name": "AUD",
+    "code": "AUD",
+    "multiplier": 1,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "SBO",
+    "groupId": {
+      "$oid": "618389b7b27f5a0001f9adcc"
+    },
+    "isUncountOnTotal": false
+  },
+  {
+    "name": "eur",
+    "code": "EUR",
+    "multiplier": 1,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "SBO",
+    "groupId": {
+      "$oid": "618389b7b27f5a0001f9adcc"
+    },
+    "isUncountOnTotal": false
+  },
+  {
+    "name": "$US",
+    "code": "USD",
+    "multiplier": 1,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "SBO",
+    "groupId": {
+      "$oid": "618389b7b27f5a0001f9adcc"
+    },
+    "isUncountOnTotal": false
+  },
+  {
+    "name": "HVL1",
+    "code": "HVL",
+    "multiplier": 1,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "61765beed2b6510001f18bd6"
+    },
+    "isUncountOnTotal": false
+  },
+  {
+    "name": "UUS",
+    "code": "USD",
+    "multiplier": 1,
+    "enabled": true,
+    "isTest": true,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "6177cc4cd6c6210001d30af8"
+    },
+    "isUncountOnTotal": false
+  },
+  {
+    "name": "DTest",
+    "code": "AUD",
+    "multiplier": 1,
+    "enabled": true,
+    "isTest": true,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "618e0507bfa1450001a1498c"
+    },
+    "isUncountOnTotal": false
+  },
+  {
+    "name": "DTest1",
+    "code": "HKD",
+    "multiplier": 1,
+    "enabled": true,
+    "isTest": true,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "618e0507bfa1450001a1498c"
+    },
+    "isUncountOnTotal": true
+  },
+  {
+    "name": "DTest2",
+    "code": "AUD",
+    "multiplier": 1,
+    "enabled": true,
+    "isTest": true,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "000000000000000000000000"
+    },
+    "isUncountOnTotal": true
+  },
+  {
+    "name": "DTest01",
+    "code": "AUD",
+    "multiplier": 1,
+    "enabled": true,
+    "isTest": false,
+    "partnerId": "ONEworks1",
+    "groupId": {
+      "$oid": "000000000000000000000000"
+    },
+    "isUncountOnTotal": false
+  }
+]

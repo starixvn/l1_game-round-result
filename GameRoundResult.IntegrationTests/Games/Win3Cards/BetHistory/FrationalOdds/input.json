@@ -1,0 +1,225 @@
+{
+  "winthreecards_rounds": [
+    {
+      "id": 4,
+      "time": {
+        "$date": "2022-12-01T10:00:00.000Z"
+      },
+      "result": {
+        "dragon": {
+          "cards": {
+            "card1": {
+              "rank": 2,
+              "suit": 0
+            },
+            "card2": {
+              "rank": 3,
+              "suit": 0
+            },
+            "card3": {
+              "rank": 4,
+              "suit": 0
+            }
+          },
+          "handRankId": 5,
+          "cardRankId": -1
+        },
+        "phoenix": {
+          "cards": {
+            "card1": {
+              "rank": 1,
+              "suit": 1
+            },
+            "card2": {
+              "rank": 2,
+              "suit": 2
+            },
+            "card3": {
+              "rank": 4,
+              "suit": 0
+            }
+          },
+          "handRankId": 1,
+          "cardRankId": 4
+        }
+      },
+      "settlementResult": {
+        "dragon": true,
+        "phoenix": false,
+        "tie": false,
+        "threeOfAKind": false,
+        "straightFlush": true,
+        "flush": false,
+        "straight": false,
+        "pair8Plus": true,
+        "killer235": false,
+        "highCard": false
+      },
+      "exchangeRateId": 4816
+    }
+  ],
+  "winthreecards_bets": [
+    {
+      "uid": "62342b4ac46c7910b22b3b35",
+      "name": "Player",
+      "roundId": 4,
+      "dragon": 0,
+      "phoenix": 100,
+      "threeOfAKind": 100,
+      "straightFlush": 100,
+      "flush": 100,
+      "straight": 100,
+      "pair8Plus": 100,
+      "paid": true,
+      "betwin": 10400,
+      "time": {
+        "$date": "2022-10-25T10:10:00.000Z"
+      },
+      "odds": {
+        "dragon": 1.95,
+        "phoenix": 1.95,
+        "pair8Plus": 3,
+        "threeOfAKind": 121,
+        "straightFlush": 101,
+        "flush": 9,
+        "straight": 8
+      },
+      "playerId": 123,
+      "siteId": "4100300",
+      "freeBet": false,
+      "currency": "EUR",
+      "rate": 1,
+      "operatorId": "ONEworks1"
+    }
+  ],
+  "winthreecards_betlogs": [
+    {
+      "uid": "62342b4ac46c7910b22b3b35",
+      "name": "Player",
+      "roundId": 4,
+      "choice": "phoenix",
+      "amount": 100,
+      "time": {
+        "$date": "2022-10-25T10:10:05.000Z"
+      },
+      "playerId": 123,
+      "siteId": "4100300",
+      "freeBet": false,
+      "currency": "EUR",
+      "rate": 1,
+      "operatorId": "ONEworks1"
+    },
+    {
+      "uid": "62342b4ac46c7910b22b3b35",
+      "name": "Player",
+      "roundId": 4,
+      "choice": "pair8Plus",
+      "amount": 50,
+      "time": {
+        "$date": "2022-10-25T10:10:06.000Z"
+      },
+      "playerId": 123,
+      "siteId": "4100300",
+      "freeBet": false,
+      "currency": "EUR",
+      "rate": 1,
+      "operatorId": "ONEworks1"
+    },
+    {
+      "uid": "62342b4ac46c7910b22b3b35",
+      "name": "Player",
+      "roundId": 4,
+      "choice": "pair8Plus",
+      "amount": 50,
+      "time": {
+        "$date": "2022-10-25T10:10:06.000Z"
+      },
+      "playerId": 123,
+      "siteId": "4100300",
+      "freeBet": false,
+      "currency": "EUR",
+      "rate": 1,
+      "operatorId": "ONEworks1"
+    },
+    {
+      "uid": "62342b4ac46c7910b22b3b35",
+      "name": "Player",
+      "roundId": 4,
+      "choice": "straight",
+      "amount": 100,
+      "time": {
+        "$date": "2022-10-25T10:10:07.000Z"
+      },
+      "playerId": 123,
+      "siteId": "4100300",
+      "freeBet": false,
+      "currency": "EUR",
+      "rate": 1,
+      "operatorId": "ONEworks1"
+    },
+    {
+      "uid": "62342b4ac46c7910b22b3b35",
+      "name": "Player",
+      "roundId": 4,
+      "choice": "flush",
+      "amount": 100,
+      "time": {
+        "$date": "2022-10-25T10:10:08.000Z"
+      },
+      "playerId": 123,
+      "siteId": "4100300",
+      "freeBet": false,
+      "currency": "EUR",
+      "rate": 1,
+      "operatorId": "ONEworks1"
+    },
+    {
+      "uid": "62342b4ac46c7910b22b3b35",
+      "name": "Player",
+      "roundId": 4,
+      "choice": "straightFlush",
+      "amount": 100,
+      "time": {
+        "$date": "2022-10-25T10:10:09.000Z"
+      },
+      "playerId": 123,
+      "siteId": "4100300",
+      "freeBet": false,
+      "currency": "EUR",
+      "rate": 1,
+      "operatorId": "ONEworks1"
+    },
+    {
+      "uid": "62342b4ac46c7910b22b3b35",
+      "name": "Player",
+      "roundId": 4,
+      "choice": "threeOfAKind",
+      "amount": 50,
+      "time": {
+        "$date": "2022-10-25T10:10:10.000Z"
+      },
+      "playerId": 123,
+      "siteId": "4100300",
+      "freeBet": false,
+      "currency": "EUR",
+      "rate": 1,
+      "operatorId": "ONEworks1"
+    },
+    {
+      "uid": "62342b4ac46c7910b22b3b35",
+      "name": "Player",
+      "roundId": 4,
+      "choice": "threeOfAKind",
+      "amount": 50,
+      "time": {
+        "$date": "2022-10-25T10:10:11.000Z"
+      },
+      "playerId": 123,
+      "siteId": "4100300",
+      "freeBet": false,
+      "currency": "EUR",
+      "rate": 1,
+      "operatorId": "ONEworks1"
+    }
+  ]
+}

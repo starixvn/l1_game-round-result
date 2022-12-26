@@ -1,5 +1,6 @@
 ﻿using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Extensions;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
 using System.Collections.Generic;
@@ -67,21 +68,21 @@ namespace GameRoundResult.Web.Models
             return string.Join(", ", result);
         }
 
-        public string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer, bool isBetDetailPage = false)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"win3cards-result");
 
-            tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(stringLocalizer, Result.Dragon.Cards, Result.Dragon.HandRank, Result.Dragon.CardRankId));
-            tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(stringLocalizer, Result.Phoenix.Cards, Result.Phoenix.HandRank, Result.Phoenix.CardRankId));
+            tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(stringLocalizer, Result.Dragon.Cards, Result.Dragon.HandRank, Result.Dragon.CardRankId, SettlementResult.Dragon && isBetDetailPage));
+            tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(stringLocalizer, Result.Phoenix.Cards, Result.Phoenix.HandRank, Result.Phoenix.CardRankId, SettlementResult.Phoenix && isBetDetailPage));
 
             return tagBuilder.GetHtmlString();
         }
 
-        private static TagBuilder GetCardBuilder(IStringLocalizer<RoundResultViewModel> stringLocalizer, IEnumerable<PokerCardViewModel> cards, string handRank, int cardRankId)
+        private static TagBuilder GetCardBuilder(IStringLocalizer<RoundResultViewModel> stringLocalizer, IEnumerable<PokerCardViewModel> cards, string handRank, int cardRankId, bool isHighlight)
         {
             var tagBuilder = new TagBuilder("div");
-            tagBuilder.AddCssClass($"cards");
+            tagBuilder.AddCssClass("cards");
 
             foreach (var card in cards)
             {
@@ -89,6 +90,10 @@ namespace GameRoundResult.Web.Models
             }
 
             var span = new TagBuilder("span");
+            if (isHighlight)
+            {
+                span.AddCssClass("bold");
+            }
             span.InnerHtml.Append(stringLocalizer[handRank]);
             if (cardRankId >= 0)
             {
@@ -146,6 +151,8 @@ namespace GameRoundResult.Web.Models
         public bool ThreeOfAKind { get; set; }
 
         public bool HighCard { get; set; }
+
+        public bool DragonWin3Cards => Dragon;
     }
 
     public class Win3CardsHandViewModel

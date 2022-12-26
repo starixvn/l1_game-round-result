@@ -56,6 +56,7 @@ namespace GameRoundResult.IntegrationTests
                     OperatorSecret = OperatorSecret
                 },
             };
+            this.databaseHelper.InsertOperators();
 
             // act
             var response = await SendRequestGetAccessURL(model);
@@ -94,6 +95,7 @@ namespace GameRoundResult.IntegrationTests
             const string expectedContentType = "text/html; charset=utf-8";
             var model = GetRoundResultAccessUrlRequestModel();
             var url = await BuildAccessUrl(model);
+            this.databaseHelper.InsertOperators();
 
             // act
             var response = await TestDriver.GetAsync(url);
@@ -112,6 +114,7 @@ namespace GameRoundResult.IntegrationTests
             var model = GetRoundResultAccessUrlRequestModel();
             model.Language = language;
             var url = await BuildAccessUrl(model);
+            this.databaseHelper.InsertOperators();
 
             // act
             var response = await TestDriver.GetAsync(url);
@@ -135,12 +138,13 @@ namespace GameRoundResult.IntegrationTests
             int roundId,
             string date,
             string language,
-            string fileName
+            string testcase
             )
         {
             // arrange
-            var expected = ReadTextFromFile(game, fileName);
+            var expected = ReadTextFromFile(game, language, testcase);
             var model = GetRoundResultAccessUrlRequestModel(language);
+            databaseHelper.InsertDataGameStubs(game, "RoundResult", testcase);
             var url = await BuildAccessUrl(model);
             await TestDriver.GetAsync(url);
             var gameId = (int)game;
@@ -156,9 +160,9 @@ namespace GameRoundResult.IntegrationTests
 
         #region Private Methods
 
-        private string ReadTextFromFile(GameType game, string fileName)
+        private string ReadTextFromFile(GameType game, string language, string testcase)
         {
-            var path = Path.Combine(ProjectDir, $"Games/{game}/Expected/RoundResult/{fileName}.json");
+            var path = Path.Combine(ProjectDir, $"Games/{game}/RoundResult/{testcase}/output.{language}.json");
             return RemoveWhiteSpaces(File.ReadAllText(path));
         }
 

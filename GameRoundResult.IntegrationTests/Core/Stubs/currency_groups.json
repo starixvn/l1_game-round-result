@@ -1,0 +1,155 @@
+[
+  {
+    "_id": {
+      "$oid": "61765beed2b6510001f18bd6"
+    },
+    "name": "USD Group",
+    "enabled": true,
+    "partnerId": "ONEworks1"
+  },
+  {
+    "_id": {
+      "$oid": "6177cd71d6c6210001d30af9"
+    },
+    "name": "123",
+    "enabled": true,
+    "partnerId": "ONEworks1",
+    "fractionalOddsFormat": true
+  },
+  {
+    "_id": {
+      "$oid": "617660d8d2b6510001f18bdc"
+    },
+    "name": "S UUS Group 1",
+    "enabled": true,
+    "partnerId": "sbogamesimulator"
+  },
+  {
+    "_id": {
+      "$oid": "6177cc2dd6c6210001d30af7"
+    },
+    "name": "ABC",
+    "enabled": false,
+    "partnerId": "ONEworks1"
+  },
+  {
+    "_id": {
+      "$oid": "6177cc4cd6c6210001d30af8"
+    },
+    "name": "1ABC",
+    "enabled": true,
+    "partnerId": "ONEworks1"
+  },
+  {
+    "_id": {
+      "$oid": "617e6ad336210e00016bcf76"
+    },
+    "name": "343434",
+    "enabled": true,
+    "partnerId": "sbogamesimulator"
+  },
+  {
+    "_id": {
+      "$oid": "61810ecf74e7860001936f14"
+    },
+    "name": "INH Group",
+    "enabled": true,
+    "partnerId": "sbogamesimulator"
+  },
+  {
+    "_id": {
+      "$oid": "618389b7b27f5a0001f9adcc"
+    },
+    "name": "SGroup",
+    "enabled": true,
+    "partnerId": "SBO"
+  },
+  {
+    "_id": {
+      "$oid": "6183a3ce86e9c100011c42d8"
+    },
+    "name": "IND1",
+    "enabled": false,
+    "partnerId": "ONEworks1"
+  },
+  {
+    "_id": {
+      "$oid": "6183a3cf86e9c100011c42d9"
+    },
+    "name": "IND1",
+    "enabled": true,
+    "partnerId": "ONEworks1"
+  },
+  {
+    "_id": {
+      "$oid": "6183a5a986e9c100011c42dd"
+    },
+    "name": "2Wgroup",
+    "enabled": false,
+    "partnerId": "ONEworks1"
+  },
+  {
+    "_id": {
+      "$oid": "6183a5e786e9c100011c42df"
+    },
+    "name": "group_dale_testing",
+    "enabled": false,
+    "partnerId": "ONEworks1"
+  },
+  {
+    "_id": {
+      "$oid": "6183a60986e9c100011c42e1"
+    },
+    "name": "2Wgroup3",
+    "enabled": false,
+    "partnerId": "ONEworks1"
+  },
+  {
+    "_id": {
+      "$oid": "6183a63686e9c100011c42e3"
+    },
+    "name": "2Wgroup",
+    "enabled": false,
+    "partnerId": "ONEworks1"
+  },
+  {
+    "_id": {
+      "$oid": "6183a64286e9c100011c42e4"
+    },
+    "name": "2Wgroup",
+    "enabled": false,
+    "partnerId": "ONEworks1"
+  },
+  {
+    "_id": {
+      "$oid": "6183a88286e9c100011c42e5"
+    },
+    "name": "2Wgroup",
+    "enabled": true,
+    "partnerId": "partner1"
+  },
+  {
+    "_id": {
+      "$oid": "6183b48186e9c100011c42e8"
+    },
+    "name": "GroupUUS",
+    "enabled": false,
+    "partnerId": "SBO"
+  },
+  {
+    "_id": {
+      "$oid": "618e0507bfa1450001a1498b"
+    },
+    "name": "2Wgroup",
+    "enabled": true,
+    "partnerId": "testPartner"
+  },
+  {
+    "_id": {
+      "$oid": "618e0507bfa1450001a1498c"
+    },
+    "name": "2Wgroup",
+    "enabled": true,
+    "partnerId": "ONEworks1"
+  }
+]

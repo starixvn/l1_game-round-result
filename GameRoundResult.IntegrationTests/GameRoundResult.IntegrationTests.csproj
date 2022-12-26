@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Resource Include="Core\Stubs\partners.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.17.1" />
     <PackageReference Include="JunitXml.TestLogger" Version="3.0.114" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="5.0.17" />
@@ -41,19 +37,17 @@
       <None Update="appsettings.IGT.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Core\Stubs\*.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="Games\**\DatabaseStubs\*.json">
+      <None Update="Games\**\BetHistory\**\*.*">
 		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
-	  <None Update="Games\**\Expected\**\*.*">
+	  <None Update="Games\**\RoundResult\**\*.*">
 		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
-    </ItemGroup>
-    <ItemGroup>
-      <Compile Update="Core\Stubs\DatabaseFixture.cs">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Compile>
+	  <None Update="Games\**\EndRound\**\*.*">
+		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Core\Stubs\*.json">
+		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
     </ItemGroup>
 </Project>

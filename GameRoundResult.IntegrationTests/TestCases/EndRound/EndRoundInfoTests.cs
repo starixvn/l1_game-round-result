@@ -40,6 +40,7 @@ namespace GameRoundResult.IntegrationTests
             model.PlayerId = playerId;
             model.GameRoundId = roundId;
             var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+            databaseHelper.InsertDataGameStubs(game, "EndRound", $"{roundId}_");
 
             // act
             var response = await this.TestDriver.PostAsync("/EndRoundInfo", content);

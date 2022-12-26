@@ -1,0 +1,255 @@
+{
+  "fruitslot_rounds": [
+    {
+      "result": {
+        "number": 10,
+        "symbols": [
+          "bar"
+        ],
+        "symbolPositions": [ 5 ],
+        "isLucky": false
+      },
+      "settlementResult": {
+        "bar": true,
+        "bar50": false,
+        "bar25": false,
+        "tripleSeven": false,
+        "tripleSeven3": false,
+        "watermelon": false,
+        "watermelon3": false,
+        "star": false,
+        "star3": false,
+        "bell": false,
+        "bell3": false,
+        "orange": false,
+        "orange3": false,
+        "lemon": false,
+        "lemon3": false,
+        "cherry": false,
+        "cherry3": false,
+        "lucky": false,
+        "big": true,
+        "small": false
+      },
+      "id": 1,
+      "time": {
+        "$date": "2022-10-25T07:56:59.000Z"
+      },
+      "exchangeRateId": 4304
+    },
+    {
+      "result": {
+        "number": 1,
+        "symbols": [
+          "lemon3",
+          "cherry3"
+        ],
+        "symbolPositions": [ 10, 18, 6 ],
+        "isLucky": true
+      },
+      "settlementResult": {
+        "bar": false,
+        "bar50": false,
+        "bar25": false,
+        "tripleSeven": false,
+        "tripleSeven3": false,
+        "watermelon": false,
+        "watermelon3": false,
+        "star": false,
+        "star3": false,
+        "bell": false,
+        "bell3": false,
+        "orange": false,
+        "orange3": false,
+        "lemon": false,
+        "lemon3": true,
+        "cherry": false,
+        "cherry3": true,
+        "lucky": true,
+        "big": false,
+        "small": true
+      },
+      "id": 2,
+      "time": {
+        "$date": "2022-10-25T07:56:59.000Z"
+      },
+      "exchangeRateId": 4304
+    },
+    {
+      "time": {
+        "$date": "2022-10-25T07:56:59.000Z"
+      },
+      "id": 3,
+      "result": {
+        "isLucky": false,
+        "symbols": [
+          "tripleSeven3"
+        ],
+        "number": 10
+      },
+      "settlementResult": {
+        "bar": false,
+        "bar25": false,
+        "bar50": false,
+        "tripleSeven": false,
+        "tripleSeven3": true,
+        "watermelon": false,
+        "watermelon3": false,
+        "star": false,
+        "star3": false,
+        "bell": false,
+        "bell3": false,
+        "orange": false,
+        "orange3": false,
+        "lemon": false,
+        "lemon3": false,
+        "cherry": false,
+        "cherry3": false,
+        "lucky": false,
+        "big": true,
+        "small": false
+      },
+      "exchangeRateId": 4816
+    },
+    {
+      "time": {
+        "$date": "2022-10-25T07:56:59.000Z"
+      },
+      "id": 4,
+      "result": {
+        "isLucky": false,
+        "symbols": [
+          "star3"
+        ],
+        "number": 8
+      },
+      "settlementResult": {
+        "bar": false,
+        "bar25": false,
+        "bar50": false,
+        "tripleSeven": false,
+        "tripleSeven3": false,
+        "watermelon": false,
+        "watermelon3": false,
+        "star": false,
+        "star3": true,
+        "bell": false,
+        "bell3": false,
+        "orange": false,
+        "orange3": false,
+        "lemon": false,
+        "lemon3": false,
+        "cherry": false,
+        "cherry3": false,
+        "lucky": false,
+        "big": true,
+        "small": false
+      },
+      "exchangeRateId": 4816
+    }
+  ],
+  "fruitslot_bets": [
+    {
+      "uid": "62342b4ac46c7910b22b3b35",
+      "name": "Player",
+      "roundId": 1,
+      "bar": 0,
+      "tripleSeven": 0,
+      "watermelon": 0,
+      "star": 0,
+      "bell": 0,
+      "orange": 0,
+      "lemon": 0,
+      "cherry": 0,
+      "big": 10,
+      "small": 0,
+      "totalAmount": 10,
+      "paid": true,
+      "betwin": {
+        "$numberDecimal": "20"
+      },
+      "time": {
+        "$date": "2022-10-25T07:56:59.000Z"
+      },
+      "odds": {
+        "bar": 100,
+        "bar50": 50,
+        "bar25": 25,
+        "tripleSeven": 40,
+        "tripleSeven3": 3,
+        "watermelon": 20,
+        "watermelon3": 3,
+        "star": 30,
+        "star3": 3,
+        "bell": 20,
+        "bell3": 3,
+        "orange": 10,
+        "orange3": 3,
+        "lemon": 15,
+        "lemon3": 3,
+        "cherry": 5,
+        "cherry3": 3,
+        "big": 1.96,
+        "small": 1.96
+      },
+      "playerId": 123,
+      "memberId": 123,
+      "siteId": "4100300",
+      "freeBet": false,
+      "currency": "$US",
+      "rate": 1,
+      "operatorId": "ONEworks1",
+      "partnerId": "ONEworks1"
+    },
+    {
+      "uid": "62342b4ac46c7910b22b3b35",
+      "name": "Player",
+      "roundId": 2,
+      "bar": 10,
+      "tripleSeven": 0,
+      "watermelon": 0,
+      "star": 0,
+      "bell": 0,
+      "orange": 0,
+      "lemon": 0,
+      "cherry": 10,
+      "big": 10,
+      "small": 0,
+      "totalAmount": 30,
+      "paid": true,
+      "betwin": 30,
+      "time": {
+        "$date": "2022-10-25T07:56:59.000Z"
+      },
+      "odds": {
+        "bar": 100,
+        "bar50": 50,
+        "bar25": 25,
+        "tripleSeven": 40,
+        "tripleSeven3": 3,
+        "watermelon": 20,
+        "watermelon3": 3,
+        "star": 30,
+        "star3": 3,
+        "bell": 20,
+        "bell3": 3,
+        "orange": 10,
+        "orange3": 3,
+        "lemon": 15,
+        "lemon3": 3,
+        "cherry": 5,
+        "cherry3": 3,
+        "big": 1.96,
+        "small": 1.96
+      },
+      "playerId": 123,
+      "memberId": 123,
+      "siteId": "4100300",
+      "freeBet": false,
+      "currency": "$US",
+      "rate": 1,
+      "operatorId": "ONEworks1",
+      "partnerId": "ONEworks1"
+    }
+  ]
+}

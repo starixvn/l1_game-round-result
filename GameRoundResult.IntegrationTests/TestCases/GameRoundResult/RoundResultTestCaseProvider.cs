@@ -14,7 +14,7 @@ namespace GameRoundResult.IntegrationTests
                     e.RoundId,
                     e.Date,
                     e.Language,
-                    e.FileName,
+                    e.TestCase,
                 };
             }).GetEnumerator();
 

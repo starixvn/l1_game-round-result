@@ -6,15 +6,17 @@ using Xunit;
 
 namespace GameRoundResult.IntegrationTests
 {
-    [Collection("IntergrationTest")]
+    [Collection("Sequential")]
     public class IntegrationTestBase : IClassFixture<CustomWebApplicationFactory<Program>>
     {
         protected readonly HttpClient TestDriver;
         protected string ProjectDir = Directory.GetCurrentDirectory();
+        protected readonly DatabaseHelper databaseHelper;
 
         public IntegrationTestBase(CustomWebApplicationFactory<Program> factory)
         {
             TestDriver = factory.CreateClient();
+            this.databaseHelper = factory.databaseHelper;
         }
 
         protected const string OperatorId = "ONEworks1";

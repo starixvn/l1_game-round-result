@@ -10,6 +10,9 @@ namespace GameRoundResult.Web.Models
     {
         public DateTimeOffset Time { get; set; }
 
+        public string DateDisplay => Time.ToString(ViewFormat.RoundDateFormat);
+        public string TimeDisplay => Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture);
+
         public long RoundId { get; set; }
 
         public virtual IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)

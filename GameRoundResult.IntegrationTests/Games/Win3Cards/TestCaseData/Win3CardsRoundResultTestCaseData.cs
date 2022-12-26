@@ -9,12 +9,12 @@ namespace GameRoundResult.IntegrationTests
         {
             return new List<RoundResultTestCaseParam>
             {
-                new RoundResultTestCaseParam (GameType.Win3Cards, 1, "2022-12-01", Language.EN, "GetData_Round1"),
-                new RoundResultTestCaseParam (GameType.Win3Cards, 1, "2022-12-01", Language.VN, "GetData_Round1.vi-VN"),
-                new RoundResultTestCaseParam (GameType.Win3Cards, 0, "2022-12-01", Language.EN, "GetData_ByDate"),
-                new RoundResultTestCaseParam (GameType.Win3Cards, 0, "2022-12-01", Language.VN, "GetData_ByDate.vi-VN"),
-                new RoundResultTestCaseParam (GameType.Win3Cards, 0, "2022-12-10", Language.EN, "GetData_NotExistRound"),
-                new RoundResultTestCaseParam (GameType.Win3Cards, 10, "2022-12-01", Language.VN, "GetData_NotExistRound"),
+                new RoundResultTestCaseParam (GameType.Win3Cards, 1, "2022-12-01", Language.EN, "Round1"),
+                new RoundResultTestCaseParam (GameType.Win3Cards, 1, "2022-12-01", Language.VN, "Round1"),
+                new RoundResultTestCaseParam (GameType.Win3Cards, 0, "2022-12-01", Language.EN, "DataByDate"),
+                new RoundResultTestCaseParam (GameType.Win3Cards, 0, "2022-12-01", Language.VN, "DataByDate"),
+                new RoundResultTestCaseParam (GameType.Win3Cards, 0, "2022-12-10", Language.EN, "NotExistRound"),
+                new RoundResultTestCaseParam (GameType.Win3Cards, 10, "2022-12-01", Language.VN, "NotExistRound"),
             };
         }
     }

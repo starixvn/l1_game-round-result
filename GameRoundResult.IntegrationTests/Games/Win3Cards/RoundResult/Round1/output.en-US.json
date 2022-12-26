@@ -1,0 +1,12 @@
+﻿{
+  "data": [
+    [
+      "12/01/2022<br/>02:00 PM",
+      "1",
+      "<div class=\"win3cards-result\"><div class=\"cards\"><div class=\"card card-type-1\"><span>2</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-0\"><span>5</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><div class=\"card card-type-2\"><span>3</span><img class=\"img\" src=\"/scss/images/card_2.png\"></div><span>235</span></div><div class=\"cards\"><div class=\"card card-type-1\"><span>J</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-3\"><span>J</span><img class=\"img\" src=\"/scss/images/card_3.png\"></div><div class=\"card card-type-0\"><span>J</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><span>Three of a Kind</span></div></div>",
+      "Dragon"
+    ]
+  ],
+  "recordsFiltered": 1,
+  "recordsTotal": 1
+}

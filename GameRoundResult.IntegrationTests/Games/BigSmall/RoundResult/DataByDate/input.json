@@ -1,0 +1,36 @@
+{
+  "taixiu_phiens": [
+    {
+      "id": 1,
+      "result": {
+        "dice1": 1,
+        "dice2": 3,
+        "dice3": 6
+      },
+      "settlementResult": {
+        "big": false,
+        "small": true
+      },
+      "time": {
+        "$date": "2022-11-01T08:00:00.000Z"
+      },
+      "exchangeRateId": 4816
+    },
+    {
+      "id": 2,
+      "result": {
+        "dice1": 4,
+        "dice2": 3,
+        "dice3": 3
+      },
+      "settlementResult": {
+        "big": false,
+        "small": true
+      },
+      "time": {
+        "$date": "2022-11-01T08:01:00.000Z"
+      },
+      "exchangeRateId": 4816
+    }
+  ]
+}

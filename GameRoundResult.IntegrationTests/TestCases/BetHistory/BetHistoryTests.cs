@@ -71,6 +71,7 @@ namespace GameRoundResult.IntegrationTests
         {
             // arrange
             var model = GetBetHistoryAccessUrlRequestModel();
+            this.databaseHelper.InsertOperators();
 
             // act
             var response = await SendRequestGetAccessURL(model);
@@ -92,6 +93,7 @@ namespace GameRoundResult.IntegrationTests
             const string expectedContentType = "text/html; charset=utf-8";
             var model = GetBetHistoryAccessUrlRequestModel();
             var url = await BuildAccessUrl(model);
+            this.databaseHelper.InsertOperators();
 
             // act
             var response = await TestDriver.GetAsync(url);
@@ -109,7 +111,7 @@ namespace GameRoundResult.IntegrationTests
             int playerId,
             long roundId,
             string language,
-            string fileName)
+            string testcase)
         {
             // arrange
             var model = GetBetHistoryAccessUrlRequestModel();
@@ -117,8 +119,9 @@ namespace GameRoundResult.IntegrationTests
             model.PlayerId = playerId;
             model.Language = language;
             model.GameRoundId = roundId;
+            databaseHelper.InsertDataGameStubs(game, "BetHistory", testcase);
             var url = await BuildAccessUrl(model);
-            var expected = ReadTextFromFile(game, fileName);
+            var expected = ReadTextFromFile(game, language, testcase);
 
             // act
             var response = await TestDriver.GetAsync(url);
@@ -131,9 +134,9 @@ namespace GameRoundResult.IntegrationTests
 
         #region Private Methods
 
-        private string ReadTextFromFile(GameType game, string fileName)
+        private string ReadTextFromFile(GameType game, string language, string testcase)
         {
-            var path = Path.Combine(ProjectDir, $"Games/{game}/Expected/BetHistory/{fileName}.html");
+            var path = Path.Combine(ProjectDir, $"Games/{game}/BetHistory/{testcase}/output.{language}.html");
             return RemoveWhiteSpaces(File.ReadAllText(path));
         }
 
