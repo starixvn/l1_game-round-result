@@ -54,7 +54,7 @@ namespace GameRoundResult.Web.Controllers
         {
             try
             {
-                var data = dataProtector.Unprotect(queryKey).Split('^');
+                var data = dataProtector.Unprotect(queryKey).Split("^^");
                 var operatorId = data[0];
                 var operatorSecret = data[1];
                 var gameType = Enum.Parse<GameType>(data[2]);
@@ -100,7 +100,7 @@ namespace GameRoundResult.Web.Controllers
 
                 if (@operator != null)
                 {
-                    var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}^{model.Auth.OperatorSecret}^{model.GameTypeId}^{model.GameRoundId}^{model.PlayerId}^{model.FreeBet}",
+                    var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}^^{model.Auth.OperatorSecret}^^{model.GameTypeId}^^{model.GameRoundId}^^{model.PlayerId}^^{model.FreeBet}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
 
                     var redirectUrl = Url.Action("Index", "BetHistory", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);

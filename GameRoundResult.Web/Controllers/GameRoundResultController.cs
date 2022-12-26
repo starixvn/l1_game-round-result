@@ -109,14 +109,14 @@ namespace GameRoundResult.Web.Controllers
 
                 if (client != null)
                 {
-                    var token = dataProtector.Protect($"{model.Auth.ClientID}^{model.Auth.ClientKey}^{model.GameId}^{model.SiteName}^{model.PartnerId}^{model.CurrencyGroupId}",
+                    var token = dataProtector.Protect($"{model.Auth.ClientID}^^{model.Auth.ClientKey}^^{model.GameId}^^{model.SiteName}^^{model.PartnerId}^^{model.CurrencyGroupId}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
                     var redirectUrl = Url.Action("Auth", "GameRoundResult", new { culture = model.Language, token }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
                     return Ok(new GameRoundResultAccessUrlResultModel { RedirectUrl = redirectUrl });
                 }
                 if (@operator != null)
                 {
-                    var token = dataProtector.Protect($"{@operator.PartnerId}^{@operator.SecretKey}^{model.GameId}^{model.SiteName}^{model.PartnerId}^{model.CurrencyGroupId}",
+                    var token = dataProtector.Protect($"{@operator.PartnerId}^^{@operator.SecretKey}^^{model.GameId}^{model.SiteName}^^{model.PartnerId}^^{model.CurrencyGroupId}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
                     var redirectUrl = Url.Action("Auth", "GameRoundResult", new { culture = model.Language, token }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
                     return Ok(new GameRoundResultAccessUrlResultModel { RedirectUrl = redirectUrl });
@@ -143,7 +143,7 @@ namespace GameRoundResult.Web.Controllers
         {
             try
             {
-                var data = dataProtector.Unprotect(token).Split('^');
+                var data = dataProtector.Unprotect(token).Split("^^");
                 var clientId = data[0];
                 var clientKey = data[1];
                 var siteName = data[3];
