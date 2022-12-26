@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Web.SlotGames.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GameRoundResult.Web.Accessor
@@ -9,6 +10,7 @@ namespace GameRoundResult.Web.Accessor
     public interface IGameTicketAccessorFactory
     {
         IGameTicketAccessor GetService(GameType game);
+
         IGameTicketAccessor GetSlotGameService();
     }
 
@@ -82,8 +84,7 @@ namespace GameRoundResult.Web.Accessor
         public IGameTicketAccessor GetService(GameType game)
             => (IGameTicketAccessor)serviceProvider.GetRequiredService(services[game]);
 
-
         public IGameTicketAccessor GetSlotGameService()
-            => serviceProvider.GetService<SlotGameTicketAccessor>();
+            => serviceProvider.GetService<SlotGameHandler>();
     }
 }

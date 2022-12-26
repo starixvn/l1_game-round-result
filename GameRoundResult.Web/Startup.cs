@@ -52,7 +52,11 @@ namespace GameRoundResult.Web
                   });
 
             services.AddControllersWithViews()
-                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddRazorOptions(options =>
+                {
+                    options.ViewLocationFormats.Add("/SlotGames/Views/{0}.cshtml");
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

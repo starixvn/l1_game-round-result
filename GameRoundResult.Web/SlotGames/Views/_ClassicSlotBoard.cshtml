@@ -1,4 +1,5 @@
-﻿@model ClassicSlotTicketViewModel
+﻿@using GameRoundResult.Web.Models;
+@model ClassicSlotTicketViewModel
 
 <table class="table-paylines">
     <tbody>
@@ -8,7 +9,7 @@
             {
                 <tr>
                     @for (var column = 0; column < array.GetLength(1); column++)
-                    {                        
+                    {
                         <td>
                             <img class="symbol" src="~/scss/images/@Model.ConfigName/@(Model.SymbolImageName(array[row,column].ToString())).png" alt="" asp-append-version="true" />
                         </td>

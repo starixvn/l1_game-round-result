@@ -1,9 +1,10 @@
-﻿@model ClassicSlotTicketViewModel
-
+﻿@using GameRoundResult.Web.Models;
 @using GameRoundResult.Core.Constants
+@using GameRoundResult.Web.Configuration
+
+@model ClassicSlotTicketViewModel
 
 @inject Microsoft.Extensions.Localization.IStringLocalizer<ClassicSlotTicketViewModel> Localizer
-
 
 @if (Model.HasBonus)
 {
