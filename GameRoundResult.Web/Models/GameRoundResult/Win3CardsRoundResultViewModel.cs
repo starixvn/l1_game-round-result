@@ -26,46 +26,45 @@ namespace GameRoundResult.Web.Models
 
         private string GetWinningOptionsContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            var result = new StringBuilder();
-
+            var result = new List<string>();
             if (SettlementResult.Dragon)
             {
-                result.Append(stringLocalizer["DragonWin3Cards"]);
+                result.Add(stringLocalizer["DragonWin3Cards"]);
             }
             else
             {
                 if (SettlementResult.Phoenix)
                 {
-                    result.Append(stringLocalizer["Phoenix"]);
+                    result.Add(stringLocalizer["Phoenix"]);
                 }
             }
 
             if (SettlementResult.Pair8Plus)
             {
-                result.Append($", {stringLocalizer["Pair8Plus"]}");
+                result.Add(stringLocalizer["Pair8Plus"]);
             }
 
             if (SettlementResult.Straight)
             {
-                result.Append($", {stringLocalizer["Straight"]}");
+                result.Add(stringLocalizer["Straight"]);
             }
 
             if (SettlementResult.Flush)
             {
-                result.Append($", {stringLocalizer["Flush"]}");
+                result.Add(stringLocalizer["Flush"]);
             }
 
             if (SettlementResult.StraightFlush)
             {
-                result.Append($", {stringLocalizer["StraightFlush"]}");
+                result.Add(stringLocalizer["StraightFlush"]);
             }
 
             if (SettlementResult.ThreeOfAKind)
             {
-                result.Append($", {stringLocalizer["ThreeOfAKind"]}");
+                result.Add(stringLocalizer["ThreeOfAKind"]);
             }
 
-            return result.ToString();
+            return string.Join(", ", result);
         }
 
         private string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
