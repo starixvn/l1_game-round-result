@@ -29,10 +29,13 @@
         VipFishPrawnCrab = 26,
         VipBaccarat = 27,
         SeDieWar = 28,
+
         Lottery = 31,
+
         ThreeCards = 35,
         KenoMatch1,
         KenoMatch2,
+
         CasinoHoldemPoker = 39,
         KenoPower1 = 40,
         KenoPower2,

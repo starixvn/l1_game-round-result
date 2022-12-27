@@ -1,7 +1,9 @@
 ﻿@inject IStringLocalizer<ClassicSlotTicketViewModel> Localizer
 
-@model ClassicSlotTicketViewModel
 @inject IOptionsSnapshot<GameConfiguration> gameConfigurationAccessor
+@inject Microsoft.Extensions.Localization.IStringLocalizer<ClassicSlotTicketViewModel> Localizer
+
+@model ClassicSlotTicketViewModel
 
 @if (Model.HasJackpot)
 {
