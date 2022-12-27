@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace GameRoundResult.Core.Services
 {
-    class Win3CardsGameInfoService : BaseEndGameInfoService<Win3CardsRound, Win3CardsBet>, IEndGameInfoService
+    public class Win3CardsEndGameInfoService : BaseEndGameInfoService<Win3CardsRound, Win3CardsBet>, IEndGameInfoService
     {
-        public Win3CardsGameInfoService(IMongoDatabase database) : base(database)
+        public Win3CardsEndGameInfoService(IMongoDatabase database) : base(database)
         {
         }
 
@@ -22,12 +22,13 @@ namespace GameRoundResult.Core.Services
             }
 
             var bet = bets.FirstOrDefault();
+            var amount = bet.Dragon + bet.Phoenix + bet.Pair8Plus + bet.Straight + bet.Flush + bet.StraightFlush + bet.ThreeOfAKind;
 
             return new EndRoundInfoResult
             {
                 EndTime = round.Time,
-                ValidBetAmount = bet.TotalAmount,
-                TotalAmount = bet.TotalAmount,
+                ValidBetAmount = amount,
+                TotalAmount = amount,
                 TotalWin = bet.Betwin
             };
         }

@@ -14,6 +14,8 @@ namespace GameRoundResult.Web.Models
 
     public class Win3CardsBetViewModel
     {
+        public DateTime Time { get; set; }
+
         public Dictionary<string, decimal> Odds { get; set; }
 
         public decimal Dragon { get; set; }
@@ -24,14 +26,20 @@ namespace GameRoundResult.Web.Models
 
         public decimal Straight { get; set; }
 
-        public decimal FLush { get; set; }
+        public decimal Flush { get; set; }
 
         public decimal StraightFlush { get; set; }
 
-        public decimal ThreeKind { get; set; }
+        public decimal ThreeOfAKind { get; set; }
 
         public decimal Betwin { get; set; }
 
-        public decimal TotalAmount { get; set; }
+        public decimal TotalAmount => Dragon + Phoenix + Pair8Plus + Straight + Flush + StraightFlush + ThreeOfAKind;
+
+        public decimal GetValueBet(string choice)
+        {
+            decimal.TryParse(this.GetType().GetProperty(choice).GetValue(this, null).ToString(), out decimal amount);
+            return amount;
+        }
     }
 }

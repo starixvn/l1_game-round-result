@@ -348,9 +348,20 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<FruitSlotBetLog, FruitSlotBetLogViewModel>();
 
             CreateMap<Win3CardsRound, Win3CardsRoundResultViewModel>();
+            CreateMap<Win3CardsResult, Win3CardsResultViewModel>();
+            CreateMap<Win3CardsHand, Win3CardsHandViewModel>()
+                .ForMember(x => x.Cards,
+                    opt => opt.MapFrom((source, destination, i, context) =>
+                    {
+                        var mapper = context.Mapper;
+                        return new List<PokerCardViewModel>() {
+                            mapper.Map<PokerCardViewModel>(source.Cards.Card1),
+                            mapper.Map<PokerCardViewModel>(source.Cards.Card2),
+                            mapper.Map<PokerCardViewModel>(source.Cards.Card3)
+                        };
+                    }));
             CreateMap<Win3CardsSettlementResult, Win3CardsSettlementResultViewModel>();
             CreateMap<Win3CardsBet, Win3CardsBetViewModel>();
-
         }
     }
 }

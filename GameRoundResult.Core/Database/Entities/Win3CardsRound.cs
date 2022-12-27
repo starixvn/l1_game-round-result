@@ -1,6 +1,4 @@
 ﻿using GameRoundResult.Core._Share;
-using System.Collections.Generic;
-
 
 namespace GameRoundResult.Core.Database.Entities
 {
@@ -14,9 +12,9 @@ namespace GameRoundResult.Core.Database.Entities
 
     public class Win3CardsResult
     {
-        public IEnumerable<Card> Dragon { get; set; }
+        public Win3CardsHand Dragon { get; set; }
 
-        public IEnumerable<Card> Phoenix { get; set; }
+        public Win3CardsHand Phoenix { get; set; }
     }
 
     public class Win3CardsSettlementResult
@@ -29,12 +27,24 @@ namespace GameRoundResult.Core.Database.Entities
 
         public bool Straight { get; set; }
 
-        public bool FLush { get; set; }
+        public bool Flush { get; set; }
 
         public bool StraightFlush { get; set; }
 
-        public bool ThreeKind { get; set; }
+        public bool ThreeOfAKind { get; set; }
+    }
 
-        public bool HighCard { get; set; }
+    public class Win3CardsHand
+    {
+        public Win3CardsHandCards Cards { get; set; }
+        public byte HandRankId { get; set; }
+        public int CardRankId { get; set; }
+    }
+
+    public class Win3CardsHandCards
+    {
+        public PokerCard Card1 { get; set; }
+        public PokerCard Card2 { get; set; }
+        public PokerCard Card3 { get; set; }
     }
 }

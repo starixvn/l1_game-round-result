@@ -168,6 +168,9 @@
   <data name="Dragon" xml:space="preserve">
     <value>Dragon</value>
   </data>
+  <data name="DragonWin3Cards" xml:space="preserve">
+    <value>Dragon</value>
+  </data>
   <data name="Earth" xml:space="preserve">
     <value>Earth</value>
   </data>
@@ -195,8 +198,17 @@
   <data name="Fire" xml:space="preserve">
     <value>Fire</value>
   </data>
+  <data name="Flush" xml:space="preserve">
+    <value>Flush</value>
+  </data>
   <data name="Gold" xml:space="preserve">
     <value>Gold</value>
+  </data>
+  <data name="HighCard" xml:space="preserve">
+    <value>High Card</value>
+  </data>
+  <data name="Killer235" xml:space="preserve">
+    <value>235</value>
   </data>
   <data name="Kwok" xml:space="preserve">
     <value>Kwok</value>
@@ -215,6 +227,15 @@
   </data>
   <data name="Odd" xml:space="preserve">
     <value>Odd</value>
+  </data>
+  <data name="Pair" xml:space="preserve">
+    <value>Pair</value>
+  </data>
+  <data name="Pair8Plus" xml:space="preserve">
+    <value>Pair 8 Plus</value>
+  </data>
+  <data name="Phoenix" xml:space="preserve">
+    <value>Phoenix</value>
   </data>
   <data name="Player" xml:space="preserve">
     <value>Player</value>
@@ -248,6 +269,15 @@
   </data>
   <data name="SpinResult" xml:space="preserve">
     <value>Spin Result</value>
+  </data>
+  <data name="Straight" xml:space="preserve">
+    <value>Straight</value>
+  </data>
+  <data name="StraightFlush" xml:space="preserve">
+    <value>Straight Flush</value>
+  </data>
+  <data name="ThreeOfAKind" xml:space="preserve">
+    <value>Three of a Kind</value>
   </data>
   <data name="Tie" xml:space="preserve">
     <value>Tie</value>
