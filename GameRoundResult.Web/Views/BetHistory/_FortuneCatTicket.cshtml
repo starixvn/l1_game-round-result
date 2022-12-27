@@ -1,7 +1,7 @@
 ﻿@model FourGuardiansTicketViewModel
 
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<FortuneCatTicketViewModel> Localizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<FourGuardiansTicketViewModel> Localizer
 
 @{
     var roundResult = Model.RoundResult;
@@ -41,7 +41,7 @@
                                             <td>
                                                 @if (array[row, column] == 10)
                                                 {
-                                                    @Html.Raw(Model.GetImageJackpot());
+                                                    <img class="symbol" src="~/scss/images/fortune-cat/10.png" />
                                                 }
                                                 else
                                                 {
@@ -87,7 +87,7 @@
             {
                 <tr>
                     <td><img class="payline" src="~/scss/images/fortune-cat/dong@(roundResult.SettlementResult.Jackpot.WinningLine + 1).png" asp-append-version="true" /></td>
-                    <td>@Html.Raw(Model.GetImageJackpot())</td>
+                    <td><img class="symbol" src="~/scss/images/fortune-cat/10.png" /></td>
                     <td>5</td>
                     <td>@Localizer["Jackpot"]</td>
                     <td class="text-right">@roundResult.Bet.Format()</td>
@@ -103,7 +103,7 @@
                     <td>
                         @if (winningPayline.Symbol == "10")
                         {
-                            @Html.Raw(Model.GetImageJackpot());
+                            <img class="symbol" src="~/scss/images/fortune-cat/10.png" />
                         }
                         else
                         {
