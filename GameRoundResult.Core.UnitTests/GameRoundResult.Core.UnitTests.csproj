@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GameRoundResult.Core\GameRoundResult.Core.csproj" />
+    <ProjectReference Include="..\GameRoundResult.Web\GameRoundResult.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>

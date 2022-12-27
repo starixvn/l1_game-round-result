@@ -8,6 +8,7 @@ using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Requests;
+using GameRoundResult.Web.SlotGames;
 using GameRoundResult.Web.SlotGames.Handlers;
 using GameRoundResult.Web.Validators;
 using GameRoundResult.Web.ViewFactory;
@@ -193,7 +194,6 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<SlotGameEndGameInfoService>();
             services.AddScoped<ISlotGameTicketService, SlotGameTicketService>();
             services.AddScoped<ISlotGameBetRepository, SlotGameBetRepository>();
-            services.AddScoped<SlotGameTicketAccessor>();
             services.AddScoped<SlotGameHandler>();
         }
 

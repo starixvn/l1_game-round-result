@@ -29,20 +29,19 @@
         VipFishPrawnCrab = 26,
         VipBaccarat = 27,
         SeDieWar = 28,
-        FourGuardians = 29,
+
         Lottery = 31,
+
         ThreeCards = 35,
         KenoMatch1,
         KenoMatch2,
-        HeroesSlot,
+
         CasinoHoldemPoker = 39,
         KenoPower1 = 40,
         KenoPower2,
         TexasHoldemPoker = 42,
         BitcoinMaster = 43,
         HiLo = 45,
-        NightClub = 46,
-        WayToGoal = 49,
         TreasureIsland = 47,
         BlockchainBaccarat = 48,
         UnbalancedBigSmall1 = 50,

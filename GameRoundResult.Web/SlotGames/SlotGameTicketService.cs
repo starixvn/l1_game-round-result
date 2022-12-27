@@ -2,11 +2,11 @@
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Repository;
 
-namespace GameRoundResult.Core.Services
+namespace GameRoundResult.Web.SlotGames
 {
     public interface ISlotGameTicketService
     {
-        Task<SlotGameRound> GetAsync(long roundId, int playerId, string operatorId,  string gameName);
+        Task<SlotGameRound> GetAsync(long roundId, int playerId, string operatorId, string gameName);
     }
 
     public class SlotGameTicketService : ISlotGameTicketService
@@ -18,7 +18,7 @@ namespace GameRoundResult.Core.Services
             this.repository = repository;
         }
 
-        public async Task<SlotGameRound> GetAsync(long roundId, int playerId, string operatorId, string gameName) 
+        public async Task<SlotGameRound> GetAsync(long roundId, int playerId, string operatorId, string gameName)
         {
             return await repository.GetAsync(roundId, playerId, operatorId, gameName);
         }

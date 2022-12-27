@@ -4,8 +4,7 @@
 
 @{
     ViewData["Title"] = Localizer["GameTickets"];
-    //ViewData["GameName"] = Enum.GetName(typeof(GameType), Model.GameType).ToLowerInvariant();
-    ViewData["GameName"] = "game";
+    ViewData["GameName"] = Enum.IsDefined(typeof(GameType), Model.GameType) ? Enum.GetName(typeof(GameType), Model.GameType).ToLowerInvariant() : string.Empty;
 }
 
 @section Styles {
@@ -20,136 +19,7 @@
 <div class="note"><span class="bold">@Localizer["Note"]:</span> @Localizer["NoteDetail"]</div>
 
 <div id="game-ticket">
-    @switch (Model.GameType)
-    {
-        case GameType.BigSmall:
-        case GameType.BigSmallTurbo:
-            <partial name="_BigSmallTicket" for="GameTicketResult" />
-            break;
-        case GameType.OddEven:
-        case GameType.OddEvenTurbo:
-            <partial name="_OddEvenTicket" for="GameTicketResult" />
-            break;
-
-        case GameType.SeDie:
-            <partial name="_SeDieTicket" for="GameTicketResult" />
-            break;
-
-        case GameType.MiniSeDie:
-        case GameType.MiniSeDie2:
-        case GameType.MiniSeDie3:
-        case GameType.MiniSeDie4:
-            <partial name="_MiniSeDieTicket" for="GameTicketResult" />
-            break;
-
-        case GameType.FishPrawnCrab:
-            <partial name="_FishPrawnCrabTicket" for="GameTicketResult" />
-            break;
-
-        case GameType.DragonTiger:
-            <partial name="_DragonTigerTicket" for="GameTicketResult" />
-            break;
-
-        case GameType.Baccarat:
-        case GameType.VipBaccarat:
-        case GameType.BlockchainBaccarat:
-            <partial name="_BaccaratTicket" for="GameTicketResult" />
-            break;
-
-        case GameType.KenoProMax:
-            <partial name="_KenoProMaxTicket" for="GameTicketResult" />
-            break;
-
-        case GameType.KenoProViet:
-        case GameType.KenoMax:
-        case GameType.KenoMax2:
-        case GameType.KenoMini:
-        case GameType.KenoMini2:
-        case GameType.KenoEast:
-        case GameType.KenoWest:
-        case GameType.KenoSouth:
-        case GameType.KenoNorth:
-        case GameType.MegaKeno:
-        case GameType.MegaKeno2:
-            <partial name="_RNGKenoTicket" for="GameTicketResult" />
-            break;
-
-        case GameType.Roulette:
-            <partial name="_RouletteTicket" for="GameTicketResult" />
-            break;
-        case GameType.VipSeDie:
-            <partial name="_VipSeDieTicket" for="GameTicketResult" />
-            break;
-
-        case GameType.Blackjack:
-            <partial name="_BlackjackTicket" for="GameTicketResult" />
-            break;
-
-        case GameType.SpecialSeDie:
-            <partial name="_SpecialSeDieTicket" for="GameTicketResult" />
-            break;
-
-        case GameType.VipFishPrawnCrab:
-            <partial name="_VipFishPrawnCrabTicket" for="GameTicketResult" />
-            break;
-        case GameType.SicBo:
-            <partial name="_SicBoTicket" for="GameTicketResult" />
-            break;
-        case GameType.SeDieWar:
-            <partial name="_VipSeDieWarTicket" for="GameTicketResult" />
-            break;
-
-        @*case GameType.FourGuardians:*@
-        case GameType.HeroesSlot:
-        case GameType.NightClub:
-        case GameType.WayToGoal:
-            <partial name="_SlotGameTicket" for="GameTicketResult" />
-            break;
-
-        case GameType.Lottery:
-            <partial name="_LotteryTicket" for="GameTicketResult" />
-            break;
-        case GameType.ThreeCards:
-            <partial name="_ThreeCardsTicket" for="GameTicketResult" />
-            break;
-        case GameType.KenoMatch1:
-        case GameType.KenoMatch2:
-            <partial name="_KenoMatchTicket" for="GameTicketResult" />
-            break;
-        case GameType.KenoPower1:
-        case GameType.KenoPower2:
-            <partial name="_KenoPowerTicket" for="GameTicketResult" />
-            break;
-
-        case GameType.BitcoinMaster:
-            <partial name="_BitcoinMasterTicket" for="GameTicketResult" />
-            break;
-        case GameType.CasinoHoldemPoker:
-            <partial name="_CasinoHoldemPokerTicket" for="GameTicketResult" />
-            break;
-        case GameType.HiLo:
-            <partial name="_HiLoTicket" for="GameTicketResult" />
-            break;
-        case GameType.TexasHoldemPoker:
-            <partial name="_TexasHoldemPokerTicket" for="GameTicketResult" />
-            break;
-     
-        case GameType.TreasureIsland:
-            <partial name="_CascadingSlotTicket" for="GameTicketResult" view-data="ViewData" />
-            break;
-
-        case GameType.UnbalancedBigSmall1:
-        case GameType.UnbalancedBigSmall2:
-        case GameType.UnbalancedBigSmall3:
-        case GameType.UnbalancedBigSmall4:
-            <partial name="_UnbalancedBigSmallTicket" for="GameTicketResult" view-data="ViewData" />
-            break;
-        case GameType.FruitSlot:
-            <partial name="_FruitSlotTicket" for="GameTicketResult" view-data="ViewData" />
-            break;
-        default:
-            <partial name="_SlotGameTicket" for="GameTicketResult" />
-            break;
+    <partial name="@Model.GetPartialViewName()" for="GameTicketResult" view-data="ViewData" />
         case GameType.FanTan:
             <partial name="_FanTanTicket" for="GameTicketResult" />
             break;
@@ -161,7 +31,6 @@
         case GameType.FortuneCat:
             <partial name="_FortuneCatTicket" for="GameTicketResult" />
             break;
-    }
 </div>
 
 @section Scripts {

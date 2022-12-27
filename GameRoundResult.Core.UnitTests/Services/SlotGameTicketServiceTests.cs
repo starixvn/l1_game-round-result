@@ -3,7 +3,7 @@ using AutoFixture;
 using AutoFixture.Xunit2;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Repository;
-using GameRoundResult.Core.Services;
+using GameRoundResult.Web.SlotGames;
 using NSubstitute;
 using Xunit;
 

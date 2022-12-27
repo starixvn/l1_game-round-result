@@ -54,15 +54,11 @@
 
         public const string VipSeDieWarRound = "vipsediewar_phiens";
 
-        public const string FourGuardianRounds = "fourguardians_rounds";
-
         public const string VipBaccaratRound = "vipbaccarat_phiens";
 
         public const string LotteryRound = "lottery_phiens";
 
         public const string ThreeCardsRound = "threecards_phiens";
-
-        public const string HeroesSlotRounds = "heroesslot_rounds";
 
         public const string BitcoinMasterRounds = "bitcoinmaster_rounds";
         public const string CasinoHoldemPokerRound = "casinoholdempoker_phiens";

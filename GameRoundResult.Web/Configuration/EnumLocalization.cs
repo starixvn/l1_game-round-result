@@ -1,11 +1,11 @@
-﻿using GameRoundResult.Core.Constants;
-using GameRoundResult.Core.Services;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Localization;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GameRoundResult.Core.Constants;
+using GameRoundResult.Core.Services;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -29,21 +29,22 @@ namespace GameRoundResult.Web.Configuration
         }
     }
 
+    //TODO add config to exclude slot games
     public class GameTypeLocalization : EnumLocalization<GameType>
     {
         private readonly IEnumerable<GameType> excludeGames = new List<GameType>
         {
             GameType.Blackjack,
-            GameType.FourGuardians,
+            //GameType.FourGuardians,
             GameType.OddEven,
             GameType.KenoProViet,
-            GameType.HeroesSlot,
+            //GameType.HeroesSlot,
             GameType.CasinoHoldemPoker,
             GameType.TexasHoldemPoker,
             GameType.HiLo,
-            GameType.NightClub,
+            //GameType.NightClub,
             GameType.TreasureIsland,
-            GameType.WayToGoal,
+            //GameType.WayToGoal,
             GameType.FortuneCat,
         };
 

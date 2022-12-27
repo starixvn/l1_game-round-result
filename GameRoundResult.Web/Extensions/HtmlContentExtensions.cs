@@ -10,6 +10,7 @@ namespace GameRoundResult.Web.Extensions
         {
             using var writer = new StringWriter();
             htmlContent.WriteTo(writer, HtmlEncoder.Default);
+
             return writer.ToString();
         }
     }

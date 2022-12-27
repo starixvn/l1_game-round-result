@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
-using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.Models;
@@ -41,7 +40,7 @@ namespace GameRoundResult.Web.SlotGames.Handlers
 
             if (result != null)
             {
-                viewModel.RoundResult = mapper.Map<SlotGameRound, ClassicSlotRoundResultViewModel>(result);
+                viewModel.RoundResult = mapper.Map<ClassicSlotRoundResultViewModel>(result);
                 viewModel.RoundResult.TimeZone = request.TimeZoneInfo;
             }
 
