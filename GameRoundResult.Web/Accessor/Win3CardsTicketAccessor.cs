@@ -13,18 +13,20 @@ namespace GameRoundResult.Web.Accessor
     {
         private readonly IGameBetService gameBetService;
         private readonly IMapper mapper;
+        private readonly ICurrencyGroupService currencyGroupService;
 
-        public Win3CardsTicketAccessor(IGameBetService gameBetService, IMapper mapper)
+        public Win3CardsTicketAccessor(IGameBetService gameBetService, IMapper mapper, ICurrencyGroupService currencyGroupService)
         {
             this.gameBetService = gameBetService;
             this.mapper = mapper;
+            this.currencyGroupService = currencyGroupService;
         }
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
             var result = await gameBetService.GetAsync<Win3CardsRound, Win3CardsBet, Win3CardsBetLog>(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId);
 
-            return new Win3CardsTicketViewModel
+            var viewModel = new Win3CardsTicketViewModel
             {
                 RoundResult = result.Item1?.ToViewModel<Win3CardsRound, Win3CardsRoundResultViewModel>(mapper, request.TimeZoneInfo),
                 BetLogs = result.Item2?.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
@@ -32,6 +34,11 @@ namespace GameRoundResult.Web.Accessor
                 TotalBet = result.Item3?.TotalBet ?? 0,
                 BetWin = result.Item3?.Betwin ?? 0
             };
+            if (result.Item2.Any())
+            {
+                viewModel.FractionalOddsFormat = await currencyGroupService.GetFractionalOddsFormat(result.Item2.First().Currency, request.OperatorId);
+            }
+            return viewModel;
         }
     }
 }

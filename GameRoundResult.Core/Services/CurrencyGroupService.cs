@@ -30,9 +30,9 @@ namespace GameRoundResult.Core.Services
                 return oldFractionalOddsFormat;
             }
             var currency = await currencyRepository.Get(currencyname, operatorId);
-            var currencyGroup = await currencyGroupRepository.GetById(currency.GroupId);
-            cache.SetCache($"{operatorId}-{currencyname}", currencyGroup.FractionalOddsFormat);
-            return currencyGroup.FractionalOddsFormat;
+            var currencyGroup = await currencyGroupRepository.GetById(currency?.GroupId);
+            cache.SetCache($"{operatorId}-{currencyname}", currencyGroup?.FractionalOddsFormat);
+            return currencyGroup?.FractionalOddsFormat;
         }
     }
 }

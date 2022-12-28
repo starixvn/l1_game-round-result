@@ -86,7 +86,7 @@
                         @bet.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
                     </td>
                     <td>@Localizer[bet.ChoiceDisplay == "Dragon" ? "DragonWin3Cards" : bet.ChoiceDisplay]</td>
-                    <td>@Model.Odds[bet.Choice].Format()</td>
+                    <td>@Model.Odds[bet.Choice].FormatOdds(Model.FractionalOddsFormat)</td>
                     <td>@bet.Amount.Format()</td>
                     <td>
                         @if (IsWinningChoice(bet.ChoiceDisplay))
