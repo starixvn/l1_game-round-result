@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameRoundResult.Integration
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{35ED6511-4482-47F3-9DB8-611B5C667452}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRoundResult.Web.UnitTests", "GameRoundResult.Web.UnitTests\GameRoundResult.Web.UnitTests.csproj", "{E418ED51-911A-492B-8DB9-9335A8FF804F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{403B3BC4-6065-421B-94B1-BE6CC2E2C6EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{403B3BC4-6065-421B-94B1-BE6CC2E2C6EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{403B3BC4-6065-421B-94B1-BE6CC2E2C6EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E418ED51-911A-492B-8DB9-9335A8FF804F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E418ED51-911A-492B-8DB9-9335A8FF804F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E418ED51-911A-492B-8DB9-9335A8FF804F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E418ED51-911A-492B-8DB9-9335A8FF804F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +48,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{3EE7289E-A5EA-403D-AFE9-0F3ACDC83CCC} = {35ED6511-4482-47F3-9DB8-611B5C667452}
 		{403B3BC4-6065-421B-94B1-BE6CC2E2C6EC} = {35ED6511-4482-47F3-9DB8-611B5C667452}
+		{E418ED51-911A-492B-8DB9-9335A8FF804F} = {35ED6511-4482-47F3-9DB8-611B5C667452}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {879448DC-CDD7-4722-B882-52D1AEF7CE03}

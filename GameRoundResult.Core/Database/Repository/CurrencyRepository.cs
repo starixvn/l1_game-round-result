@@ -12,7 +12,6 @@ namespace GameRoundResult.Core.Database.Repository
     public class CurrencyRepository : ICurrencyRepository
     {
         private readonly IMongoCollection<Currency> collection;
-        private const string currencyCacheKeys = "currency-";
 
         public CurrencyRepository(IMongoDatabase database)
         {

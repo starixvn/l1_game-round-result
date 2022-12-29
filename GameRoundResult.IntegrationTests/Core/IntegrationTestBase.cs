@@ -23,7 +23,7 @@ namespace GameRoundResult.IntegrationTests
         protected const string OperatorSecret = "ONEworks1@20luminet&";
         protected const string ResultServiceDomain = "http://localhost:7781/";
 
-        protected string RemoveWhiteSpaces(string content)
+        protected static string RemoveWhiteSpaces(string content)
         {
             var result = Regex.Replace(content, @"\s+", string.Empty);
             return Regex.Replace(result, @"\?v=(.*?)\""", "\"").Replace("</img>", string.Empty);

@@ -9,12 +9,12 @@ include:
 
 unit-test-dotnet:
   variables:
+    LOG_TEST_PATH: ./TestResults/unit-tests
     TESTS_PATH: "**/bin/debug/*/*UnitTests.dll"
     TESTS_DLL: "*UnitTests.dll"
-    TEST_LOGGER: "trx"
   script:
     - dotnet build
-    - dotnet test $TESTS_PATH --logger:$TEST_LOGGER || true
+    - dotnet test $TESTS_PATH --logger:"junit;LogFilePath=$LOG_TEST_PATH/{assembly}-tests.xml;MethodFormat=Class;FailureBodyFormat=Verbose" || true
     - for path in $(find ./ -name $TESTS_DLL);
       do
       if echo $path | grep 'bin';
@@ -22,6 +22,12 @@ unit-test-dotnet:
       coverlet $path --target "dotnet" --targetargs "test $TESTS_PATH --no-build" --format opencover --output "${path##*/}-$(date +%s).coverage.opencover.xml";
       fi
       done
+  artifacts:
+    paths:
+      - $LOG_TEST_PATH
+    reports:
+      junit:
+        - $LOG_TEST_PATH/*tests.xml
 
 integration-test-dotnet:
   extends: unit-test-dotnet
@@ -29,7 +35,6 @@ integration-test-dotnet:
     LOG_TEST_PATH: ./TestResults/integration-tests
     TESTS_PATH: "**/bin/debug/*/*IntegrationTests.dll"
     TESTS_DLL: "*IntegrationTests.dll"
-    TEST_LOGGER: "junit;LogFilePath=${LOG_TEST_PATH}/{assembly}-tests.xml;MethodFormat=Class;FailureBodyFormat=Verbose --logger:trx"
   services:
     - name: registry.nexdev.net:5050/docker/database/mongo:4.4.8
       alias: mongo
@@ -40,9 +45,3 @@ integration-test-dotnet:
     - cp ./GameRoundResult.IntegrationTests/appsettings.IGT.CI.json ./GameRoundResult.IntegrationTests/appsettings.IGT.json
     - mkdir -p $LOG_TEST_PATH && cp -a ./GameRoundResult.IntegrationTests/Games/. $LOG_TEST_PATH && rm -r $LOG_TEST_PATH/**/TestCaseData
     - cp -R ./GameRoundResult.Web/wwwroot/scss $LOG_TEST_PATH
-  artifacts:
-    paths:
-      - $LOG_TEST_PATH
-    reports:
-      junit:
-        - $LOG_TEST_PATH/*.xml

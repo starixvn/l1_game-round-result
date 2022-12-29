@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Globalization;
-using System.Text;
 using GameRoundResult.Web.Configuration;
-using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {

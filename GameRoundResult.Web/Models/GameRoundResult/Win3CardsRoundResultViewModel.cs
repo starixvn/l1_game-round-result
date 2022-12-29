@@ -1,10 +1,8 @@
 ﻿using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Extensions;
-using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
 using System.Collections.Generic;
-using System.Text;
 
 namespace GameRoundResult.Web.Models
 {
@@ -25,7 +23,7 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        private string GetWinningOptionsContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public virtual string GetWinningOptionsContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>();
             if (SettlementResult.Dragon)
@@ -68,18 +66,18 @@ namespace GameRoundResult.Web.Models
             return string.Join(", ", result);
         }
 
-        public string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer, bool isBetDetailPage = false)
+        public virtual string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer, bool isBetDetailPage = false)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"win3cards-result");
 
-            tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(stringLocalizer, Result.Dragon.Cards, Result.Dragon.HandRank, Result.Dragon.CardRankId, SettlementResult.Dragon && isBetDetailPage));
-            tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(stringLocalizer, Result.Phoenix.Cards, Result.Phoenix.HandRank, Result.Phoenix.CardRankId, SettlementResult.Phoenix && isBetDetailPage));
+            tagBuilder.InnerHtml.AppendHtml(GetHandBuilder(stringLocalizer, Result.Dragon.Cards, Result.Dragon.HandRank, Result.Dragon.CardRankId, SettlementResult.Dragon && isBetDetailPage));
+            tagBuilder.InnerHtml.AppendHtml(GetHandBuilder(stringLocalizer, Result.Phoenix.Cards, Result.Phoenix.HandRank, Result.Phoenix.CardRankId, SettlementResult.Phoenix && isBetDetailPage));
 
             return tagBuilder.GetHtmlString();
         }
 
-        private static TagBuilder GetCardBuilder(IStringLocalizer<RoundResultViewModel> stringLocalizer, IEnumerable<PokerCardViewModel> cards, string handRank, int cardRankId, bool isHighlight)
+        public virtual TagBuilder GetHandBuilder(IStringLocalizer<RoundResultViewModel> stringLocalizer, IEnumerable<PokerCardViewModel> cards, string handRank, int cardRankId, bool isHighlight)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass("cards");
@@ -104,7 +102,7 @@ namespace GameRoundResult.Web.Models
             return tagBuilder;
         }
 
-        private static TagBuilder GetCardBuilder(PokerCardViewModel card)
+        public virtual TagBuilder GetCardBuilder(PokerCardViewModel card)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"card card-type-{card.Suit}");
@@ -121,7 +119,7 @@ namespace GameRoundResult.Web.Models
             return tagBuilder;
         }
 
-        public bool IsWinningChoice(string choice)
+        public virtual bool IsWinningChoice(string choice)
         {
             return bool.Parse(SettlementResult.GetType().GetProperty(choice).GetValue(SettlementResult, null).ToString());
         }
@@ -149,8 +147,6 @@ namespace GameRoundResult.Web.Models
         public bool StraightFlush { get; set; }
 
         public bool ThreeOfAKind { get; set; }
-
-        public bool HighCard { get; set; }
 
         public bool DragonWin3Cards => Dragon;
     }

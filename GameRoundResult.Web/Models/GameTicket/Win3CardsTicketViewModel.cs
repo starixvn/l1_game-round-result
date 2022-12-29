@@ -22,6 +22,6 @@ namespace GameRoundResult.Web.Models
 
     public class Win3CardsBetLogViewModel : BetLogViewModel
     {
-        public string ChoiceDisplay => Choice == "dragon" ? "DragonWin3Cards" : char.ToUpper(Choice[0]) + Choice.Substring(1);
+        public virtual string ChoiceDisplay => Choice == "dragon" ? "DragonWin3Cards" : char.ToUpper(Choice[0]) + Choice.Substring(1);
     }
 }

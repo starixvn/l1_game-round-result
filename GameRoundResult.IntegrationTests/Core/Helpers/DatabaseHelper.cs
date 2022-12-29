@@ -36,7 +36,18 @@ namespace GameRoundResult.IntegrationTests
 
         public void Dispose()
         {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
             ClearAllData();
+        }
+
+        ~DatabaseHelper()
+        {
+            Dispose(false);
         }
 
         public void ClearAllData()

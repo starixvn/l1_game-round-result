@@ -2,11 +2,11 @@
 {
     public static class Language
     {
-        public static string EN = "en-US";
-        public static string VN = "vi-VN";
-        public static string ID = "id-ID";
-        public static string TH = "th-TH";
-        public static string CN = "zh-CN";
-        public static string TW = "zh-TW";
+        public const string EN = "en-US";
+        public const string VN = "vi-VN";
+        public const string ID = "id-ID";
+        public const string TH = "th-TH";
+        public const string CN = "zh-CN";
+        public const string TW = "zh-TW";
     }
 }
