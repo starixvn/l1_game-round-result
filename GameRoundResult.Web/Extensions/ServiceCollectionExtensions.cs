@@ -9,7 +9,6 @@ using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Requests;
 using GameRoundResult.Web.SlotGames;
-using GameRoundResult.Web.SlotGames;
 using GameRoundResult.Web.Validators;
 using GameRoundResult.Web.ViewFactory;
 using Microsoft.AspNetCore.Builder;

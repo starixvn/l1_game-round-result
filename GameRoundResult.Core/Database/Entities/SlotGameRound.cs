@@ -7,8 +7,6 @@ namespace GameRoundResult.Core.Database.Entities
 {
     public class SlotGameRound : GameRound
     {
-        public static readonly string CollectionSuffix = "_rounds";
-
         public decimal Bet { get; set; }
 
         public decimal TotalAmount { get; set; }

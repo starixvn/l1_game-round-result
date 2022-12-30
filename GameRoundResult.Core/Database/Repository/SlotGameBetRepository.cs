@@ -10,20 +10,22 @@ namespace GameRoundResult.Core.Database.Repository
 {
     public interface ISlotGameBetRepository
     {
-        Task<SlotGameRound> GetAsync(long roundId, int playerId, string operatorId, string gameName);
+        Task<SlotGameRound> GetAsync(long roundId, int playerId, string operatorId, string gameName, bool paid = true);
 
         Task<SlotGameRound> GetEndRoundAsync(long roundId, int playerId, string operatorId, string gameName, string siteId);
     }
 
     public class SlotGameBetRepository : GameBetRepository, ISlotGameBetRepository
     {
+        public static readonly string CollectionSuffix = "_rounds";
+
         public SlotGameBetRepository(IMongoDatabase database) : base(database)
         {
         }
 
-        public Task<SlotGameRound> GetAsync(long roundId, int playerId, string operatorId, string gameName)
+        public Task<SlotGameRound> GetAsync(long roundId, int playerId, string operatorId, string gameName, bool paid = true)
         => GetCollection(gameName)
-               .Find(RoundFilter<SlotGameRound>(roundId, playerId, operatorId))
+               .Find(RoundFilter<SlotGameRound>(roundId, playerId, operatorId, paid))
                .FirstOrDefaultAsync();
 
         public Task<SlotGameRound> GetEndRoundAsync(long roundId, int playerId, string operatorId, string gameName, string siteId)
@@ -31,32 +33,24 @@ namespace GameRoundResult.Core.Database.Repository
                .Find(EndRoundFilter<SlotGameRound>(roundId, playerId, operatorId, siteId))
                .FirstOrDefaultAsync();
 
-        private IMongoCollection<SlotGameRound> GetCollection(string name) => database.GetCollection<SlotGameRound>(CollectionNameFormatter.Round(name));
+        private IMongoCollection<SlotGameRound> GetCollection(string name) => database.GetCollection<SlotGameRound>(CollectionNameFormatter.RoundName(name));
 
         private static Expression<Func<T, bool>> EndRoundFilter<T>(long roundId, int playerId, string operatorId, string siteId) where T : SlotGameRound
         {
-            Expression<Func<T, bool>> defaultExpression = DefaultFilter<T>(roundId, playerId, operatorId);
+            Expression<Func<T, bool>> defaultExpression = RoundFilter<T>(roundId, playerId, operatorId, false);
 
-            defaultExpression.And(bet => bet.SiteId == siteId);
-
-            return defaultExpression;
-        }
-
-        private static Expression<Func<T, bool>> RoundFilter<T>(long roundId, int playerId, string operatorId) where T : SlotGameRound
-        {
-            Expression<Func<T, bool>> defaultExpression = DefaultFilter<T>(roundId, playerId, operatorId);
-
-            defaultExpression.And(bet => bet.Paid);
+            defaultExpression.And(round => round.SiteId == siteId);
 
             return defaultExpression;
         }
 
-        private static Expression<Func<T, bool>> DefaultFilter<T>(long roundId, int playerId, string operatorId) where T : SlotGameRound
+        private static Expression<Func<T, bool>> RoundFilter<T>(long roundId, int playerId, string operatorId, bool paid) where T : SlotGameRound
         {
             Expression<Func<T, bool>> defaultExpression = bet =>
                   bet.PlayerId == playerId
                   && bet.RoundId == roundId
-                  && bet.OperatorId == operatorId;
+                  && bet.OperatorId == operatorId
+                  && bet.Paid == paid;
 
             return defaultExpression;
         }

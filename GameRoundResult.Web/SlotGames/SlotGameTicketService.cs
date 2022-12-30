@@ -10,6 +10,7 @@ namespace GameRoundResult.Web.SlotGames
     }
 
     public class SlotGameTicketService : ISlotGameTicketService
+
     {
         private readonly ISlotGameBetRepository repository;
 

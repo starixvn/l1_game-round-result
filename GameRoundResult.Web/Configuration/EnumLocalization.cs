@@ -29,7 +29,6 @@ namespace GameRoundResult.Web.Configuration
         }
     }
 
-    //TODO add config to exclude slot games
     public class GameTypeLocalization : EnumLocalization<GameType>
     {
         private readonly IEnumerable<GameType> excludeGames = new List<GameType>

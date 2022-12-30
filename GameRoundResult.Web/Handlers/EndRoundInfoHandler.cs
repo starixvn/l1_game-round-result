@@ -26,6 +26,8 @@ namespace GameRoundResult.Web.Handlers
 
         public async Task<EndRoundInfoResult> Handle(Requests.RetrieveEndRoundInfoRequest request, CancellationToken cancellationToken)
         {
+            IEndGameInfoService service;
+
             try
             {
                 var validatorResult = validator.Validate(request);
