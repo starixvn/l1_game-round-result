@@ -4,6 +4,7 @@ using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
+using GameRoundResult.Web.SlotGames.ViewModels;
 
 namespace GameRoundResult.Web.SlotGames.Handlers
 {

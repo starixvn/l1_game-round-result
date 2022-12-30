@@ -15,7 +15,9 @@ namespace GameRoundResult.Web.Handlers
         private readonly IEndGameInfoServiceFactory factory;
         private readonly IValidator<Requests.RetrieveEndRoundInfoRequest> validator;
 
-        public EndRoundInfoHandler(IEndGameInfoServiceFactory factory, IValidator<Requests.RetrieveEndRoundInfoRequest> validator)
+        public EndRoundInfoHandler(
+            IEndGameInfoServiceFactory factory,
+            IValidator<Requests.RetrieveEndRoundInfoRequest> validator)
         {
             this.factory = factory;
             this.validator = validator;
@@ -23,6 +25,8 @@ namespace GameRoundResult.Web.Handlers
 
         public async Task<EndRoundInfoResult> Handle(Requests.RetrieveEndRoundInfoRequest request, CancellationToken cancellationToken)
         {
+            IEndGameInfoService service;
+
             try
             {
                 var validatorResult = validator.Validate(request);
@@ -30,7 +34,6 @@ namespace GameRoundResult.Web.Handlers
                 if (validatorResult.IsValid)
                 {
                     var gameType = Enum.Parse<GameType>(request.GameTypeId.ToString());
-                    IEndGameInfoService service;
 
                     service = Enum.IsDefined(typeof(GameType), gameType) ? factory.GetService(gameType) : factory.GetSlotGameService();
 
@@ -45,13 +48,9 @@ namespace GameRoundResult.Web.Handlers
                     });
                 }
 
-                var error = validatorResult.Errors.FirstOrDefault();
+                var error = validatorResult.Errors.First();
 
-                return new()
-                {
-                    ErrorCode = error.ErrorCode,
-                    ErrorDescription = error.ErrorMessage,
-                };
+                return new() { ErrorCode = error.ErrorCode, ErrorDescription = error.ErrorMessage };
             }
             catch (Exception ex)
             {

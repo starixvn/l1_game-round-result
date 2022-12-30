@@ -7,7 +7,7 @@
 
     public interface IBaseCascadingSlotBetRepository
     {
-        Task<(SlotRound, TotalMultiplier)> GetAsync<SlotRound, TotalMultiplier>(long roundId, int playerId, string operatorId) 
+        Task<(SlotRound, TotalMultiplier)> GetAsync<SlotRound, TotalMultiplier>(long roundId, int playerId, string operatorId)
             where SlotRound : BaseCascadingSlotRoundEntity where TotalMultiplier : BaseCascadingSlotTotalMultiplierEntity;
     }
 
@@ -17,15 +17,15 @@
         {
         }
 
-        public async Task<(SlotRound, TotalMultiplier)> GetAsync<SlotRound, TotalMultiplier>(long roundId, int playerId, string operatorId) 
+        public async Task<(SlotRound, TotalMultiplier)> GetAsync<SlotRound, TotalMultiplier>(long roundId, int playerId, string operatorId)
             where SlotRound : BaseCascadingSlotRoundEntity
             where TotalMultiplier : BaseCascadingSlotTotalMultiplierEntity
         {
-            var round =  await database.GetCollection<SlotRound>(Document.GetCollectionName(typeof(SlotRound)))
-               .Find(x => x.RoundId == roundId && x.PlayerId == playerId
-                && x.OperatorId == operatorId).FirstOrDefaultAsync();
+            var round = await database.GetCollection<SlotRound>(Document.GetCollectionName(typeof(SlotRound)))
+               .Find(x => x.RoundId == roundId && x.PlayerId == playerId && x.OperatorId == operatorId)
+               .FirstOrDefaultAsync();
 
-            if(round != null)
+            if (round != null)
             {
                 var totalMultipliers = database.GetCollection<TotalMultiplier>(Document.GetCollectionName(typeof(TotalMultiplier)))
                .Find(x => x.PlayerId == playerId).ToList();

@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using System.Text;
 using GameRoundResult.Core.Constants;
+using GameRoundResult.Web.SlotGames.ViewModels;
 
 namespace GameRoundResult.Web.Models
 {
@@ -55,99 +54,5 @@ namespace GameRoundResult.Web.Models
         public string FreeSpinsLabel => HasFreeSpins ? "Free Spins" : string.Empty;
 
         public bool HasJackpot => RoundResult.SettlementResult.Jackpot != null;
-    }
-
-    public class ClassicSlotRoundResultViewModel : RoundResultViewModel
-    {
-        public decimal Bet { get; set; }
-
-        public decimal TotalAmount { get; set; }
-
-        public IEnumerable<byte> Paylines { get; set; }
-
-        public bool FreeSpin { get; set; }
-
-        public IEnumerable<byte> Result { get; set; }
-
-        public IEnumerable<ClassicSlotBonusChestViewModel> BonusChests { get; set; }
-
-        public ClassicSlotSettlementResultViewModel SettlementResult { get; set; }
-
-        public decimal BetWin { get; set; }
-
-        public byte[,] GetFormatResults()
-        {
-            var array = Result.ToArray();
-
-            var formatResult = new byte[3, 5];
-
-            for (var row = 0; row < 3; row++)
-            {
-                for (var column = 0; column < 5; column++)
-                {
-                    formatResult[row, column] = array[row + column * 3];
-                }
-            }
-
-            return formatResult;
-        }
-
-        public decimal PickedBonusChestsTotalAmount => BonusChests.Where(x => x.Picked).Sum(x => x.Amount);
-
-        public IEnumerable<byte> NotWinningPaylines => Paylines.Where(x => SettlementResult.WinningPaylines.All(y => y.Payline != x) && x != SettlementResult.Jackpot?.WinningLine);
-
-        public decimal DisplayTotalAmount => FreeSpin ? 0 : TotalAmount;
-
-        public decimal TotalBetWin => BetWin + (SettlementResult.Jackpot?.WinningAmount ?? 0);
-    }
-
-    public class ClassicSlotBonusChestViewModel
-    {
-        public decimal Amount { get; set; }
-
-        public bool Picked { get; set; }
-    }
-
-    public class ClassicSlotSettlementResultViewModel
-    {
-        public IEnumerable<ClassicSlotWinningLineViewModel> WinningPaylines { get; set; }
-
-        public ClassicSlotBonusViewModel Bonus { get; set; }
-
-        public ClassicSlotFreeSpinViewModel FreeSpins { get; set; }
-
-        public ClassicSlotJackpotViewModel Jackpot { get; set; }
-    }
-
-    public class ClassicSlotJackpotViewModel
-    {
-        public byte WinningLine { get; set; }
-
-        public decimal WinningAmount { get; set; }
-    }
-
-    public class ClassicSlotWinningLineViewModel
-    {
-        public byte Payline { get; set; }
-
-        public string Symbol { get; set; }
-
-        public byte Count { get; set; }
-
-        public decimal Odds { get; set; }
-    }
-
-    public class ClassicSlotBonusViewModel
-    {
-        public byte Count { get; set; }
-
-        public decimal Odds { get; set; }
-    }
-
-    public class ClassicSlotFreeSpinViewModel
-    {
-        public byte Count { get; set; }
-
-        public decimal Odds { get; set; }
     }
 }

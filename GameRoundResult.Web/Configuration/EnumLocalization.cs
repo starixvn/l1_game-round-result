@@ -29,22 +29,17 @@ namespace GameRoundResult.Web.Configuration
         }
     }
 
-    //TODO add config to exclude slot games
     public class GameTypeLocalization : EnumLocalization<GameType>
     {
         private readonly IEnumerable<GameType> excludeGames = new List<GameType>
         {
             GameType.Blackjack,
-            //GameType.FourGuardians,
             GameType.OddEven,
             GameType.KenoProViet,
-            //GameType.HeroesSlot,
             GameType.CasinoHoldemPoker,
             GameType.TexasHoldemPoker,
             GameType.HiLo,
-            //GameType.NightClub,
             GameType.TreasureIsland,
-            //GameType.WayToGoal,
             GameType.FortuneCat,
         };
 

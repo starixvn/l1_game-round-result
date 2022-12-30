@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Models;
+using GameRoundResult.Web.SlotGames.ViewModels;
 
 namespace GameRoundResult.Web.SlotGames.Mappers
 {
@@ -10,8 +11,8 @@ namespace GameRoundResult.Web.SlotGames.Mappers
         {
             CreateMap<SlotGameRound, ClassicSlotRoundResultViewModel>();
             CreateMap<SlotGameSettlementResult, ClassicSlotSettlementResultViewModel>();
-            CreateMap<SlotGameFreeSpin, ClassicSlotFreeSpinViewModel>();
-            CreateMap<SlotGameBonus, ClassicSlotBonusViewModel>();
+            CreateMap<SlotGameFreeSpin, ClassicSlotSymbolViewModel>();
+            CreateMap<SlotGameBonus, ClassicSlotSymbolViewModel>();
             CreateMap<SlotGameWinningLine, ClassicSlotWinningLineViewModel>();
             CreateMap<SlotGameBonusChest, ClassicSlotBonusChestViewModel>();
             CreateMap<SlotGameJackpot, ClassicSlotJackpotViewModel>();

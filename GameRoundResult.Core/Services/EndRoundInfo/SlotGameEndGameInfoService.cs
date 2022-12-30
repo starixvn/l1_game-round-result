@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Repository;
 using MongoDB.Driver;
@@ -10,12 +8,16 @@ namespace GameRoundResult.Core.Services
     public class SlotGameEndGameInfoService : RoundOnlyEndGameInfoService<SlotGameRound>, IEndGameInfoService
     {
         private readonly IGameConfigsRepository gameConfigsRepository;
-        private readonly IMongoDatabase database;
+        private readonly ISlotGameBetRepository repository;
 
-        public SlotGameEndGameInfoService(IMongoDatabase database, IGameConfigsRepository gameConfigsRepository) : base(database)
+        public SlotGameEndGameInfoService(
+            IMongoDatabase database,
+            IGameConfigsRepository gameConfigsRepository,
+            ISlotGameBetRepository repository)
+            : base(database)
         {
             this.gameConfigsRepository = gameConfigsRepository;
-            this.database = database;
+            this.repository = repository;
         }
 
         public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request)
@@ -48,20 +50,7 @@ namespace GameRoundResult.Core.Services
             };
         }
 
-        protected async Task<SlotGameRound> GetRoundAsync(RetrieveEndGameInfoRequest request, GameConfigs gameConfigs)
-        {
-            var collection = database.GetCollection<SlotGameRound>($"{gameConfigs.Name}{SlotGameRound.CollectionSuffix}");
-            var expression = GetRoundFilterExpression(request);
-
-            var roundEntity = await collection.Find(expression).FirstOrDefaultAsync();
-
-            return roundEntity;
-        }
-
-        protected override Expression<Func<SlotGameRound, bool>> GetRoundFilterExpression(RetrieveEndGameInfoRequest request)
-            => (round) => round.RoundId == request.GameRoundId
-            && round.PlayerId == request.PlayerId
-            && round.SiteId == request.SiteId
-            && round.OperatorId == request.OperatorId;
+        protected Task<SlotGameRound> GetRoundAsync(RetrieveEndGameInfoRequest request, GameConfigs gameConfigs)
+        => repository.GetEndRoundAsync(request.GameRoundId, request.PlayerId, request.OperatorId, gameConfigs.Name, request.SiteId);
     }
 }

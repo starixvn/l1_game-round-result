@@ -9,7 +9,6 @@ using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Requests;
 using GameRoundResult.Web.SlotGames;
-using GameRoundResult.Web.SlotGames.Handlers;
 using GameRoundResult.Web.Validators;
 using GameRoundResult.Web.ViewFactory;
 using Microsoft.AspNetCore.Builder;
@@ -186,15 +185,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<Win3CardsEndGameInfoService>();
             services.AddScoped<FortuneCatEndGameInfoService>();
 
-            AddSlotGames(services);
-        }
-
-        public static void AddSlotGames(this IServiceCollection services)
-        {
-            services.AddScoped<SlotGameEndGameInfoService>();
-            services.AddScoped<ISlotGameTicketService, SlotGameTicketService>();
-            services.AddScoped<ISlotGameBetRepository, SlotGameBetRepository>();
-            services.AddScoped<SlotGameHandler>();
+            services.AddSlotGames();
         }
 
         public static void AddValidators(this IServiceCollection services)
