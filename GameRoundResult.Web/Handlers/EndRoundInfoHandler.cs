@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Services;
+using GameRoundResult.Web.Services;
 using MediatR;
 using Sentry;
 

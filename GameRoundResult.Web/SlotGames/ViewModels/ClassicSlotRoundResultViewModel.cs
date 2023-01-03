@@ -22,21 +22,24 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
 
         public decimal BetWin { get; set; }
 
-        public byte[,] GetFormatResults()
+        public byte[,] FormatResults
         {
-            var array = Result.ToArray();
-
-            var formatResult = new byte[3, 5];
-
-            for (var row = 0; row < 3; row++)
+            get
             {
-                for (var column = 0; column < 5; column++)
-                {
-                    formatResult[row, column] = array[row + column * 3];
-                }
-            }
+                var array = Result.ToArray();
 
-            return formatResult;
+                var formatResult = new byte[3, 5];
+
+                for (var row = 0; row < 3; row++)
+                {
+                    for (var column = 0; column < 5; column++)
+                    {
+                        formatResult[row, column] = array[row + column * 3];
+                    }
+                }
+
+                return formatResult;
+            }
         }
 
         public decimal PickedBonusChestsTotalAmount => BonusChests.Where(x => x.Picked).Sum(x => x.Amount);

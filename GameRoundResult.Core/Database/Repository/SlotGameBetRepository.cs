@@ -17,8 +17,6 @@ namespace GameRoundResult.Core.Database.Repository
 
     public class SlotGameBetRepository : GameBetRepository, ISlotGameBetRepository
     {
-        public static readonly string CollectionSuffix = "_rounds";
-
         public SlotGameBetRepository(IMongoDatabase database) : base(database)
         {
         }
@@ -33,7 +31,7 @@ namespace GameRoundResult.Core.Database.Repository
                .Find(EndRoundFilter<SlotGameRound>(roundId, playerId, operatorId, siteId))
                .FirstOrDefaultAsync();
 
-        private IMongoCollection<SlotGameRound> GetCollection(string name) => database.GetCollection<SlotGameRound>(CollectionNameFormatter.RoundName(name));
+        private IMongoCollection<SlotGameRound> GetCollection(string name) => database.GetCollection<SlotGameRound>(CollectionNameFormatter.Round(name));
 
         private static Expression<Func<T, bool>> EndRoundFilter<T>(long roundId, int playerId, string operatorId, string siteId) where T : SlotGameRound
         {

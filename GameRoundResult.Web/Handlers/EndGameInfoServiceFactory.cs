@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Services;
+using GameRoundResult.Web.SlotGames;
 
-namespace GameRoundResult.Core.Services
+namespace GameRoundResult.Web.Services
 {
     public interface IEndGameInfoServiceFactory
     {
@@ -79,6 +81,6 @@ namespace GameRoundResult.Core.Services
         => serviceProvider.GetService(services[game]) as IEndGameInfoService;
 
         public IEndGameInfoService GetSlotGameService()
-        => serviceProvider.GetService(typeof(SlotGameEndGameInfoService)) as IEndGameInfoService;
+        => serviceProvider.GetService(typeof(SlotGameTicketService)) as IEndGameInfoService;
     }
 }
