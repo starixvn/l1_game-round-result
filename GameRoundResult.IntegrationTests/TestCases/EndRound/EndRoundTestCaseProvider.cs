@@ -11,6 +11,7 @@ namespace GameRoundResult.IntegrationTests
             {
                 return new object[] {
                     e.Game,
+                    e.TestCase,
                     e.PlayerId,
                     e.RoundId,
                     e.TotalAmount,
@@ -18,7 +19,8 @@ namespace GameRoundResult.IntegrationTests
                     e.ValidBet,
                     e.EndTime,
                     e.ErrorCode,
-                    e.ErrorDescription};
+                    e.ErrorDescription
+                };
             }).GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

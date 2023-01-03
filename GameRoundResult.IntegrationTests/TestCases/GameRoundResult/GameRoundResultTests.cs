@@ -135,15 +135,16 @@ namespace GameRoundResult.IntegrationTests
         [ClassData(typeof(RoundResultTestCaseProvider))]
         public async Task GetData_ValidData_ReturnExpectedInfo(
             GameType game,
+            string testcase,
             int roundId,
             string date,
-            string language,
-            string testcase
+            string language
             )
         {
             // arrange
             var expected = ReadTextFromFile(game, language, testcase);
             var model = GetRoundResultAccessUrlRequestModel(language);
+            databaseHelper.InsertCurrencyAndOperatorStub();
             databaseHelper.InsertDataGameStubs(game, "RoundResult", testcase);
             var url = await BuildAccessUrl(model);
             await TestDriver.GetAsync(url);
@@ -166,7 +167,7 @@ namespace GameRoundResult.IntegrationTests
             return RemoveWhiteSpaces(File.ReadAllText(path));
         }
 
-        private GameRoundResultAccessUrlRequestModel GetRoundResultAccessUrlRequestModel(string language = "")
+        private static GameRoundResultAccessUrlRequestModel GetRoundResultAccessUrlRequestModel(string language = "")
         {
             return new GameRoundResultAccessUrlRequestModel
             {

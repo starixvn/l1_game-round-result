@@ -62,13 +62,12 @@ namespace GameRoundResult.IntegrationTests
         public void InsertOperators()
         {
             var collectionName = "partners";
-            mongoDb.DropCollection(collectionName);
             var path = Path.Combine(ProjectDir, $"Core/Stubs/{collectionName}.json");
             string json = File.ReadAllText(path);
             InsertData(collectionName, json);
         }
 
-        private void InsertCurrencyAndOperatorStub()
+        public void InsertCurrencyAndOperatorStub()
         {
             var directoryInfo = new DirectoryInfo($"{ProjectDir}/Core/Stubs");
             var files = directoryInfo.GetFiles("*.json", SearchOption.AllDirectories);
@@ -83,8 +82,6 @@ namespace GameRoundResult.IntegrationTests
 
         public void InsertDataGameStubs(GameType game, string featureName, string folderName)
         {
-            ClearAllData();
-            InsertCurrencyAndOperatorStub();
             var directoryInfo = new DirectoryInfo($"{ProjectDir}/Games/{game}/{featureName}");
             var files = directoryInfo.GetFiles("input.json", SearchOption.AllDirectories);
             var subpath = Path.Combine(game.ToString(), featureName, folderName);
@@ -106,6 +103,7 @@ namespace GameRoundResult.IntegrationTests
 
         private void InsertData(string collectionName, string json)
         {
+            mongoDb.DropCollection(collectionName);
             var doc = BsonSerializer.Deserialize<IEnumerable<BsonDocument>>(json);
             var collection = mongoDb.GetCollection<BsonDocument>(collectionName);
             collection.InsertMany(doc);

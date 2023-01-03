@@ -108,10 +108,10 @@ namespace GameRoundResult.IntegrationTests
         [ClassData(typeof(BetHistoryTestCaseProvider))]
         public async Task Index_ValidData_RenderExpectedInfo(
             GameType game,
+            string testcase,
             int playerId,
             long roundId,
-            string language,
-            string testcase)
+            string language)
         {
             // arrange
             var model = GetBetHistoryAccessUrlRequestModel();
@@ -119,6 +119,7 @@ namespace GameRoundResult.IntegrationTests
             model.PlayerId = playerId;
             model.Language = language;
             model.GameRoundId = roundId;
+            databaseHelper.InsertCurrencyAndOperatorStub();
             databaseHelper.InsertDataGameStubs(game, "BetHistory", testcase);
             var url = await BuildAccessUrl(model);
             var expected = ReadTextFromFile(game, language, testcase);
@@ -140,7 +141,7 @@ namespace GameRoundResult.IntegrationTests
             return RemoveWhiteSpaces(File.ReadAllText(path));
         }
 
-        private BetHistoryAccessUrlRequestModel GetBetHistoryAccessUrlRequestModel()
+        private static BetHistoryAccessUrlRequestModel GetBetHistoryAccessUrlRequestModel()
         {
             return new BetHistoryAccessUrlRequestModel
             {

@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text.RegularExpressions;
 using GameRoundResult.Web;
 using Xunit;
@@ -16,6 +17,10 @@ namespace GameRoundResult.IntegrationTests
         public IntegrationTestBase(CustomWebApplicationFactory<Program> factory)
         {
             TestDriver = factory.CreateClient();
+            TestDriver.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue
+            {
+                NoCache = true
+            };
             this.databaseHelper = factory.databaseHelper;
         }
 

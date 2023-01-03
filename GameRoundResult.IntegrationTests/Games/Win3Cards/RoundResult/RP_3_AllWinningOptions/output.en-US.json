@@ -1,0 +1,54 @@
+﻿{
+  "data": [
+    [
+      "12/01/2022<br/>02:07 PM",
+      "8",
+      "<div class=\"win3cards-result\"><div class=\"cards\"><div class=\"card card-type-0\"><span>6</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><div class=\"card card-type-1\"><span>7</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-0\"><span>8</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><span>Straight</span></div><div class=\"cards\"><div class=\"card card-type-1\"><span>8</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-2\"><span>10</span><img class=\"img\" src=\"/scss/images/card_2.png\"></div><div class=\"card card-type-0\"><span>K</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><span>High Card K</span></div></div>",
+      "Dragon, Pair 8 Plus, Straight"
+    ],
+    [
+      "12/01/2022<br/>02:06 PM",
+      "7",
+      "<div class=\"win3cards-result\"><div class=\"cards\"><div class=\"card card-type-0\"><span>A</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><div class=\"card card-type-1\"><span>A</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-0\"><span>5</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><span>Pair A</span></div><div class=\"cards\"><div class=\"card card-type-1\"><span>8</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-1\"><span>10</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-1\"><span>3</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><span>Flush</span></div></div>",
+      "Phoenix, Pair 8 Plus, Flush"
+    ],
+    [
+      "12/01/2022<br/>02:05 PM",
+      "6",
+      "<div class=\"win3cards-result\"><div class=\"cards\"><div class=\"card card-type-1\"><span>8</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-1\"><span>9</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-1\"><span>10</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><span>Straight Flush</span></div><div class=\"cards\"><div class=\"card card-type-1\"><span>Q</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-2\"><span>Q</span><img class=\"img\" src=\"/scss/images/card_2.png\"></div><div class=\"card card-type-0\"><span>5</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><span>Pair Q</span></div></div>",
+      "Dragon, Pair 8 Plus, Straight Flush"
+    ],
+    [
+      "12/01/2022<br/>02:04 PM",
+      "5",
+      "<div class=\"win3cards-result\"><div class=\"cards\"><div class=\"card card-type-1\"><span>2</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-0\"><span>7</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><div class=\"card card-type-2\"><span>3</span><img class=\"img\" src=\"/scss/images/card_2.png\"></div><span>High Card 7</span></div><div class=\"cards\"><div class=\"card card-type-1\"><span>J</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-3\"><span>J</span><img class=\"img\" src=\"/scss/images/card_3.png\"></div><div class=\"card card-type-0\"><span>J</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><span>Three of a Kind</span></div></div>",
+      "Phoenix, Pair 8 Plus, Three of a Kind"
+    ],
+    [
+      "12/01/2022<br/>02:03 PM",
+      "4",
+      "<div class=\"win3cards-result\"><div class=\"cards\"><div class=\"card card-type-0\"><span>5</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><div class=\"card card-type-1\"><span>5</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-0\"><span>8</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><span>Pair 5</span></div><div class=\"cards\"><div class=\"card card-type-1\"><span>J</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-2\"><span>J</span><img class=\"img\" src=\"/scss/images/card_2.png\"></div><div class=\"card card-type-0\"><span>K</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><span>Pair J</span></div></div>",
+      "Phoenix, Pair 8 Plus"
+    ],
+    [
+      "12/01/2022<br/>02:02 PM",
+      "3",
+      "<div class=\"win3cards-result\"><div class=\"cards\"><div class=\"card card-type-1\"><span>2</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-0\"><span>3</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><div class=\"card card-type-2\"><span>4</span><img class=\"img\" src=\"/scss/images/card_2.png\"></div><span>Straight</span></div><div class=\"cards\"><div class=\"card card-type-0\"><span>2</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><div class=\"card card-type-1\"><span>3</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-1\"><span>4</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><span>Straight</span></div></div>",
+      ""
+    ],
+    [
+      "12/01/2022<br/>02:01 PM",
+      "2",
+      "<div class=\"win3cards-result\"><div class=\"cards\"><div class=\"card card-type-1\"><span>J</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-3\"><span>J</span><img class=\"img\" src=\"/scss/images/card_3.png\"></div><div class=\"card card-type-0\"><span>J</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><span>Three of a Kind</span></div><div class=\"cards\"><div class=\"card card-type-1\"><span>2</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-0\"><span>5</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><div class=\"card card-type-2\"><span>3</span><img class=\"img\" src=\"/scss/images/card_2.png\"></div><span>235</span></div></div>",
+      "Phoenix"
+    ],
+    [
+      "12/01/2022<br/>02:00 PM",
+      "1",
+      "<div class=\"win3cards-result\"><div class=\"cards\"><div class=\"card card-type-1\"><span>2</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-0\"><span>5</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><div class=\"card card-type-2\"><span>3</span><img class=\"img\" src=\"/scss/images/card_2.png\"></div><span>235</span></div><div class=\"cards\"><div class=\"card card-type-1\"><span>J</span><img class=\"img\" src=\"/scss/images/card_1.png\"></div><div class=\"card card-type-3\"><span>J</span><img class=\"img\" src=\"/scss/images/card_3.png\"></div><div class=\"card card-type-0\"><span>J</span><img class=\"img\" src=\"/scss/images/card_0.png\"></div><span>Three of a Kind</span></div></div>",
+      "Dragon"
+    ]
+  ],
+  "recordsFiltered": 8,
+  "recordsTotal": 8
+}

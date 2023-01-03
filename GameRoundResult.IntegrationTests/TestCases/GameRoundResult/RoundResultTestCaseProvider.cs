@@ -11,10 +11,10 @@ namespace GameRoundResult.IntegrationTests
             {
                 return new object[] {
                     e.Game,
+                    e.TestCase,
                     e.RoundId,
                     e.Date,
                     e.Language,
-                    e.TestCase,
                 };
             }).GetEnumerator();
 

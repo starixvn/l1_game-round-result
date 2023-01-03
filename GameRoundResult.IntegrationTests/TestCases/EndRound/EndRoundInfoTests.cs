@@ -24,6 +24,7 @@ namespace GameRoundResult.IntegrationTests
         [ClassData(typeof(EndRoundTestCaseProvider))]
         public async Task Index_ReturnExpectedInfo(
             GameType game,
+            string testcase,
             int playerId,
             int roundId,
             decimal totalAmount,
@@ -40,7 +41,8 @@ namespace GameRoundResult.IntegrationTests
             model.PlayerId = playerId;
             model.GameRoundId = roundId;
             var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
-            databaseHelper.InsertDataGameStubs(game, "EndRound", $"{roundId}_");
+            databaseHelper.InsertCurrencyAndOperatorStub();
+            databaseHelper.InsertDataGameStubs(game, "EndRound", testcase);
 
             // act
             var response = await this.TestDriver.PostAsync("/EndRoundInfo", content);
@@ -59,7 +61,7 @@ namespace GameRoundResult.IntegrationTests
 
         #region Private Methods
 
-        private RetrieveEndRoundInfoRequest GetModel()
+        private static RetrieveEndRoundInfoRequest GetModel()
         {
             return new RetrieveEndRoundInfoRequest
             {

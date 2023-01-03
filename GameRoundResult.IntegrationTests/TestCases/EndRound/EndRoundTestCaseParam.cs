@@ -12,5 +12,6 @@ namespace GameRoundResult.IntegrationTests
              decimal ValidBet,
              DateTimeOffset? EndTime,
              string ErrorCode,
-             string ErrorDescription);
+             string ErrorDescription,
+             string TestCase);
 }

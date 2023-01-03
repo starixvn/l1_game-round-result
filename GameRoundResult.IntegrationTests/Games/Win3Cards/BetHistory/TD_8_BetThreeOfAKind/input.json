@@ -1,0 +1,115 @@
+{
+  "winthreecards_rounds": [
+    {
+      "id": 1,
+      "time": {
+        "$date": "2022-12-01T07:00:00.000Z"
+      },
+      "result": {
+        "dragon": {
+          "cards": {
+            "card1": {
+              "rank": 0,
+              "suit": 1
+            },
+            "card2": {
+              "rank": 0,
+              "suit": 0
+            },
+            "card3": {
+              "rank": 0,
+              "suit": 2
+            }
+          },
+          "handRankId": 6,
+          "cardRankId": -1
+        },
+        "phoenix": {
+          "cards": {
+            "card1": {
+              "rank": 1,
+              "suit": 1
+            },
+            "card2": {
+              "rank": 0,
+              "suit": 3
+            },
+            "card3": {
+              "rank": 2,
+              "suit": 0
+            }
+          },
+          "handRankId": 3,
+          "cardRankId": -1
+        }
+      },
+      "settlementResult": {
+        "dragon": true,
+        "phoenix": false,
+        "tie": false,
+        "threeOfAKind": true,
+        "straightFlush": false,
+        "flush": false,
+        "straight": false,
+        "pair8Plus": true,
+        "killer235": false,
+        "highCard": false
+      },
+      "exchangeRateId": 4304
+    }
+  ],
+  "winthreecards_bets": [
+    {
+      "uid": "62342b4ac46c7910b22b3b35",
+      "name": "Player",
+      "roundId": 1,
+      "dragon": 0,
+      "phoenix": 0,
+      "threeOfAKind": 100,
+      "straightFlush": 0,
+      "flush": 0,
+      "straight": 0,
+      "pair8Plus": 0,
+      "paid": true,
+      "betwin": {
+        "$numberDecimal": "12100"
+      },
+      "time": {
+        "$date": "2022-10-25T07:10:00.000Z"
+      },
+      "odds": {
+        "dragon": 1.95,
+        "phoenix": 1.95,
+        "pair8Plus": 3,
+        "threeOfAKind": 121,
+        "straightFlush": 101,
+        "flush": 9,
+        "straight": 8
+      },
+      "playerId": 123,
+      "siteId": "4100300",
+      "freeBet": false,
+      "currency": "$US",
+      "rate": 1,
+      "operatorId": "ONEworks1"
+    }
+  ],
+  "winthreecards_betlogs": [
+    {
+      "uid": "62342b4ac46c7910b22b3b35",
+      "name": "Player",
+      "roundId": 1,
+      "choice": "threeOfAKind",
+      "amount": 100,
+      "time": {
+        "$date": "2022-10-25T07:10:05.000Z"
+      },
+      "playerId": 123,
+      "siteId": "4100300",
+      "freeBet": false,
+      "currency": "$US",
+      "rate": 1,
+      "operatorId": "ONEworks1"
+    }
+  ]
+}

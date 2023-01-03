@@ -43,5 +43,5 @@ integration-test-dotnet:
     - export PATH="$PATH:/root/.dotnet/tools"
     - dotnet nuget add source https://nuget.nexdev.net/api/v2
     - cp ./GameRoundResult.IntegrationTests/appsettings.IGT.CI.json ./GameRoundResult.IntegrationTests/appsettings.IGT.json
-    - mkdir -p $LOG_TEST_PATH && cp -a ./GameRoundResult.IntegrationTests/Games/. $LOG_TEST_PATH && rm -r $LOG_TEST_PATH/**/TestCaseData
+    - mkdir -p $LOG_TEST_PATH && cp -a ./GameRoundResult.IntegrationTests/Games/. $LOG_TEST_PATH
     - cp -R ./GameRoundResult.Web/wwwroot/scss $LOG_TEST_PATH

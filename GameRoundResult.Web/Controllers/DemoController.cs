@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace GameRoundResult.Web.Controllers
 {
-    [TypeFilter(typeof(DevOnlyActionFilter))]
+    [TypeFilter(typeof(DevOnlyAttribute))]
     public class DemoController : Controller
     {
         private readonly IPartnerService operatorService;
