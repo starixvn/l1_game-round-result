@@ -80,6 +80,6 @@ namespace GameRoundResult.Web.Services
         => serviceProvider.GetService(services[game]) as IEndGameInfoService;
 
         public IEndGameInfoService GetSlotGameService()
-        => serviceProvider.GetService(typeof(SlotGameEndGameInfoService)) as IEndGameInfoService;
+        => serviceProvider.GetService(typeof(SlotGameTicketService)) as IEndGameInfoService;
     }
 }
