@@ -10,34 +10,12 @@ namespace GameRoundResult.Web.SlotGames
         Task<SlotGameRound> GetAsync(long roundId, int playerId, string operatorId, string gameName);
     }
 
-    public class SlotGameTicketService : ISlotGameTicketService, IEndGameInfoService
+    // TODO use attribute for long running game round definition
 
+    public static class EndRoundValidator
     {
-        private readonly ISlotGameBetRepository repository;
-        private readonly IGameConfigsRepository gameConfigsRepository;
-
-        public SlotGameTicketService(ISlotGameBetRepository repository, IGameConfigsRepository gameConfigsRepository)
+        public static EndRoundInfoResult ValidateRound(SlotGameRound round)
         {
-            this.repository = repository;
-            this.gameConfigsRepository = gameConfigsRepository;
-        }
-
-        public async Task<SlotGameRound> GetAsync(long roundId, int playerId, string operatorId, string gameName)
-        {
-            return await repository.GetAsync(roundId, playerId, operatorId, gameName);
-        }
-
-        public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request)
-        {
-            var gameConfigs = await gameConfigsRepository.GetByIdAsync(request.GameTypeId);
-
-            if (gameConfigs == null)
-            {
-                return EndRoundInfoError.SB1006;
-            }
-
-            var round = await GetRoundAsync(request, gameConfigs);
-
             if (round == null)
             {
                 return EndRoundInfoError.SB1001;
@@ -48,16 +26,22 @@ namespace GameRoundResult.Web.SlotGames
                 return EndRoundInfoError.SB1005;
             }
 
-            return new EndRoundInfoResult
-            {
-                EndTime = round.EndTime,
-                ValidBetAmount = round.FreeSpin ? 0 : round.TotalAmount,
-                TotalAmount = round.FreeSpin ? 0 : round.TotalAmount,
-                TotalWin = round.BetWin
-            };
+            return null;
+        }
+    }
+
+    public class SlotGameTicketService : ISlotGameTicketService
+    {
+        private readonly ISlotGameBetRepository repository;
+
+        public SlotGameTicketService(ISlotGameBetRepository repository)
+        {
+            this.repository = repository;
         }
 
-        protected Task<SlotGameRound> GetRoundAsync(RetrieveEndGameInfoRequest request, GameConfigs gameConfigs)
-        => repository.GetEndRoundAsync(request.GameRoundId, request.PlayerId, request.OperatorId, gameConfigs.Name, request.SiteId);
+        public async Task<SlotGameRound> GetAsync(long roundId, int playerId, string operatorId, string gameName)
+        {
+            return await repository.GetAsync(roundId, playerId, operatorId, gameName);
+        }
     }
 }
