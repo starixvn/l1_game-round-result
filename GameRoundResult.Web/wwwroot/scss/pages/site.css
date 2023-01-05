@@ -567,4 +567,5 @@ body {
     background-color: #222;
     content: ""; }
   .win3cards-result .cards span {
+    width: 10.5rem;
     padding-top: 7px; }
