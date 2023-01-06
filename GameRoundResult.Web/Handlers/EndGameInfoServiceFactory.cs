@@ -67,7 +67,6 @@ namespace GameRoundResult.Web.Services
             { GameType.FruitSlot, typeof(FruitSlotEndGameInfoService) },
             { GameType.FanTan, typeof(FanTanEndGameInfoService) },
             { GameType.Win3Cards, typeof(Win3CardsEndGameInfoService) },
-            { GameType.FortuneCat, typeof(FortuneCatEndGameInfoService) },
         };
 
         private readonly IServiceProvider serviceProvider;

@@ -40,7 +40,6 @@ namespace GameRoundResult.Web.Configuration
             GameType.TexasHoldemPoker,
             GameType.HiLo,
             GameType.TreasureIsland,
-            GameType.FortuneCat,
         };
 
         private readonly IPartnerConfigService partnerConfigService;

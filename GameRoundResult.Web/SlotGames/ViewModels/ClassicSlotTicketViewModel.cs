@@ -1,9 +1,9 @@
 ﻿using System.Globalization;
 using System.Text;
 using GameRoundResult.Core.Constants;
-using GameRoundResult.Web.SlotGames.ViewModels;
+using GameRoundResult.Web.Models;
 
-namespace GameRoundResult.Web.Models
+namespace GameRoundResult.Web.SlotGames.ViewModels
 {
     public class ClassicSlotTicketViewModel : GameTicketViewModel
     {

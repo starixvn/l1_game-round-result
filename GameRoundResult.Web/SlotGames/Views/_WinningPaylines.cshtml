@@ -1,4 +1,4 @@
-﻿@using GameRoundResult.Web.Models;
+﻿@using GameRoundResult.Web.SlotGames.ViewModels;
 @using GameRoundResult.Web.Configuration
 
 @model ClassicSlotTicketViewModel
@@ -11,8 +11,8 @@
 {
     <tr>
         <td><img class="payline" src="~/scss/images/@Model.ConfigName/dong@(winningPayline.Payline + 1).png" asp-append-version="true" /></td>
-        <td>           
-            <img class="symbol" src="~/scss/images/@Model.ConfigName/@(Model.SymbolImageName(winningPayline.Symbol)).png" alt="" asp-append-version="true" />            
+        <td>
+            <img class="symbol" src="~/scss/images/@Model.ConfigName/@(Model.SymbolImageName(winningPayline.Symbol)).png" alt="" asp-append-version="true" />
         </td>
         <td>@winningPayline.Count</td>
         <td>x@(winningPayline.Odds)</td>

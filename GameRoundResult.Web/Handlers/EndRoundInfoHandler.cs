@@ -26,8 +26,6 @@ namespace GameRoundResult.Web.Handlers
 
         public async Task<EndRoundInfoResult> Handle(Requests.RetrieveEndRoundInfoRequest request, CancellationToken cancellationToken)
         {
-            IEndGameInfoService service;
-
             try
             {
                 var validatorResult = validator.Validate(request);
@@ -36,7 +34,7 @@ namespace GameRoundResult.Web.Handlers
                 {
                     var gameType = Enum.Parse<GameType>(request.GameTypeId.ToString());
 
-                    service = Enum.IsDefined(typeof(GameType), gameType) ? factory.GetService(gameType) : factory.GetSlotGameService();
+                    var service = Enum.IsDefined(typeof(GameType), gameType) ? factory.GetService(gameType) : factory.GetSlotGameService();
 
                     return await service.GetAsync(new RetrieveEndGameInfoRequest
                     {

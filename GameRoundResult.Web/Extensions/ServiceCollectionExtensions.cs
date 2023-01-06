@@ -184,7 +184,6 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<FruitSlotEndGameInfoService>();
             services.AddScoped<FanTanEndGameInfoService>();
             services.AddScoped<Win3CardsEndGameInfoService>();
-            services.AddScoped<FortuneCatEndGameInfoService>();
 
             services.AddSlotGames();
         }

@@ -35,7 +35,7 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
             var actualResult = await endGameInfoService.GetAsync(request);
 
             //Assert
-            Assert.Equal(EndGameInfoError.SB1001, actualResult);
+            Assert.Equal(EndRoundInfoError.SB1001, actualResult);
         }
 
         [Fact]
@@ -50,7 +50,7 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
             var actualResult = await endGameInfoService.GetAsync(request);
 
             //Assert
-            Assert.Equal(EndGameInfoError.SB1001, actualResult);
+            Assert.Equal(EndRoundInfoError.SB1001, actualResult);
         }
 
         [Fact]

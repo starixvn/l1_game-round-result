@@ -67,7 +67,6 @@ namespace GameRoundResult.Web.Accessor
             { GameType.FruitSlot, typeof(FruitSlotTicketAccessor<FruitSlotRound, FruitSlotBet, FruitSlotBetLog>) },
             { GameType.FanTan, typeof(FanTanTicketAccessor) },
             { GameType.Win3Cards, typeof(Win3CardsTicketAccessor) },
-            { GameType.FortuneCat, typeof(FourGuardiansTicketAccessor<FortuneCatRound>) },
         };
 
         private readonly IServiceProvider serviceProvider;
