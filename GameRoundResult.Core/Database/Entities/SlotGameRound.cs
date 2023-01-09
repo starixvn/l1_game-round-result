@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    public class SlotGameRound : GameRound
+    public class SlotGameRound : BaseSlotRoundEntity
     {
         public decimal Bet { get; set; }
 
-        public decimal TotalAmount { get; set; }
-
         public IEnumerable<byte> Paylines { get; set; }
-
-        public bool FreeSpin { get; set; }
 
         public IEnumerable<byte> Result { get; set; }
 
@@ -21,23 +16,9 @@ namespace GameRoundResult.Core.Database.Entities
 
         public IEnumerable<SlotGameBonusChest> BonusChests { get; set; }
 
-        public bool Paid { get; set; }
-
-        [BsonRepresentation(BsonType.Decimal128, AllowTruncation = true)]
-        public decimal BetWin { get; set; }
-
         public string Uid { get; set; }
 
         public string Name { get; set; }
-
-        public int? PlayerId { get; set; }
-
-        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
-        public DateTime EndTime { get; set; }
-
-        public string SiteId { get; set; }
-
-        public string OperatorId { get; set; }
     }
 
     public class SlotGameBonusChest

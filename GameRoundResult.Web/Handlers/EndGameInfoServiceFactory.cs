@@ -10,8 +10,6 @@ namespace GameRoundResult.Web.Services
     public interface IEndGameInfoServiceFactory
     {
         IEndGameInfoService GetService(GameType game);
-
-        IEndGameInfoService GetSlotGameService();
     }
 
     public class EndGameInfoServiceFactory : IEndGameInfoServiceFactory
@@ -77,9 +75,8 @@ namespace GameRoundResult.Web.Services
         }
 
         public IEndGameInfoService GetService(GameType game)
-        => serviceProvider.GetService(services[game]) as IEndGameInfoService;
-
-        public IEndGameInfoService GetSlotGameService()
-        => serviceProvider.GetService(typeof(SlotGameTicketService)) as IEndGameInfoService;
+        => services.ContainsKey(game)
+            ? serviceProvider.GetService(services[game]) as IEndGameInfoService
+           : serviceProvider.GetService(typeof(BaseEndRoundService)) as IEndGameInfoService;
     }
 }

@@ -74,6 +74,8 @@ namespace GameRoundResult.Web.Accessor
         }
 
         public IGameTicketAccessor GetService(GameType game)
-            => (IGameTicketAccessor)serviceProvider.GetRequiredService(services[game]);
+            => services.ContainsKey(game)
+                ? (IGameTicketAccessor)serviceProvider.GetRequiredService(services[game])
+                : serviceProvider.GetRequiredService(typeof(SlotGameHandler)) as IGameTicketAccessor;
     }
 }

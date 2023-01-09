@@ -21,19 +21,19 @@ namespace GameRoundResult.Web.Handlers
         {
             var service = serviceFactory.GetService(request.GameType);
 
-            var gameTicket = await service.GetAsync(request);
-            if (service != null)
+            if (service == null)
             {
-                var gameTicket = await service.GetAsync(request);
-
-                if (gameTicket != null)
-                {
-                    gameTicket.TimeZoneOffset = request.TimeZoneInfo.GetUtcOffset(DateTimeOffset.UtcNow.AddMonths(7));
-                }
-                return gameTicket;
+                return null;
             }
 
-            return null;
+            var gameTicket = await service.GetAsync(request);
+
+            if (gameTicket != null)
+            {
+                gameTicket.TimeZoneOffset = request.TimeZoneInfo.GetUtcOffset(DateTimeOffset.UtcNow);
+            }
+
+            return gameTicket;
         }
     }
 }

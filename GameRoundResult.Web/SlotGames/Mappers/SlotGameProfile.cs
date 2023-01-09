@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
-using GameRoundResult.Web.Models;
 using GameRoundResult.Web.SlotGames.ViewModels;
 
 namespace GameRoundResult.Web.SlotGames.Mappers
@@ -9,6 +8,8 @@ namespace GameRoundResult.Web.SlotGames.Mappers
     {
         public SlotGameProfile()
         {
+            DestinationMemberNamingConvention = new PascalCaseNamingConvention();
+
             CreateMap<SlotGameRound, ClassicSlotRoundResultViewModel>();
             CreateMap<SlotGameSettlementResult, ClassicSlotSettlementResultViewModel>();
             CreateMap<SlotGameFreeSpin, ClassicSlotSymbolViewModel>();

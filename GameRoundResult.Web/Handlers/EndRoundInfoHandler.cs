@@ -36,7 +36,7 @@ namespace GameRoundResult.Web.Handlers
                 {
                     var gameType = Enum.Parse<GameType>(request.GameTypeId.ToString());
 
-                    var service = Enum.IsDefined(typeof(GameType), gameType) ? factory.GetService(gameType) : factory.GetSlotGameService();
+                    service = factory.GetService(gameType);
 
                     return await service.GetAsync(new RetrieveEndGameInfoRequest
                     {

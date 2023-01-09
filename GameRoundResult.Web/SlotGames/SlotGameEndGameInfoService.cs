@@ -1,21 +1,21 @@
 ﻿using System.Threading.Tasks;
-using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Database;
 using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
 
 namespace GameRoundResult.Web.SlotGames
 {
-    public class SlotGameEndGameInfoService : IEndGameInfoService
+    public class BaseEndRoundService : IEndGameInfoService
     {
         private readonly IGameConfigsRepository gameConfigsRepository;
-        private readonly ISlotGameBetRepository repository;
+        private readonly ISlotGameBetRepository betRepository;
 
-        public SlotGameEndGameInfoService(
+        public BaseEndRoundService(
             IGameConfigsRepository gameConfigsRepository,
-            ISlotGameBetRepository repository)
+            ISlotGameBetRepository betRepository)
         {
             this.gameConfigsRepository = gameConfigsRepository;
-            this.repository = repository;
+            this.betRepository = betRepository;
         }
 
         public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request)
@@ -27,7 +27,7 @@ namespace GameRoundResult.Web.SlotGames
                 return EndRoundInfoError.SB1006;
             }
 
-            var round = await GetRoundAsync(request, gameConfigs);
+            var round = await GetRoundAsync<BaseSlotRoundEntity>(request, gameConfigs.Name);
 
             if (round == null)
             {
@@ -44,11 +44,11 @@ namespace GameRoundResult.Web.SlotGames
                 EndTime = round.EndTime,
                 ValidBetAmount = round.FreeSpin ? 0 : round.TotalAmount,
                 TotalAmount = round.FreeSpin ? 0 : round.TotalAmount,
-                TotalWin = round.BetWin
+                TotalWin = round.BetWin + round.Betwin
             };
         }
 
-        protected Task<SlotGameRound> GetRoundAsync(RetrieveEndGameInfoRequest request, GameConfigs gameConfigs)
-        => repository.GetEndRoundAsync(request.GameRoundId, request.PlayerId, request.OperatorId, gameConfigs.Name, request.SiteId);
+        protected Task<T> GetRoundAsync<T>(RetrieveEndGameInfoRequest request, string gameConfigName) where T : BaseSlotRoundEntity
+        => betRepository.GetEndRoundAsync<T>(request.GameRoundId, request.PlayerId, request.OperatorId, gameConfigName, request.SiteId);
     }
 }

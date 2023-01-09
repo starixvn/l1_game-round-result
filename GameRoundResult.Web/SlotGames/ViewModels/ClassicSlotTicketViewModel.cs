@@ -22,10 +22,6 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
 
         public ClassicSlotRoundResultViewModel RoundResult { get; set; }
 
-        //TODO remove that
-        public decimal BetWin => RoundResult.BetWin + (RoundResult.SettlementResult.Jackpot?.WinningAmount ?? 0);
-
-        //TODO it should be in RoundResultViewModel
         public decimal WinLoss => RoundResult.FreeSpin ? RoundResult.TotalBetWin : RoundResult.TotalBetWin - RoundResult.TotalAmount;
 
         public string SymbolImageName(string symbol)

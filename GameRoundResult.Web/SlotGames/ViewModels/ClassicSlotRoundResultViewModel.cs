@@ -44,7 +44,8 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
 
         public decimal PickedBonusChestsTotalAmount => BonusChests.Where(x => x.Picked).Sum(x => x.Amount);
 
-        public IEnumerable<byte> NotWinningPaylines => Paylines.Where(x => SettlementResult.WinningPaylines.All(y => y.Payline != x) && x != SettlementResult.Jackpot?.WinningLine);
+        public IEnumerable<byte> NotWinningPaylines
+            => Paylines.Where(x => SettlementResult.WinningPaylines.All(y => y.Payline != x) && x != SettlementResult.Jackpot?.WinningLine);
 
         public decimal DisplayTotalAmount => FreeSpin ? 0 : TotalAmount;
 
