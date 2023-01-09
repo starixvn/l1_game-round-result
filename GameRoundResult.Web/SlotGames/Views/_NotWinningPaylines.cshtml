@@ -3,6 +3,8 @@
 
 @model ClassicSlotTicketViewModel
 
+@inject IOptionsSnapshot<GameConfiguration> gameConfigurationAccessor
+
 @{
     var roundResult = Model.RoundResult;
 }
@@ -11,7 +13,7 @@
 {
 
     <tr>
-        <td><img class="payline" src="~/scss/images/@Model.ConfigName/dong@(payline + 1).png" asp-append-version="true" /></td>
+        <td><img class="payline" src="@gameConfigurationAccessor.Value.BaseUrl/@Model.ConfigName/dong@(payline + 1).png" asp-append-version="true" /></td>
         <td>-</td>
         <td>-</td>
         <td>-</td>

@@ -1,7 +1,6 @@
-﻿@using GameRoundResult.Web.SlotGames.ViewModels;
-@using GameRoundResult.Web.Configuration
+﻿@model ClassicSlotTicketViewModel
 
-@model ClassicSlotTicketViewModel
+@inject IOptionsSnapshot<GameConfiguration> gameConfigurationAccessor
 
 @{
     var roundResult = Model.RoundResult;
@@ -10,9 +9,9 @@
 @foreach (var winningPayline in roundResult.SettlementResult.WinningPaylines)
 {
     <tr>
-        <td><img class="payline" src="~/scss/images/@Model.ConfigName/dong@(winningPayline.Payline + 1).png" asp-append-version="true" /></td>
+        <td><img class="payline" src="@gameConfigurationAccessor.Value.BaseUrl/@Model.ConfigName/dong@(winningPayline.Payline + 1).png" asp-append-version="true" /></td>
         <td>
-            <img class="symbol" src="~/scss/images/@Model.ConfigName/@(Model.SymbolImageName(winningPayline.Symbol)).png" alt="" asp-append-version="true" />
+            <img class="symbol" src="@gameConfigurationAccessor.Value.BaseUrl/@Model.ConfigName/@(Model.SymbolImageName(winningPayline.Symbol)).png" alt="" asp-append-version="true" />
         </td>
         <td>@winningPayline.Count</td>
         <td>x@(winningPayline.Odds)</td>

@@ -1,17 +1,17 @@
 ﻿@using GameRoundResult.Core.Constants
-@using GameRoundResult.Web.SlotGames.ViewModels;
 
 @model ClassicSlotTicketViewModel
 
-
 @inject Microsoft.Extensions.Localization.IStringLocalizer<ClassicSlotTicketViewModel> Localizer
+@inject IOptionsSnapshot<GameConfiguration> gameConfigurationAccessor
+
 
 @if (Model.HasFreeSpins)
 {
     var freeSpins = Model.RoundResult.SettlementResult.FreeSpins;
     <tr>
         <td></td>
-        <td><img class="symbol" src="~/scss/images/@Model.ConfigName/@(SlotGameConstant.FreeSpinSymbol).png" asp-append-version="true" /></td>
+        <td><img class="symbol" src="@gameConfigurationAccessor.Value.BaseUrl/@Model.ConfigName/@(SlotGameConstant.FreeSpinSymbol).png" asp-append-version="true" /></td>
         <td>@freeSpins.Count</td>
         <td>@freeSpins.Odds @Localizer["Free spins"]</td>
         <td>-</td>
