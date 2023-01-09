@@ -8,6 +8,7 @@ using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
+using GameRoundResult.Web.VG3;
 using MediatR;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +31,7 @@ namespace GameRoundResult.Web.Controllers
         private readonly IPartnerService partnerService;
         private readonly IEnumerable<OperatorConfig> operatorConfigs;
         private readonly string systemType;
+        private readonly IVG3ResultService vg3Service;
 
         public BetHistoryController(
             IMediator mediator,
@@ -38,7 +40,8 @@ namespace GameRoundResult.Web.Controllers
             ILogService logService,
             IPartnerService partnerService,
             IOptions<List<OperatorConfig>> operatorConfigsOptions,
-            IConfiguration configuration
+            IConfiguration configuration,
+            IVG3ResultService vg3Service
             )
         {
             this.mediator = mediator;
@@ -48,6 +51,7 @@ namespace GameRoundResult.Web.Controllers
             this.logService = logService;
             operatorConfigs = operatorConfigsOptions.Value;
             this.systemType = configuration["SystemType"];
+            this.vg3Service = vg3Service;
         }
 
         [HttpGet]
@@ -98,6 +102,13 @@ namespace GameRoundResult.Web.Controllers
 
             if (ModelState.IsValid)
             {
+                if (this.isVG2System() && vg3Service.IsVG3Ticket(model))
+                {
+                    model.Auth = vg3Service.GetVG3Authentication();
+                    var result = await vg3Service.GetBetDetailsURL(model);
+                    return Ok(result);
+                }
+
                 var @operator = await partnerService.Get(model.Auth.OperatorId, model.Auth.OperatorSecret);
 
                 if (@operator != null)
@@ -153,5 +164,8 @@ namespace GameRoundResult.Web.Controllers
 
             return await mediator.Send(new GetGameTicketRequest(gameType, roundId, playerId, timeZoneInfo, operatorId, freeBet, systemType));
         }
+
+        private bool isVG2System()
+            => this.systemType == "VG2";
     }
 }

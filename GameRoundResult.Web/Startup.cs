@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
+using GameRoundResult.Web.VG3;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -42,6 +43,8 @@ namespace GameRoundResult.Web
             services.AddResponseCaching();
             services.AddHealthChecks();
             services.AddMemoryCache();
+
+            VG3ServiceInit.InitService(services, Configuration.GetValue<string>("VG3:DomainResult"));
 
             services.AddDataProtection()
               .PersistKeysToMongoDb(Configuration)
