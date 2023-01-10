@@ -31,6 +31,8 @@ namespace GameRoundResult.Web
             services.Configure<HostConfiguration>(Configuration.GetSection("HostConfiguration"));
             services.Configure<GameConfiguration>(Configuration.GetSection("GameConfiguration"));
 
+            services.AddRestServices(Configuration);
+
             services.AddAutoMapper(typeof(Startup));
             services.AddMediatR(typeof(Startup));
             services.AddMongoDatabase(Configuration);

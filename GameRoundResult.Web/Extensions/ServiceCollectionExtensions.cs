@@ -5,6 +5,7 @@ using GameRoundResult.Core._Share;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
+using GameRoundResult.Web._Shared;
 using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Requests;
@@ -20,6 +21,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
+using Refit;
 
 namespace GameRoundResult.Web.Extensions
 {
@@ -193,6 +195,11 @@ namespace GameRoundResult.Web.Extensions
         public static void AddValidators(this IServiceCollection services)
         {
             services.AddScoped<IValidator<RetrieveEndRoundInfoRequest>, RetrieveEndRoundInfoRequestValidator>();
+        }
+
+        public static void AddRestServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddSingleton(RestService.For<IGameAdminApi>(configuration.GetValue<string>("GameAdminConfiguration:BaseUrl")));
         }
     }
 }
