@@ -200,7 +200,11 @@ namespace GameRoundResult.Web.Extensions
         {
             return mapper.Map<CasinoHoldemPokerBet, CasinoHoldemPokerBetViewModel>(entity, opts =>
             {
-                opts.AfterMap((source, dest) => { dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo); dest.CallTime = TimeZoneInfo.ConvertTimeFromUtc(source.CallTime, timeZoneInfo); });
+                opts.AfterMap((source, dest) =>
+                {
+                    dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo);
+                    dest.CallTime = TimeZoneInfo.ConvertTimeFromUtc(source.CallTime, timeZoneInfo);
+                });
             });
         }
 
@@ -268,7 +272,6 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
-                
         public static FruitSlotRoundResultViewModel ToViewModel(this FruitSlotRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<FruitSlotRound, FruitSlotRoundResultViewModel>(entity, opts =>

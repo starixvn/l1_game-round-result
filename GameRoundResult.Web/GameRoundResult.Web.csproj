@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="SlotGames\Requests\**" />
+    <Compile Remove="SlotGames\Views\Partials\**" />
+    <Content Remove="SlotGames\Requests\**" />
+    <Content Remove="SlotGames\Views\Partials\**" />
+    <EmbeddedResource Remove="SlotGames\Requests\**" />
+    <EmbeddedResource Remove="SlotGames\Views\Partials\**" />
+    <None Remove="SlotGames\Requests\**" />
+    <None Remove="SlotGames\Views\Partials\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="compilerconfig.json" />
     <Content Remove="wwwroot\js\game-round-result.min.js" />
   </ItemGroup>
@@ -225,11 +236,6 @@
     <EmbeddedResource Update="Resources\Views\GameRoundResult\Index.en-US.resx">
       <Generator></Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="SlotGames\Requests\" />
-    <Folder Include="SlotGames\Views\Partials\" />
   </ItemGroup>
 
 

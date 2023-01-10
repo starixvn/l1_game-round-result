@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Web.SlotGames.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GameRoundResult.Web.Accessor
