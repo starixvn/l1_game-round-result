@@ -169,7 +169,6 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<BaccaratTicketAccessor<VipBaccaratRound, VipBaccaratBet>>();
             services.AddScoped<BaccaratTicketAccessor<BlockchainBaccaratRound, BlockchainBaccaratBet>>();
 
-
             services.AddScoped<BaccaratEndGameInfoService<BaccaratRound, BaccaratBet>>();
             services.AddScoped<BaccaratEndGameInfoService<VipBaccaratRound, VipBaccaratBet>>();
             services.AddScoped<BaccaratEndGameInfoService<BlockchainBaccaratRound, BlockchainBaccaratBet>>();
