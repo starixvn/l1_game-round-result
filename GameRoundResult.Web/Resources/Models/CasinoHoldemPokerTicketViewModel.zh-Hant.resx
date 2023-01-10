@@ -136,7 +136,7 @@
     <value>同花</value>
   </data>
   <data name="Fold" xml:space="preserve">
-    <value>蓋牌</value>
+    <value>棄牌</value>
   </data>
   <data name="FourOfAKind" xml:space="preserve">
     <value>四條</value>
@@ -154,7 +154,7 @@
     <value>玩家</value>
   </data>
   <data name="RoyalFlush" xml:space="preserve">
-    <value>同花大順</value>
+    <value>皇家同花順</value>
   </data>
   <data name="Stake" xml:space="preserve">
     <value>賭注</value>

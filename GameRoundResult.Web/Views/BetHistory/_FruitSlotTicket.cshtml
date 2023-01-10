@@ -59,7 +59,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th class="col-date">@CommonLocalizer["BetTime"] (@Model.TimeOffsetString)</th>
             <th>@CommonLocalizer["BetChoice"]</th>
             <th>@CommonLocalizer["Odds"]</th>
             <th>@CommonLocalizer["Stake"]</th>
@@ -78,9 +78,9 @@
                         @bet.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
                     </td>
                     <td>
-                        @if ((bet.Choice.Equals("big") || bet.Choice.Equals("small")) && CultureInfo.CurrentUICulture.Name == "vi-VN")
+                        @if (bet.Choice.Equals("big") || bet.Choice.Equals("small"))
                         {
-                            <img src="/scss/images/@gameName/@(bet.Choice).vi-VN.png" alt="#" />
+                            <img src="/scss/images/@gameName/@(bet.Choice).@(CultureInfo.CurrentUICulture.Name).png" alt="#" />
                         }
                         else
                         {

@@ -117,19 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BettingPrice" xml:space="preserve">
-    <value>Giá Đặt Lệnh</value>
+  <data name="Base Card" xml:space="preserve">
+    <value>底牌</value>
   </data>
-  <data name="Date" xml:space="preserve">
-    <value>Thời Gian</value>
+  <data name="End Round" xml:space="preserve">
+    <value>回合結束</value>
   </data>
-  <data name="Result" xml:space="preserve">
-    <value>Kết Quả</value>
+  <data name="h" xml:space="preserve">
+    <value>高</value>
   </data>
-  <data name="Round" xml:space="preserve">
-    <value>Phiên</value>
+  <data name="l" xml:space="preserve">
+    <value>低</value>
   </data>
-  <data name="WinningOptions" xml:space="preserve">
-    <value>Cửa Thắng</value>
+  <data name="Result Card" xml:space="preserve">
+    <value>結果卡</value>
+  </data>
+  <data name="Running" xml:space="preserve">
+    <value>跑</value>
+  </data>
+  <data name="Start Round" xml:space="preserve">
+    <value>回合開始</value>
+  </data>
+  <data name="Turn" xml:space="preserve">
+    <value>轉牌</value>
   </data>
 </root>

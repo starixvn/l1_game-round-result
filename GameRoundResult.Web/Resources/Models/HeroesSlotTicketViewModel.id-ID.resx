@@ -121,16 +121,16 @@
     <value>Jackpot</value>
   </data>
   <data name="NoSymbol" xml:space="preserve">
-    <value>Kuantitas</value>
+    <value>Jumlah Simbol</value>
   </data>
   <data name="Odds" xml:space="preserve">
-    <value>Ganjil</value>
+    <value>Odds</value>
   </data>
   <data name="Payline" xml:space="preserve">
-    <value>Garis</value>
+    <value>Garis pembayaran</value>
   </data>
   <data name="Stake" xml:space="preserve">
-    <value>Bertaruh</value>
+    <value>Taruhan</value>
   </data>
   <data name="Symbol" xml:space="preserve">
     <value>Simbol</value>

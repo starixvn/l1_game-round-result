@@ -117,19 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BettingPrice" xml:space="preserve">
-    <value>Betting Price</value>
+  <data name="ExtraSpin" xml:space="preserve">
+    <value>สปินพิเศษ</value>
   </data>
-  <data name="Date" xml:space="preserve">
-    <value>Date</value>
-  </data>
-  <data name="Result" xml:space="preserve">
-    <value>Result</value>
-  </data>
-  <data name="Round" xml:space="preserve">
-    <value>Round ID</value>
-  </data>
-  <data name="WinningOptions" xml:space="preserve">
-    <value>Winning Option(s)</value>
+  <data name="SpinResult" xml:space="preserve">
+    <value>ผลสปิน</value>
   </data>
 </root>

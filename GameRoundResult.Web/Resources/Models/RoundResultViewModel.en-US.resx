@@ -117,6 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="1st" xml:space="preserve">
+    <value>1st</value>
+  </data>
+  <data name="2nd" xml:space="preserve">
+    <value>2nd</value>
+  </data>
+  <data name="3rd" xml:space="preserve">
+    <value>3rd</value>
+  </data>
+  <data name="4th" xml:space="preserve">
+    <value>4th</value>
+  </data>
+  <data name="5 Elements" xml:space="preserve">
+    <value>5 Elements</value>
+  </data>
+  <data name="5th" xml:space="preserve">
+    <value>5th</value>
+  </data>
+  <data name="6th" xml:space="preserve">
+    <value>6th</value>
+  </data>
+  <data name="7th" xml:space="preserve">
+    <value>7th</value>
+  </data>
   <data name="Banker" xml:space="preserve">
     <value>Banker</value>
   </data>
@@ -147,6 +171,9 @@
   <data name="Big" xml:space="preserve">
     <value>Big</value>
   </data>
+  <data name="Black" xml:space="preserve">
+    <value>Black</value>
+  </data>
   <data name="Chun" xml:space="preserve">
     <value>Chun</value>
   </data>
@@ -161,6 +188,15 @@
   </data>
   <data name="Chun234" xml:space="preserve">
     <value>2 3 4 Chun</value>
+  </data>
+  <data name="Clubs" xml:space="preserve">
+    <value>Clubs</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Diamonds" xml:space="preserve">
+    <value>Diamonds</value>
   </data>
   <data name="Down" xml:space="preserve">
     <value>Down</value>
@@ -201,11 +237,20 @@
   <data name="Flush" xml:space="preserve">
     <value>Flush</value>
   </data>
+  <data name="First Hafl" xml:space="preserve">
+    <value>First Half</value>
+  </data>
+  <data name="Full Time" xml:space="preserve">
+    <value>Full Time</value>
+  </data>
   <data name="Gold" xml:space="preserve">
     <value>Gold</value>
   </data>
   <data name="HighCard" xml:space="preserve">
     <value>High Card</value>
+  </data>
+  <data name="Hearts" xml:space="preserve">
+    <value>Hearts</value>
   </data>
   <data name="Killer235" xml:space="preserve">
     <value>235</value>
@@ -230,6 +275,9 @@
   </data>
   <data name="Pair" xml:space="preserve">
     <value>Pair</value>
+  </data>
+  <data name="Over" xml:space="preserve">
+    <value>Over</value>
   </data>
   <data name="Pair8Plus" xml:space="preserve">
     <value>Pair 8 Plus</value>
@@ -261,11 +309,23 @@
   <data name="PlayerWhite4" xml:space="preserve">
     <value>Player - 4 White</value>
   </data>
+  <data name="Red" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="Result" xml:space="preserve">
+    <value>Result</value>
+  </data>
   <data name="Round" xml:space="preserve">
-    <value>Round ID</value>
+    <value>Round</value>
   </data>
   <data name="Small" xml:space="preserve">
     <value>Small</value>
+  </data>
+  <data name="Spades" xml:space="preserve">
+    <value>Spades</value>
+  </data>
+  <data name="Special" xml:space="preserve">
+    <value>Special</value>
   </data>
   <data name="SpinResult" xml:space="preserve">
     <value>Spin Result</value>
@@ -279,11 +339,23 @@
   <data name="ThreeOfAKind" xml:space="preserve">
     <value>Three of a Kind</value>
   </data>
+  <data name="Sum" xml:space="preserve">
+    <value>Sum</value>
+  </data>
+  <data name="Team Blue" xml:space="preserve">
+    <value>Team Blue</value>
+  </data>
+  <data name="Team Red" xml:space="preserve">
+    <value>Team Red</value>
+  </data>
   <data name="Tie" xml:space="preserve">
     <value>Tie</value>
   </data>
   <data name="Tiger" xml:space="preserve">
     <value>Tiger</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
   </data>
   <data name="TotalEven" xml:space="preserve">
     <value>Total Even</value>
@@ -294,17 +366,14 @@
   <data name="TotalPoints" xml:space="preserve">
     <value>Points</value>
   </data>
+  <data name="Under" xml:space="preserve">
+    <value>Under</value>
+  </data>
   <data name="Up" xml:space="preserve">
     <value>Up</value>
   </data>
   <data name="Water" xml:space="preserve">
     <value>Water</value>
-  </data>
-  <data name="WinLoss" xml:space="preserve">
-    <value>Win / Loss</value>
-  </data>
-  <data name="WinningOption" xml:space="preserve">
-    <value>Winning Option</value>
   </data>
   <data name="WinningOptions" xml:space="preserve">
     <value>Winning Option(s)</value>

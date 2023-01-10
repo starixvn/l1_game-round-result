@@ -121,7 +121,7 @@
     <value>ไพ่</value>
   </data>
   <data name="Combination" xml:space="preserve">
-    <value>นับแต้มรวม</value>
+    <value>การรวมกัน</value>
   </data>
   <data name="CommunityCards" xml:space="preserve">
     <value>ไพ่ชุมชน</value>
@@ -139,7 +139,7 @@
     <value>หมอบ</value>
   </data>
   <data name="FourOfAKind" xml:space="preserve">
-    <value>โฟร์การ์ด</value>
+    <value>ไพ่เลขเดียวกัน 4 ใบ</value>
   </data>
   <data name="FullHouse" xml:space="preserve">
     <value>ฟูลเฮ้าส์</value>
@@ -148,7 +148,7 @@
     <value>ไพ่สูง</value>
   </data>
   <data name="Pair" xml:space="preserve">
-    <value>ไพ่คู่</value>
+    <value>คู่</value>
   </data>
   <data name="Player" xml:space="preserve">
     <value>ผู้เล่น</value>
@@ -170,5 +170,8 @@
   </data>
   <data name="TwoPairs" xml:space="preserve">
     <value>สองคู่</value>
+  </data>
+  <data name="UnfinishedGame" xml:space="preserve">
+    <value>เกมที่ยังไม่เสร็จสิ้น</value>
   </data>
 </root>

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AnyTriple" xml:space="preserve">
-    <value>Bộ ba bất kỳ</value>
+    <value>Bộ Ba Bất Kỳ</value>
   </data>
   <data name="Crab" xml:space="preserve">
     <value>Cua</value>
@@ -130,10 +130,10 @@
     <value>Bầu</value>
   </data>
   <data name="Mountain" xml:space="preserve">
-    <value>Trên cạn</value>
+    <value>Trên Cạn</value>
   </data>
   <data name="Ocean" xml:space="preserve">
-    <value>Dưới nước</value>
+    <value>Dưới Nước</value>
   </data>
   <data name="Prawn" xml:space="preserve">
     <value>Tôm</value>

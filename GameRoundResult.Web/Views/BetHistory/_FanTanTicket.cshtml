@@ -1,7 +1,7 @@
 ﻿@model FanTanTicketViewModel
 
 @inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<FanTanTicketViewModel> Localizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<RoundResultViewModel> Localizer
 
 <table class="table table-bordered">
     <thead>
@@ -40,7 +40,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th class="col-date">@CommonLocalizer["BetTime"] (@Model.TimeOffsetString)</th>
             <th>@CommonLocalizer["BetChoice"]</th>
             <th>@CommonLocalizer["Odds"]</th>
             <th>@CommonLocalizer["Stake"]</th>
@@ -96,7 +96,7 @@
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
-                    <td>@Localizer["1 Fan"]</td>
+                    <td>@Localizer["Fan1"]</td>
                     <td class="text-right">@odds.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Fan1.Format()</td>
                     <td class="text-right">@win.Format()</td>
@@ -113,7 +113,7 @@
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
-                    <td>@Localizer["2 Fan"]</td>
+                    <td>@Localizer["Fan2"]</td>
                     <td class="text-right">@odds.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Fan2.Format()</td>
                     <td class="text-right">@win.Format()</td>
@@ -130,7 +130,7 @@
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
-                    <td>@Localizer["3 Fan"]</td>
+                    <td>@Localizer["Fan3"]</td>
                     <td class="text-right">@odds.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Fan3.Format()</td>
                     <td class="text-right">@win.Format()</td>
@@ -147,7 +147,7 @@
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
-                    <td>@Localizer["4 Fan"]</td>
+                    <td>@Localizer["Fan4"]</td>
                     <td class="text-right">@odds.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Fan4.Format()</td>
                     <td class="text-right">@win.Format()</td>
@@ -164,7 +164,7 @@
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
-                    <td>@Localizer["1 2 Kwok"]</td>
+                    <td>@Localizer["Kwok12"]</td>
                     <td class="text-right">@odds.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Kwok12.Format()</td>
                     <td class="text-right">@win.Format()</td>
@@ -181,7 +181,7 @@
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
-                    <td>@Localizer["2 3 Kwok"]</td>
+                    <td>@Localizer["Kwok23"]</td>
                     <td class="text-right">@odds.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Kwok23.Format()</td>
                     <td class="text-right">@win.Format()</td>
@@ -198,7 +198,7 @@
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
-                    <td>@Localizer["3 4 Kwok"]</td>
+                    <td>@Localizer["Kwok34"]</td>
                     <td class="text-right">@odds.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Kwok34.Format()</td>
                     <td class="text-right">@win.Format()</td>
@@ -215,7 +215,7 @@
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
-                    <td>@Localizer["4 1 Kwok"]</td>
+                    <td>@Localizer["Kwok41"]</td>
                     <td class="text-right">@odds.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Kwok41.Format()</td>
                     <td class="text-right">@win.Format()</td>
@@ -232,7 +232,7 @@
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
-                    <td>@Localizer["1 2 3 Chun"]</td>
+                    <td>@Localizer["Chun123"]</td>
                     <td class="text-right">@odds.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Chun123.Format()</td>
                     <td class="text-right">@win.Format()</td>
@@ -249,7 +249,7 @@
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
-                    <td>@Localizer["1 2 4 Chun"]</td>
+                    <td>@Localizer["Chun124"]</td>
                     <td class="text-right">@odds.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Chun124.Format()</td>
                     <td class="text-right">@win.Format()</td>
@@ -266,7 +266,7 @@
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
-                    <td>@Localizer["1 3 4 Chun"]</td>
+                    <td>@Localizer["Chun134"]</td>
                     <td class="text-right">@odds.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Chun134.Format()</td>
                     <td class="text-right">@win.Format()</td>
@@ -283,7 +283,7 @@
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
-                    <td>@Localizer["2 3 4 Chun"]</td>
+                    <td>@Localizer["Chun234"]</td>
                     <td class="text-right">@odds.FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Chun234.Format()</td>
                     <td class="text-right">@win.Format()</td>

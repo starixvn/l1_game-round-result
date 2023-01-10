@@ -126,19 +126,52 @@
   <data name="CommunityCards" xml:space="preserve">
     <value>Kartu komunitas</value>
   </data>
+  <data name="Dealer" xml:space="preserve">
+    <value>Dealer</value>
+  </data>
   <data name="DoesNotQualify" xml:space="preserve">
     <value>Tidak terkualifikasi</value>
   </data>
+  <data name="Flush" xml:space="preserve">
+    <value>Flush</value>
+  </data>
+  <data name="Fold" xml:space="preserve">
+    <value>Fold</value>
+  </data>
+  <data name="FourOfAKind" xml:space="preserve">
+    <value>Four of a kind</value>
+  </data>
+  <data name="FullHouse" xml:space="preserve">
+    <value>Full House</value>
+  </data>
   <data name="HighCard" xml:space="preserve">
-    <value>Kartu Tertinggi</value>
+    <value>Kartu Tinggi</value>
+  </data>
+  <data name="Pair" xml:space="preserve">
+    <value>Pair</value>
   </data>
   <data name="Player" xml:space="preserve">
-    <value>Pemain</value>
+    <value>Player</value>
+  </data>
+  <data name="RoyalFlush" xml:space="preserve">
+    <value>Royal Flush</value>
   </data>
   <data name="Stake" xml:space="preserve">
     <value>Taruhan</value>
   </data>
+  <data name="Straight" xml:space="preserve">
+    <value>Straight</value>
+  </data>
+  <data name="StraightFlush" xml:space="preserve">
+    <value>Straight Flush</value>
+  </data>
+  <data name="ThreeOfAKind" xml:space="preserve">
+    <value>Three of a Kind</value>
+  </data>
   <data name="TwoPairs" xml:space="preserve">
     <value>Dua Pair</value>
+  </data>
+  <data name="UnfinishedGame" xml:space="preserve">
+    <value>Permainan yang belum selesai</value>
   </data>
 </root>

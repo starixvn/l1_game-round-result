@@ -124,7 +124,7 @@
     <value>大小</value>
   </data>
   <data name="BigSmallTurbo" xml:space="preserve">
-    <value>快速大小</value>
+    <value>極速大小</value>
   </data>
   <data name="DragonTiger" xml:space="preserve">
     <value>龍虎</value>
@@ -166,7 +166,7 @@
     <value>單雙</value>
   </data>
   <data name="OddEvenTurbo" xml:space="preserve">
-    <value>快速單雙</value>
+    <value>極速單雙</value>
   </data>
   <data name="SeDie" xml:space="preserve">
     <value>色碟</value>
@@ -205,19 +205,19 @@
     <value>Keno Soccer 2</value>
   </data>
   <data name="KenoPower1" xml:space="preserve">
-    <value>Keno Power</value>
+    <value>Keno 動力</value>
   </data>
   <data name="KenoPower2" xml:space="preserve">
-    <value>Keno Power MD5</value>
+    <value>Keno 動力 2</value>
   </data>
   <data name="Roulette" xml:space="preserve">
     <value>輪盤</value>
   </data>
   <data name="BitcoinMaster" xml:space="preserve">
-    <value>數字貨幣大師</value>
+    <value>比特幣大師</value>
   </data>
   <data name="BlockchainBaccarat" xml:space="preserve">
-    <value>Blockchain Baccarat</value>
+    <value>區塊鏈百家樂</value>
   </data>
   <data name="MegaKeno" xml:space="preserve">
     <value>Mega Keno</value>
@@ -226,16 +226,16 @@
     <value>Mega Keno 2</value>
   </data>
   <data name="UnbalancedBigSmall1" xml:space="preserve">
-    <value>Las Vegas</value>
+    <value>拉斯維加斯</value>
   </data>
   <data name="UnbalancedBigSmall2" xml:space="preserve">
-    <value>Marina Bay</value>
+    <value>濱海灣</value>
   </data>
   <data name="UnbalancedBigSmall3" xml:space="preserve">
-    <value>Macau</value>
+    <value>澳門</value>
   </data>
   <data name="UnbalancedBigSmall4" xml:space="preserve">
-    <value>Monte Carlo</value>
+    <value>蒙特卡洛</value>
   </data>
   <data name="MiniSeDie2" xml:space="preserve">
     <value>迷你色碟 2</value>
@@ -247,10 +247,10 @@
     <value>迷你色碟 4</value>
   </data>
   <data name="FruitSlot" xml:space="preserve">
-    <value>Fruit Slot</value>
+    <value>水果機</value>
   </data>
   <data name="FanTan" xml:space="preserve">
-    <value>Fan Tan</value>
+    <value>番攤</value>
   </data>
   <data name="Win3Cards" xml:space="preserve">
     <value>贏三張</value>

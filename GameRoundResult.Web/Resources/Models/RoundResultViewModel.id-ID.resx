@@ -138,9 +138,6 @@
   <data name="7th" xml:space="preserve">
     <value>Ketujuh</value>
   </data>
-  <data name="Away" xml:space="preserve">
-    <value>Away</value>
-  </data>
   <data name="Banker" xml:space="preserve">
     <value>Banker</value>
   </data>
@@ -175,7 +172,7 @@
     <value>Klub</value>
   </data>
   <data name="Date" xml:space="preserve">
-    <value>Waktu</value>
+    <value>Tanggal</value>
   </data>
   <data name="Diamonds" xml:space="preserve">
     <value>Berlian</value>
@@ -199,25 +196,22 @@
     <value>Api</value>
   </data>
   <data name="Full Time" xml:space="preserve">
-    <value>Full Time</value>
+    <value>Waktu Penuh</value>
   </data>
   <data name="Gold" xml:space="preserve">
     <value>Emas</value>
   </data>
   <data name="First Half" xml:space="preserve">
-    <value>First Half</value>
+    <value>Paruh Pertama</value>
   </data>
   <data name="Hearts" xml:space="preserve">
     <value>Hati</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Home</value>
   </data>
   <data name="Odd" xml:space="preserve">
     <value>Ganjil</value>
   </data>
   <data name="Over" xml:space="preserve">
-    <value>Over</value>
+    <value>Besar</value>
   </data>
   <data name="Player" xml:space="preserve">
     <value>Player</value>
@@ -262,10 +256,10 @@
     <value>Spesial</value>
   </data>
   <data name="Team Blue" xml:space="preserve">
-    <value>Team Blue</value>
+    <value>Tim Biru</value>
   </data>
   <data name="Team Red" xml:space="preserve">
-    <value>Team Red</value>
+    <value>Tim Merah</value>
   </data>
   <data name="Tie" xml:space="preserve">
     <value>Seri</value>
@@ -286,7 +280,7 @@
     <value>Poin</value>
   </data>
   <data name="Under" xml:space="preserve">
-    <value>Under</value>
+    <value>Kecil</value>
   </data>
   <data name="Water" xml:space="preserve">
     <value>Air</value>
@@ -307,28 +301,25 @@
     <value>Total</value>
   </data>
   <data name="Sum" xml:space="preserve">
-    <value>Sum</value>
+    <value>Jumlah</value>
   </data>
   <data name="BettingPrice" xml:space="preserve">
     <value>Nilai Taruhan</value>
   </data>
   <data name="ExtraSpin" xml:space="preserve">
-    <value>Extra Spin</value>
+    <value>Putaran Ekstra</value>
   </data>
   <data name="Chun" xml:space="preserve">
     <value>Chun</value>
   </data>
   <data name="SpinResult" xml:space="preserve">
-    <value>Spin Result</value>
+    <value>Hasil Putaran</value>
   </data>
   <data name="Fan" xml:space="preserve">
     <value>Fan</value>
   </data>
   <data name="Kwok" xml:space="preserve">
     <value>Kwok</value>
-  </data>
-  <data name="WinningOption" xml:space="preserve">
-    <value>Winning Option</value>
   </data>
   <data name="Chun123" xml:space="preserve">
     <value>1 2 3 Chun</value>

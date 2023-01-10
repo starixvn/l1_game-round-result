@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ANTE" xml:space="preserve">
+    <value>Ante</value>
+  </data>
   <data name="BetAmount" xml:space="preserve">
     <value>Tiền Cược</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="Black" xml:space="preserve">
     <value>Đen</value>
+  </data>
+  <data name="CALL" xml:space="preserve">
+    <value>Call</value>
   </data>
   <data name="Cards" xml:space="preserve">
     <value>Bài</value>
@@ -156,6 +162,9 @@
   <data name="Odds" xml:space="preserve">
     <value>Tỷ lệ cược</value>
   </data>
+  <data name="Points" xml:space="preserve">
+    <value>Tổng</value>
+  </data>
   <data name="Red" xml:space="preserve">
     <value>Đỏ</value>
   </data>
@@ -164,6 +173,9 @@
   </data>
   <data name="Result" xml:space="preserve">
     <value>Kết Quả</value>
+  </data>
+  <data name="RIVER" xml:space="preserve">
+    <value>River</value>
   </data>
   <data name="RoundId" xml:space="preserve">
     <value>Phiên</value>
@@ -185,6 +197,9 @@
   </data>
   <data name="TotalWin" xml:space="preserve">
     <value>Tổng Thắng</value>
+  </data>
+  <data name="TURN" xml:space="preserve">
+    <value>Turn</value>
   </data>
   <data name="White" xml:space="preserve">
     <value>Trắng</value>

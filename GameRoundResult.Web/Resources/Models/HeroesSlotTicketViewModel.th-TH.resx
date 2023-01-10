@@ -121,13 +121,13 @@
     <value>แจ็คพอต</value>
   </data>
   <data name="NoSymbol" xml:space="preserve">
-    <value>จำนวน</value>
+    <value>จำนวนสัญลักษณ์</value>
   </data>
   <data name="Odds" xml:space="preserve">
-    <value>ราคาต่อรอง</value>
+    <value>อัตราต่อรอง</value>
   </data>
   <data name="Payline" xml:space="preserve">
-    <value>เส้น</value>
+    <value>รูปแบบการจ่าย</value>
   </data>
   <data name="Stake" xml:space="preserve">
     <value>เดิมพัน</value>

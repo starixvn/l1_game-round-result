@@ -118,43 +118,43 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Banker" xml:space="preserve">
-    <value>Nhà cái</value>
+    <value>Nhà Cái</value>
   </data>
   <data name="BankerEven" xml:space="preserve">
-    <value>Nhà Cái chẵn</value>
+    <value>Nhà Cái Chẵn</value>
   </data>
   <data name="BankerOdd" xml:space="preserve">
-    <value>Nhà Cái lẻ</value>
+    <value>Nhà Cái Lẻ</value>
   </data>
   <data name="BankerRed1" xml:space="preserve">
-    <value>Nhà Cái 1 đỏ</value>
+    <value>Nhà Cái 1 Đỏ</value>
   </data>
   <data name="BankerRed3" xml:space="preserve">
-    <value>Nhà Cái 3 đỏ</value>
+    <value>Nhà Cái 3 Đỏ</value>
   </data>
   <data name="BankerRed4" xml:space="preserve">
-    <value>Nhà Cái 4 đỏ</value>
+    <value>Nhà Cái 4 Đỏ</value>
   </data>
   <data name="BankerWhite4" xml:space="preserve">
-    <value>Nhà Cái 4 trắng</value>
+    <value>Nhà Cái 4 Trắng</value>
   </data>
   <data name="Player" xml:space="preserve">
-    <value>Nhà con</value>
+    <value>Nhà Con</value>
   </data>
   <data name="PlayerEven" xml:space="preserve">
     <value>Nhà Con Chẵn</value>
   </data>
   <data name="PlayerOdd" xml:space="preserve">
-    <value>Nhà Con lẻ</value>
+    <value>Nhà Con Lẻ</value>
   </data>
   <data name="PlayerRed1" xml:space="preserve">
-    <value>Nhà Con 1 đỏ</value>
+    <value>Nhà Con 1 Đỏ</value>
   </data>
   <data name="PlayerRed3" xml:space="preserve">
-    <value>Nhà Con 3 đỏ</value>
+    <value>Nhà Con 3 Đỏ</value>
   </data>
   <data name="PlayerRed4" xml:space="preserve">
-    <value>Nhà Con 4 đỏ</value>
+    <value>Nhà Con 4 Đỏ</value>
   </data>
   <data name="PlayerWhite4" xml:space="preserve">
     <value>Nhà Con 4 Trắng</value>

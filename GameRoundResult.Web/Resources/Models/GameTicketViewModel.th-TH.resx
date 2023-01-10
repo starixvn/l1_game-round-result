@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ANTE" xml:space="preserve">
+    <value>ANTE</value>
+  </data>
   <data name="BetAmount" xml:space="preserve">
     <value>จำนวนเงินเดิมพัน</value>
   </data>
@@ -135,11 +138,20 @@
   <data name="Black" xml:space="preserve">
     <value>ดำ</value>
   </data>
+  <data name="CALL" xml:space="preserve">
+    <value>เรียก</value>
+  </data>
+  <data name="Cards" xml:space="preserve">
+    <value>ไพ่</value>
+  </data>
+  <data name="Combination" xml:space="preserve">
+    <value>การรวมกัน</value>
+  </data>
   <data name="Even" xml:space="preserve">
     <value>คู่</value>
   </data>
   <data name="GameNotSupported" xml:space="preserve">
-    <value>Sorry! The function is currently not supported for this game.</value>
+    <value>ขออภัย! ขณะนี้ฟังก์ชันนี้ไม่รองรับสำหรับเกมนี้</value>
   </data>
   <data name="NoDataAvailable" xml:space="preserve">
     <value>ไม่มีข้อมูลที่สามารถใช้ได้</value>
@@ -150,6 +162,9 @@
   <data name="Odds" xml:space="preserve">
     <value>อัตราต่อรอง</value>
   </data>
+  <data name="Points" xml:space="preserve">
+    <value>คะแนน</value>
+  </data>
   <data name="Red" xml:space="preserve">
     <value>แดง</value>
   </data>
@@ -158,6 +173,9 @@
   </data>
   <data name="Result" xml:space="preserve">
     <value>ผลลัพธ์</value>
+  </data>
+  <data name="RIVER" xml:space="preserve">
+    <value>ริเวอร์</value>
   </data>
   <data name="RoundId" xml:space="preserve">
     <value>รอบ</value>
@@ -180,6 +198,9 @@
   <data name="TotalWin" xml:space="preserve">
     <value>ยอดชนะทั้งหมด</value>
   </data>
+  <data name="TURN" xml:space="preserve">
+    <value>เทิร์น</value>
+  </data>
   <data name="White" xml:space="preserve">
     <value>ขาว</value>
   </data>
@@ -187,7 +208,7 @@
     <value>ชนะ</value>
   </data>
   <data name="WinAmount" xml:space="preserve">
-    <value>Win Amount</value>
+    <value>จำนวนยอดชนะ</value>
   </data>
   <data name="WinLoss" xml:space="preserve">
     <value>ชนะ แพ้</value>

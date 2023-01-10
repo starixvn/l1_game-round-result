@@ -130,7 +130,7 @@
     <value>ผู้เล่น</value>
   </data>
   <data name="Stake" xml:space="preserve">
-    <value>เงินเดิมพัน</value>
+    <value>เดิมพัน</value>
   </data>
   <data name="Unfinished Game" xml:space="preserve">
     <value>เกมที่ยังไม่เสร็จสิ้น</value>

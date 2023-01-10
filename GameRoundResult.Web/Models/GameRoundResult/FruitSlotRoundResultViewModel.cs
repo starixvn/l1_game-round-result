@@ -164,9 +164,8 @@ namespace GameRoundResult.Web.Models
 
         public TagBuilder GetBigSmallImage()
         {
-            var culture = CultureInfo.CurrentUICulture.Name == "vi-VN" ? ".vi-VN" : string.Empty;
             var img = new TagBuilder("img");
-            img.Attributes.Add("src", string.Format(folderImage, (SettlementResult[Big] ? Big : Small) + culture));
+            img.Attributes.Add("src", string.Format(folderImage, (SettlementResult[Big] ? Big : Small) + "." + CultureInfo.CurrentUICulture.Name));
             return img;
         }
     }

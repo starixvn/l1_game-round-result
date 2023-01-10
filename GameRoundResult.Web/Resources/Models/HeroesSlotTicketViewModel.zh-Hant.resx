@@ -121,13 +121,13 @@
     <value>頭獎</value>
   </data>
   <data name="NoSymbol" xml:space="preserve">
-    <value>數量</value>
+    <value>符號數</value>
   </data>
   <data name="Odds" xml:space="preserve">
     <value>賠率</value>
   </data>
   <data name="Payline" xml:space="preserve">
-    <value>線</value>
+    <value>支付線</value>
   </data>
   <data name="Stake" xml:space="preserve">
     <value>賭注</value>

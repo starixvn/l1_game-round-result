@@ -156,9 +156,6 @@
   <data name="RoyalFlush" xml:space="preserve">
     <value>Sảnh Rồng</value>
   </data>
-  <data name="Running" xml:space="preserve">
-    <value>Đang chờ</value>
-  </data>
   <data name="Stake" xml:space="preserve">
     <value>Tiền Cược</value>
   </data>

@@ -121,13 +121,13 @@
     <value>Triple apa saja</value>
   </data>
   <data name="Crab" xml:space="preserve">
-    <value>KEPITING</value>
+    <value>Kepiting</value>
   </data>
   <data name="Fish" xml:space="preserve">
-    <value>IKAN</value>
+    <value>Ikan</value>
   </data>
   <data name="Gourd" xml:space="preserve">
-    <value>KUNDUR</value>
+    <value>Kundur</value>
   </data>
   <data name="Mountain" xml:space="preserve">
     <value>Gunung</value>
@@ -136,12 +136,12 @@
     <value>Laut</value>
   </data>
   <data name="Prawn" xml:space="preserve">
-    <value>UDANG</value>
+    <value>Udang</value>
   </data>
   <data name="Rooster" xml:space="preserve">
-    <value>AYAM JANTAN</value>
+    <value>Ayam Jantan</value>
   </data>
   <data name="Stag" xml:space="preserve">
-    <value>RUSA JANTAN</value>
+    <value>Rusa Jantan</value>
   </data>
 </root>

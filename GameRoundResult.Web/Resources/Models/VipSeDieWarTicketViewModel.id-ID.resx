@@ -160,9 +160,9 @@
     <value>Player - 4 Putih</value>
   </data>
   <data name="TotalEven" xml:space="preserve">
-    <value>Jumlah Genap</value>
+    <value>Total Genap</value>
   </data>
   <data name="TotalOdd" xml:space="preserve">
-    <value>Jumlah Ganjil</value>
+    <value>Total Ganjil</value>
   </data>
 </root>

@@ -121,10 +121,10 @@
     <value>莊家</value>
   </data>
   <data name="BankerEven" xml:space="preserve">
-    <value>莊家 - 雙數</value>
+    <value>莊家 - 雙</value>
   </data>
   <data name="BankerOdd" xml:space="preserve">
-    <value>莊家 - 單數</value>
+    <value>莊家 - 單</value>
   </data>
   <data name="BankerRed1" xml:space="preserve">
     <value>莊家 - 1 紅</value>
@@ -139,25 +139,25 @@
     <value>莊家 - 4 白</value>
   </data>
   <data name="Player" xml:space="preserve">
-    <value>玩家</value>
+    <value>閒家</value>
   </data>
   <data name="PlayerEven" xml:space="preserve">
-    <value>玩家 - 雙數</value>
+    <value>閒家 - 雙</value>
   </data>
   <data name="PlayerOdd" xml:space="preserve">
-    <value>玩家 - 單數</value>
+    <value>閒家 - 單</value>
   </data>
   <data name="PlayerRed1" xml:space="preserve">
-    <value>玩家 - 1 紅</value>
+    <value>閒家 - 1 紅</value>
   </data>
   <data name="PlayerRed3" xml:space="preserve">
-    <value>玩家 - 3 紅</value>
+    <value>閒家 - 3 紅</value>
   </data>
   <data name="PlayerRed4" xml:space="preserve">
-    <value>玩家 - 4 紅</value>
+    <value>閒家 - 4 紅</value>
   </data>
   <data name="PlayerWhite4" xml:space="preserve">
-    <value>玩家 - 4 白</value>
+    <value>閒家 - 4 白</value>
   </data>
   <data name="TotalEven" xml:space="preserve">
     <value>總雙數</value>

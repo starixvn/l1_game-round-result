@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ANTE" xml:space="preserve">
+    <value>底注</value>
+  </data>
   <data name="BetAmount" xml:space="preserve">
     <value>投注金額</value>
   </data>
@@ -135,11 +138,20 @@
   <data name="Black" xml:space="preserve">
     <value>黑</value>
   </data>
+  <data name="CALL" xml:space="preserve">
+    <value>跟注</value>
+  </data>
+  <data name="Cards" xml:space="preserve">
+    <value>牌</value>
+  </data>
+  <data name="Combination" xml:space="preserve">
+    <value>組合</value>
+  </data>
   <data name="Even" xml:space="preserve">
     <value>雙</value>
   </data>
   <data name="GameNotSupported" xml:space="preserve">
-    <value>Sorry! The function is currently not supported for this game.</value>
+    <value>抱歉！此遊戲目前不支持該功能。</value>
   </data>
   <data name="NoDataAvailable" xml:space="preserve">
     <value>沒有可用數據</value>
@@ -150,6 +162,9 @@
   <data name="Odds" xml:space="preserve">
     <value>賠率</value>
   </data>
+  <data name="Points" xml:space="preserve">
+    <value>積分</value>
+  </data>
   <data name="Red" xml:space="preserve">
     <value>紅</value>
   </data>
@@ -158,6 +173,9 @@
   </data>
   <data name="Result" xml:space="preserve">
     <value>結果</value>
+  </data>
+  <data name="RIVER" xml:space="preserve">
+    <value>河牌</value>
   </data>
   <data name="RoundId" xml:space="preserve">
     <value>回合</value>
@@ -180,6 +198,9 @@
   <data name="TotalWin" xml:space="preserve">
     <value>總贏</value>
   </data>
+  <data name="TURN" xml:space="preserve">
+    <value>轉牌</value>
+  </data>
   <data name="White" xml:space="preserve">
     <value>白</value>
   </data>
@@ -187,7 +208,7 @@
     <value>贏</value>
   </data>
   <data name="WinAmount" xml:space="preserve">
-    <value>Win Amount</value>
+    <value>獲勝金額</value>
   </data>
   <data name="WinLoss" xml:space="preserve">
     <value>贏輸</value>

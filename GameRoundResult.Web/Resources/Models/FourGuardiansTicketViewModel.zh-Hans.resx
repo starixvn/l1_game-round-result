@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Jackpot" xml:space="preserve">
-    <value>Jackpot</value>
+    <value>头奖</value>
   </data>
   <data name="NoSymbol" xml:space="preserve">
-    <value>数量</value>
+    <value>符号数</value>
   </data>
   <data name="Odds" xml:space="preserve">
     <value>赔率</value>
   </data>
   <data name="Payline" xml:space="preserve">
-    <value>线</value>
+    <value>支付线</value>
   </data>
   <data name="Stake" xml:space="preserve">
     <value>赌注</value>

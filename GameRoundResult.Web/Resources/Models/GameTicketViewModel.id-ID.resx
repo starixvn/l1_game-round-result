@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ANTE" xml:space="preserve">
+    <value>Ante</value>
+  </data>
   <data name="BetAmount" xml:space="preserve">
     <value>Jumlah Taruhan</value>
   </data>
@@ -135,11 +138,20 @@
   <data name="Black" xml:space="preserve">
     <value>Hitam</value>
   </data>
+  <data name="CALL" xml:space="preserve">
+    <value>Call</value>
+  </data>
+  <data name="Cards" xml:space="preserve">
+    <value>Kartu</value>
+  </data>
+  <data name="Combination" xml:space="preserve">
+    <value>Kombinasi</value>
+  </data>
   <data name="Even" xml:space="preserve">
     <value>Genap</value>
   </data>
   <data name="GameNotSupported" xml:space="preserve">
-    <value>Sorry! The function is currently not supported for this game.</value>
+    <value>Maaf! Fungsi saat ini tidak didukung untuk game ini.</value>
   </data>
   <data name="NoDataAvailable" xml:space="preserve">
     <value>Tidak ada data yang tersedia</value>
@@ -150,6 +162,9 @@
   <data name="Odds" xml:space="preserve">
     <value>Odds</value>
   </data>
+  <data name="Points" xml:space="preserve">
+    <value>Poin</value>
+  </data>
   <data name="Red" xml:space="preserve">
     <value>Merah</value>
   </data>
@@ -158,6 +173,9 @@
   </data>
   <data name="Result" xml:space="preserve">
     <value>Hasil</value>
+  </data>
+  <data name="RIVER" xml:space="preserve">
+    <value>River</value>
   </data>
   <data name="RoundId" xml:space="preserve">
     <value>Babak</value>
@@ -180,6 +198,9 @@
   <data name="TotalWin" xml:space="preserve">
     <value>Total Menang</value>
   </data>
+  <data name="TURN" xml:space="preserve">
+    <value>Turn</value>
+  </data>
   <data name="White" xml:space="preserve">
     <value>Putih</value>
   </data>
@@ -187,7 +208,7 @@
     <value>Menang</value>
   </data>
   <data name="WinAmount" xml:space="preserve">
-    <value>Win Amount</value>
+    <value>Jumlah Kemenangan</value>
   </data>
   <data name="WinLoss" xml:space="preserve">
     <value>Menang Kalah</value>

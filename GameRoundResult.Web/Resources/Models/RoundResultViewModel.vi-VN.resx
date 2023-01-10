@@ -138,32 +138,29 @@
   <data name="7th" xml:space="preserve">
     <value>Giải Bảy</value>
   </data>
-  <data name="Away" xml:space="preserve">
-    <value>Đội Khách</value>
-  </data>
   <data name="Banker" xml:space="preserve">
-    <value>Nhà cái</value>
+    <value>Nhà Cái</value>
   </data>
   <data name="BankerEven" xml:space="preserve">
-    <value>Nhà Cái chẵn</value>
+    <value>Nhà Cái Chẵn</value>
   </data>
   <data name="BankerOdd" xml:space="preserve">
-    <value>Nhà Cái lẻ</value>
+    <value>Nhà Cái Lẻ</value>
   </data>
   <data name="BankerPair" xml:space="preserve">
-    <value>Cái đôi</value>
+    <value>Cái Đôi</value>
   </data>
   <data name="BankerRed1" xml:space="preserve">
-    <value>Nhà Cái 1 đỏ</value>
+    <value>Nhà Cái 1 Đỏ</value>
   </data>
   <data name="BankerRed3" xml:space="preserve">
-    <value>Nhà Cái 3 đỏ</value>
+    <value>Nhà Cái 3 Đỏ</value>
   </data>
   <data name="BankerRed4" xml:space="preserve">
-    <value>Nhà Cái 4 đỏ</value>
+    <value>Nhà Cái 4 Đỏ</value>
   </data>
   <data name="BankerWhite4" xml:space="preserve">
-    <value>Nhà Cái 4 trắng</value>
+    <value>Nhà Cái 4 Trắng</value>
   </data>
   <data name="Big" xml:space="preserve">
     <value>Tài</value>
@@ -176,9 +173,6 @@
   </data>
   <data name="Date" xml:space="preserve">
     <value>Thời Gian</value>
-  </data>
-  <data name="Detail" xml:space="preserve">
-    <value>Xem chi tiết</value>
   </data>
   <data name="Diamonds" xml:space="preserve">
     <value>Rô</value>
@@ -213,9 +207,6 @@
   <data name="Hearts" xml:space="preserve">
     <value>Cơ</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Đội Nhà</value>
-  </data>
   <data name="Odd" xml:space="preserve">
     <value>Lẻ</value>
   </data>
@@ -223,25 +214,25 @@
     <value>Tài</value>
   </data>
   <data name="Player" xml:space="preserve">
-    <value>Nhà con</value>
+    <value>Nhà Con</value>
   </data>
   <data name="PlayerEven" xml:space="preserve">
     <value>Nhà Con Chẵn</value>
   </data>
   <data name="PlayerOdd" xml:space="preserve">
-    <value>Nhà Con lẻ</value>
+    <value>Nhà Con Lẻ</value>
   </data>
   <data name="PlayerPair" xml:space="preserve">
-    <value>Con đôi</value>
+    <value>Con Đôi</value>
   </data>
   <data name="PlayerRed1" xml:space="preserve">
-    <value>Nhà Con 1 đỏ</value>
+    <value>Nhà Con 1 Đỏ</value>
   </data>
   <data name="PlayerRed3" xml:space="preserve">
-    <value>Nhà Con 3 đỏ</value>
+    <value>Nhà Con 3 Đỏ</value>
   </data>
   <data name="PlayerRed4" xml:space="preserve">
-    <value>Nhà Con 4 đỏ</value>
+    <value>Nhà Con 4 Đỏ</value>
   </data>
   <data name="PlayerWhite4" xml:space="preserve">
     <value>Nhà Con 4 Trắng</value>
@@ -263,9 +254,6 @@
   </data>
   <data name="Special" xml:space="preserve">
     <value>Giải Đặc Biệt</value>
-  </data>
-  <data name="Orange" xml:space="preserve">
-    <value>Cam</value>
   </data>
   <data name="Team Blue" xml:space="preserve">
     <value>Đội Xanh</value>
@@ -304,28 +292,13 @@
     <value>Mộc</value>
   </data>
   <data name="{0} red" xml:space="preserve">
-    <value>{0} đỏ</value>
+    <value>{0} Đỏ</value>
   </data>
   <data name="{0} white" xml:space="preserve">
-    <value>{0} trắng</value>
+    <value>{0} Trắng</value>
   </data>
   <data name="Total" xml:space="preserve">
     <value>Tổng</value>
-  </data>
-  <data name="Blue" xml:space="preserve">
-    <value>Lam</value>
-  </data>
-  <data name="Green" xml:space="preserve">
-    <value>Lục</value>
-  </data>
-  <data name="Indigo" xml:space="preserve">
-    <value>Chàm</value>
-  </data>
-  <data name="Violet" xml:space="preserve">
-    <value>Tím</value>
-  </data>
-  <data name="Yellow" xml:space="preserve">
-    <value>Vàng</value>
   </data>
   <data name="Sum" xml:space="preserve">
     <value>Tổng</value>
@@ -333,26 +306,20 @@
   <data name="BettingPrice" xml:space="preserve">
     <value>Giá Đặt Lệnh</value>
   </data>
-  <data name="WinLoss" xml:space="preserve">
-    <value>Win / Loss</value>
-  </data>
   <data name="Chun" xml:space="preserve">
     <value>Chun</value>
-    </data>
+  </data>
   <data name="ExtraSpin" xml:space="preserve">
     <value>Vòng Quay Thêm</value>
   </data>
   <data name="Fan" xml:space="preserve">
     <value>Fan</value>
-    </data>
+  </data>
   <data name="SpinResult" xml:space="preserve">
     <value>Kết Quả Quay</value>
   </data>
   <data name="Kwok" xml:space="preserve">
     <value>Kwok</value>
-  </data>
-  <data name="WinningOption" xml:space="preserve">
-    <value>Winning Option</value>
   </data>
   <data name="Chun123" xml:space="preserve">
     <value>1 2 3 Chun</value>
