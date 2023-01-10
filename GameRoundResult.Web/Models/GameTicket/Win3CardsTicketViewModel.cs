@@ -11,12 +11,16 @@ namespace GameRoundResult.Web.Models
 
         public string GetBetLogWin(Win3CardsBetLogViewModel bet)
         {
+            if (RoundResult.SettlementResult.Tie)
+            {
+                return bet.Amount.Format();
+            }
             return RoundResult.IsWinningChoice(bet.ChoiceDisplay) ? (Odds[bet.Choice] * bet.Amount).Format() : "0";
         }
 
         public string GetRowBetClass(string choice)
         {
-            return RoundResult.IsWinningChoice(choice) ? "bold" : string.Empty;
+            return RoundResult.IsWinningChoice(choice) ? "bold text-blue" : string.Empty;
         }
     }
 

@@ -18,6 +18,7 @@ namespace GameRoundResult.Web.UnitTests.Models.Win3Cards
             // arrange
             var viewModel = Substitute.ForPartsOf<Win3CardsTicketViewModel>();
             var roundResult = Substitute.For<Win3CardsRoundResultViewModel>();
+            roundResult.SettlementResult = new Win3CardsSettlementResultViewModel();
             roundResult.Configure().IsWinningChoice("Phoenix").Returns(true);
             viewModel.RoundResult = roundResult;
             viewModel.Odds = new Dictionary<string, decimal>
@@ -42,6 +43,7 @@ namespace GameRoundResult.Web.UnitTests.Models.Win3Cards
             // arrange
             var viewModel = Substitute.ForPartsOf<Win3CardsTicketViewModel>();
             var roundResult = Substitute.For<Win3CardsRoundResultViewModel>();
+            roundResult.SettlementResult = new Win3CardsSettlementResultViewModel();
             roundResult.Configure().IsWinningChoice("Phoenix").Returns(false);
             viewModel.RoundResult = roundResult;
             viewModel.Odds = new Dictionary<string, decimal>
@@ -58,6 +60,30 @@ namespace GameRoundResult.Web.UnitTests.Models.Win3Cards
 
             // assert
             Assert.Equal("0", actual);
+        }
+
+        [Fact]
+        public void GetBetLogWin_IsTie_ReturnExpected()
+        {
+            // arrange
+            var viewModel = Substitute.ForPartsOf<Win3CardsTicketViewModel>();
+            var roundResult = Substitute.For<Win3CardsRoundResultViewModel>();
+            roundResult.SettlementResult = new Win3CardsSettlementResultViewModel { Tie = true };
+            viewModel.RoundResult = roundResult;
+            viewModel.Odds = new Dictionary<string, decimal>
+            {
+                ["phoenix"] = 2
+            };
+            var bet = Substitute.ForPartsOf<Win3CardsBetLogViewModel>();
+            bet.Choice = "phoenix";
+            bet.Amount = 10;
+            bet.Configure().ChoiceDisplay.Returns("Phoenix");
+
+            // act
+            var actual = viewModel.GetBetLogWin(bet);
+
+            // assert
+            Assert.Equal("10", actual);
         }
 
         #endregion GetBetLogWin
@@ -93,7 +119,7 @@ namespace GameRoundResult.Web.UnitTests.Models.Win3Cards
             var actual = viewModel.GetRowBetClass("Phoenix");
 
             // assert
-            Assert.Equal("bold", actual);
+            Assert.Equal("bold text-blue", actual);
         }
 
         #endregion GetRowBetClass

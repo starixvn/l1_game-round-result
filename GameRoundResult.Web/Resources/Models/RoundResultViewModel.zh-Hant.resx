@@ -314,13 +314,13 @@
   </data>
   <data name="Chun" xml:space="preserve">
     <value>Chun</value>
-    </data>
+  </data>
   <data name="ExtraSpin" xml:space="preserve">
     <value>Extra Spin</value>
   </data>
   <data name="Fan" xml:space="preserve">
     <value>Fan</value>
-    </data>
+  </data>
   <data name="SpinResult" xml:space="preserve">
     <value>Spin Result</value>
   </data>
@@ -365,5 +365,35 @@
   </data>
   <data name="Kwok41" xml:space="preserve">
     <value>4 1 Kwok</value>
+  </data>
+  <data name="DragonWin3Cards" xml:space="preserve">
+    <value>龍</value>
+  </data>
+  <data name="Flush" xml:space="preserve">
+    <value>同花</value>
+  </data>
+  <data name="HighCard" xml:space="preserve">
+    <value>高牌</value>
+  </data>
+  <data name="Killer235" xml:space="preserve">
+    <value>235</value>
+  </data>
+  <data name="Pair" xml:space="preserve">
+    <value>一對</value>
+  </data>
+  <data name="Pair8Plus" xml:space="preserve">
+    <value>配對 8 Plus</value>
+  </data>
+  <data name="Phoenix" xml:space="preserve">
+    <value>鳳</value>
+  </data>
+  <data name="Straight" xml:space="preserve">
+    <value>順子</value>
+  </data>
+  <data name="StraightFlush" xml:space="preserve">
+    <value>同花順</value>
+  </data>
+  <data name="ThreeOfAKind" xml:space="preserve">
+    <value>三條</value>
   </data>
 </root>

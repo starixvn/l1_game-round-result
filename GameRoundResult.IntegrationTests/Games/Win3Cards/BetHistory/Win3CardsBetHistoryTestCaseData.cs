@@ -8,8 +8,8 @@ namespace GameRoundResult.IntegrationTests
         public override List<BetHistoryTestCaseParam> GetTestCaseParams()
             => new List<BetHistoryTestCaseParam>
             {
-                new BetHistoryTestCaseParam(GameType.Win3Cards, 123, 4, Language.EN, "TD_4_BetMultiplesOptions"),
-                new BetHistoryTestCaseParam(GameType.Win3Cards, 123, 4, Language.VN, "TD_4_BetMultiplesOptions"),
+                new BetHistoryTestCaseParam(GameType.Win3Cards, 123, 3, Language.EN, "TD_4_RoundTieBetMultiplesOptions"),
+                new BetHistoryTestCaseParam(GameType.Win3Cards, 123, 3, Language.VN, "TD_4_RoundTieBetMultiplesOptions"),
                 new BetHistoryTestCaseParam(GameType.Win3Cards, 123, 1, Language.EN, "TD_5_BetDragon"),
                 new BetHistoryTestCaseParam(GameType.Win3Cards, 123, 1, Language.VN, "TD_5_BetDragon"),
                 new BetHistoryTestCaseParam(GameType.Win3Cards, 123, 1, Language.EN, "TD_6_BetPhoenix"),

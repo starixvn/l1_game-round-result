@@ -148,7 +148,7 @@
     <value>Ganjil</value>
   </data>
   <data name="Odds" xml:space="preserve">
-    <value>Ganjil</value>
+    <value>Odds</value>
   </data>
   <data name="Red" xml:space="preserve">
     <value>Merah</value>
@@ -164,6 +164,9 @@
   </data>
   <data name="Small" xml:space="preserve">
     <value>Kecil</value>
+  </data>
+  <data name="Stake" xml:space="preserve">
+    <value>Taruhan</value>
   </data>
   <data name="Tie" xml:space="preserve">
     <value>Seri</value>

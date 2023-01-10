@@ -165,6 +165,9 @@
   <data name="Small" xml:space="preserve">
     <value>小</value>
   </data>
+  <data name="Stake" xml:space="preserve">
+    <value>赌注</value>
+  </data>
   <data name="Tie" xml:space="preserve">
     <value>平局</value>
   </data>

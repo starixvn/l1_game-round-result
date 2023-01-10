@@ -32,6 +32,8 @@ namespace GameRoundResult.Core.Database.Entities
         public bool StraightFlush { get; set; }
 
         public bool ThreeOfAKind { get; set; }
+
+        public bool Tie { get; set; }
     }
 
     public class Win3CardsHand

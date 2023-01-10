@@ -165,6 +165,9 @@
   <data name="Small" xml:space="preserve">
     <value>เล็ก</value>
   </data>
+  <data name="Stake" xml:space="preserve">
+    <value>เดิมพัน</value>
+  </data>
   <data name="Tie" xml:space="preserve">
     <value>เสมอ</value>
   </data>

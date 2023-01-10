@@ -366,4 +366,34 @@
   <data name="Kwok41" xml:space="preserve">
     <value>4 1 Kwok</value>
   </data>
+  <data name="DragonWin3Cards" xml:space="preserve">
+    <value>มังกร</value>
+  </data>
+  <data name="Flush" xml:space="preserve">
+    <value>ฟลัช</value>
+  </data>
+  <data name="HighCard" xml:space="preserve">
+    <value>ไพ่่สุง</value>
+  </data>
+  <data name="Killer235" xml:space="preserve">
+    <value>235</value>
+  </data>
+  <data name="Pair" xml:space="preserve">
+    <value>คู่</value>
+  </data>
+  <data name="Pair8Plus" xml:space="preserve">
+    <value>คู่ 8 พลัส</value>
+  </data>
+  <data name="Phoenix" xml:space="preserve">
+    <value>ฟีนิกซ์</value>
+  </data>
+  <data name="Straight" xml:space="preserve">
+    <value>สเตรท</value>
+  </data>
+  <data name="StraightFlush" xml:space="preserve">
+    <value>สเตรทฟลัช</value>
+  </data>
+  <data name="ThreeOfAKind" xml:space="preserve">
+    <value>ไพ่ตอง</value>
+  </data>
 </root>

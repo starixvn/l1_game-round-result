@@ -102,7 +102,7 @@ namespace GameRoundResult.Web.Controllers
                 {
                     var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}^^{model.Auth.OperatorSecret}^^{model.GameTypeId}^^{model.GameRoundId}^^{model.PlayerId}^^{model.FreeBet}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
-
+                    model.Language = StandardizeLanguage(model.Language);
                     var redirectUrl = Url.Action("Index", "BetHistory", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
 
                     log.Result = new AccessUrlResponse { RedirectUrl = redirectUrl };
@@ -118,6 +118,19 @@ namespace GameRoundResult.Web.Controllers
             await logService.LogTicketDetailRequestAsync(log);
 
             return BadRequest();
+        }
+
+        private string StandardizeLanguage(string language)
+        {
+            if (language == "zh-CN")
+            {
+                return "zh-Hans";
+            }
+            if (language == "zh-TW")
+            {
+                return "zh-Hant";
+            }
+            return language;
         }
 
         private static RequestLog ConvertToLog(BetHistoryAccessUrlRequestModel model)

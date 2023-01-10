@@ -148,6 +148,8 @@ namespace GameRoundResult.Web.Models
 
         public bool ThreeOfAKind { get; set; }
 
+        public bool Tie { get; set; }
+
         public bool DragonWin3Cards => Dragon;
     }
 
