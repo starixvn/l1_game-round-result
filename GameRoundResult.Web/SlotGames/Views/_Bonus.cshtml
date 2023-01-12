@@ -12,7 +12,7 @@
 
     <tr>
         <td></td>
-        <td><img class="symbol" src="@gameConfigurationAccessor.Value.BaseUrl/@Model.ConfigName/@(SlotGameConstant.BonusSymbol).png" asp-append-version="true" /></td>
+        <td><img class="symbol" src="@gameConfigurationAccessor.Value.BaseUrl/@Model.ConfigName/@(Model.SymbolImageName(SlotGameConstant.BonusSymbol.ToString())).png" asp-append-version="true" /></td>
         <td>@bonus.Count</td>
         <td>@bonus.Odds @Localizer["Bonus"]</td>
         <td>-</td>

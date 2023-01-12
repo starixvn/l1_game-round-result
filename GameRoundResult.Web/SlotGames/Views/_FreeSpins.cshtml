@@ -11,7 +11,7 @@
     var freeSpins = Model.RoundResult.SettlementResult.FreeSpins;
     <tr>
         <td></td>
-        <td><img class="symbol" src="@gameConfigurationAccessor.Value.BaseUrl/@Model.ConfigName/@(SlotGameConstant.FreeSpinSymbol).png" asp-append-version="true" /></td>
+        <td><img class="symbol" src="@gameConfigurationAccessor.Value.BaseUrl/@Model.ConfigName/@(Model.SymbolImageName(SlotGameConstant.FreeSpinSymbol.ToString())).png" asp-append-version="true" /></td>
         <td>@freeSpins.Count</td>
         <td>@freeSpins.Odds @Localizer["Free spins"]</td>
         <td>-</td>

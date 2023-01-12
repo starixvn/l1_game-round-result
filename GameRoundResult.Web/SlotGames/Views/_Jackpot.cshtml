@@ -11,7 +11,7 @@
     var jackpot = roundResult.SettlementResult.Jackpot;
 
     <tr>
-        <td><img class="payline" src="@gameConfigurationAccessor.Value.BaseUrl/@Model.ConfigName/dong@(jackpot.WinningLine + 1).png" asp-append-version="true" /></td>
+        <td><img class="payline" src="@gameConfigurationAccessor.Value.BaseUrl/@Model.ConfigName/payline-@(jackpot.WinningLine + 1).png" asp-append-version="true" /></td>
         <td>
             <img class="symbol" src="@gameConfigurationAccessor.Value.BaseUrl/@Model.ConfigName/@(ClassicSlotTicketViewModel.GetJackpotSymbolFile()).png" alt="" asp-append-version="true" />
         </td>

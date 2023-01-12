@@ -25,13 +25,13 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
         public decimal WinLoss => RoundResult.FreeSpin ? RoundResult.TotalBetWin : RoundResult.TotalBetWin - RoundResult.TotalAmount;
 
         public string SymbolImageName(string symbol)
-        => IsJackpotSymbol(byte.Parse(symbol)) ? GetJackpotSymbolFile() : symbol;
+        => IsJackpotSymbol(byte.Parse(symbol)) ? GetJackpotSymbolFile() : $"symbol-{symbol}";
 
         public bool IsJackpotSymbol(byte number) => number == SlotGameConstant.JackpotSymbol && EnabledJackpot;
 
         public static string GetJackpotSymbolFile()
         {
-            var jackpotSymbol = new StringBuilder($"{SlotGameConstant.JackpotSymbol}.jackpot");
+            var jackpotSymbol = new StringBuilder($"symbol-{SlotGameConstant.JackpotSymbol}.jackpot");
 
             if (CultureInfo.CurrentUICulture.Name == "vi-VN")
             {

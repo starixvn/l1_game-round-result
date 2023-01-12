@@ -9,7 +9,7 @@
 @foreach (var winningPayline in roundResult.SettlementResult.WinningPaylines)
 {
     <tr>
-        <td><img class="payline" src="@gameConfigurationAccessor.Value.BaseUrl/_shared/classicslot/dong@(winningPayline.Payline + 1).png" asp-append-version="true" /></td>
+        <td><img class="payline" src="@gameConfigurationAccessor.Value.BaseUrl/_shared/classicslot/payline-@(winningPayline.Payline + 1).png" asp-append-version="true" /></td>
         <td>
             <img class="symbol" src="@gameConfigurationAccessor.Value.BaseUrl/@Model.ConfigName/@(Model.SymbolImageName(winningPayline.Symbol)).png" alt="" asp-append-version="true" />
         </td>
