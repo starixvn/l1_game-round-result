@@ -1,7 +1,5 @@
 ﻿@model ClassicSlotTicketViewModel
 
-@inject IOptionsSnapshot<GameConfiguration> gameConfigurationAccessor
-
 <table class="table-paylines">
     <tbody>
         @{
@@ -12,7 +10,7 @@
                     @for (var column = 0; column < array.GetLength(1); column++)
                     {
                         <td>
-                            <img class="symbol" src="@gameConfigurationAccessor.Value.BaseUrl/@Model.ConfigName/@(Model.SymbolImageName(array[row,column].ToString())).png" alt="" asp-append-version="true" />
+                            <img class="symbol" src="@Model.GetSymbolUrl(array[row,column])" alt="" asp-append-version="true" />
                         </td>
                     }
                 </tr>

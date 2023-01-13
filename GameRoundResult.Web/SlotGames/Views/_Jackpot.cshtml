@@ -1,6 +1,6 @@
-﻿@inject IStringLocalizer<ClassicSlotTicketViewModel> Localizer
+﻿@using GameRoundResult.Core.Constants
+@inject IStringLocalizer<ClassicSlotTicketViewModel> Localizer
 
-@inject IOptionsSnapshot<GameConfiguration> gameConfigurationAccessor
 @inject Microsoft.Extensions.Localization.IStringLocalizer<ClassicSlotTicketViewModel> Localizer
 
 @model ClassicSlotTicketViewModel
@@ -11,9 +11,9 @@
     var jackpot = roundResult.SettlementResult.Jackpot;
 
     <tr>
-        <td><img class="payline" src="@gameConfigurationAccessor.Value.BaseUrl/@Model.ConfigName/payline-@(jackpot.WinningLine + 1).png" asp-append-version="true" /></td>
+        <td><img class="payline" src="@Model.GetPaylineUrl(jackpot.WinningLine)" asp-append-version="true" /></td>
         <td>
-            <img class="symbol" src="@gameConfigurationAccessor.Value.BaseUrl/@Model.ConfigName/@(ClassicSlotTicketViewModel.GetJackpotSymbolFile()).png" alt="" asp-append-version="true" />
+            <img class="symbol" src="@Model.GetSymbolUrl(SlotGameConstant.JackpotSymbol)" alt="" asp-append-version="true" />
         </td>
         <td>5</td>
         <td>@Localizer["Jackpot"]</td>

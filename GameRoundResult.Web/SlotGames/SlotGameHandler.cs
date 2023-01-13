@@ -3,9 +3,11 @@ using AutoMapper;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web._Shared;
 using GameRoundResult.Web.Accessor;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
 using GameRoundResult.Web.SlotGames.ViewModels;
+using Microsoft.Extensions.Options;
 
 namespace GameRoundResult.Web.SlotGames.Handlers
 {
@@ -15,13 +17,20 @@ namespace GameRoundResult.Web.SlotGames.Handlers
         private readonly IGameConfigsService gameConfigsService;
         private readonly IMapper mapper;
         private readonly IGameAdminApi gameAdminApi;
+        private readonly GameConfiguration gameConfiguration;
 
-        public SlotGameHandler(ISlotGameTicketService gameBetService, IGameConfigsService gameConfigsService, IMapper mapper, IGameAdminApi gameAdminApi)
+        public SlotGameHandler(
+            ISlotGameTicketService gameBetService, 
+            IGameConfigsService gameConfigsService,
+            IMapper mapper,
+            IGameAdminApi gameAdminApi,
+            IOptionsSnapshot<GameConfiguration> gameConfigurationAccessor)
         {
             this.slotGameTicketService = gameBetService;
             this.gameConfigsService = gameConfigsService;
             this.mapper = mapper;
             this.gameAdminApi = gameAdminApi;
+            gameConfiguration = gameConfigurationAccessor.Value;
         }
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
@@ -40,7 +49,10 @@ namespace GameRoundResult.Web.SlotGames.Handlers
                 gameConfigs.Name,
                 gameConfigs.SlotsConfig.Jackpot.Enabled,
                 request.SystemType
-            );
+            )
+            {
+                StaticResourceUrl = gameConfiguration.BaseUrl.ToString()
+            };
 
             if (result != null)
             {

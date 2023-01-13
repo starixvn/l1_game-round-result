@@ -1,7 +1,5 @@
 ﻿@model ClassicSlotTicketViewModel
 
-@inject IOptionsSnapshot<GameConfiguration> gameConfigurationAccessor
-
 @{
     var roundResult = Model.RoundResult;
 }
@@ -9,9 +7,9 @@
 @foreach (var winningPayline in roundResult.SettlementResult.WinningPaylines)
 {
     <tr>
-        <td><img class="payline" src="@gameConfigurationAccessor.Value.BaseUrl/_shared/classicslot/payline-@(winningPayline.Payline + 1).png" asp-append-version="true" /></td>
+        <td><img class="payline" src="@Model.GetPaylineUrl(winningPayline.Payline)" asp-append-version="true" /></td>
         <td>
-            <img class="symbol" src="@gameConfigurationAccessor.Value.BaseUrl/@Model.ConfigName/@(Model.SymbolImageName(winningPayline.Symbol)).png" alt="" asp-append-version="true" />
+            <img class="symbol" src="@Model.GetSymbolUrl(winningPayline.Symbol)" alt="" asp-append-version="true" />
         </td>
         <td>@winningPayline.Count</td>
         <td>x@(winningPayline.Odds)</td>

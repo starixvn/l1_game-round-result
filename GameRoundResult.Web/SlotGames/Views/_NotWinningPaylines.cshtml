@@ -13,7 +13,7 @@
 {
 
     <tr>
-        <td><img class="payline" src="@gameConfigurationAccessor.Value.BaseUrl/_shared/classicslot/payline-@(payline + 1).png" asp-append-version="true" /></td>
+        <td><img class="payline" src="@Model.GetPaylineUrl(payline)" asp-append-version="true" /></td>
         <td>-</td>
         <td>-</td>
         <td>-</td>

@@ -24,12 +24,21 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
 
         public decimal WinLoss => RoundResult.FreeSpin ? RoundResult.TotalBetWin : RoundResult.TotalBetWin - RoundResult.TotalAmount;
 
-        public string SymbolImageName(string symbol)
-        => IsJackpotSymbol(byte.Parse(symbol)) ? GetJackpotSymbolFile() : $"symbol-{symbol}";
+        private string SymbolImageName(string symbol)
+        => IsJackpotSymbol(byte.Parse(symbol)) ? GetJackpotSymbolName() : $"symbol-{symbol}";
+
+        public string GetSymbolUrl(string symbol)
+        => $"{StaticResourceUrl}/{ConfigName}/{SymbolImageName(symbol)}.png";
+
+        public string GetSymbolUrl(byte symbol)
+        => GetSymbolUrl(symbol.ToString());
+
+        public string GetPaylineUrl(byte payline)
+        => $"{StaticResourceUrl}/_shared/classicslot/payline-{payline + 1}.png";
 
         public bool IsJackpotSymbol(byte number) => number == SlotGameConstant.JackpotSymbol && EnabledJackpot;
 
-        public static string GetJackpotSymbolFile()
+        public static string GetJackpotSymbolName()
         {
             var jackpotSymbol = new StringBuilder($"symbol-{SlotGameConstant.JackpotSymbol}.jackpot");
 
