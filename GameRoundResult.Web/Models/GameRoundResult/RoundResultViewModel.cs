@@ -12,6 +12,10 @@ namespace GameRoundResult.Web.Models
 
         public DateTimeOffset UserTime => TimeZoneInfo.ConvertTimeFromUtc(Time, TimeZone);
 
+        public string DisplayRoundDate => UserTime.RoundDateFormat();
+
+        public string DisplayRoundTime => UserTime.RoundTimeWithSecondFormat();
+
         public TimeZoneInfo TimeZone { get; set; }
 
         public string DateDisplay => Time.ToString(ViewFormat.RoundDateFormat);

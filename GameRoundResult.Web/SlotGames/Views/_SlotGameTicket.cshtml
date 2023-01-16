@@ -17,9 +17,9 @@
 
             <tr>
                 <td>
-                    @Model.RoundResult.UserTime.RoundDateFormat()
+                    @Model.RoundResult.DisplayRoundDate
                     <br />
-                    @Model.RoundResult.UserTime.RoundTimeWithSecondFormat()
+                    @Model.RoundResult.DisplayRoundTime
                 </td>
                 <td>
                     @Model.RoundResult.RoundId
@@ -57,8 +57,8 @@
                 <td></td>
                 <td></td>
                 <td class="bold text-right">@CommonLocalizer["Total"]</td>
-                <td class="bold text-right">@Model.RoundResult.DisplayTotalAmount.Format()</td>
-                <td class="bold text-right">@Model.RoundResult.TotalBetWin.Format()</td>
+                <td class="bold text-right">@Model.RoundResult.DisplayTotalAmount</td>
+                <td class="bold text-right">@Model.RoundResult.DisplayTotalBetWin</td>
             </tr>
 
             <tr class="total">
@@ -67,7 +67,7 @@
                 <td></td>
                 <td class="bold text-right">@CommonLocalizer["WinLoss"]</td>
                 <td></td>
-                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+                <td class="bold text-right @(Model.IsLose ? "text-red" : string.Empty)">@Model.DisplayWinLoss</td>
 
         </tbody>
     </table>

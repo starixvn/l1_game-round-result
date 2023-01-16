@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Models;
 
 namespace GameRoundResult.Web.SlotGames.ViewModels
@@ -47,8 +48,10 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
         public IEnumerable<byte> NotWinningPaylines
             => Paylines.Where(x => SettlementResult.WinningPaylines.All(y => y.Payline != x) && x != SettlementResult.Jackpot?.WinningLine);
 
-        public decimal DisplayTotalAmount => FreeSpin ? 0 : TotalAmount;
+        public string DisplayTotalAmount => FreeSpin ? "0" : TotalAmount.Format();
 
         public decimal TotalBetWin => BetWin + (SettlementResult.Jackpot?.WinningAmount ?? 0);
+
+        public string DisplayTotalBetWin => TotalBetWin.Format();
     }
 }
