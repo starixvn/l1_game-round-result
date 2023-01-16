@@ -10,7 +10,7 @@ namespace GameRoundResult.Web.SlotGames
         {
             services.AddScoped<ISlotGameTicketService, SlotGameTicketService>();
             services.AddScoped<ISlotGameBetRepository, SlotGameBetRepository>();
-            services.AddScoped<BaseEndRoundService>();
+            services.AddScoped<SlotGameEndRoundInfoService>();
             services.AddScoped<SlotGameHandler>();
         }
     }

@@ -77,6 +77,6 @@ namespace GameRoundResult.Web.Services
         public IEndGameInfoService GetService(GameType game)
         => services.ContainsKey(game)
             ? serviceProvider.GetService(services[game]) as IEndGameInfoService
-           : serviceProvider.GetService(typeof(BaseEndRoundService)) as IEndGameInfoService;
+           : serviceProvider.GetService(typeof(SlotGameEndRoundInfoService)) as IEndGameInfoService;
     }
 }

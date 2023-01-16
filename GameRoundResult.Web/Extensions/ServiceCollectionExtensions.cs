@@ -69,7 +69,6 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IGlobalConfigRepository, GlobalConfigRepository>();
             services.AddScoped<IPartnerConfigService, PartnerConfigService>();
             services.AddScoped<IPartnerConfigRepository, PartnerConfigRepository>();
-            services.AddScoped<IGameConfigsRepository, GameConfigsRepository>();
 
             services.AddScoped<IGameRoundAccessorFactory, GameRoundAccessorFactory>();
             services.AddScoped(typeof(GameRoundAccessor<,>));
@@ -98,12 +97,6 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IPartnerRepository, PartnerRepository>();
             services.AddScoped<ICurrencyGroupRepository, CurrencyGroupRepository>();
             services.AddScoped<ICurrencyRepository, CurrencyRepository>();
-
-            services.AddScoped<IGameConfigsRepository, GameConfigsRepository>();
-            services.AddScoped<IGameConfigsService, GameConfigsService>();
-
-            services.AddScoped<IGameConfigsRepository, GameConfigsRepository>();
-            services.AddScoped<IGameConfigsService, GameConfigsService>();
 
             services.AddScoped(typeof(BigSmallTicketAccessor<,,>));
 

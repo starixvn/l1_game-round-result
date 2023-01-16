@@ -2,25 +2,26 @@
 using GameRoundResult.Core.Database;
 using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
+using GameRoundResult.Web._Shared;
 
 namespace GameRoundResult.Web.SlotGames
 {
-    public class BaseEndRoundService : IEndGameInfoService
+    public class SlotGameEndRoundInfoService : IEndGameInfoService
     {
-        private readonly IGameConfigsRepository gameConfigsRepository;
+        private readonly IGameAdminApi gameAdminApi;
         private readonly ISlotGameBetRepository betRepository;
 
-        public BaseEndRoundService(
-            IGameConfigsRepository gameConfigsRepository,
+        public SlotGameEndRoundInfoService(
+            IGameAdminApi gameAdminApi,
             ISlotGameBetRepository betRepository)
         {
-            this.gameConfigsRepository = gameConfigsRepository;
+            this.gameAdminApi = gameAdminApi;
             this.betRepository = betRepository;
         }
 
         public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request)
         {
-            var gameConfigs = await gameConfigsRepository.GetByIdAsync(request.GameTypeId);
+            var gameConfigs = await gameAdminApi.GetGameConfigById(request.GameTypeId);
 
             if (gameConfigs == null)
             {

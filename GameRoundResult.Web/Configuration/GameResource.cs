@@ -2,7 +2,7 @@
 
 namespace GameRoundResult.Web.Configuration
 {
-    public class GameConfiguration
+    public class GameResource
     {
         public Uri BaseUrl { get; set; }
     }

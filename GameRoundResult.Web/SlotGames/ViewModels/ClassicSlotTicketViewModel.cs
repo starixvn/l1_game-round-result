@@ -27,14 +27,14 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
         private string SymbolImageName(string symbol)
         => IsJackpotSymbol(byte.Parse(symbol)) ? GetJackpotSymbolName() : $"symbol-{symbol}";
 
-        public string GetSymbolUrl(string symbol)
-        => $"{StaticResourceUrl}/{ConfigName}/{SymbolImageName(symbol)}.png";
+        public Uri GetSymbolUrl(string symbol)
+        => new Uri($"{StaticResourceUrl}/{ConfigName}/{SymbolImageName(symbol)}.png");
 
-        public string GetSymbolUrl(byte symbol)
+        public Uri GetSymbolUrl(byte symbol)
         => GetSymbolUrl(symbol.ToString());
 
-        public string GetPaylineUrl(byte payline)
-        => $"{StaticResourceUrl}/_shared/classicslot/payline-{payline + 1}.png";
+        public Uri GetPaylineUrl(byte payline)
+        => new Uri($"{StaticResourceUrl}/_shared/classicslot/payline-{payline + 1}.png");
 
         public bool IsJackpotSymbol(byte number) => number == SlotGameConstant.JackpotSymbol && EnabledJackpot;
 
