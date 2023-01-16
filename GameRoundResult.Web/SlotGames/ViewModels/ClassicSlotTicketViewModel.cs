@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Text;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Configuration;
@@ -35,13 +36,13 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
         => IsJackpotSymbol(byte.Parse(symbol)) ? GetJackpotSymbolName() : $"{SymbolPrefix}-{symbol}";
 
         public Uri GetSymbolUrl(string symbol)
-        => new Uri($"{StaticResourceUrl}/{ConfigName}/{SymbolImageName(symbol)}.png");
+        => new($"{StaticResourceUrl}/{ConfigName}/{SymbolImageName(symbol)}.png");
 
         public Uri GetSymbolUrl(byte symbol)
         => GetSymbolUrl(symbol.ToString());
 
         public Uri GetPaylineUrl(byte payline)
-        => new Uri($"{StaticResourceUrl}/_shared/classicslot/{PaylinePrefix}-{payline + 1}.png");
+        => new($"{StaticResourceUrl}/_shared/classicslot/{PaylinePrefix}-{payline + 1}.png");
 
         public bool IsJackpotSymbol(byte number) => number == SlotGameConstant.JackpotSymbol && EnabledJackpot;
 
