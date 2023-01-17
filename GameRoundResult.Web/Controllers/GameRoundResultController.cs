@@ -38,16 +38,16 @@ namespace GameRoundResult.Web.Controllers
 
         public GameRoundResultController(IMediator mediator,
             GameTypeLocalization gameTypeLocalization,
-            IOptionsSnapshot<List<AuthenticationClient>> clientAccessor,
-            IOptionsSnapshot<HostConfiguration> hostConfigurationAccessor,
+            IOptions<List<AuthenticationClient>> clientOptions,
+            IOptions<HostConfiguration> hostConfigurationOptions,
             IDataProtectionProvider dataProtectionProvider,
             IPartnerService partnerService)
         {
             this.mediator = mediator;
             this.gameTypeLocalization = gameTypeLocalization;
             dataProtector = dataProtectionProvider.CreateProtector(dataProtectorKey).ToTimeLimitedDataProtector();
-            clients = clientAccessor.Value;
-            hostConfiguration = hostConfigurationAccessor.Value;
+            clients = clientOptions.Value;
+            hostConfiguration = hostConfigurationOptions.Value;
             this.partnerService = partnerService;
         }
 

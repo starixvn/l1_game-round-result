@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
@@ -57,7 +58,7 @@ namespace GameRoundResult.Web.Models
                 tagBuilder.InnerHtml.Append(stringLocalizer["Odd"]);
             }
 
-            tagBuilder.InnerHtml.Append($", {(TotalRed > 0 ? stringLocalizer["{0} red", TotalRed] : stringLocalizer["{0} white", 4])}");
+            tagBuilder.InnerHtml.Append($", {(TotalRed > 0 ? stringLocalizer["{0} red", TotalRed] : stringLocalizer["{0} white", SeDie.NumberOfChips])}");
             return tagBuilder.GetHtmlString();
         }
     }

@@ -13,11 +13,20 @@ namespace GameRoundResult.Web.Models
 
         public string GetPartialViewName()
         {
-            if (IsMiniKeno) return $"_RNGKeno{PartialPostfix}";
+            if (IsMiniKeno)
+            {
+                return $"_RNGKeno{PartialPostfix}";
+            }
 
-            if (IsCascadingSlot) return $"_CascadingSlot{PartialPostfix}";
+            if (IsCascadingSlot)
+            {
+                return $"_CascadingSlot{PartialPostfix}";
+            }
 
-            if (IsBaccarat) return $"_Baccarat{PartialPostfix}";
+            if (IsBaccarat)
+            {
+                return $"_Baccarat{PartialPostfix}";
+            }
 
             return Enum.IsDefined(typeof(GameType), GameType)
                 ? $"_{TransformToViewName(Enum.GetName(typeof(GameType), GameType))}{PartialPostfix}"
@@ -27,7 +36,7 @@ namespace GameRoundResult.Web.Models
         private bool IsMiniKeno
             => GameType switch
             {
-                GameType.KenoProViet
+                GameType.KenoProViet 
                 or GameType.KenoMax
                 or GameType.KenoMax2
                 or GameType.KenoMini

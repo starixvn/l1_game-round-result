@@ -34,19 +34,19 @@ namespace GameRoundResult.Web.Controllers
         public BetHistoryController(
             IMediator mediator,
             IDataProtectionProvider dataProtectionProvider,
-            IOptionsSnapshot<HostConfiguration> hostConfigurationAccessor,
+            IOptions<HostConfiguration> hostConfigurationOptions,
             ILogService logService,
             IPartnerService partnerService,
-            IOptionsSnapshot<List<OperatorConfig>> operatorConfigsAccessor,
+            IOptions<List<OperatorConfig>> operatorConfigsOptions,
             IConfiguration configuration
             )
         {
             this.mediator = mediator;
             dataProtector = dataProtectionProvider.CreateProtector(dataProtectorKey).ToTimeLimitedDataProtector();
-            hostConfiguration = hostConfigurationAccessor.Value;
+            hostConfiguration = hostConfigurationOptions.Value;
             this.partnerService = partnerService;
             this.logService = logService;
-            operatorConfigs = operatorConfigsAccessor.Value;
+            operatorConfigs = operatorConfigsOptions.Value;
             this.systemType = configuration["SystemType"];
         }
 

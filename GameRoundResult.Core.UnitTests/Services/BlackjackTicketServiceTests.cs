@@ -36,7 +36,7 @@ namespace GameRoundResult.Core.UnitTests.Services
             //Assert
             Assert.StrictEqual(roundEntity, result.Item1);
             Assert.StrictEqual(betEntity, result.Item2);
-            gameBetRepository.Received(1).GetAsync(handId, memberId, partnerId);
+            await gameBetRepository.Received(1).GetAsync(handId, memberId, partnerId);
         }
     }
 }

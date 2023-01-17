@@ -21,12 +21,12 @@ namespace GameRoundResult.Web.SlotGames.Handlers
             ISlotGameTicketService gameBetService,
             IMapper mapper,
             IGameAdminApi gameAdminApi,
-            IOptionsSnapshot<GameResource> gameResourceSnapshot)
+            IOptions<GameResource> gameResourceOptions)
         {
             this.slotGameTicketService = gameBetService;
             this.mapper = mapper;
             this.gameAdminApi = gameAdminApi;
-            gameResource = gameResourceSnapshot.Value;
+            gameResource = gameResourceOptions.Value;
         }
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)

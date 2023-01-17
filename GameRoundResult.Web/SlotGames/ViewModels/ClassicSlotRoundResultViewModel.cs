@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using GameRoundResult.Web.Configuration;
+using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Models;
 
 namespace GameRoundResult.Web.SlotGames.ViewModels
@@ -29,13 +30,13 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
             {
                 var array = Result.ToArray();
 
-                var formatResult = new byte[3, 5];
+                var formatResult = new byte[SlotGameConstant.NumberOfRows, SlotGameConstant.NumberOfColumns];
 
-                for (var row = 0; row < 3; row++)
+                for (var row = 0; row < SlotGameConstant.NumberOfRows; row++)
                 {
-                    for (var column = 0; column < 5; column++)
+                    for (var column = 0; column < SlotGameConstant.NumberOfColumns; column++)
                     {
-                        formatResult[row, column] = array[row + column * 3];
+                        formatResult[row, column] = array[row + column * SlotGameConstant.NumberOfRows];
                     }
                 }
 
