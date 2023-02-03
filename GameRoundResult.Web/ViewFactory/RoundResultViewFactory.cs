@@ -76,7 +76,7 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.MiniSeDie4, sedie },
             { GameType.FruitSlot, fruitSlot },
             { GameType.FanTan, fantan },
-            { GameType.Win3Cards, win3Cards},
+            { GameType.WinThreeCards, win3Cards},
         };
 
         public string GetView(GameType game) => views[game];

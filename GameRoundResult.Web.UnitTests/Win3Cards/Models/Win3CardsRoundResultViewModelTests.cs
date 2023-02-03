@@ -52,7 +52,7 @@ namespace GameRoundResult.Web.UnitTests.Models.Win3Cards
             var winningOptions = "winning options";
             viewModel.Configure().GetWinningOptionsContent(roundLocalizer).Returns(winningOptions);
             viewModel.Configure().GetResultContent(roundLocalizer).Returns(result);
-            var date = new DateTimeOffset(2022, 12, 15, 1, 10, 00, TimeSpan.Zero);
+            var date = new DateTime(2022, 12, 15, 1, 10, 00);
             viewModel.RoundId = 1;
             viewModel.Time = date;
             var expected = new List<string> {
