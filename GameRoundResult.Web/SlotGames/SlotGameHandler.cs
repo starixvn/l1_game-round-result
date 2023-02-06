@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿ using System.Threading.Tasks;
 using AutoMapper;
 using GameRoundResult.Web._Shared;
 using GameRoundResult.Web.Accessor;
@@ -43,7 +43,7 @@ namespace GameRoundResult.Web.SlotGames.Handlers
             var viewModel = new ClassicSlotTicketViewModel
             (
                 gameConfigs.Name,
-                gameConfigs.SlotsConfig.Jackpot.Enabled,
+                gameConfigs.SlotsConfig?.Jackpot?.Enabled ?? false,
                 request.SystemType
             )
             {
