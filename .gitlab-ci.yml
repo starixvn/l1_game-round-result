@@ -41,7 +41,6 @@ integration-test-dotnet:
   before_script:
     - dotnet tool install --global coverlet.console --version 3.1.0
     - export PATH="$PATH:/root/.dotnet/tools"
-    - dotnet nuget add source https://nuget.nexdev.net/api/v2
     - cp ./GameRoundResult.IntegrationTests/appsettings.IGT.CI.json ./GameRoundResult.IntegrationTests/appsettings.IGT.json
     - mkdir -p $LOG_TEST_PATH && cp -a ./GameRoundResult.IntegrationTests/Games/. $LOG_TEST_PATH
     - cp -R ./GameRoundResult.Web/wwwroot/scss $LOG_TEST_PATH

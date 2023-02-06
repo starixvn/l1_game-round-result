@@ -13,7 +13,7 @@ namespace GameRoundResult.IntegrationTests
 
         public CustomWebApplicationFactory() : base()
         {
-            databaseHelper = new DatabaseHelper();
+            databaseHelper = DatabaseHelper.GetDatabaseHelper();
         }
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)

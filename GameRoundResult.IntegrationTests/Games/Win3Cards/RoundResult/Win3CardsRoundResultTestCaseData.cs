@@ -9,16 +9,16 @@ namespace GameRoundResult.IntegrationTests
         {
             return new List<RoundResultTestCaseParam>
             {
-                new RoundResultTestCaseParam (GameType.Win3Cards, 1, "2022-12-01", Language.EN, "RP_9_DragonWin"),
-                new RoundResultTestCaseParam (GameType.Win3Cards, 1, "2022-12-01", Language.VN, "RP_9_DragonWin"),
+                new RoundResultTestCaseParam (GameType.Win3Cards, 1, string.Empty, Language.EN, "RP_9_DragonWin"),
+                new RoundResultTestCaseParam (GameType.Win3Cards, 1, string.Empty, Language.VN, "RP_9_DragonWin"),
                 new RoundResultTestCaseParam (GameType.Win3Cards, 1, string.Empty, Language.EN, "RP_10_PhoenixWin"),
                 new RoundResultTestCaseParam (GameType.Win3Cards, 1, string.Empty, Language.VN, "RP_10_PhoenixWin"),
                 new RoundResultTestCaseParam (GameType.Win3Cards, 1, string.Empty, Language.EN, "RP_11_Tie"),
                 new RoundResultTestCaseParam (GameType.Win3Cards, 1, string.Empty, Language.VN, "RP_11_Tie"),
                 new RoundResultTestCaseParam (GameType.Win3Cards, 1, string.Empty, Language.EN, "RP_12_Pair8Plus"),
                 new RoundResultTestCaseParam (GameType.Win3Cards, 1, string.Empty, Language.VN, "RP_12_Pair8Plus"),
-                new RoundResultTestCaseParam (GameType.Win3Cards, 1, "2022-12-01", Language.EN, "RP_13_ThreeOfAKind"),
-                new RoundResultTestCaseParam (GameType.Win3Cards, 1, "2022-12-01", Language.VN, "RP_13_ThreeOfAKind"),
+                new RoundResultTestCaseParam (GameType.Win3Cards, 1, string.Empty, Language.EN, "RP_13_ThreeOfAKind"),
+                new RoundResultTestCaseParam (GameType.Win3Cards, 1, string.Empty, Language.VN, "RP_13_ThreeOfAKind"),
                 new RoundResultTestCaseParam (GameType.Win3Cards, 1, string.Empty, Language.EN, "RP_14_StraightFlush"),
                 new RoundResultTestCaseParam (GameType.Win3Cards, 1, string.Empty, Language.VN, "RP_14_StraightFlush"),
                 new RoundResultTestCaseParam (GameType.Win3Cards, 1, string.Empty, Language.EN, "RP_15_Flush"),

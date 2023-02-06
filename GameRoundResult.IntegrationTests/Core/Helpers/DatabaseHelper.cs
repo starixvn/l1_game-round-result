@@ -12,6 +12,8 @@ namespace GameRoundResult.IntegrationTests
 {
     public class DatabaseHelper : IDisposable
     {
+        private static DatabaseHelper _instance;
+
         private readonly string ProjectDir = Directory.GetCurrentDirectory();
 
         private string databaseName;
@@ -19,7 +21,19 @@ namespace GameRoundResult.IntegrationTests
         public DatabaseHelper()
         {
             ConnectToDatabase();
-            ClearAllData();
+        }
+
+        public static DatabaseHelper GetDatabaseHelper()
+        {
+            if (_instance == null)
+            {
+                if (_instance == null)
+                {
+                    _instance = new DatabaseHelper();
+                }
+            }
+            _instance.ClearAllData();
+            return _instance;
         }
 
         private void ConnectToDatabase()
