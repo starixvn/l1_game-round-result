@@ -95,8 +95,14 @@ namespace GameRoundResult.IntegrationTests
 
         public void InsertDataGameStubs(GameType game, string featureName, string folderName)
         {
+            InsertDataGameStubs(game.ToString(), featureName, folderName);
+        }
+
+        public void InsertDataGameStubs(string game, string featureName, string folderName)
+        {
             var directoryInfo = new DirectoryInfo($"{ProjectDir}/Games/{game}/{featureName}/{folderName}");
             var files = directoryInfo.GetFiles("*.json", SearchOption.AllDirectories);
+
             foreach (var file in files)
             {
                 if (!file.FullName.Contains("output"))

@@ -13,8 +13,9 @@ namespace GameRoundResult.IntegrationTests
         protected readonly HttpClient TestDriver;
         protected string ProjectDir = Directory.GetCurrentDirectory();
         protected readonly DatabaseHelper databaseHelper;
+        protected readonly GameAdminApiFixture gameAdminApi;
 
-        public IntegrationTestBase(CustomWebApplicationFactory<Program> factory)
+        public IntegrationTestBase(CustomWebApplicationFactory<Program> factory, GameAdminApiFixture gameAdminApiFixture)
         {
             TestDriver = factory.CreateClient();
             TestDriver.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue
@@ -22,6 +23,7 @@ namespace GameRoundResult.IntegrationTests
                 NoCache = true
             };
             this.databaseHelper = factory.databaseHelper;
+            this.gameAdminApi = gameAdminApiFixture;
         }
 
         protected const string OperatorId = "ONEworks1";

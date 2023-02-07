@@ -15,7 +15,7 @@ namespace GameRoundResult.IntegrationTests
 {
     public class RetrieveEndRoundTests : IntegrationTestBase
     {
-        public RetrieveEndRoundTests(CustomWebApplicationFactory<Program> factory) : base(factory)
+        public RetrieveEndRoundTests(CustomWebApplicationFactory<Program> factory, GameAdminApiFixture gameAdminApiFixture) : base(factory, gameAdminApiFixture)
         {
         }
 

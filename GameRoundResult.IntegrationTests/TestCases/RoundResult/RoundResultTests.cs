@@ -16,7 +16,7 @@ namespace GameRoundResult.IntegrationTests
 {
     public class GameRoundResultTests : IntegrationTestBase
     {
-        public GameRoundResultTests(CustomWebApplicationFactory<Program> factory) : base(factory)
+        public GameRoundResultTests(CustomWebApplicationFactory<Program> factory, GameAdminApiFixture gameAdminApiFixture) : base(factory, gameAdminApiFixture)
         {
         }
 
@@ -111,10 +111,10 @@ namespace GameRoundResult.IntegrationTests
         public async Task Index_ExistGameOption(GameType game, string gameName, string language)
         {
             // arrange
+            databaseHelper.InsertOperators();
             var model = GetRoundResultAccessUrlRequestModel();
             model.Language = language;
             var url = await BuildAccessUrl(model);
-            this.databaseHelper.InsertOperators();
 
             // act
             var response = await TestDriver.GetAsync(url);

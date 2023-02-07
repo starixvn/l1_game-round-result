@@ -15,7 +15,7 @@ namespace GameRoundResult.IntegrationTests
 {
     public class BetHistoryTests : IntegrationTestBase
     {
-        public BetHistoryTests(CustomWebApplicationFactory<Program> factory) : base(factory)
+        public BetHistoryTests(CustomWebApplicationFactory<Program> factory, GameAdminApiFixture gameAdminApiFixture) : base(factory, gameAdminApiFixture)
         {
         }
 
@@ -92,8 +92,8 @@ namespace GameRoundResult.IntegrationTests
             // arrange
             const string expectedContentType = "text/html; charset=utf-8";
             var model = GetBetHistoryAccessUrlRequestModel();
-            var url = await BuildAccessUrl(model);
             this.databaseHelper.InsertOperators();
+            var url = await BuildAccessUrl(model);
 
             // act
             var response = await TestDriver.GetAsync(url);
@@ -107,7 +107,8 @@ namespace GameRoundResult.IntegrationTests
         [Theory]
         [ClassData(typeof(BetHistoryTestCaseProvider))]
         public async Task Index_ValidData_RenderExpectedInfo(
-            GameType game,
+            int gameId,
+            string gameName,
             string testcase,
             int playerId,
             long roundId,
@@ -115,27 +116,28 @@ namespace GameRoundResult.IntegrationTests
         {
             // arrange
             var model = GetBetHistoryAccessUrlRequestModel();
-            model.GameTypeId = game;
+            model.GameTypeId = (GameType)gameId;
             model.PlayerId = playerId;
             model.Language = language;
             model.GameRoundId = roundId;
             databaseHelper.InsertCurrencyAndOperatorStub();
-            databaseHelper.InsertDataGameStubs(game, "BetHistory", testcase);
+            databaseHelper.InsertDataGameStubs(gameName, "BetHistory", testcase);
             var url = await BuildAccessUrl(model);
-            var expected = ReadTextFromFile(game, language, testcase);
+            var expected = ReadTextFromFile(gameName, language, testcase);
+            gameAdminApi.SetGameConfigApiResponse(gameId, gameName);
 
             // act
             var response = await TestDriver.GetAsync(url);
-
+            var result = HttpUtility.HtmlDecode(RemoveWhiteSpaces(response.Content.ReadAsStringAsync().Result));
             // assert
-            Assert.Equal(expected, HttpUtility.HtmlDecode(RemoveWhiteSpaces(response.Content.ReadAsStringAsync().Result)));
+            Assert.Equal(expected, result);
         }
 
         #endregion Index
 
         #region Private Methods
 
-        private string ReadTextFromFile(GameType game, string language, string testcase)
+        private string ReadTextFromFile(string game, string language, string testcase)
         {
             var path = Path.Combine(ProjectDir, $"Games/{game}/BetHistory/{testcase}/output.{language}.html");
             return RemoveWhiteSpaces(File.ReadAllText(path));
