@@ -37,18 +37,14 @@ namespace GameRoundResult.Core.Database.Repository
         {
             Expression<Func<T, bool>> defaultExpression = DefaultFilter<T>(roundId, playerId, operatorId);
 
-            defaultExpression.And(bet => bet.SiteId == siteId);
-
-            return defaultExpression;
+            return defaultExpression.And(bet => bet.SiteId == siteId);
         }
 
         private static Expression<Func<T, bool>> RoundFilter<T>(long roundId, int playerId, string operatorId) where T : BaseSlotRoundEntity
         {
             Expression<Func<T, bool>> defaultExpression = DefaultFilter<T>(roundId, playerId, operatorId);
 
-            defaultExpression.And(bet => bet.Paid);
-
-            return defaultExpression;
+            return defaultExpression.And(bet => bet.Paid);
         }
 
         private static Expression<Func<T, bool>> DefaultFilter<T>(long roundId, int playerId, string operatorId) where T : BaseSlotRoundEntity
