@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using GameRoundResult.Core.Constants;
 
 namespace GameRoundResult.IntegrationTests
 {
-    public class ClassicSlotBetHistoryTestCaseData : TestCaseDataProvider<BetHistoryTestCaseParam>
+    public class FourGuardiansBetHistoryTestCaseData : TestCaseDataProvider<BetHistoryTestCaseParam>
     {
         public override List<BetHistoryTestCaseParam> GetTestCaseParams()
             => new List<BetHistoryTestCaseParam>
