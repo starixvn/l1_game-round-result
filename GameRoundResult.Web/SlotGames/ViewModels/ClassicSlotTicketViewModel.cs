@@ -60,11 +60,11 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
 
         public bool HasBonus => RoundResult.SettlementResult.Bonus.Odds > 0;
 
-        public bool HasFreeSpins => RoundResult.FreeSpin;
+        public bool HasFreeSpins => RoundResult.SettlementResult.FreeSpins.Odds > 0;
 
         public bool HasData => RoundResult != null;
 
-        public string FreeSpinsLabel => HasFreeSpins ? "Free Spins" : string.Empty;
+        public string FreeSpinsLabel => RoundResult.FreeSpin ? "Free Spins" : string.Empty;
 
         public bool HasJackpot => RoundResult.SettlementResult.Jackpot != null;
 
