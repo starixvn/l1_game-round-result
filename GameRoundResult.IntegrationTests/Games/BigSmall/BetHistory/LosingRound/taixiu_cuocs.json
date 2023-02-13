@@ -1,0 +1,50 @@
+[
+  {
+    "refund": 0,
+    "baseRefund": 0,
+    "win": false,
+    "betwin": 0,
+    "baseBetWin": 0,
+    "totalWin": 0,
+    "baseTotalWin": 0,
+    "paid": true,
+    "uid": "62c27c72e7d23f507f0d0afa",
+    "name": "Player",
+    "time": {
+      "$date": "2022-11-01T08:01:10.000Z"
+    },
+    "choice": "big",
+    "amount": 5,
+    "baseAmount": 5,
+    "roundId": 2,
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1",
+    "playerId": 123
+  },
+  {
+    "refund": 0,
+    "baseRefund": 0,
+    "win": false,
+    "betwin": 0,
+    "baseBetWin": 0,
+    "totalWin": 0,
+    "baseTotalWin": 0,
+    "paid": true,
+    "uid": "62c27c72e7d23f507f0d0afa",
+    "name": "Player",
+    "time": {
+      "$date": "2022-11-01T08:01:11.000Z"
+    },
+    "choice": "big",
+    "amount": 5,
+    "baseAmount": 5,
+    "roundId": 2,
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1",
+    "playerId": 123
+  }
+]

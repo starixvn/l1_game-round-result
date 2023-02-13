@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "time": {
+      "$date": "2022-12-01T10:02:00.000Z"
+    },
+    "result": {
+      "dragon": {
+        "cards": {
+          "card1": {
+            "rank": 4,
+            "suit": 0
+          },
+          "card2": {
+            "rank": 4,
+            "suit": 1
+          },
+          "card3": {
+            "rank": 7,
+            "suit": 0
+          }
+        },
+        "handRankId": 2,
+        "cardRankId": 4
+      },
+      "phoenix": {
+        "cards": {
+          "card1": {
+            "rank": 10,
+            "suit": 1
+          },
+          "card2": {
+            "rank": 10,
+            "suit": 2
+          },
+          "card3": {
+            "rank": 12,
+            "suit": 0
+          }
+        },
+        "handRankId": 2,
+        "cardRankId": 10
+      }
+    },
+    "settlementResult": {
+      "dragon": false,
+      "phoenix": true,
+      "tie": false,
+      "threeOfAKind": false,
+      "straightFlush": false,
+      "flush": false,
+      "straight": false,
+      "pair8Plus": true,
+      "killer235": false,
+      "highCard": false
+    },
+    "exchangeRateId": 4816
+  }
+]

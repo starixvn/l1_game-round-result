@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using GameRoundResult.Core.Constants;
+
+namespace GameRoundResult.IntegrationTests
+{
+    public class FruitSlotEndRoundTestCaseData : TestCaseDataProvider<RetrieveEndRoundTestCaseParam>
+    {
+        public override List<RetrieveEndRoundTestCaseParam> GetTestCaseParams()
+        {
+            return new List<RetrieveEndRoundTestCaseParam>
+            {
+                new RetrieveEndRoundTestCaseParam(GameType.FruitSlot, 123, 1, "1_ExistBet"),
+                new RetrieveEndRoundTestCaseParam(GameType.FruitSlot, 123, 1000, "NotExistRound"),
+            };
+        }
+    }
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "uid": "62342b4ac46c7910b22b3b35",
+    "name": "Player",
+    "roundId": 3,
+    "choice": "phoenix",
+    "amount": 500,
+    "time": {
+      "$date": "2022-10-25T09:10:05.000Z"
+    },
+    "playerId": 123,
+    "siteId": "4100300",
+    "freeBet": false,
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1"
+  },
+  {
+    "uid": "62342b4ac46c7910b22b3b35",
+    "name": "Player",
+    "roundId": 3,
+    "choice": "phoenix",
+    "amount": 1000,
+    "time": {
+      "$date": "2022-10-25T09:10:07.000Z"
+    },
+    "playerId": 123,
+    "siteId": "4100300",
+    "freeBet": false,
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1"
+  }
+]

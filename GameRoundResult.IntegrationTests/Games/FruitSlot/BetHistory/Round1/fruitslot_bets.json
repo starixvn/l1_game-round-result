@@ -1,0 +1,54 @@
+[
+  {
+    "uid": "62342b4ac46c7910b22b3b35",
+    "name": "Player",
+    "roundId": 1,
+    "bar": 0,
+    "tripleSeven": 0,
+    "watermelon": 0,
+    "star": 0,
+    "bell": 0,
+    "orange": 0,
+    "lemon": 0,
+    "cherry": 0,
+    "big": 10,
+    "small": 0,
+    "totalAmount": 10,
+    "paid": true,
+    "betwin": {
+      "$numberDecimal": "20"
+    },
+    "time": {
+      "$date": "2022-10-25T07:56:59.000Z"
+    },
+    "odds": {
+      "bar": 100,
+      "bar50": 50,
+      "bar25": 25,
+      "tripleSeven": 40,
+      "tripleSeven3": 3,
+      "watermelon": 20,
+      "watermelon3": 3,
+      "star": 30,
+      "star3": 3,
+      "bell": 20,
+      "bell3": 3,
+      "orange": 10,
+      "orange3": 3,
+      "lemon": 15,
+      "lemon3": 3,
+      "cherry": 5,
+      "cherry3": 3,
+      "big": 1.96,
+      "small": 1.96
+    },
+    "playerId": 123,
+    "memberId": 123,
+    "siteId": "4100300",
+    "freeBet": false,
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1",
+    "partnerId": "ONEworks1"
+  }
+]

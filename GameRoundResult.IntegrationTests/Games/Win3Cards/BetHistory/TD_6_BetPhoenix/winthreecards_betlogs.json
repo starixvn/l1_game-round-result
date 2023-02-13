@@ -1,0 +1,18 @@
+[
+  {
+    "uid": "62342b4ac46c7910b22b3b35",
+    "name": "Player",
+    "roundId": 1,
+    "choice": "phoenix",
+    "amount": 100,
+    "time": {
+      "$date": "2022-10-25T07:10:05.000Z"
+    },
+    "playerId": 123,
+    "siteId": "4100300",
+    "freeBet": false,
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1"
+  }
+]

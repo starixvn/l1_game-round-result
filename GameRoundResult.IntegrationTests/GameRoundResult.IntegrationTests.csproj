@@ -43,7 +43,7 @@
 	  <None Update="Games\**\RoundResult\**\*.*">
 		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
-	  <None Update="Games\**\EndRound\**\*.*">
+	  <None Update="Games\**\RetrieveEndRound\**\*.*">
 		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
 	  <None Update="Core\Stubs\*.json">

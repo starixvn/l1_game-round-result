@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
-using Newtonsoft.Json.Linq;
 
 namespace GameRoundResult.IntegrationTests
 {
@@ -96,21 +95,16 @@ namespace GameRoundResult.IntegrationTests
 
         public void InsertDataGameStubs(GameType game, string featureName, string folderName)
         {
-            var directoryInfo = new DirectoryInfo($"{ProjectDir}/Games/{game}/{featureName}");
-            var files = directoryInfo.GetFiles("input.json", SearchOption.AllDirectories);
-            var subpath = Path.Combine(game.ToString(), featureName, folderName);
+            var directoryInfo = new DirectoryInfo($"{ProjectDir}/Games/{game}/{featureName}/{folderName}");
+            var files = directoryInfo.GetFiles("*.json", SearchOption.AllDirectories);
             foreach (var file in files)
             {
-                if (file.DirectoryName.Contains(subpath))
+                if (!file.FullName.Contains("output"))
                 {
                     var path = Path.Combine(file.DirectoryName, file.Name);
+                    var collectionName = Path.GetFileNameWithoutExtension(file.Name);
                     string json = File.ReadAllText(path);
-                    var test = JObject.Parse(json);
-                    foreach (var property in test.Properties())
-                    {
-                        var collectionName = Path.GetFileNameWithoutExtension(property.Name);
-                        InsertData(collectionName, property.Value.ToString());
-                    }
+                    InsertData(collectionName, json);
                 }
             }
         }

@@ -1,0 +1,36 @@
+[
+  {
+    "uid": "62342b4ac46c7910b22b3b35",
+    "name": "Player",
+    "roundId": 1,
+    "dragon": 0,
+    "phoenix": 0,
+    "threeOfAKind": 0,
+    "straightFlush": 100,
+    "flush": 0,
+    "straight": 0,
+    "pair8Plus": 0,
+    "paid": true,
+    "betwin": {
+      "$numberDecimal": "0"
+    },
+    "time": {
+      "$date": "2022-10-25T07:10:00.000Z"
+    },
+    "odds": {
+      "dragon": 1.95,
+      "phoenix": 1.95,
+      "pair8Plus": 3,
+      "threeOfAKind": 121,
+      "straightFlush": 101,
+      "flush": 9,
+      "straight": 8
+    },
+    "playerId": 123,
+    "siteId": "4100300",
+    "freeBet": false,
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1"
+  }
+]
