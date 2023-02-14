@@ -10,7 +10,7 @@ namespace GameRoundResult.IntegrationTests
         {
             return new List<RetrieveEndRoundTestCaseParam>
             {
-                new RetrieveEndRoundTestCaseParam(GameType.BigSmall, 123, 1, "1_ExistBet"),
+                new RetrieveEndRoundTestCaseParam(1, "BigSmall", 123, 1, "1_ExistBet"),
             };
         }
     }

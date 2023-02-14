@@ -4,7 +4,8 @@ using GameRoundResult.Core.Constants;
 namespace GameRoundResult.IntegrationTests
 {
     public record RetrieveEndRoundTestCaseParam(
-             GameType Game,
+             int GameId,
+             string GameName,
              int PlayerId,
              int RoundId,
              string TestCase);

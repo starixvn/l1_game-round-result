@@ -24,7 +24,8 @@ namespace GameRoundResult.IntegrationTests
         [Theory]
         [ClassData(typeof(RetrieveEndRoundTestCaseProvider))]
         public async Task Index_ReturnExpectedInfo(
-            GameType game,
+            int gameId,
+            string gameName,
             string testcase,
             int playerId,
             int roundId
@@ -32,13 +33,15 @@ namespace GameRoundResult.IntegrationTests
         {
             // arrange
             var model = GetModel();
-            model.GameTypeId = (byte)game;
+            model.GameTypeId = (byte) gameId;
             model.PlayerId = playerId;
             model.GameRoundId = roundId;
             var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
             databaseHelper.InsertCurrencyAndOperatorStub();
-            databaseHelper.InsertDataGameStubs(game, "RetrieveEndRound", testcase);
-            var expected = ReadTextFromFile(game, testcase);
+            databaseHelper.InsertDataGameStubs(gameName, "RetrieveEndRound", testcase);
+            gameAdminApi.SetGameConfigApiResponse(gameId, gameName);
+
+            var expected = ReadTextFromFile(gameName, testcase);
 
             // act
             var response = await this.TestDriver.PostAsync("/EndRoundInfo", content);
@@ -57,7 +60,7 @@ namespace GameRoundResult.IntegrationTests
 
         #region Private Methods
 
-        private EndRoundInfoResult ReadTextFromFile(GameType game, string testcase)
+        private EndRoundInfoResult ReadTextFromFile(string game, string testcase)
         {
             var path = Path.Combine(ProjectDir, $"Games/{game}/RetrieveEndRound/{testcase}/output.json");
             return JsonConvert.DeserializeObject<EndRoundInfoResult>(File.ReadAllText(path));

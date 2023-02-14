@@ -10,7 +10,8 @@ namespace GameRoundResult.IntegrationTests
             .Select(e =>
             {
                 return new object[] {
-                    e.Game,
+                    e.GameId,
+                    e.GameName,
                     e.TestCase,
                     e.PlayerId,
                     e.RoundId,
