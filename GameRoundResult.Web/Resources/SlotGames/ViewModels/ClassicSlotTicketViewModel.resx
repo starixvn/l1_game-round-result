@@ -120,4 +120,7 @@
   <data name="NoSymbol" xml:space="preserve">
     <value>No.of Symbol</value>
   </data>
+  <data name="Payline" xml:space="preserve">
+    <value>Lines</value>
+  </data>
 </root>
