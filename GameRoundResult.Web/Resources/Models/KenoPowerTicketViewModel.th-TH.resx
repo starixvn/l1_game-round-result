@@ -139,7 +139,7 @@
     <value>ผลรวม คู่/คี่</value>
   </data>
   <data name="Team Blue" xml:space="preserve">
-    <value>ทีมสีน้ำเงิน</value>
+    <value>ทีมน้ำเงิน</value>
   </data>
   <data name="Team Blue Big/Small" xml:space="preserve">
     <value>ทีมน้ำเงิน ใหญ่/เล็ก</value>
@@ -148,7 +148,7 @@
     <value>ทีมน้ำเงิน/ทีมแดง</value>
   </data>
   <data name="Team Red" xml:space="preserve">
-    <value>ทีมสีแดง</value>
+    <value>ทีมแดง</value>
   </data>
   <data name="Team Red Big/Small" xml:space="preserve">
     <value>ทีมแดง ใหญ่/เล็ก</value>

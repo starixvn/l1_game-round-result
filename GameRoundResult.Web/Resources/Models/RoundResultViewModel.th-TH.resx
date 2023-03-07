@@ -256,10 +256,10 @@
     <value>พิเศษ</value>
   </data>
   <data name="Team Blue" xml:space="preserve">
-    <value>ทีมสีน้ำเงิน</value>
+    <value>ทีมน้ำเงิน</value>
   </data>
   <data name="Team Red" xml:space="preserve">
-    <value>ทีมสีแดง</value>
+    <value>ทีมแดง</value>
   </data>
   <data name="Tie" xml:space="preserve">
     <value>เสมอ</value>

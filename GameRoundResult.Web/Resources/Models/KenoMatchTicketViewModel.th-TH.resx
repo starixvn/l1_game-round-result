@@ -148,10 +148,10 @@
     <value>เต็มเวลา สูง/ต่ำ (สด)</value>
   </data>
   <data name="Full Time Team Blue/Team Red" xml:space="preserve">
-    <value>เต็มเวลา ทีมสีน้ำเงิน/ทีมสีแดง</value>
+    <value>เต็มเวลา ทีมน้ำเงิน/ทีมแดง</value>
   </data>
   <data name="Full Time Team Blue/Team Red (Live)" xml:space="preserve">
-    <value>เต็มเวลา ทีมสีน้ำเงิน/ทีมสีแดง (สด)</value>
+    <value>เต็มเวลา ทีมน้ำเงิน/ทีมแดง (สด)</value>
   </data>
   <data name="Odd" xml:space="preserve">
     <value>คี่</value>
@@ -160,10 +160,10 @@
     <value>สูง</value>
   </data>
   <data name="Team Blue" xml:space="preserve">
-    <value>ทีมสีน้ำเงิน</value>
+    <value>ทีมน้ำเงิน</value>
   </data>
   <data name="Team Red" xml:space="preserve">
-    <value>ทีมสีแดง</value>
+    <value>ทีมแดง</value>
   </data>
   <data name="Tie" xml:space="preserve">
     <value>เสมอ</value>
