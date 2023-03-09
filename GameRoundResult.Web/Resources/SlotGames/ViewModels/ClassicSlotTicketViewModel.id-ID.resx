@@ -127,7 +127,7 @@
     <value>Odds</value>
   </data>
   <data name="Payline" xml:space="preserve">
-    <value>Garis pembayaran</value>
+    <value>Garis</value>
   </data>
   <data name="Stake" xml:space="preserve">
     <value>Taruhan</value>

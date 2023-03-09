@@ -127,7 +127,7 @@
     <value>赔率</value>
   </data>
   <data name="Payline" xml:space="preserve">
-    <value>支付线</value>
+    <value>线</value>
   </data>
   <data name="Stake" xml:space="preserve">
     <value>赌注</value>

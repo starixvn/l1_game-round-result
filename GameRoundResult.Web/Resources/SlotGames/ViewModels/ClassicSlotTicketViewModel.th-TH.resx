@@ -127,7 +127,7 @@
     <value>อัตราต่อรอง</value>
   </data>
   <data name="Payline" xml:space="preserve">
-    <value>รูปแบบการจ่าย</value>
+    <value>เส้น</value>
   </data>
   <data name="Stake" xml:space="preserve">
     <value>เดิมพัน</value>
