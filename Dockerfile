@@ -1,4 +1,4 @@
-FROM registry.nexdev.net:5050/docker/dotnet/core/sdk:5.0.102-ca-patch-buster-slim AS builder
+FROM hub.lumigame.com/base/dotnet/core/sdk:5.0.102-ca-patch-buster-slim-2 AS builder
 
 WORKDIR /src
 
@@ -12,7 +12,7 @@ COPY ./GameRoundResult.Web/ .
 
 RUN dotnet publish -r linux-x64 --self-contained false -o /app && echo $CACHEBUST
 
-FROM registry.nexdev.net:5050/docker/dotnet/core/aspnet:5.0-buster-slim AS base
+FROM docker pull hub.lumigame.com/base/dotnet/core/aspnet:5.0.15-alpine3.15 AS base
 
 WORKDIR /app
 COPY --from=builder /app .
