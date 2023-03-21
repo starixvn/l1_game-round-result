@@ -36,7 +36,7 @@ integration-test-dotnet:
     TESTS_PATH: "**/bin/debug/*/*IntegrationTests.dll"
     TESTS_DLL: "*IntegrationTests.dll"
   services:
-    - name: registry.nexdev.net:5050/docker/database/mongo:4.4.8
+    - name: hub.lumigame.com/docker-hub/library/mongo:4.4.8
       alias: mongo
   before_script:
     - dotnet tool install --global coverlet.console --version 3.1.0
