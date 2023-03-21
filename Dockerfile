@@ -12,7 +12,7 @@ COPY ./GameRoundResult.Web/ .
 
 RUN dotnet publish -r linux-x64 --self-contained false -o /app && echo $CACHEBUST
 
-FROM hub.lumigame.com/base/dotnet/core/aspnet:5.0.15-alpine3.15 AS base
+FROM hub.lumigame.com/base/dotnet/core/aspnet:5.0.15-buster-slim AS base
 
 WORKDIR /app
 COPY --from=builder /app .
