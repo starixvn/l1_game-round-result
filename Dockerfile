@@ -13,7 +13,7 @@ COPY ./GameRoundResult.Web/ .
 RUN dotnet publish -r linux-x64 --self-contained false -o /app && echo $CACHEBUST
 
 FROM hub.lumigame.com/base/dotnet/core/aspnet:5.0.15-alpine3.15 AS base
-RUN apk add --update curl tzdata icu-data-full icu-libs && rm -rf /var/cache/apk/*
+RUN apk add --update curl tzdata icu-libs && rm -rf /var/cache/apk/*
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 
 WORKDIR /app
