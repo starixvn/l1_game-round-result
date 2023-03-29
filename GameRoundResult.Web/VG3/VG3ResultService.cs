@@ -14,7 +14,7 @@ namespace GameRoundResult.Web.VG3
     public interface IVG3ResultApi
     {
         [Post("/BetHistory/GetAccessUrl")]
-        Task<GameTicketAccessUrlResultModel> GetBetDetailsURL([Body] BetHistoryAccessUrlRequestModel request);
+        Task<GameTicketAccessUrlResultModel> GetBetDetailsURL([Body] VG3Request request);
     }
 
     public interface IVG3ResultService
@@ -23,7 +23,7 @@ namespace GameRoundResult.Web.VG3
 
         public bool IsVG3Ticket(BetHistoryAccessUrlRequestModel model);
 
-        public Task<GameTicketAccessUrlResultModel> GetBetDetailsURL(BetHistoryAccessUrlRequestModel request);
+        public Task<GameTicketAccessUrlResultModel> GetBetDetailsURL(VG3Request request);
     }
 
     public class VG3ResultService : IVG3ResultService
@@ -87,10 +87,6 @@ namespace GameRoundResult.Web.VG3
         {
             var maximumDays = new TimeSpan(7, 0, 0, 0);
             if (DateTime.Now - mergingDate > maximumDays)
-            {
-                return false;
-            }
-            if (systemType != "VG2" || !IsVG3Authentication(model.Auth))
             {
                 return false;
             }
@@ -181,7 +177,7 @@ namespace GameRoundResult.Web.VG3
             }
         }
 
-        public Task<GameTicketAccessUrlResultModel> GetBetDetailsURL(BetHistoryAccessUrlRequestModel request)
+        public Task<GameTicketAccessUrlResultModel> GetBetDetailsURL(VG3Request request)
             => api.GetBetDetailsURL(request);
 
         private bool ExistBet(long roundId, int playerId, string collectionName)

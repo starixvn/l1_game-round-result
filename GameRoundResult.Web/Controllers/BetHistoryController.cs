@@ -102,27 +102,47 @@ namespace GameRoundResult.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                if (this.isVG2System() && vg3Service.IsVG3Ticket(model))
-                {
-                    model.Auth = vg3Service.GetVG3Authentication();
-                    var result = await vg3Service.GetBetDetailsURL(model);
-                    return Ok(result);
-                }
-
                 var @operator = await partnerService.Get(model.Auth.OperatorId, model.Auth.OperatorSecret);
 
                 if (@operator != null)
                 {
-                    var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}^^{model.Auth.OperatorSecret}^^{model.GameTypeId}^^{model.GameRoundId}^^{model.PlayerId}^^{model.FreeBet}",
-                        TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
-                    model.Language = StandardizeLanguage(model.Language);
-                    var redirectUrl = Url.Action("Index", "BetHistory", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
+                    if (this.isVG2System() && vg3Service.IsVG3Ticket(model))
+                    {
+                        try
+                        {
+                            var vg3Request = new VG3Request
+                            {
+                                Auth = vg3Service.GetVG3Authentication(),
+                                GameRoundId = model.GameRoundId,
+                                GameTypeId = (byte)model.GameTypeId,
+                                Language = model.Language,
+                                PlayerId = model.PlayerId,
+                            };
+                            var result = await vg3Service.GetBetDetailsURL(vg3Request);
+                            log.Result = new AccessUrlResponse { RedirectUrl = result.RedirectUrl };
+                            log.ResponseTimeStamp = DateTimeOffset.UtcNow;
+                            await logService.LogTicketDetailRequestAsync(log);
+                            return Ok(result);
+                        }
+                        catch (Exception ex)
+                        {
+                            log = ConvertToLog(model);
+                            SentrySdk.CaptureException(ex);
+                        }
+                    }
+                    else
+                    {
+                        var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}^^{model.Auth.OperatorSecret}^^{model.GameTypeId}^^{model.GameRoundId}^^{model.PlayerId}^^{model.FreeBet}",
+                            TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
+                        model.Language = StandardizeLanguage(model.Language);
+                        var redirectUrl = Url.Action("Index", "BetHistory", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
 
-                    log.Result = new AccessUrlResponse { RedirectUrl = redirectUrl };
-                    log.ResponseTimeStamp = DateTimeOffset.UtcNow;
-                    await logService.LogTicketDetailRequestAsync(log);
+                        log.Result = new AccessUrlResponse { RedirectUrl = redirectUrl };
+                        log.ResponseTimeStamp = DateTimeOffset.UtcNow;
+                        await logService.LogTicketDetailRequestAsync(log);
 
-                    return Ok(new GameTicketAccessUrlResultModel { RedirectUrl = redirectUrl });
+                        return Ok(new GameTicketAccessUrlResultModel { RedirectUrl = redirectUrl });
+                    }
                 }
             }
 
