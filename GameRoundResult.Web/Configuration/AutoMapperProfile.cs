@@ -152,7 +152,23 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<SicBoBet, SicBoBetViewModel>();
 
+            CreateMap<VipSeDieWarRound, VipSeDieWarRoundResultViewModel>()
+              .ForMember(x => x.PlayerChips, opt => opt.MapFrom(x => new[]
+              {
+                    x.Result.Player.FirstChip,
+                    x.Result.Player.SecondChip,
+                    x.Result.Player.ThirdChip,
+                    x.Result.Player.FourthChip
+              }.OrderByDescending(x => x)))
+              .ForMember(x => x.BankerChips, opt => opt.MapFrom(x => new[]
+              {
+                    x.Result.Banker.FirstChip,
+                    x.Result.Banker.SecondChip,
+                    x.Result.Banker.ThirdChip,
+                    x.Result.Banker.FourthChip
+              }.OrderByDescending(x => x)));
             CreateMap<VipSeDieWarBet, VipSeDieWarBetViewModel>();
+
             CreateMap<VipBaccaratRound, BaccaratRoundResultViewModel>()
                 .ForMember(x => x.PlayerCards, opt => opt.MapFrom((source, destination, i, context) =>
                 {
