@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Services;
+using GameRoundResult.Web._Shared;
 using GameRoundResult.Web.Services;
 using MediatR;
 using Sentry;
@@ -15,13 +16,16 @@ namespace GameRoundResult.Web.Handlers
     {
         private readonly IEndGameInfoServiceFactory factory;
         private readonly IValidator<Requests.RetrieveEndRoundInfoRequest> validator;
+        private readonly IGameAdminApi gameAdminApi;
 
         public EndRoundInfoHandler(
             IEndGameInfoServiceFactory factory,
-            IValidator<Requests.RetrieveEndRoundInfoRequest> validator)
+            IValidator<Requests.RetrieveEndRoundInfoRequest> validator,
+            IGameAdminApi gameAdminApi)
         {
             this.factory = factory;
             this.validator = validator;
+            this.gameAdminApi = gameAdminApi;
         }
 
         public async Task<EndRoundInfoResult> Handle(Requests.RetrieveEndRoundInfoRequest request, CancellationToken cancellationToken)
@@ -34,9 +38,16 @@ namespace GameRoundResult.Web.Handlers
 
                 if (validatorResult.IsValid)
                 {
-                    var gameType = Enum.Parse<GameType>(request.GameTypeId.ToString());
+                    var gameConfigs = await gameAdminApi.GetGameConfigById(request.GameTypeId);
 
-                    service = factory.GetService(gameType);
+                    if (gameConfigs == null)
+                    {
+                        return EndRoundInfoError.SB1006;
+                    }
+
+                    var gameId = Enum.Parse<GameId>(request.GameTypeId.ToString());
+
+                    service = factory.GetService(gameId, gameConfigs.Type);
 
                     return await service.GetAsync(new RetrieveEndGameInfoRequest
                     {
@@ -46,7 +57,7 @@ namespace GameRoundResult.Web.Handlers
                         PlayerId = request.PlayerId,
                         SiteId = request.SiteId,
                         FreeBet = request.FreeBet
-                    });
+                    }, gameConfigs.Name);
                 }
 
                 var error = validatorResult.Errors.First();

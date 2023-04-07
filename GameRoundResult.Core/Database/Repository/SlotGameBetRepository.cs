@@ -21,17 +21,14 @@ namespace GameRoundResult.Core.Database.Repository
         }
 
         public Task<T> GetAsync<T>(long roundId, int playerId, string operatorId, string gameName) where T : BaseSlotRoundEntity
-        => GetCollection<T>(gameName)
+        => GetRoundCollection<T>(gameName)
                .Find(RoundFilter<T>(roundId, playerId, operatorId))
                .FirstOrDefaultAsync();
 
         public Task<T> GetEndRoundAsync<T>(long roundId, int playerId, string operatorId, string gameName, string siteId) where T : BaseSlotRoundEntity
-        => GetCollection<T>(gameName)
+        => GetRoundCollection<T>(gameName)
                .Find(EndRoundFilter<T>(roundId, playerId, operatorId, siteId))
                .FirstOrDefaultAsync();
-
-        private IMongoCollection<T> GetCollection<T>(string name) where T : BaseSlotRoundEntity
-            => database.GetCollection<T>(CollectionNameFormatter.Round(name));
 
         private static Expression<Func<T, bool>> EndRoundFilter<T>(long roundId, int playerId, string operatorId, string siteId) where T : BaseSlotRoundEntity
         {

@@ -1,4 +1,4 @@
-﻿ using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoMapper;
 using GameRoundResult.Web._Shared;
 using GameRoundResult.Web.Accessor;
@@ -14,30 +14,20 @@ namespace GameRoundResult.Web.SlotGames.Handlers
     {
         private readonly ISlotGameTicketService slotGameTicketService;
         private readonly IMapper mapper;
-        private readonly IGameAdminApi gameAdminApi;
         private readonly GameResource gameResource;
 
         public SlotGameHandler(
             ISlotGameTicketService gameBetService,
             IMapper mapper,
-            IGameAdminApi gameAdminApi,
             IOptions<GameResource> gameResourceOptions)
         {
             this.slotGameTicketService = gameBetService;
             this.mapper = mapper;
-            this.gameAdminApi = gameAdminApi;
             gameResource = gameResourceOptions.Value;
         }
 
-        public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
+        public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request, GameConfigModel gameConfigs)
         {
-            var gameConfigs = await gameAdminApi.GetGameConfigById((byte)request.GameType);
-
-            if (gameConfigs == null)
-            {
-                return null;
-            }
-
             var result = await slotGameTicketService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId, gameConfigs.Name);
 
             var viewModel = new ClassicSlotTicketViewModel

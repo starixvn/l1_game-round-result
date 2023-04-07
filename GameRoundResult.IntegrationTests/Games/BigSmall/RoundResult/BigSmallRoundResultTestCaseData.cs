@@ -9,8 +9,8 @@ namespace GameRoundResult.IntegrationTests
         {
             return new List<RoundResultTestCaseParam>
             {
-                new RoundResultTestCaseParam (GameType.BigSmall, 1, "2022-11-01", Language.EN, "Round1"),
-                new RoundResultTestCaseParam (GameType.BigSmall, 0, "2022-11-01", Language.EN, "DataByDate"),
+                new RoundResultTestCaseParam (GameId.BigSmall, 1, "2022-11-01", Language.EN, "Round1"),
+                new RoundResultTestCaseParam (GameId.BigSmall, 0, "2022-11-01", Language.EN, "DataByDate"),
             };
         }
     }
@@ -21,8 +21,8 @@ namespace GameRoundResult.IntegrationTests
         {
             return new List<RoundResultSelectOptionsTestCaseParam>
             {
-                new RoundResultSelectOptionsTestCaseParam(GameType.BigSmall, "Big Small", Language.EN),
-                new RoundResultSelectOptionsTestCaseParam(GameType.BigSmall, "Tài Xỉu", Language.VN),
+                new RoundResultSelectOptionsTestCaseParam(GameId.BigSmall, "Big Small", Language.EN),
+                new RoundResultSelectOptionsTestCaseParam(GameId.BigSmall, "Tài Xỉu", Language.VN),
             };
         }
     }

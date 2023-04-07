@@ -6,6 +6,6 @@ namespace GameRoundResult.Web.Accessor
 {
     public interface IGameTicketAccessor
     {
-        Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request);
+        Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request, GameConfigModel gameConfigs);
     }
 }

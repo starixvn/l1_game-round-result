@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
+using GameRoundResult.Core.Constants;
 
 namespace GameRoundResult.Web.Models
 {
     public class GameConfigModel
     {
         public int GameId { get; set; }
+
+        public GameType Type { get; set; }
 
         public string Name { get; set; }
 

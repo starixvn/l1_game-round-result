@@ -17,7 +17,7 @@ namespace GameRoundResult.Core.Services
             this.repository = repository;
         }
 
-        public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request)
+        public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request, string gameName)
         {
             var result = await repository.GetAsync<TBaseRoundEntity, TBaseBetEntity>(request.GameRoundId, request.PlayerId, request.FreeBet, request.OperatorId);
             var round = await GetRoundAsync(request);

@@ -7,6 +7,7 @@ using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web._Shared;
 using GameRoundResult.Web.Accessor;
+using GameRoundResult.Web.CascadingSlotGames;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Requests;
 using GameRoundResult.Web.Services;
@@ -86,8 +87,6 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IHiLoTicketService, HiLoTicketService>();
             services.AddScoped<IHiLoBetRepository, HiLoBetRepository>();
 
-            services.AddScoped<IBaseCascadingSlotTicketService, BaseCascadingSlotTicketService>();
-            services.AddScoped<IBaseCascadingSlotBetRepository, BaseCascadingSlotBetRepository>();
 
             services.AddScoped<IBitcoinMasterTicketService, BitcoinMasterTicketService>();
             services.AddScoped<IBitcoinMasterBetRepository, BitcoinMasterBetRepository>();
@@ -104,7 +103,6 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<DragonTigerTicketAccessor>();
             services.AddScoped<FishPrawnCrabTicketAccessor>();
 
-            services.AddScoped(typeof(BaseCascadingSlotTicketAccessor<,>));
             services.AddScoped<KenoProMaxTicketAccessor>();
             services.AddScoped<LotteryTicketAccessor>();
             services.AddScoped(typeof(MiniKenoTicketAccessor<,>));
@@ -158,7 +156,6 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<CasinoHoldemPokerEndGameInfoService>();
             services.AddScoped<HiLoEndGameInfoService>();
             services.AddScoped<TexasHoldemPokerEndGameInfoService>();
-            services.AddScoped<TreasureIslandEndRoundInfoService>();
             services.AddScoped(typeof(UnbalancedBigSmallEndGameInfoService<,>));
             services.AddScoped<BaccaratTicketAccessor<BaccaratRound, BaccaratBet>>();
             services.AddScoped<BaccaratTicketAccessor<VipBaccaratRound, VipBaccaratBet>>();
@@ -183,6 +180,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<Win3CardsEndGameInfoService>();
 
             services.AddSlotGames();
+            services.AddCascadingSlotGames();
         }
 
         public static void AddValidators(this IServiceCollection services)

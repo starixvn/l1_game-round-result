@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using GameRoundResult.Core._Share;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Extensions;
 using MongoDB.Driver;
@@ -87,5 +88,8 @@ namespace GameRoundResult.Core.Database.Repository
 
             return (round, bet);
         }
+
+        protected virtual IMongoCollection<T> GetRoundCollection<T>(string name) where T : GameRound
+           => database.GetCollection<T>(CollectionNameFormatter.Round(name));
     }
 }

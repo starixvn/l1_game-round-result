@@ -93,7 +93,7 @@ namespace GameRoundResult.IntegrationTests
             }
         }
 
-        public void InsertDataGameStubs(GameType game, string featureName, string folderName)
+        public void InsertDataGameStubs(GameId game, string featureName, string folderName)
         {
             InsertDataGameStubs(game.ToString(), featureName, folderName);
         }

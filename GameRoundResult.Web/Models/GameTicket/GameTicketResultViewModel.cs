@@ -7,7 +7,7 @@ namespace GameRoundResult.Web.Models
     public class GameTicketResultViewModel
     {
         private const string PartialPostfix = "Ticket";
-        public GameType GameType { get; set; }
+        public GameId GameType { get; set; }
 
         public GameTicketViewModel GameTicketResult { get; set; }
 
@@ -28,39 +28,39 @@ namespace GameRoundResult.Web.Models
                 return $"_Baccarat{PartialPostfix}";
             }
 
-            return Enum.IsDefined(typeof(GameType), GameType)
-                ? $"_{TransformToViewName(Enum.GetName(typeof(GameType), GameType))}{PartialPostfix}"
+            return Enum.IsDefined(typeof(GameId), GameType)
+                ? $"_{TransformToViewName(Enum.GetName(typeof(GameId), GameType))}{PartialPostfix}"
                 : $"_SlotGame{PartialPostfix}";
         }
 
         private bool IsMiniKeno
             => GameType switch
             {
-                GameType.KenoProViet 
-                or GameType.KenoMax
-                or GameType.KenoMax2
-                or GameType.KenoMini
-                or GameType.KenoMini2
-                or GameType.KenoEast
-                or GameType.KenoWest
-                or GameType.KenoSouth
-                or GameType.KenoNorth
-                or GameType.MegaKeno
-                or GameType.MegaKeno2 => true,
+                GameId.KenoProViet 
+                or GameId.KenoMax
+                or GameId.KenoMax2
+                or GameId.KenoMini
+                or GameId.KenoMini2
+                or GameId.KenoEast
+                or GameId.KenoWest
+                or GameId.KenoSouth
+                or GameId.KenoNorth
+                or GameId.MegaKeno
+                or GameId.MegaKeno2 => true,
                 _ => false
             };
 
         private bool IsCascadingSlot
             => GameType switch
             {
-                GameType.TreasureIsland => true,
+                GameId.TreasureIsland => true,
                 _ => false
             };
 
         private bool IsBaccarat
              => GameType switch
              {
-                 GameType.Baccarat or GameType.VipBaccarat or GameType.BlockchainBaccarat => true,
+                 GameId.Baccarat or GameId.VipBaccarat or GameId.BlockchainBaccarat => true,
                  _ => false
              };
 

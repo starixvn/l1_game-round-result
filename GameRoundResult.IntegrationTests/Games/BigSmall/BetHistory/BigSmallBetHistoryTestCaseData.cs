@@ -9,8 +9,8 @@ namespace GameRoundResult.IntegrationTests
         {
             return new List<BetHistoryTestCaseParam>
             {
-                new BetHistoryTestCaseParam((int)GameType.BigSmall, "BigSmall", 123, 1, Language.EN, "WinningRound"),
-                new BetHistoryTestCaseParam((int)GameType.BigSmall, "BigSmall", 123, 2, Language.EN, "LosingRound"),
+                new BetHistoryTestCaseParam((int)GameId.BigSmall, "BigSmall", 123, 1, Language.EN, "WinningRound"),
+                new BetHistoryTestCaseParam((int)GameId.BigSmall, "BigSmall", 123, 2, Language.EN, "LosingRound"),
             };
         }
     }

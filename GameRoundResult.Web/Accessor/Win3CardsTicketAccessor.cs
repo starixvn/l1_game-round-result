@@ -22,7 +22,7 @@ namespace GameRoundResult.Web.Accessor
             this.currencyGroupService = currencyGroupService;
         }
 
-        public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
+        public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request, GameConfigModel gameConfigs)
         {
             var result = await gameBetService.GetAsync<Win3CardsRound, Win3CardsBet, Win3CardsBetLog>(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId);
 

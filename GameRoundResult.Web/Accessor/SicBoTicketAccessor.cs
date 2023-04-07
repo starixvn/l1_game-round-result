@@ -20,7 +20,7 @@ namespace GameRoundResult.Web.Accessor
             this.mapper = mapper;
         }
 
-        public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
+        public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request, GameConfigModel gameConfigs)
         {
             var result = await gameBetService.GetAsync<SicBoRound, SicBoOne, SicBoBet>(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId);
 

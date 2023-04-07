@@ -30,7 +30,7 @@ namespace GameRoundResult.Core.Database.Entities
 
     public class AccessUrlRequest
     {
-        public GameType GameTypeId { get; set; }
+        public GameId GameTypeId { get; set; }
 
         public AuthModel Auth { get; set; }
 

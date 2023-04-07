@@ -5,7 +5,7 @@ namespace GameRoundResult.Web.ViewFactory
 {
     public interface IRoundResultViewFactory
     {
-        string GetView(GameType game);
+        string GetView(GameId game);
     }
 
     public class RoundResultViewFactory : IRoundResultViewFactory
@@ -30,55 +30,55 @@ namespace GameRoundResult.Web.ViewFactory
         private const string fantan = "_FanTanRoundResult";
         private const string win3Cards = "_Win3CardsRoundResult";
 
-        private readonly Dictionary<GameType, string> views = new()
+        private readonly Dictionary<GameId, string> views = new()
         {
-            { GameType.BigSmall, bigSmall },
-            { GameType.SeDie, sedie },
-            { GameType.FishPrawnCrab, fishPrawnCrab },
-            { GameType.BigSmallTurbo, bigSmall },
-            { GameType.OddEvenTurbo, oddEven },
-            { GameType.DragonTiger, dragonTiger },
-            { GameType.KenoProMax, keno },
-            { GameType.MiniSeDie, sedie },
-            { GameType.Baccarat, baccarat },
-            { GameType.KenoMax, keno },
-            { GameType.KenoMax2, keno },
-            { GameType.KenoMini, keno },
-            { GameType.KenoMini2, keno },
-            { GameType.KenoEast, keno },
-            { GameType.KenoWest, keno },
-            { GameType.KenoSouth, keno },
-            { GameType.KenoNorth, keno },
-            { GameType.Roulette, roulette },
-            { GameType.VipSeDie, sedie },
-            { GameType.SpecialSeDie, sedie },
-            { GameType.SicBo, sicbo },
-            { GameType.VipFishPrawnCrab, fishPrawnCrab },
-            { GameType.VipBaccarat, baccarat },
-            { GameType.SeDieWar, sedieWar },
-            { GameType.Lottery, lottery },
-            { GameType.ThreeCards, threeCards },
-            { GameType.KenoMatch1, kenoMatch },
-            { GameType.KenoMatch2, kenoMatch },
-            { GameType.KenoPower1, kenoPower },
-            { GameType.KenoPower2, kenoPower },
-            { GameType.BitcoinMaster, bitcoinMaster },
-            { GameType.CasinoHoldemPoker, casinoHoldemPoker },
-            { GameType.BlockchainBaccarat, baccarat },
-            { GameType.MegaKeno, keno },
-            { GameType.MegaKeno2, keno },
-            { GameType.UnbalancedBigSmall1, bigSmall },
-            { GameType.UnbalancedBigSmall2, bigSmall },
-            { GameType.UnbalancedBigSmall3, bigSmall },
-            { GameType.UnbalancedBigSmall4, bigSmall },
-            { GameType.MiniSeDie2, sedie },
-            { GameType.MiniSeDie3, sedie },
-            { GameType.MiniSeDie4, sedie },
-            { GameType.FruitSlot, fruitSlot },
-            { GameType.FanTan, fantan },
-            { GameType.WinThreeCards, win3Cards},
+            { GameId.BigSmall, bigSmall },
+            { GameId.SeDie, sedie },
+            { GameId.FishPrawnCrab, fishPrawnCrab },
+            { GameId.BigSmallTurbo, bigSmall },
+            { GameId.OddEvenTurbo, oddEven },
+            { GameId.DragonTiger, dragonTiger },
+            { GameId.KenoProMax, keno },
+            { GameId.MiniSeDie, sedie },
+            { GameId.Baccarat, baccarat },
+            { GameId.KenoMax, keno },
+            { GameId.KenoMax2, keno },
+            { GameId.KenoMini, keno },
+            { GameId.KenoMini2, keno },
+            { GameId.KenoEast, keno },
+            { GameId.KenoWest, keno },
+            { GameId.KenoSouth, keno },
+            { GameId.KenoNorth, keno },
+            { GameId.Roulette, roulette },
+            { GameId.VipSeDie, sedie },
+            { GameId.SpecialSeDie, sedie },
+            { GameId.SicBo, sicbo },
+            { GameId.VipFishPrawnCrab, fishPrawnCrab },
+            { GameId.VipBaccarat, baccarat },
+            { GameId.SeDieWar, sedieWar },
+            { GameId.Lottery, lottery },
+            { GameId.ThreeCards, threeCards },
+            { GameId.KenoMatch1, kenoMatch },
+            { GameId.KenoMatch2, kenoMatch },
+            { GameId.KenoPower1, kenoPower },
+            { GameId.KenoPower2, kenoPower },
+            { GameId.BitcoinMaster, bitcoinMaster },
+            { GameId.CasinoHoldemPoker, casinoHoldemPoker },
+            { GameId.BlockchainBaccarat, baccarat },
+            { GameId.MegaKeno, keno },
+            { GameId.MegaKeno2, keno },
+            { GameId.UnbalancedBigSmall1, bigSmall },
+            { GameId.UnbalancedBigSmall2, bigSmall },
+            { GameId.UnbalancedBigSmall3, bigSmall },
+            { GameId.UnbalancedBigSmall4, bigSmall },
+            { GameId.MiniSeDie2, sedie },
+            { GameId.MiniSeDie3, sedie },
+            { GameId.MiniSeDie4, sedie },
+            { GameId.FruitSlot, fruitSlot },
+            { GameId.FanTan, fantan },
+            { GameId.WinThreeCards, win3Cards},
         };
 
-        public string GetView(GameType game) => views[game];
+        public string GetView(GameId game) => views[game];
     }
 }
