@@ -2,7 +2,6 @@
 using System.Linq;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
-using GameRoundResult.Web.CascadingSlotGames.ViewModels;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
 
@@ -280,13 +279,6 @@ namespace GameRoundResult.Web.Configuration
                 => x.Ended ? x.SettlementResult.HandRankId
                 : 0));
 
-            CreateMap<BaseCascadingSlotRoundEntity, BaseCascadingSlotRoundViewModel>();
-            CreateMap<BaseCascadingSlotSettlementResult, BaseCascadingSlotSettlementResultViewModel>();
-            CreateMap<BaseCascadingSlotRoundMultiplier, BaseCascadingSlotRoundMultiplierViewModel>();
-            CreateMap<BaseCascadingSlotFreeSpin, BaseCascadingSlotFreeSpinViewModel>();
-            CreateMap<BaseCascadingSlotWinningSymbol, BaseCascadingSlotWinningSymbolViewModel>();
-            CreateMap<BaseCascadingSlotTumble, BaseCascadingSlotTumbleViewModel>();
-
             CreateMap<UnbalancedBigSmallBetLog, UnbalancedBigSmallBetLogViewModel>();
 
             CreateMap<BlockchainBaccaratCard, DragonTigerCardViewModel>();
@@ -334,7 +326,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<FanTanResultEntity, FanTanResultViewModel>();
             CreateMap<FanTanSettlementResult, FanTanSettlementResultViewModel>();
             CreateMap<FanTanBet, FanTanBetViewModel>();
-            
+
             CreateMap<FruitSlotRound, FruitSlotRoundResultViewModel>()
                 .ForMember(x => x.SymbolsResult, opt => opt.MapFrom(x => x.Result.Symbols))
                 .ForMember(x => x.NumberResult, opt => opt.MapFrom(x => x.Result.Number));
