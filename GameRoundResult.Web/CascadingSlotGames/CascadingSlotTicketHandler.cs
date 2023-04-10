@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Accessor;
+using GameRoundResult.Web.CascadingSlotGames.ViewModels;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Models;
@@ -30,6 +31,7 @@ namespace GameRoundResult.Web.CascadingSlotGames
 
             return new BaseCascadingSlotTicketViewModel
             {
+                GameName = gameConfigs.Name,
                 Round = result.Item1?.ToViewModel<BaseCascadingSlotRoundEntity, BaseCascadingSlotRoundViewModel>(mapper, request.TimeZoneInfo),
                 Multipliers = result.Item2?.Rounds.Select(multiplier => multiplier.ToViewModel(mapper, request.TimeZoneInfo)),
                 StaticResourceUrl = gameResource.BaseUrl.ToString()

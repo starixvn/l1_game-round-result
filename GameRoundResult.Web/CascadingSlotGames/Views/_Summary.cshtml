@@ -1,0 +1,60 @@
+﻿@model BaseCascadingSlotTicketViewModel
+
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<BaseCascadingSlotTicketViewModel> Localizer
+
+@{
+    var roundResult = Model.Round;
+}
+
+
+<table class="table table-bordered table-cascading-slot">
+    <thead>
+        <tr>
+            <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
+            <th class="col-date">@CommonLocalizer["Time"] (GMT-4)</th>
+            <th>@Localizer["BetLevel"]</th>
+            <th>@Localizer["CoinValue"]</th>
+            <th>@CommonLocalizer["Stake"]</th>
+            <th>@CommonLocalizer["Win"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (roundResult != null)
+        {
+            <tr>
+                <td>
+                    @roundResult.RoundId
+                    <div>@(roundResult.FreeSpin ? $"({Localizer["FreeSpin"]})" : string.Empty)</div>
+                </td>
+                <td>
+                    @roundResult.DisplayRoundDate
+                    <br />
+                    @roundResult.DisplayRoundTime
+                </td>
+                <td>@roundResult.BetLevel</td>
+                <td>@roundResult.CoinValue.Format()</td>
+                <td>@roundResult.TotalAmount.Format()</td>
+                <td>@roundResult.BetWin.Format()</td>
+            </tr>
+            <tr class="bold">
+                <td colspan="4" class="text-right">@CommonLocalizer["Total"]</td>
+                <td>@roundResult.DisplayTotalAmount</td>
+                <td>@roundResult.BetWin.Format()</td>
+            </tr>
+            <tr class="total">
+                <td colspan="4" class="text-right">@CommonLocalizer["WinLoss"]</td>
+                <td></td>
+                <td class="@(roundResult.IsWinning ? string.Empty: "text-red")">@roundResult.DisplayWinLoss</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

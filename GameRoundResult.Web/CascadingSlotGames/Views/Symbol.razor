@@ -1,0 +1,16 @@
+﻿@using System.Text;
+@using GameRoundResult.Core.Constants;
+
+@code {
+
+    [Parameter]
+    public byte Number { get; set; }
+
+    [Parameter]
+    public string StaticResourceUrl { get; set; }
+
+    [Parameter]
+    public string GameName { get; set; }
+}
+
+<img class="symbol" src="@StaticResourceUrl/@GameName/@(Number).png" />

@@ -1,11 +1,15 @@
-﻿namespace GameRoundResult.Web.Models
+﻿namespace GameRoundResult.Web.CascadingSlotGames.ViewModels
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using GameRoundResult.Web.Configuration;
+    using GameRoundResult.Web.Models;
 
     public class BaseCascadingSlotTicketViewModel : GameTicketViewModel
     {
+        public string GameName { get; set; }
+
         public BaseCascadingSlotRoundViewModel Round { get; set; }
 
         public IEnumerable<BaseCascadingSlotRoundMultiplierViewModel> Multipliers { get; set; }
@@ -35,9 +39,15 @@
 
         public decimal WinLoss => FreeSpin ? BetWin : BetWin - TotalAmount;
 
+        public string DisplayWinLoss => WinLoss.Format();
+
+        public string DisplayTotalAmount => (FreeSpin ? 0 : TotalAmount).Format();
+
         public IEnumerable<byte> Board => Result.Split(',').Select(value => byte.Parse(value));
 
         public bool ReachMaxWin { get; set; }
+
+        public bool IsWinning => WinLoss > 0;
     }
 
     public class BaseCascadingSlotRoundMultiplierViewModel
@@ -57,6 +67,7 @@
 
         public BaseCascadingSlotFreeSpinViewModel FreeSpins { get; set; }
 
+        public string DisplayTumbleWin => Tumbles.Sum(x => x.Win).Format();
     }
 
     public class BaseCascadingSlotTumbleViewModel

@@ -1,0 +1,92 @@
+﻿@using System.Text;
+@using GameRoundResult.Core.Constants;
+
+@code {
+    [Parameter]
+    public IList<byte> Multipliers { get; set; }
+
+    [Parameter]
+    public IEnumerable<byte> Board { get; set; }
+
+    [Parameter]
+    public string StaticResourceUrl { get; set; }
+
+    [Parameter]
+    public string GameName { get; set; }
+
+    private byte[,] RenderedBoard
+    {
+        get
+        {
+            var result = new byte[CascadingSlotGameConstant.NumberOfRows, CascadingSlotGameConstant.NumberOfColumns];
+            ;
+            for (var row = 0; row < CascadingSlotGameConstant.NumberOfRows; row++)
+            {
+                var boardArray = Board.ToArray(); ;
+                for (var column = 0; column < CascadingSlotGameConstant.NumberOfColumns; column++)
+                {
+                    result[row, column] = boardArray[row + column * CascadingSlotGameConstant.NumberOfRows];
+                }
+            }
+
+            return result;
+        }
+    }
+
+    private string GetMultiplierImageName(byte value)
+    {
+        var image = "10";
+
+        if (value <= 10)
+        {
+            image = "13";
+        }
+        else
+        {
+            if (value <= 20)
+            {
+                image = "11";
+            }
+            else
+            {
+                if (value <= 30)
+                {
+                    image = "12";
+                }
+            }
+        }
+        return image;
+    }
+}
+
+<table class="table-result-board">
+    <tbody>
+        @{
+            var renderedBoard = RenderedBoard;
+            var multiplierIndex = 0;
+        }
+        @for (var row = 0; row < renderedBoard.GetLength(0); row++)
+        {
+            <tr>
+                @for (var column = 0; column < renderedBoard.GetLength(1); column++)
+                {
+                    var symbol = renderedBoard[row, column];
+                    @if (symbol >= CascadingSlotGameConstant.MinMultiplierSymbol)
+                    {
+                        <td class="result-board">
+                            <img class="symbol" src="@StaticResourceUrl/@GameName/@(GetMultiplierImageName(Multipliers[multiplierIndex])).png" />
+                            <div class="multiplier treasureisland">@($"x{Multipliers[multiplierIndex]}")</div>
+                        </td>
+                        multiplierIndex++;
+                    }
+                    else
+                    {
+                        <td>
+                            <Symbol GameName="GameName" StaticResourceUrl="StaticResourceUrl" Number="symbol" />
+                        </td>
+                    }
+                }
+            </tr>
+        }
+    </tbody>
+</table>

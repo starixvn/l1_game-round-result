@@ -14,9 +14,10 @@ namespace GameRoundResult.Web.Handlers
         private readonly IGameTicketAccessorFactory serviceFactory;
         private readonly IGameAdminApi gameAdminApi;
 
-        public GameTicketHandler(IGameTicketAccessorFactory serviceFactory)
+        public GameTicketHandler(IGameTicketAccessorFactory serviceFactory, IGameAdminApi gameAdminApi)
         {
             this.serviceFactory = serviceFactory;
+            this.gameAdminApi = gameAdminApi;
         }
 
         public async Task<GameTicketViewModel> Handle(GetGameTicketRequest request, CancellationToken cancellationToken)

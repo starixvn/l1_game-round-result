@@ -1,0 +1,5 @@
+﻿@model BaseCascadingSlotTicketViewModel
+
+@await Html.PartialAsync("_Summary", Model)
+@await Html.PartialAsync("_Tumbles", Model)
+@await Html.PartialAsync("_TotalMultiplier", Model)

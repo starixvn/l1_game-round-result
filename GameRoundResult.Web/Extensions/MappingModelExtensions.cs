@@ -1,6 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Web.CascadingSlotGames.ViewModels;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
 
@@ -13,7 +14,11 @@ namespace GameRoundResult.Web.Extensions
         {
             return mapper.Map<TRoundEntity, TViewModel>(entity, opts =>
             {
-                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+                opts.AfterMap((source, dest) =>
+                {
+                    dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo);
+                    dest.TimeZone = timeZoneInfo;
+                });
             });
         }
 
