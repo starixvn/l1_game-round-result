@@ -106,9 +106,6 @@ namespace GameRoundResult.Web.VG3
                 case GameTypeVG3.BigSmallTurbo:
                     return ExistBet(roundId, playerId, "txturbo_ones");
 
-                case GameTypeVG3.OddEven:
-                    return ExistBet(roundId, playerId, "chanle_ones");
-
                 case GameTypeVG3.OddEvenTurbo:
                     return ExistBet(roundId, playerId, "chanleturbo_ones");
 
@@ -126,9 +123,6 @@ namespace GameRoundResult.Web.VG3
 
                 case GameTypeVG3.Blackjack:
                     return ExistBlackjackBet(roundId, playerId);
-
-                case GameTypeVG3.FishPrawnCrabPro:
-                    return ExistBet(roundId, playerId, "fishprawncrabpro_cuocs");
 
                 case GameTypeVG3.KenoMax:
                     return ExistBet(roundId, playerId, "kenomax_ones");
@@ -154,23 +148,19 @@ namespace GameRoundResult.Web.VG3
                 case GameTypeVG3.KenoNorth:
                     return ExistBet(roundId, playerId, "kenonorth_ones");
 
-                case GameTypeVG3.BaccaratDiamond:
-                    return ExistBet(roundId, playerId, "baccaratdiamond_cuocs");
-
-                case GameTypeVG3.BaccaratSapphire:
-                    return ExistBet(roundId, playerId, "baccaratsapphire_cuocs");
-
-                case GameTypeVG3.BaccaratRuby:
-                    return ExistBet(roundId, playerId, "baccaratruby_cuocs");
-
                 case GameTypeVG3.CasinoHoldemPoker:
                     return ExistBet(roundId, playerId, "casinoholdempoker_cuocs");
 
                 case GameTypeVG3.TexasHoldemPoker:
                     return ExistBet(roundId, playerId, "texasholdempoker_cuocs");
 
+                case GameTypeVG3.FishPrawnCrabPro:
+                case GameTypeVG3.BaccaratDiamond:
+                case GameTypeVG3.BaccaratSapphire:
+                case GameTypeVG3.BaccaratRuby:
                 case GameTypeVG3.PaiGowPoker:
-                    return ExistBet(roundId, playerId, "paigowpoker_cuocs");
+                case GameTypeVG3.OddEven:
+                    return true;
 
                 default:
                     return false;
