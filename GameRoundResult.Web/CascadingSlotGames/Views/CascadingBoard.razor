@@ -74,7 +74,7 @@
                     @if (symbol >= CascadingSlotGameConstant.MinMultiplierSymbol)
                     {
                         <td class="result-board">
-                            <img class="symbol" src="@StaticResourceUrl/@GameName/@(GetMultiplierImageName(Multipliers[multiplierIndex])).png" />
+                            <img class="symbol" src="@StaticResourceUrl/@GameName/symbol-@(GetMultiplierImageName(Multipliers[multiplierIndex])).png" />
                             <div class="multiplier treasureisland">@($"x{Multipliers[multiplierIndex]}")</div>
                         </td>
                         multiplierIndex++;
@@ -82,7 +82,7 @@
                     else
                     {
                         <td>
-                            <Symbol GameName="GameName" StaticResourceUrl="StaticResourceUrl" Number="symbol" />
+                            <Symbol GameName="@GameName" StaticResourceUrl="@StaticResourceUrl" Number="symbol" />
                         </td>
                     }
                 }

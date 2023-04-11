@@ -1,7 +1,6 @@
 ﻿using System;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
-using GameRoundResult.Web.CascadingSlotGames.ViewModels;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
 
@@ -250,22 +249,6 @@ namespace GameRoundResult.Web.Extensions
             return mapper.Map<CasinoHoldemPokerRound, CasinoHoldemPokerRoundResultViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.RoundStartTime, timeZoneInfo));
-            });
-        }
-
-        public static BaseCascadingSlotRoundViewModel ToViewModel(this BaseCascadingSlotRoundEntity entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
-        {
-            return mapper.Map<BaseCascadingSlotRoundEntity, BaseCascadingSlotRoundViewModel>(entity, opts =>
-            {
-                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
-            });
-        }
-
-        public static BaseCascadingSlotRoundMultiplierViewModel ToViewModel(this BaseCascadingSlotRoundMultiplier entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
-        {
-            return mapper.Map<BaseCascadingSlotRoundMultiplier, BaseCascadingSlotRoundMultiplierViewModel>(entity, opts =>
-            {
-                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });
         }
 

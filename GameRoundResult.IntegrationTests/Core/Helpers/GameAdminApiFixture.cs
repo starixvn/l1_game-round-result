@@ -1,4 +1,5 @@
 ﻿using System;
+using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Models;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
@@ -21,14 +22,14 @@ namespace GameRoundResult.IntegrationTests
             server = WireMockServer.Start("http://localhost:7778");
         }
 
-        public void SetGameConfigApiResponse(int gameId, string gameName)
+        public void SetGameConfigApiResponse(int gameId, string gameName, GameType gameType)
         {
             server.Given(Request.Create().WithPath($"/api/public/game_configs/{gameId}").UsingGet())
                 .RespondWith(
                     Response.Create()
                         .WithStatusCode(200)
                         .WithHeader("Content-Type", "application/json")
-                        .WithBodyAsJson(new GameConfigModel { GameId = gameId, Name = gameName.ToLowerInvariant() })
+                        .WithBodyAsJson(new GameConfigModel { GameId = gameId, Name = gameName.ToLowerInvariant(), Type = gameType })
                 );
         }
 

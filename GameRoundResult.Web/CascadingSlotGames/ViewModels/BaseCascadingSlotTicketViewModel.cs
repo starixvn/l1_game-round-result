@@ -50,10 +50,8 @@
         public bool IsWinning => WinLoss > 0;
     }
 
-    public class BaseCascadingSlotRoundMultiplierViewModel
+    public class BaseCascadingSlotRoundMultiplierViewModel : TimeViewModel
     {
-        public DateTime Time { get; set; }
-
         public long RoundId { get; set; }
 
         public byte Multiplier { get; set; }

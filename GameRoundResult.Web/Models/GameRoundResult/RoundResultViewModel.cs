@@ -6,7 +6,7 @@ using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {
-    public class RoundResultViewModel
+    public abstract class TimeViewModel
     {
         public DateTime Time { get; set; }
 
@@ -17,7 +17,10 @@ namespace GameRoundResult.Web.Models
         public string DisplayRoundTime => UserTime.RoundTimeWithSecondFormat();
 
         public TimeZoneInfo TimeZone { get; set; }
+    }
 
+    public class RoundResultViewModel : TimeViewModel
+    {
         public string DateDisplay => Time.ToString(ViewFormat.RoundDateFormat);
         public string TimeDisplay => Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture);
 

@@ -27,7 +27,7 @@
                 {
                     <tr>
                         <td>@(i + 1)</td>
-                        <td>@multipliers[i].Time.ToString(ViewFormat.RoundDateFormat) @multipliers[i].Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)</td>
+                        <td>@multipliers[i].DisplayRoundDate @multipliers[i].DisplayRoundTime</td>
                         <td>@multipliers[i].RoundId</td>
                         <td>@multipliers[i].Multiplier</td>
                         <td>@multipliers[i].TotalMultiplier</td>

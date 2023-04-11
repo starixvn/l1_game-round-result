@@ -10,8 +10,8 @@ namespace GameRoundResult.IntegrationTests
         {
             return new List<RetrieveEndRoundTestCaseParam>
             {
-                new RetrieveEndRoundTestCaseParam(59, "FruitSlot", 123, 1, "1_ExistBet"),
-                new RetrieveEndRoundTestCaseParam(59, "FruitSlot", 123, 1000, "NotExistRound"),
+                new RetrieveEndRoundTestCaseParam(59, "FruitSlot", GameType.RNG, 123, 1, "1_ExistBet"),
+                new RetrieveEndRoundTestCaseParam(59, "FruitSlot", GameType.RNG, 123, 1000, "NotExistRound"),
             };
         }
     }

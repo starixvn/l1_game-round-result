@@ -26,6 +26,7 @@ namespace GameRoundResult.IntegrationTests
         public async Task Index_ReturnExpectedInfo(
             int gameId,
             string gameName,
+            GameType gameType,
             string testcase,
             int playerId,
             int roundId
@@ -39,7 +40,7 @@ namespace GameRoundResult.IntegrationTests
             var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
             databaseHelper.InsertCurrencyAndOperatorStub();
             databaseHelper.InsertDataGameStubs(gameName, "RetrieveEndRound", testcase);
-            gameAdminApi.SetGameConfigApiResponse(gameId, gameName);
+            gameAdminApi.SetGameConfigApiResponse(gameId, gameName, gameType);
 
             var expected = ReadTextFromFile(gameName, testcase);
 

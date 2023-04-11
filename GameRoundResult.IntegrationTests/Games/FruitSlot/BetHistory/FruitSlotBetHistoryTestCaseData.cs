@@ -8,7 +8,7 @@ namespace GameRoundResult.IntegrationTests
         public override List<BetHistoryTestCaseParam> GetTestCaseParams()
             => new List<BetHistoryTestCaseParam>
             {
-                new BetHistoryTestCaseParam((int)GameId.FruitSlot, "FruitSlot", 123, 1, Language.EN, "Round1"),
+                new BetHistoryTestCaseParam((int)GameId.FruitSlot, "FruitSlot", GameType.FruitSlot, 123, 1, Language.EN, "Round1"),
             };
     }
 }

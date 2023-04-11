@@ -109,6 +109,7 @@ namespace GameRoundResult.IntegrationTests
         public async Task Index_ValidData_RenderExpectedInfo(
             int gameId,
             string gameName,
+            GameType gameType,
             string testcase,
             int playerId,
             long roundId,
@@ -124,7 +125,7 @@ namespace GameRoundResult.IntegrationTests
             databaseHelper.InsertDataGameStubs(gameName, "BetHistory", testcase);
             var url = await BuildAccessUrl(model);
             var expected = ReadTextFromFile(gameName, language, testcase);
-            gameAdminApi.SetGameConfigApiResponse(gameId, gameName);
+            gameAdminApi.SetGameConfigApiResponse(gameId, gameName, gameType);
 
             // act
             var response = await TestDriver.GetAsync(url);

@@ -12,6 +12,7 @@ namespace GameRoundResult.IntegrationTests
                 return new object[] {
                     e.GameId,
                     e.GameName,
+                    e.GameType,
                     e.TestCase,
                     e.PlayerId,
                     e.RoundId,

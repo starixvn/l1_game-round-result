@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.CascadingSlotGames.ViewModels;
 using GameRoundResult.Web.Configuration;
@@ -29,13 +28,30 @@ namespace GameRoundResult.Web.CascadingSlotGames
         {
             var result = await gameBetService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId, gameConfigs.Name);
 
-            return new BaseCascadingSlotTicketViewModel
+            var viewModel = new BaseCascadingSlotTicketViewModel
             {
                 GameName = gameConfigs.Name,
-                Round = result.Item1?.ToViewModel<BaseCascadingSlotRoundEntity, BaseCascadingSlotRoundViewModel>(mapper, request.TimeZoneInfo),
-                Multipliers = result.Item2?.Rounds.Select(multiplier => multiplier.ToViewModel(mapper, request.TimeZoneInfo)),
                 StaticResourceUrl = gameResource.BaseUrl.ToString()
             };
+
+            if (result.Item1 != null)
+            {
+                viewModel.Round = mapper.Map<BaseCascadingSlotRoundViewModel>(result.Item1);
+                viewModel.Round.TimeZone = request.TimeZoneInfo;
+            }
+
+            if (result.Item2 != null)
+            {
+                viewModel.Multipliers = result.Item2.Rounds.Select(x =>
+                {
+                    var mappedModel = mapper.Map<BaseCascadingSlotRoundMultiplierViewModel>(x);
+                    mappedModel.TimeZone = request.TimeZoneInfo;
+
+                    return mappedModel;
+                });
+            }
+
+            return viewModel;
         }
     }
 }
