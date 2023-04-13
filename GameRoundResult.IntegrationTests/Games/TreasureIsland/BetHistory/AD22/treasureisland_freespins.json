@@ -1,0 +1,30 @@
+[
+  {
+    "_id": {
+      "$oid": "643771e1c637bae1766dea53"
+    },
+    "available": 0,
+    "uid": "63bf7f4444e8355d3c2a443b",
+    "memberId": 291192,
+    "name": "DavidIven",
+    "playerId": 291192,
+    "id": 21,
+    "roundId": 1298,
+    "bet": 20,
+    "total": 3,
+    "time": {
+      "$date": {
+        "$numberLong": "1681355233625"
+      }
+    },
+    "expiryTime": {
+      "$date": {
+        "$numberLong": "1681441633625"
+      }
+    },
+    "betLevel": 1,
+    "coinValue": 1,
+    "betMultiplier": 20,
+    "__v": 0
+  }
+]

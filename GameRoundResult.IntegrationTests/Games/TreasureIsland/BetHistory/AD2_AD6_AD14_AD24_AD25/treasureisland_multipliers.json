@@ -1,0 +1,35 @@
+[
+  {
+    "_id": {
+      "$oid": "643771eac637bab1266dea5d"
+    },
+    "ended": true,
+    "uid": "63bf7f4444e8355d3c2a443b",
+    "playerId": 291192,
+    "name": "DavidIven",
+    "time": {
+      "$date": {
+        "$numberLong": "1681355242039"
+      }
+    },
+    "rounds": [
+      {
+        "prevTotalMultiplier": 0,
+        "totalMultiplier": 10,
+        "multiplier": 10,
+        "time": {
+          "$date": {
+            "$numberLong": "1681355242039"
+          }
+        },
+        "roundId": 1299
+      }
+    ],
+    "__v": 0,
+    "endTime": {
+      "$date": {
+        "$numberLong": "1681355254020"
+      }
+    }
+  }
+]

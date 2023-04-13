@@ -1,0 +1,323 @@
+[
+  {
+    "_id": {
+      "$oid": "6433a4bbd0cae6febd540da5"
+    },
+    "coinValue": 0.01,
+    "betLevel": 5,
+    "betMultiplier": 20,
+    "multiplier": 13,
+    "totalAmount": 1,
+    "totalTumbleWin": 0.8,
+    "totalMultiplier": 0,
+    "freeSpin": false,
+    "reachMaxWin": false,
+    "betwin": 10.4,
+    "paid": true,
+    "id": 100,
+    "uid": "61b83e7626ecc9208bce39bd",
+    "name": "FWB",
+    "time": {
+      "$date": {
+        "$numberLong": "1681106107882"
+      }
+    },
+    "rate": 1,
+    "exchangeRateId": 4304,
+    "odds": {
+      "oddsByCounts": {
+        "0": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 5
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 15
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 40
+          }
+        ],
+        "1": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 8
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 18
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 80
+          }
+        ],
+        "2": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 10
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 20
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 100
+          }
+        ],
+        "3": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 16
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 24
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 160
+          }
+        ],
+        "4": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 20
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 30
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 200
+          }
+        ],
+        "5": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 30
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 40
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 240
+          }
+        ],
+        "6": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 40
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 100
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 300
+          }
+        ],
+        "7": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 50
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 200
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 500
+          }
+        ],
+        "8": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 200
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 500
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 1000
+          }
+        ]
+      },
+      "freeSpins": {
+        "initialOdds": [
+          {
+            "count": 4,
+            "odds": 3
+          },
+          {
+            "count": 5,
+            "odds": 6
+          },
+          {
+            "count": 6,
+            "odds": 18
+          }
+        ],
+        "additionalOdds": [
+          {
+            "count": 4,
+            "odds": 5
+          }
+        ]
+      }
+    },
+    "siteId": "4100300",
+    "currency": "$US",
+    "operatorId": "ONEworks1",
+    "playerId": 291192,
+    "__v": 0,
+    "endTime": {
+      "$date": {
+        "$numberLong": "1681106107893"
+      }
+    },
+    "result": "6,1,3,5,0,0,3,3,4,3,2,0,1,4,3,0,10,6,0,1,3,3,2,2,7,3,5,0,7,4",
+    "settlementResult": {
+      "tumbles": [
+        {
+          "originalBoard": "6,1,3,5,0,0,3,3,4,3,2,0,1,4,3,0,10,6,0,1,3,3,2,2,7,3,5,0,7,4",
+          "newBoard": "2,6,1,5,0,1,5,4,0,4,7,2,0,1,4,0,10,6,0,1,7,3,2,2,7,4,5,0,7,4",
+          "multipliers": [
+            13
+          ],
+          "icons": {
+            "3": {
+              "count": 8,
+              "odds": 16,
+              "win": 0.8
+            }
+          },
+          "win": 0.8,
+          "explodedSymbols": [
+            -1,
+            -1,
+            3,
+            -1,
+            -1,
+            -1,
+            3,
+            3,
+            -1,
+            3,
+            -1,
+            -1,
+            -1,
+            -1,
+            3,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            3,
+            3,
+            -1,
+            -1,
+            -1,
+            3,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "newSymbols": [
+            2,
+            -1,
+            -1,
+            -1,
+            -1,
+            1,
+            5,
+            4,
+            -1,
+            -1,
+            7,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            7,
+            3,
+            -1,
+            -1,
+            -1,
+            4,
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "icons": {},
+          "originalBoard": "2,6,1,5,0,1,5,4,0,4,7,2,0,1,4,0,10,6,0,1,7,3,2,2,7,4,5,0,7,4",
+          "newBoard": "2,6,1,5,0,1,5,4,0,4,7,2,0,1,4,0,10,6,0,1,7,3,2,2,7,4,5,0,7,4",
+          "multipliers": [
+            13
+          ],
+          "win": 0
+        }
+      ],
+      "freeSpins": {
+        "count": 0,
+        "odds": 0
+      }
+    },
+    "__archive": {
+      "isCash": false,
+      "summarized": true,
+      "eventtime": {
+        "$date": {
+          "$numberLong": "1681106107882"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "totalAmount": 0,
+  "totalWin": 0,
+  "validBetAmount": 0,
+  "endTime": null,
+  "errorCode": "SB1001",
+  "errorDescription": "The game round does not exist."
+}
