@@ -74,7 +74,7 @@ namespace GameRoundResult.Web.Controllers
                 {
                     var viewModel = new GameTicketResultViewModel
                     {
-                        GameType = gameType,
+                        GameId = gameType,
                         GameTicketResult = await GetGameTicket(gameType, roundId, playerId, operatorId, freeBet)
                     };
 

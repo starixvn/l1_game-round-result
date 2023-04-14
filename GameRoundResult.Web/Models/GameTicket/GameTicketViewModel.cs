@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Globalization;
+using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Configuration;
 
 namespace GameRoundResult.Web.Models
 {
     public class GameTicketViewModel
     {
+        public GameType GameType { get; set; }
         public TimeSpan TimeZoneOffset { get; set; }
 
         public string TimeOffsetString => $"GMT{TimeZoneOffset.Hours:+#;-#}";
