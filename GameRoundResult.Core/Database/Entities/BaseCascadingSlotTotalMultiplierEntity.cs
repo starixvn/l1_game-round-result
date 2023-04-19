@@ -20,8 +20,8 @@
 
         public long RoundId { get; set; }
 
-        public byte TotalMultiplier { get; set; }
+        public int TotalMultiplier { get; set; }
 
-        public byte Multiplier { get; set; }
+        public int Multiplier { get; set; }
     }
 }

@@ -3,7 +3,7 @@
 
 @code {
     [Parameter]
-    public IList<byte> Multipliers { get; set; }
+    public IList<int> Multipliers { get; set; }
 
     [Parameter]
     public IEnumerable<byte> Board { get; set; }
@@ -33,7 +33,7 @@
         }
     }
 
-    private string GetMultiplierImageName(byte value)
+    private string GetMultiplierImageName(int value)
     {
         var image = "10";
 
