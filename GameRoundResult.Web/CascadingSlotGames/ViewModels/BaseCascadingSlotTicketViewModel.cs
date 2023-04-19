@@ -25,9 +25,9 @@
 
         public decimal BetWin { get; set; }
 
-        public byte TotalMultiplier { get; set; }
+        public int TotalMultiplier { get; set; }
 
-        public byte Multiplier { get; set; }
+        public int Multiplier { get; set; }
 
         public decimal TotalTumbleWin { get; set; }
 
@@ -54,9 +54,9 @@
     {
         public long RoundId { get; set; }
 
-        public byte Multiplier { get; set; }
+        public int Multiplier { get; set; }
 
-        public byte TotalMultiplier { get; set; }
+        public int TotalMultiplier { get; set; }
     }
 
     public class BaseCascadingSlotSettlementResultViewModel
@@ -76,7 +76,7 @@
 
         public string OriginalBoard { get; set; }
 
-        public IEnumerable<byte> Multipliers { get; set; }
+        public IEnumerable<int> Multipliers { get; set; }
 
         public IEnumerable<byte> Board => OriginalBoard.Split(',').Select(value => byte.Parse(value));
     }
