@@ -23,7 +23,10 @@
 
         public decimal TotalAmount { get; set; }
 
+        public string DisplayTotalAmount => TotalAmount.Format();
         public decimal BetWin { get; set; }
+
+        public string DisplayBetWin => BetWin.Format();
 
         public int TotalMultiplier { get; set; }
 
@@ -41,7 +44,7 @@
 
         public string DisplayWinLoss => WinLoss.Format();
 
-        public string DisplayTotalAmount => (FreeSpin ? 0 : TotalAmount).Format();
+        public string DisplayTotalBetAmount => (FreeSpin ? 0 : TotalAmount).Format();
 
         public IEnumerable<byte> Board => Result.Split(',').Select(value => byte.Parse(value));
 

@@ -33,14 +33,14 @@
                     @roundResult.DisplayRoundTime
                 </td>
                 <td>@roundResult.BetLevel</td>
-                <td>@roundResult.CoinValue.Format()</td>
-                <td>@roundResult.TotalAmount.Format()</td>
-                <td>@roundResult.BetWin.Format()</td>
+                <td>@roundResult.CoinValue</td>
+                <td>@roundResult.DisplayTotalAmount</td>
+                <td>@roundResult.DisplayBetWin</td>
             </tr>
             <tr class="bold">
                 <td colspan="4" class="text-right">@CommonLocalizer["Total"]</td>
-                <td>@roundResult.DisplayTotalAmount</td>
-                <td>@roundResult.BetWin.Format()</td>
+                <td>@roundResult.DisplayTotalBetAmount</td>
+                <td>@roundResult.DisplayBetWin</td>
             </tr>
             <tr class="total">
                 <td colspan="4" class="text-right">@CommonLocalizer["WinLoss"]</td>
