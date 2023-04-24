@@ -11,7 +11,7 @@ namespace GameRoundResult.Core.Services
         {
         }
 
-        public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request, string gameName)
+        public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request)
         {
             var round = await GetRoundAsync(request);
             var one = (await GetBetsAsync(request)).FirstOrDefault();

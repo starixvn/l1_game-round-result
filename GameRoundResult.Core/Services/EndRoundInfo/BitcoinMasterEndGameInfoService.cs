@@ -15,7 +15,7 @@ namespace GameRoundResult.Core.Services
             betLogCollection = database.GetCollection<BitcoinMasterBet>(Document.GetCollectionName(typeof(BitcoinMasterBet)));
         }
 
-        public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request, string gameName)
+        public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request)
         {
             var round = await GetRoundAsync(request);
             var betLogs = await GetBetLogsAsync(request);

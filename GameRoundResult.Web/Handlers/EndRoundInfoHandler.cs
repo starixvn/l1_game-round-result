@@ -56,8 +56,9 @@ namespace GameRoundResult.Web.Handlers
                         OperatorId = request.Auth.OperatorId,
                         PlayerId = request.PlayerId,
                         SiteId = request.SiteId,
-                        FreeBet = request.FreeBet
-                    }, gameConfigs.Name);
+                        FreeBet = request.FreeBet,
+                        GameName = gameConfigs.Name
+                    });
                 }
 
                 var error = validatorResult.Errors.First();

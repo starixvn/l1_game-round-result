@@ -13,5 +13,7 @@
         public bool FreeBet { get; set; }
 
         public string OperatorId { get; set; }
+
+        public string GameName { get;set; }
     }
 }

@@ -32,7 +32,7 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
             endGameInfoService.Round = null;
 
             // Act
-            var actualResult = await endGameInfoService.GetAsync(request, string.Empty);
+            var actualResult = await endGameInfoService.GetAsync(request);
 
             //Assert
             Assert.Equal(EndRoundInfoError.SB1001, actualResult);
@@ -47,7 +47,7 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
             endGameInfoService.Bets = Enumerable.Empty<FanTanBet>();
 
             // Act
-            var actualResult = await endGameInfoService.GetAsync(request, string.Empty);
+            var actualResult = await endGameInfoService.GetAsync(request);
 
             //Assert
             Assert.Equal(EndRoundInfoError.SB1001, actualResult);
@@ -77,7 +77,7 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
             };
 
             // Act
-            var actualResult = await endGameInfoService.GetAsync(request, string.Empty);
+            var actualResult = await endGameInfoService.GetAsync(request);
 
             //Assert
             Assert.Equal(expectedInfo.TotalAmount, actualResult.TotalAmount);

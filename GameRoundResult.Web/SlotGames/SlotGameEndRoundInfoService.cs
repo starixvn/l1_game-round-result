@@ -15,9 +15,9 @@ namespace GameRoundResult.Web.SlotGames
             this.betRepository = betRepository;
         }
 
-        public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request, string gameName)
+        public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request)
         {
-            var round = await GetRoundAsync<BaseSlotRoundEntity>(request, gameName);
+            var round = await GetRoundAsync<BaseSlotRoundEntity>(request, request.GameName);
 
             if (round == null)
             {

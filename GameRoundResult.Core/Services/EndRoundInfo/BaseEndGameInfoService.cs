@@ -10,7 +10,7 @@ namespace GameRoundResult.Core.Services
 {
     public interface IEndGameInfoService
     {
-        Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request, string gameName);
+        Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request);
     }
 
     public abstract class RoundOnlyEndGameInfoService<TRounEntity> where TRounEntity : GameRound
