@@ -45,7 +45,7 @@ namespace GameRoundResult.Web.Handlers
                         return EndRoundInfoError.SB1006;
                     }
 
-                    var gameId = Enum.Parse<GameId>(request.GameTypeId.ToString());
+                    var gameId = Enum.Parse<GameType>(request.GameTypeId.ToString());
 
                     service = factory.GetService(gameId, gameConfigs.Type);
 

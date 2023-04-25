@@ -22,7 +22,7 @@ namespace GameRoundResult.IntegrationTests
             server = WireMockServer.Start("http://localhost:7778");
         }
 
-        public void SetGameConfigApiResponse(int gameId, string gameName, GameType gameType)
+        public void SetGameConfigApiResponse(int gameId, string gameName, GameConfigsType gameType)
         {
             server.Given(Request.Create().WithPath($"/api/public/game_configs/{gameId}").UsingGet())
                 .RespondWith(

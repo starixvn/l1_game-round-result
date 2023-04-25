@@ -6,7 +6,7 @@ namespace GameRoundResult.Web.Models
     public class GameTicketAccessUrlRequestModel
     {
         [Required]
-        public GameId GameTypeId { get; set; }
+        public GameType GameTypeId { get; set; }
 
         public AuthModel Auth { get; set; }
 
@@ -33,7 +33,7 @@ namespace GameRoundResult.Web.Models
     public class BetHistoryAccessUrlRequestModel
     {
         [Required]
-        public GameId GameTypeId { get; set; }
+        public GameType GameTypeId { get; set; }
 
         public AuthModel Auth { get; set; }
 

@@ -52,7 +52,7 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index(GameId gameType)
+        public async Task<IActionResult> Index(GameType gameType)
         {
             var clientName = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
 
@@ -68,9 +68,9 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetRoundResult(GameId gameType, [FromServices] IRoundResultViewFactory viewFactory)
+        public IActionResult GetRoundResult(GameType gameType, [FromServices] IRoundResultViewFactory viewFactory)
         {
-            if (Enum.IsDefined(typeof(GameId), gameType))
+            if (Enum.IsDefined(typeof(GameType), gameType))
             {
                 return PartialView(viewFactory.GetView(gameType));
             }
@@ -79,7 +79,7 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [ResponseCache(Duration = dataCacheDuration, VaryByQueryKeys = new[] { "start", "length", "gameType", "roundId", "userTimeZone", "date" })]
-        public async Task<IActionResult> GetData(int start, int length, GameId gameType, long roundId, string userTimeZone, DateTime date,
+        public async Task<IActionResult> GetData(int start, int length, GameType gameType, long roundId, string userTimeZone, DateTime date,
             [FromServices] IStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var clientTimeZone = User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.TimeZone)?.Value;
@@ -187,9 +187,9 @@ namespace GameRoundResult.Web.Controllers
                     new ClaimsPrincipal(claimsIdentity),
                     authProperties);
 
-                var gameType = Enum.Parse<GameId>(data[2]);
+                var gameType = Enum.Parse<GameType>(data[2]);
 
-                return Enum.IsDefined(typeof(GameId), gameType) ? RedirectToAction("Index", new { gameType }) : RedirectToAction("Index");
+                return Enum.IsDefined(typeof(GameType), gameType) ? RedirectToAction("Index", new { gameType }) : RedirectToAction("Index");
             }
             catch (Exception exception)
             {

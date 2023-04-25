@@ -63,7 +63,7 @@ namespace GameRoundResult.Web.Controllers
                 var data = dataProtector.Unprotect(queryKey).Split("^^");
                 var operatorId = data[0];
                 var operatorSecret = data[1];
-                var gameType = Enum.Parse<GameId>(data[2]);
+                var gameType = Enum.Parse<GameType>(data[2]);
                 var roundId = long.Parse(data[3]);
                 var playerId = int.Parse(data[4]);
                 var freeBet = bool.Parse(data[5]);
@@ -177,7 +177,7 @@ namespace GameRoundResult.Web.Controllers
             FreeBet = model.FreeBet
         });
 
-        private async Task<GameTicketViewModel> GetGameTicket(GameId gameType, long roundId, int playerId, string operatorId, bool freeBet)
+        private async Task<GameTicketViewModel> GetGameTicket(GameType gameType, long roundId, int playerId, string operatorId, bool freeBet)
         {
             var config = operatorConfigs.FirstOrDefault(x => x.OperatorId == operatorId);
             var timeZoneInfo = TZConvert.GetTimeZoneInfo(config.TimeZone);

@@ -108,7 +108,7 @@ namespace GameRoundResult.IntegrationTests
 
         [Theory]
         [ClassData(typeof(RoundResultSelectOptionsTestCaseProvider))]
-        public async Task Index_ExistGameOption(GameId game, string gameName, string language)
+        public async Task Index_ExistGameOption(GameType game, string gameName, string language)
         {
             // arrange
             databaseHelper.InsertOperators();
@@ -134,7 +134,7 @@ namespace GameRoundResult.IntegrationTests
         [Theory]
         [ClassData(typeof(RoundResultTestCaseProvider))]
         public async Task GetData_ValidData_ReturnExpectedInfo(
-            GameId game,
+            GameType game,
             string testcase,
             int roundId,
             string date,
@@ -161,7 +161,7 @@ namespace GameRoundResult.IntegrationTests
 
         #region Private Methods
 
-        private string ReadTextFromFile(GameId game, string language, string testcase)
+        private string ReadTextFromFile(GameType game, string language, string testcase)
         {
             var path = Path.Combine(ProjectDir, $"Games/{game}/RoundResult/{testcase}/output.{language}.json");
             return RemoveWhiteSpaces(File.ReadAllText(path));

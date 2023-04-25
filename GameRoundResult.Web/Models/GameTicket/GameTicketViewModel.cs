@@ -7,7 +7,7 @@ namespace GameRoundResult.Web.Models
 {
     public class GameTicketViewModel
     {
-        public GameType GameType { get; set; }
+        public GameConfigsType GameType { get; set; }
         public TimeSpan TimeZoneOffset { get; set; }
 
         public string TimeOffsetString => $"GMT{TimeZoneOffset.Hours:+#;-#}";

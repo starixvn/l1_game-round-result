@@ -10,67 +10,67 @@ namespace GameRoundResult.Web.Services
 {
     public interface IEndGameInfoServiceFactory
     {
-        IEndGameInfoService GetService(GameId game, GameType gameType);
+        IEndGameInfoService GetService(GameType game, GameConfigsType gameType);
     }
 
     public class EndGameInfoServiceFactory : IEndGameInfoServiceFactory
     {
-        private readonly Dictionary<GameId, Type> services = new()
+        private readonly Dictionary<GameType, Type> services = new()
         {
-            { GameId.BigSmall, typeof(BigSmallEndGameInfoService) },
-            { GameId.BigSmallTurbo, typeof(BigSmallTurboEndGameInfoService) },
-            { GameId.OddEvenTurbo, typeof(OddEvenTurboEndGameInfoService) },
-            { GameId.FishPrawnCrab, typeof(FishPrawnCrabEndGameInfoService) },
-            { GameId.SeDie, typeof(SeDieEndGameInfoService) },
-            { GameId.MiniSeDie, typeof(MiniSeDieEndGameInfoService<MiniSeDieRound, MiniSeDieBet>) },
-            { GameId.DragonTiger, typeof(DragonTigerEndGameInfoService) },
-            { GameId.KenoProMax, typeof(KenoProMaxEndGameInfoService) },
-            { GameId.Roulette, typeof(RouletteEndGameInfoService) },
-            { GameId.VipSeDie, typeof(VipSeDieEndGameInfoService) },
-            { GameId.SpecialSeDie, typeof(SpecialSeDieEndGameInfoService) },
-            { GameId.Blackjack, typeof(BlackjackEndGameInfoService) },
-            { GameId.VipFishPrawnCrab, typeof(VipFishPrawnCrabEndGameInfoService) },
-            { GameId.SicBo, typeof(SicBoEndGameInfoService) },
-            { GameId.SeDieWar, typeof(VipSeDieWarEndGameInfoService) },
-            { GameId.Lottery, typeof(LotteryEndGameInfoService) },
-            { GameId.ThreeCards, typeof(ThreeCardsEndGameInfoService) },
-            { GameId.BitcoinMaster, typeof(BitcoinMasterEndGameInfoService) },
-            { GameId.KenoMatch1, typeof(KenoMatchEndGameInfoService<KenoMatch1Round, KenoMatch1One>) },
-            { GameId.KenoMatch2, typeof(KenoMatchEndGameInfoService<KenoMatch2Round, KenoMatch2One>) },
-            { GameId.KenoPower1, typeof(KenoPowerEndGameInfoService<KenoPower1Round, KenoPower1One>) },
-            { GameId.KenoPower2, typeof(KenoPowerEndGameInfoService<KenoPower2Round, KenoPower2One>) },
-            { GameId.CasinoHoldemPoker, typeof(CasinoHoldemPokerEndGameInfoService) },
-            { GameId.HiLo, typeof(HiLoEndGameInfoService) },
-            { GameId.TexasHoldemPoker, typeof(TexasHoldemPokerEndGameInfoService) },
-            { GameId.Baccarat, typeof(BaccaratEndGameInfoService<BaccaratRound, BaccaratBet>) },
-            { GameId.VipBaccarat, typeof(BaccaratEndGameInfoService<VipBaccaratRound, VipBaccaratBet>) },
-            { GameId.BlockchainBaccarat, typeof(BaccaratEndGameInfoService<BlockchainBaccaratRound, BlockchainBaccaratBet>) },
-            { GameId.KenoMax, typeof(MiniKenoEndGameInfoService<KenoMaxRound, KenoMaxOne>) },
-            { GameId.KenoMax2, typeof(MiniKenoEndGameInfoService<KenoMax2Round, KenoMax2One>) },
-            { GameId.KenoMini, typeof(MiniKenoEndGameInfoService<KenoMiniRound, KenoMiniOne>) },
-            { GameId.KenoMini2, typeof(MiniKenoEndGameInfoService<KenoMini2Round, KenoMini2One>) },
-            { GameId.KenoEast, typeof(MiniKenoEndGameInfoService<KenoEastRound, KenoEastOne>) },
-            { GameId.KenoWest, typeof(MiniKenoEndGameInfoService<KenoWestRound, KenoWestOne>) },
-            { GameId.KenoSouth, typeof(MiniKenoEndGameInfoService<KenoSouthRound, KenoSouthOne>) },
-            { GameId.KenoNorth, typeof(MiniKenoEndGameInfoService<KenoNorthRound, KenoNorthOne>) },
-            { GameId.MegaKeno, typeof(MiniKenoEndGameInfoService<MegaKenoRound, MegaKenoOne>) },
-            { GameId.MegaKeno2, typeof(MiniKenoEndGameInfoService<MegaKeno2Round, MegaKeno2One>) },
-            { GameId.UnbalancedBigSmall1, typeof(UnbalancedBigSmallEndGameInfoService<UnbalancedBigSmall1Round, UnbalancedBigSmall1Bet>) },
-            { GameId.UnbalancedBigSmall2, typeof(UnbalancedBigSmallEndGameInfoService<UnbalancedBigSmall2Round, UnbalancedBigSmall2Bet>) },
-            { GameId.UnbalancedBigSmall3, typeof(UnbalancedBigSmallEndGameInfoService<UnbalancedBigSmall3Round, UnbalancedBigSmall3Bet>) },
-            { GameId.UnbalancedBigSmall4, typeof(UnbalancedBigSmallEndGameInfoService<UnbalancedBigSmall4Round, UnbalancedBigSmall4Bet>) },
-            { GameId.MiniSeDie2, typeof(MiniSeDieEndGameInfoService<MiniSeDie2Round, MiniSeDie2Bet>) },
-            { GameId.MiniSeDie3, typeof(MiniSeDieEndGameInfoService<MiniSeDie3Round, MiniSeDie3Bet>) },
-            { GameId.MiniSeDie4, typeof(MiniSeDieEndGameInfoService<MiniSeDie4Round, MiniSeDie4Bet>) },
-            { GameId.FruitSlot, typeof(FruitSlotEndGameInfoService) },
-            { GameId.FanTan, typeof(FanTanEndGameInfoService) },
-            { GameId.WinThreeCards, typeof(Win3CardsEndGameInfoService) },
+            { GameType.BigSmall, typeof(BigSmallEndGameInfoService) },
+            { GameType.BigSmallTurbo, typeof(BigSmallTurboEndGameInfoService) },
+            { GameType.OddEvenTurbo, typeof(OddEvenTurboEndGameInfoService) },
+            { GameType.FishPrawnCrab, typeof(FishPrawnCrabEndGameInfoService) },
+            { GameType.SeDie, typeof(SeDieEndGameInfoService) },
+            { GameType.MiniSeDie, typeof(MiniSeDieEndGameInfoService<MiniSeDieRound, MiniSeDieBet>) },
+            { GameType.DragonTiger, typeof(DragonTigerEndGameInfoService) },
+            { GameType.KenoProMax, typeof(KenoProMaxEndGameInfoService) },
+            { GameType.Roulette, typeof(RouletteEndGameInfoService) },
+            { GameType.VipSeDie, typeof(VipSeDieEndGameInfoService) },
+            { GameType.SpecialSeDie, typeof(SpecialSeDieEndGameInfoService) },
+            { GameType.Blackjack, typeof(BlackjackEndGameInfoService) },
+            { GameType.VipFishPrawnCrab, typeof(VipFishPrawnCrabEndGameInfoService) },
+            { GameType.SicBo, typeof(SicBoEndGameInfoService) },
+            { GameType.SeDieWar, typeof(VipSeDieWarEndGameInfoService) },
+            { GameType.Lottery, typeof(LotteryEndGameInfoService) },
+            { GameType.ThreeCards, typeof(ThreeCardsEndGameInfoService) },
+            { GameType.BitcoinMaster, typeof(BitcoinMasterEndGameInfoService) },
+            { GameType.KenoMatch1, typeof(KenoMatchEndGameInfoService<KenoMatch1Round, KenoMatch1One>) },
+            { GameType.KenoMatch2, typeof(KenoMatchEndGameInfoService<KenoMatch2Round, KenoMatch2One>) },
+            { GameType.KenoPower1, typeof(KenoPowerEndGameInfoService<KenoPower1Round, KenoPower1One>) },
+            { GameType.KenoPower2, typeof(KenoPowerEndGameInfoService<KenoPower2Round, KenoPower2One>) },
+            { GameType.CasinoHoldemPoker, typeof(CasinoHoldemPokerEndGameInfoService) },
+            { GameType.HiLo, typeof(HiLoEndGameInfoService) },
+            { GameType.TexasHoldemPoker, typeof(TexasHoldemPokerEndGameInfoService) },
+            { GameType.Baccarat, typeof(BaccaratEndGameInfoService<BaccaratRound, BaccaratBet>) },
+            { GameType.VipBaccarat, typeof(BaccaratEndGameInfoService<VipBaccaratRound, VipBaccaratBet>) },
+            { GameType.BlockchainBaccarat, typeof(BaccaratEndGameInfoService<BlockchainBaccaratRound, BlockchainBaccaratBet>) },
+            { GameType.KenoMax, typeof(MiniKenoEndGameInfoService<KenoMaxRound, KenoMaxOne>) },
+            { GameType.KenoMax2, typeof(MiniKenoEndGameInfoService<KenoMax2Round, KenoMax2One>) },
+            { GameType.KenoMini, typeof(MiniKenoEndGameInfoService<KenoMiniRound, KenoMiniOne>) },
+            { GameType.KenoMini2, typeof(MiniKenoEndGameInfoService<KenoMini2Round, KenoMini2One>) },
+            { GameType.KenoEast, typeof(MiniKenoEndGameInfoService<KenoEastRound, KenoEastOne>) },
+            { GameType.KenoWest, typeof(MiniKenoEndGameInfoService<KenoWestRound, KenoWestOne>) },
+            { GameType.KenoSouth, typeof(MiniKenoEndGameInfoService<KenoSouthRound, KenoSouthOne>) },
+            { GameType.KenoNorth, typeof(MiniKenoEndGameInfoService<KenoNorthRound, KenoNorthOne>) },
+            { GameType.MegaKeno, typeof(MiniKenoEndGameInfoService<MegaKenoRound, MegaKenoOne>) },
+            { GameType.MegaKeno2, typeof(MiniKenoEndGameInfoService<MegaKeno2Round, MegaKeno2One>) },
+            { GameType.UnbalancedBigSmall1, typeof(UnbalancedBigSmallEndGameInfoService<UnbalancedBigSmall1Round, UnbalancedBigSmall1Bet>) },
+            { GameType.UnbalancedBigSmall2, typeof(UnbalancedBigSmallEndGameInfoService<UnbalancedBigSmall2Round, UnbalancedBigSmall2Bet>) },
+            { GameType.UnbalancedBigSmall3, typeof(UnbalancedBigSmallEndGameInfoService<UnbalancedBigSmall3Round, UnbalancedBigSmall3Bet>) },
+            { GameType.UnbalancedBigSmall4, typeof(UnbalancedBigSmallEndGameInfoService<UnbalancedBigSmall4Round, UnbalancedBigSmall4Bet>) },
+            { GameType.MiniSeDie2, typeof(MiniSeDieEndGameInfoService<MiniSeDie2Round, MiniSeDie2Bet>) },
+            { GameType.MiniSeDie3, typeof(MiniSeDieEndGameInfoService<MiniSeDie3Round, MiniSeDie3Bet>) },
+            { GameType.MiniSeDie4, typeof(MiniSeDieEndGameInfoService<MiniSeDie4Round, MiniSeDie4Bet>) },
+            { GameType.FruitSlot, typeof(FruitSlotEndGameInfoService) },
+            { GameType.FanTan, typeof(FanTanEndGameInfoService) },
+            { GameType.WinThreeCards, typeof(Win3CardsEndGameInfoService) },
         };
 
-        private readonly Dictionary<GameType, Type> servicesOnType = new()
+        private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()
         {
-            { GameType.Slot, typeof(SlotGameEndRoundInfoService)},
-            { GameType.CascadingSlot, typeof(CascadingSlotGameEndRoundInfoService)}
+            { GameConfigsType.Slot, typeof(SlotGameEndRoundInfoService)},
+            { GameConfigsType.CascadingSlot, typeof(CascadingSlotGameEndRoundInfoService)}
         };
 
 
@@ -81,7 +81,7 @@ namespace GameRoundResult.Web.Services
             this.serviceProvider = serviceProvider;
         }
 
-        public IEndGameInfoService GetService(GameId game, GameType gameType)
+        public IEndGameInfoService GetService(GameType game, GameConfigsType gameType)
         => services.ContainsKey(game)
             ? serviceProvider.GetService(services[game]) as IEndGameInfoService
            : serviceProvider.GetService(servicesOnType[gameType]) as IEndGameInfoService;

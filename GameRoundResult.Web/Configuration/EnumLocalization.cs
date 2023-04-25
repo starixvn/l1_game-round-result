@@ -29,22 +29,22 @@ namespace GameRoundResult.Web.Configuration
         }
     }
 
-    public class GameTypeLocalization : EnumLocalization<GameId>
+    public class GameTypeLocalization : EnumLocalization<GameType>
     {
-        private readonly IEnumerable<GameId> excludeGames = new List<GameId>
+        private readonly IEnumerable<GameType> excludeGames = new List<GameType>
         {
-            GameId.Blackjack,
-            GameId.OddEven,
-            GameId.KenoProViet,
-            GameId.CasinoHoldemPoker,
-            GameId.TexasHoldemPoker,
-            GameId.HiLo,
-            GameId.TreasureIsland,
+            GameType.Blackjack,
+            GameType.OddEven,
+            GameType.KenoProViet,
+            GameType.CasinoHoldemPoker,
+            GameType.TexasHoldemPoker,
+            GameType.HiLo,
+            GameType.TreasureIsland,
         };
 
         private readonly IPartnerConfigService partnerConfigService;
 
-        public GameTypeLocalization(IStringLocalizer<GameId> localizer, IPartnerConfigService PartnerConfigService) : base(localizer)
+        public GameTypeLocalization(IStringLocalizer<GameType> localizer, IPartnerConfigService PartnerConfigService) : base(localizer)
         {
             this.partnerConfigService = PartnerConfigService;
         }
@@ -56,7 +56,7 @@ namespace GameRoundResult.Web.Configuration
             if (configs != null)
             {
                 return GetSelectListItems()
-                    .Where(x => !excludeGames.Any(e => e == (GameId)Enum.Parse(typeof(GameId), x.Value)) &&
+                    .Where(x => !excludeGames.Any(e => e == (GameType)Enum.Parse(typeof(GameType), x.Value)) &&
                     (!configs.ContainsKey(x.Value) ||
                     !configs[x.Value].Any(excludedSite => string.Equals(excludedSite, siteName, StringComparison.InvariantCultureIgnoreCase))));
             }
@@ -67,7 +67,7 @@ namespace GameRoundResult.Web.Configuration
         public IEnumerable<SelectListItem> GetGameList()
         {
             return GetSelectListItems()
-                .Where(x => !excludeGames.Any(e => e == (GameId)Enum.Parse(typeof(GameId), x.Value)));
+                .Where(x => !excludeGames.Any(e => e == (GameType)Enum.Parse(typeof(GameType), x.Value)));
         }
     }
 }

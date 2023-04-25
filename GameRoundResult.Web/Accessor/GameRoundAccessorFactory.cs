@@ -9,57 +9,57 @@ namespace GameRoundResult.Web.Accessor
 {
     public interface IGameRoundAccessorFactory
     {
-        IGameRoundAccessor GetService(GameId game);
+        IGameRoundAccessor GetService(GameType game);
     }
 
     public class GameRoundAccessorFactory : IGameRoundAccessorFactory
     {
-        private readonly Dictionary<GameId, Type> services = new()
+        private readonly Dictionary<GameType, Type> services = new()
         {
-            { GameId.BigSmall, typeof(GameRoundAccessor<BigSmallRound, BigSmallRoundResultViewModel>) },
-            { GameId.SeDie, typeof(GameRoundAccessor<SeDieRound, SeDieRoundResultViewModel>) },
-            { GameId.FishPrawnCrab, typeof(GameRoundAccessor<FishPrawnCrabRound, FishPrawnCrabRoundResultViewModel>) },
-            { GameId.BigSmallTurbo, typeof(GameRoundAccessor<TurboBigSmallRound, BigSmallRoundResultViewModel>) },
-            { GameId.OddEvenTurbo, typeof(GameRoundAccessor<TurboOddEvenRound, OddEvenRoundResultViewModel>) },
-            { GameId.DragonTiger, typeof(GameRoundAccessor<DragonTigerRound, DragonTigerRoundResultViewModel>) },
-            { GameId.KenoProMax, typeof(GameRoundAccessor<KenoProMaxRound, KenoRoundResultViewModel>) },
-            { GameId.MiniSeDie, typeof(GameRoundAccessor<MiniSeDieRound, MiniSeDieRoundResultViewModel>) },
-            { GameId.Baccarat, typeof(GameRoundAccessor<BaccaratRound, BaccaratRoundResultViewModel>) },
-            { GameId.KenoMax, typeof(GameRoundAccessor<KenoMaxRound, KenoRoundResultViewModel>) },
-            { GameId.KenoMax2, typeof(GameRoundAccessor<KenoMax2Round, KenoRoundResultViewModel>) },
-            { GameId.KenoMini, typeof(GameRoundAccessor<KenoMiniRound, KenoRoundResultViewModel>) },
-            { GameId.KenoMini2, typeof(GameRoundAccessor<KenoMini2Round, KenoRoundResultViewModel>) },
-            { GameId.KenoEast, typeof(GameRoundAccessor<KenoEastRound, KenoRoundResultViewModel>) },
-            { GameId.KenoWest, typeof(GameRoundAccessor<KenoWestRound, KenoRoundResultViewModel>) },
-            { GameId.KenoSouth, typeof(GameRoundAccessor<KenoSouthRound, KenoRoundResultViewModel>) },
-            { GameId.KenoNorth, typeof(GameRoundAccessor<KenoNorthRound, KenoRoundResultViewModel>) },
-            { GameId.Roulette, typeof(GameRoundAccessor<RouletteRound, RouletteRoundResultViewModel>) },
-            { GameId.VipSeDie, typeof(GameRoundAccessor<VipSeDieRound, VipSeDieRoundResultViewModel>) },
-            { GameId.SpecialSeDie, typeof(GameRoundAccessor<SpecialSeDieRound, SpecialSeDieRoundResultViewModel>) },
-            { GameId.SicBo, typeof(GameRoundAccessor<SicBoRound, SicBoRoundResultViewModel>) },
-            { GameId.VipFishPrawnCrab, typeof(GameRoundAccessor<VipFishPrawnCrabRound, VipFishPrawnCrabRoundResultViewModel>) },
-            { GameId.VipBaccarat, typeof(GameRoundAccessor<VipBaccaratRound, BaccaratRoundResultViewModel>) },
-            { GameId.SeDieWar, typeof(GameRoundAccessor<VipSeDieWarRound, VipSeDieWarRoundResultViewModel>) },
-            { GameId.Lottery, typeof(GameRoundAccessor<LotteryRound, LotteryRoundResultViewModel>) },
-            { GameId.ThreeCards, typeof(GameRoundAccessor<ThreeCardsRound, ThreeCardsRoundResultViewModel>) },
-            { GameId.KenoMatch1, typeof(KenoMatchRoundAccessor<KenoMatch1Round>) },
-            { GameId.KenoMatch2, typeof(KenoMatchRoundAccessor<KenoMatch2Round>) },
-            { GameId.KenoPower1, typeof(KenoPowerRoundAccessor<KenoPower1Round>) },
-            { GameId.KenoPower2, typeof(KenoPowerRoundAccessor<KenoPower2Round>) },
-            { GameId.BitcoinMaster, typeof(GameRoundAccessor<BitcoinMasterRound, BitcoinMasterRoundResultViewModel>) },
-            { GameId.BlockchainBaccarat, typeof(GameRoundAccessor<BlockchainBaccaratRound, BaccaratRoundResultViewModel>) },
-            { GameId.MegaKeno, typeof(GameRoundAccessor<MegaKenoRound, KenoRoundResultViewModel>) },
-            { GameId.MegaKeno2, typeof(GameRoundAccessor<MegaKeno2Round, KenoRoundResultViewModel>) },
-            { GameId.UnbalancedBigSmall1, typeof(GameRoundAccessor<UnbalancedBigSmall1Round, BigSmallRoundResultViewModel>) },
-            { GameId.UnbalancedBigSmall2, typeof(GameRoundAccessor<UnbalancedBigSmall2Round, BigSmallRoundResultViewModel>) },
-            { GameId.UnbalancedBigSmall3, typeof(GameRoundAccessor<UnbalancedBigSmall3Round, BigSmallRoundResultViewModel>) },
-            { GameId.UnbalancedBigSmall4, typeof(GameRoundAccessor<UnbalancedBigSmall4Round, BigSmallRoundResultViewModel>) },
-            { GameId.MiniSeDie2, typeof(GameRoundAccessor<MiniSeDie2Round, MiniSeDieRoundResultViewModel>) },
-            { GameId.MiniSeDie3, typeof(GameRoundAccessor<MiniSeDie3Round, MiniSeDieRoundResultViewModel>) },
-            { GameId.MiniSeDie4, typeof(GameRoundAccessor<MiniSeDie4Round, MiniSeDieRoundResultViewModel>) },
-            { GameId.FruitSlot, typeof(GameRoundAccessor<FruitSlotRound, FruitSlotRoundResultViewModel>) },
-            { GameId.FanTan, typeof(GameRoundAccessor<FanTanRound, FanTanRoundResultViewModel>) },
-            { GameId.WinThreeCards, typeof(GameRoundAccessor<Win3CardsRound, Win3CardsRoundResultViewModel>)},
+            { GameType.BigSmall, typeof(GameRoundAccessor<BigSmallRound, BigSmallRoundResultViewModel>) },
+            { GameType.SeDie, typeof(GameRoundAccessor<SeDieRound, SeDieRoundResultViewModel>) },
+            { GameType.FishPrawnCrab, typeof(GameRoundAccessor<FishPrawnCrabRound, FishPrawnCrabRoundResultViewModel>) },
+            { GameType.BigSmallTurbo, typeof(GameRoundAccessor<TurboBigSmallRound, BigSmallRoundResultViewModel>) },
+            { GameType.OddEvenTurbo, typeof(GameRoundAccessor<TurboOddEvenRound, OddEvenRoundResultViewModel>) },
+            { GameType.DragonTiger, typeof(GameRoundAccessor<DragonTigerRound, DragonTigerRoundResultViewModel>) },
+            { GameType.KenoProMax, typeof(GameRoundAccessor<KenoProMaxRound, KenoRoundResultViewModel>) },
+            { GameType.MiniSeDie, typeof(GameRoundAccessor<MiniSeDieRound, MiniSeDieRoundResultViewModel>) },
+            { GameType.Baccarat, typeof(GameRoundAccessor<BaccaratRound, BaccaratRoundResultViewModel>) },
+            { GameType.KenoMax, typeof(GameRoundAccessor<KenoMaxRound, KenoRoundResultViewModel>) },
+            { GameType.KenoMax2, typeof(GameRoundAccessor<KenoMax2Round, KenoRoundResultViewModel>) },
+            { GameType.KenoMini, typeof(GameRoundAccessor<KenoMiniRound, KenoRoundResultViewModel>) },
+            { GameType.KenoMini2, typeof(GameRoundAccessor<KenoMini2Round, KenoRoundResultViewModel>) },
+            { GameType.KenoEast, typeof(GameRoundAccessor<KenoEastRound, KenoRoundResultViewModel>) },
+            { GameType.KenoWest, typeof(GameRoundAccessor<KenoWestRound, KenoRoundResultViewModel>) },
+            { GameType.KenoSouth, typeof(GameRoundAccessor<KenoSouthRound, KenoRoundResultViewModel>) },
+            { GameType.KenoNorth, typeof(GameRoundAccessor<KenoNorthRound, KenoRoundResultViewModel>) },
+            { GameType.Roulette, typeof(GameRoundAccessor<RouletteRound, RouletteRoundResultViewModel>) },
+            { GameType.VipSeDie, typeof(GameRoundAccessor<VipSeDieRound, VipSeDieRoundResultViewModel>) },
+            { GameType.SpecialSeDie, typeof(GameRoundAccessor<SpecialSeDieRound, SpecialSeDieRoundResultViewModel>) },
+            { GameType.SicBo, typeof(GameRoundAccessor<SicBoRound, SicBoRoundResultViewModel>) },
+            { GameType.VipFishPrawnCrab, typeof(GameRoundAccessor<VipFishPrawnCrabRound, VipFishPrawnCrabRoundResultViewModel>) },
+            { GameType.VipBaccarat, typeof(GameRoundAccessor<VipBaccaratRound, BaccaratRoundResultViewModel>) },
+            { GameType.SeDieWar, typeof(GameRoundAccessor<VipSeDieWarRound, VipSeDieWarRoundResultViewModel>) },
+            { GameType.Lottery, typeof(GameRoundAccessor<LotteryRound, LotteryRoundResultViewModel>) },
+            { GameType.ThreeCards, typeof(GameRoundAccessor<ThreeCardsRound, ThreeCardsRoundResultViewModel>) },
+            { GameType.KenoMatch1, typeof(KenoMatchRoundAccessor<KenoMatch1Round>) },
+            { GameType.KenoMatch2, typeof(KenoMatchRoundAccessor<KenoMatch2Round>) },
+            { GameType.KenoPower1, typeof(KenoPowerRoundAccessor<KenoPower1Round>) },
+            { GameType.KenoPower2, typeof(KenoPowerRoundAccessor<KenoPower2Round>) },
+            { GameType.BitcoinMaster, typeof(GameRoundAccessor<BitcoinMasterRound, BitcoinMasterRoundResultViewModel>) },
+            { GameType.BlockchainBaccarat, typeof(GameRoundAccessor<BlockchainBaccaratRound, BaccaratRoundResultViewModel>) },
+            { GameType.MegaKeno, typeof(GameRoundAccessor<MegaKenoRound, KenoRoundResultViewModel>) },
+            { GameType.MegaKeno2, typeof(GameRoundAccessor<MegaKeno2Round, KenoRoundResultViewModel>) },
+            { GameType.UnbalancedBigSmall1, typeof(GameRoundAccessor<UnbalancedBigSmall1Round, BigSmallRoundResultViewModel>) },
+            { GameType.UnbalancedBigSmall2, typeof(GameRoundAccessor<UnbalancedBigSmall2Round, BigSmallRoundResultViewModel>) },
+            { GameType.UnbalancedBigSmall3, typeof(GameRoundAccessor<UnbalancedBigSmall3Round, BigSmallRoundResultViewModel>) },
+            { GameType.UnbalancedBigSmall4, typeof(GameRoundAccessor<UnbalancedBigSmall4Round, BigSmallRoundResultViewModel>) },
+            { GameType.MiniSeDie2, typeof(GameRoundAccessor<MiniSeDie2Round, MiniSeDieRoundResultViewModel>) },
+            { GameType.MiniSeDie3, typeof(GameRoundAccessor<MiniSeDie3Round, MiniSeDieRoundResultViewModel>) },
+            { GameType.MiniSeDie4, typeof(GameRoundAccessor<MiniSeDie4Round, MiniSeDieRoundResultViewModel>) },
+            { GameType.FruitSlot, typeof(GameRoundAccessor<FruitSlotRound, FruitSlotRoundResultViewModel>) },
+            { GameType.FanTan, typeof(GameRoundAccessor<FanTanRound, FanTanRoundResultViewModel>) },
+            { GameType.WinThreeCards, typeof(GameRoundAccessor<Win3CardsRound, Win3CardsRoundResultViewModel>)},
         };
 
         private readonly IServiceProvider serviceProvider;
@@ -69,7 +69,7 @@ namespace GameRoundResult.Web.Accessor
             this.serviceProvider = serviceProvider;
         }
 
-        public IGameRoundAccessor GetService(GameId game)
+        public IGameRoundAccessor GetService(GameType game)
         => (IGameRoundAccessor)serviceProvider.GetRequiredService(services[game]);
     }
 }

@@ -7,7 +7,7 @@ namespace GameRoundResult.Web.Models
     {
         public int GameId { get; set; }
 
-        public GameType Type { get; set; }
+        public GameConfigsType Type { get; set; }
 
         public string Name { get; set; }
 

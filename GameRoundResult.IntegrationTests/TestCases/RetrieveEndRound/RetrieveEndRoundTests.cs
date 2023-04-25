@@ -26,7 +26,7 @@ namespace GameRoundResult.IntegrationTests
         public async Task Index_ReturnExpectedInfo(
             int gameId,
             string gameName,
-            GameType gameType,
+            GameConfigsType gameType,
             string testcase,
             int playerId,
             int roundId
@@ -78,7 +78,7 @@ namespace GameRoundResult.IntegrationTests
                 },
                 FreeBet = false,
                 GameRoundId = 1,
-                GameTypeId = (byte)GameId.BigSmall,
+                GameTypeId = (byte)GameType.BigSmall,
                 PlayerId = 123,
                 SiteId = "4100300"
             };

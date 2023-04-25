@@ -7,7 +7,7 @@ namespace GameRoundResult.Web.Models
 {
     public class GameRoundResultViewModel
     {
-        public GameId GameType { get; set; }
+        public GameType GameType { get; set; }
 
         public DateTime Date { get; set; } = DateTime.Today;
 

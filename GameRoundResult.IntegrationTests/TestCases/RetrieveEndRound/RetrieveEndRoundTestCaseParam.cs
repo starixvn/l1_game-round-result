@@ -5,7 +5,7 @@ namespace GameRoundResult.IntegrationTests
     public record RetrieveEndRoundTestCaseParam(
              int GameId,
              string GameName,
-             GameType GameType,
+             GameConfigsType GameType,
              int PlayerId,
              int RoundId,
              string TestCase);

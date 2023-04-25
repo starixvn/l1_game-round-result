@@ -9,7 +9,7 @@ namespace GameRoundResult.IntegrationTests
         {
             return new List<RoundResultTestCaseParam>
             {
-                new RoundResultTestCaseParam (GameId.FruitSlot, 1, string.Empty, Language.VN, "Round1"),
+                new RoundResultTestCaseParam (GameType.FruitSlot, 1, string.Empty, Language.VN, "Round1"),
             };
         }
     }
@@ -20,8 +20,8 @@ namespace GameRoundResult.IntegrationTests
         {
             return new List<RoundResultSelectOptionsTestCaseParam>
             {
-                new RoundResultSelectOptionsTestCaseParam(GameId.FruitSlot, "Fruit Slot", Language.EN),
-                new RoundResultSelectOptionsTestCaseParam(GameId.FruitSlot, "Xèng Hoa Quả", Language.VN),
+                new RoundResultSelectOptionsTestCaseParam(GameType.FruitSlot, "Fruit Slot", Language.EN),
+                new RoundResultSelectOptionsTestCaseParam(GameType.FruitSlot, "Xèng Hoa Quả", Language.VN),
             };
         }
     }
