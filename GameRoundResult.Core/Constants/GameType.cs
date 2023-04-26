@@ -14,7 +14,7 @@
         Baccarat,
         KenoProViet,
         KenoMax,
-        KenoMax2,   
+        KenoMax2,
         KenoMini,
         KenoMini2,
         KenoEast,
