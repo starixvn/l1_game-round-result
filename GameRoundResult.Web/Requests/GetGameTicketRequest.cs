@@ -31,5 +31,7 @@ namespace GameRoundResult.Web.Requests
         public string OperatorId { get; }
 
         public string SystemType { get; }
+
+        public GameConfigModel GameConfigs { get; set; }
     }
 }

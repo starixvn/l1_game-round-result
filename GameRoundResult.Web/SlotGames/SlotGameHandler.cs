@@ -26,8 +26,9 @@ namespace GameRoundResult.Web.SlotGames.Handlers
             gameResource = gameResourceOptions.Value;
         }
 
-        public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request, GameConfigModel gameConfigs)
+        public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
+            var gameConfigs = request.GameConfigs;
             var result = await slotGameTicketService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId, gameConfigs.Name);
 
             var viewModel = new ClassicSlotTicketViewModel

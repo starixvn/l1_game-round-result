@@ -24,8 +24,9 @@ namespace GameRoundResult.Web.CascadingSlotGames
             gameResource = gameResourceOptions.Value;
         }
 
-        public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request, GameConfigModel gameConfigs)
+        public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
+            var gameConfigs = request.GameConfigs;
             var result = await gameBetService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId, gameConfigs.Name);
 
             var viewModel = new BaseCascadingSlotTicketViewModel

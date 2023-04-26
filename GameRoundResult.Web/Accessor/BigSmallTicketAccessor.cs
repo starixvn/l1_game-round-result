@@ -23,7 +23,7 @@ namespace GameRoundResult.Web.Accessor
             this.mapper = mapper;
         }
 
-        public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request, GameConfigModel gameConfigs)
+        public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
             var bigSmallResult = await gameBetService.GetAsync<TRoundEntity, TOneEntity, TBetEntity>(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId);
 

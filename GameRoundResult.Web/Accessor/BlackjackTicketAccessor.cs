@@ -19,7 +19,7 @@ namespace GameRoundResult.Web.Accessor
             this.mapper = mapper;
         }
 
-        public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request, GameConfigModel gameConfigs)
+        public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
             var blackjackResult = await gameBetService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId);
 

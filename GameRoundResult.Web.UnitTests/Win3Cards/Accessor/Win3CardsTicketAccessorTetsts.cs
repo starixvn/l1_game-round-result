@@ -36,7 +36,6 @@ namespace GameRoundResult.Web.UnitTests.Accessor
         public async Task GetAsync_NotExistBet_ReturnExpectedWithFrationalOddsFormatNull()
         {
             // arrange
-            var gameConfigs = Substitute.For<GameConfigModel>();
             var round = Substitute.For<Win3CardsRound>();
             var request = fixture.Create<GetGameTicketRequest>();
             var roundResult = new Win3CardsRoundResultViewModel();
@@ -48,7 +47,7 @@ namespace GameRoundResult.Web.UnitTests.Accessor
                 .Returns(roundResult);
 
             // act
-            var actual = (Win3CardsTicketViewModel)await accessor.GetAsync(request, gameConfigs);
+            var actual = (Win3CardsTicketViewModel)await accessor.GetAsync(request);
 
             // assert
             round.Received().ToViewModel<Win3CardsRound, Win3CardsRoundResultViewModel>(mapper, request.TimeZoneInfo);
@@ -63,7 +62,6 @@ namespace GameRoundResult.Web.UnitTests.Accessor
         public async Task GetAsync_ExistBet_ReturnExpectedWithFrationalOddsFormat()
         {
             // arrange
-            var gameConfigs = Substitute.For<GameConfigModel>();
             var round = Substitute.For<Win3CardsRound>();
             var request = fixture.Create<GetGameTicketRequest>();
             var roundResult = new Win3CardsRoundResultViewModel();
@@ -77,7 +75,7 @@ namespace GameRoundResult.Web.UnitTests.Accessor
             currencyGroupService.GetFractionalOddsFormat(betlog.Currency, request.OperatorId).Returns(true);
 
             // act
-            var actual = (Win3CardsTicketViewModel)await accessor.GetAsync(request, gameConfigs);
+            var actual = (Win3CardsTicketViewModel)await accessor.GetAsync(request);
 
             // assert
             round.Received().ToViewModel<Win3CardsRound, Win3CardsRoundResultViewModel>(mapper, request.TimeZoneInfo);

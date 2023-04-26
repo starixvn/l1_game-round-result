@@ -29,9 +29,11 @@ namespace GameRoundResult.Web.Handlers
                 return null;
             }
 
+            request.GameConfigs = gameConfigs;
+
             var service = serviceFactory.GetService(request.GameId, gameConfigs.Type);
 
-            var gameTicket = await service.GetAsync(request, gameConfigs);
+            var gameTicket = await service.GetAsync(request);
 
             if (gameTicket != null)
             {

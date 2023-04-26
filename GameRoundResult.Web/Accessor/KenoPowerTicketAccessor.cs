@@ -27,7 +27,7 @@ namespace GameRoundResult.Web.Accessor
             this.currencyGroupService = currencyGroupService;
         }
 
-        public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request, GameConfigModel gameConfigs)
+        public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
             var result = await gameBetService.GetAsync<TRoundEntity, TOneEntity, TBetEntity>(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId);
 
