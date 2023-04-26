@@ -7,7 +7,7 @@ namespace GameRoundResult.Web.Models
     public class GameTicketResultViewModel
     {
         private const string PartialPostfix = "Ticket";
-        public GameType GameId { get; set; }
+        public GameType GameType { get; set; }
 
         public GameTicketViewModel GameTicketResult { get; set; }
 
@@ -28,13 +28,13 @@ namespace GameRoundResult.Web.Models
                 return $"_Baccarat{PartialPostfix}";
             }
 
-            return Enum.IsDefined(typeof(GameType), GameId)
-                ? $"_{TransformToViewName(Enum.GetName(typeof(GameType), GameId))}{PartialPostfix}"
+            return Enum.IsDefined(typeof(GameType), GameType)
+                ? $"_{TransformToViewName(Enum.GetName(typeof(GameType), GameType))}{PartialPostfix}"
                 : $"_SlotGame{PartialPostfix}";
         }
 
         private bool IsMiniKeno
-            => GameId switch
+            => GameType switch
             {
                 GameType.KenoProViet 
                 or GameType.KenoMax
@@ -54,7 +54,7 @@ namespace GameRoundResult.Web.Models
             => GameTicketResult.GameType == Core.Constants.GameConfigsType.CascadingSlot;
 
         private bool IsBaccarat
-             => GameId switch
+             => GameType switch
              {
                  GameType.Baccarat or GameType.VipBaccarat or GameType.BlockchainBaccarat => true,
                  _ => false

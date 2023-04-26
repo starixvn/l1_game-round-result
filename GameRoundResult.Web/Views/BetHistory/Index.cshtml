@@ -4,7 +4,7 @@
 
 @{
     ViewData["Title"] = Localizer["GameTickets"];
-    ViewData["GameName"] = Enum.IsDefined(typeof(GameType), Model.GameId) ? Enum.GetName(typeof(GameType), Model.GameId).ToLowerInvariant() : string.Empty;
+    ViewData["GameName"] = Enum.IsDefined(typeof(GameType), Model.GameType) ? Enum.GetName(typeof(GameType), Model.GameType).ToLowerInvariant() : string.Empty;
 }
 
 @section Styles {
