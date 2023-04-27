@@ -17,6 +17,7 @@ namespace GameRoundResult.IntegrationTests
     {
         public BetHistoryTests(CustomWebApplicationFactory<Program> factory, GameAdminApiFixture gameAdminApiFixture) : base(factory, gameAdminApiFixture)
         {
+            databaseHelper.ClearAllData();
         }
 
         #region GetAccessURL
