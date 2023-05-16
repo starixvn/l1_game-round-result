@@ -19,6 +19,8 @@ namespace GameRoundResult.Core.Database.Entities
         public string Uid { get; set; }
 
         public string Name { get; set; }
+
+        public SlotGameJackpotContribution JackpotContribution { get; set; }
     }
 
     public class SlotGameBonusChest
@@ -70,5 +72,11 @@ namespace GameRoundResult.Core.Database.Entities
         public byte Count { get; set; }
 
         public decimal Odds { get; set; }
+    }
+
+    public class SlotGameJackpotContribution 
+    {
+        public decimal ContributionRate { get; set; }
+        public decimal BaseContributionAmount { get; set; }
     }
 }

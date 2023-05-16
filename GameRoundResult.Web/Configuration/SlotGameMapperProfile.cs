@@ -15,6 +15,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<SlotGameWinningLine, ClassicSlotWinningLineViewModel>();
             CreateMap<SlotGameBonusChest, ClassicSlotBonusChestViewModel>();
             CreateMap<SlotGameJackpot, ClassicSlotJackpotViewModel>();
+            CreateMap<SlotGameJackpotContribution, ClassicSlotJackpotContributionViewModel>();
         }
     }
 }

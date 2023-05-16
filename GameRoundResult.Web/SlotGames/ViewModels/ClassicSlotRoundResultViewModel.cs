@@ -24,6 +24,8 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
 
         public decimal BetWin { get; set; }
 
+        public ClassicSlotJackpotContributionViewModel JackpotContribution { get; set; }
+
         public byte[,] FormatResults
         {
             get
