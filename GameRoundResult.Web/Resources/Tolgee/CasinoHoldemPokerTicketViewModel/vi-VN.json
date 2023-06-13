@@ -1,0 +1,21 @@
+{
+  "Card" : "Bài",
+  "Combination" : "Bài Kết Hợp",
+  "CommunityCards" : "Bài Chung",
+  "Dealer" : "Nhà cái",
+  "DoesNotQualify" : "Không Đủ Điều Kiện",
+  "Flush" : "Thùng",
+  "Fold" : "Bỏ Bài",
+  "FourOfAKind" : "Tứ Quý",
+  "FullHouse" : "Cù Lũ",
+  "HighCard" : "Mậu Thầu",
+  "Pair" : "Đôi",
+  "Player" : "Người chơi",
+  "RoyalFlush" : "Sảnh Rồng",
+  "Stake" : "Tiền Cược",
+  "Straight" : "Sảnh",
+  "StraightFlush" : "Thùng Phá Sảnh",
+  "ThreeOfAKind" : "Sám",
+  "TwoPairs" : "Hai Đôi",
+  "UnfinishedGame" : "Phiên chưa kết thúc"
+}

@@ -1,0 +1,21 @@
+{
+  "Card" : "ไพ่",
+  "Combination" : "การรวมกัน",
+  "CommunityCards" : "ไพ่ชุมชน",
+  "Dealer" : "เจ้ามือ",
+  "DoesNotQualify" : "ไม่ผ่านเกณฑ์",
+  "Flush" : "ฟลัช",
+  "Fold" : "หมอบ",
+  "FourOfAKind" : "ไพ่เลขเดียวกัน 4 ใบ",
+  "FullHouse" : "ฟูลเฮ้าส์",
+  "HighCard" : "ไพ่สูง",
+  "Pair" : "คู่",
+  "Player" : "ผู้เล่น",
+  "RoyalFlush" : "รอยัลฟลัช",
+  "Stake" : "เดิมพัน",
+  "Straight" : "สเตรท",
+  "StraightFlush" : "สเตรทฟลัช",
+  "ThreeOfAKind" : "ไพ่ตอง",
+  "TwoPairs" : "สองคู่",
+  "UnfinishedGame" : "เกมที่ยังไม่เสร็จสิ้น"
+}

@@ -1,0 +1,11 @@
+{
+  "BettingPrice" : "Giá Đặt Lệnh",
+  "Down" : "Giảm",
+  "Even" : "Chẵn",
+  "Odd" : "Lẻ",
+  "Up" : "Tăng",
+  "choice_down" : "Giảm",
+  "choice_even" : "Chẵn",
+  "choice_odd" : "Lẻ",
+  "choice_up" : "Tăng"
+}

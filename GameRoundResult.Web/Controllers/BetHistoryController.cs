@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
@@ -32,6 +33,7 @@ namespace GameRoundResult.Web.Controllers
         private readonly IEnumerable<OperatorConfig> operatorConfigs;
         private readonly string systemType;
         private readonly IVG3ResultService vg3Service;
+        private readonly bool enableTolgee;
 
         public BetHistoryController(
             IMediator mediator,
@@ -50,8 +52,9 @@ namespace GameRoundResult.Web.Controllers
             this.partnerService = partnerService;
             this.logService = logService;
             operatorConfigs = operatorConfigsOptions.Value;
-            this.systemType = configuration["SystemType"];
+            systemType = configuration["SystemType"];
             this.vg3Service = vg3Service;
+            enableTolgee = bool.Parse(configuration["EnableTolgee"]);
         }
 
         [HttpGet]
@@ -75,7 +78,9 @@ namespace GameRoundResult.Web.Controllers
                     var viewModel = new GameTicketResultViewModel
                     {
                         GameType = gameType,
-                        GameTicketResult = await GetGameTicket(gameType, roundId, playerId, operatorId, freeBet)
+                        GameTicketResult = await GetGameTicket(gameType, roundId, playerId, "ONEworks1", freeBet),
+                        Language = Thread.CurrentThread.CurrentCulture.Name,
+                        EnableTolgee = enableTolgee
                     };
 
                     if (viewModel.GameTicketResult == null)

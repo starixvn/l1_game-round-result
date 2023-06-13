@@ -19,7 +19,9 @@
 
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
+    <Content Remove="wwwroot\js\game-round-result - Copy.min.js" />
     <Content Remove="wwwroot\js\game-round-result.min.js" />
+    <Content Remove="wwwroot\js\game-ticket-detail - Copy.min.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +35,7 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
+    <None Include="wwwroot\js\tolgee.min.js" />
     <None Include="wwwroot\js\game-round-result.min.js" />
     <None Include="wwwroot\lib\flatpickr\dist\flatpickr.js" />
     <None Include="wwwroot\lib\flatpickr\dist\flatpickr.min.js" />

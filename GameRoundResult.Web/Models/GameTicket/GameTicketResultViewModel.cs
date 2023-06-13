@@ -11,6 +11,11 @@ namespace GameRoundResult.Web.Models
 
         public GameTicketViewModel GameTicketResult { get; set; }
 
+        public string Language { get; set; }
+
+        public bool EnableTolgee { get; set; }
+
+
         public string GetPartialViewName()
         {
             if (IsMiniKeno)

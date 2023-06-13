@@ -181,6 +181,8 @@ namespace GameRoundResult.Web.Extensions
 
             services.AddSlotGames();
             services.AddCascadingSlotGames();
+            services.AddTransient(typeof(IJsonStringLocalizer<>),typeof(JsonStringLocalizer<>));
+
         }
 
         public static void AddValidators(this IServiceCollection services)

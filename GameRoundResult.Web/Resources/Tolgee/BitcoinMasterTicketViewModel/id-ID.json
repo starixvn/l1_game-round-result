@@ -1,0 +1,11 @@
+{
+  "BettingPrice" : "Nilai Taruhan",
+  "Down" : "Turun",
+  "Even" : "Genap",
+  "Odd" : "Ganjil",
+  "Up" : "Naik",
+  "choice_down" : "Turun",
+  "choice_even" : "Genap",
+  "choice_odd" : "Ganjil",
+  "choice_up" : "Naik"
+}

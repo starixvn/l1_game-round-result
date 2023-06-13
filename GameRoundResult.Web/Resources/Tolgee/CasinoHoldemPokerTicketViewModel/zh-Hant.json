@@ -1,0 +1,21 @@
+{
+  "Card" : "牌",
+  "Combination" : "組合",
+  "CommunityCards" : "公共牌",
+  "Dealer" : "莊家",
+  "DoesNotQualify" : "不合格",
+  "Flush" : "同花",
+  "Fold" : "棄牌",
+  "FourOfAKind" : "四條",
+  "FullHouse" : "葫蘆",
+  "HighCard" : "高牌",
+  "Pair" : "一對",
+  "Player" : "玩家",
+  "RoyalFlush" : "皇家同花順",
+  "Stake" : "賭注",
+  "Straight" : "順子",
+  "StraightFlush" : "同花順",
+  "ThreeOfAKind" : "三條",
+  "TwoPairs" : "兩對",
+  "UnfinishedGame" : "未完成遊戲"
+}

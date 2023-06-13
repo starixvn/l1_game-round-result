@@ -1,0 +1,9 @@
+{
+  "Date" : "时间",
+  "GameRoundResult" : "游戏回合结果",
+  "GameType" : "游戏",
+  "Note" : "注意",
+  "NoteDetail" : "数据仅在从当前日期起的最后 7 天内可用.",
+  "RoundId" : "回合",
+  "Search" : "搜索"
+}

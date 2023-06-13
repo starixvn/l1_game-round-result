@@ -1,0 +1,10 @@
+{
+  "CustomerId" : "Người chơi ID",
+  "GameTickets" : "Game Tickets",
+  "GameType" : "Trò chơi",
+  "Note" : "Lưu ý",
+  "NoteDetail" : "Bạn chỉ có thể xem dữ liệu cách đây 7 ngày tính từ thời điểm hiện tại.",
+  "RoundId" : "Phiên ID",
+  "Search" : "Tìm kiếm",
+  "Stake" : "Tiền cược"
+}

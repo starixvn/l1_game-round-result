@@ -1,4 +1,4 @@
-﻿@inject IViewLocalizer Localizer
+﻿@inject IJsonStringLocalizer<GameTicketResultViewModel> Localizer
 @using GameRoundResult.Core.Constants
 @model GameTicketResultViewModel
 
@@ -15,8 +15,10 @@
         <link href="~/scss/pages/game-ticket.min.css" rel="stylesheet" asp-append-version="true" />
     </environment>
 }
-
-<div class="note"><span class="bold">@Localizer["Note"]:</span> @Localizer["NoteDetail"]</div>
+@if(Model.EnableTolgee) {
+  <input id="tolgee_language" value="@Model.Language" hidden readonly />
+}
+<div class="note"><span class="bold">@Localizer["Note"]:</span> @Localizer["NoteDetail"] </div>
 
 <div id="game-ticket">
     <partial name="@Model.GetPartialViewName()" for="GameTicketResult" view-data="ViewData" />
@@ -25,8 +27,10 @@
 @section Scripts {
     <environment include="Development">
         <script src="~/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.js"></script>
+        <script src="~/lib/tolgee/index.js"></script>
     </environment>
     <environment exclude="Development">
         <script src="~/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.min.js"></script>
+        <script src="~/lib/tolgee/index.js"></script>
     </environment>
 }

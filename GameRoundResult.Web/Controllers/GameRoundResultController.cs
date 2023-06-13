@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Services;
@@ -16,6 +17,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 using Sentry;
@@ -23,7 +25,6 @@ using TimeZoneConverter;
 
 namespace GameRoundResult.Web.Controllers
 {
-    [Authorize]
     public class GameRoundResultController : Controller
     {
         private readonly IMediator mediator;
@@ -35,13 +36,15 @@ namespace GameRoundResult.Web.Controllers
         private const int dataProtectorLifeTimeSecond = 10;
         public const int dataCacheDuration = 15;
         private readonly IPartnerService partnerService;
+        private readonly bool enableTolgee;
 
         public GameRoundResultController(IMediator mediator,
             GameTypeLocalization gameTypeLocalization,
             IOptions<List<AuthenticationClient>> clientOptions,
             IOptions<HostConfiguration> hostConfigurationOptions,
             IDataProtectionProvider dataProtectionProvider,
-            IPartnerService partnerService)
+            IPartnerService partnerService,
+            IConfiguration configuration)
         {
             this.mediator = mediator;
             this.gameTypeLocalization = gameTypeLocalization;
@@ -49,6 +52,7 @@ namespace GameRoundResult.Web.Controllers
             clients = clientOptions.Value;
             hostConfiguration = hostConfigurationOptions.Value;
             this.partnerService = partnerService;
+            enableTolgee = bool.Parse(configuration["EnableTolgee"]);
         }
 
         [HttpGet]
@@ -62,7 +66,9 @@ namespace GameRoundResult.Web.Controllers
                     User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.SiteName)?.Value,
                     User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.PartnerId)?.Value
                     ),
-                GameType = gameType
+                GameType = gameType,
+                Language = Thread.CurrentThread.CurrentCulture.Name,
+                EnableTolgee = enableTolgee
             };
             return View(viewModel);
         }

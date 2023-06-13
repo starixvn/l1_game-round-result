@@ -16,5 +16,9 @@ namespace GameRoundResult.Web.Models
         public string UserTimeZone { get; set; }
 
         public IEnumerable<SelectListItem> GameTypes { get; set; }
+
+        public bool EnableTolgee { get; set; }
+
+        public string Language { get; set; }
     }
 }
