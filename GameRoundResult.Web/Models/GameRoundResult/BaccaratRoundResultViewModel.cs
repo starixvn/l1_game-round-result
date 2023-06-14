@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using GameRoundResult.Core.Constants;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
@@ -21,7 +22,7 @@ namespace GameRoundResult.Web.Models
         public bool BankerPair { get; set; }
         public bool Natural { get; set; }
 
-        public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
@@ -32,7 +33,7 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        private string GetWinningOptionsContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetWinningOptionsContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             string result;
 

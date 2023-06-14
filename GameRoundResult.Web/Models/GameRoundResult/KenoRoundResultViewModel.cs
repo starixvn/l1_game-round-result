@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {
@@ -26,7 +26,7 @@ namespace GameRoundResult.Web.Models
 
         public bool IsGold { get; set; }
 
-        public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
@@ -59,7 +59,7 @@ namespace GameRoundResult.Web.Models
             return string.Join("", stringContents);
         }
 
-        private string GetBigSmallContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetBigSmallContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var span = new TagBuilder("span");
             span.AddCssClass("bold");
@@ -77,7 +77,7 @@ namespace GameRoundResult.Web.Models
             return span.GetHtmlString();
         }
 
-        private string GetOddEvenContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetOddEvenContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var span = new TagBuilder("span");
             span.AddCssClass("bold");
@@ -95,7 +95,7 @@ namespace GameRoundResult.Web.Models
             return span.GetHtmlString();
         }
 
-        private string GetElementContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetElementContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var span = new TagBuilder("span");
             span.AddCssClass("bold");

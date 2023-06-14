@@ -26,7 +26,7 @@ namespace GameRoundResult.Web.Models
 
         public long RoundId { get; set; }
 
-        public virtual IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public virtual IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             return new[] { $"{DateDisplay}<br />{Time.ToString(ViewFormat.RoundTimeFormat, CultureInfo.InvariantCulture)}", RoundId.ToString() };
         }

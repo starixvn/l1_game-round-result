@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,16 +13,16 @@ namespace GameRoundResult.Web.UnitTests.Models.Win3Cards
 {
     public class Win3CardsRoundResultViewModelTests
     {
-        protected readonly IStringLocalizer<RoundResultViewModel> roundLocalizer;
+        protected readonly IJsonStringLocalizer<RoundResultViewModel> roundLocalizer;
 
         public Win3CardsRoundResultViewModelTests()
         {
             roundLocalizer = GetStringLocalizer();
         }
 
-        private static IStringLocalizer<RoundResultViewModel> GetStringLocalizer()
+        private static IJsonStringLocalizer<RoundResultViewModel> GetStringLocalizer()
         {
-            var mockLocalizer = Substitute.For<IStringLocalizer<RoundResultViewModel>>();
+            var mockLocalizer = Substitute.For<IJsonStringLocalizer<RoundResultViewModel>>();
             MockStringLocalizer(mockLocalizer, "DragonWin3Cards", "Dragon");
             MockStringLocalizer(mockLocalizer, "Phoenix", "Phoenix");
             MockStringLocalizer(mockLocalizer, "Pair8Plus", "Pair 8 Plus");
@@ -35,7 +36,7 @@ namespace GameRoundResult.Web.UnitTests.Models.Win3Cards
             return mockLocalizer;
         }
 
-        private static void MockStringLocalizer<T>(IStringLocalizer<T> stringLocalizer, string name, string value)
+        private static void MockStringLocalizer<T>(IJsonStringLocalizer<T> stringLocalizer, string name, string value)
         {
             var localizedString = new LocalizedString(name, value);
             stringLocalizer[name].Returns(localizedString);
@@ -99,12 +100,12 @@ namespace GameRoundResult.Web.UnitTests.Models.Win3Cards
             var dragonHandResult = new TagBuilder("span");
             dragonHandResult.AddCssClass("dragon");
             viewModel
-                .Configure().GetHandBuilder(Arg.Any<IStringLocalizer<RoundResultViewModel>>(), handDragon.Cards, handDragon.HandRank, handDragon.CardRankId, true)
+                .Configure().GetHandBuilder(Arg.Any<IJsonStringLocalizer<RoundResultViewModel>>(), handDragon.Cards, handDragon.HandRank, handDragon.CardRankId, true)
                 .Returns(dragonHandResult);
             var phoenixHandResult = new TagBuilder("span");
             phoenixHandResult.AddCssClass("phoenix");
             viewModel
-                .Configure().GetHandBuilder(Arg.Any<IStringLocalizer<RoundResultViewModel>>(), handPhoenix.Cards, handPhoenix.HandRank, handPhoenix.CardRankId, false)
+                .Configure().GetHandBuilder(Arg.Any<IJsonStringLocalizer<RoundResultViewModel>>(), handPhoenix.Cards, handPhoenix.HandRank, handPhoenix.CardRankId, false)
                 .Returns(phoenixHandResult);
 
             var expected = $"<div class=\"win3cards-result\">{dragonHandResult.GetHtmlString()}{phoenixHandResult.GetHtmlString()}</div>";

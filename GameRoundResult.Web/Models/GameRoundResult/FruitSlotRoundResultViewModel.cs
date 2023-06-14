@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {
@@ -31,7 +31,7 @@ namespace GameRoundResult.Web.Models
         public Dictionary<string, bool> SettlementResult { get; set; }
         public bool IsLucky => SettlementResult[LuckySymbol];
 
-        public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
@@ -102,7 +102,7 @@ namespace GameRoundResult.Web.Models
             return image;
         }
 
-        private string GetResultHtml(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetResultHtml(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var table = new TagBuilder("table");
             table.AddCssClass("table table-result ");
@@ -121,7 +121,7 @@ namespace GameRoundResult.Web.Models
             return table.GetHtmlString();
         }
 
-        private TagBuilder GetSpinResultHtml(IStringLocalizer<RoundResultViewModel> stringLocalizer, string symbol)
+        private TagBuilder GetSpinResultHtml(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string symbol)
         {
             var row = new TagBuilder("tr");
             var labelCell = new TagBuilder("td");
@@ -140,7 +140,7 @@ namespace GameRoundResult.Web.Models
             return row;
         }
 
-        private TagBuilder GetExtraResultHtml(IStringLocalizer<RoundResultViewModel> stringLocalizer, string symbol)
+        private TagBuilder GetExtraResultHtml(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string symbol)
         {
             var row = new TagBuilder("tr");
             var labelCell = new TagBuilder("td");

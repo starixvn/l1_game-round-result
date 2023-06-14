@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {
@@ -11,7 +11,7 @@ namespace GameRoundResult.Web.Models
 
         public FanTanSettlementResultViewModel SettlementResult { get; set; }
 
-        public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
@@ -65,7 +65,7 @@ namespace GameRoundResult.Web.Models
             return "Even";
         }
 
-        private string GetKwokWinChoice(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetKwokWinChoice(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>();
 
@@ -92,7 +92,7 @@ namespace GameRoundResult.Web.Models
             return string.Join(",<br />", result);
         }
 
-        private string GetChunWinChoice(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetChunWinChoice(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>();
 
@@ -146,5 +146,4 @@ namespace GameRoundResult.Web.Models
         public bool Chun134 { get; set; }
         public bool Chun234 { get; set; }
     }
-
 }

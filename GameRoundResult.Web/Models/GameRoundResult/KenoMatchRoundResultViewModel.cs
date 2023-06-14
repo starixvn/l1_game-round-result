@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {
@@ -18,7 +17,7 @@ namespace GameRoundResult.Web.Models
 
         public Dictionary<string, decimal> Odds { get; set; }
 
-        public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
@@ -30,7 +29,7 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        private string GeResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GeResultContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var table = new TagBuilder("table");
             table.AddCssClass("table table-bordered table-result");
@@ -63,7 +62,7 @@ namespace GameRoundResult.Web.Models
             return row;
         }
 
-        private static TagBuilder GetFirstHalfTitle(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private static TagBuilder GetFirstHalfTitle(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
             var cell = new TagBuilder("td");
@@ -74,7 +73,7 @@ namespace GameRoundResult.Web.Models
             return row;
         }
 
-        private static TagBuilder GetFullTimeTitle(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private static TagBuilder GetFullTimeTitle(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
             var cell = new TagBuilder("td");
@@ -86,7 +85,7 @@ namespace GameRoundResult.Web.Models
             return row;
         }
 
-        private static string GetPeriodSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer,
+        private static string GetPeriodSettlementResultContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer,
             KenoMatchPeriodSettlementResultViewModel settlementResult)
         {
             var div1 = new TagBuilder("div");
@@ -108,7 +107,7 @@ namespace GameRoundResult.Web.Models
             return $"{div1.GetHtmlString()}{div2.GetHtmlString()}{div3.GetHtmlString()}";
         }
 
-        private TagBuilder GetHalfTimeSummary(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private TagBuilder GetHalfTimeSummary(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
             var cell = new TagBuilder("td");
@@ -119,14 +118,13 @@ namespace GameRoundResult.Web.Models
 
             cell.InnerHtml.Append($"{stringLocalizer["Team Blue"]} {blueFTSum}");
 
-
             cell.InnerHtml.Append($" - {stringLocalizer["Total"]} {HalfTime.Total} - {stringLocalizer["Team Red"]} {redFTSum}");
             row.InnerHtml.AppendHtml(cell);
 
             return row;
         }
 
-        private TagBuilder GetFullTimeSummary(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private TagBuilder GetFullTimeSummary(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
             var cell = new TagBuilder("td");
@@ -159,7 +157,7 @@ namespace GameRoundResult.Web.Models
             return div;
         }
 
-        private static TagBuilder GetTeamTitle(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private static TagBuilder GetTeamTitle(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
             row.AddCssClass("bold");

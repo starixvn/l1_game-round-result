@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
@@ -14,7 +15,7 @@ namespace GameRoundResult.Web.Models
 
         public bool IsEven { get; set; }
 
-        public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
@@ -43,7 +44,7 @@ namespace GameRoundResult.Web.Models
             return string.Join("", result);
         }
 
-        private string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetResultContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var tagBuilder = new TagBuilder("span");
             tagBuilder.AddCssClass("bold");

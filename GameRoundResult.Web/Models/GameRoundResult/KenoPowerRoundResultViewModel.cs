@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {
@@ -14,7 +13,7 @@ namespace GameRoundResult.Web.Models
 
         public bool Settled { get; set; }
 
-        public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
@@ -28,7 +27,7 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        private string GetTotalSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetTotalSettlementResultContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var div1 = new TagBuilder("div");
             var div2 = new TagBuilder("div");
@@ -39,7 +38,7 @@ namespace GameRoundResult.Web.Models
             return $"{div1.GetHtmlString()}{div2.GetHtmlString()}";
         }
 
-        private string GeResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GeResultContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var table = new TagBuilder("table");
             table.AddCssClass("table table-bordered table-result");
@@ -54,7 +53,7 @@ namespace GameRoundResult.Web.Models
             return table.GetHtmlString();
         }
 
-        private TagBuilder GetSummaryContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private TagBuilder GetSummaryContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
             var cell = new TagBuilder("td");
@@ -85,7 +84,7 @@ namespace GameRoundResult.Web.Models
             return row;
         }
 
-        private string GetBlueRedSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetBlueRedSettlementResultContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             if (SettlementResult.Blue)
             {
@@ -95,10 +94,9 @@ namespace GameRoundResult.Web.Models
             {
                 return SettlementResult.Red ? stringLocalizer["Team Red"] : stringLocalizer["Tie"];
             }
-
         }
 
-        private string GetBlueSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetBlueSettlementResultContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             if (SettlementResult.BlueBig)
             {
@@ -108,7 +106,7 @@ namespace GameRoundResult.Web.Models
             return stringLocalizer["Small"];
         }
 
-        private string GetRedSettlementResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetRedSettlementResultContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             if (SettlementResult.RedBig)
             {
@@ -134,7 +132,7 @@ namespace GameRoundResult.Web.Models
             return div;
         }
 
-        private static TagBuilder GetTeamTitle(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private static TagBuilder GetTeamTitle(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
             row.AddCssClass("bold");

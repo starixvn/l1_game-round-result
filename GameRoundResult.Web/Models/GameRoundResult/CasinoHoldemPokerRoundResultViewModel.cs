@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.Localization;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using GameRoundResult.Web.Configuration;
 
 namespace GameRoundResult.Web.Models.GameRoundResult
 {
@@ -13,11 +13,9 @@ namespace GameRoundResult.Web.Models.GameRoundResult
         public byte HandRankId { get; set; }
         public bool? IsSwappedOrHold { get; set; }
 
-        public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             return default;
         }
-
     }
-
 }

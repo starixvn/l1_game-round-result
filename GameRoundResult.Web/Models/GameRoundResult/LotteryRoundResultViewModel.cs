@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {
@@ -17,7 +17,7 @@ namespace GameRoundResult.Web.Models
         public IEnumerable<string> Sixth { get; set; }
         public IEnumerable<string> Seventh { get; set; }
 
-        public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
@@ -27,7 +27,7 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        private string GeResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GeResultContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var table = new TagBuilder("table");
             table.AddCssClass("table table-bordered table-result bold");
@@ -47,7 +47,7 @@ namespace GameRoundResult.Web.Models
             return table.GetHtmlString();
         }
 
-        private TagBuilder GetSpecialPrizeHtml(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private TagBuilder GetSpecialPrizeHtml(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
             var prizeNameCell = new TagBuilder("td");
@@ -63,7 +63,7 @@ namespace GameRoundResult.Web.Models
             return row;
         }
 
-        private TagBuilder GetFirstPrizeHtml(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private TagBuilder GetFirstPrizeHtml(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
             var prizeNameCell = new TagBuilder("td");
@@ -78,14 +78,14 @@ namespace GameRoundResult.Web.Models
             return row;
         }
 
-        private TagBuilder GetSecondPrizeHtml(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private TagBuilder GetSecondPrizeHtml(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
             var prizeNameCell = new TagBuilder("td");
             prizeNameCell.InnerHtml.Append(stringLocalizer["2nd"]);
             row.InnerHtml.AppendHtml(prizeNameCell);
 
-            foreach(var result in Second)
+            foreach (var result in Second)
             {
                 var resultCell = new TagBuilder("td");
                 resultCell.Attributes.Add("colspan", "6");
@@ -96,7 +96,7 @@ namespace GameRoundResult.Web.Models
             return row;
         }
 
-        private string GetThirdPrizeHtml(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetThirdPrizeHtml(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
 
@@ -128,8 +128,7 @@ namespace GameRoundResult.Web.Models
             return $"{row.GetHtmlString()}{secondRow.GetHtmlString()}";
         }
 
-
-        private TagBuilder GetFourthPrizeHtml(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private TagBuilder GetFourthPrizeHtml(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
             var prizeNameCell = new TagBuilder("td");
@@ -147,7 +146,7 @@ namespace GameRoundResult.Web.Models
             return row;
         }
 
-        private string GetFifthPrizeHtml(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetFifthPrizeHtml(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
 
@@ -179,7 +178,7 @@ namespace GameRoundResult.Web.Models
             return $"{row.GetHtmlString()}{secondRow.GetHtmlString()}";
         }
 
-        private TagBuilder GetSixthPrizeHtml(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private TagBuilder GetSixthPrizeHtml(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
             var prizeNameCell = new TagBuilder("td");
@@ -197,7 +196,7 @@ namespace GameRoundResult.Web.Models
             return row;
         }
 
-        private TagBuilder GetSeventhPrizeHtml(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private TagBuilder GetSeventhPrizeHtml(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var row = new TagBuilder("tr");
             var prizeNameCell = new TagBuilder("td");
@@ -215,6 +214,5 @@ namespace GameRoundResult.Web.Models
 
             return row;
         }
-
     }
 }

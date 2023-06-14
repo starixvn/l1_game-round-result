@@ -1,4 +1,5 @@
 ﻿using GameRoundResult.Core.Constants;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
@@ -12,7 +13,7 @@ namespace GameRoundResult.Web.Models
 
         public Win3CardsSettlementResultViewModel SettlementResult { get; set; }
 
-        public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
@@ -23,7 +24,7 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        public virtual string GetWinningOptionsContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public virtual string GetWinningOptionsContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>();
             if (SettlementResult.Dragon)
@@ -66,7 +67,7 @@ namespace GameRoundResult.Web.Models
             return string.Join(", ", result);
         }
 
-        public virtual string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer, bool isBetDetailPage = false)
+        public virtual string GetResultContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, bool isBetDetailPage = false)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"win3cards-result");
@@ -77,7 +78,7 @@ namespace GameRoundResult.Web.Models
             return tagBuilder.GetHtmlString();
         }
 
-        public virtual TagBuilder GetHandBuilder(IStringLocalizer<RoundResultViewModel> stringLocalizer, IEnumerable<PokerCardViewModel> cards, string handRank, int cardRankId, bool isHighlight)
+        public virtual TagBuilder GetHandBuilder(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, IEnumerable<PokerCardViewModel> cards, string handRank, int cardRankId, bool isHighlight)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass("cards");

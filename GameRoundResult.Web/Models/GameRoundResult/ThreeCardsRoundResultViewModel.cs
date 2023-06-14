@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {
@@ -12,7 +12,7 @@ namespace GameRoundResult.Web.Models
 
         public ThreeCardsSettlementResultViewModel SettlementResult { get; set; }
 
-        public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
@@ -23,7 +23,7 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        private string GetWinningOptionsContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetWinningOptionsContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var stringBuilder = new StringBuilder();
             var tagBuilder = new TagBuilder("span");

@@ -11,9 +11,9 @@ namespace GameRoundResult.Web.Configuration
 {
     public class EnumLocalization<T> where T : Enum
     {
-        private readonly IStringLocalizer<T> localizer;
+        private readonly IJsonStringLocalizer<T> localizer;
 
-        public EnumLocalization(IStringLocalizer<T> localizer)
+        public EnumLocalization(IJsonStringLocalizer<T> localizer)
         {
             this.localizer = localizer;
         }
@@ -44,7 +44,7 @@ namespace GameRoundResult.Web.Configuration
 
         private readonly IPartnerConfigService partnerConfigService;
 
-        public GameTypeLocalization(IStringLocalizer<GameType> localizer, IPartnerConfigService PartnerConfigService) : base(localizer)
+        public GameTypeLocalization(IJsonStringLocalizer<GameType> localizer, IPartnerConfigService PartnerConfigService) : base(localizer)
         {
             this.partnerConfigService = PartnerConfigService;
         }

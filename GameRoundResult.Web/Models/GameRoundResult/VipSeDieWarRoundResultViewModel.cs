@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using GameRoundResult.Core.Constants;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Localization;
@@ -13,7 +14,7 @@ namespace GameRoundResult.Web.Models
         public IEnumerable<bool> BankerChips { get; set; }
         public Dictionary<string, bool> SettlementResult { get; set; }
 
-        public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
@@ -41,7 +42,7 @@ namespace GameRoundResult.Web.Models
             return string.Join("", result);
         }
 
-        public string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public string GetResultContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new StringBuilder();
             result.AppendLine(GetFirstRowResult(stringLocalizer));
@@ -51,7 +52,7 @@ namespace GameRoundResult.Web.Models
             return result.ToString();
         }
 
-        private string GetFirstRowResult(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetFirstRowResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new StringBuilder();
 
@@ -69,7 +70,7 @@ namespace GameRoundResult.Web.Models
             return result.ToString();
         }
 
-        private string GetSecondRowResult(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetSecondRowResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new StringBuilder();
 
@@ -80,7 +81,7 @@ namespace GameRoundResult.Web.Models
             return result.ToString();
         }
 
-        private string GetThirdRowResult(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetThirdRowResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>();
 

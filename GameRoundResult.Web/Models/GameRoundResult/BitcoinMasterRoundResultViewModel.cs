@@ -16,7 +16,7 @@ namespace GameRoundResult.Web.Models
         public Dictionary<string, bool> SettlementResult { get; set; }
         public BitcoinMasterRoundResult Result { get; set; }
 
-        public override IEnumerable<string> ToDataTableArray(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
@@ -28,7 +28,7 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        public string GetResultContent(IStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public string GetResultContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"bitcoin-master-result");
