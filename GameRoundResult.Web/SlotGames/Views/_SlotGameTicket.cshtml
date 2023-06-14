@@ -1,7 +1,9 @@
 ﻿@model ClassicSlotTicketViewModel
 
-@inject IStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject IStringLocalizer<ClassicSlotTicketViewModel> Localizer
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<ClassicSlotTicketViewModel> Localizer
+
+<input value="GameTicketResultViewModel,GameTicketViewModel,ClassicSlotTicketViewModel" id="tolgee_namespace" readonly hidden />
 
 @if (Model.HasData)
 {
