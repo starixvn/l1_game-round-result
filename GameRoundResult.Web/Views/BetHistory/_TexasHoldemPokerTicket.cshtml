@@ -1,13 +1,14 @@
 ﻿@using GameRoundResult.Core.Constants
 @model TexasHoldemPokerTicketViewModel
-@inject IStringLocalizer<GameTicketViewModel> Localizer
-@inject IStringLocalizer<CasinoHoldemPokerTicketViewModel> CasinoHolemLocalizer
+@inject IJsonStringLocalizer<GameTicketViewModel> Localizer
+@inject IJsonStringLocalizer<CasinoHoldemPokerTicketViewModel> CasinoHolemLocalizer
 
 @{
     var isFinishRoundAndNotFold = Model.Ended && !Model.IsFold;
     var isRunningRoundAndNotPassSwapStep = Model.IsSwappedOrHold.HasValue && !Model.IsSwappedOrHold.Value && !Model.Ended;
     var isRunningRoundOrFold = Model.IsFold || (Model.IsSwappedOrHold.HasValue && !Model.IsSwappedOrHold.Value);
 }
+<input value="GameTicketResultViewModel,GameTicketViewModel,CasinoHoldemPokerTicketViewModel" id="tolgee_namespace" readonly hidden />
 
 <div>
     <table class="table table-bordered table-casino-holdem">

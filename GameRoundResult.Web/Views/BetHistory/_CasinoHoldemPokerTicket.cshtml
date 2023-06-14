@@ -1,8 +1,9 @@
 ﻿@using GameRoundResult.Core.Constants
 @model CasinoHoldemPokerTicketViewModel
-@inject IStringLocalizer<GameTicketViewModel> Localizer
-@inject IStringLocalizer<CasinoHoldemPokerTicketViewModel> CasinoHolemLocalizer
+@inject IJsonStringLocalizer<GameTicketViewModel> Localizer
+@inject IJsonStringLocalizer<CasinoHoldemPokerTicketViewModel> CasinoHolemLocalizer
 
+<input value="GameTicketResultViewModel,GameTicketViewModel,CasinoHoldemPokerTicketViewModel" id="tolgee_namespace" readonly hidden />
 <div>
     <table class="table table-bordered table-casino-holdem">
         <thead>

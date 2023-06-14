@@ -1,7 +1,8 @@
 ﻿@model OddEvenTicketViewModel
 
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
+@inject IJsonStringLocalizer<GameTicketViewModel> Localizer
 
+<input value="GameTicketResultViewModel,GameTicketViewModel" id="tolgee_namespace" readonly hidden />
 <table class="table table-bordered">
     <thead>
         <tr>

@@ -1,8 +1,8 @@
 ﻿@model SicBoTicketViewModel
 
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<SicBoTicketViewModel> SicBoLocalizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<RoundResultViewModel> RoundResultLocalizer
+@inject IJsonStringLocalizer<GameTicketViewModel> Localizer
+@inject IJsonStringLocalizer<SicBoTicketViewModel> SicBoLocalizer
+@inject IJsonStringLocalizer<RoundResultViewModel> RoundResultLocalizer
 
 @{
     var betChoiceDisplayDictionary = new Dictionary<string, string>
@@ -59,6 +59,7 @@
         { "anyTriple", SicBoLocalizer["AnyTriple"] },
     };
 }
+<input value="GameTicketResultViewModel,GameTicketViewModel,SicBoTicketViewModel,RoundResultViewModel" id="tolgee_namespace" readonly hidden />
 
 <table class="table table-bordered">
     <thead>

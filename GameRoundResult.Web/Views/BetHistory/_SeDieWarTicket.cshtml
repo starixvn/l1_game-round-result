@@ -1,8 +1,8 @@
 ﻿@model VipSeDieWarTicketViewModel
 
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<VipSeDieWarTicketViewModel> Localizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<RoundResultViewModel> RoundResultLocalizer
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<VipSeDieWarTicketViewModel> Localizer
+@inject IJsonStringLocalizer<RoundResultViewModel> RoundResultLocalizer
 
 @{
     var betChoiceDictionary = new Dictionary<string, string>
@@ -27,6 +27,7 @@
 
     };
 }
+<input value="GameTicketResultViewModel,GameTicketViewModel,VipSeDieWarTicketViewModel,RoundResultViewModel" id="tolgee_namespace" readonly hidden />
 
 <table class="table table-bordered table-vip-se-die-war">
     <thead>

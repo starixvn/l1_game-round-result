@@ -1,7 +1,7 @@
 ﻿@model KenoMatchTicketViewModel
 
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<KenoMatchTicketViewModel> Localizer
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<KenoMatchTicketViewModel> Localizer
 
 @{
     var betChoiceMapper = new Dictionary<string, string>
@@ -49,6 +49,7 @@
     };
 }
 
+<input value="GameTicketResultViewModel,GameTicketViewModel,KenoMatchTicketViewModel" id="tolgee_namespace" readonly hidden />
 <table class="table table-bordered table-keno-match">
     <thead>
         <tr>

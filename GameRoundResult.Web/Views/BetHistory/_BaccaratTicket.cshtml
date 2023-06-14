@@ -1,8 +1,9 @@
 ﻿@model BaccaratTicketViewModel
 @using GameRoundResult.Core.Constants
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<BaccaratTicketViewModel> Localizer
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<BaccaratTicketViewModel> Localizer
 
+<input value="GameTicketResultViewModel,GameTicketViewModel,BaccaratTicketViewModel" id="tolgee_namespace" readonly hidden />
 <table class="table table-bordered table-baccarat">
     <thead>
         <tr>

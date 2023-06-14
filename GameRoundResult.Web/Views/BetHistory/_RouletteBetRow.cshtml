@@ -1,6 +1,6 @@
 ﻿@model RouletteBetRowViewModel
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<RouletteTicketViewModel> Localizer
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<RouletteTicketViewModel> Localizer
 
 @{
     var bet = Model.Bet;
@@ -96,6 +96,7 @@
 }
 
 
+<input value="GameTicketResultViewModel,GameTicketViewModel,RouletteTicketViewModel" id="tolgee_namespace" readonly hidden />
 
 @foreach (var betChoice in bet.StraightUp)
 {

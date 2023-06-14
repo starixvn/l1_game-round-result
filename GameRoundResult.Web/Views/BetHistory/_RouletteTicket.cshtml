@@ -1,6 +1,6 @@
 ﻿@model RouletteTicketViewModel
 @using GameRoundResult.Core.Constants
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
 
 @{ 
     var resultColorCssClass = string.Empty;
@@ -17,6 +17,7 @@
         }
     }
 }
+<input value="GameTicketResultViewModel,GameTicketViewModel" id="tolgee_namespace" readonly hidden />
 
 <table class="table table-bordered table-baccarat">
     <thead>

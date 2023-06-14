@@ -1,7 +1,9 @@
 ﻿@model FishPrawnCrabTicketViewModel
 
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<FishPrawnCrabTicketViewModel> Localizer
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<FishPrawnCrabTicketViewModel> Localizer
+
+<input value="GameTicketResultViewModel,GameTicketViewModel,FishPrawnCrabTicketViewModel" id="tolgee_namespace" readonly hidden />
 
 <table class="table table-bordered">
     <thead>

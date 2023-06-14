@@ -1,11 +1,12 @@
 ﻿@model LotteryTicketViewModel
 
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> Localizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<LotteryTicketViewModel> LotteryLocalizer
+@inject IJsonStringLocalizer<GameTicketViewModel> Localizer
+@inject IJsonStringLocalizer<LotteryTicketViewModel> LotteryLocalizer
 
 @{
     var settlementResult = Model.SettlementResult;
 }
+<input value="GameTicketResultViewModel,GameTicketViewModel,LotteryTicketViewModel" id="tolgee_namespace" readonly hidden />
 
 <table class="table table-bordered">
     <thead>

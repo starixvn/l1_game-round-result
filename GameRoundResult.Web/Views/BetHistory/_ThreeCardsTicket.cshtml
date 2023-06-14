@@ -1,7 +1,9 @@
 ﻿@model ThreeCardsTicketViewModel
 
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<ThreeCardsTicketViewModel> Localizer
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<ThreeCardsTicketViewModel> Localizer
+
+<input value="GameTicketResultViewModel,GameTicketViewModel,ThreeCardsTicketViewModel" id="tolgee_namespace" readonly hidden />
 
 <table class="table table-bordered table-three-cards">
     <thead>

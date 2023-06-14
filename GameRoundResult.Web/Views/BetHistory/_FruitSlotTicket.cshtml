@@ -1,11 +1,12 @@
 ﻿@model FruitSlotTicketViewModel
 
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<FruitSlotTicketViewModel> Localizer
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<FruitSlotTicketViewModel> Localizer
 
 @{
     var gameName = ViewData["GameName"].ToString();
 }
+<input value="GameTicketResultViewModel,GameTicketViewModel,FruitSlotTicketViewModel" id="tolgee_namespace" readonly hidden />
 <table class="table table-bordered">
     <thead>
         <tr>

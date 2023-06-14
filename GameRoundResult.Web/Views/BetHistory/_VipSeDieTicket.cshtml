@@ -1,7 +1,7 @@
 ﻿@model VipSeDieTicketViewModel
 
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<SeDieTicketViewModel> Localizer
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<SeDieTicketViewModel> Localizer
 
 @{
     var betChoiceDictionary = new Dictionary<string, string>
@@ -15,6 +15,7 @@
         { "white4", "4White" },
     };
 }
+<input value="GameTicketResultViewModel,GameTicketViewModel,SeDieTicketViewModel" id="tolgee_namespace" readonly hidden />
 
 <table class="table table-bordered">
     <thead>

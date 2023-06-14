@@ -1,11 +1,12 @@
 ﻿@model MiniSeDieTicketViewModel
 
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<SeDieTicketViewModel> Localizer
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<SeDieTicketViewModel> Localizer
 
 @{ 
     var settlementResult = Model.RoundResult?.SettlementResult;
 }
+<input value="GameTicketResultViewModel,GameTicketViewModel,SeDieTicketViewModel" id="tolgee_namespace" readonly hidden />
 
 <table class="table table-bordered">
     <thead>

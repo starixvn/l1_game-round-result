@@ -1,8 +1,9 @@
 ﻿@model FanTanTicketViewModel
 
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<RoundResultViewModel> Localizer
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<RoundResultViewModel> Localizer
 
+<input value="GameTicketResultViewModel,GameTicketViewModel,RoundResultViewModel" id="tolgee_namespace" readonly hidden />
 <table class="table table-bordered">
     <thead>
         <tr>

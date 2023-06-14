@@ -1,8 +1,9 @@
 ﻿@model DragonTigerTicketViewModel
 @using GameRoundResult.Core.Constants
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<DragonTigerTicketViewModel> Localizer
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<DragonTigerTicketViewModel> Localizer
 
+<input value="GameTicketResultViewModel,GameTicketViewModel,DragonTigerTicketViewModel" id="tolgee_namespace" readonly hidden />
 <table class="table table-bordered table-dragon-tiger">
     <thead>
         <tr>

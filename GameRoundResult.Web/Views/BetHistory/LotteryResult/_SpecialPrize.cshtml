@@ -1,6 +1,6 @@
 ﻿@model LotteryTicketViewModel
 
-@inject Microsoft.Extensions.Localization.IStringLocalizer<LotteryTicketViewModel> LotteryLocalizer
+@inject IJsonStringLocalizer<LotteryTicketViewModel> LotteryLocalizer
 
 @{
     var settlementResult = Model.SettlementResult;
