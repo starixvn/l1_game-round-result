@@ -1,0 +1,18 @@
+{
+  "Banker" : "莊家",
+  "BankerEven" : "莊家 - 雙",
+  "BankerOdd" : "莊家 - 單",
+  "BankerRed1" : "莊家 - 1 紅",
+  "BankerRed3" : "莊家 - 3 紅",
+  "BankerRed4" : "莊家 - 4 紅",
+  "BankerWhite4" : "莊家 - 4 白",
+  "Player" : "閒家",
+  "PlayerEven" : "閒家 - 雙",
+  "PlayerOdd" : "閒家 - 單",
+  "PlayerRed1" : "閒家 - 1 紅",
+  "PlayerRed3" : "閒家 - 3 紅",
+  "PlayerRed4" : "閒家 - 4 紅",
+  "PlayerWhite4" : "閒家 - 4 白",
+  "TotalEven" : "總雙數",
+  "TotalOdd" : "總單數"
+}

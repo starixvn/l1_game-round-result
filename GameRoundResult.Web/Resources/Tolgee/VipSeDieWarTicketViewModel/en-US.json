@@ -1,0 +1,18 @@
+{
+  "Banker" : "Banker",
+  "BankerEven" : "Banker - Even",
+  "BankerOdd" : "Banker - Odd",
+  "BankerRed1" : "Banker - 1 Red",
+  "BankerRed3" : "Banker - 3 Red",
+  "BankerRed4" : "Banker - 4 Red",
+  "BankerWhite4" : "Banker - 4 White",
+  "Player" : "Player",
+  "PlayerEven" : "Player - Even",
+  "PlayerOdd" : "Player - Odd",
+  "PlayerRed1" : "Player - 1 Red",
+  "PlayerRed3" : "Player - 3 Red",
+  "PlayerRed4" : "Player - 4 Red",
+  "PlayerWhite4" : "Player - 4 White",
+  "TotalEven" : "Total Even",
+  "TotalOdd" : "Total Odd"
+}

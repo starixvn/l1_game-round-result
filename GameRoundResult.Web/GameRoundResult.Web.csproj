@@ -224,6 +224,10 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\Tolgee\" />
+  </ItemGroup>
+
 
 
 </Project>

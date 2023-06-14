@@ -1,0 +1,15 @@
+{
+  "BetLevel" : "ระดับการเดิมพัน",
+  "CoinValue" : "มูลค่าเหรียญ",
+  "ExtraFreeSpin" : "ฟรีสปินพิเศษ",
+  "FreeSpin" : "Free Spin",
+  "FreeSpins" : "Free Spins",
+  "Multiplier" : "ตัวคูณ",
+  "No" : "หมายเลข",
+  "ReachMaxWin" : "คุณถึงยอดชนะสูงสุด",
+  "ResultBoard" : "กระดานผลการแข่งขัน",
+  "TotalMultiplier" : "ตัวคูณทั้งหมด",
+  "TumbleWin" : "ชนะ Tumble",
+  "WinAmount" : "จำนวนยอดชนะ",
+  "WinSymbols" : "สัญลักษณ์ชนะ"
+}

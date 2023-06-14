@@ -1,0 +1,21 @@
+{
+  "Card" : "KARTU",
+  "Combination" : "KOMBINASI",
+  "CommunityCards" : "Kartu komunitas",
+  "Dealer" : "Dealer",
+  "DoesNotQualify" : "Tidak terkualifikasi",
+  "Flush" : "Flush",
+  "Fold" : "Fold",
+  "FourOfAKind" : "Four of a kind",
+  "FullHouse" : "Full House",
+  "HighCard" : "Kartu Tinggi",
+  "Pair" : "Pair",
+  "Player" : "Player",
+  "RoyalFlush" : "Royal Flush",
+  "Stake" : "Taruhan",
+  "Straight" : "Straight",
+  "StraightFlush" : "Straight Flush",
+  "ThreeOfAKind" : "Three of a Kind",
+  "TwoPairs" : "Dua Pair",
+  "UnfinishedGame" : "Permainan yang belum selesai"
+}

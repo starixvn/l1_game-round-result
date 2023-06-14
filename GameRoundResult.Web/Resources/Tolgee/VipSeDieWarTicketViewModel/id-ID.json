@@ -1,0 +1,18 @@
+{
+  "Banker" : "Banker",
+  "BankerEven" : "Banker - Genap",
+  "BankerOdd" : "Banker - Ganjil",
+  "BankerRed1" : "Banker - 1 Merah",
+  "BankerRed3" : "Banker - 3 Merah",
+  "BankerRed4" : "Banker - 4 Merah",
+  "BankerWhite4" : "Banker - 4 Putih",
+  "Player" : "Player",
+  "PlayerEven" : "Player - Genap",
+  "PlayerOdd" : "Player - Ganjil",
+  "PlayerRed1" : "Player - 1 Merah",
+  "PlayerRed3" : "Player - 3 Merah",
+  "PlayerRed4" : "Player - 4 Merah",
+  "PlayerWhite4" : "Player - 4 Putih",
+  "TotalEven" : "Total Genap",
+  "TotalOdd" : "Total Ganjil"
+}

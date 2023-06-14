@@ -1,0 +1,10 @@
+{
+  "Blackjack" : "Blackjack",
+  "Bust" : "Bust",
+  "Dealer" : "Dealer",
+  "HandId" : "Hand ID",
+  "Player" : "Player",
+  "Stake" : "Stake",
+  "Unfinished Game" : "Unfinished Game",
+  "WinLoss" : "Win Loss"
+}
