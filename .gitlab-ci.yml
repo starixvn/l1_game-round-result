@@ -1,11 +1,7 @@
 include:
-  - project: "ci/repos-ci/pentagon_l1_game_result"
-    ref: master
-    file: "gitlab-ci.yml"
-
-  - project: "ci/repos-ci/pentagon_l2_game_result"
-    ref: master
-    file: "gitlab-ci-mixing.yml"
+  - project: "ci/core-cicd"
+    ref: tolgee
+    file: luminet.gitlab-ci.yml
 
 unit-test-dotnet:
   variables:
@@ -44,3 +40,21 @@ integration-test-dotnet:
     - cp ./GameRoundResult.IntegrationTests/appsettings.IGT.CI.json ./GameRoundResult.IntegrationTests/appsettings.IGT.json
     - mkdir -p $LOG_TEST_PATH && cp -a ./GameRoundResult.IntegrationTests/Games/. $LOG_TEST_PATH
     - cp -R ./GameRoundResult.Web/wwwroot/scss $LOG_TEST_PATH
+
+.sync-tolgee:
+  stage: transform-config
+  script:
+    - echo "===== SYNC TOLGEE DATA ... =====";
+    - if [ ! -z "$TOLGEE_KEY" && ! -z "$TOLGEE_PROJECT_ID" ];
+      then
+      tolgee_url=$(echo $TOLGEE_URL | sed "s/@TOLGEE_PROJECT_ID/$TOLGEE_PROJECT_ID/; s/@TOLGEE_KEY/$TOLGEE_KEY/")
+      curl $tolgee_url --output data.zip;
+      unzip -o data.zip -d ./GameRoundResult.Web/Resources/Tolgee;
+      rm data.zip;
+      fi
+  tags:
+    - docker
+  artifacts:
+    paths:
+      - "./GameRoundResult.Web/Resources/Tolgee"
+    expire_in: 1 day
