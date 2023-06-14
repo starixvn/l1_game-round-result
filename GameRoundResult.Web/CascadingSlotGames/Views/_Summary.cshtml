@@ -1,7 +1,7 @@
 ﻿@model BaseCascadingSlotTicketViewModel
 
-@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject Microsoft.Extensions.Localization.IStringLocalizer<BaseCascadingSlotTicketViewModel> Localizer
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<BaseCascadingSlotTicketViewModel> Localizer
 
 @{
     var roundResult = Model.Round;

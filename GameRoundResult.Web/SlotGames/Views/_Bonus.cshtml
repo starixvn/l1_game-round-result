@@ -2,7 +2,7 @@
 
 @model ClassicSlotTicketViewModel
 
-@inject Microsoft.Extensions.Localization.IStringLocalizer<ClassicSlotTicketViewModel> Localizer
+@inject IJsonStringLocalizer<ClassicSlotTicketViewModel> Localizer
 
 @if (Model.HasBonus)
 {
