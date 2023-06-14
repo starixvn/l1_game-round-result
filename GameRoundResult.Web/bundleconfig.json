@@ -22,5 +22,11 @@
     "inputFiles": [
       "wwwroot/scss/pages/error-page.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/tolgee.min.js",
+    "inputFiles": [
+      "wwwroot/js/tolgee.js"
+    ]
   }
 ]
