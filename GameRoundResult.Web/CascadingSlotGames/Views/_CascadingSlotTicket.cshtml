@@ -1,7 +1,9 @@
 ﻿@model BaseCascadingSlotTicketViewModel
 
-<input value="GameTicketResultViewModel,GameTicketViewModel,BaseCascadingSlotTicketViewModel" id="tolgee_namespace" readonly hidden />
-
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,GameTicketViewModel,BaseCascadingSlotTicketViewModel" id="tolgee_namespace" readonly hidden/>
+}
 @await Html.PartialAsync("_Summary", Model)
 @await Html.PartialAsync("_Tumbles", Model)
 @await Html.PartialAsync("_TotalMultiplier", Model)

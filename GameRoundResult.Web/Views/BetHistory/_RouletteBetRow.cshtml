@@ -95,9 +95,6 @@
     var renderDate = true;
 }
 
-
-<input value="GameTicketResultViewModel,GameTicketViewModel,RouletteTicketViewModel" id="tolgee_namespace" readonly hidden />
-
 @foreach (var betChoice in bet.StraightUp)
 {
     var winningCssClass = settlementResult.StraightUp.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;

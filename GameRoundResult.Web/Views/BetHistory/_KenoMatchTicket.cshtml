@@ -49,7 +49,10 @@
     };
 }
 
-<input value="GameTicketResultViewModel,GameTicketViewModel,KenoMatchTicketViewModel" id="tolgee_namespace" readonly hidden />
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,GameTicketViewModel,KenoMatchTicketViewModel" id="tolgee_namespace" readonly hidden/>
+}
 <table class="table table-bordered table-keno-match">
     <thead>
         <tr>

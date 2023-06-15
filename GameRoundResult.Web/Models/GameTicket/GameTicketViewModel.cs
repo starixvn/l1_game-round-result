@@ -14,12 +14,13 @@ namespace GameRoundResult.Web.Models
         public string TimeOffsetString => $"GMT{TimeZoneOffset.Hours:+#;-#}";
 
         public bool? FractionalOddsFormat { get; set; }
-        
+
         public string StaticResourceUrl { get; set; }
         public decimal TotalBet { get; set; }
         public decimal BetWin { get; set; }
         public decimal WinLoss => BetWin - TotalBet;
         public string WinLossRowClassName => WinLoss < 0 ? "text-red" : string.Empty;
+        public bool EnableTolgee { get; set; }
     }
 
     public class BetLogViewModel

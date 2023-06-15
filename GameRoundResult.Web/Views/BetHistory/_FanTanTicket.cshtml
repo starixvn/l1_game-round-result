@@ -3,7 +3,10 @@
 @inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
 @inject IJsonStringLocalizer<RoundResultViewModel> Localizer
 
-<input value="GameTicketResultViewModel,GameTicketViewModel,RoundResultViewModel" id="tolgee_namespace" readonly hidden />
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,GameTicketViewModel,RoundResultViewModel" id="tolgee_namespace" readonly hidden />
+}
 <table class="table table-bordered">
     <thead>
         <tr>

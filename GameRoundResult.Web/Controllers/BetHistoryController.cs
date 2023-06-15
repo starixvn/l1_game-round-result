@@ -186,8 +186,11 @@ namespace GameRoundResult.Web.Controllers
         {
             var config = operatorConfigs.FirstOrDefault(x => x.OperatorId == operatorId);
             var timeZoneInfo = TZConvert.GetTimeZoneInfo(config.TimeZone);
+            var result = await mediator.Send(new GetGameTicketRequest(gameType, roundId, playerId, timeZoneInfo,
+                operatorId, freeBet, systemType));
+            result.EnableTolgee = enableTolgee;
 
-            return await mediator.Send(new GetGameTicketRequest(gameType, roundId, playerId, timeZoneInfo, operatorId, freeBet, systemType));
+            return result;
         }
 
         private bool isVG2System()

@@ -8,8 +8,10 @@
 @{
     var blackjackValue = 21;
 }
-<input value="GameTicketResultViewModel,GameTicketViewModel,BlackjackTicketViewModel" id="tolgee_namespace" readonly hidden />
-
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,GameTicketViewModel,BlackjackTicketViewModel" id="tolgee_namespace" readonly hidden/>
+}
 <table class="table table-bordered table-blackjack">
     <thead>
         <tr>

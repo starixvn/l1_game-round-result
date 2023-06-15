@@ -8,8 +8,11 @@
     var isRunningRoundAndNotPassSwapStep = Model.IsSwappedOrHold.HasValue && !Model.IsSwappedOrHold.Value && !Model.Ended;
     var isRunningRoundOrFold = Model.IsFold || (Model.IsSwappedOrHold.HasValue && !Model.IsSwappedOrHold.Value);
 }
-<input value="GameTicketResultViewModel,GameTicketViewModel,CasinoHoldemPokerTicketViewModel" id="tolgee_namespace" readonly hidden />
 
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,GameTicketViewModel,CasinoHoldemPokerTicketViewModel" id="tolgee_namespace" readonly hidden/>
+}
 <div>
     <table class="table table-bordered table-casino-holdem">
         <thead>

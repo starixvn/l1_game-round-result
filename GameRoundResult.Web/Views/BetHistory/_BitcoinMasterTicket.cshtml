@@ -4,8 +4,10 @@
 @inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
 @inject IJsonStringLocalizer<BitcoinMasterTicketViewModel> Localizer
 
-<input value="GameTicketResultViewModel,GameTicketViewModel,BitcoinMasterTicketViewModel" id="tolgee_namespace" readonly hidden />
-
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,GameTicketViewModel,BitcoinMasterTicketViewModel" id="tolgee_namespace" readonly hidden/>
+}
 <table class="table table-bordered table-bitcoin-master">
     <thead>
         <tr>

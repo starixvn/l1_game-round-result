@@ -6,7 +6,11 @@
 @{
     var gameName = ViewData["GameName"].ToString();
 }
-<input value="GameTicketResultViewModel,GameTicketViewModel,FruitSlotTicketViewModel" id="tolgee_namespace" readonly hidden />
+
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,GameTicketViewModel,FruitSlotTicketViewModel" id="tolgee_namespace" readonly hidden/>
+}
 <table class="table table-bordered">
     <thead>
         <tr>

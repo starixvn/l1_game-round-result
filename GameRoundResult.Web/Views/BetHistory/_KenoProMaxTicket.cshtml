@@ -4,8 +4,10 @@
 @inject IJsonStringLocalizer<KenoProMaxTicketViewModel> Localizer
 @inject IJsonStringLocalizer<RoundResultViewModel> RoundResultLocalizer
 
-<input value="GameTicketResultViewModel,GameTicketViewModel,KenoProMaxTicketViewModel,RoundResultViewModel" id="tolgee_namespace" readonly hidden />
-
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,GameTicketViewModel,KenoProMaxTicketViewModel,RoundResultViewModel" id="tolgee_namespace" readonly hidden/>
+}
 <table class="table table-bordered table-keno">
     <thead>
         <tr>
