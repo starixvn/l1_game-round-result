@@ -15,10 +15,10 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
         {
         }
 
-        protected override async Task<FanTanRound> GetRoundAsync(RetrieveEndGameInfoRequest request)
-            => Round;
+        protected override Task<FanTanRound> GetRoundAsync(RetrieveEndGameInfoRequest request)
+            => Task.FromResult(Round);
 
-        protected override async Task<IEnumerable<FanTanBet>> GetBetsAsync(RetrieveEndGameInfoRequest request)
-            => Bets;
+        protected override Task<IEnumerable<FanTanBet>> GetBetsAsync(RetrieveEndGameInfoRequest request)
+            => Task.FromResult(Bets);
     }
 }
