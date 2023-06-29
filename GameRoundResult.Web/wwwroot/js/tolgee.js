@@ -17,7 +17,7 @@
                 .init({
                     projectId: 6,
                     apiKey: 'tgpak_gzpwe2ttgnzwqzlkoztwk4jqnbzhc3lehbqwo2lsozttk',
-                    apiUrl: 'https://tolgee.sgamesuat.com',
+                    apiUrl: 'https://tolgee.sabagame.com',
                     defaultLanguage: language,
                     observerType: 'text',
                     observerOptions: { inputPrefix: '{{', inputSuffix: '}}' },
