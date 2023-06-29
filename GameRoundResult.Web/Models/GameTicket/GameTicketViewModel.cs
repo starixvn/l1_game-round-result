@@ -7,6 +7,7 @@ namespace GameRoundResult.Web.Models
 {
     public class GameTicketViewModel
     {
+        public int GameId { get; set; }
         public GameConfigsType GameType { get; set; }
         public TimeSpan TimeZoneOffset { get; set; }
 

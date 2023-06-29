@@ -31,6 +31,7 @@ namespace GameRoundResult.Web.CascadingSlotGames
 
             var viewModel = new BaseCascadingSlotTicketViewModel
             {
+                GameId = gameConfigs.GameId,
                 GameName = gameConfigs.Name,
                 GameType = gameConfigs.Type,
                 StaticResourceUrl = gameResource.BaseUrl.ToString()
