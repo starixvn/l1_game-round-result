@@ -12,9 +12,9 @@ namespace GameRoundResult.Core.Database.Entities.DragonTigerFight
 
     public class DragonTigerFightResult
     {
-        public DragonTigerCard Dragon { get; set; }
+        public DragonTigerFightCard Dragon { get; set; }
 
-        public DragonTigerCard Tiger { get; set; }
+        public DragonTigerFightCard Tiger { get; set; }
     }
 
     public class DragonTigerFightSettlementResult
@@ -34,7 +34,7 @@ namespace GameRoundResult.Core.Database.Entities.DragonTigerFight
         public bool RedTiger { get; set; }
     }
     
-    public class DragonTigerCard
+    public class DragonTigerFightCard
     {
         public byte Card { get; set; }
 
