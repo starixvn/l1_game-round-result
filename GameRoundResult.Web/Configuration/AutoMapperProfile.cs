@@ -2,6 +2,7 @@
 using System.Linq;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Database.Entities.DragonTigerFight;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
 
@@ -347,6 +348,30 @@ namespace GameRoundResult.Web.Configuration
                     }));
             CreateMap<Win3CardsSettlementResult, Win3CardsSettlementResultViewModel>();
             CreateMap<Win3CardsBetLog, Win3CardsBetLogViewModel>();
+            CreateMap<DragonTigerFightRound, DragonTigerFightRoundResultViewModel>()
+                .ForMember(x => x.Result, opt => opt.MapFrom((source, destination, i, context) =>
+                {
+                    return new DragonTigerFightResultViewModel
+                    {
+                        Dragon = new Models.DragonTigerFightCard { Card = source.Result.Dragon.Card, Type = source.Result.Dragon.Type},
+                        Tiger = new Models.DragonTigerFightCard { Card = source.Result.Tiger.Card, Type = source.Result.Tiger.Type }
+                    };
+                }))
+                .ForMember(x => x.SettlementResult, opt => opt.MapFrom((source, destination, i, context) =>
+                {
+                    return new DragonTigerFightSettlementResultViewModel
+                    {
+                        Dragon = source.SettlementResult.Dragon,
+                        Tiger = source.SettlementResult.Tiger,
+                        Tie = source.SettlementResult.Tie,
+                        BlackDragon = source.SettlementResult.BlackDragon,
+                        BlackTiger = source.SettlementResult.BlackTiger,
+                        RedDragon = source.SettlementResult.RedDragon,
+                        RedTiger = source.SettlementResult.RedTiger,
+                    };
+                }));
+            CreateMap<DragonTigerFightOne, DragonTigerFightBetViewModel>();
+
         }
     }
 }

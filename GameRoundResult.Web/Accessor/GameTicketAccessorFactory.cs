@@ -65,6 +65,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.FruitSlot, typeof(FruitSlotTicketAccessor<FruitSlotRound, FruitSlotBet, FruitSlotBetLog>) },
             { GameType.FanTan, typeof(FanTanTicketAccessor) },
             { GameType.WinThreeCards, typeof(Win3CardsTicketAccessor) },
+            { GameType.DragonTigerFight, typeof(DragonTigerFightTicketAccessor) },
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()

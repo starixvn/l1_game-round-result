@@ -1,0 +1,131 @@
+﻿@model DragonTigerFightTicketViewModel
+@using GameRoundResult.Core.Constants
+@inject Microsoft.Extensions.Localization.IStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<DragonTigerTicketViewModel> Localizer
+
+<table class="table table-bordered table-dragon-tiger">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th>@CommonLocalizer["RoundId"]</th>
+            <th>@CommonLocalizer["Result"] (@Localizer["Dragon"] | @Localizer["Tiger"])</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null)
+        {
+            <tr>
+                <td>
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    <br />
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@Model.RoundResult.RoundId</td>
+                <td>
+                    <div class="cards">
+                        <div class="card card-type-@Model.RoundResult.Result.Dragon.Type">
+                            <span>@Card.CardLabels[Model.RoundResult.Result.Dragon.Card]</span>
+                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Result.Dragon.Type).png" asp-append-version="true" />
+                        </div>
+                        <div class="card card-type-@Model.RoundResult.Result.Tiger.Type">
+                            <span>@Card.CardLabels[Model.RoundResult.Result.Tiger.Card]</span>
+                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Result.Tiger.Type).png" asp-append-version="true" />
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@CommonLocalizer["BetChoice"]</th>
+            <th>@CommonLocalizer["BetAmount"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Bet != null && Model.RoundResult != null)
+        {
+            if (Model.Bet.Dragon > 0)
+            {
+                <tr>
+                    <td>@Localizer["Dragon"]</td>
+                    <td class="text-right">@Model.Bet.Dragon.Format()</td>
+                </tr>
+            }
+            if (Model.Bet.Tiger > 0)
+            {
+                <tr>
+                    <td>@Localizer["Tiger"]</td>
+                    <td class="text-right">@Model.Bet.Tiger.Format()</td>
+                </tr>
+            }
+            if (Model.Bet.Tie > 0)
+            {
+                <tr>
+                    <td>@CommonLocalizer["Tie"]</td>
+                    <td class="text-right">@Model.Bet.Tie.Format()</td>
+                </tr>
+            }
+            if (Model.Bet.BlackDragon > 0)
+            {
+                <tr>
+                    <td>@CommonLocalizer["BlackDragon"]</td>
+                    <td class="text-right">@Model.Bet.BlackDragon.Format()</td>
+                </tr>
+            }
+            if (Model.Bet.RedDragon > 0)
+            {
+                <tr>
+                    <td>@CommonLocalizer["RedDragon"]</td>
+                    <td class="text-right">@Model.Bet.RedDragon.Format()</td>
+                </tr>
+            }
+            if (Model.Bet.BlackTiger > 0)
+            {
+                <tr>
+                    <td>@CommonLocalizer["BlackTiger"]</td>
+                    <td class="text-right">@Model.Bet.BlackTiger.Format()</td>
+                </tr>
+            }
+            if (Model.Bet.RedTiger > 0)
+            {
+                <tr>
+                    <td>@CommonLocalizer["RedTiger"]</td>
+                    <td class="text-right">@Model.Bet.RedTiger.Format()</td>
+                </tr>
+            }
+
+            <tr>
+                <td class="text-right">@CommonLocalizer["Total"]</td>
+                <td class="text-right">@Model.TotalBet.Format()</td>
+            </tr>
+            <tr>
+                <td class="text-right">@CommonLocalizer["TotalWin"]</td>
+                <td class="text-right">@Model.TotalWin.Format()</td>
+            </tr>
+            <tr class="total">
+                <td class="bold text-right">@CommonLocalizer["WinLoss"]</td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="2" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
