@@ -49,80 +49,51 @@
 <table class="table table-bordered">
     <thead>
         <tr>
+            <th class="col-date">@CommonLocalizer["BetTime"] (@Model.TimeOffsetString)</th>
             <th>@CommonLocalizer["BetChoice"]</th>
-            <th>@CommonLocalizer["BetAmount"]</th>
+            <th>@CommonLocalizer["Odds"]</th>
+            <th>@CommonLocalizer["Stake"]</th>
+            <th>@CommonLocalizer["Win"]</th>
         </tr>
     </thead>
     <tbody>
-        @if (Model.Bet != null && Model.RoundResult != null)
+        @if (Model.BetLogs.Any() && Model.RoundResult != null)
         {
-            if (Model.Bet.Dragon > 0)
+            foreach (var bet in Model.BetLogs)
             {
-                <tr>
-                    <td>@Localizer["Dragon"]</td>
-                    <td class="text-right">@Model.Bet.Dragon.Format()</td>
-                </tr>
+                foreach(var choice in Model.BetChoices)
+                {
+                    var amount = (decimal)bet.GetType().GetProperty(choice).GetValue(bet, null);
+                    if(amount > 0)
+                    {
+                        <tr class="@Model.GetRowBetClass(choice)">
+                            <td>
+                                @bet.DateDisplay
+                                <br />
+                                @bet.TimeDisplay
+                            </td>
+                            <td>@Localizer[choice]</td>
+                            <td>@Model.GetOdds(choice).FormatOdds(Model.FractionalOddsFormat)</td>
+                            <td>@amount.Format()</td>
+                            <td>@Model.GetBetLogWin(bet, choice)</td>
+                        </tr>
+                    }
+                }
             }
-            if (Model.Bet.Tiger > 0)
-            {
-                <tr>
-                    <td>@Localizer["Tiger"]</td>
-                    <td class="text-right">@Model.Bet.Tiger.Format()</td>
-                </tr>
-            }
-            if (Model.Bet.Tie > 0)
-            {
-                <tr>
-                    <td>@CommonLocalizer["Tie"]</td>
-                    <td class="text-right">@Model.Bet.Tie.Format()</td>
-                </tr>
-            }
-            if (Model.Bet.BlackDragon > 0)
-            {
-                <tr>
-                    <td>@CommonLocalizer["BlackDragon"]</td>
-                    <td class="text-right">@Model.Bet.BlackDragon.Format()</td>
-                </tr>
-            }
-            if (Model.Bet.RedDragon > 0)
-            {
-                <tr>
-                    <td>@CommonLocalizer["RedDragon"]</td>
-                    <td class="text-right">@Model.Bet.RedDragon.Format()</td>
-                </tr>
-            }
-            if (Model.Bet.BlackTiger > 0)
-            {
-                <tr>
-                    <td>@CommonLocalizer["BlackTiger"]</td>
-                    <td class="text-right">@Model.Bet.BlackTiger.Format()</td>
-                </tr>
-            }
-            if (Model.Bet.RedTiger > 0)
-            {
-                <tr>
-                    <td>@CommonLocalizer["RedTiger"]</td>
-                    <td class="text-right">@Model.Bet.RedTiger.Format()</td>
-                </tr>
-            }
-
-            <tr>
-                <td class="text-right">@CommonLocalizer["Total"]</td>
-                <td class="text-right">@Model.TotalBet.Format()</td>
-            </tr>
-            <tr>
-                <td class="text-right">@CommonLocalizer["TotalWin"]</td>
-                <td class="text-right">@Model.TotalWin.Format()</td>
+            <tr class="total">
+                <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>
+                <td>@Model.TotalBet.Format()</td>
+                <td>@Model.BetWin.Format()</td>
             </tr>
             <tr class="total">
-                <td class="bold text-right">@CommonLocalizer["WinLoss"]</td>
-                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.WinLoss.Format()</td>
+                <td colspan="3" class="text-right">@CommonLocalizer["WinLoss"]</td>
+                <td colspan="2" class="@Model.WinLossRowClassName">@Model.WinLoss.Format()</td>
             </tr>
         }
         else
         {
             <tr>
-                <td colspan="2" class="text-center">
+                <td colspan="5" class="text-center">
                     @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>

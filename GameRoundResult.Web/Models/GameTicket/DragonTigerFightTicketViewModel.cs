@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GameRoundResult.Web.Configuration;
+using System;
+using System.Collections.Generic;
 
 namespace GameRoundResult.Web.Models
 {
@@ -6,19 +8,43 @@ namespace GameRoundResult.Web.Models
     {
         public DragonTigerFightRoundResultViewModel RoundResult { get; set; }
 
-        public DragonTigerFightBetViewModel Bet { get; set; }
+        public IEnumerable<DragonTigerFightBetLogViewModel> BetLogs { get; set; }
 
-        public new decimal TotalBet => Bet.Dragon + Bet.Tiger + Bet.Tie + Bet.BlackDragon + Bet.RedDragon + Bet.BlackTiger + Bet.RedTiger;
+        public Dictionary<string, decimal> Odds { get; set; }
 
-        public decimal TotalWin => Bet.BetWin ;
+        public List<string> BetChoices => new List<string> { "Dragon", "Tiger", "Tie", "BlackDragon", "RedDragon", "BlackTiger", "RedTiger" };
 
-        public new decimal WinLoss => TotalWin - TotalBet;
+        public string GetRowBetClass(string choice)
+        {
+            return RoundResult.IsWinningChoice(choice) ? "bold text-blue" : string.Empty;
+        }
+
+        public decimal GetOdds(string choice)
+        {
+            var oddsChoice = char.ToLower(choice[0]) + choice.Substring(1);
+            return Odds[oddsChoice];
+        }
+
+        public string GetBetLogWin(DragonTigerFightBetLogViewModel bet, string choice)
+        {
+            decimal betWin = 0;
+            var amount = (decimal)bet.GetType().GetProperty(choice).GetValue(bet, null);
+            if (RoundResult.SettlementResult.Tie && (choice == "Dragon" || choice == "Tiger"))
+            {
+                betWin += amount / 2;
+            }
+
+            if (RoundResult.IsWinningChoice(choice))
+            {
+                betWin += GetOdds(choice) * amount;
+            }
+
+            return betWin.Format();            
+        }
     }
 
-    public class DragonTigerFightBetViewModel
+    public class DragonTigerFightBetLogViewModel : BetLogViewModel
     {
-        public DateTime Time { get; set; }
-
         public decimal Dragon { get; set; }
 
         public decimal Tie { get; set; }
