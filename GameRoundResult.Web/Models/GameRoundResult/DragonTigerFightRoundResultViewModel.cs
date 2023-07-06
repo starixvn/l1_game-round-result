@@ -5,6 +5,12 @@
         public DragonTigerFightResultViewModel Result { get; set; }
 
         public DragonTigerFightSettlementResultViewModel SettlementResult { get; set; }
+
+        public virtual bool IsWinningChoice(string choice)
+        {
+            return bool.Parse(SettlementResult.GetType().GetProperty(choice).GetValue(SettlementResult, null).ToString());
+        }
+
     }
 
     public class DragonTigerFightResultViewModel

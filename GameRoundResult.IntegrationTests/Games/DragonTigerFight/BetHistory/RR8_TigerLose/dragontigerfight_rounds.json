@@ -1,0 +1,28 @@
+[
+  {
+    "id": 21122,
+    "time": {
+      "$date": "2023-07-06T09:06:24.001+00:00"
+    },
+    "result": {
+      "dragon": {
+        "card": 6,
+        "type": 1
+      },
+      "tiger": {
+        "card": 2,
+        "type": 1
+      }
+    },
+    "settlementResult": {
+      "dragon": true,
+      "tiger": false,
+      "tie": false,
+      "blackDragon": false,
+      "redDragon": true,
+      "blackTiger": false,
+      "redTiger": true
+    },
+    "exchangeRateId": 4816
+  }
+]

@@ -370,7 +370,7 @@ namespace GameRoundResult.Web.Configuration
                         RedTiger = source.SettlementResult.RedTiger,
                     };
                 }));
-            CreateMap<DragonTigerFightOne, DragonTigerFightBetViewModel>();
+            CreateMap<DragonTigerFightBet, DragonTigerFightBetLogViewModel>();
 
         }
     }
