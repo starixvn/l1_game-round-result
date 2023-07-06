@@ -1,0 +1,28 @@
+[
+  {
+    "id": 3,
+    "time": {
+      "$date": "2022-12-01T09:00:00.000Z"
+    },
+    "result": {
+      "dragon": {
+        "card": 2,
+        "type": 0
+      },
+      "tiger": {
+        "card": 3,
+        "type": 1
+      }
+    },
+    "settlementResult": {
+      "dragon": true,
+      "tiger": false,
+      "tie": false,
+      "blackDragon": false,
+      "redDragon": false,
+      "blackTiger": false,
+      "redTiger": false
+    },
+    "exchangeRateId": 4816
+  }
+]

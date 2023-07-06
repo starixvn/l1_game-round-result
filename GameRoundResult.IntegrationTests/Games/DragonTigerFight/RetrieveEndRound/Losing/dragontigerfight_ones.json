@@ -1,0 +1,34 @@
+[
+  {
+    "uid": "62342b4ac46c7910b22b3b35",
+    "name": "Player",
+    "roundId": 3,
+    "dragon": 0,
+    "tiger": 1500,
+    "tie": 0,
+    "blackDragon": 0,
+    "redDragon": 0,
+    "blackTiger": 0,
+    "redTiger": 0,
+    "paid": true,
+    "betwin": 0,
+    "time": {
+      "$date": "2022-10-25T09:10:00.000Z"
+    },
+    "odds": {
+      "dragon": 1.95,
+      "tiger": 1.95,
+      "tie": 3,
+      "blackDragon": 121,
+      "redDragon": 101,
+      "blackTiger": 9,
+      "redTiger": 8
+    },
+    "playerId": 123,
+    "siteId": "4100300",
+    "freeBet": false,
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1"
+  }
+]
