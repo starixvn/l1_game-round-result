@@ -22,7 +22,7 @@
         get
         {
             var result = new byte[CascadingSlotGameConstant.NumberOfRows, CascadingSlotGameConstant.NumberOfColumns];
-            ;
+
             for (var row = 0; row < CascadingSlotGameConstant.NumberOfRows; row++)
             {
                 var boardArray = Board.ToArray(); ;
@@ -34,6 +34,11 @@
 
             return result;
         }
+    }
+
+    private int GetMultiplierIndex(int row, int column)
+    {
+        return Board.Take(column * CascadingSlotGameConstant.NumberOfRows + row).Count(x => x == CascadingSlotGameConstant.MinMultiplierSymbol);
     }
 
     private string GetMultiplierImageName(int value)
@@ -89,7 +94,6 @@
     <tbody>
         @{
             var renderedBoard = RenderedBoard;
-            var multiplierIndex = 0;
         }
         @for (var row = 0; row < renderedBoard.GetLength(0); row++)
         {
@@ -99,11 +103,11 @@
                     var symbol = renderedBoard[row, column];
                     @if (symbol >= CascadingSlotGameConstant.MinMultiplierSymbol)
                     {
+                        var multiplierIndex = GetMultiplierIndex(row, column);
                         <td class="result-board">
                             <img class="symbol" src="@StaticResourceUrl/@GameName/symbol-@(GetMultiplierImageName(Multipliers[multiplierIndex])).png" />
                             <div class="multiplier treasureisland">@($"x{Multipliers[multiplierIndex]}")</div>
                         </td>
-                        multiplierIndex++;
                     }
                     else
                     {
