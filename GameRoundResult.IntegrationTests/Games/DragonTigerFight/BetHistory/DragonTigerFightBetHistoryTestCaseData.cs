@@ -10,12 +10,17 @@ namespace GameRoundResult.IntegrationTests
             {                
                 new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", 9862439, 21122, Language.EN, "LosingRound"),
                 new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", 9862439, 21122, Language.EN, "FractionalOdds"),
-                new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", 9862439, 21122, Language.EN, "NotExistBet"),
-                new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", 9862439, 21122, Language.EN, "NotExistRound"),
                 new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", 9862439, 21122, Language.EN, "RR1_DragonWin"),
                 new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", 9862439, 21122, Language.EN, "RR4_DragonLose"),
                 new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", 9862439, 21122, Language.EN, "RR5_TigerWin"),
                 new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", 9862439, 21122, Language.EN, "RR8_TigerLose"),
+                new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", 9862439, 21122, Language.EN, "RR12_BlackDragonLose"),
+                new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", 9862439, 21122, Language.EN, "RR13_RedDragonWin"),
+                new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", 9862439, 21122, Language.EN, "RR14_RedDragonLose"),
+                new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", 9862439, 21122, Language.EN, "RR15_BlackTigerWin"),
+                new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", 9862439, 21122, Language.EN, "RR16_BlackTigerLose"),
+                new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", 9862439, 21122, Language.EN, "RR17_RedTigerWin"),
+                new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", 9862439, 21122, Language.EN, "RR18_RedTigerLose"),
 
             };
     }
