@@ -2,7 +2,7 @@
 @using GameRoundResult.Core.Constants
 
 @inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject IJsonStringLocalizer<DragonTigerTicketViewModel> Localizer
+@inject IJsonStringLocalizer<DragonTigerFightTicketViewModel> Localizer
 
 @if (Model.EnableTolgee)
 {
@@ -66,25 +66,18 @@
         @if (Model.BetLogs.Any() && Model.RoundResult != null)
         {
             foreach (var bet in Model.BetLogs)
-            {
-                foreach(var choice in Model.BetChoices)
-                {
-                    var amount = (decimal)bet.GetType().GetProperty(choice).GetValue(bet, null);
-                    if(amount > 0)
-                    {
-                        <tr class="@Model.GetRowBetClass(choice)">
-                            <td>
-                                @bet.DateDisplay
-                                <br />
-                                @bet.TimeDisplay
-                            </td>
-                            <td>@Localizer[choice]</td>
-                            <td>@Model.GetOdds(choice).FormatOdds(Model.FractionalOddsFormat)</td>
-                            <td>@amount.Format()</td>
-                            <td>@Model.GetBetLogWin(bet, choice)</td>
-                        </tr>
-                    }
-                }
+            {               
+                <tr class="@Model.GetRowBetClass(bet.ChoiceDisplay)">
+                    <td>
+                        @bet.DateDisplay
+                        <br />
+                        @bet.TimeDisplay
+                    </td>
+                    <td>@Localizer[bet.ChoiceDisplay]</td>
+                    <td>@Model.GetOdds(bet.Choice).FormatOdds(Model.FractionalOddsFormat)</td>
+                    <td>@bet.Amount.Format()</td>
+                    <td>@Model.GetBetLogWin(bet)</td>
+                </tr>                
             }
             <tr class="total">
                 <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>
