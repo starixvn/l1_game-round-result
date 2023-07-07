@@ -3,13 +3,8 @@
     "uid": "62342b4ac46c7910b22b3b35",
     "name": "Player",
     "roundId": 21122,
-    "dragon": 0,
-    "tiger": 0,
-    "tie": 0,
-    "blackDragon": 0,
-    "redDragon": 1,
-    "blackTiger": 0,
-    "redTiger": 0,
+    "choice": "redDragon",
+    "amount": 1,
     "time": {
       "$date": "2023-07-06T09:05:55.886+00:00"
     },

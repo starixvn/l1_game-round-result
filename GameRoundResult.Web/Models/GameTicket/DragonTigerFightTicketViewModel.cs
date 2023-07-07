@@ -25,18 +25,17 @@ namespace GameRoundResult.Web.Models
             return Odds[oddsChoice];
         }
 
-        public string GetBetLogWin(DragonTigerFightBetLogViewModel bet, string choice)
+        public string GetBetLogWin(DragonTigerFightBetLogViewModel bet)
         {
             decimal betWin = 0;
-            var amount = (decimal)bet.GetType().GetProperty(choice).GetValue(bet, null);
-            if (RoundResult.SettlementResult.Tie && (choice == "Dragon" || choice == "Tiger"))
+            if (RoundResult.SettlementResult.Tie && (bet.Choice == "Dragon" || bet.Choice == "Tiger"))
             {
-                betWin += amount / 2;
+                betWin += bet.Amount / 2;
             }
 
-            if (RoundResult.IsWinningChoice(choice))
+            if (RoundResult.IsWinningChoice(bet.ChoiceDisplay))
             {
-                betWin += GetOdds(choice) * amount;
+                betWin += GetOdds(bet.Choice) * bet.Amount;
             }
 
             return betWin.Format();            
@@ -45,20 +44,6 @@ namespace GameRoundResult.Web.Models
 
     public class DragonTigerFightBetLogViewModel : BetLogViewModel
     {
-        public decimal Dragon { get; set; }
-
-        public decimal Tie { get; set; }
-
-        public decimal Tiger { get; set; }
-
-        public decimal BlackDragon { get; set; }
-
-        public decimal RedDragon { get; set; }
-
-        public decimal BlackTiger { get; set; }
-
-        public decimal RedTiger { get; set; }
-
-        public decimal BetWin { get; set; }
+        public virtual string ChoiceDisplay => char.ToUpper(Choice[0]) + Choice.Substring(1);
     }
 }
