@@ -7,22 +7,11 @@
     "tiger": 0,
     "tie": 0,
     "blackDragon": 0,
-    "redDragon": 1,
-    "blackTiger": 0,
+    "redDragon": 0,
+    "blackTiger": 1,
     "redTiger": 0,
-    "paid": true,
-    "betwin": 0,
     "time": {
-      "$date": "2023-07-06T09:05:55.889+00:00"
-    },
-    "odds": {
-      "dragon": 1.9,
-      "tiger": 1.9,
-      "tie": 1.9,
-      "blackDragon": 1.7,
-      "redDragon": 1.7,
-      "blackTiger": 1.7,
-      "redTiger": 1.7
+      "$date": "2023-07-06T09:05:55.886+00:00"
     },
     "playerId": 9862439,
     "siteId": "4100300",
@@ -30,5 +19,5 @@
     "currency": "$US",
     "rate": 1,
     "operatorId": "ONEworks1"
-  }
+  }  
 ]

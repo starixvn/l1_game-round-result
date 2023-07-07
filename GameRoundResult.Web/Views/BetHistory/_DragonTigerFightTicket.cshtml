@@ -29,13 +29,13 @@
                 <td>@Model.RoundResult.RoundId</td>
                 <td>
                     <div class="cards">
-                        <div class="card card-type-@Model.RoundResult.Result.Dragon.Type">
-                            <span>@Card.CardLabels[Model.RoundResult.Result.Dragon.Card]</span>
-                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Result.Dragon.Type).png" asp-append-version="true" />
+                        <div class="card card-type-@Model.RoundResult.Result.Dragon.Suit">
+                            <span>@Card.CardLabels[Model.RoundResult.Result.Dragon.Rank]</span>
+                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Result.Dragon.Suit).png" asp-append-version="true" />
                         </div>
-                        <div class="card card-type-@Model.RoundResult.Result.Tiger.Type">
-                            <span>@Card.CardLabels[Model.RoundResult.Result.Tiger.Card]</span>
-                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Result.Tiger.Type).png" asp-append-version="true" />
+                        <div class="card card-type-@Model.RoundResult.Result.Tiger.Suit">
+                            <span>@Card.CardLabels[Model.RoundResult.Result.Tiger.Rank]</span>
+                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Result.Tiger.Suit).png" asp-append-version="true" />
                         </div>
                     </div>
                 </td>

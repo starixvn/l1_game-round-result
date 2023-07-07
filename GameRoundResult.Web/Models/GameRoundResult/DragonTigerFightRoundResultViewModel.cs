@@ -22,9 +22,9 @@
 
     public class DragonTigerFightCard
     {
-        public byte Card { get; set; }
+        public byte Rank { get; set; }
 
-        public byte Type { get; set; }
+        public byte Suit { get; set; }
     }
 
     public class DragonTigerFightSettlementResultViewModel
