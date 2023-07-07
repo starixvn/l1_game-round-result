@@ -51,13 +51,4 @@
 		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
     </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Games\DragonTigerFight\BetHistory\RR16_BlackTigerLose\" />
-      <Folder Include="Games\DragonTigerFight\BetHistory\RR12_BlackDragonLose\" />
-      <Folder Include="Games\DragonTigerFight\BetHistory\RR15_BlackTigerWin\" />
-      <Folder Include="Games\DragonTigerFight\BetHistory\RR18_RedTigerLose\" />
-      <Folder Include="Games\DragonTigerFight\BetHistory\RR17_RedTigerWin\" />
-      <Folder Include="Games\DragonTigerFight\BetHistory\RR13_RedDragonWin\" />
-      <Folder Include="Games\DragonTigerFight\BetHistory\RR14_RedDragonLose\" />
-    </ItemGroup>
 </Project>
