@@ -11,7 +11,7 @@
     "blackTiger": 0,
     "redTiger": 0,
     "paid": true,
-    "betwin": 0,
+    "betwin": 1.7,
     "time": {
       "$date": "2023-07-06T09:05:55.889+00:00"
     },
