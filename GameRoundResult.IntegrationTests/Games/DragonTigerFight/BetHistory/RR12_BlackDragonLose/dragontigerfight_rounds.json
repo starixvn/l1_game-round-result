@@ -6,12 +6,12 @@
     },
     "result": {
       "dragon": {
-        "card": 2,
-        "type": 1
+        "rank": 2,
+        "suit": 1
       },
       "tiger": {
-        "card": 6,
-        "type": 1
+        "rank": 6,
+        "suit": 1
       }
     },
     "settlementResult": {

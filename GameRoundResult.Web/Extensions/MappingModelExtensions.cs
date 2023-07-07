@@ -62,9 +62,9 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
-        public static DragonTigerFightBetLogViewModel ToViewModel(this DragonTigerFightBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        public static DragonTigerFightBetLogViewModel ToViewModel(this DragonTigerFightBetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return mapper.Map<DragonTigerFightBet, DragonTigerFightBetLogViewModel>(entity, opts =>
+            return mapper.Map<DragonTigerFightBetLog, DragonTigerFightBetLogViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });

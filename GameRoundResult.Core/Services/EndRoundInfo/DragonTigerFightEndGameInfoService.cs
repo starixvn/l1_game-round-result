@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace GameRoundResult.Core.Services
 {
-    public class DragonTigerFightEndGameInfoService : BaseEndGameInfoService<DragonTigerFightRound, DragonTigerFightOne>, IEndGameInfoService
+    public class DragonTigerFightEndGameInfoService : BaseEndGameInfoService<DragonTigerFightRound, DragonTigerFightBet>, IEndGameInfoService
     {
         public DragonTigerFightEndGameInfoService(IMongoDatabase database) : base(database)
         {

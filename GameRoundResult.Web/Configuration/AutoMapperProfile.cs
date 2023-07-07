@@ -353,8 +353,8 @@ namespace GameRoundResult.Web.Configuration
                 {
                     return new DragonTigerFightResultViewModel
                     {
-                        Dragon = new Models.DragonTigerFightCard { Card = source.Result.Dragon.Card, Type = source.Result.Dragon.Type},
-                        Tiger = new Models.DragonTigerFightCard { Card = source.Result.Tiger.Card, Type = source.Result.Tiger.Type }
+                        Dragon = new Models.DragonTigerFightCard { Rank = source.Result.Dragon.Rank, Suit = source.Result.Dragon.Suit},
+                        Tiger = new Models.DragonTigerFightCard { Rank = source.Result.Tiger.Rank, Suit = source.Result.Tiger.Suit }
                     };
                 }))
                 .ForMember(x => x.SettlementResult, opt => opt.MapFrom((source, destination, i, context) =>
@@ -370,7 +370,7 @@ namespace GameRoundResult.Web.Configuration
                         RedTiger = source.SettlementResult.RedTiger,
                     };
                 }));
-            CreateMap<DragonTigerFightBet, DragonTigerFightBetLogViewModel>();
+            CreateMap<DragonTigerFightBetLog, DragonTigerFightBetLogViewModel>();
 
         }
     }

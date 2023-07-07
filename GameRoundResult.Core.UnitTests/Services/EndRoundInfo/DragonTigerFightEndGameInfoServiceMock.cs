@@ -9,7 +9,7 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
     class DragonTigerFightEndGameInfoServiceMock : DragonTigerFightEndGameInfoService
     {
         public DragonTigerFightRound Round { get; set; }
-        public IEnumerable<DragonTigerFightOne> Bets { get; set; }
+        public IEnumerable<DragonTigerFightBet> Bets { get; set; }
 
         public DragonTigerFightEndGameInfoServiceMock(IMongoDatabase database) : base(database)
         {
@@ -18,7 +18,7 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
         protected override async Task<DragonTigerFightRound> GetRoundAsync(RetrieveEndGameInfoRequest request)
             => Round;
 
-        protected override async Task<IEnumerable<DragonTigerFightOne>> GetBetsAsync(RetrieveEndGameInfoRequest request)
+        protected override async Task<IEnumerable<DragonTigerFightBet>> GetBetsAsync(RetrieveEndGameInfoRequest request)
             => Bets;
     }
 }

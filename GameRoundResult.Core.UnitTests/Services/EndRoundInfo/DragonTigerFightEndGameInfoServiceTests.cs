@@ -44,7 +44,7 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
             // Arrange
             var request = new RetrieveEndGameInfoRequest();
             endGameInfoService.Round = new DragonTigerFightRound();
-            endGameInfoService.Bets = Enumerable.Empty<DragonTigerFightOne>();
+            endGameInfoService.Bets = Enumerable.Empty<DragonTigerFightBet>();
 
             // Act
             var actualResult = await endGameInfoService.GetAsync(request);
@@ -63,9 +63,9 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
                 Time = new DateTime(2022, 10, 20)
             };
 
-            endGameInfoService.Bets = new List<DragonTigerFightOne> {
-                new DragonTigerFightOne { Dragon = 2, Tiger = 0, Tie = 1, BlackDragon = 1, RedDragon = 1, BlackTiger = 1, RedTiger = 1, Betwin = 1 },
-                new DragonTigerFightOne { Dragon = 0, Tiger = 1, Tie = 3, BlackDragon = 1, RedDragon = 1, BlackTiger = 1, RedTiger = 1, Betwin = 2 }
+            endGameInfoService.Bets = new List<DragonTigerFightBet> {
+                new DragonTigerFightBet { Dragon = 2, Tiger = 0, Tie = 1, BlackDragon = 1, RedDragon = 1, BlackTiger = 1, RedTiger = 1, Betwin = 1 },
+                new DragonTigerFightBet { Dragon = 0, Tiger = 1, Tie = 3, BlackDragon = 1, RedDragon = 1, BlackTiger = 1, RedTiger = 1, Betwin = 2 }
             };
 
             var expectedInfo = new EndRoundInfoResult

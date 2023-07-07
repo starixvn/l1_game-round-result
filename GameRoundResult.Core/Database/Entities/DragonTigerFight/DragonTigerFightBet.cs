@@ -1,9 +1,10 @@
 ﻿using GameRoundResult.Core._Share;
+using System.Collections.Generic;
 
 namespace GameRoundResult.Core.Database.Entities.DragonTigerFight
 {
     [CollectionName("dragontigerfight_bets")]
-    public class DragonTigerFightBet : BaseBetLogEntity
+    public class DragonTigerFightBet : BaseBetEntity
     {
         public decimal Dragon { get; set; }
 
@@ -18,5 +19,11 @@ namespace GameRoundResult.Core.Database.Entities.DragonTigerFight
         public decimal BlackTiger { get; set; }
 
         public decimal RedTiger { get; set; }
+
+        public decimal TotalAmount { get; set; }
+
+        public Dictionary<string, decimal> Odds { get; set; }
+
+        public decimal TotalBet => Dragon + Tiger + Tie + BlackDragon + RedDragon + BlackTiger + RedTiger;
     }
 }
