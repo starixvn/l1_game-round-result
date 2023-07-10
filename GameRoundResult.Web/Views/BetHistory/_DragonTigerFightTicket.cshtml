@@ -2,11 +2,11 @@
 @using GameRoundResult.Core.Constants
 
 @inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject IJsonStringLocalizer<DragonTigerFightTicketViewModel> Localizer
+@inject IJsonStringLocalizer<DragonTigerFight> Localizer
 
 @if (Model.EnableTolgee)
 {
-    <input value="GameTicketResultViewModel,GameTicketViewModel,RoundResultViewModel" id="tolgee_namespace" readonly hidden/>
+    <input value="GameTicketResultViewModel,GameTicketViewModel,RoundResultViewModel,DragonTigerFight" id="tolgee_namespace" readonly hidden/>
 }
 
 <table class="table table-bordered table-dragon-tiger">
@@ -73,7 +73,7 @@
                         <br />
                         @bet.TimeDisplay
                     </td>
-                    <td>@Localizer[bet.ChoiceDisplay]</td>
+                    <td>@Localizer[bet.TolgeeChoiceKey]</td>
                     <td>@Model.GetOdds(bet.Choice).FormatOdds(Model.FractionalOddsFormat)</td>
                     <td>@bet.Amount.Format()</td>
                     <td>@Model.GetBetLogWin(bet)</td>
