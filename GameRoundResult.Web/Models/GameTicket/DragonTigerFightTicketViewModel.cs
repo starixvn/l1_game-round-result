@@ -45,5 +45,7 @@ namespace GameRoundResult.Web.Models
     public class DragonTigerFightBetLogViewModel : BetLogViewModel
     {
         public virtual string ChoiceDisplay => char.ToUpper(Choice[0]) + Choice.Substring(1);
+
+        public string TolgeeChoiceKey => "glossary_" + Choice;
     }
 }
