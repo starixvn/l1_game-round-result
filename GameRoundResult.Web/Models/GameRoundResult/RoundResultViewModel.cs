@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using GameRoundResult.Web.Configuration;
-using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {
