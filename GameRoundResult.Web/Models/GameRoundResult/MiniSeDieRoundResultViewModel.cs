@@ -62,7 +62,7 @@ namespace GameRoundResult.Web.Models
                 return tagBuilder.GetHtmlString();
             }
 
-            tagBuilder.InnerHtml.Append($", {(TotalRed > 0 ? stringLocalizer["{0} red", TotalRed] : stringLocalizer["{0} white", 4])}");
+            tagBuilder.InnerHtml.Append($", {(TotalRed > 0 ? $"{TotalRed} {stringLocalizer["red"]}" : $"4 {stringLocalizer["white"]}")}");
             return tagBuilder.GetHtmlString();
         }
     }
