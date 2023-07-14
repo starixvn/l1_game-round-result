@@ -9,7 +9,9 @@ using Newtonsoft.Json;
 namespace GameRoundResult.Web.Configuration
 {
     public interface IJsonStringLocalizer<out T> : IStringLocalizer<T>
-    { }
+    {
+        LocalizedString GetStringWithNamcespace(string name, string tolgeeNamespace);
+    }
 
     public class JsonStringLocalizer<T> : IJsonStringLocalizer<T>
     {
@@ -30,6 +32,13 @@ namespace GameRoundResult.Web.Configuration
                 string value = GetString(name);
                 return new LocalizedString(name, value ?? name, value == null);
             }
+        }
+
+        public LocalizedString GetStringWithNamcespace(string name, string tolgeeNamespace)
+        {         
+                string value = GetString(name, tolgeeNamespace);
+                return new LocalizedString(name, value ?? name, value == null);
+          
         }
 
         public LocalizedString this[string name, params object[] arguments]
@@ -65,16 +74,15 @@ namespace GameRoundResult.Web.Configuration
             }
         }
 
-        private string GetString(string key)
-        {
-            string nameSpace = (typeof(T)).Name;
 
+        private string GetString(string key, string tolgeeNamespace)
+        {            
             if (enableTolgee)
             {
-                return $"{{{{{key}|{nameSpace}}}}}";
+                return $"{{{{{key}|{tolgeeNamespace}}}}}";
             }
 
-            string relativeFilePath = $"Resources/Tolgee/{nameSpace}/{Thread.CurrentThread.CurrentCulture.Name}.json";
+            string relativeFilePath = $"Resources/Tolgee/{tolgeeNamespace}/{Thread.CurrentThread.CurrentCulture.Name}.json";
             string fullFilePath = Path.GetFullPath(relativeFilePath);
             if (File.Exists(fullFilePath))
             {
@@ -87,6 +95,12 @@ namespace GameRoundResult.Web.Configuration
             }
 
             return default(string);
+        }
+
+        private string GetString(string key)
+        {
+            string nameSpace = (typeof(T)).Name;
+            return GetString(key, nameSpace);
         }
 
         private string GetValueFromJSON(string propertyName, string filePath)
