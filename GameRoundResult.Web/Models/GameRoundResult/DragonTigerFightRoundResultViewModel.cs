@@ -1,7 +1,6 @@
 ﻿using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 
@@ -23,48 +22,53 @@ namespace GameRoundResult.Web.Models
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
                $"{GetCardContent(Result.Dragon)}{GetCardContent(Result.Tiger)}",
-               GetResultContent(null)
+               GetResultContent(stringLocalizer)
             };
 
             return result;
         }
 
-        private string GetResultContent([FromServices] IJsonStringLocalizer<RoundResultViewModel> localizer)
+        private string GetResultContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            var result = "";
+            List<string> result = new List<string> { };
 
             if (Result.Dragon.Rank > Result.Tiger.Rank)
             {
-                result += localizer["glossary_" + "dragon"];
+                result.Add(GetText(stringLocalizer, "dragon"));
             }
             else if(Result.Dragon.Rank < Result.Tiger.Rank)
             {
-                result += localizer["glossary_" + "tiger"];                
+                result.Add(GetText(stringLocalizer, "tiger"));                
             }
             else
             {
-                result += localizer["glossary_" + "tie"];
+                result.Add(GetText(stringLocalizer, "tie"));
             }
 
             if(Card.CardSuites[Result.Dragon.Suit] == Card.BlackCard)
             {
-                result += ", " + localizer["glossary_" + "blackDragon"];
+                result.Add(GetText(stringLocalizer, "blackDragon"));
             }
             else if(Card.CardSuites[Result.Dragon.Suit] == Card.RedCard)
             {
-                result += ", " + localizer["glossary_" + "redDragon"];
+                result.Add(GetText(stringLocalizer, "redDragon"));
             }
 
             if (Card.CardSuites[Result.Tiger.Suit] == Card.BlackCard)
             {
-                result += ", " + localizer["glossary_" + "blackTiger"];
+                result.Add(GetText(stringLocalizer, "blackTiger"));
             }
             else if (Card.CardSuites[Result.Tiger.Suit] == Card.RedCard)
             {
-                result += ", " + localizer["glossary_" + "redTiger"];
+                result.Add(GetText(stringLocalizer, "redTiger"));
             }
 
-            return result;
+            return string.Join(", ", result.ToArray());
+        }
+
+        private string GetText(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string key)
+        {
+            return stringLocalizer.GetStringWithNamcespace("glossary_" + key, "DragonTigerFight");
         }
 
         private static string GetCardContent(DragonTigerFightCard card)
