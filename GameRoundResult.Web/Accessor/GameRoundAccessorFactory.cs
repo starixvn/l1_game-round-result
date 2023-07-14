@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Database.Entities.DragonTigerFight;
 using GameRoundResult.Web.Models;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -60,6 +61,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.FruitSlot, typeof(GameRoundAccessor<FruitSlotRound, FruitSlotRoundResultViewModel>) },
             { GameType.FanTan, typeof(GameRoundAccessor<FanTanRound, FanTanRoundResultViewModel>) },
             { GameType.WinThreeCards, typeof(GameRoundAccessor<Win3CardsRound, Win3CardsRoundResultViewModel>)},
+            { GameType.DragonTigerFight, typeof(GameRoundAccessor<DragonTigerFightRound, DragonTigerFightRoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;
