@@ -25,10 +25,10 @@ namespace GameRoundResult.Web.Models
             return Odds[oddsChoice];
         }
 
-        public string GetBetLogWin(DragonTigerFightBetLogViewModel bet)
+        public decimal  GetBetLogWin(DragonTigerFightBetLogViewModel bet)
         {
             decimal betWin = 0;
-            if (RoundResult.SettlementResult.Tie && (bet.Choice == "Dragon" || bet.Choice == "Tiger"))
+            if (RoundResult.SettlementResult.Tie && (bet.Choice == "dragon" || bet.Choice == "tiger"))
             {
                 betWin += bet.Amount / 2;
             }
@@ -38,7 +38,7 @@ namespace GameRoundResult.Web.Models
                 betWin += GetOdds(bet.Choice) * bet.Amount;
             }
 
-            return betWin.Format();            
+            return betWin;            
         }
     }
 
