@@ -76,7 +76,7 @@
                     <td>@Localizer[bet.TolgeeChoiceKey]</td>
                     <td>@Model.GetOdds(bet.Choice).FormatOdds(Model.FractionalOddsFormat)</td>
                     <td>@bet.Amount.Format()</td>
-                    <td>@Model.GetBetLogWin(bet)</td>
+                    <td>@Model.GetBetLogWin(bet).Format()</td>
                 </tr>                
             }
             <tr class="total">
