@@ -29,6 +29,7 @@ namespace GameRoundResult.Web.ViewFactory
         private const string fruitSlot = "_FruitSlotRoundResult";
         private const string fantan = "_FanTanRoundResult";
         private const string win3Cards = "_Win3CardsRoundResult";
+        private const string dragonTigerFight = "_DragonTigerFightRoundResult";
 
         private readonly Dictionary<GameType, string> views = new()
         {
@@ -77,6 +78,7 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.FruitSlot, fruitSlot },
             { GameType.FanTan, fantan },
             { GameType.WinThreeCards, win3Cards},
+            { GameType.DragonTigerFight, dragonTigerFight },
         };
 
         public string GetView(GameType game) => views[game];
