@@ -28,6 +28,11 @@ namespace GameRoundResult.Web.Models
                 return $"_CascadingSlot{PartialPostfix}";
             }
 
+            if (IsClassicSlot)
+            {
+                return $"_SlotGame{PartialPostfix}";
+            }
+
             if (IsBaccarat)
             {
                 return $"_Baccarat{PartialPostfix}";
@@ -41,7 +46,7 @@ namespace GameRoundResult.Web.Models
         private bool IsMiniKeno
             => GameType switch
             {
-                GameType.KenoProViet 
+                GameType.KenoProViet
                 or GameType.KenoMax
                 or GameType.KenoMax2
                 or GameType.KenoMini
@@ -56,7 +61,10 @@ namespace GameRoundResult.Web.Models
             };
 
         private bool IsCascadingSlot
-            => GameTicketResult.GameType == Core.Constants.GameConfigsType.CascadingSlot;
+            => GameTicketResult.GameType == GameConfigsType.CascadingSlot;
+
+        private bool IsClassicSlot
+            => GameTicketResult.GameType == GameConfigsType.Slot;
 
         private bool IsBaccarat
              => GameType switch

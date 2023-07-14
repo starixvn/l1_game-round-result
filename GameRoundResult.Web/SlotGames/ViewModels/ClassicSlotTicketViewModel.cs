@@ -44,7 +44,9 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
         public Uri GetPaylineUrl(byte payline)
         => new($"{StaticResourceUrl}/_shared/classicslot/{PaylinePrefix}-{payline + 1}.png");
 
-        public bool IsJackpotSymbol(byte number) => number == SlotGameConstant.JackpotSymbol && EnabledJackpot && RoundResult.JackpotContribution != null;
+        public bool IsJackpotSymbol(byte number) => 
+            number == SlotGameConstant.JackpotSymbol && EnabledJackpot
+            && (GameId == (int)Core.Constants.GameType.FourGuardians || RoundResult.JackpotContribution != null);
 
         public static string GetJackpotSymbolName()
         {
