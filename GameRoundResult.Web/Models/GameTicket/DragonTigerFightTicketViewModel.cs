@@ -19,6 +19,11 @@ namespace GameRoundResult.Web.Models
             return RoundResult.IsWinningChoice(choice) ? "bold text-blue" : string.Empty;
         }
 
+        public string GetValueClass(string choice)
+        {
+            return RoundResult.IsWinningChoice(choice) ? "bold" : string.Empty;
+        }
+
         public decimal GetOdds(string choice)
         {
             var oddsChoice = char.ToLower(choice[0]) + choice.Substring(1);
