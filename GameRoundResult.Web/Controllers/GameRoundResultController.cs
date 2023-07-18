@@ -59,13 +59,14 @@ namespace GameRoundResult.Web.Controllers
         public async Task<IActionResult> Index(GameType gameType)
         {
             var clientName = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
+            var gameTypes = clientName == "Game Admin 2" ? gameTypeLocalization.GetGameList() : await gameTypeLocalization.GetGameListAsync(
+                    User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.SiteName)?.Value,
+                    User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.PartnerId)?.Value
+                    );
 
             var viewModel = new GameRoundResultViewModel
             {
-                GameTypes = clientName == "Game Admin 2" ? gameTypeLocalization.GetGameList() : await gameTypeLocalization.GetGameListAsync(
-                    User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.SiteName)?.Value,
-                    User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.PartnerId)?.Value
-                    ),
+                GameTypes = gameTypes.Select(item => { item.Text = GameName.GameNameMap[item.Value]; return item; }),
                 GameType = gameType,
                 Language = Thread.CurrentThread.CurrentCulture.Name,
                 EnableTolgee = enableTolgee
