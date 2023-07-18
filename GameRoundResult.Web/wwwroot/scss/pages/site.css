@@ -303,6 +303,18 @@ body {
     width: 0.1rem;
     background-color: #222; }
 
+.cards .split:before {
+  position: absolute;
+  left: -1rem;
+  top: 0.6rem;
+  content: "";
+  height: 1.8rem;
+  width: 0.1rem;
+  background-color: #222; }
+
+.cards .bold {
+  font-weight: bold; }
+
 .card-type-0 span,
 .card-type-1 span {
   color: #df0000; }

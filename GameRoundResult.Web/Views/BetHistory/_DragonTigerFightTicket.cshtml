@@ -32,10 +32,20 @@
                         <div class="card card-type-@Model.RoundResult.Result.Dragon.Suit">
                             <span>@Card.CardLabels[Model.RoundResult.Result.Dragon.Rank]</span>
                             <img class="img" src="~/scss/images/card_@(Model.RoundResult.Result.Dragon.Suit).png" asp-append-version="true" />
+                            
                         </div>
-                        <div class="card card-type-@Model.RoundResult.Result.Tiger.Suit">
+                        <div style="margin: auto 15px auto 5px;">
+                            <span class="@Model.GetValueClass("Dragon")">@Card.CardLabels[Model.RoundResult.Result.Dragon.Rank]</span>
+                        </div>                        
+
+                        <div class="card card-type-@Model.RoundResult.Result.Tiger.Suit split">
                             <span>@Card.CardLabels[Model.RoundResult.Result.Tiger.Rank]</span>
                             <img class="img" src="~/scss/images/card_@(Model.RoundResult.Result.Tiger.Suit).png" asp-append-version="true" />
+                            
+                        </div>
+
+                        <div style="margin: auto 5px auto 5px;">
+                            <span class="@Model.GetValueClass("Tiger")">@Card.CardLabels[Model.RoundResult.Result.Tiger.Rank]</span>
                         </div>
                     </div>
                 </td>
