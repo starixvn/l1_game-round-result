@@ -35,7 +35,7 @@
                             
                         </div>
                         <div style="margin: auto 15px auto 5px;">
-                            <span class="@Model.GetValueClass("Dragon")">@Card.CardLabels[Model.RoundResult.Result.Dragon.Rank]</span>
+                            <span class="@Model.GetValueClass("Dragon")">@(Model.RoundResult.Result.Dragon.Rank + 1)</span>
                         </div>                        
 
                         <div class="card card-type-@Model.RoundResult.Result.Tiger.Suit split">
@@ -45,7 +45,7 @@
                         </div>
 
                         <div style="margin: auto 5px auto 5px;">
-                            <span class="@Model.GetValueClass("Tiger")">@Card.CardLabels[Model.RoundResult.Result.Tiger.Rank]</span>
+                            <span class="@Model.GetValueClass("Tiger")">@(Model.RoundResult.Result.Tiger.Rank + 1)</span>
                         </div>
                     </div>
                 </td>
