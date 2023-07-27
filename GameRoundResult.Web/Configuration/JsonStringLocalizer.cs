@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using GameRoundResult.Web.Filters;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
@@ -35,10 +37,9 @@ namespace GameRoundResult.Web.Configuration
         }
 
         public LocalizedString GetStringWithNamcespace(string name, string tolgeeNamespace)
-        {         
-                string value = GetString(name, tolgeeNamespace);
-                return new LocalizedString(name, value ?? name, value == null);
-          
+        {
+            string value = GetString(name, tolgeeNamespace);
+            return new LocalizedString(name, value ?? name, value == null);
         }
 
         public LocalizedString this[string name, params object[] arguments]
@@ -54,7 +55,8 @@ namespace GameRoundResult.Web.Configuration
 
         public IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures)
         {
-            string nameSpace = (typeof(T)).Name;
+            var type = typeof(T);
+            string nameSpace = ((TolgeeNamespaceAttribute)Attribute.GetCustomAttribute(type, typeof(TolgeeNamespaceAttribute)))?.Name ?? type.Name;
 
             string filePath = $"Resources/{(typeof(T)).Name}/{Thread.CurrentThread.CurrentCulture.Name}.json";
             using (var str = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
@@ -74,9 +76,8 @@ namespace GameRoundResult.Web.Configuration
             }
         }
 
-
         private string GetString(string key, string tolgeeNamespace)
-        {            
+        {
             if (enableTolgee)
             {
                 return $"{{{{{key}|{tolgeeNamespace}}}}}";
