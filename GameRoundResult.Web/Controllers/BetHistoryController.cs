@@ -78,7 +78,7 @@ namespace GameRoundResult.Web.Controllers
                     var viewModel = new GameTicketResultViewModel
                     {
                         GameType = gameType,
-                        GameTicketResult = await GetGameTicket(gameType, roundId, playerId, "ONEworks1", freeBet),
+                        GameTicketResult = await GetGameTicket(gameType, roundId, playerId, operatorId, freeBet),
                         Language = Thread.CurrentThread.CurrentCulture.Name,
                         EnableTolgee = enableTolgee
                     };
