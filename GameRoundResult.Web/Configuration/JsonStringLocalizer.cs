@@ -55,7 +55,10 @@ namespace GameRoundResult.Web.Configuration
                 while (reader.Read())
                 {
                     if (reader.TokenType != JsonToken.PropertyName)
+                    {
                         continue;
+                    }
+
                     string key = (string)reader.Value;
                     reader.Read();
                     string value = serializer.Deserialize<string>(reader);
@@ -80,9 +83,19 @@ namespace GameRoundResult.Web.Configuration
             {
                 string cacheKey = $"locale_{Thread.CurrentThread.CurrentCulture.Name}_{key}";
                 string cacheValue = cache.GetString(cacheKey);
-                if (!string.IsNullOrEmpty(cacheValue)) return cacheValue;
+
+                if (!string.IsNullOrEmpty(cacheValue))
+                {
+                    return cacheValue;
+                }
+
                 string result = GetValueFromJSON(key, Path.GetFullPath(relativeFilePath));
-                if (!string.IsNullOrEmpty(result)) cache.SetString(cacheKey, result);
+
+                if (!string.IsNullOrEmpty(result))
+                {
+                    cache.SetString(cacheKey, result);
+                }
+
                 return result;
             }
 
@@ -91,8 +104,11 @@ namespace GameRoundResult.Web.Configuration
 
         private string GetValueFromJSON(string propertyName, string filePath)
         {
-            if (propertyName == null) return default;
-            if (filePath == null) return default;
+            if (propertyName == null || filePath == null)
+            {
+                return default;
+            }
+
             using (var str = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
             using (var sReader = new StreamReader(str))
             using (var reader = new JsonTextReader(sReader))
