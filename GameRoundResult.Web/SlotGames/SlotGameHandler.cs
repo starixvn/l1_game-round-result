@@ -38,6 +38,7 @@ namespace GameRoundResult.Web.SlotGames.Handlers
                 request.SystemType
             )
             {
+                GameId = gameConfigs.GameId,
                 StaticResourceUrl = gameResource.BaseUrl.ToString(),
                 GameType = gameConfigs.Type,
             };
