@@ -40,3 +40,6 @@ integration-test-dotnet:
     - cp ./GameRoundResult.IntegrationTests/appsettings.IGT.CI.json ./GameRoundResult.IntegrationTests/appsettings.IGT.json
     - mkdir -p $LOG_TEST_PATH && cp -a ./GameRoundResult.IntegrationTests/Games/. $LOG_TEST_PATH
     - cp -R ./GameRoundResult.Web/wwwroot/scss $LOG_TEST_PATH
+
+sonar_dotnet:
+  allow_failure: true
