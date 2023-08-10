@@ -13,10 +13,10 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
         private const string PaylinePrefix = "payline";
         private const string JackpotSuffix = "jackpot";
 
-        public ClassicSlotTicketViewModel(string configName, bool enabledJackpot, string systemType)
+        public ClassicSlotTicketViewModel(string configName, bool enabledJackpotConfig, string systemType)
         {
             ConfigName = configName;
-            EnabledJackpot = enabledJackpot;
+            EnableJackpotConfig = enabledJackpotConfig;
             SystemType = systemType;
         }
 
@@ -24,11 +24,14 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
 
         public string SystemType { get; }
 
-        public bool EnabledJackpot { get; }
+        public bool EnableJackpotConfig { get; }
+
+        public bool EnabledJackpot => EnableJackpotConfig
+            && (GameId == (int)Core.Constants.GameType.FourGuardians || RoundResult?.JackpotContribution != null);
 
         public ClassicSlotRoundResultViewModel RoundResult { get; set; }
 
-        public decimal WinLoss => RoundResult.FreeSpin ? RoundResult.TotalBetWin : RoundResult.TotalBetWin - RoundResult.TotalAmount;
+        public new decimal WinLoss => RoundResult.FreeSpin ? RoundResult.TotalBetWin : RoundResult.TotalBetWin - RoundResult.TotalAmount;
 
         public string DisplayWinLoss => WinLoss.Format();
 
@@ -44,9 +47,8 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
         public Uri GetPaylineUrl(byte payline)
         => new($"{StaticResourceUrl}/_shared/classicslot/{PaylinePrefix}-{payline + 1}.png");
 
-        public bool IsJackpotSymbol(byte number) => 
-            number == SlotGameConstant.JackpotSymbol && EnabledJackpot
-            && (GameId == (int)Core.Constants.GameType.FourGuardians || RoundResult.JackpotContribution != null);
+        public bool IsJackpotSymbol(byte number) =>
+            number == SlotGameConstant.JackpotSymbol && EnabledJackpot;
 
         public static string GetJackpotSymbolName()
         {
