@@ -26,7 +26,7 @@
             var rowspan = Model.RoundResult.IsLucky ? symbols.Count + 1 : 1;
             <tr>
                 <td rowspan="@rowspan">
-                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture)
                     <br />
                     @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
                 </td>
@@ -78,7 +78,7 @@
             {
                 <tr>
                     <td>
-                        @bet.Time.ToString(ViewFormat.RoundDateFormat)
+                        @bet.Time.ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @bet.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
                     </td>

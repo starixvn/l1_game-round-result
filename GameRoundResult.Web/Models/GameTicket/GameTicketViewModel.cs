@@ -11,7 +11,7 @@ namespace GameRoundResult.Web.Models
         public GameConfigsType GameType { get; set; }
         public TimeSpan TimeZoneOffset { get; set; }
 
-        public string TimeOffsetString => $"GMT{TimeZoneOffset.Hours:+#;-#}";
+        public string TimeOffsetString => $"GMT{TimeZoneOffset.Hours:+#;-#}";    
 
         public bool? FractionalOddsFormat { get; set; }
 
@@ -26,7 +26,7 @@ namespace GameRoundResult.Web.Models
     public class BetLogViewModel
     {
         public DateTime Time { get; set; }
-        public string DateDisplay => Time.ToString(ViewFormat.RoundDateFormat);
+        public string DateDisplay => Time.ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture);
         public string TimeDisplay => Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture);
 
         public string Choice { get; set; }

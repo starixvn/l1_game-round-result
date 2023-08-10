@@ -34,7 +34,7 @@ namespace GameRoundResult.Web.Configuration
 
         public static string RoundDateFormat(this DateTimeOffset dateTime)
         {
-            return dateTime.ToString(ViewFormat.RoundDateFormat);
+            return dateTime.ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture);
         }
 
         public static string RoundTimeWithSecondFormat(this DateTimeOffset dateTime)

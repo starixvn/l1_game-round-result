@@ -75,7 +75,7 @@
             var ftSettlementResult = Model.RoundResult.FullTime.SettlementResult;
             <tr>
                 <td>
-                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat)
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture)
                     <br />
                     @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
                 </td>

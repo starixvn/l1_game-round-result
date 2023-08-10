@@ -20,7 +20,7 @@ namespace GameRoundResult.Web.Models
 
     public class RoundResultViewModel : TimeViewModel
     {
-        public string DateDisplay => Time.ToString(ViewFormat.RoundDateFormat);
+        public string DateDisplay => Time.ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture);
         public string TimeDisplay => Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture);
 
         public long RoundId { get; set; }
