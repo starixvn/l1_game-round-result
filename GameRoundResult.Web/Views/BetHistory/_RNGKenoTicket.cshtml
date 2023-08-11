@@ -107,7 +107,7 @@
             {
                 <tr class="@(Model.RoundResult.IsBig? "text-blue bold": string.Empty)">
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -119,7 +119,7 @@
             {
                 <tr class="@(!Model.RoundResult.IsBig ? "text-blue bold": string.Empty)">
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -131,7 +131,7 @@
             {
                 <tr class="@(Model.RoundResult.IsEven? "text-blue bold": string.Empty)">
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -144,7 +144,7 @@
             {
                 <tr class="@(!Model.RoundResult.IsEven? "text-blue bold": string.Empty)">
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -157,7 +157,7 @@
             {
                 <tr class="@(Model.RoundResult.IsGold? "text-blue bold": string.Empty)">
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -170,7 +170,7 @@
             {
                 <tr class="@(Model.RoundResult.IsWood? "text-blue bold": string.Empty)">
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -183,7 +183,7 @@
             {
                 <tr class="@(Model.RoundResult.IsWater? "text-blue bold": string.Empty)">
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -196,7 +196,7 @@
             {
                 <tr class="@(Model.RoundResult.IsFire? "text-blue bold": string.Empty)">
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -209,7 +209,7 @@
             {
                 <tr class="@(Model.RoundResult.IsEarth? "text-blue bold": string.Empty)">
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>

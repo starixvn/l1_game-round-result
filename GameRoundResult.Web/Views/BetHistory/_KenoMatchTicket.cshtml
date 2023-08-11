@@ -288,7 +288,7 @@
                 var choiceOdds = Model.RoundResult.Odds[bet.Choice];
                 <tr>
                     <td>
-                        @bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>

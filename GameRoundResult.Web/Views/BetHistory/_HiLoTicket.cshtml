@@ -26,7 +26,7 @@
         {
             <tr>
                 <td>
-                    @Model.RoundResult.Time.ToString(ViewFormat.TicketDateFormat)
+                    @Model.RoundResult.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                     <br />
                     @Model.RoundResult.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                 </td>
@@ -41,7 +41,7 @@
             {
                 <tr>
                     <td>
-                        @betLog.Time.ToString(ViewFormat.TicketDateFormat)
+                        @betLog.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @betLog.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -65,7 +65,7 @@
             }
             <tr>
                 <td>
-                    @Model.RoundResult.EndTime?.ToString(ViewFormat.TicketDateFormat)
+                    @Model.RoundResult.EndTime?.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                     <br />
                     @Model.RoundResult.EndTime?.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                 </td>

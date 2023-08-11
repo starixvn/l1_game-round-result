@@ -61,7 +61,7 @@
 
                 <tr>
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -79,7 +79,7 @@
 
                 <tr>
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -96,7 +96,7 @@
                 var win = Model.RoundResult.SettlementResult.Fan1 ? Model.Bet.Fan1 * odds : 0;
                 <tr>
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -113,7 +113,7 @@
                 var win = Model.RoundResult.SettlementResult.Fan2 ? Model.Bet.Fan2 * odds : 0;
                 <tr>
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -130,7 +130,7 @@
                 var win = Model.RoundResult.SettlementResult.Fan3 ? Model.Bet.Fan3 * odds : 0;
                 <tr>
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -147,7 +147,7 @@
                 var win = Model.RoundResult.SettlementResult.Fan4 ? Model.Bet.Fan4 * odds : 0;
                 <tr>
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -164,7 +164,7 @@
                 var win = Model.RoundResult.SettlementResult.Kwok12 ? Model.Bet.Kwok12 * odds : 0;
                 <tr>
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -181,7 +181,7 @@
                 var win = Model.RoundResult.SettlementResult.Kwok23 ? Model.Bet.Kwok23 * odds : 0;
                 <tr>
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -198,7 +198,7 @@
                 var win = Model.RoundResult.SettlementResult.Kwok34 ? Model.Bet.Kwok34 * odds : 0;
                 <tr>
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -215,7 +215,7 @@
                 var win = Model.RoundResult.SettlementResult.Kwok41 ? Model.Bet.Kwok41 * odds : 0;
                 <tr>
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -232,7 +232,7 @@
                 var win = Model.RoundResult.SettlementResult.Chun123 ? Model.Bet.Chun123 * odds : 0;
                 <tr>
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -249,7 +249,7 @@
                 var win = Model.RoundResult.SettlementResult.Chun124 ? Model.Bet.Chun124 * odds : 0;
                 <tr>
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -266,7 +266,7 @@
                 var win = Model.RoundResult.SettlementResult.Chun134 ? Model.Bet.Chun134 * odds : 0;
                 <tr>
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -283,7 +283,7 @@
                 var win = Model.RoundResult.SettlementResult.Chun234 ? Model.Bet.Chun234 * odds : 0;
                 <tr>
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>

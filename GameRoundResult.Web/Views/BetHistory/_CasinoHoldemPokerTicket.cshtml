@@ -26,7 +26,7 @@
                     <td rowspan="3">
                         @if (Model.Ended)
                         {
-                            @Model.Round.Time.ToString(ViewFormat.TicketDateFormat)
+                            @Model.Round.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                             <br />
                             @Model.Round.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                         }
@@ -184,7 +184,7 @@
                 var winCall = (Model.Bet.SettlementResult?.Call ?? 0);
                 <tr class="@(winAnte > 0 ? "text-blue bold" : "")">
                     <td>
-                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                        @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                         <br />
                         @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                     </td>
@@ -199,7 +199,7 @@
                 {
                     <tr class="@(winAA > 0 ? "text-blue bold" : "")">
                         <td>
-                            @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat)
+                            @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                             <br />
                             @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                         </td>
@@ -215,7 +215,7 @@
                 {
                     <tr class="@(winCall > 0 ? "text-blue bold" : "")">
                         <td>
-                            @Model.Bet.CallTime.ToString(ViewFormat.TicketDateFormat)
+                            @Model.Bet.CallTime.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
                             <br />
                             @Model.Bet.CallTime.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
                         </td>
