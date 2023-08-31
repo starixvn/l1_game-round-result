@@ -92,3 +92,7 @@
 .table-cascading-slot .symbol {
   max-width: 60px;
   height: 100%; }
+
+.table-dragon-tiger-fight .cards {
+  display: flex;
+  justify-content: center; }
