@@ -59,5 +59,6 @@
         WinThreeCards = 61,
         DragonTigerFight = 67,
         Pontoon = 72,
+        ColorGame = 71
     }
 }

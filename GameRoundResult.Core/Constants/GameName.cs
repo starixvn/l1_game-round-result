@@ -60,6 +60,7 @@ namespace GameRoundResult.Core.Constants
             { Convert.ToInt32(GameType.WinThreeCards).ToString(), "Win Three Cards" },
             { Convert.ToInt32(GameType.DragonTigerFight).ToString(), "Dragon Tiger Fight" },
             { Convert.ToInt32(GameType.FourGuardians).ToString(), "Four Guardians" },
+            { Convert.ToInt32(GameType.ColorGame).ToString(), "Color Game" },
         };
     }
 }
