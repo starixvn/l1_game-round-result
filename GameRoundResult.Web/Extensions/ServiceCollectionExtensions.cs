@@ -132,6 +132,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(Win3CardsTicketAccessor));
             services.AddScoped(typeof(DragonTigerFightTicketAccessor));
             services.AddScoped<PontoonTicketAccessor>();
+            services.AddScoped(typeof(ColorGameTicketAccessor));
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
 
@@ -183,6 +184,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<FanTanEndGameInfoService>();
             services.AddScoped<Win3CardsEndGameInfoService>();
             services.AddScoped<DragonTigerFightEndGameInfoService>();
+            services.AddScoped<ColorGameEndGameInfoService>();
 
             services.AddSlotGames();
             services.AddCascadingSlotGames();

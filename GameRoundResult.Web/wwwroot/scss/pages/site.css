@@ -581,3 +581,9 @@ body {
   .win3cards-result .cards span {
     width: 10.5rem;
     padding-top: 7px; }
+
+.color-game-inferable-result {
+  height: 32px;
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 5px; }

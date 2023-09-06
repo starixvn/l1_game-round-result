@@ -1,5 +1,6 @@
 ﻿using GameRoundResult.Core._Share;
 using MongoDB.Bson.Serialization.Attributes;
+using System.Collections.Generic;
 
 namespace GameRoundResult.Core.Database.Entities.ColorGame
 {
@@ -8,7 +9,7 @@ namespace GameRoundResult.Core.Database.Entities.ColorGame
     {
         public ColorGameResult Result { get; set; }
 
-        public ColorGameSettlementResult SettlementResult { get; set; }
+        public Dictionary<string, bool> SettlementResult { get; set; }
     }
 
     public class ColorGameResult
@@ -22,23 +23,4 @@ namespace GameRoundResult.Core.Database.Entities.ColorGame
         [BsonElement("dice3")]
         public byte Dice3 { get; set; }
     }
-
-    public class ColorGameSettlementResult
-    {
-        public bool Yellow { get; set; }
-
-        public bool Red { get; set; }
-
-        public bool Pink { get; set; }
-
-        public bool White { get; set; }
-
-        public bool Blue { get; set; }
-
-        public bool Green { get; set; }
-
-        public bool Hot { get; set; }
-
-        public bool Cold { get; set; }
-    }    
 }

@@ -2,6 +2,7 @@
 using System.Linq;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
@@ -371,7 +372,18 @@ namespace GameRoundResult.Web.Configuration
                     };
                 }));
             CreateMap<DragonTigerFightBetLog, DragonTigerFightBetLogViewModel>();
-
+            CreateMap<ColorGameRound, ColorGameRoundResultViewModel>()
+                .ForMember(x => x.Result, opt => opt.MapFrom((source, destination, i, context) =>
+                {
+                    return new ColorGameResultViewModel
+                    {
+                        Dice1 = source.Result.Dice1,
+                        Dice2 = source.Result.Dice2,
+                        Dice3 = source.Result.Dice3,
+                    };
+                }));
+                
+            CreateMap<ColorGameBetLog, ColorGameBetLogViewModel>();
         }
     }
 }

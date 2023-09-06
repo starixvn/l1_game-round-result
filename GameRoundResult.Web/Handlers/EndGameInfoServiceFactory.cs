@@ -67,6 +67,7 @@ namespace GameRoundResult.Web.Services
             { GameType.WinThreeCards, typeof(Win3CardsEndGameInfoService) },
             { GameType.DragonTigerFight, typeof(DragonTigerFightEndGameInfoService) },
             { GameType.Pontoon, typeof(BankingGameEndGameInfoService<PontoonRound, PontoonBet>) },
+            { GameType.ColorGame, typeof(ColorGameEndGameInfoService) },
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()
