@@ -143,7 +143,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<KenoProMaxEndGameInfoService>();
             services.AddScoped<RouletteEndGameInfoService>();
             services.AddScoped<VipSeDieEndGameInfoService>();
-            services.AddScoped<BlackjackEndGameInfoService>();
+            services.AddScoped(typeof(BankingGameEndGameInfoService<,>));
             services.AddScoped<SpecialSeDieEndGameInfoService>();
             services.AddScoped<VipFishPrawnCrabEndGameInfoService>();
             services.AddScoped<SicBoEndGameInfoService>();

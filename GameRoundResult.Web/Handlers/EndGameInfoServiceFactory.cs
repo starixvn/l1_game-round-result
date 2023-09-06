@@ -28,7 +28,7 @@ namespace GameRoundResult.Web.Services
             { GameType.Roulette, typeof(RouletteEndGameInfoService) },
             { GameType.VipSeDie, typeof(VipSeDieEndGameInfoService) },
             { GameType.SpecialSeDie, typeof(SpecialSeDieEndGameInfoService) },
-            { GameType.Blackjack, typeof(BlackjackEndGameInfoService) },
+            { GameType.Blackjack, typeof(BankingGameEndGameInfoService<BlackjackRound, BlackjackBet>) },
             { GameType.VipFishPrawnCrab, typeof(VipFishPrawnCrabEndGameInfoService) },
             { GameType.SicBo, typeof(SicBoEndGameInfoService) },
             { GameType.SeDieWar, typeof(VipSeDieWarEndGameInfoService) },
@@ -66,6 +66,7 @@ namespace GameRoundResult.Web.Services
             { GameType.FanTan, typeof(FanTanEndGameInfoService) },
             { GameType.WinThreeCards, typeof(Win3CardsEndGameInfoService) },
             { GameType.DragonTigerFight, typeof(DragonTigerFightEndGameInfoService) },
+            { GameType.Pontoon, typeof(BankingGameEndGameInfoService<PontoonRound, PontoonBet>) },
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()

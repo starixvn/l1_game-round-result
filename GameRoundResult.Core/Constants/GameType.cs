@@ -57,6 +57,7 @@
         FruitSlot = 59,
         FanTan = 60,
         WinThreeCards = 61,
-        DragonTigerFight = 67
+        DragonTigerFight = 67,
+        Pontoon = 72,
     }
 }

@@ -7,9 +7,11 @@ using MongoDB.Driver;
 
 namespace GameRoundResult.Core.Services
 {
-    public class BlackjackEndGameInfoService : BaseEndGameInfoService<BlackjackRound, BlackjackBet>, IEndGameInfoService
+    public class BankingGameEndGameInfoService<GameRound, GameBet> : BaseEndGameInfoService<GameRound, GameBet>, IEndGameInfoService
+        where GameRound : BankingGameRound
+        where GameBet : BankingGameBet
     {
-        public BlackjackEndGameInfoService(IMongoDatabase database) : base(database)
+        public BankingGameEndGameInfoService(IMongoDatabase database) : base(database)
         {
         }
 
@@ -41,7 +43,7 @@ namespace GameRoundResult.Core.Services
             };
         }
 
-        protected override Expression<Func<BlackjackBet, bool>> GetBetFilterExpression(RetrieveEndGameInfoRequest request)
+        protected override Expression<Func<GameBet, bool>> GetBetFilterExpression(RetrieveEndGameInfoRequest request)
             => (bet) => bet.HandId == request.GameRoundId && bet.PlayerId == request.PlayerId && bet.SiteId == request.SiteId;
     }
 }
