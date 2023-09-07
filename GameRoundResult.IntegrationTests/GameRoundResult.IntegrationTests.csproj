@@ -51,4 +51,9 @@
 		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
     </ItemGroup>
+    <ItemGroup>
+      <None Update="Games\ColorGame\RetrieveEndRound\RER_5_RunningRound\output.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
 </Project>

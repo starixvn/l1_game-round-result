@@ -1,0 +1,33 @@
+[
+  {
+    "uid": "62342b4ac46c7910b22b3b35",
+    "name": "Player",
+    "roundId": 3,
+    "yellow": 0,
+    "red": 1500,
+    "pink": 0,
+    "white": 0,
+    "blue": 0,
+    "green": 0,
+    "hot": 0,
+    "cold": 0,
+    "paid": true,
+    "betwin": 0,
+    "time": {
+      "$date": "2022-10-25T09:10:00.000Z"
+    },
+    "odds": {
+      "single": 1.95,
+      "double": 1.95,
+      "triple": 1.95,
+      "hot": 1.95,
+      "cold": 1.95
+    },
+    "playerId": 123,
+    "siteId": "4100300",
+    "freeBet": false,
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1"
+  }
+]
