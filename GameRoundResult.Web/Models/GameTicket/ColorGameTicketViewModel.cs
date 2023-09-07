@@ -1,6 +1,4 @@
-﻿using GameRoundResult.Web.Configuration;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace GameRoundResult.Web.Models
 {
@@ -11,19 +9,12 @@ namespace GameRoundResult.Web.Models
         public IEnumerable<ColorGameBetLogViewModel> BetLogs { get; set; }
 
         public Dictionary<string, decimal> Odds { get; set; }
-
-        public List<string> BetChoices => new List<string> { "Dragon", "Tiger", "Tie", "BlackDragon", "RedDragon", "BlackTiger", "RedTiger" };
-
+        
         public string GetRowBetClass(string choice)
         {
             return RoundResult.IsWinningChoice(choice) ? "bold text-blue" : string.Empty;
         }
-
-        public string GetValueClass(string choice)
-        {
-            return RoundResult.IsWinningChoice(choice) ? "bold" : string.Empty;
-        }
-
+       
         public string GetWinningOddName(string choice)
         {
             var isWin = this.RoundResult.SettlementResult[choice.ToLower()];

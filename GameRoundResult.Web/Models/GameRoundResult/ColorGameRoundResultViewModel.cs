@@ -30,25 +30,28 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        private string GetResult()
+        public string GetResult()
         {
+            var resultMapper = new Dictionary<int, string>() { { 0, "yellow"}, { 1, "red"}, { 2, "pink"}, { 3, "white" }, { 4, "blue" }, { 5, "green" } };
             var tagBuilder = new TagBuilder("span");
             tagBuilder.AddCssClass($"");
+            tagBuilder.InnerHtml.AppendHtml(BuildDice(resultMapper[Result.Dice1]));
+            tagBuilder.InnerHtml.AppendHtml(BuildDice(resultMapper[Result.Dice2]));
+            tagBuilder.InnerHtml.AppendHtml(BuildDice(resultMapper[Result.Dice3]));
 
-            foreach(KeyValuePair<string, bool> entry in SettlementResult)
-                                    {
-                if (!InferableChoices.Contains(entry.Key) && entry.Value)
-                {
-                    var img = new TagBuilder("img");
-                    img.AddCssClass($"img");
-                    img.Attributes.Add("src", $"/scss/images/{entry.Key}.png");
-                    tagBuilder.InnerHtml.AppendHtml(img);
-                }
-            }
-            return tagBuilder.GetHtmlString();
+            return tagBuilder.GetHtmlString();            
         }
 
-        private string GetWinningResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private TagBuilder BuildDice(string color)
+        {
+            var img = new TagBuilder("img");
+            img.AddCssClass($"img");
+            img.Attributes.Add("src", $"/scss/images/{color}.png");
+
+            return img;
+        }
+
+        public string GetWinningResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = GetResult();
             var inferableChoiceResult = new TagBuilder("span");

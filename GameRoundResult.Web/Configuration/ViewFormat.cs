@@ -47,5 +47,17 @@ namespace GameRoundResult.Web.Configuration
             var odds = frationalFormat == true ? value - 1 : value;
             return odds.ToString(ViewFormat.NumberFormat, CultureInfo.InvariantCulture);
         }
+
+        public static string FormatOddsWithZero(this decimal value, bool? frationalFormat)
+        {
+            if(value == 0)
+            {
+                return "-";
+            }
+            else
+            {
+                return FormatHelper.FormatOdds(value, frationalFormat);
+            }            
+        }
     }
 }

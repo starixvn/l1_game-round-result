@@ -3,6 +3,7 @@
 
 @inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
 @inject IJsonStringLocalizer<ColorGame> Localizer
+@inject IJsonStringLocalizer<RoundResultViewModel> RoundResultLocalizer
 
 @if (Model.EnableTolgee)
 {
@@ -30,25 +31,7 @@
                 <td>
                     <div class="text-center">
                         <span>
-                            @foreach(KeyValuePair<string, bool> entry in Model.RoundResult.SettlementResult)
-                            {
-                                if (!Model.RoundResult.InferableChoices.Contains(entry.Key) && entry.Value)
-                                {
-                                    <span><img class="img" src="~/images/@(entry.Key).png" alt="#" /></span>
-                                }
-                            }
-                                    
-                        </span>     
-                        <span> | </span>
-                        <span>
-                            @foreach(KeyValuePair<string, bool> entry in Model.RoundResult.SettlementResult)
-                            {
-                                if (Model.RoundResult.InferableChoices.Contains(entry.Key) && entry.Value)
-                                {
-                                    <span>@Localizer[$"glossary_{entry.Key}"]</span>
-                                }
-                            }
-                                    
+                            @Html.Raw(@Model.RoundResult.GetWinningResult(RoundResultLocalizer))
                         </span>     
                     </div>
                 </td>
@@ -87,7 +70,7 @@
                         @bet.TimeDisplay
                     </td>
                     <td>@Localizer[bet.TolgeeChoiceKey]</td>
-                    <td>@Model.GetOdds(bet.Choice).FormatOdds(Model.FractionalOddsFormat)</td>
+                    <td>@Model.GetOdds(bet.Choice).FormatOddsWithZero(Model.FractionalOddsFormat)</td>
                     <td>@bet.Amount.Format()</td>
                     <td>@Model.GetBetLogWin(bet).Format()</td>
                 </tr>                
