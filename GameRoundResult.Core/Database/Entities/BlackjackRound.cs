@@ -4,7 +4,8 @@ using GameRoundResult.Core._Share;
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    public class BankingGameRound : GameRound
+    [CollectionName("blackjack_phiens")]
+    public class BlackjackRound : GameRound
     {
         public IEnumerable<Card> Result { get; set; }
 
@@ -17,11 +18,6 @@ namespace GameRoundResult.Core.Database.Entities
         public string Name { get; set; }
 
         public byte SettlementResult { get; set; }
-    }
-
-    [CollectionName("blackjack_phiens")]
-    public class BlackjackRound : BankingGameRound
-    {
     }
 
     public class Card

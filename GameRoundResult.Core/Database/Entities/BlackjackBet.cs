@@ -4,7 +4,8 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    public class BankingGameBet : BaseBetEntity
+    [CollectionName("blackjack_cuocs")]
+    public class BlackjackBet : BaseBetEntity
     {
         [BsonElement("id")]
         public long HandId { get; set; }
@@ -22,10 +23,5 @@ namespace GameRoundResult.Core.Database.Entities
         public long? SplitFrom { get; set; }
 
         public decimal Bet { get; set; }
-    }
-
-    [CollectionName("blackjack_cuocs")]
-    public class BlackjackBet : BankingGameBet
-    {
     }
 }

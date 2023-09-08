@@ -1,0 +1,134 @@
+﻿@using Microsoft.Extensions.Localization
+@using GameRoundResult.Core.Constants
+@model PontoonTicketViewModel
+
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<PontoonTicketViewModel> PontoonLocalizer
+
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,GameTicketViewModel,Pontoon" id="tolgee_namespace" readonly hidden />
+}
+<table class="table table-bordered table-blackjack">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th class="col-round-id">@PontoonLocalizer["handid"]</th>
+            <th colspan="2">@PontoonLocalizer["dealer"]</th>
+            <th colspan="2">@PontoonLocalizer["player"]</th>
+            <th>@CommonLocalizer["Stake"]</th>
+            <th>@CommonLocalizer["WinLoss"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Bet != null)
+        {
+            var isSplittedHand = Model.Bet.SplitFrom.HasValue || Model.Bet.Actions.Any(x => x == PontoonAction.Split);
+
+            <tr>
+                <td>
+                    @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
+                    <br />
+                    @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>
+                    @Model.Bet.HandId
+                    @if (isSplittedHand)
+                    {
+                        <img class="split-hand" src="~/scss/images/split_hand.png" asp-append-version="true" />
+                    }
+                </td>
+                <td class="blackjack-result">
+                    <div class="cards">
+                        @if (Model.Ended)
+                        {
+                            @foreach (var card in Model.DealerCards)
+                            {
+                                <div class="card card-type-@card.Suit">
+                                    <span>@card.Rank</span>
+                                    <img class="img" src="~/scss/images/card_@(card.Suit).png" asp-append-version="true" />
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <img class="card" src="~/scss/images/card_back.png" asp-append-version="true" />
+                            <img class="card" src="~/scss/images/card_back.png" asp-append-version="true" />
+                        }
+                    </div>
+                </td>
+                <td>
+                    @if (Model.Ended)
+                    {
+                        if (Model.DealerPoint <= Pontoon.PontoonValue && Model.DealerCards.Count() == Pontoon.MaxCardsOnHand)
+                        {
+                            @PontoonLocalizer["glossary_five-card"]
+                        }
+                        else
+                        {
+                            if (Model.DealerPoint == Pontoon.PontoonValue && Model.DealerCards.Count() == Pontoon.PontoonCardCount)
+                            {
+                                @PontoonLocalizer["glossary_pontoon"]
+                            }
+                            else
+                            {
+                                @(Model.DealerPoint > Pontoon.PontoonValue ? PontoonLocalizer["bust"] : Model.DealerPoint.ToString())
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        @("-")
+                    }
+                </td>
+                <td class="blackjack-result">
+                    <div class="cards">
+                        @foreach (var card in Model.Bet.Cards)
+                        {
+                            <div class="card card-type-@card.Suit">
+                                <span>@card.Rank</span>
+                                <img class="img" src="~/scss/images/card_@(card.Suit).png" asp-append-version="true" />
+                            </div>
+                        }
+                    </div>
+                </td>
+                <td>
+                    @if (Model.Bet.Total <= Pontoon.PontoonValue && Model.DealerCards.Count() == Pontoon.MaxCardsOnHand)
+                    {
+                        @PontoonLocalizer["glossary_five-card"]
+                    }
+                    else
+                    {
+                        @if (Model.Bet.Total == Pontoon.PontoonValue && Model.Bet.Cards.Count() == Pontoon.PontoonCardCount)
+                        {
+                            @PontoonLocalizer["glossary_pontoon"]
+                        }
+                        else
+                        {
+                            @if (Model.Ended)
+                            {
+                                @(Model.Bet.Total > Pontoon.PontoonValue ? PontoonLocalizer["bust"] : Model.Bet.Total.ToString())
+
+                            }
+                            else
+                            {
+                                @(Model.Bet.Total > Pontoon.PontoonValue ? PontoonLocalizer["bust"] : string.Join("/", Model.Bet.SoftPoints))
+                            }
+                        }
+                    }
+                </td>
+                <td class="text-right">@Model.Bet.Bet.Format()</td>
+                <td class="text-right">@(Model.Ended ? Model.WinLoss.Format() : PontoonLocalizer["Unfinished Game"])</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="8" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

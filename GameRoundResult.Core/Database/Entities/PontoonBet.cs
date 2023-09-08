@@ -3,7 +3,7 @@
 namespace GameRoundResult.Core.Database.Entities
 {
     [CollectionName("pontoon_bets")]
-    public class PontoonBet : BankingGameBet
+    public class PontoonBet : BlackjackBet
     {
     }
 }

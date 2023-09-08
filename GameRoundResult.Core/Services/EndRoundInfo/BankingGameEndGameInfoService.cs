@@ -8,8 +8,8 @@ using MongoDB.Driver;
 namespace GameRoundResult.Core.Services
 {
     public class BankingGameEndGameInfoService<GameRound, GameBet> : BaseEndGameInfoService<GameRound, GameBet>, IEndGameInfoService
-        where GameRound : BankingGameRound
-        where GameBet : BankingGameBet
+        where GameRound : BlackjackRound
+        where GameBet : BlackjackBet
     {
         public BankingGameEndGameInfoService(IMongoDatabase database) : base(database)
         {
