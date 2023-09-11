@@ -13,20 +13,17 @@ namespace GameRoundResult.IntegrationTests
                 new BetHistoryTestCaseParam((int)GameType.ColorGame, "ColorGame", GameConfigsType.RNG, 8043883, 35599, Language.EN, "LosingRound"),
                 new BetHistoryTestCaseParam((int)GameType.ColorGame, "ColorGame", GameConfigsType.RNG, 8043883, 35599, Language.EN, "RR1_HotWins"),
                 new BetHistoryTestCaseParam((int)GameType.ColorGame, "ColorGame", GameConfigsType.RNG, 8043883, 35599, Language.EN, "RR2_HotWins"),
-                
-                //new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", GameConfigsType.RNG, 9862439, 21122, Language.EN, "RR01_DragonWin"),
-                //new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", GameConfigsType.RNG, 9862439, 21122, Language.EN, "RR04_DragonLose"),
-                //new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", GameConfigsType.RNG, 9862439, 21122, Language.EN, "RR05_TigerWin"),
-                //new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", GameConfigsType.RNG, 9862439, 21122, Language.EN, "RR08_TigerLose"),
-                //new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", GameConfigsType.RNG, 9862439, 21122, Language.EN, "RR11_BlackDragonWin"),
-                //new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", GameConfigsType.RNG, 9862439, 21122, Language.EN, "RR12_BlackDragonLose"),
-                //new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", GameConfigsType.RNG, 9862439, 21122, Language.EN, "RR13_RedDragonWin"),
-                //new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", GameConfigsType.RNG, 9862439, 21122, Language.EN, "RR14_RedDragonLose"),
-                //new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", GameConfigsType.RNG, 9862439, 21122, Language.EN, "RR15_BlackTigerWin"),
-                //new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", GameConfigsType.RNG, 9862439, 21122, Language.EN, "RR16_BlackTigerLose"),
-                //new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", GameConfigsType.RNG, 9862439, 21122, Language.EN, "RR17_RedTigerWin"),
-                //new BetHistoryTestCaseParam((int)GameType.DragonTigerFight, "DragonTigerFight", GameConfigsType.RNG, 9862439, 21122, Language.EN, "RR18_RedTigerLose"),
-
+                new BetHistoryTestCaseParam((int)GameType.ColorGame, "ColorGame", GameConfigsType.RNG, 8043883, 35599, Language.EN, "RR3_HotLose"),
+                new BetHistoryTestCaseParam((int)GameType.ColorGame, "ColorGame", GameConfigsType.RNG, 8043883, 35599, Language.EN, "RR4_ColdWins"),
+                new BetHistoryTestCaseParam((int)GameType.ColorGame, "ColorGame", GameConfigsType.RNG, 8043883, 35599, Language.EN, "RR5_ColdWins"),
+                new BetHistoryTestCaseParam((int)GameType.ColorGame, "ColorGame", GameConfigsType.RNG, 8043883, 35599, Language.EN, "RR6_ColdLose"),
+                new BetHistoryTestCaseParam((int)GameType.ColorGame, "ColorGame", GameConfigsType.RNG, 8043883, 35599, Language.EN, "RR7_YellowWins"),
+                new BetHistoryTestCaseParam((int)GameType.ColorGame, "ColorGame", GameConfigsType.RNG, 8043883, 35599, Language.EN, "RR8_YellowWinsDouble"),
+                new BetHistoryTestCaseParam((int)GameType.ColorGame, "ColorGame", GameConfigsType.RNG, 8043883, 35599, Language.EN, "RR9_YellowWinsTriple"),
+                new BetHistoryTestCaseParam((int)GameType.ColorGame, "ColorGame", GameConfigsType.RNG, 8043883, 35599, Language.EN, "RR11_ColdBlueWhiteWin"),
+                new BetHistoryTestCaseParam((int)GameType.ColorGame, "ColorGame", GameConfigsType.RNG, 8043883, 35599, Language.EN, "RR12_ColdLoseYellowWinWhiteWin"),
+                new BetHistoryTestCaseParam((int)GameType.ColorGame, "ColorGame", GameConfigsType.RNG, 8043883, 35599, Language.EN, "RR13_HotWinYellowWinWhiteWin"),
+                new BetHistoryTestCaseParam((int)GameType.ColorGame, "ColorGame", GameConfigsType.RNG, 8043883, 35599, Language.EN, "RR14_HotLoseYellowWinWhiteWin"),                
             };
     }
 }

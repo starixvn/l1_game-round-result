@@ -1,0 +1,18 @@
+[
+  {
+    "uid": "62342b4ac46c7910b22b3b35",
+    "name": "Player",
+    "roundId": 35599,
+    "choice": "cold",
+    "amount": 10,
+    "time": {
+      "$date": "2023-09-08T09:05:55.886+00:00"
+    },
+    "playerId": 8043883,
+    "siteId": "4100300",
+    "freeBet": false,
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1"
+  }  
+]

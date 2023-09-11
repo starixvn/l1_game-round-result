@@ -1,0 +1,24 @@
+[
+{
+  "id": 35599,
+  "time": {
+    "$date": "2023-09-08T09:00:00.000Z"
+  },
+  "result": {
+    "dice1": 0,
+    "dice2": 2,
+    "dice3": 3
+  },
+  "settlementResult": {
+    "yellow": true,
+    "red": false,
+    "pink": true,
+    "white": true,
+    "blue": false,
+    "green": false,
+    "hot": true,
+    "cold": false
+  },
+  "exchangeRateId": 4816
+}
+]

@@ -21,7 +21,7 @@ namespace GameRoundResult.Web.Models
             var resultMapper = new Dictionary<string, int>() { { "yellow", 0 }, { "red", 1 }, { "pink", 2 }, { "white", 3 }, { "blue", 4 }, { "green", 5 } };
             var oddMapper = new Dictionary<int, string>() { { 1, "single" }, { 2, "double" }, { 3, "triple" } };
 
-            if (this.RoundResult.InferableChoices.Contains(choice) && isWin)
+            if (this.RoundResult.InferableChoices.Contains(choice))
             {
                 return choice;
             }
@@ -62,8 +62,9 @@ namespace GameRoundResult.Web.Models
         }
 
         public decimal  GetBetLogWin(ColorGameBetLogViewModel bet)
-        {            
-            return GetOdds(bet.Choice) * bet.Amount;            
+        {
+            var isWin = this.RoundResult.SettlementResult[bet.Choice.ToLower()];
+            return isWin ? GetOdds(bet.Choice) * bet.Amount : 0;            
         }
     }
 
