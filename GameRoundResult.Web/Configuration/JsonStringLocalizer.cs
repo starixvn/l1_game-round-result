@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using Microsoft.Extensions.Caching.Distributed;
@@ -16,13 +17,16 @@ namespace GameRoundResult.Web.Configuration
     public class JsonStringLocalizer<T> : IJsonStringLocalizer<T>
     {
         private readonly IDistributedCache cache;
-        private readonly JsonSerializer serializer = new JsonSerializer();
+        private readonly JsonSerializer serializer = new();
         private readonly bool enableTolgee;
+        private readonly string tolgeeNamespace;
 
         public JsonStringLocalizer(IDistributedCache cache, IConfiguration configuration)
         {
             this.cache = cache;
             enableTolgee = bool.Parse(configuration["EnableTolgee"]);
+
+            tolgeeNamespace = (Attribute.GetCustomAttribute(typeof(T), typeof(TolgeeNamespaceAttribute)) as TolgeeNamespaceAttribute)?.Name ?? typeof(T).Name;
         }
 
         public LocalizedString this[string name]
@@ -54,8 +58,6 @@ namespace GameRoundResult.Web.Configuration
 
         public IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures)
         {
-            string nameSpace = (typeof(T)).Name;
-
             string filePath = $"Resources/{(typeof(T)).Name}/{Thread.CurrentThread.CurrentCulture.Name}.json";
             using (var str = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
             using (var sReader = new StreamReader(str))
@@ -72,11 +74,10 @@ namespace GameRoundResult.Web.Configuration
                     reader.Read();
                     string value = serializer.Deserialize<string>(reader);
 
-                    yield return new LocalizedString(key, enableTolgee ? $"{{{{{key}|{nameSpace}}}}}" : value, false);
+                    yield return new LocalizedString(key, enableTolgee ? $"{{{{{key}|{tolgeeNamespace}}}}}" : value, false);
                 }
             }
         }
-
 
         private string GetString(string key, string tolgeeNamespace)
         {            
@@ -107,7 +108,7 @@ namespace GameRoundResult.Web.Configuration
                 return result;
             }
 
-            return default(string);
+            return default;
         }
 
         private string GetString(string key)
