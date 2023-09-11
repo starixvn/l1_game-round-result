@@ -23,7 +23,7 @@ namespace GameRoundResult.Web.Models
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
                $"{GetResult()}",
-               $"{GetWinningResult(stringLocalizer)}",
+               $"{GetWinningTextResult(stringLocalizer)}",
                
             };
 
@@ -60,13 +60,27 @@ namespace GameRoundResult.Web.Models
                                     {
                 if (InferableChoices.Contains(entry.Key) && entry.Value)
                 {
-                    inferableChoiceResult.InnerHtml.AppendHtml($" | {GetText(stringLocalizer, entry.Key)}");
+                    inferableChoiceResult.InnerHtml.AppendHtml($" &#8212; {GetText(stringLocalizer, entry.Key)}");
                                             
                 }
             }
 
             return $"{result}{inferableChoiceResult.GetHtmlString()}";
-        }        
+        }
+
+        public string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            var result = new List<string>();
+            foreach (KeyValuePair<string, bool> entry in SettlementResult)
+            {
+                if (entry.Value)
+                {
+                    result.Add(GetText(stringLocalizer, entry.Key));
+                }
+            }
+
+            return string.Join(", ", result);            
+        }
 
         public string GetText(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string key)
         {
