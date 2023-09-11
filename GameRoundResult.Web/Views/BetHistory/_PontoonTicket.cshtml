@@ -94,7 +94,7 @@
                     </div>
                 </td>
                 <td>
-                    @if (Model.Bet.Total <= Pontoon.PontoonValue && Model.DealerCards.Count() == Pontoon.MaxCardsOnHand)
+                    @if (Model.Bet.Total <= Pontoon.PontoonValue && Model.Bet.Cards.Count() == Pontoon.MaxCardsOnHand)
                     {
                         @PontoonLocalizer["glossary_five-card"]
                     }
