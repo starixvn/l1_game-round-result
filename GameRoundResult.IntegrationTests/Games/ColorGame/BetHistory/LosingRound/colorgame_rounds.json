@@ -12,7 +12,7 @@
   "settlementResult": {
     "yellow": false,
     "red": true,
-    "pink": true,
+    "pink": false,
     "white": false,
     "blue": false,
     "green": true,
