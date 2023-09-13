@@ -66,7 +66,7 @@ namespace GameRoundResult.Web.Controllers
 
             var viewModel = new GameRoundResultViewModel
             {
-                GameTypes = gameTypes.Select(item => { item.Text = GameName.GameNameMap[item.Value]; return item; }),
+                GameTypes = gameTypes,
                 GameType = gameType,
                 Language = Thread.CurrentThread.CurrentCulture.Name,
                 EnableTolgee = enableTolgee
