@@ -2,6 +2,7 @@
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GameRoundResult.Web.Models
 {
@@ -12,6 +13,8 @@ namespace GameRoundResult.Web.Models
         public Dictionary<string, bool> SettlementResult { get; set; }
 
         public List<string> InferableChoices = new List<string> { "hot", "cold" };
+
+        public Dictionary<int, string> ResultMapper = new Dictionary<int, string>() { { 0, "yellow" }, { 1, "red" }, { 2, "pink" }, { 3, "white" }, { 4, "blue" }, { 5, "green" } };
 
         public virtual bool IsWinningChoice(string choice)
         {
@@ -32,12 +35,11 @@ namespace GameRoundResult.Web.Models
 
         public string GetResult()
         {
-            var resultMapper = new Dictionary<int, string>() { { 0, "yellow"}, { 1, "red"}, { 2, "pink"}, { 3, "white" }, { 4, "blue" }, { 5, "green" } };
             var tagBuilder = new TagBuilder("span");
             tagBuilder.AddCssClass($"");
-            tagBuilder.InnerHtml.AppendHtml(BuildDice(resultMapper[Result.Dice1]));
-            tagBuilder.InnerHtml.AppendHtml(BuildDice(resultMapper[Result.Dice2]));
-            tagBuilder.InnerHtml.AppendHtml(BuildDice(resultMapper[Result.Dice3]));
+            tagBuilder.InnerHtml.AppendHtml(BuildDice(ResultMapper[Result.Dice1]));
+            tagBuilder.InnerHtml.AppendHtml(BuildDice(ResultMapper[Result.Dice2]));
+            tagBuilder.InnerHtml.AppendHtml(BuildDice(ResultMapper[Result.Dice3]));
 
             return tagBuilder.GetHtmlString();            
         }
@@ -70,10 +72,11 @@ namespace GameRoundResult.Web.Models
 
         public string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            var result = new List<string>();
+            var resultKeys = new List<string>() { ResultMapper[Result.Dice1], ResultMapper[Result.Dice2], ResultMapper[Result.Dice3] };
+            var result = resultKeys.Distinct().Select(key => GetText(stringLocalizer, key)).ToList();
             foreach (KeyValuePair<string, bool> entry in SettlementResult)
             {
-                if (entry.Value)
+                if (InferableChoices.Contains(entry.Key) && entry.Value)
                 {
                     result.Add(GetText(stringLocalizer, entry.Key));
                 }
