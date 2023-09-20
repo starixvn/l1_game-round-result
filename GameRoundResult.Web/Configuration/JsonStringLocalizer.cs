@@ -113,8 +113,7 @@ namespace GameRoundResult.Web.Configuration
 
         private string GetString(string key)
         {
-            string nameSpace = (typeof(T)).Name;
-            return GetString(key, nameSpace);
+            return GetString(key, tolgeeNamespace);
         }
 
         private string GetValueFromJSON(string propertyName, string filePath)
