@@ -40,7 +40,8 @@ namespace GameRoundResult.Web.Configuration
             GameType.TexasHoldemPoker,
             GameType.HiLo,
             GameType.TreasureIsland,
-            GameType.FourGuardians
+            GameType.FourGuardians,
+            GameType.Pontoon
         };
 
         private readonly IPartnerConfigService partnerConfigService;
