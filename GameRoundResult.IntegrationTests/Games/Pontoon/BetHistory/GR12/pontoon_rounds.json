@@ -1,0 +1,26 @@
+[
+  {
+    "result": [
+      {
+        "rank": "9",
+        "suit": 2
+      },
+      {
+        "rank": "A",
+        "suit": 1
+      }
+    ],
+    "ended": false,
+    "id": 7107,
+    "roundStartTime": {
+      "$date": "2023-10-13T09:08:52.355Z"
+    },
+    "uid": "61b83e7626ecc9208bce39bd",
+    "name": "DavidIvenV3",
+    "odds": {
+      "regular": 2,
+      "blackjack": 2.5
+    },
+    "exchangeRateId": 4817
+  }
+]

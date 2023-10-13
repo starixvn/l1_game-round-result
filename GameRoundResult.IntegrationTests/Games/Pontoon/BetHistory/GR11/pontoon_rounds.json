@@ -1,0 +1,46 @@
+[
+  {
+    "_id": {
+      "$oid": "65250b45c112539f953c68f1"
+    },
+    "result": [
+      {
+        "rank": "8",
+        "suit": 0
+      },
+      {
+        "rank": "3",
+        "suit": 2
+      },
+      {
+        "rank": "2",
+        "suit": 1
+      },
+      {
+        "rank": "3",
+        "suit": 2
+      },
+      {
+        "rank": "Q",
+        "suit": 1
+      }
+    ],
+    "ended": true,
+    "id": 2874,
+    "roundStartTime": {
+      "$date": "2023-10-10T08:28:53.117Z"
+    },
+    "uid": "640e97f503e3e2817b96cd9f",
+    "name": "Mango91531",
+    "odds": {
+      "regular": 2,
+      "pontoon": 3,
+      "fiveCardTrick": 3
+    },
+    "exchangeRateId": 4817,
+    "settlementResult": 26,
+    "time": {
+      "$date": "2023-10-10T08:29:11.138Z"
+    }
+  }
+]

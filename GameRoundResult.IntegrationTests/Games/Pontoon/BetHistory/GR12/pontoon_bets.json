@@ -1,0 +1,43 @@
+[
+  {
+    "id": 2039401,
+    "pos": 1,
+    "actions": [],
+    "cards": [
+      {
+        "rank": "K",
+        "suit": 0
+      },
+      {
+        "rank": "Q",
+        "suit": 1
+      }
+    ],
+    "total": 20,
+    "softPoints": [
+      20
+    ],
+    "splitFrom": null,
+    "bet": 1,
+    "betwin": 0,
+    "freeBet": false,
+    "roundId": 7107,
+    "paid": false,
+    "uid": "61b83e7626ecc9208bce39bd",
+    "name": "DavidIvenV3",
+    "time": {
+      "$date": "2023-10-13T09:08:52.371Z"
+    },
+    "siteId": "4100300",
+    "currency": "$US",
+    "playerId": 291192,
+    "operatorId": "ONEworks1",
+    "rate": 1,
+    "__v": 0,
+    "__archive": {
+      "eventtime": {
+        "$date": "2023-10-13T09:10:00.371Z"
+      }
+    }
+  }
+]

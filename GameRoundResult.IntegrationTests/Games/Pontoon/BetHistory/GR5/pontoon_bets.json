@@ -1,0 +1,43 @@
+[
+  {
+    "id": 85360,
+    "pos": 5,
+    "actions": [
+      "stand"
+    ],
+    "cards": [
+      {
+        "rank": "K",
+        "suit": 3
+      },
+      {
+        "rank": "A",
+        "suit": 0
+      }
+    ],
+    "total": 21,
+    "softPoints": [],
+    "splitFrom": 85346,
+    "bet": 1886,
+    "betwin": 5658,
+    "freeBet": false,
+    "roundId": 2964,
+    "paid": true,
+    "uid": "61e4f2638faf7d27774a74a6",
+    "name": "Bee12",
+    "siteId": "4100300",
+    "time": {
+      "$date": "2023-10-11T07:40:55.177Z"
+    },
+    "currency": "$US",
+    "rate": 1,
+    "playerId": 12,
+    "operatorId": "ONEworks1",
+    "__v": 1,
+    "__archive": {
+      "eventtime": {
+        "$date": "2023-10-11T07:41:04.000Z"
+      }
+    }
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "result": [
+      {
+        "rank": "7",
+        "suit": 2
+      },
+      {
+        "rank": "5",
+        "suit": 0
+      },
+      {
+        "rank": "Q",
+        "suit": 2
+      }
+    ],
+    "ended": true,
+    "id": 3039,
+    "roundStartTime": {
+      "$date": "2023-10-13T06:52:50.440Z"
+    },
+    "uid": "643677628d60cdfcebc54bed",
+    "name": "Black",
+    "odds": {
+      "regular": 2,
+      "pontoon": 3,
+      "fiveCardTrick": 3
+    },
+    "exchangeRateId": 4817,
+    "__v": 0,
+    "settlementResult": 22,
+    "time": {
+      "$date": "2023-10-13T06:52:57.351Z"
+    },
+    "__archive": {}
+  }
+]

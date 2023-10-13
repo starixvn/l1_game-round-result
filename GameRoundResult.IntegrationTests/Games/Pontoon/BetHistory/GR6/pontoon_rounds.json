@@ -1,0 +1,39 @@
+[
+  {
+    "result": [
+      {
+        "rank": "A",
+        "suit": 0
+      },
+      {
+        "rank": "A",
+        "suit": 3
+      },
+      {
+        "rank": "J",
+        "suit": 1
+      },
+      {
+        "rank": "10",
+        "suit": 0
+      }
+    ],
+    "ended": true,
+    "id": 2964,
+    "roundStartTime": {
+      "$date": "2023-10-11T07:40:04.677Z"
+    },
+    "uid": "61e4f2638faf7d27774a74a6",
+    "name": "Bee12",
+    "odds": {
+      "regular": 2,
+      "pontoon": 3,
+      "fiveCardTrick": 3
+    },
+    "exchangeRateId": 4817,
+    "settlementResult": 22,
+    "time": {
+      "$date": "2023-10-11T07:41:04.798Z"
+    }
+  }
+]

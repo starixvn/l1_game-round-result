@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Tickets</title>
+
+    <link href="/scss/pages/site.css?v=UIrT1XfgGCImQ8vRZxqhtVlwkf8o6h414xpWZqyZq0s" rel="stylesheet" />
+
+    <link href="/scss/pages/game-ticket.css?v=Vz4Ek5fttgOjaquU6DancSql2jDVAVw_KvDzAn3H5_8" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="main-container">
+
+        <div class="note"><span class="bold">Note:</span> Data are only available within the last 7 days from the current date. </div>
+
+        <div id="game-ticket">
+
+            <table class="table table-bordered table-blackjack">
+                <thead>
+                    <tr>
+                        <th class="col-date">Time (GMT-4)</th>
+                        <th class="col-round-id">Hand ID</th>
+                        <th colspan="2">Dealer</th>
+                        <th colspan="2">Player</th>
+                        <th>Stake</th>
+                        <th>Win Loss</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            10/13/2023
+                            <br />
+                            02:52:50 AM
+                        </td>
+                        <td>
+                            97656
+                        </td>
+                        <td class="blackjack-result">
+                            <div class="cards">
+                                <div class="card card-type-2">
+                                    <span>7</span>
+                                    <img class="img" src="/scss/images/card_2.png?v=HKTI_eQSrSNTxEqbPYtVYGSEtCAfLaNb3R38EYn_2iM" />
+                                </div>
+                                <div class="card card-type-0">
+                                    <span>5</span>
+                                    <img class="img" src="/scss/images/card_0.png?v=m5SI5W4NqTw2zu5-TNu1qKNim8Fivjior74R68BhOa8" />
+                                </div>
+                                <div class="card card-type-2">
+                                    <span>Q</span>
+                                    <img class="img" src="/scss/images/card_2.png?v=HKTI_eQSrSNTxEqbPYtVYGSEtCAfLaNb3R38EYn_2iM" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            Bust
+                        </td>
+                        <td class="blackjack-result">
+                            <div class="cards">
+                                <div class="card card-type-0">
+                                    <span>Q</span>
+                                    <img class="img" src="/scss/images/card_0.png?v=m5SI5W4NqTw2zu5-TNu1qKNim8Fivjior74R68BhOa8" />
+                                </div>
+                                <div class="card card-type-3">
+                                    <span>9</span>
+                                    <img class="img" src="/scss/images/card_3.png?v=z7UjU7QNS_GLnOEtRO6frnaOzGsEzeXb53K8LVHkJuw" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            19
+                        </td>
+                        <td class="text-right">1</td>
+                        <td class="text-right">1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="overlay">
+        <div class="pulse-container">
+            <div class="pulse-bubble pulse-bubble-1"></div>
+            <div class="pulse-bubble pulse-bubble-2"></div>
+            <div class="pulse-bubble pulse-bubble-3"></div>
+        </div>
+    </div>
+    <input type="hidden" value="en-US" id="culture" />
+
+    <script src="/lib/jquery/dist/jquery.js"></script>
+
+    <script src="/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.js"></script>
+</body>
+</html>

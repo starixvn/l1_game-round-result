@@ -1,0 +1,58 @@
+[
+  {
+    "id": 44352,
+    "pos": 3,
+    "actions": [
+      "hit",
+      "hit",
+      "hit",
+      "stand"
+    ],
+    "cards": [
+      {
+        "rank": "2",
+        "suit": 2
+      },
+      {
+        "rank": "3",
+        "suit": 2
+      },
+      {
+        "rank": "10",
+        "suit": 1
+      },
+      {
+        "rank": "3",
+        "suit": 2
+      },
+      {
+        "rank": "A",
+        "suit": 2
+      }
+    ],
+    "total": 19,
+    "softPoints": [],
+    "splitFrom": null,
+    "bet": 1,
+    "betwin": 2.5,
+    "freeBet": false,
+    "roundId": 2804,
+    "paid": true,
+    "uid": "624134390d51b57dce7c2703",
+    "name": "Dory",
+    "time": {
+      "$date": "2023-10-05T04:21:07.302Z"
+    },
+    "siteId": "4100300",
+    "currency": "$US",
+    "playerId": 600,
+    "operatorId": "ONEworks1",
+    "rate": 1,
+    "__v": 4,
+    "__archive": {
+      "eventtime": {
+        "$date": "2023-10-05T04:21:29.000Z"
+      }
+    }
+  }
+]

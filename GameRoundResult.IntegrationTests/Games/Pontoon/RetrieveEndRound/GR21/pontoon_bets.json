@@ -1,0 +1,48 @@
+[
+  {
+    "id": 79317,
+    "pos": 1,
+    "actions": [
+      "double",
+      "stand"
+    ],
+    "cards": [
+      {
+        "rank": "A",
+        "suit": 3
+      },
+      {
+        "rank": "A",
+        "suit": 1
+      },
+      {
+        "rank": "Q",
+        "suit": 2
+      }
+    ],
+    "total": 12,
+    "softPoints": [],
+    "splitFrom": null,
+    "bet": 2,
+    "betwin": 4,
+    "freeBet": false,
+    "roundId": 2874,
+    "paid": true,
+    "uid": "640e97f503e3e2817b96cd9f",
+    "name": "Mango91531",
+    "time": {
+      "$date": "2023-10-10T08:28:53.119Z"
+    },
+    "siteId": "4100300",
+    "currency": "$US",
+    "playerId": 222241,
+    "operatorId": "ONEworks1",
+    "rate": 1,
+    "__v": 3,
+    "__archive": {
+      "eventtime": {
+        "$date": "2023-10-10T08:29:11.000Z"
+      }
+    }
+  }
+]

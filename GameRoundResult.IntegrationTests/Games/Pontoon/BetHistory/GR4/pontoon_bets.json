@@ -1,0 +1,37 @@
+[
+  {
+    "id": 98345,
+    "pos": 2,
+    "actions": [
+      "stand"
+    ],
+    "cards": [
+      {
+        "rank": "A",
+        "suit": 1
+      },
+      {
+        "rank": "J",
+        "suit": 0
+      }
+    ],
+    "total": 21,
+    "softPoints": [],
+    "splitFrom": null,
+    "bet": 1,
+    "betwin": 3,
+    "freeBet": false,
+    "roundId": 3055,
+    "paid": true,
+    "uid": "643677628d60cdfcebc54bed",
+    "name": "Black",
+    "time": {
+      "$date": "2023-10-13T07:49:52.072Z"
+    },
+    "siteId": "4100300",
+    "currency": "$US",
+    "playerId": 9000,
+    "operatorId": "ONEworks1",
+    "rate": 1
+  }
+]
