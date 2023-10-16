@@ -2,9 +2,9 @@
 {
     public static class Pontoon
     {
-        public static int MaxCardsOnHand = 5;
-        public static int PontoonValue = 21;
-        public static int PontoonCardCount = 2;
+        public const int MaxCardsOnHand = 5;
+        public const int PontoonValue = 21;
+        public const int PontoonCardCount = 2;
     }
 
     public static class PontoonAction
