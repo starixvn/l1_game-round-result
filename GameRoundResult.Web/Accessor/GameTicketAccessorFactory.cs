@@ -68,6 +68,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.DragonTigerFight, typeof(DragonTigerFightTicketAccessor) },
             { GameType.Pontoon, typeof(PontoonTicketAccessor) },
             { GameType.ColorGame, typeof(ColorGameTicketAccessor) },
+            { GameType.BandarQiuQiu, typeof(BandarQiuQiuTicketAccessor) },
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()

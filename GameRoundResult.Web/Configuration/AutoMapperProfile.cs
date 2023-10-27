@@ -2,6 +2,7 @@
 using System.Linq;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
 using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
 using GameRoundResult.Web.Models;
@@ -384,6 +385,45 @@ namespace GameRoundResult.Web.Configuration
                 }));
                 
             CreateMap<ColorGameBetLog, ColorGameBetLogViewModel>();
+
+            CreateMap<BandarQiuQiuRound, BandarQiuQiuRoundResultViewModel>()
+                .ForMember(x => x.Result, opt => opt.MapFrom((source, destination, i, context) =>
+                {
+                    return new BandarQiuQiuRoundResultModel
+                    {
+                        Dealer = new BandarQiuQiuResultItemViewModel() { 
+                            Dominoes = source.Result.Dealer.Dominoes,
+                            HandRankingId = source.Result.Dealer.HandRankingId,
+                            PipsOfSet = source.Result.Dealer.PipsOfSet
+                        },
+                        Spade = new BandarQiuQiuResultItemViewModel()
+                        {
+                            Dominoes = source.Result.Spade.Dominoes,
+                            HandRankingId = source.Result.Spade.HandRankingId,
+                            PipsOfSet = source.Result.Spade.PipsOfSet
+                        },
+                        Heart = new BandarQiuQiuResultItemViewModel()
+                        {
+                            Dominoes = source.Result.Heart.Dominoes,
+                            HandRankingId = source.Result.Heart.HandRankingId,
+                            PipsOfSet = source.Result.Heart.PipsOfSet
+                        },
+                        Club = new BandarQiuQiuResultItemViewModel()
+                        {
+                            Dominoes = source.Result.Club.Dominoes,
+                            HandRankingId = source.Result.Club.HandRankingId,
+                            PipsOfSet = source.Result.Club.PipsOfSet
+                        },
+                        Diamond = new BandarQiuQiuResultItemViewModel()
+                        {
+                            Dominoes = source.Result.Diamond.Dominoes,
+                            HandRankingId = source.Result.Diamond.HandRankingId,
+                            PipsOfSet = source.Result.Diamond.PipsOfSet
+                        },
+                    };
+                }));
+
+            CreateMap<BandarQiuQiuBetLog, BandarQiuQiuBetLogViewModel>();
         }
     }
 }
