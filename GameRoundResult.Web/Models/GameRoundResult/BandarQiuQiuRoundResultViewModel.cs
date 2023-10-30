@@ -35,18 +35,55 @@ namespace GameRoundResult.Web.Models
 
         public string GetResult()
         {
-            var tagBuilder = new TagBuilder("span");
-            tagBuilder.AddCssClass($"");
-            tagBuilder.InnerHtml.AppendHtml("bandar result");          
+            var tagBuilder = new TagBuilder("table");
+            tagBuilder.AddCssClass($"result-table");
+            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice("Dealer"));
+            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice("Spade")); 
+            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice("Heart"));
+            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice("Club"));
+            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice("Diamond"));
 
             return tagBuilder.GetHtmlString();            
+        }
+
+        private TagBuilder BuildResultByChoice(string choice)
+        {
+            var dominoTagBuilder = new TagBuilder("td");
+            dominoTagBuilder.AddCssClass($"result-column");
+            BandarQiuQiuResultItemViewModel item = (BandarQiuQiuResultItemViewModel)this.Result.GetType().GetProperty(choice).GetValue(this.Result, null);
+
+            foreach(string domino in item.Dominoes)
+            {
+                dominoTagBuilder.InnerHtml.AppendHtml(this.BuildDice(domino));
+            }
+
+            var pipOfSetTagBuilder = new TagBuilder("td");
+            pipOfSetTagBuilder.AddCssClass($"pip-of-set");
+            pipOfSetTagBuilder.InnerHtml.AppendHtml(string.Format("{0}:{1}", item.PipsOfSet?.ToList()[0], item.PipsOfSet?.ToList()[1]));
+
+            var tagBuilder = new TagBuilder("tr");
+            tagBuilder.AddCssClass($"result-row");
+            tagBuilder.InnerHtml.AppendHtml(this.BuildText(choice));
+            tagBuilder.InnerHtml.AppendHtml(dominoTagBuilder);
+            tagBuilder.InnerHtml.AppendHtml(pipOfSetTagBuilder);
+
+            return tagBuilder;
+        }
+
+        private TagBuilder BuildText(string text)
+        {
+            var tagBuilder = new TagBuilder("td");
+            tagBuilder.AddCssClass($"result-column");
+            tagBuilder.InnerHtml.AppendHtml(text);
+
+            return tagBuilder;
         }
 
         private TagBuilder BuildDice(string color)
         {
             var img = new TagBuilder("img");
-            img.AddCssClass($"img");
-            img.Attributes.Add("src", $"/scss/images/{color}.png");
+            img.AddCssClass($"img domino-img");
+            img.Attributes.Add("src", $"/scss/images/bandar-qiuqiu/{color}.png");
 
             return img;
         }
