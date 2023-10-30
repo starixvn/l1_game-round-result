@@ -70,20 +70,17 @@ namespace GameRoundResult.Web.Models
 
         public string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            return "bandar winning text";
-            /*
-            var resultKeys = new List<string>() { ResultMapper[Result.Dice1], ResultMapper[Result.Dice2], ResultMapper[Result.Dice3] };
-            var result = resultKeys.Distinct().Select(key => GetText(stringLocalizer, key)).ToList();
-            foreach (KeyValuePair<string, bool> entry in SettlementResult)
+            var result = new List<string>();
+            foreach (KeyValuePair<string, int> entry in SettlementResult)
             {
-                if (InferableChoices.Contains(entry.Key) && entry.Value)
+                if (entry.Value > 0)
                 {
                     result.Add(GetText(stringLocalizer, entry.Key));
                 }
             }
 
             return string.Join(", ", result);            
-            */
+            
         }
 
         public string GetText(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string key)
