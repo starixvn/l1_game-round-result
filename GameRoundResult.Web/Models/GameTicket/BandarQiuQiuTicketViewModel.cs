@@ -38,7 +38,7 @@ namespace GameRoundResult.Web.Models
         private string GetHandRanking(string choice)
         {
             var displayChoice = char.ToUpper(choice[0]) + choice.Substring(1).Trim();
-            BandarQiuQiuResultItemViewModel item = (BandarQiuQiuResultItemViewModel)this.RoundResult.GetType().GetProperty(displayChoice).GetValue(this.RoundResult, null);
+            BandarQiuQiuResultItemViewModel item = (BandarQiuQiuResultItemViewModel)this.RoundResult.Result.GetType().GetProperty(displayChoice).GetValue(this.RoundResult.Result, null);
             return this.HandRankingMapper[(int)item.HandRankingId];
         }
 

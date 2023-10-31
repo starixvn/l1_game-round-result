@@ -12,12 +12,14 @@ namespace GameRoundResult.Web.Models
 
         public Dictionary<string, int> SettlementResult { get; set; }
 
-        public List<string> InferableChoices = new List<string> { "hot", "cold" };
-
-        public Dictionary<int, string> ResultMapper = new Dictionary<int, string>() { { 0, "yellow" }, { 1, "red" }, { 2, "pink" }, { 3, "white" }, { 4, "blue" }, { 5, "green" } };
+        private readonly string Banker = "dealer";
+        private readonly string Spade = "spade";
+        private readonly string Heart = "heart";
+        private readonly string Club = "club";
+        private readonly string Diamond = "diamond";
 
         public virtual bool IsWinningChoice(string choice)
-        {
+        {            
             return SettlementResult[choice.ToLower()] > 0;            
         }
 
@@ -25,7 +27,7 @@ namespace GameRoundResult.Web.Models
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
-               $"{GetResult()}",
+               $"{GetResult(stringLocalizer)}",
                $"{GetWinningTextResult(stringLocalizer)}",
                
             };
@@ -33,24 +35,25 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        public string GetResult()
+        public string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var tagBuilder = new TagBuilder("table");
             tagBuilder.AddCssClass($"result-table");
-            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice("Dealer"));
-            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice("Spade")); 
-            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice("Heart"));
-            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice("Club"));
-            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice("Diamond"));
+            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice(this.Banker, stringLocalizer));
+            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice(this.Spade, stringLocalizer)); 
+            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice(this.Heart, stringLocalizer));
+            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice(this.Club, stringLocalizer));
+            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice(this.Diamond, stringLocalizer));
 
             return tagBuilder.GetHtmlString();            
         }
 
-        private TagBuilder BuildResultByChoice(string choice)
+        private TagBuilder BuildResultByChoice(string choice, IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
+            var betChoice = new BandarQiuQiuBetLogViewModel { Choice = choice };
             var dominoTagBuilder = new TagBuilder("td");
-            dominoTagBuilder.AddCssClass($"result-column");
-            BandarQiuQiuResultItemViewModel item = (BandarQiuQiuResultItemViewModel)this.Result.GetType().GetProperty(choice).GetValue(this.Result, null);
+            dominoTagBuilder.AddCssClass($"result-column domino-column");
+            BandarQiuQiuResultItemViewModel item = (BandarQiuQiuResultItemViewModel)this.Result.GetType().GetProperty(betChoice.ChoiceDisplay).GetValue(this.Result, null);
 
             foreach(string domino in item.Dominoes)
             {
@@ -58,23 +61,23 @@ namespace GameRoundResult.Web.Models
             }
 
             var pipOfSetTagBuilder = new TagBuilder("td");
-            pipOfSetTagBuilder.AddCssClass($"pip-of-set");
+            pipOfSetTagBuilder.AddCssClass($"result-column pip-of-set-column");
             pipOfSetTagBuilder.InnerHtml.AppendHtml(string.Format("{0}:{1}", item.PipsOfSet?.ToList()[0], item.PipsOfSet?.ToList()[1]));
 
             var tagBuilder = new TagBuilder("tr");
             tagBuilder.AddCssClass($"result-row");
-            tagBuilder.InnerHtml.AppendHtml(this.BuildText(choice));
+            tagBuilder.InnerHtml.AppendHtml(this.BuildText(choice, stringLocalizer));
             tagBuilder.InnerHtml.AppendHtml(dominoTagBuilder);
             tagBuilder.InnerHtml.AppendHtml(pipOfSetTagBuilder);
 
             return tagBuilder;
         }
 
-        private TagBuilder BuildText(string text)
+        private TagBuilder BuildText(string choice, IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var tagBuilder = new TagBuilder("td");
-            tagBuilder.AddCssClass($"result-column");
-            tagBuilder.InnerHtml.AppendHtml(text);
+            tagBuilder.AddCssClass($"result-column result-text");
+            tagBuilder.InnerHtml.AppendHtml(GetText(stringLocalizer, choice));
 
             return tagBuilder;
         }
@@ -86,24 +89,7 @@ namespace GameRoundResult.Web.Models
             img.Attributes.Add("src", $"/scss/images/bandar-qiuqiu/{color}.png");
 
             return img;
-        }
-
-        public string GetWinningResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
-        {
-            var result = GetResult();
-            var inferableChoiceResult = new TagBuilder("span");
-            inferableChoiceResult.AddCssClass($"color-game-inferable-result");
-            foreach (KeyValuePair<string, int> entry in SettlementResult)
-                                    {
-                if (InferableChoices.Contains(entry.Key) && entry.Value > 0)
-                {
-                    inferableChoiceResult.InnerHtml.AppendHtml($" &#8212; {GetText(stringLocalizer, entry.Key)}");
-                                            
-                }
-            }
-
-            return $"{result}{inferableChoiceResult.GetHtmlString()}";
-        }
+        }      
 
         public string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
@@ -116,13 +102,14 @@ namespace GameRoundResult.Web.Models
                 }
             }
 
-            return string.Join(", ", result);            
+            return result.Count > 0 ? string.Join(", ", result) : "-"; ;
             
         }
 
         public string GetText(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string key)
         {
-            return stringLocalizer.GetStringWithNamcespace("glossary_" + key, "BandarQiuQiu");
+            var betChoice = new BandarQiuQiuBetLogViewModel { Choice = key };
+            return stringLocalizer.GetStringWithNamcespace(betChoice.TolgeeChoiceKey, "BandarQiuQiu");
         }        
     }
 
