@@ -1,0 +1,42 @@
+[
+  {
+    "id": 3,
+    "time": {
+      "$date": "2022-12-01T09:00:00.000Z"
+    },
+    "result": {
+      "banker": {
+        "dominoes": [ "55", "16", "14", "33" ],
+        "pipsOfSet": [ 7, 1 ],
+        "handRankingId": 0
+      },
+      "spade": {
+        "dominoes": [ "34", "66", "35", "03" ],
+        "pipsOfSet": [ 9, 1 ],
+        "handRankingId": 0
+      },
+      "heart": {
+        "dominoes": [ "56", "26", "45", "13" ],
+        "pipsOfSet": [ 9, 3 ],
+        "handRankingId": 0
+      },
+      "club": {
+        "dominoes": [ "23", "04", "06", "00" ],
+        "pipsOfSet": [ 9, 6 ],
+        "handRankingId": 0
+      },
+      "diamond": {
+        "dominoes": [ "12", "22", "02", "11" ],
+        "pipsOfSet": [ 7, 4 ],
+        "handRankingId": 0
+      }
+    },
+    "settlementResult": {
+      "spade": 0,
+      "heart": 0,
+      "club": 0,
+      "diamond": 0
+    },
+    "exchangeRateId": 4816
+  }
+]

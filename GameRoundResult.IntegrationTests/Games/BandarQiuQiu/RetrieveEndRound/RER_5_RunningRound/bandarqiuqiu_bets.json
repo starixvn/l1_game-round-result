@@ -1,0 +1,30 @@
+[
+  {
+    "uid": "62342b4ac46c7910b22b3b35",
+    "name": "Player",
+    "roundId": 3,
+    "spade": 0,
+    "heart": 1500,
+    "club": 0,
+    "diamond": 0,    
+    "paid": true,
+    "betwin": 0,
+    "time": {
+      "$date": "2022-10-25T09:10:00.000Z"
+    },
+    "odds": {
+      "sixDevil": 1.95,
+      "twin": 1.95,
+      "small": 1.95,
+      "big": 1.95,
+      "qiuqiu": 1.95,
+      "ordinaryCard": 1.95
+    },
+    "playerId": 123,
+    "siteId": "4100300",
+    "freeBet": false,
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1"
+  }
+]

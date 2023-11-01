@@ -391,10 +391,10 @@ namespace GameRoundResult.Web.Configuration
                 {
                     return new BandarQiuQiuRoundResultModel
                     {
-                        Dealer = new BandarQiuQiuResultItemViewModel() { 
-                            Dominoes = source.Result.Dealer.Dominoes,
-                            HandRankingId = source.Result.Dealer.HandRankingId,
-                            PipsOfSet = source.Result.Dealer.PipsOfSet
+                        Banker = new BandarQiuQiuResultItemViewModel() { 
+                            Dominoes = source.Result.Banker.Dominoes,
+                            HandRankingId = source.Result.Banker.HandRankingId,
+                            PipsOfSet = source.Result.Banker.PipsOfSet
                         },
                         Spade = new BandarQiuQiuResultItemViewModel()
                         {

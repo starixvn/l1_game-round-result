@@ -12,11 +12,12 @@ namespace GameRoundResult.Web.Models
 
         public Dictionary<string, int> SettlementResult { get; set; }
 
-        private readonly string Banker = "dealer";
+        private readonly string Banker = "banker";
         private readonly string Spade = "spade";
         private readonly string Heart = "heart";
         private readonly string Club = "club";
         private readonly string Diamond = "diamond";
+        public Dictionary<int, string> ResultMapper = new Dictionary<int, string>() { { 0, "hand_ranking_ordinary" }, { 1, "hand_ranking_qiuqiu" }, { 2, "hand_ranking_big" }, { 3, "hand_ranking_small" }, { 4, "hand_ranking_twin" }, { 5, "hand_ranking_six_devil" } };
 
         public virtual bool IsWinningChoice(string choice)
         {            
@@ -62,7 +63,13 @@ namespace GameRoundResult.Web.Models
 
             var pipOfSetTagBuilder = new TagBuilder("td");
             pipOfSetTagBuilder.AddCssClass($"result-column pip-of-set-column");
-            pipOfSetTagBuilder.InnerHtml.AppendHtml(string.Format("{0}:{1}", item.PipsOfSet?.ToList()[0], item.PipsOfSet?.ToList()[1]));
+            if (item.PipsOfSet != null) {
+                pipOfSetTagBuilder.InnerHtml.AppendHtml(string.Format("{0}:{1}", item.PipsOfSet?.ToList()[0], item.PipsOfSet?.ToList()[1]));
+            }
+            else
+            {
+                pipOfSetTagBuilder.InnerHtml.AppendHtml(string.Format("{0}", GetText(stringLocalizer, ResultMapper[item.HandRankingId])));
+            }            
 
             var tagBuilder = new TagBuilder("tr");
             tagBuilder.AddCssClass($"result-row");
@@ -115,7 +122,7 @@ namespace GameRoundResult.Web.Models
 
     public class BandarQiuQiuRoundResultModel
     {
-        public BandarQiuQiuResultItemViewModel Dealer { get; set; }
+        public BandarQiuQiuResultItemViewModel Banker { get; set; }
 
         public BandarQiuQiuResultItemViewModel Spade { get; set; }
 

@@ -13,7 +13,7 @@ namespace GameRoundResult.Core.Database.Entities.BandarQiuQiu
 
     public class BandarQiuQiuRoundResult
     {
-        public BandarQiuQiuResultItem Dealer { get; set; }
+        public BandarQiuQiuResultItem Banker { get; set; }
 
         public BandarQiuQiuResultItem Spade { get; set; }
 
