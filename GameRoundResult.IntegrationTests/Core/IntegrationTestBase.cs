@@ -33,6 +33,14 @@ namespace GameRoundResult.IntegrationTests
         protected static string RemoveWhiteSpaces(string content)
         {
             var result = Regex.Replace(content, @"\s+", string.Empty);
+            result = Regex.Replace(result, @"<!DOCTYPEhtml>", string.Empty);
+            result = Regex.Replace(result, "<htmllang=\"en\">", string.Empty);
+            result = Regex.Replace(result, "<head>.*?</head>", string.Empty);
+            result = Regex.Replace(result, @"<br>(?![/])", "<br/>");
+            result = Regex.Replace(result, "<tbody><trclass=\"result-row\">", "<trclass=\"result-row\">");
+            result = Regex.Replace(result, "</tbody></table>", "</table>");
+            result = Regex.Replace(result, "<inputtype=\"hidden\"value=\"en-US\"id=\"culture\">", "<inputtype=\"hidden\"value=\"en-US\"id=\"culture\"/>");
+
             return Regex.Replace(result, @"\?v=(.*?)\""", "\"").Replace("</img>", string.Empty);
         }
     }

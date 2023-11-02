@@ -56,7 +56,4 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Games\BandarQiuQiu\BetHistory\" />
-    </ItemGroup>
 </Project>

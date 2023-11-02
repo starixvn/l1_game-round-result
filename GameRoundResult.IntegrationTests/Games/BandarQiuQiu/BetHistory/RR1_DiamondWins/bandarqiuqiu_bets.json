@@ -1,0 +1,31 @@
+[
+  {
+    "freeBet": false,
+    "roundId": 13598,
+    "uid": "65421fe1d8c5fd570e5a6a9e",
+    "betwin": 20,
+    "club": 5,
+    "currency": "$US",
+    "diamond": 5,
+    "heart": 5,
+    "name": "Mushroom7080",
+    "odds": {
+      "sixDevil": 2,
+      "twin": 2,
+      "small": 2,
+      "big": 2,
+      "qiuQiu": 2,
+      "ordinaryCard": 2
+    },
+    "operatorId": "ONEworks1",
+    "paid": true,
+    "playerId": 5346002,
+    "rate": 1,
+    "siteId": "4100300",
+    "spade": 5,
+    "time": {
+      "$date": "2023-11-01T09:54:48.700Z"
+    },
+    "totalAmount": 20
+  }
+]

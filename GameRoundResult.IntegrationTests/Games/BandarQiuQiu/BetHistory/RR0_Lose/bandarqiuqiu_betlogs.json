@@ -1,0 +1,78 @@
+[
+  {
+    "amount": 1,
+    "rebet": false,
+    "roundId": 15469,
+    "uid": "65421fe1d8c5fd570e5a6a9e",
+    "name": "Mushroom7080",
+    "time": {
+      "$date": "2023-11-02T06:42:24.923Z"
+    },
+    "choice": "spade",
+    "receivedTime": {
+      "$date": "2023-11-02T06:42:24.879Z"
+    },
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1",
+    "playerId": 5346002
+  },
+  {
+    "amount": 1,
+    "rebet": false,
+    "roundId": 15469,
+    "uid": "65421fe1d8c5fd570e5a6a9e",
+    "name": "Mushroom7080",
+    "time": {
+      "$date": "2023-11-02T06:42:25.233Z"
+    },
+    "choice": "heart",
+    "receivedTime": {
+      "$date": "2023-11-02T06:42:25.183Z"
+    },
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1",
+    "playerId": 5346002
+  },
+  {
+    "amount": 1,
+    "rebet": false,
+    "roundId": 15469,
+    "uid": "65421fe1d8c5fd570e5a6a9e",
+    "name": "Mushroom7080",
+    "time": {
+      "$date": "2023-11-02T06:42:25.568Z"
+    },
+    "choice": "club",
+    "receivedTime": {
+      "$date": "2023-11-02T06:42:25.510Z"
+    },
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1",
+    "playerId": 5346002
+  },
+  {
+    "amount": 1,
+    "rebet": false,
+    "roundId": 15469,
+    "uid": "65421fe1d8c5fd570e5a6a9e",
+    "name": "Mushroom7080",
+    "time": {
+      "$date": "2023-11-02T06:42:26.070Z"
+    },
+    "choice": "diamond",
+    "receivedTime": {
+      "$date": "2023-11-02T06:42:26.023Z"
+    },
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1",
+    "playerId": 5346002
+  }
+]

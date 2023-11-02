@@ -30,7 +30,7 @@ namespace GameRoundResult.Web.Accessor
             var viewModel = new BandarQiuQiuTicketViewModel
             {
                 RoundResult = result.Item1?.ToViewModel<BandarQiuQiuRound, BandarQiuQiuRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                BetLogs = result.Item2?.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                BetLogs = result.Item2?.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)).OrderByDescending(x => x.Time),
                 Odds = result.Item3?.Odds,
                 TotalBet = result.Item3?.TotalBet ?? 0,
                 BetWin = result.Item3?.Betwin ?? 0
