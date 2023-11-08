@@ -64,6 +64,7 @@ namespace GameRoundResult.Web
                 {
                     options.ViewLocationFormats.Add("/SlotGames/Views/{0}.cshtml");
                     options.ViewLocationFormats.Add("/CascadingSlotGames/Views/{0}.cshtml");
+                    options.ViewLocationFormats.Add("/CrashGames/Views/{0}.cshtml");
                 });
         }
 

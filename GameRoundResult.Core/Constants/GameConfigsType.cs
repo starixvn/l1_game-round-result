@@ -6,5 +6,6 @@
         Slot = 2,
         CascadingSlot = 3,
         SlotRNG = 4,
+        Crash = 5
     }
 }

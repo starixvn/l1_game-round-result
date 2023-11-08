@@ -60,6 +60,7 @@
         DragonTigerFight = 67,
         Pontoon = 72,
         ColorGame = 71,
-        BandarQiuQiu = 75
+        BandarQiuQiu = 75,
+        SpaceFlight = 73
     }
 }

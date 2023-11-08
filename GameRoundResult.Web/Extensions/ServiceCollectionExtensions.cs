@@ -9,6 +9,7 @@ using GameRoundResult.Web._Shared;
 using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.CascadingSlotGames;
 using GameRoundResult.Web.Configuration;
+using GameRoundResult.Web.CrashGames;
 using GameRoundResult.Web.Requests;
 using GameRoundResult.Web.Services;
 using GameRoundResult.Web.SlotGames;
@@ -191,6 +192,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddSlotGames();
             services.AddCascadingSlotGames();
             services.AddTransient(typeof(IJsonStringLocalizer<>),typeof(JsonStringLocalizer<>));
+            services.AddCrashGames();
 
         }
 
