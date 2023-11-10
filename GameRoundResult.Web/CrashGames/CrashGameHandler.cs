@@ -36,7 +36,7 @@ namespace GameRoundResult.Web.CrashGames.Handlers
 
             if (result.Item1 != null)
             {
-                viewModel.RoundResult = mapper.Map<CrashGameRoundResultViewModel>(result);
+                viewModel.RoundResult = mapper.Map<CrashGameRoundResultViewModel>(result.Item1);
                 viewModel.RoundResult.TimeZone = request.TimeZoneInfo;
             }
 

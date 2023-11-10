@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.CascadingSlotGames;
+using GameRoundResult.Web.CrashGames.Handlers;
 using GameRoundResult.Web.SlotGames.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -74,7 +75,8 @@ namespace GameRoundResult.Web.Accessor
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()
         {
             {GameConfigsType.Slot, typeof(SlotGameHandler) },
-            {GameConfigsType.CascadingSlot, typeof(CascadingSlotTicketHandler) }
+            {GameConfigsType.CascadingSlot, typeof(CascadingSlotTicketHandler) },
+            {GameConfigsType.Crash, typeof(CrashGameHandler) }
         };
 
         private readonly IServiceProvider serviceProvider;

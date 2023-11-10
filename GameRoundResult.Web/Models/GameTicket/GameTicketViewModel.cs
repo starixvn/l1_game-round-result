@@ -19,6 +19,9 @@ namespace GameRoundResult.Web.Models
         public decimal TotalBet { get; set; }
         public decimal BetWin { get; set; }
         public decimal WinLoss => BetWin - TotalBet;
+        public string DisplayWinLoss => WinLoss.Format();
+        public string DisplayTotalBet => TotalBet.Format();
+        public string DisplayBetWin => BetWin.Format();
         public string WinLossRowClassName => WinLoss < 0 ? "text-red" : string.Empty;
         public bool EnableTolgee { get; set; }
     }
@@ -32,5 +35,7 @@ namespace GameRoundResult.Web.Models
         public string Choice { get; set; }
 
         public decimal Amount { get; set; }
+
+        public string DisplayAmount => Amount.Format();
     }
 }

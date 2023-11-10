@@ -33,6 +33,11 @@ namespace GameRoundResult.Web.Models
                 return $"_SlotGame{PartialPostfix}";
             }
 
+            if (IsCrashGame)
+            {
+                return $"_CrashGame{PartialPostfix}";
+            }
+
             if (IsBaccarat)
             {
                 return $"_Baccarat{PartialPostfix}";
@@ -72,6 +77,10 @@ namespace GameRoundResult.Web.Models
                  GameType.Baccarat or GameType.VipBaccarat or GameType.BlockchainBaccarat => true,
                  _ => false
              };
+
+        private bool IsCrashGame
+            => GameTicketResult.GameType == GameConfigsType.Crash;
+
 
         private static string TransformToViewName(string name)
         => Regex.Replace(name, @"[\d-]", string.Empty).Replace("Turbo", string.Empty);

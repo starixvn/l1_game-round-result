@@ -1,4 +1,5 @@
 ﻿using GameRoundResult.Core.Database.Repository;
+using GameRoundResult.Web.CrashGames.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GameRoundResult.Web.CrashGames
@@ -9,6 +10,7 @@ namespace GameRoundResult.Web.CrashGames
         {
             services.AddScoped<ICrashGameTicketService, CrashGameTicketService>();
             services.AddScoped<ICrashGameBetRepository, CrashGameBetRepository>();
+            services.AddScoped<CrashGameHandler>();
         }
     }
 }
