@@ -602,7 +602,7 @@ div table.bandar-qiuqiu-table .result-table {
   div table.bandar-qiuqiu-table .result-table .result-row .result-column {
     border-top: none; }
   div table.bandar-qiuqiu-table .result-table .result-row .result-text {
-    width: 100px; }
+    width: 80px; }
   div table.bandar-qiuqiu-table .result-table .result-row .domino-column {
     border-right: none;
     width: 160px; }
@@ -612,6 +612,6 @@ div table.bandar-qiuqiu-table .result-table {
       margin-left: 8px; }
   div table.bandar-qiuqiu-table .result-table .result-row .pip-of-set-column {
     border-left: none;
-    width: 50px;
+    width: 75px;
     padding-left: 0;
     text-align: left; }

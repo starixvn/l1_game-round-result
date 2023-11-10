@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using GameRoundResult.Web.Configuration;
+using System.Collections.Generic;
 
 namespace GameRoundResult.Web.Models
 {
@@ -16,7 +17,7 @@ namespace GameRoundResult.Web.Models
 
         public string GetRowBetClass(string choice)
         {
-            return RoundResult.IsWinningChoice(choice) ? "bold text-blue" : string.Empty;
+            return RoundResult.IsWinOrTieChoice(choice) ? "bold text-blue" : string.Empty;
         }
        
         public string GetWinningOddName(string choice)
@@ -40,6 +41,19 @@ namespace GameRoundResult.Web.Models
             var displayChoice = char.ToUpper(choice[0]) + choice.Substring(1).Trim();
             BandarQiuQiuResultItemViewModel item = (BandarQiuQiuResultItemViewModel)this.RoundResult.Result.GetType().GetProperty(displayChoice).GetValue(this.RoundResult.Result, null);
             return this.HandRankingMapper[(int)item.HandRankingId];
+        }
+
+        public string GetDisplayedOdds(string choice)
+        {
+            if(GetWinningOddName(choice) == Tie)
+            {
+                return "-";
+            }
+            else
+            {
+                var odds = this.GetOdds(choice);
+                return odds.FormatOddsWithZero(FractionalOddsFormat);
+            }
         }
 
         public decimal GetOdds(string choice)
