@@ -9,7 +9,6 @@ namespace GameRoundResult.Web.Validators
         public RetrieveEndRoundInfoRequestValidator()
         {
             RuleFor(x => x.GameRoundId).GreaterThan(0).WithErrorCode(EndRoundInfoError.SB1002.ErrorCode).WithMessage(EndRoundInfoError.SB1002.ErrorDescription);
-            RuleFor(x => x.SiteId).NotNull().NotEmpty().WithErrorCode(EndRoundInfoError.SB1003.ErrorCode).WithMessage(EndRoundInfoError.SB1003.ErrorDescription);
             RuleFor(x => x.PlayerId).GreaterThan(0).WithErrorCode(EndRoundInfoError.SB1004.ErrorCode).WithMessage(EndRoundInfoError.SB1004.ErrorDescription);
         }
     }

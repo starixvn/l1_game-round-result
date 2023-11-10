@@ -39,6 +39,6 @@ namespace GameRoundResult.Web.CascadingSlotGames
         }
 
         protected Task<BaseCascadingSlotRoundEntity> GetRoundAsync(RetrieveEndGameInfoRequest request, string gameConfigName)
-            => betRepository.GetEndRoundAsync(request.GameRoundId, request.PlayerId, request.OperatorId, gameConfigName, request.SiteId);
+            => betRepository.GetEndRoundAsync(request.GameRoundId, request.PlayerId, request.OperatorId, gameConfigName);
     }
 }

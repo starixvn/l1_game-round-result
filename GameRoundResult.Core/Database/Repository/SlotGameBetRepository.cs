@@ -11,7 +11,7 @@ namespace GameRoundResult.Core.Database.Repository
     {
         Task<T> GetAsync<T>(long roundId, int playerId, string operatorId, string gameName) where T : BaseSlotRoundEntity;
 
-        Task<T> GetEndRoundAsync<T>(long roundId, int playerId, string operatorId, string gameName, string siteId) where T : BaseSlotRoundEntity;
+        Task<T> GetEndRoundAsync<T>(long roundId, int playerId, string operatorId, string gameName) where T : BaseSlotRoundEntity;
     }
 
     public class SlotGameBetRepository : GameBetRepository, ISlotGameBetRepository
@@ -25,16 +25,16 @@ namespace GameRoundResult.Core.Database.Repository
                .Find(RoundFilter<T>(roundId, playerId, operatorId))
                .FirstOrDefaultAsync();
 
-        public Task<T> GetEndRoundAsync<T>(long roundId, int playerId, string operatorId, string gameName, string siteId) where T : BaseSlotRoundEntity
+        public Task<T> GetEndRoundAsync<T>(long roundId, int playerId, string operatorId, string gameName) where T : BaseSlotRoundEntity
         => GetRoundCollection<T>(gameName)
-               .Find(EndRoundFilter<T>(roundId, playerId, operatorId, siteId))
+               .Find(EndRoundFilter<T>(roundId, playerId, operatorId))
                .FirstOrDefaultAsync();
 
-        private static Expression<Func<T, bool>> EndRoundFilter<T>(long roundId, int playerId, string operatorId, string siteId) where T : BaseSlotRoundEntity
+        private static Expression<Func<T, bool>> EndRoundFilter<T>(long roundId, int playerId, string operatorId) where T : BaseSlotRoundEntity
         {
             Expression<Func<T, bool>> defaultExpression = DefaultFilter<T>(roundId, playerId, operatorId);
 
-            return defaultExpression.And(bet => bet.SiteId == siteId);
+            return defaultExpression;
         }
 
         private static Expression<Func<T, bool>> RoundFilter<T>(long roundId, int playerId, string operatorId) where T : BaseSlotRoundEntity

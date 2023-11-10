@@ -44,6 +44,6 @@ namespace GameRoundResult.Core.Services
         }
 
         protected override Expression<Func<GameBet, bool>> GetBetFilterExpression(RetrieveEndGameInfoRequest request)
-            => (bet) => bet.HandId == request.GameRoundId && bet.PlayerId == request.PlayerId && bet.SiteId == request.SiteId;
+            => (bet) => bet.HandId == request.GameRoundId && bet.PlayerId == request.PlayerId;
     }
 }

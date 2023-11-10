@@ -13,7 +13,7 @@
     {
         Task<(BaseCascadingSlotRoundEntity, BaseCascadingSlotTotalMultiplierEntity)> GetAsync(long roundId, int playerId, string operatorId, string gameName);
 
-        Task<BaseCascadingSlotRoundEntity> GetEndRoundAsync(long roundId, int playerId, string operatorId, string gameName, string siteId);
+        Task<BaseCascadingSlotRoundEntity> GetEndRoundAsync(long roundId, int playerId, string operatorId, string gameName);
     }
 
     public class CascadingSlotBetRepository : GameBetRepository, ICascadingSlotBetRepository
@@ -43,13 +43,13 @@
             return (round, null);
         }
 
-        public Task<BaseCascadingSlotRoundEntity> GetEndRoundAsync(long roundId, int playerId, string operatorId, string gameName, string siteId)
+        public Task<BaseCascadingSlotRoundEntity> GetEndRoundAsync(long roundId, int playerId, string operatorId, string gameName)
             => GetRoundCollection<BaseCascadingSlotRoundEntity>(gameName)
-                .Find(EndRoundFilter(roundId, playerId, operatorId, siteId))
+                .Find(EndRoundFilter(roundId, playerId, operatorId))
                 .FirstOrDefaultAsync();
 
-        private static Expression<Func<BaseCascadingSlotRoundEntity, bool>> EndRoundFilter(long roundId, int playerId, string operatorId, string siteId)
-            => DefaultFilter(roundId, playerId, operatorId).And(bet => bet.SiteId == siteId);
+        private static Expression<Func<BaseCascadingSlotRoundEntity, bool>> EndRoundFilter(long roundId, int playerId, string operatorId)
+            => DefaultFilter(roundId, playerId, operatorId);
 
         private static Expression<Func<BaseCascadingSlotRoundEntity, bool>> DefaultFilter(long roundId, int playerId, string operatorId)
         {

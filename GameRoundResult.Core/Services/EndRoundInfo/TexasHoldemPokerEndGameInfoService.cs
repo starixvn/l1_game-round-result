@@ -43,7 +43,7 @@ namespace GameRoundResult.Core.Services
 
         protected override Expression<Func<TexasHoldemPokerBet, bool>> GetBetFilterExpression(RetrieveEndGameInfoRequest request)
         {
-            return (bet) => bet.RoundId == request.GameRoundId && bet.PlayerId == request.PlayerId && bet.SiteId == request.SiteId;
+            return (bet) => bet.RoundId == request.GameRoundId && bet.PlayerId == request.PlayerId;
         }
     }
 }
