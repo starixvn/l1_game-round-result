@@ -63,6 +63,10 @@ namespace GameRoundResult.Web.Models
 
             var pipOfSetTagBuilder = new TagBuilder("td");
             pipOfSetTagBuilder.AddCssClass($"result-column pip-of-set-column");
+            if (choice != this.Banker && SettlementResult[choice] == 1)
+            {
+                pipOfSetTagBuilder.AddCssClass("bold");
+            }
             if (item.HandRankingId == 0) {
                 pipOfSetTagBuilder.InnerHtml.AppendHtml(string.Format("{0}:{1}", item.PipsOfSet?.ToList()[0], item.PipsOfSet?.ToList()[1]));
             }
@@ -72,11 +76,7 @@ namespace GameRoundResult.Web.Models
             }            
 
             var tagBuilder = new TagBuilder("tr");
-            tagBuilder.AddCssClass($"result-row");
-            if(choice != this.Banker && SettlementResult[choice] == 1)
-            {
-                tagBuilder.AddCssClass("bold");
-            }
+            tagBuilder.AddCssClass($"result-row");           
             tagBuilder.InnerHtml.AppendHtml(this.BuildText(choice, stringLocalizer));
             tagBuilder.InnerHtml.AppendHtml(dominoTagBuilder);
             tagBuilder.InnerHtml.AppendHtml(pipOfSetTagBuilder);
