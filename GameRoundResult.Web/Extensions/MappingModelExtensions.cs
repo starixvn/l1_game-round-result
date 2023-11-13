@@ -4,6 +4,7 @@ using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
 using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
+using GameRoundResult.Web.CrashGames.ViewModels;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
 
@@ -323,6 +324,14 @@ namespace GameRoundResult.Web.Extensions
         public static Win3CardsBetLogViewModel ToViewModel(this Win3CardsBetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<Win3CardsBetLog, Win3CardsBetLogViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static CrashGameBetLogViewModel ToViewModel(this CrashGameBetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<CrashGameBetLog, CrashGameBetLogViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });

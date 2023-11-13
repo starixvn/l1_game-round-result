@@ -52,12 +52,12 @@
         </tr>
     </thead>
     <tbody>
-        @if (!Model.BetLogs.Any(x => x.Action == CrashGameAction.CashOut || x.Action == CrashGameAction.Refund))
+        @if (!Model.HasCashOut && !Model.HasRefund)
         {
             <tr>
                 <td colspan="2">@Localizer["crash"]</td>
                 <td>-</td>
-                <td class="text-right">@(Model.BetLogs.Any() ? Model.TotalBet : Model.TotalBet / 2)</td>
+                <td class="text-right">@(Model.HasHalfCashOut ? Model.TotalBet / 2 : Model.DisplayTotalBet)</td>
                 <td class="text-right">0</td>
             </tr>
         }

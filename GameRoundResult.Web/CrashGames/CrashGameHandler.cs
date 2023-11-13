@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.CrashGames.ViewModels;
+using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
 
@@ -31,7 +33,7 @@ namespace GameRoundResult.Web.CrashGames.Handlers
             {
                 GameId = gameConfigs.GameId,
                 GameType = gameConfigs.Type,
-                BetLogs = mapper.Map<IEnumerable<CrashGameBetLogViewModel>>(result.Item3)
+                BetLogs = result.Item3.Select(betLog => betLog.ToViewModel(mapper, request.TimeZoneInfo))
             };
 
             if (result.Item1 != null)
