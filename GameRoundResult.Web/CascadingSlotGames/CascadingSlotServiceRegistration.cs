@@ -1,4 +1,5 @@
 ﻿using GameRoundResult.Core.Database.Repository;
+using GameRoundResult.Web.CrashGames;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GameRoundResult.Web.CascadingSlotGames
@@ -11,6 +12,7 @@ namespace GameRoundResult.Web.CascadingSlotGames
             services.AddScoped<ICascadingSlotBetRepository, CascadingSlotBetRepository>();
             services.AddScoped<CascadingSlotGameEndRoundInfoService>();
             services.AddScoped<CascadingSlotTicketHandler>();
+            services.AddScoped<CrashGameEndRoundInfoService>();
         }
     }
 }

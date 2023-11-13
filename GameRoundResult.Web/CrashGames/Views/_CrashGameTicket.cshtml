@@ -52,40 +52,51 @@
         </tr>
     </thead>
     <tbody>
-        @if (!Model.HasCashOut && !Model.HasRefund)
+        @if(Model.RoundResult != null) 
         {
+            @if (!Model.HasCashOut && !Model.HasRefund)
+            {
+                <tr>
+                    <td colspan="2">@Localizer["crash"]</td>
+                    <td>-</td>
+                    <td class="text-right">@(Model.HasHalfCashOut ? Model.TotalBet / 2 : Model.DisplayTotalBet)</td>
+                    <td class="text-right">0</td>
+                </tr>
+            }
+
+            @foreach (var betLog in Model.BetLogs)
+            {
+                <tr>
+                    <td>
+                        @betLog.DateDisplay
+                        <br />
+                        @betLog.TimeDisplay
+                    </td>
+                    <td>@Localizer[CrashGameTolgeeAction.Actions[betLog.Action]]</td>
+                    <td>@(betLog.Multiplier > 0 ? $"{betLog.Multiplier}x" : "-")</td>
+                    <td class="text-right">@betLog.DisplayAmount</td>
+                    <td class="text-right">@betLog.DisplayWinAmount</td>
+                </tr>
+
+            }
+
             <tr>
-                <td colspan="2">@Localizer["crash"]</td>
-                <td>-</td>
-                <td class="text-right">@(Model.HasHalfCashOut ? Model.TotalBet / 2 : Model.DisplayTotalBet)</td>
-                <td class="text-right">0</td>
+                <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>
+                <td class="text-right">@Model.DisplayTotalBet</td>
+                <td class="text-right">@Model.DisplayBetWin</td>
+            </tr>
+            <tr class="total">
+                <td colspan="3" class="bold text-right">@CommonLocalizer["WinLoss"]</td>
+                <td colspan="2" class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.DisplayWinLoss</td>
             </tr>
         }
-
-        @foreach (var betLog in Model.BetLogs)
+        else
         {
             <tr>
-                <td>
-                    @betLog.DateDisplay
-                    <br />
-                    @betLog.TimeDisplay
+                <td colspan="5" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
                 </td>
-                <td>@Localizer[CrashGameTolgeeAction.Actions[betLog.Action]]</td>
-                <td>@(betLog.Multiplier > 0 ? $"{betLog.Multiplier}x" : "-")</td>
-                <td class="text-right">@betLog.DisplayAmount</td>
-                <td class="text-right">@betLog.DisplayWinAmount</td>
             </tr>
-
         }
-
-        <tr>
-            <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>
-            <td class="text-right">@Model.DisplayTotalBet</td>
-            <td class="text-right">@Model.DisplayBetWin</td>
-        </tr>
-        <tr class="total">
-            <td colspan="3" class="bold text-right">@CommonLocalizer["WinLoss"]</td>
-            <td colspan="2" class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.DisplayWinLoss</td>
-        </tr>
     </tbody>
 </table>

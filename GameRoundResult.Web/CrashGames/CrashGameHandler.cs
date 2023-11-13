@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using GameRoundResult.Web.Accessor;
@@ -26,26 +25,26 @@ namespace GameRoundResult.Web.CrashGames.Handlers
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
             var gameConfigs = request.GameConfigs;
-            var result = await crashGameTicketService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId, gameConfigs.Name);
+            var (round, bet, betLogs) = await crashGameTicketService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId, gameConfigs.Name);
 
             var viewModel = new CrashGameTicketViewModel
 
             {
                 GameId = gameConfigs.GameId,
                 GameType = gameConfigs.Type,
-                BetLogs = result.Item3.Select(betLog => betLog.ToViewModel(mapper, request.TimeZoneInfo))
+                BetLogs = betLogs.Select(betLog => betLog.ToViewModel(mapper, request.TimeZoneInfo))
             };
 
-            if (result.Item1 != null)
+            if (round != null)
             {
-                viewModel.RoundResult = mapper.Map<CrashGameRoundResultViewModel>(result.Item1);
+                viewModel.RoundResult = mapper.Map<CrashGameRoundResultViewModel>(round);
                 viewModel.RoundResult.TimeZone = request.TimeZoneInfo;
             }
 
-            if (result.Item2 != null)
+            if (bet != null)
             {
-                viewModel.TotalBet = result.Item2.Amount;
-                viewModel.BetWin = result.Item2.Betwin;
+                viewModel.TotalBet = bet.Amount;
+                viewModel.BetWin = bet.Betwin;
             }
 
             return viewModel;

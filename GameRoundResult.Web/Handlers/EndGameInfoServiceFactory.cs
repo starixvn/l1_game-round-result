@@ -4,6 +4,7 @@ using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.CascadingSlotGames;
+using GameRoundResult.Web.CrashGames;
 using GameRoundResult.Web.SlotGames;
 
 namespace GameRoundResult.Web.Services
@@ -74,7 +75,8 @@ namespace GameRoundResult.Web.Services
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()
         {
             { GameConfigsType.Slot, typeof(SlotGameEndRoundInfoService)},
-            { GameConfigsType.CascadingSlot, typeof(CascadingSlotGameEndRoundInfoService)}
+            { GameConfigsType.CascadingSlot, typeof(CascadingSlotGameEndRoundInfoService)},
+            { GameConfigsType.Crash, typeof(CrashGameEndRoundInfoService)}
         };
 
 
