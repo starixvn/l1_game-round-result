@@ -1,0 +1,19 @@
+[
+  {
+    "amount": 5,
+    "betwin": 6.3,
+    "freeBet": false,
+    "roundId": 20441,
+    "paid": true,
+    "uid": "61b83e7626ecc9208bce39bd",
+    "name": "FWB",
+    "time": {
+      "$date": "2023-11-14T08:50:48.697Z"
+    },
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1",
+    "playerId": 291192
+  }
+]

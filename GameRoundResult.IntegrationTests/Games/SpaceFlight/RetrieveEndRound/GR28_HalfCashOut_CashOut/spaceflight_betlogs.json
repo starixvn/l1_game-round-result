@@ -1,0 +1,42 @@
+[
+  {
+    "amount": 2.5,
+    "winAmount": 2.73,
+    "multiplier": 1.09,
+    "roundId": 20460,
+    "uid": "61b83e7626ecc9208bce39bd",
+    "name": "FWB",
+    "time": {
+      "$date": "2023-11-14T08:59:07.978Z"
+    },
+    "action": "cashOut",
+    "receivedTime": {
+      "$date": "2023-11-14T08:59:07.942Z"
+    },
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1",
+    "playerId": 291192
+  },
+  {
+    "amount": 2.5,
+    "winAmount": 2.6,
+    "multiplier": 1.04,
+    "roundId": 20460,
+    "uid": "61b83e7626ecc9208bce39bd",
+    "name": "FWB",
+    "time": {
+      "$date": "2023-11-14T08:59:07.097Z"
+    },
+    "action": "halfCashOut",
+    "receivedTime": {
+      "$date": "2023-11-14T08:59:06.991Z"
+    },
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1",
+    "playerId": 291192
+  }
+]
