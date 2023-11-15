@@ -18,13 +18,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 using Sentry;
 using TimeZoneConverter;
 
 namespace GameRoundResult.Web.Controllers
 {
+    [Authorize]
     public class GameRoundResultController : Controller
     {
         private readonly IMediator mediator;
