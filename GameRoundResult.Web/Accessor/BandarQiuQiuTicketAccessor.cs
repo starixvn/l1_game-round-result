@@ -1,12 +1,11 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
 using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GameRoundResult.Web.Accessor
 {
@@ -14,7 +13,7 @@ namespace GameRoundResult.Web.Accessor
     {
         private readonly IGameBetService gameBetService;
         private readonly IMapper mapper;
-        private readonly ICurrencyGroupService currencyGroupService;        
+        private readonly ICurrencyGroupService currencyGroupService;
 
         public BandarQiuQiuTicketAccessor(IGameBetService gameBetService, IMapper mapper, ICurrencyGroupService currencyGroupService)
         {
@@ -30,7 +29,7 @@ namespace GameRoundResult.Web.Accessor
             var viewModel = new BandarQiuQiuTicketViewModel
             {
                 RoundResult = result.Item1?.ToViewModel<BandarQiuQiuRound, BandarQiuQiuRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                BetLogs = result.Item2?.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)).OrderByDescending(x => x.Time),
+                BetLogs = result.Item2?.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
                 Odds = result.Item3?.Odds,
                 TotalBet = result.Item3?.TotalBet ?? 0,
                 BetWin = result.Item3?.Betwin ?? 0
