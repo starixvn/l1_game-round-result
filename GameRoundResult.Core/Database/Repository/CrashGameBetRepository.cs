@@ -31,7 +31,7 @@ namespace GameRoundResult.Core.Database.Repository
         public async Task<(CrashGameRound, CrashGameBet)> GetEndRoundAsync(long roundId, int playerId, string operatorId, string gameName)
         {
             var round = await GetRoundAsync<CrashGameRound>(roundId, CollectionNameFormatter.Round(gameName));
-            var bet = (await GetBetsAsync<CrashGameBet>(roundId, playerId, false, CollectionNameFormatter.Bet(gameName), operatorId, x => x.Paid)).FirstOrDefault();
+            var bet = (await GetBetsAsync<CrashGameBet>(roundId, playerId, false, CollectionNameFormatter.Bet(gameName), operatorId)).FirstOrDefault();
 
             return (round, bet);
         }
