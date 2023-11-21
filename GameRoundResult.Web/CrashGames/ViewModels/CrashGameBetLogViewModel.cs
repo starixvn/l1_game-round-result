@@ -10,5 +10,6 @@ namespace GameRoundResult.Web.CrashGames.ViewModels
         public string Action { get; set; }
 
         public string DisplayWinAmount => WinAmount.Format();
+        public string DisplayMultiplier => Multiplier > 0 ? $"{Multiplier}x" : "-";
     }
 }

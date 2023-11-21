@@ -45,7 +45,7 @@
     <thead>
         <tr>
             <th>@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
-            <th>@CommonLocalizer["Option"]</th>
+            <th>@Localizer["glossary_option"]</th>
             <th>@Localizer["multiplier"]</th>
             <th>@CommonLocalizer["Stake"]</th>
             <th>@CommonLocalizer["Win"]</th>
@@ -54,15 +54,6 @@
     <tbody>
         @if(Model.RoundResult != null) 
         {
-            @if (!Model.HasCashOut && !Model.HasRefund)
-            {
-                <tr>
-                    <td colspan="2">@Localizer["crash"]</td>
-                    <td>-</td>
-                    <td class="text-right">@(Model.HasHalfCashOut ? Model.TotalBet / 2 : Model.DisplayTotalBet)</td>
-                    <td class="text-right">0</td>
-                </tr>
-            }
 
             @foreach (var betLog in Model.BetLogs)
             {
@@ -73,12 +64,23 @@
                         @betLog.TimeDisplay
                     </td>
                     <td>@Localizer[CrashGameTolgeeAction.Actions[betLog.Action]]</td>
-                    <td>@(betLog.Multiplier > 0 ? $"{betLog.Multiplier}x" : "-")</td>
+                    <td>@betLog.DisplayMultiplier</td>
                     <td class="text-right">@betLog.DisplayAmount</td>
                     <td class="text-right">@betLog.DisplayWinAmount</td>
                 </tr>
 
             }
+
+            @if (!Model.HasCashOut && !Model.HasRefund)
+            {
+                <tr>
+                    <td colspan="2">@Localizer["crash"]</td>
+                    <td>-</td>
+                    <td class="text-right">@(Model.HasHalfCashOut ? Model.TotalBet / 2 : Model.DisplayTotalBet)</td>
+                    <td class="text-right">0</td>
+                </tr>
+            }
+
 
             <tr>
                 <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>

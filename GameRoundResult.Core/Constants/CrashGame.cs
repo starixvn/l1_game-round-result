@@ -13,9 +13,9 @@ namespace GameRoundResult.Core.Constants
     {
         public static Dictionary<string, string> Actions = new()
         {
-            {CrashGameAction.CashOut, "cashout" },
-            {CrashGameAction.HalfCashOut, "cashout_50%" },
-            {CrashGameAction.Refund, "refund" },
+            { CrashGameAction.CashOut, "cashout" },
+            { CrashGameAction.HalfCashOut, "cashout_50%" },
+            { CrashGameAction.Refund, "glossary_refund" },
         };
     }
 }

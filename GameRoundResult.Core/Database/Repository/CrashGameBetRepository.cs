@@ -23,7 +23,7 @@ namespace GameRoundResult.Core.Database.Repository
         {
             var round = await GetRoundAsync<CrashGameRound>(roundId, CollectionNameFormatter.Round(gameName));
             var bet = (await GetBetsAsync<CrashGameBet>(roundId, playerId, false, CollectionNameFormatter.Bet(gameName), operatorId)).FirstOrDefault();
-            var betLogs = await GetBetLogsAsync<CrashGameBetLog>(roundId, playerId, CollectionNameFormatter.BetLog(gameName), operatorId);
+            var betLogs = (await GetBetLogsAsync<CrashGameBetLog>(roundId, playerId, CollectionNameFormatter.BetLog(gameName), operatorId)).OrderBy(x => x.Time);
 
             return (round, bet, betLogs);
         }
