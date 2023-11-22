@@ -5,14 +5,16 @@ using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
 using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
+using GameRoundResult.Web.CrashGames.ViewModels;
 using GameRoundResult.Web.Models;
+using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GameRoundResult.Web.Accessor
 {
     public interface IGameRoundAccessorFactory
     {
-        IGameRoundAccessor GetService(GameType game);
+        IGameRoundAccessor GetService(GameType game, bool isCrashGame);
     }
 
     public class GameRoundAccessorFactory : IGameRoundAccessorFactory
@@ -75,7 +77,10 @@ namespace GameRoundResult.Web.Accessor
             this.serviceProvider = serviceProvider;
         }
 
-        public IGameRoundAccessor GetService(GameType game)
-        => (IGameRoundAccessor)serviceProvider.GetRequiredService(services[game]);
+        public IGameRoundAccessor GetService(GameType game, bool isCrashGame)
+        {
+            var serviceType = isCrashGame ? typeof(GameRoundAccessor<CrashGameRound, CrashGameRoundResultViewModel>) : services[game];
+            return (IGameRoundAccessor)serviceProvider.GetRequiredService(serviceType);        
+        }
     }
 }

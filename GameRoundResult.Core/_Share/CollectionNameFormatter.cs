@@ -7,7 +7,7 @@
         public static readonly string BetLogSuffix = "betlogs";
         public static readonly string CascadingSlotMultiplierSuffix = "multipliers";
 
-        private static string Format(string name, string suffix) => $"{name}_{suffix}";
+        private static string Format(string name, string suffix) => $"{name.ToLowerInvariant()}_{suffix}";
 
         public static string Round(string name) => Format(name, RoundSuffix);
 

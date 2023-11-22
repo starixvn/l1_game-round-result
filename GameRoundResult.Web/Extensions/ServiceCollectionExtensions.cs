@@ -88,6 +88,9 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IPontoonTicketService, PontoonTicketService>();
             services.AddScoped<IPontoonBetRepository, PontoonBetRepository>();
 
+            services.AddScoped<IGeneralGameSettingRepository, GeneralGameSettingRepository>();
+            services.AddScoped<IGeneralGameSettingService, GeneralGameSettingService>();
+
             services.AddScoped<IHiLoTicketService, HiLoTicketService>();
             services.AddScoped<IHiLoBetRepository, HiLoBetRepository>();
 

@@ -37,6 +37,7 @@ namespace GameRoundResult.Web.Controllers
         public const int dataCacheDuration = 15;
         private readonly IPartnerService partnerService;
         private readonly bool enableTolgee;
+        private readonly IGeneralGameSettingService generalGameSettingService;
 
         public GameRoundResultController(IMediator mediator,
             GameTypeLocalization gameTypeLocalization,
@@ -44,7 +45,8 @@ namespace GameRoundResult.Web.Controllers
             IOptions<HostConfiguration> hostConfigurationOptions,
             IDataProtectionProvider dataProtectionProvider,
             IPartnerService partnerService,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IGeneralGameSettingService generalGameSettingService)
         {
             this.mediator = mediator;
             this.gameTypeLocalization = gameTypeLocalization;
@@ -53,6 +55,7 @@ namespace GameRoundResult.Web.Controllers
             hostConfiguration = hostConfigurationOptions.Value;
             this.partnerService = partnerService;
             enableTolgee = bool.Parse(configuration["EnableTolgee"]);
+            this.generalGameSettingService = generalGameSettingService;
         }
 
         [HttpGet]
@@ -75,11 +78,12 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetRoundResult(GameType gameType, [FromServices] IRoundResultViewFactory viewFactory)
+        public async Task<IActionResult> GetRoundResult(GameType gameType, [FromServices] IRoundResultViewFactory viewFactory)
         {
+            var isCrashGame =  await generalGameSettingService.IsCrashGame((int)gameType);
             if (Enum.IsDefined(typeof(GameType), gameType))
             {
-                return PartialView(viewFactory.GetView(gameType));
+                return PartialView(viewFactory.GetView(gameType, isCrashGame));
             }
 
             throw new ArgumentException("Invalid game type", nameof(gameType));
