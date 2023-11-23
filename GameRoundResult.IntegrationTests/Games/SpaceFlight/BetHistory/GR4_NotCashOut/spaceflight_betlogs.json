@@ -1,0 +1,44 @@
+[
+  {
+    "amount": 1,
+    "winAmount": 0,
+    "multiplier": 0,
+    "reachMaxWin": false,
+    "roundId": 49619,
+    "uid": "61b83e7626ecc9208bce39bd",
+    "name": "FWB",
+    "time": {
+      "$date": "2023-11-23T04:21:47.793Z"
+    },
+    "action": "crash",
+    "receivedTime": {
+      "$date": "2023-11-23T04:21:47.804Z"
+    },
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1",
+    "playerId": 291192
+  },
+  {
+    "amount": 1,
+    "winAmount": 0,
+    "multiplier": 0,
+    "reachMaxWin": false,
+    "roundId": 49619,
+    "uid": "61b83e7626ecc9208bce39bd",
+    "name": "FWB",
+    "time": {
+      "$date": "2023-11-23T04:21:17.067Z"
+    },
+    "action": "bet",
+    "receivedTime": {
+      "$date": "2023-11-23T04:21:17.038Z"
+    },
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1",
+    "playerId": 291192
+  }
+]
