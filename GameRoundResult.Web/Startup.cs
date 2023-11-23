@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
-using GameRoundResult.Web.VG3;
+using GameRoundResult.Web.Handlers;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -32,8 +32,12 @@ namespace GameRoundResult.Web
             services.Configure<HostConfiguration>(Configuration.GetSection("HostConfiguration"));
             services.Configure<GameResource>(Configuration.GetSection("GameResource"));
 
-            services.AddRestServices(Configuration);
+            var cloudServiceConfig = new CloudServiceConfig();
+            Configuration.GetSection("CloudServiceConfig").Bind(cloudServiceConfig);
+            ResultApiCommunicator.InitApi(services, cloudServiceConfig);
 
+            services.AddSingleton(cloudServiceConfig);
+            services.AddRestServices(Configuration);
             services.AddAutoMapper(typeof(Startup));
             services.AddMediatR(typeof(Startup));
             services.AddMongoDatabase(Configuration);
@@ -43,8 +47,6 @@ namespace GameRoundResult.Web
             services.AddResponseCaching();
             services.AddHealthChecks();
             services.AddMemoryCache();
-
-            VG3ServiceInit.InitService(services, Configuration.GetValue<string>("VG3:DomainResult"));
 
             services.AddDataProtection()
               .PersistKeysToMongoDb(Configuration)

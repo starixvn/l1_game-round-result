@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using GameRoundResult.Core.Constants;
+using MediatR;
 
 namespace GameRoundResult.Web.Models
 {
@@ -30,7 +31,7 @@ namespace GameRoundResult.Web.Models
         public string OperatorSecret { get; set; }
     }
 
-    public class BetHistoryAccessUrlRequestModel
+    public class BetHistoryAccessUrlRequestModel : IRequest<GameTicketAccessUrlResultModel>
     {
         [Required]
         public GameType GameTypeId { get; set; }
@@ -46,5 +47,7 @@ namespace GameRoundResult.Web.Models
         public string Language { get; set; }
 
         public bool FreeBet { get; set; }
+
+        public bool CallFromCloudService { get; set; }
     }
 }

@@ -9,7 +9,6 @@ using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
-using GameRoundResult.Web.VG3;
 using MediatR;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
@@ -32,8 +31,8 @@ namespace GameRoundResult.Web.Controllers
         private readonly IPartnerService partnerService;
         private readonly IEnumerable<OperatorConfig> operatorConfigs;
         private readonly string systemType;
-        private readonly IVG3ResultService vg3Service;
         private readonly bool enableTolgee;
+        private readonly CloudServiceConfig cloudServiceConfig;
 
         public BetHistoryController(
             IMediator mediator,
@@ -43,7 +42,7 @@ namespace GameRoundResult.Web.Controllers
             IPartnerService partnerService,
             IOptions<List<OperatorConfig>> operatorConfigsOptions,
             IConfiguration configuration,
-            IVG3ResultService vg3Service
+            CloudServiceConfig cloudServiceConfig
             )
         {
             this.mediator = mediator;
@@ -53,8 +52,8 @@ namespace GameRoundResult.Web.Controllers
             this.logService = logService;
             operatorConfigs = operatorConfigsOptions.Value;
             systemType = configuration["SystemType"];
-            this.vg3Service = vg3Service;
             enableTolgee = bool.Parse(configuration["EnableTolgee"]);
+            this.cloudServiceConfig = cloudServiceConfig;
         }
 
         [HttpGet]
@@ -103,6 +102,19 @@ namespace GameRoundResult.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> GetAccessUrl([FromBody] BetHistoryAccessUrlRequestModel model)
         {
+            if (cloudServiceConfig?.ShouldCallOnPremiseService((int)model.GameTypeId) == true
+                && model?.CallFromCloudService != true)
+            {
+                var requestAccessUrlResult = await mediator.Send(model);
+
+                return requestAccessUrlResult.IsAuthenticated ? Ok(requestAccessUrlResult) : BadRequest();
+            }
+
+            return await CreateAccessUrl(model);
+        }
+
+        private async Task<IActionResult> CreateAccessUrl(BetHistoryAccessUrlRequestModel model)
+        {
             var log = ConvertToLog(model);
 
             if (ModelState.IsValid)
@@ -111,43 +123,16 @@ namespace GameRoundResult.Web.Controllers
 
                 if (@operator != null)
                 {
-                    if (this.isVG2System() && vg3Service.IsVG3Ticket(model))
-                    {
-                        try
-                        {
-                            var vg3Request = new VG3Request
-                            {
-                                Auth = vg3Service.GetVG3Authentication(),
-                                GameRoundId = model.GameRoundId,
-                                GameTypeId = (byte)model.GameTypeId,
-                                Language = model.Language,
-                                PlayerId = model.PlayerId,
-                            };
-                            var result = await vg3Service.GetBetDetailsURL(vg3Request);
-                            log.Result = new AccessUrlResponse { RedirectUrl = result.RedirectUrl };
-                            log.ResponseTimeStamp = DateTimeOffset.UtcNow;
-                            await logService.LogTicketDetailRequestAsync(log);
-                            return Ok(result);
-                        }
-                        catch (Exception ex)
-                        {
-                            log = ConvertToLog(model);
-                            SentrySdk.CaptureException(ex);
-                        }
-                    }
-                    else
-                    {
-                        var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}^^{model.Auth.OperatorSecret}^^{model.GameTypeId}^^{model.GameRoundId}^^{model.PlayerId}^^{model.FreeBet}",
+                    var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}^^{model.Auth.OperatorSecret}^^{model.GameTypeId}^^{model.GameRoundId}^^{model.PlayerId}^^{model.FreeBet}",
                             TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
-                        model.Language = StandardizeLanguage(model.Language);
-                        var redirectUrl = Url.Action("Index", "BetHistory", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
+                    model.Language = StandardizeLanguage(model.Language);
+                    var redirectUrl = Url.Action("Index", "BetHistory", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
 
-                        log.Result = new AccessUrlResponse { RedirectUrl = redirectUrl };
-                        log.ResponseTimeStamp = DateTimeOffset.UtcNow;
-                        await logService.LogTicketDetailRequestAsync(log);
+                    log.Result = new AccessUrlResponse { RedirectUrl = redirectUrl };
+                    log.ResponseTimeStamp = DateTimeOffset.UtcNow;
+                    await logService.LogTicketDetailRequestAsync(log);
 
-                        return Ok(new GameTicketAccessUrlResultModel { RedirectUrl = redirectUrl });
-                    }
+                    return Ok(new GameTicketAccessUrlResultModel { RedirectUrl = redirectUrl });
                 }
             }
 

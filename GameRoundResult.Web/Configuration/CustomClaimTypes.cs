@@ -6,5 +6,6 @@
         public const string SiteName = "SiteName";
         public const string PartnerId = "PartnerId";
         public const string CurrencyGroupId = "CurrencyGroupId";
+        public const string ClientKey = "ClientKey";
     }
 }

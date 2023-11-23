@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Configuration;
+using GameRoundResult.Web.Handlers;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
 using GameRoundResult.Web.ViewFactory;
@@ -19,8 +20,10 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.DependencyInjection;
 using Sentry;
 using TimeZoneConverter;
+using GameRoundResult.Web.Models.GameRoundResult;
 
 namespace GameRoundResult.Web.Controllers
 {
@@ -38,6 +41,8 @@ namespace GameRoundResult.Web.Controllers
         private readonly IPartnerService partnerService;
         private readonly bool enableTolgee;
         private readonly IGeneralGameSettingService generalGameSettingService;
+        private readonly CloudServiceConfig cloudServiceConfig;
+        private readonly IServiceProvider serviceProvider;
 
         public GameRoundResultController(IMediator mediator,
             GameTypeLocalization gameTypeLocalization,
@@ -46,7 +51,9 @@ namespace GameRoundResult.Web.Controllers
             IDataProtectionProvider dataProtectionProvider,
             IPartnerService partnerService,
             IConfiguration configuration,
-            IGeneralGameSettingService generalGameSettingService)
+            IGeneralGameSettingService generalGameSettingService,
+            CloudServiceConfig cloudServiceConfig,
+            IServiceProvider serviceProvider)
         {
             this.mediator = mediator;
             this.gameTypeLocalization = gameTypeLocalization;
@@ -56,6 +63,8 @@ namespace GameRoundResult.Web.Controllers
             this.partnerService = partnerService;
             enableTolgee = bool.Parse(configuration["EnableTolgee"]);
             this.generalGameSettingService = generalGameSettingService;
+            this.cloudServiceConfig = cloudServiceConfig;
+            this.serviceProvider = serviceProvider;
         }
 
         [HttpGet]
@@ -91,7 +100,17 @@ namespace GameRoundResult.Web.Controllers
 
         [ResponseCache(Duration = dataCacheDuration, VaryByQueryKeys = new[] { "start", "length", "gameType", "roundId", "userTimeZone", "date" })]
         public async Task<IActionResult> GetData(int start, int length, GameType gameType, long roundId, string userTimeZone, DateTime date,
-            [FromServices] IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+            [FromServices] IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, bool requestFromHistoryService)
+        {
+            if (cloudServiceConfig?.ShouldCallOnPremiseService((int)gameType) == true && !requestFromHistoryService)
+            {
+                return await GetRemoteData(start, length, gameType, roundId, userTimeZone, date);
+            }
+
+            return await GetInternalData(start, length, gameType, roundId, userTimeZone, date, stringLocalizer);
+        }
+
+        private async Task<IActionResult> GetInternalData(int start, int length, GameType gameType, long roundId, string userTimeZone, DateTime date, IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var clientTimeZone = User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.TimeZone)?.Value;
             var timeZoneInfo = string.IsNullOrWhiteSpace(clientTimeZone) ?
@@ -101,13 +120,61 @@ namespace GameRoundResult.Web.Controllers
 
             var data = result.Item2.Select(x => x.ToDataTableArray(stringLocalizer));
 
-            return Json(new
+            return Json(new RoundResultPagingViewModel
             {
-                data,
-                recordsFiltered = result.Item1,
-                recordsTotal = result.Item1
+                Data = data,
+                RecordsFiltered = result.Item1,
+                RecordsTotal = result.Item1
             });
         }
+
+        private async Task<IActionResult> GetRemoteData(int start, int length, GameType gameType, long roundId, string userTimeZone, DateTime date)
+        {
+            var mainResultApi = serviceProvider.GetService<IMainResultApi>();
+            var clientKey = User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.ClientKey)?.Value;
+            var clientId = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
+            try
+            {
+                var roundResultByGame = await mainResultApi.GetRoundResultByGame(new GetRoundResultByGameRequest
+                {
+                    Start = start,
+                    GameType = gameType,
+                    Auth = new GameRoundResultAuthModel
+                    {
+                        ClientID = clientId,
+                        ClientKey = clientKey
+                    },
+                    Date = date,
+                    Length = length,
+                    RoundId = roundId,
+                    UserTimeZone = userTimeZone
+                });
+
+                return Json(roundResultByGame);
+            }
+            catch (Exception ex)
+            {
+                SentrySdk.CaptureException(ex);
+                return BadRequest();
+            }
+        }
+
+        [HttpGet, AllowAnonymous]
+        public async Task<IActionResult> GetRemoteData(
+            GetRoundResultByGameRequest request,
+            [FromServices] IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            var client = GetClient(request.Auth.ClientID, request.Auth.ClientKey);
+            var @operator = await partnerService.Get(request.Auth.OperatorId, request.Auth.OperatorSecret);
+
+            if (client == null && @operator == null)
+            {
+                return BadRequest();
+            }    
+
+            return await GetData(request.Start, request.Length, request.GameType, request.RoundId, request.UserTimeZone, request.Date, stringLocalizer, true); 
+        }
+
 
         [HttpPost]
         [AllowAnonymous]
@@ -184,6 +251,7 @@ namespace GameRoundResult.Web.Controllers
                         new Claim(CustomClaimTypes.SiteName, siteName),
                         new Claim(CustomClaimTypes.PartnerId, partnerId),
                         new Claim(CustomClaimTypes.CurrencyGroupId, currencyGroupId),
+                        new Claim(CustomClaimTypes.ClientKey, clientKey),
                     };
                 var claimsIdentity = new ClaimsIdentity(
                     claims, CookieAuthenticationDefaults.AuthenticationScheme);

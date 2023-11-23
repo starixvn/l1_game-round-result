@@ -15,6 +15,8 @@ namespace GameRoundResult.Core.Services
         public decimal ValidBetAmount { get; set; }
 
         public DateTimeOffset? EndTime { get; set; }
+
+        public bool IsAuthenticated { get; set; } = true;
     }
 
     public static class EndRoundInfoError

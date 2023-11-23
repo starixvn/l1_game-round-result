@@ -3,5 +3,7 @@
     public class GameTicketAccessUrlResultModel
     {
         public string RedirectUrl { get; set; }
+
+        public bool IsAuthenticated { get; set; }
     }
 }

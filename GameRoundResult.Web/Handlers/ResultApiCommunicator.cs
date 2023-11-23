@@ -1,0 +1,34 @@
+﻿using System.Threading.Tasks;
+using GameRoundResult.Core.Services;
+using GameRoundResult.Web.Configuration;
+using GameRoundResult.Web.Models;
+using GameRoundResult.Web.Models.GameRoundResult;
+using GameRoundResult.Web.Requests;
+using Microsoft.Extensions.DependencyInjection;
+using Refit;
+
+namespace GameRoundResult.Web.Handlers
+{
+    public interface IMainResultApi
+    {
+        [Post("/BetHistory/GetAccessUrl")]
+        Task<GameTicketAccessUrlResultModel> GetAccessUrl([Body] BetHistoryAccessUrlRequestModel model);
+
+        [Post("/EndRoundInfo")]
+        Task<EndRoundInfoResult> RetrieveEndGameInfo([Body] RetrieveEndRoundInfoRequest request);
+
+        [Get("/GameRoundResult/GetRemoteData")]
+        Task<RoundResultPagingViewModel> GetRoundResultByGame(GetRoundResultByGameRequest request);
+    }
+
+    public static class ResultApiCommunicator
+    {
+        public static void InitApi(this IServiceCollection services, CloudServiceConfig cloudServiceConfig)
+        {
+            if (cloudServiceConfig != null && cloudServiceConfig.IsCloudService)
+            {
+                services.AddSingleton(RestService.For<IMainResultApi>(cloudServiceConfig.OnPremiseResultUrl, new RefitSettings(new NewtonsoftJsonContentSerializer())));
+            }
+        }
+    }
+}
