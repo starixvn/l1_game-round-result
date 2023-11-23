@@ -81,13 +81,12 @@
             }
 
             <tr>
-                <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>
-                <td class="text-right">@Model.DisplayTotalBet</td>
+                <td colspan="4" class="text-right">@CommonLocalizer["Total"]</td>
                 <td class="text-right">@Model.DisplayBetWin</td>
             </tr>
             <tr class="total">
-                <td colspan="3" class="bold text-right">@CommonLocalizer["WinLoss"]</td>
-                <td colspan="2" class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.DisplayWinLoss</td>
+                <td colspan="4" class="bold text-right">@CommonLocalizer["WinLoss"]</td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.DisplayWinLoss</td>
             </tr>
         }
         else
