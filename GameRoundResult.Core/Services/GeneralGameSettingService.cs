@@ -9,7 +9,7 @@ namespace GameRoundResult.Core.Services
 {
     public interface IGeneralGameSettingService
     {
-        Task<IEnumerable<GameConfigEntity>> GetAsync();
+        Task<IEnumerable<GameConfigEntity>> GetSelectGamesAsync();
 
         Task<bool> IsCrashGame(int gameId);
     }
@@ -22,9 +22,17 @@ namespace GameRoundResult.Core.Services
             this.generalGameSettingRepository = generalGameSettingRepository;
         }
 
-        public async Task<IEnumerable<GameConfigEntity>> GetAsync()
-         => await generalGameSettingRepository.GetAll();
+        public async Task<IEnumerable<GameConfigEntity>> GetSelectGamesAsync()
+        {
+            var gameEntities = await generalGameSettingRepository.GetAll();
+            var filteredGames = gameEntities
+                .Where(x => x.Type != (byte)GameConfigsType.Slot &&
+                 x.Type != (byte)GameConfigsType.CascadingSlot &&
+                 x.GameId > 0);
 
+            return filteredGames;
+        }
+        
         public async Task<bool> IsCrashGame(int gameId)
         {
             var gameEntities = await generalGameSettingRepository.GetAll();

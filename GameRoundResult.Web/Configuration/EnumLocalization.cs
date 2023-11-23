@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
+using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Services;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -18,14 +18,13 @@ namespace GameRoundResult.Web.Configuration
             this.localizer = localizer;
         }
 
-        protected virtual IEnumerable<SelectListItem> GetSelectListItems()
+        protected virtual IEnumerable<SelectListItem> GetSelectListItems(IEnumerable<GameConfigEntity> games)
         {
-            var enums = Enum.GetValues(typeof(T)).Cast<T>();
-            return enums.Select(x => new SelectListItem
+            return games.Select(x => new SelectListItem
             {
-                Value = Convert.ToInt32(x).ToString(),
-                Text = localizer[x.ToString()]
-            });
+                Value = Convert.ToInt32(x.GameId).ToString(),
+                Text = localizer[!string.IsNullOrEmpty(x.DisplayName) ? x.DisplayName : ((GameType)Enum.Parse(typeof(GameType), x.GameId.ToString())).ToString()]
+            });      
         }
     }
 
@@ -46,30 +45,41 @@ namespace GameRoundResult.Web.Configuration
 
         private readonly IPartnerConfigService partnerConfigService;
 
-        public GameTypeLocalization(IJsonStringLocalizer<GameType> localizer, IPartnerConfigService PartnerConfigService) : base(localizer)
+        private readonly IGeneralGameSettingService generalGameSettingService;
+
+        public GameTypeLocalization(IJsonStringLocalizer<GameType> localizer, IPartnerConfigService PartnerConfigService, IGeneralGameSettingService generalGameSettingService) : base(localizer)
         {
             this.partnerConfigService = PartnerConfigService;
+            this.generalGameSettingService = generalGameSettingService;
         }
 
         public async Task<IEnumerable<SelectListItem>> GetGameListAsync(string siteName, string partnerId)
         {
             var configs = (await partnerConfigService.GetAsync(partnerId))?.Value;
-
+           
             if (configs != null)
             {
-                return GetSelectListItems()
+                var selectGameList = await GetSelectList();
+                return selectGameList
                     .Where(x => !excludeGames.Any(e => e == (GameType)Enum.Parse(typeof(GameType), x.Value)) &&
                     (!configs.ContainsKey(x.Value) ||
                     !configs[x.Value].Any(excludedSite => string.Equals(excludedSite, siteName, StringComparison.InvariantCultureIgnoreCase))));
             }
 
-            return GetGameList();
+            return await GetGameList();
         }
 
-        public IEnumerable<SelectListItem> GetGameList()
+        public async Task<IEnumerable<SelectListItem>> GetGameList()
         {
-            return GetSelectListItems()
+            var selectGameList = await GetSelectList();
+            return selectGameList
                 .Where(x => !excludeGames.Any(e => e == (GameType)Enum.Parse(typeof(GameType), x.Value)));
+        }
+
+        public async Task<IEnumerable<SelectListItem>> GetSelectList()
+        {
+            var games = await generalGameSettingService.GetSelectGamesAsync();
+            return GetSelectListItems(games);       
         }
     }
 }
