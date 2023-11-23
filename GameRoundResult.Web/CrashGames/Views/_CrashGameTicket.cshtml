@@ -52,7 +52,7 @@
         </tr>
     </thead>
     <tbody>
-        @if(Model.RoundResult != null) 
+        @if (Model.RoundResult != null)
         {
 
             @foreach (var betLog in Model.BetLogs)
@@ -63,24 +63,22 @@
                         <br />
                         @betLog.TimeDisplay
                     </td>
-                    <td>@Localizer[CrashGameTolgeeAction.Actions[betLog.Action]]</td>
-                    <td>@betLog.DisplayMultiplier</td>
+                    @if (betLog.Action == CrashGameAction.Bet || betLog.Action == CrashGameAction.Crash)
+                    {
+                        <td colspan="2">@Localizer[CrashGameTolgeeAction.Actions[betLog.Action]]</td>
+
+                    }
+                    else
+                    {
+                        <td>@Localizer[CrashGameTolgeeAction.Actions[betLog.Action]]</td>
+                        <td>@betLog.DisplayMultiplier</td>
+                    }
+
                     <td class="text-right">@betLog.DisplayAmount</td>
                     <td class="text-right">@betLog.DisplayWinAmount</td>
                 </tr>
 
             }
-
-            @if (!Model.HasCashOut && !Model.HasRefund)
-            {
-                <tr>
-                    <td colspan="2">@Localizer["crash"]</td>
-                    <td>-</td>
-                    <td class="text-right">@(Model.HasHalfCashOut ? Model.TotalBet / 2 : Model.DisplayTotalBet)</td>
-                    <td class="text-right">0</td>
-                </tr>
-            }
-
 
             <tr>
                 <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>

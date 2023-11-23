@@ -4,9 +4,11 @@ namespace GameRoundResult.Core.Constants
 {
     public static class CrashGameAction
     {
+        public const string Bet = "bet";
         public const string Refund = "refund";
         public const string CashOut = "cashOut";
         public const string HalfCashOut = "halfCashOut";
+        public const string Crash = "crash";
     }
 
     public static class CrashGameTolgeeAction
@@ -16,6 +18,8 @@ namespace GameRoundResult.Core.Constants
             { CrashGameAction.CashOut, "cashout" },
             { CrashGameAction.HalfCashOut, "cashout_50%" },
             { CrashGameAction.Refund, "glossary_refund" },
+            { CrashGameAction.Crash, "crash" },
+            { CrashGameAction.Bet, "bet_accepted" },
         };
     }
 }
