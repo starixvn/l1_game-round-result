@@ -9,6 +9,7 @@ namespace GameRoundResult.Web.CrashGames.ViewModels
         public decimal WinAmount { get; set; }
         public decimal Multiplier { get; set; }
         public string Action { get; set; }
+        public bool ReachMaxWin { get; set; }
 
         public string DisplayWinAmount => Action == CrashGameAction.Bet ? string.Empty : WinAmount.Format();
         public string DisplayMultiplier => Multiplier > 0 ? $"{Multiplier}x" : "-";

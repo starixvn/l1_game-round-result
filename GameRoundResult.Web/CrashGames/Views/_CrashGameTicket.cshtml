@@ -81,7 +81,12 @@
             }
 
             <tr>
-                <td colspan="4" class="text-right">@CommonLocalizer["Total"]</td>
+                <td colspan="4" class="text-right">
+                    @if(Model.ReachMaxWin)
+                    {
+                        @($"({Localizer["you_reach_max_win"]})")
+                    }
+                    @CommonLocalizer["Total"]</td>
                 <td class="text-right">@Model.DisplayBetWin</td>
             </tr>
             <tr class="total">

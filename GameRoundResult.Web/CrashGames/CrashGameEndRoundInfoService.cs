@@ -17,16 +17,7 @@ namespace GameRoundResult.Web.CrashGames
         public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request)
         {
             var (round, bet) = await betRepository.GetEndRoundAsync(request.GameRoundId, request.PlayerId, request.OperatorId, request.GameName);
-
-            if (bet == null)
-            {
-                return EndRoundInfoError.SB1001;
-            }
-
-            if (!bet.Paid)
-            {
-                return EndRoundInfoError.SB1005;
-            }
+ 
 
             if (round == null || bet == null)
             {

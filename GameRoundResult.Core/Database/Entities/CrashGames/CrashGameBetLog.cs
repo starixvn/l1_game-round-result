@@ -20,6 +20,8 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal Multiplier { get; set; }
 
         public string Action { get; set; }
+
+        public bool ReachMaxWin { get; set; }
     }
 
     [CollectionName("spaceflight_betlogs")]
