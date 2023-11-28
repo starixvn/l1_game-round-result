@@ -12,6 +12,6 @@ namespace GameRoundResult.Web.CrashGames.ViewModels
         public bool ReachMaxWin { get; set; }
 
         public string DisplayWinAmount => Action == CrashGameAction.Bet ? string.Empty : WinAmount.Format();
-        public string DisplayMultiplier => Multiplier > 0 ? $"{Multiplier}x" : "-";
+        public string DisplayMultiplier => Multiplier > 0 ? $"{Multiplier.Format()}x" : "-";
     }
 }
