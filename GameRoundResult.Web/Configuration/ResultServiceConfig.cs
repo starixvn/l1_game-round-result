@@ -9,9 +9,9 @@ namespace GameRoundResult.Web.Configuration
 
         public string OnPremiseResultUrl { get; set; }
 
-        public IEnumerable<int> CloudGameIds { get; set; } = new List<int>();
+        public IEnumerable<int> CloudGameIds { get; set; }
 
         public bool ShouldCallOnPremiseService(int gameTypeId)
-            => IsCloudService && !CloudGameIds.Contains(gameTypeId);
+            => IsCloudService && (CloudGameIds == null || !CloudGameIds.Contains(gameTypeId));
     }
 }

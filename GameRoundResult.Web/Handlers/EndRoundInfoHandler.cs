@@ -10,6 +10,7 @@ using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Services;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using Sentry;
 
 namespace GameRoundResult.Web.Handlers
@@ -52,8 +53,11 @@ namespace GameRoundResult.Web.Handlers
 
             try
             {
+                SentrySdk.CaptureMessage(JsonConvert.SerializeObject(cloudServiceConfig) + JsonConvert.SerializeObject(request));
+
                 if (cloudServiceConfig?.ShouldCallOnPremiseService((int)request.GameTypeId) == true)
                 {
+                    SentrySdk.CaptureMessage("Called Remote");
                     return await this.GetEndRoundInfoFromRemoteResultService(request);
                 }
 
