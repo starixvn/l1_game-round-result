@@ -19,7 +19,7 @@ namespace GameRoundResult.Web.Handlers
     {
         private readonly IEndGameInfoServiceFactory factory;
         private readonly IValidator<Requests.RetrieveEndRoundInfoRequest> validator;
-        private readonly IGameAdminApi gameAdminApi;
+        private readonly IGameManagementApi gameManagementApi;
         private readonly IServiceProvider serviceProvider;
         private readonly CloudServiceConfig cloudServiceConfig;
         private readonly IPartnerService partnerService;
@@ -27,14 +27,14 @@ namespace GameRoundResult.Web.Handlers
         public EndRoundInfoHandler(
             IEndGameInfoServiceFactory factory,
             IValidator<Requests.RetrieveEndRoundInfoRequest> validator,
-            IGameAdminApi gameAdminApi,
+            IGameManagementApi gameManagementApi,
             IServiceProvider serviceProvider,
             CloudServiceConfig cloudServiceConfig,
             IPartnerService partnerService)
         {
             this.factory = factory;
             this.validator = validator;
-            this.gameAdminApi = gameAdminApi;
+            this.gameManagementApi = gameManagementApi;
             this.serviceProvider = serviceProvider;
             this.cloudServiceConfig = cloudServiceConfig;
             this.partnerService = partnerService;
@@ -65,12 +65,14 @@ namespace GameRoundResult.Web.Handlers
 
                 if (validatorResult.IsValid)
                 {
-                    var gameConfigs = await gameAdminApi.GetGameConfigById(request.GameTypeId);
+                    var response = await gameManagementApi.GetGameConfigById(request.GameTypeId);
 
-                    if (gameConfigs == null)
+                    if (response?.Data == null || string.IsNullOrWhiteSpace(response?.Data.Name))
                     {
                         return EndRoundInfoError.SB1006;
                     }
+
+                    var gameConfigs = response.Data;
 
                     var gameId = Enum.Parse<GameType>(request.GameTypeId.ToString());
 

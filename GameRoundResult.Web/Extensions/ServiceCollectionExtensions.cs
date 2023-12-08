@@ -206,7 +206,16 @@ namespace GameRoundResult.Web.Extensions
 
         public static void AddRestServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSingleton(RestService.For<IGameAdminApi>(configuration.GetValue<string>("GameAdminConfiguration:BaseUrl")));
+            var gameManagementConfig = configuration.GetSection("GameManagementConfig").Get<GameManagementConfig>();
+
+            IdentityServerManager.Initialize(gameManagementConfig.IdentityServerAuth);
+
+            var refitSettings = new RefitSettings
+            {
+                AuthorizationHeaderValueGetter = IdentityServerManager.GetAccessToken,
+            };
+
+            services.AddSingleton(RestService.For<IGameManagementApi>(gameManagementConfig.Url, refitSettings));
         }
     }
 }

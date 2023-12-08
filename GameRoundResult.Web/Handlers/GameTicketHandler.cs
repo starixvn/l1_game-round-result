@@ -12,26 +12,26 @@ namespace GameRoundResult.Web.Handlers
     public class GameTicketHandler : IRequestHandler<GetGameTicketRequest, GameTicketViewModel>
     {
         private readonly IGameTicketAccessorFactory serviceFactory;
-        private readonly IGameAdminApi gameAdminApi;
+        private readonly IGameManagementApi gameManagementApi;
 
-        public GameTicketHandler(IGameTicketAccessorFactory serviceFactory, IGameAdminApi gameAdminApi)
+        public GameTicketHandler(IGameTicketAccessorFactory serviceFactory, IGameManagementApi gameManagementApi)
         {
             this.serviceFactory = serviceFactory;
-            this.gameAdminApi = gameAdminApi;
+            this.gameManagementApi = gameManagementApi;
         }
 
         public async Task<GameTicketViewModel> Handle(GetGameTicketRequest request, CancellationToken cancellationToken)
         {
-            var gameConfigs = await gameAdminApi.GetGameConfigById((byte)request.GameId);
+            var response = await gameManagementApi.GetGameConfigById((byte)request.GameId);
 
-            if (gameConfigs == null)
+            if (response?.Data == null && string.IsNullOrWhiteSpace(response?.Data?.Name))
             {
                 return null;
             }
 
-            request.GameConfigs = gameConfigs;
+            request.GameConfigs = response.Data;
 
-            var service = serviceFactory.GetService(request.GameId, gameConfigs.Type);
+            var service = serviceFactory.GetService(request.GameId, request.GameConfigs.Type);
 
             var gameTicket = await service.GetAsync(request);
 
