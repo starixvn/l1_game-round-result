@@ -9,7 +9,7 @@ namespace GameRoundResult.Web.CrashGames.ViewModels
     public class CrashGameRoundResultViewModel : RoundResultViewModel
     {
         public decimal Result { get; set; }
-        public string DisplayResult => $"{Result.Format()}x";
+        public string DisplayResult => $"{Result.Format2Decimals()}x";
 
         public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
