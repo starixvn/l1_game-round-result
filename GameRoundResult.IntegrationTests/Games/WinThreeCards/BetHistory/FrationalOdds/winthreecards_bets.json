@@ -24,7 +24,7 @@
       "flush": 9,
       "straight": 8
     },
-    "playerId": 123,
+    "playerId": "123",
     "siteId": "4100300",
     "freeBet": false,
     "currency": "EUR",

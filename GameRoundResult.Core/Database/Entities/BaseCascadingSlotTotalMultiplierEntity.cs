@@ -6,7 +6,7 @@
 
     public class BaseCascadingSlotTotalMultiplierEntity : Document
     {
-        public int PlayerId { get; set; }
+        public string PlayerId { get; set; }
 
         public bool Ended { get; set; }
 

@@ -9,8 +9,8 @@
     "time": {
       "$date": "2022-10-25T07:56:59.000Z"
     },
-    "playerId": 123,
-    "memberId": 123,
+    "playerId": "123",
+    "memberId": "123",
     "siteId": "4100300",
     "freeBet": false,
     "currency": "$US",

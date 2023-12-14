@@ -17,7 +17,7 @@
     },
     "operatorId": "ONEworks1",
     "paid": true,
-    "playerId": 123,
+    "playerId": "123",
     "rate": 1,
     "refund": 0,
     "siteId": "4100300",

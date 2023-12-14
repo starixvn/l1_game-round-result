@@ -2,5 +2,5 @@
 
 namespace GameRoundResult.IntegrationTests
 {
-    public record BetHistoryTestCaseParam(int GameId, string GameName, GameConfigsType GameType, int PlayerId, long RoundId, string Language, string TestCase);
+    public record BetHistoryTestCaseParam(int GameId, string GameName, GameConfigsType GameType, string PlayerId, long RoundId, string Language, string TestCase);
 }

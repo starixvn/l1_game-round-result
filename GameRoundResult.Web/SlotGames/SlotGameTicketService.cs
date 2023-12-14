@@ -6,7 +6,7 @@ namespace GameRoundResult.Web.SlotGames
 {
     public interface ISlotGameTicketService
     {
-        Task<SlotGameRound> GetAsync(long roundId, int playerId, string operatorId, string gameName);
+        Task<SlotGameRound> GetAsync(long roundId, string playerId, string operatorId, string gameName);
     }
 
     public class SlotGameTicketService : ISlotGameTicketService
@@ -18,7 +18,7 @@ namespace GameRoundResult.Web.SlotGames
             this.repository = repository;
         }
 
-        public Task<SlotGameRound> GetAsync(long roundId, int playerId, string operatorId, string gameName)
+        public Task<SlotGameRound> GetAsync(long roundId, string playerId, string operatorId, string gameName)
         => repository.GetAsync<SlotGameRound>(roundId, playerId, operatorId, gameName);
     }
 }

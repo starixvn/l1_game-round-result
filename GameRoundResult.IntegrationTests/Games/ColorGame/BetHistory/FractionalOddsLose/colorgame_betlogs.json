@@ -8,7 +8,7 @@
     "time": {
       "$date": "2023-09-08T09:05:55.886+00:00"
     },
-    "playerId": 8043883,
+    "playerId": "8043883",
     "siteId": "4100300",
     "freeBet": false,
     "currency": "EUR",

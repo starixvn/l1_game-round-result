@@ -11,7 +11,7 @@ namespace GameRoundResult.Core.Database.Repository
 {
     public interface IHiLoBetRepository
     {
-        Task<(HiLoRound, IEnumerable<HiLoBetLog>)> GetAsync(long roundId, int playerId, string operatorId);
+        Task<(HiLoRound, IEnumerable<HiLoBetLog>)> GetAsync(long roundId, string playerId, string operatorId);
     }
 
     public class HiLoBetRepository : GameBetRepository, IHiLoBetRepository
@@ -20,7 +20,7 @@ namespace GameRoundResult.Core.Database.Repository
         {
         }
 
-        public async Task<(HiLoRound, IEnumerable<HiLoBetLog>)> GetAsync(long roundId, int playerId, string operatorId)
+        public async Task<(HiLoRound, IEnumerable<HiLoBetLog>)> GetAsync(long roundId, string playerId, string operatorId)
         {
             var round = await database.GetCollection<HiLoRound>(Document.GetCollectionName(typeof(HiLoRound)))
                 .Find(x => x.RoundId == roundId && x.PlayerId == playerId && x.OperatorId == operatorId)
@@ -36,7 +36,7 @@ namespace GameRoundResult.Core.Database.Repository
             return (null, Enumerable.Empty<HiLoBetLog>());
         }
 
-        protected override async Task<IEnumerable<T>> GetBetLogsAsync<T>(long roundId, int playerId, string collectionName, string operatorId, Expression<Func<T, bool>> filter = null)
+        protected override async Task<IEnumerable<T>> GetBetLogsAsync<T>(long roundId, string playerId, string collectionName, string operatorId, Expression<Func<T, bool>> filter = null)
         {
             Expression<Func<T, bool>> defaultExpression = bet => bet.PlayerId == playerId && bet.OperatorId == operatorId;
 

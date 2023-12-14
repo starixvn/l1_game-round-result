@@ -10,7 +10,7 @@ namespace GameRoundResult.Core.Database.Repository
 {
     public interface IBitcoinMasterBetRepository
     {
-        Task<(BitcoinMasterRound, IEnumerable<BitcoinMasterBet>, BitcoinMasterOne)> GetAsync(long roundId, int playerId, string operatorId);
+        Task<(BitcoinMasterRound, IEnumerable<BitcoinMasterBet>, BitcoinMasterOne)> GetAsync(long roundId, string playerId, string operatorId);
     }
 
     public class BitcoinMasterBetRepository : GameBetRepository, IBitcoinMasterBetRepository
@@ -19,7 +19,7 @@ namespace GameRoundResult.Core.Database.Repository
         {
         }
 
-        public async Task<(BitcoinMasterRound, IEnumerable<BitcoinMasterBet>, BitcoinMasterOne)> GetAsync(long roundId, int playerId, string operatorId)
+        public async Task<(BitcoinMasterRound, IEnumerable<BitcoinMasterBet>, BitcoinMasterOne)> GetAsync(long roundId, string playerId, string operatorId)
         {
             var round = await GetRoundAsync<BitcoinMasterRound>(roundId, Document.GetCollectionName(typeof(BitcoinMasterRound)));
             var one = (await GetBetsAsync<BitcoinMasterOne>(roundId, playerId, Document.GetCollectionName(typeof(BitcoinMasterOne)), operatorId)).FirstOrDefault();
@@ -28,7 +28,7 @@ namespace GameRoundResult.Core.Database.Repository
             return (round, bets, one);
         }
 
-        private async Task<IEnumerable<T>> GetBetsAsync<T>(long roundId, int playerId, string collectionName, string operatorId) where T : BaseBetEntity
+        private async Task<IEnumerable<T>> GetBetsAsync<T>(long roundId, string playerId, string collectionName, string operatorId) where T : BaseBetEntity
         {
             Expression<Func<T, bool>> defaultExpression = bet => bet.PlayerId == playerId && bet.RoundId == roundId && bet.OperatorId == operatorId;
 

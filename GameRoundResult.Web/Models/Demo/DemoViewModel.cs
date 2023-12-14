@@ -50,7 +50,7 @@ namespace GameRoundResult.Web.Models
 
         public int GameRoundId { get; set; }
 
-        public int PlayerId { get; set; }
+        public string PlayerId { get; set; }
 
         public string Language { get; set; }
 

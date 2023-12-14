@@ -7,12 +7,12 @@ namespace GameRoundResult.Core.Services
 {
     public interface IGameBetService
     {
-        Task<(TRoundEntity, IEnumerable<TBetEntity>, TOneEntity)> GetAsync<TRoundEntity, TOneEntity, TBetEntity>(long roundId, int playerId, bool freeBet, string operatorId)
+        Task<(TRoundEntity, IEnumerable<TBetEntity>, TOneEntity)> GetAsync<TRoundEntity, TOneEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId)
             where TRoundEntity : GameRound
             where TOneEntity : BaseBetEntity
             where TBetEntity : BaseBetLogEntity;
 
-        Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, int playerId, bool freeBet, string operatorId)
+        Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId)
            where TRoundEntity : GameRound
            where TBetEntity : BaseBetEntity;
     }
@@ -26,7 +26,7 @@ namespace GameRoundResult.Core.Services
             this.repository = repository;
         }
 
-        public async Task<(TRoundEntity, IEnumerable<TBetEntity>, TOneEntity)> GetAsync<TRoundEntity, TOneEntity, TBetEntity>(long roundId, int playerId, bool freeBet, string operatorId)
+        public async Task<(TRoundEntity, IEnumerable<TBetEntity>, TOneEntity)> GetAsync<TRoundEntity, TOneEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId)
             where TRoundEntity : GameRound
             where TOneEntity : BaseBetEntity
             where TBetEntity : BaseBetLogEntity
@@ -34,7 +34,7 @@ namespace GameRoundResult.Core.Services
             return await repository.GetAsync<TRoundEntity, TOneEntity, TBetEntity>(roundId, playerId, freeBet, operatorId);
         }
 
-        public async Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, int playerId, bool freeBet, string operatorId)
+        public async Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId)
             where TRoundEntity : GameRound
             where TBetEntity : BaseBetEntity
         {

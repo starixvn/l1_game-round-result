@@ -21,7 +21,7 @@
     "currency": "$US",
     "rate": 1,
     "operatorId": "ONEworks1",
-    "playerId": 123
+    "playerId": "123"
   },
   {
     "refund": 0,
@@ -45,7 +45,7 @@
     "currency": "$US",
     "rate": 1,
     "operatorId": "ONEworks1",
-    "playerId": 123
+    "playerId": "123"
   },
   {
     "refund": 0,
@@ -69,6 +69,6 @@
     "currency": "$US",
     "rate": 1,
     "operatorId": "ONEworks1",
-    "playerId": 123
+    "playerId": "123"
   }
 ]

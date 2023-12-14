@@ -16,7 +16,7 @@
     "currency": "$US",
     "rate": 1,
     "operatorId": "ONEworks1",
-    "playerId": 5346002
+    "playerId": "5346002"
   },
   {
     "amount": 1,
@@ -35,7 +35,7 @@
     "currency": "$US",
     "rate": 1,
     "operatorId": "ONEworks1",
-    "playerId": 5346002
+    "playerId": "5346002"
   },
   {
     "amount": 1,
@@ -54,7 +54,7 @@
     "currency": "$US",
     "rate": 1,
     "operatorId": "ONEworks1",
-    "playerId": 5346002
+    "playerId": "5346002"
   },
   {
     "amount": 1,
@@ -73,6 +73,6 @@
     "currency": "$US",
     "rate": 1,
     "operatorId": "ONEworks1",
-    "playerId": 5346002
+    "playerId": "5346002"
   }
 ]
