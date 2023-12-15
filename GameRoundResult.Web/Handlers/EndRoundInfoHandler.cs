@@ -42,17 +42,18 @@ namespace GameRoundResult.Web.Handlers
 
         public async Task<EndRoundInfoResult> Handle(Requests.RetrieveEndRoundInfoRequest request, CancellationToken cancellationToken)
         {
-            var @operator = await partnerService.Get(request.Auth?.OperatorId, request.Auth?.OperatorSecret);
-
-            if(@operator == null)
-            {
-                return new EndRoundInfoResult { IsAuthenticated = false };
-            }
-
-            IEndGameInfoService service;
-
             try
             {
+                if (!request.IsAuthByAccessKey)
+                {
+                    var @operator = await partnerService.Get(request.Auth?.OperatorId, request.Auth?.OperatorSecret);
+
+                    if (@operator == null)
+                    {
+                        return new EndRoundInfoResult { IsAuthenticated = false };
+                    }
+                }
+
                 SentrySdk.CaptureMessage(JsonConvert.SerializeObject(cloudServiceConfig) + JsonConvert.SerializeObject(request));
 
                 if (cloudServiceConfig?.ShouldCallOnPremiseService((int)request.GameTypeId) == true)
@@ -76,7 +77,7 @@ namespace GameRoundResult.Web.Handlers
 
                     var gameId = Enum.Parse<GameType>(request.GameTypeId.ToString());
 
-                    service = factory.GetService(gameId, gameConfigs.Type);
+                    IEndGameInfoService service = factory.GetService(gameId, gameConfigs.Type);
 
                     return await service.GetAsync(new RetrieveEndGameInfoRequest
                     {
