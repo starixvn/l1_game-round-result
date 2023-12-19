@@ -21,11 +21,15 @@
         @if (roundResult != null)
         {
             var tumbles = roundResult.SettlementResult.Tumbles.ToList();
+            decimal tumbleWin = 0;
+
             for (byte index = 0; index < tumbles.Count; index++)
             {
                 var rowspan = tumbles[index].Icons.Keys.Count > 0 ? tumbles[index].Icons.Keys.Count : 1;
                 if (tumbles[index].Icons.Any())
                 {
+                    tumbleWin += tumbles[index].Win;
+
                     foreach (var item in tumbles[index].Icons.Keys.Select((key, i) => new { index = i, key }))
                     {
                         if (item.index == 0)
@@ -50,7 +54,7 @@
                                 </td>
                                 <td>@tumbles[index].Icons[item.key].Count</td>
                                 <td>@tumbles[index].Icons[item.key].Win.Format()</td>
-                                <td rowspan="@rowspan">@roundResult.SettlementResult.DisplayTumbleWin</td>
+                                <td rowspan="@rowspan">@tumbleWin.Format()</td>
                             </tr>
                         }
                         else
