@@ -44,16 +44,6 @@ namespace GameRoundResult.Web.Handlers
         {
             try
             {
-                if (!request.IsAuthByAccessKey)
-                {
-                    var @operator = await partnerService.Get(request.Auth?.OperatorId, request.Auth?.OperatorSecret);
-
-                    if (@operator == null)
-                    {
-                        return new EndRoundInfoResult { IsAuthenticated = false };
-                    }
-                }
-
                 SentrySdk.CaptureMessage(JsonConvert.SerializeObject(cloudServiceConfig) + JsonConvert.SerializeObject(request));
 
                 if (cloudServiceConfig?.ShouldCallOnPremiseService((int)request.GameTypeId) == true)

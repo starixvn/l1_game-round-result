@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using GameRoundResult.Core._Share;
+using GameRoundResult.Web._Shared;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,16 +20,9 @@ namespace GameRoundResult.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Index([FromBody] Requests.RetrieveEndRoundInfoRequest request)
         {
-            request.IsAuthByAccessKey = await partnerRequestAuthentication.Verify(request.Auth?.OperatorId, Request);
+            var authorize = await partnerRequestAuthentication.Authorize(request.Auth?.OperatorId, Request, request.Auth?.OperatorSecret);
 
-            var endRoundInfoResult = await mediator.Send(request);
-
-            if (endRoundInfoResult.IsAuthenticated)
-            {
-                return Ok(endRoundInfoResult);
-            }
-
-            return BadRequest();
+            return authorize ? Ok(await mediator.Send(request)) : BadRequest();
         }
     }
 }

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using GameRoundResult.Core.Services;
 using Microsoft.AspNetCore.Http;
 
-namespace GameRoundResult.Core._Share
+namespace GameRoundResult.Web._Shared
 {
     public interface IPartnerRequestAuthentication
     {
-        Task<bool> Verify(string operatorId, HttpRequest request);
+        Task<bool> Authorize(string partnerId, HttpRequest request, string partnerSecret);
     }
 
     public class PartnerRequestAuthentication : IPartnerRequestAuthentication
@@ -22,14 +22,28 @@ namespace GameRoundResult.Core._Share
             this.partnerService = partnerService;
         }
 
-        public async Task<bool> Verify(string operatorId, HttpRequest request)
+        public async Task<bool> Authorize(string partnerId, HttpRequest request, string partnerSecret)
+        {
+            var isAuthByAccessKey = await AuthorizeByAccessKey(partnerId, request);
+
+            if (!isAuthByAccessKey)
+            {
+                var @operator = await partnerService.Get(partnerId, partnerSecret);
+
+                return @operator != null;
+            }
+
+            return true;
+        }
+
+        public async Task<bool> AuthorizeByAccessKey(string partnerId, HttpRequest request)
         {
             if (string.IsNullOrWhiteSpace(request.Headers["Access-Key"]))
             {
                 return false;
             }
 
-            var @operator = await partnerService.GetById(operatorId);
+            var @operator = await partnerService.GetById(partnerId);
 
             if (@operator != null)
             {
@@ -43,7 +57,8 @@ namespace GameRoundResult.Core._Share
                 var hmac = new HMACSHA256(Encoding.ASCII.GetBytes(secretKey));
                 var hashResult = hmac.ComputeHash(streamData);
 
-                return accessKey == Convert.ToBase64String(hashResult);
+                var rawHashResult = Convert.ToBase64String(hashResult);
+                return accessKey == rawHashResult;
             }
 
             return false;

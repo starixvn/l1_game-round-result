@@ -194,8 +194,9 @@ namespace GameRoundResult.Web.Extensions
 
             services.AddSlotGames();
             services.AddCascadingSlotGames();
-            services.AddTransient(typeof(IJsonStringLocalizer<>),typeof(JsonStringLocalizer<>));
+            services.AddTransient(typeof(IJsonStringLocalizer<>), typeof(JsonStringLocalizer<>));
             services.AddCrashGames();
+            services.AddScoped<IPartnerRequestAuthentication, PartnerRequestAuthentication>();
 
         }
 

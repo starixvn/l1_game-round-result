@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Services;
+using GameRoundResult.Web._Shared;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
@@ -28,7 +29,7 @@ namespace GameRoundResult.Web.Controllers
         private readonly HostConfiguration hostConfiguration;
         private readonly ITimeLimitedDataProtector dataProtector;
         private readonly ILogService logService;
-        private readonly IPartnerService partnerService;
+        private readonly IPartnerRequestAuthentication partnerRequestAuthentication;
         private readonly IEnumerable<OperatorConfig> operatorConfigs;
         private readonly string systemType;
         private readonly bool enableTolgee;
@@ -39,7 +40,7 @@ namespace GameRoundResult.Web.Controllers
             IDataProtectionProvider dataProtectionProvider,
             IOptions<HostConfiguration> hostConfigurationOptions,
             ILogService logService,
-            IPartnerService partnerService,
+            IPartnerRequestAuthentication partnerRequestAuthentication,
             IOptions<List<OperatorConfig>> operatorConfigsOptions,
             IConfiguration configuration,
             CloudServiceConfig cloudServiceConfig
@@ -48,7 +49,7 @@ namespace GameRoundResult.Web.Controllers
             this.mediator = mediator;
             dataProtector = dataProtectionProvider.CreateProtector(dataProtectorKey).ToTimeLimitedDataProtector();
             hostConfiguration = hostConfigurationOptions.Value;
-            this.partnerService = partnerService;
+            this.partnerRequestAuthentication = partnerRequestAuthentication;
             this.logService = logService;
             operatorConfigs = operatorConfigsOptions.Value;
             systemType = configuration["SystemType"];
@@ -70,9 +71,9 @@ namespace GameRoundResult.Web.Controllers
                 var playerId = int.Parse(data[4]);
                 var freeBet = bool.Parse(data[5]);
 
-                var @operator = await partnerService.Get(operatorId, operatorSecret);
+                var authorize = await partnerRequestAuthentication.Authorize(operatorId, Request, operatorSecret);
 
-                if (@operator != null)
+                if (authorize)
                 {
                     var viewModel = new GameTicketResultViewModel
                     {
@@ -119,9 +120,8 @@ namespace GameRoundResult.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                var @operator = await partnerService.Get(model.Auth.OperatorId, model.Auth.OperatorSecret);
-
-                if (@operator != null)
+                var authorize = await partnerRequestAuthentication.Authorize(model.Auth.OperatorId, Request, model.Auth.OperatorSecret);
+                if (authorize)
                 {
                     var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}^^{model.Auth.OperatorSecret}^^{model.GameTypeId}^^{model.GameRoundId}^^{model.PlayerId}^^{model.FreeBet}",
                             TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));

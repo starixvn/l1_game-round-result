@@ -7,9 +7,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Services;
+using GameRoundResult.Web._Shared;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Handlers;
 using GameRoundResult.Web.Models;
+using GameRoundResult.Web.Models.GameRoundResult;
 using GameRoundResult.Web.Requests;
 using GameRoundResult.Web.ViewFactory;
 using MediatR;
@@ -19,11 +21,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Sentry;
 using TimeZoneConverter;
-using GameRoundResult.Web.Models.GameRoundResult;
 
 namespace GameRoundResult.Web.Controllers
 {
@@ -38,7 +39,7 @@ namespace GameRoundResult.Web.Controllers
         private const string dataProtectorKey = "game-round-result-data-key";
         private const int dataProtectorLifeTimeSecond = 10;
         public const int dataCacheDuration = 15;
-        private readonly IPartnerService partnerService;
+        private readonly IPartnerRequestAuthentication partnerRequestAuthentication;
         private readonly bool enableTolgee;
         private readonly IGeneralGameSettingService generalGameSettingService;
         private readonly CloudServiceConfig cloudServiceConfig;
@@ -49,7 +50,7 @@ namespace GameRoundResult.Web.Controllers
             IOptions<List<AuthenticationClient>> clientOptions,
             IOptions<HostConfiguration> hostConfigurationOptions,
             IDataProtectionProvider dataProtectionProvider,
-            IPartnerService partnerService,
+            IPartnerRequestAuthentication partnerRequestAuthentication,
             IConfiguration configuration,
             IGeneralGameSettingService generalGameSettingService,
             CloudServiceConfig cloudServiceConfig,
@@ -60,7 +61,7 @@ namespace GameRoundResult.Web.Controllers
             dataProtector = dataProtectionProvider.CreateProtector(dataProtectorKey).ToTimeLimitedDataProtector();
             clients = clientOptions.Value;
             hostConfiguration = hostConfigurationOptions.Value;
-            this.partnerService = partnerService;
+            this.partnerRequestAuthentication = partnerRequestAuthentication;
             enableTolgee = bool.Parse(configuration["EnableTolgee"]);
             this.generalGameSettingService = generalGameSettingService;
             this.cloudServiceConfig = cloudServiceConfig;
@@ -89,7 +90,7 @@ namespace GameRoundResult.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetRoundResult(GameType gameType, [FromServices] IRoundResultViewFactory viewFactory)
         {
-            var isCrashGame =  await generalGameSettingService.IsCrashGame((int)gameType);
+            var isCrashGame = await generalGameSettingService.IsCrashGame((int)gameType);
             if (Enum.IsDefined(typeof(GameType), gameType))
             {
                 return PartialView(viewFactory.GetView(gameType, isCrashGame));
@@ -165,14 +166,11 @@ namespace GameRoundResult.Web.Controllers
             [FromServices] IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var client = GetClient(request.Auth.ClientID, request.Auth.ClientKey);
-            var @operator = await partnerService.Get(request.Auth.OperatorId, request.Auth.OperatorSecret);
+            var authorize = await partnerRequestAuthentication.Authorize(request.Auth.OperatorId, Request, request.Auth.OperatorSecret);
 
-            if (client == null && @operator == null)
-            {
-                return BadRequest();
-            }    
-
-            return await GetData(request.Start, request.Length, request.GameType, request.RoundId, request.UserTimeZone, request.Date, stringLocalizer, true); 
+            return client == null && !authorize ?
+                BadRequest() :
+                await GetData(request.Start, request.Length, request.GameType, request.RoundId, request.UserTimeZone, request.Date, stringLocalizer, true);
         }
 
 
@@ -183,8 +181,6 @@ namespace GameRoundResult.Web.Controllers
             if (ModelState.IsValid)
             {
                 var client = GetClient(model.Auth.ClientID, model.Auth.ClientKey);
-                var @operator = await partnerService.Get(model.Auth.OperatorId, model.Auth.OperatorSecret);
-
                 if (client != null)
                 {
                     var token = dataProtector.Protect($"{model.Auth.ClientID}^^{model.Auth.ClientKey}^^{model.GameId}^^{model.SiteName}^^{model.PartnerId}^^{model.CurrencyGroupId}",
@@ -193,9 +189,11 @@ namespace GameRoundResult.Web.Controllers
                     var redirectUrl = Url.Action("Auth", "GameRoundResult", new { culture = model.Language, token }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
                     return Ok(new GameRoundResultAccessUrlResultModel { RedirectUrl = redirectUrl });
                 }
-                if (@operator != null)
+
+                var authorize = await partnerRequestAuthentication.Authorize(model.Auth.OperatorId, Request, model.Auth.OperatorSecret);
+                if (authorize)
                 {
-                    var token = dataProtector.Protect($"{@operator.PartnerId}^^{@operator.SecretKey}^^{model.GameId}^{model.SiteName}^^{model.PartnerId}^^{model.CurrencyGroupId}",
+                    var token = dataProtector.Protect($"{model.Auth.OperatorId}^^{model.Auth.OperatorSecret}^^{model.GameId}^{model.SiteName}^^{model.PartnerId}^^{model.CurrencyGroupId}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
                     model.Language = StandardizeLanguage(model.Language);
                     var redirectUrl = Url.Action("Auth", "GameRoundResult", new { culture = model.Language, token }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);

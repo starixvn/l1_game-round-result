@@ -27,7 +27,6 @@ namespace GameRoundResult.Web.Models
         [Required]
         public string OperatorId { get; set; }
 
-        [Required]
         public string OperatorSecret { get; set; }
     }
 
