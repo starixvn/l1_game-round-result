@@ -15,17 +15,19 @@ namespace GameRoundResult.Core.UnitTests.Services
     {
         private readonly IGameRoundResultService gameRoundService;
         private readonly IGameRoundRepository gameRoundRepository;
+        private readonly IGeneralGameSettingRepository generalGameConfigRepository;
         private readonly Fixture fixture;
 
         public GameRoundResultServiceTests()
         {
             gameRoundRepository = Substitute.For<IGameRoundRepository>();
-            gameRoundService = new GameRoundResultService(gameRoundRepository);
+            generalGameConfigRepository = Substitute.For<IGeneralGameSettingRepository>();
+            gameRoundService = new GameRoundResultService(gameRoundRepository, generalGameConfigRepository);
             fixture = new Fixture();
         }
 
         [Theory, AutoData]
-        public async Task GameRoundService_ReturnCorrectResult(DateTime date, long roundId, int page, int pageSize)
+        public async Task GameRoundService_ReturnCorrectResult(DateTime date, long roundId, int gameType, int page, int pageSize)
         {
             //Arrnage
             var roundEntities = fixture.CreateMany<SeDieRound>();
@@ -33,7 +35,7 @@ namespace GameRoundResult.Core.UnitTests.Services
                 .Returns((roundEntities.Count(), roundEntities));
 
             //Act
-            var result = await gameRoundService.GetGameRoundResultAsync<SeDieRound>(date, roundId, page, pageSize);
+            var result = await gameRoundService.GetGameRoundResultAsync<SeDieRound>(date, roundId, gameType, page, pageSize);
 
             //Assert
             Assert.StrictEqual(roundEntities.Count(), result.Item1);
