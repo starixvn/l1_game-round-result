@@ -17,7 +17,7 @@
     "currency": "$US",
     "rate": 1,
     "operatorId": "ONEworks1",
-    "playerId": 291192
+    "playerId": "291192"
   },
   {
     "amount": 2.5,
@@ -37,6 +37,6 @@
     "currency": "$US",
     "rate": 1,
     "operatorId": "ONEworks1",
-    "playerId": 291192
+    "playerId": "291192"
   }
 ]
