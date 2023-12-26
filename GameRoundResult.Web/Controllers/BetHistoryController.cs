@@ -71,9 +71,9 @@ namespace GameRoundResult.Web.Controllers
                 var playerId = int.Parse(data[4]);
                 var freeBet = bool.Parse(data[5]);
 
-                var authorize = await partnerRequestAuthentication.Authorize(operatorId, Request, operatorSecret);
+                var authenticationResult = await partnerRequestAuthentication.Authorize(operatorId, Request, operatorSecret);
 
-                if (authorize)
+                if (authenticationResult.IsAuthorize)
                 {
                     var viewModel = new GameTicketResultViewModel
                     {
@@ -120,10 +120,10 @@ namespace GameRoundResult.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                var authorize = await partnerRequestAuthentication.Authorize(model.Auth.OperatorId, Request, model.Auth.OperatorSecret);
-                if (authorize)
+                var authenticationResult = await partnerRequestAuthentication.Authorize(model.Auth.OperatorId, Request, model.Auth.OperatorSecret);
+                if (authenticationResult.IsAuthorize)
                 {
-                    var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}^^{model.Auth.OperatorSecret}^^{model.GameTypeId}^^{model.GameRoundId}^^{model.PlayerId}^^{model.FreeBet}",
+                    var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}^^{authenticationResult.OperatorSecret}^^{model.GameTypeId}^^{model.GameRoundId}^^{model.PlayerId}^^{model.FreeBet}",
                             TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
                     model.Language = StandardizeLanguage(model.Language);
                     var redirectUrl = Url.Action("Index", "BetHistory", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
@@ -132,7 +132,7 @@ namespace GameRoundResult.Web.Controllers
                     log.ResponseTimeStamp = DateTimeOffset.UtcNow;
                     await logService.LogTicketDetailRequestAsync(log);
 
-                    return Ok(new GameTicketAccessUrlResultModel { RedirectUrl = redirectUrl });
+                    return Ok(new GameTicketAccessUrlResultModel { RedirectUrl = redirectUrl, IsAuthenticated = true });
                 }
             }
 

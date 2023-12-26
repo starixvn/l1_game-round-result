@@ -30,6 +30,19 @@ namespace GameRoundResult.Web.Models
         public string OperatorSecret { get; set; }
     }
 
+    public class AuthenticationResult
+    {
+        public AuthenticationResult(bool isAuthorize, string operatorSecret)
+        {
+            IsAuthorize = isAuthorize;
+            OperatorSecret = operatorSecret;
+        }
+
+        public bool IsAuthorize { get; }
+
+        public string OperatorSecret { get; }
+    }
+
     public class BetHistoryAccessUrlRequestModel : IRequest<GameTicketAccessUrlResultModel>
     {
         [Required]

@@ -166,9 +166,9 @@ namespace GameRoundResult.Web.Controllers
             [FromServices] IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var client = GetClient(request.Auth.ClientID, request.Auth.ClientKey);
-            var authorize = await partnerRequestAuthentication.Authorize(request.Auth.OperatorId, Request, request.Auth.OperatorSecret);
+            var authenticationResult = await partnerRequestAuthentication.Authorize(request.Auth.OperatorId, Request, request.Auth.OperatorSecret);
 
-            return client == null && !authorize ?
+            return client == null && !authenticationResult.IsAuthorize ?
                 BadRequest() :
                 await GetData(request.Start, request.Length, request.GameType, request.RoundId, request.UserTimeZone, request.Date, stringLocalizer, true);
         }
@@ -190,8 +190,8 @@ namespace GameRoundResult.Web.Controllers
                     return Ok(new GameRoundResultAccessUrlResultModel { RedirectUrl = redirectUrl });
                 }
 
-                var authorize = await partnerRequestAuthentication.Authorize(model.Auth.OperatorId, Request, model.Auth.OperatorSecret);
-                if (authorize)
+                var authenticationResult = await partnerRequestAuthentication.Authorize(model.Auth.OperatorId, Request, model.Auth.OperatorSecret);
+                if (authenticationResult.IsAuthorize)
                 {
                     var token = dataProtector.Protect($"{model.Auth.OperatorId}^^{model.Auth.OperatorSecret}^^{model.GameId}^{model.SiteName}^^{model.PartnerId}^^{model.CurrencyGroupId}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
