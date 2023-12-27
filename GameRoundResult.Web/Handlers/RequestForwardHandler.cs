@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using GameRoundResult.Web._Shared;
 using GameRoundResult.Web.Models;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,8 +26,9 @@ namespace GameRoundResult.Web.Handlers
             {
                 request.CallFromCloudService = true;
                 var cloudResultApi = this.serviceProvider.GetService<ICloudResultApi>();
-
-                var getAccessUrlResult = await cloudResultApi.GetAccessUrl(request);
+                var hmacHelpers = this.serviceProvider.GetService<IHmacHelpers>();
+                var accessKey = hmacHelpers.CreateAccessKey(request.Auth.OperatorSecret, request);
+                var getAccessUrlResult = await cloudResultApi.GetAccessUrl(request, accessKey);
 
                 getAccessUrlResult.IsAuthenticated = true;
 

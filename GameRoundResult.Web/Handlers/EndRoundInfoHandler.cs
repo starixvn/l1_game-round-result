@@ -22,22 +22,19 @@ namespace GameRoundResult.Web.Handlers
         private readonly IGameManagementApi gameManagementApi;
         private readonly IServiceProvider serviceProvider;
         private readonly CloudServiceConfig cloudServiceConfig;
-        private readonly IPartnerService partnerService;
 
         public EndRoundInfoHandler(
             IEndGameInfoServiceFactory factory,
             IValidator<Requests.RetrieveEndRoundInfoRequest> validator,
             IGameManagementApi gameManagementApi,
             IServiceProvider serviceProvider,
-            CloudServiceConfig cloudServiceConfig,
-            IPartnerService partnerService)
+            CloudServiceConfig cloudServiceConfig)
         {
             this.factory = factory;
             this.validator = validator;
             this.gameManagementApi = gameManagementApi;
             this.serviceProvider = serviceProvider;
             this.cloudServiceConfig = cloudServiceConfig;
-            this.partnerService = partnerService;
         }
 
         public async Task<EndRoundInfoResult> Handle(Requests.RetrieveEndRoundInfoRequest request, CancellationToken cancellationToken)
@@ -95,8 +92,9 @@ namespace GameRoundResult.Web.Handlers
             try
             {
                 var cloudResultApi = this.serviceProvider.GetService<ICloudResultApi>();
-
-                var endRoundResult = await cloudResultApi.RetrieveEndGameInfo(request);
+                var hmacHelpers = this.serviceProvider.GetService<IHmacHelpers>();
+                var accessKey = hmacHelpers.CreateAccessKey(request.Auth.OperatorSecret, request);
+                var endRoundResult = await cloudResultApi.RetrieveEndGameInfo(request, accessKey);
 
                 return endRoundResult;
             }

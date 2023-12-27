@@ -197,7 +197,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddTransient(typeof(IJsonStringLocalizer<>), typeof(JsonStringLocalizer<>));
             services.AddCrashGames();
             services.AddScoped<IPartnerRequestAuthentication, PartnerRequestAuthentication>();
-
+            services.AddScoped<IHmacHelpers, HmacHelpers>();
         }
 
         public static void AddValidators(this IServiceCollection services)

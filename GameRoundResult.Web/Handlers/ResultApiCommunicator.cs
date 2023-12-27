@@ -11,11 +11,13 @@ namespace GameRoundResult.Web.Handlers
 {
     public interface ICloudResultApi
     {
+        [Headers("Content-Type: application/json")]
         [Post("/BetHistory/GetAccessUrl")]
-        Task<GameTicketAccessUrlResultModel> GetAccessUrl([Body] BetHistoryAccessUrlRequestModel model);
+        Task<GameTicketAccessUrlResultModel> GetAccessUrl([Body(BodySerializationMethod.Serialized)] BetHistoryAccessUrlRequestModel model, [Header("Access-Key")] string accessKey);
 
+        [Headers("Content-Type: application/json")]
         [Post("/EndRoundInfo")]
-        Task<EndRoundInfoResult> RetrieveEndGameInfo([Body] RetrieveEndRoundInfoRequest request);
+        Task<EndRoundInfoResult> RetrieveEndGameInfo([Body(BodySerializationMethod.Serialized)] RetrieveEndRoundInfoRequest request, [Header("Access-Key")] string accessKey);
 
         [Get("/GameRoundResult/GetRemoteData")]
         Task<RoundResultPagingViewModel> GetRoundResultByGame(GetRoundResultByGameRequest request);
