@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Extensions;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web._Shared;
 using GameRoundResult.Web.Configuration;
@@ -70,15 +71,17 @@ namespace GameRoundResult.Web.Controllers
                 var roundId = long.Parse(data[3]);
                 var playerId = data[4];
                 var freeBet = bool.Parse(data[5]);
+                var siteId = data[6];
 
                 var authenticationResult = await partnerRequestAuthentication.Authorize(operatorId, Request, operatorSecret);
 
                 if (authenticationResult.IsAuthorize)
                 {
+                    var formatPlayerId = StringExtensions.FormatPlayerId(operatorId, siteId, playerId);
                     var viewModel = new GameTicketResultViewModel
                     {
                         GameType = gameType,
-                        GameTicketResult = await GetGameTicket(gameType, roundId, playerId, operatorId, freeBet),
+                        GameTicketResult = await GetGameTicket(gameType, roundId, formatPlayerId , operatorId, freeBet),
                         Language = Thread.CurrentThread.CurrentCulture.Name,
                         EnableTolgee = enableTolgee
                     };

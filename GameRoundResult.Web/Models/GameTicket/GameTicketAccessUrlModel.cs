@@ -56,6 +56,8 @@ namespace GameRoundResult.Web.Models
         [Required]
         public string PlayerId { get; set; }
 
+        public string SiteId { get; set; }
+
         public string Language { get; set; }
 
         public bool FreeBet { get; set; }
