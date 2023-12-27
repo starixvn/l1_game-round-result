@@ -101,9 +101,9 @@ namespace GameRoundResult.Web.Controllers
 
         [ResponseCache(Duration = dataCacheDuration, VaryByQueryKeys = new[] { "start", "length", "gameType", "roundId", "userTimeZone", "date" })]
         public async Task<IActionResult> GetData(int start, int length, GameType gameType, long roundId, string userTimeZone, DateTime date,
-            [FromServices] IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+            [FromServices] IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, bool requestFromHistoryService)
         {
-            if (cloudServiceConfig?.ShouldCallCloudService((int)gameType) == true)
+            if (cloudServiceConfig?.ShouldCallCloudService((int)gameType) == true && !requestFromHistoryService)
             {
                 return await GetRemoteData(start, length, gameType, roundId, userTimeZone, date);
             }
@@ -170,7 +170,7 @@ namespace GameRoundResult.Web.Controllers
 
             return client == null && !authenticationResult.IsAuthorize ?
                 BadRequest() :
-                await GetData(request.Start, request.Length, request.GameType, request.RoundId, request.UserTimeZone, request.Date, stringLocalizer);
+                await GetData(request.Start, request.Length, request.GameType, request.RoundId, request.UserTimeZone, request.Date, stringLocalizer, true);
         }
 
 
