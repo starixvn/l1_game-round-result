@@ -46,10 +46,9 @@ namespace GameRoundResult.Web.Handlers
             {
                 SentrySdk.CaptureMessage(JsonConvert.SerializeObject(cloudServiceConfig) + JsonConvert.SerializeObject(request));
 
-                if (cloudServiceConfig?.ShouldCallOnPremiseService((int)request.GameTypeId) == true)
+                if (cloudServiceConfig?.ShouldCallCloudService((int)request.GameTypeId) == true)
                 {
-                    SentrySdk.CaptureMessage("Called Remote");
-                    return await this.GetEndRoundInfoFromRemoteResultService(request);
+                    return await this.GetCloudEndRoundInfo(request);
                 }
 
                 var validatorResult = validator.Validate(request);
@@ -91,13 +90,13 @@ namespace GameRoundResult.Web.Handlers
             }
         }
 
-        private async Task<EndRoundInfoResult> GetEndRoundInfoFromRemoteResultService(Requests.RetrieveEndRoundInfoRequest request)
+        private async Task<EndRoundInfoResult> GetCloudEndRoundInfo(Requests.RetrieveEndRoundInfoRequest request)
         {
             try
             {
-                var mainResultApi = this.serviceProvider.GetService<IMainResultApi>();
+                var cloudResultApi = this.serviceProvider.GetService<ICloudResultApi>();
 
-                var endRoundResult = await mainResultApi.RetrieveEndGameInfo(request);
+                var endRoundResult = await cloudResultApi.RetrieveEndGameInfo(request);
 
                 return endRoundResult;
             }

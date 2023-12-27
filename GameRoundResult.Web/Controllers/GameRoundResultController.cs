@@ -101,9 +101,9 @@ namespace GameRoundResult.Web.Controllers
 
         [ResponseCache(Duration = dataCacheDuration, VaryByQueryKeys = new[] { "start", "length", "gameType", "roundId", "userTimeZone", "date" })]
         public async Task<IActionResult> GetData(int start, int length, GameType gameType, long roundId, string userTimeZone, DateTime date,
-            [FromServices] IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, bool requestFromHistoryService)
+            [FromServices] IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            if (cloudServiceConfig?.ShouldCallOnPremiseService((int)gameType) == true && !requestFromHistoryService)
+            if (cloudServiceConfig?.ShouldCallCloudService((int)gameType) == true)
             {
                 return await GetRemoteData(start, length, gameType, roundId, userTimeZone, date);
             }
@@ -131,12 +131,12 @@ namespace GameRoundResult.Web.Controllers
 
         private async Task<IActionResult> GetRemoteData(int start, int length, GameType gameType, long roundId, string userTimeZone, DateTime date)
         {
-            var mainResultApi = serviceProvider.GetService<IMainResultApi>();
+            var cloudResultApi = serviceProvider.GetService<ICloudResultApi>();
             var clientKey = User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.ClientKey)?.Value;
             var clientId = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
             try
             {
-                var roundResultByGame = await mainResultApi.GetRoundResultByGame(new GetRoundResultByGameRequest
+                var roundResultByGame = await cloudResultApi.GetRoundResultByGame(new GetRoundResultByGameRequest
                 {
                     Start = start,
                     GameType = gameType,
@@ -170,7 +170,7 @@ namespace GameRoundResult.Web.Controllers
 
             return client == null && !authenticationResult.IsAuthorize ?
                 BadRequest() :
-                await GetData(request.Start, request.Length, request.GameType, request.RoundId, request.UserTimeZone, request.Date, stringLocalizer, true);
+                await GetData(request.Start, request.Length, request.GameType, request.RoundId, request.UserTimeZone, request.Date, stringLocalizer);
         }
 
 

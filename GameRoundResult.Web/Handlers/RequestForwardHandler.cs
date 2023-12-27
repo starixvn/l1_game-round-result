@@ -24,11 +24,9 @@ namespace GameRoundResult.Web.Handlers
             try
             {
                 request.CallFromCloudService = true;
-                var mainResultApi = this.serviceProvider.GetService<IMainResultApi>();
+                var cloudResultApi = this.serviceProvider.GetService<ICloudResultApi>();
 
-                var getAccessUrlResult = await mainResultApi.GetAccessUrl(request);
-
-                SentrySdk.CaptureMessage(Newtonsoft.Json.JsonConvert.SerializeObject(getAccessUrlResult));
+                var getAccessUrlResult = await cloudResultApi.GetAccessUrl(request);
 
                 getAccessUrlResult.IsAuthenticated = true;
 

@@ -9,7 +9,7 @@ using Refit;
 
 namespace GameRoundResult.Web.Handlers
 {
-    public interface IMainResultApi
+    public interface ICloudResultApi
     {
         [Post("/BetHistory/GetAccessUrl")]
         Task<GameTicketAccessUrlResultModel> GetAccessUrl([Body] BetHistoryAccessUrlRequestModel model);
@@ -25,10 +25,7 @@ namespace GameRoundResult.Web.Handlers
     {
         public static void InitApi(this IServiceCollection services, CloudServiceConfig cloudServiceConfig)
         {
-            if (cloudServiceConfig != null && cloudServiceConfig.IsCloudService)
-            {
-                services.AddSingleton(RestService.For<IMainResultApi>(cloudServiceConfig.OnPremiseResultUrl, new RefitSettings(new NewtonsoftJsonContentSerializer())));
-            }
+            services.AddSingleton(RestService.For<ICloudResultApi>(cloudServiceConfig.CloudResultUrl, new RefitSettings(new NewtonsoftJsonContentSerializer())));
         }
     }
 }
