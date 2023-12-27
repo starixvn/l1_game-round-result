@@ -33,6 +33,9 @@
     function requestEndRoundInfo(data) {
         postRequest("/EndRoundInfo", data, {
             contentType: "application/json; charset=utf-8",
+            headers: {
+                "Access-Key": "test"
+            },
             dataType: "json"
         }, (content) => {
             $('#retrieve-end-round-result').text(JSON.stringify(content, null, 2));
