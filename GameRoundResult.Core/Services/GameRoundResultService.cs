@@ -26,10 +26,12 @@ namespace GameRoundResult.Core.Services
         public async Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int gameType, int page, int pageSize) where GR : GameRound
         {
             var gameInfo = await generalGameConfigRepository.GetConfigById(gameType);
-            if(gameInfo.Type == (byte)GameConfigsType.Crash)
+
+            if(gameInfo != null && gameInfo.Type == (byte)GameConfigsType.Crash)
             {
                 return await repository.GetCrashGameRoundResultAsync<GR>(date, roundId, gameInfo.DisplayName, page, pageSize);
             }
+
             return await repository.GetGameRoundResultAsync<GR>(date, roundId, page, pageSize);
         }
     }
