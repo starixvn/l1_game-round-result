@@ -114,6 +114,8 @@ namespace GameRoundResult.Web
                    name: "demo",
                    pattern: "{controller=Demo}/{action=Index}");
             });
+
+            Sentry.SentrySdk.CaptureMessage("Started result service at " + DateTime.Now.ToString());
         }
     }
 }
