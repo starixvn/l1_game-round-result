@@ -9,6 +9,8 @@ namespace GameRoundResult.Web.Configuration
 
         public string OnPremiseResultUrl { get; set; }
 
+        public string OnPremiseProxy { get; set; }
+
         public string CloudResultUrl { get; set; }
 
         public IEnumerable<int> CloudGameIds { get; set; }
