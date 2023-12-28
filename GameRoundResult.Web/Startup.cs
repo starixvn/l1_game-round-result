@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Net;
-using System.Net.Security;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Handlers;
@@ -116,11 +114,6 @@ namespace GameRoundResult.Web
                    name: "demo",
                    pattern: "{controller=Demo}/{action=Index}");
             });
-
-            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, errors) =>
-            {
-                return true;
-            };
 
             Sentry.SentrySdk.CaptureMessage("Started result service at " + DateTime.Now.ToString());
         }
