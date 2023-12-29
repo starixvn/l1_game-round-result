@@ -12,14 +12,12 @@ COPY ./GameRoundResult.Web/ .
 
 RUN dotnet publish -r linux-x64 --self-contained false -o /app && echo $CACHEBUST
 
-FROM hub.lumigame.com/base/dotnet/core/aspnet:5.0-alpine AS base
-RUN apk add --update curl tzdata icu-libs && rm -rf /var/cache/apk/*
+FROM hub.lumigame.com/base/dotnet/core/aspnet:5.0.15-buster-slim AS base
+# RUN apt-get update && apt-get install -y curl tzdata && rm -rf /var/cache/apk/*
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
-RUN adduser -D game_result_user --disabled-password
+RUN adduser game_result_user --disabled-password
 USER game_result_user 
 WORKDIR /app
 COPY --from=builder /app .
 
 ENTRYPOINT ["dotnet", "GameRoundResult.Web.dll"]
-
-
