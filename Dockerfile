@@ -13,6 +13,16 @@ COPY ./GameRoundResult.Web/ .
 RUN dotnet publish -r linux-x64 --self-contained false -o /app && echo $CACHEBUST
 
 FROM hub.lumigame.com/base/dotnet/core/aspnet:5.0-alpine AS base
+
+RUN sed -i 's/providers = provider_sect/providers = provider_sect\n\
+ssl_conf = ssl_sect\n\
+\n\
+[ssl_sect]\n\
+system_default = system_default_sect\n\
+\n\
+[system_default_sect]\n\
+Options = UnsafeLegacyRenegotiation/' /etc/ssl/openssl.cnf
+
 RUN apk add --update curl tzdata icu-libs && rm -rf /var/cache/apk/*
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 RUN adduser -D game_result_user --disabled-password
