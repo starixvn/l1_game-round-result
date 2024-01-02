@@ -166,7 +166,8 @@ namespace GameRoundResult.Web.Controllers
             GameRoundId = model.GameRoundId,
             PlayerId = model.PlayerId,
             Language = model.Language,
-            FreeBet = model.FreeBet
+            FreeBet = model.FreeBet,
+            SiteId = model.SiteId
         });
 
         private async Task<GameTicketViewModel> GetGameTicket(GameType gameType, long roundId, string playerId, string operatorId, bool freeBet)

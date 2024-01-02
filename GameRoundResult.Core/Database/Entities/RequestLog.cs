@@ -41,6 +41,7 @@ namespace GameRoundResult.Core.Database.Entities
         public string Language { get; set; }
 
         public bool FreeBet { get; set; }
+        public string SiteId { get; set; }
     }
 
     public class AccessUrlResponse
