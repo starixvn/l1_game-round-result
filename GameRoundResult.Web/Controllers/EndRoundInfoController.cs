@@ -20,7 +20,7 @@ namespace GameRoundResult.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Index([FromBody] Requests.RetrieveEndRoundInfoRequest request)
         {
-            var authenticationResult = await partnerRequestAuthentication.Authorize(request.Auth?.OperatorId, Request, string.Empty);
+            var authenticationResult = await partnerRequestAuthentication.Authorize(request.Auth?.OperatorId, Request, request.Auth?.OperatorSecret);
             request.Auth.OperatorSecret = authenticationResult.OperatorSecret;
             return authenticationResult.IsAuthorize ? Ok(await mediator.Send(request)) : BadRequest();
         }
