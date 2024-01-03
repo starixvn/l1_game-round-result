@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Database.Entities.Player;
 using GameRoundResult.Core.Database.Repository;
 
 namespace GameRoundResult.Core.Services
@@ -7,6 +8,8 @@ namespace GameRoundResult.Core.Services
     public interface ILogService
     {
         Task LogTicketDetailRequestAsync(RequestLog log);
+
+        Task LogRetrieveEndRoundAsync(SBLog log);
     }
 
     public class LogService : ILogService
@@ -19,6 +22,9 @@ namespace GameRoundResult.Core.Services
         }
 
         public Task LogTicketDetailRequestAsync(RequestLog log)
-        => logRepository.WriteTicketDetailRequestAsync(log);
+           => logRepository.WriteTicketDetailRequestAsync(log);
+
+        public Task LogRetrieveEndRoundAsync(SBLog log)
+           => logRepository.WriteRetrieveEndRoundAsync(log);
     }
 }

@@ -12,6 +12,10 @@ namespace GameRoundResult.Web._Shared
     public interface IPartnerRequestAuthentication
     {
         Task<AuthenticationResult> Authorize(string partnerId, HttpRequest request, string partnerSecret);
+
+        Task<AuthenticationResult> AuthorizeByKeyValue(string partnerId, string partnerSecret);
+
+        Task<AuthenticationResult> AuthorizeByAccessKey(string partnerId, HttpRequest request);
     }
 
     public class PartnerRequestAuthentication : IPartnerRequestAuthentication
@@ -31,13 +35,13 @@ namespace GameRoundResult.Web._Shared
                  await AuthorizeByKeyValue(partnerId, partnerSecret);
         }
 
-        protected async Task<AuthenticationResult> AuthorizeByKeyValue(string partnerId, string partnerSecret)
+        public async Task<AuthenticationResult> AuthorizeByKeyValue(string partnerId, string partnerSecret)
         {
             var partner = await partnerService.Get(partnerId, partnerSecret);
             return partner != null ? new AuthenticationResult(true, partner.SecretKey) : badRequestResult;
         }
 
-        protected async Task<AuthenticationResult> AuthorizeByAccessKey(string partnerId, HttpRequest request)
+        public async Task<AuthenticationResult> AuthorizeByAccessKey(string partnerId, HttpRequest request)
         {
             if (string.IsNullOrWhiteSpace(request.Headers["Access-Key"]))
             {
