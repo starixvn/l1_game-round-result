@@ -39,6 +39,6 @@ namespace GameRoundResult.Web.SlotGames
         }
 
         protected Task<T> GetRoundAsync<T>(RetrieveEndGameInfoRequest request, string gameConfigName) where T : BaseSlotRoundEntity
-        => betRepository.GetEndRoundAsync<T>(request.GameRoundId, request.PlayerId, request.OperatorId, gameConfigName);
+        => betRepository.GetEndRoundAsync<T>(request.GameRoundId, request.PlayerId, request.OperatorId, gameConfigName, request.SiteId);
     }
 }

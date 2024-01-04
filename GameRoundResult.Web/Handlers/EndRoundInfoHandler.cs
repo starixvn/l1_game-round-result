@@ -72,7 +72,8 @@ namespace GameRoundResult.Web.Handlers
                         OperatorId = request.Auth.OperatorId,
                         PlayerId = request.PlayerId,
                         FreeBet = request.FreeBet,
-                        GameName = gameConfigs.Name
+                        GameName = gameConfigs.Name,
+                        SiteId = request.SiteId,
                     });
                 }
 

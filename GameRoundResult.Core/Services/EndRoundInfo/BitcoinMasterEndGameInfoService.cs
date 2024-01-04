@@ -42,6 +42,7 @@ namespace GameRoundResult.Core.Services
         {
             return await betLogCollection.Find((bet) => bet.RoundId == request.GameRoundId
             && bet.PlayerId == request.PlayerId
+            && bet.SiteId == request.SiteId
             && bet.OperatorId == request.OperatorId).ToListAsync();
         }
     }

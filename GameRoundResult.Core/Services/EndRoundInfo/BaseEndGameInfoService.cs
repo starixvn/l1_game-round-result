@@ -60,7 +60,7 @@ namespace GameRoundResult.Core.Services
         }
 
         protected virtual Expression<Func<TBetEntity, bool>> GetBetFilterExpression(RetrieveEndGameInfoRequest request)
-            => (bet) => bet.RoundId == request.GameRoundId && bet.PlayerId == request.PlayerId && bet.Paid;
+            => (bet) => bet.RoundId == request.GameRoundId && bet.PlayerId == request.PlayerId && bet.SiteId == request.SiteId && bet.Paid;
 
         protected virtual Expression<Func<TBetEntity, bool>> PartnerFilterExpression(RetrieveEndGameInfoRequest request)
             => (bet) => string.Equals(request.OperatorId, bet.OperatorId);

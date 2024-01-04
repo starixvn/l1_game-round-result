@@ -81,7 +81,8 @@ namespace GameRoundResult.IntegrationTests
                 FreeBet = false,
                 GameRoundId = 1,
                 GameTypeId = (byte)GameType.BigSmall,
-                PlayerId = "123"
+                PlayerId = "123",
+                SiteId = "4100300"
             };
         }
 
