@@ -1,0 +1,16 @@
+{
+  "dealer" : "Dealer",
+  "gameNames.77" : "Chinese Blackjack",
+  "game_name" : "Chinese Blackjack",
+  "glossary_bust" : "Bust",
+  "glossary_five-card" : "Five-Card",
+  "glossary_hand_ranking_ban-ban" : "Ban-Ban",
+  "glossary_hand_ranking_ban-luck" : "Ban-Luck",
+  "glossary_hand_ranking_five-card_trick" : "5-Card trick",
+  "hand_ranking_five-card_trick" : "Five-Card trick",
+  "handid" : "ID Tangan",
+  "player" : "Pemain",
+  "unfinished_game" : "Permainan yang belum selesai",
+  "unqualified" : "Tidak Layak",
+  "unsatisfied" : "Tidak puas"
+}

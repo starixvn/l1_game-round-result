@@ -1,0 +1,16 @@
+{
+  "dealer" : "庄家",
+  "gameNames.77" : "中国二十一点",
+  "game_name" : "中国二十一点",
+  "glossary_bust" : "爆牌",
+  "glossary_five-card" : "五张牌",
+  "glossary_hand_ranking_ban-ban" : "Ban-Ban",
+  "glossary_hand_ranking_ban-luck" : "Ban-Luck",
+  "glossary_hand_ranking_five-card_trick" : "五张牌",
+  "hand_ranking_five-card_trick" : "5龙",
+  "handid" : "手ID",
+  "player" : "玩家",
+  "unfinished_game" : "未完成游戏",
+  "unqualified" : "不合格",
+  "unsatisfied" : "不满意"
+}

@@ -40,7 +40,8 @@ namespace GameRoundResult.Web.Configuration
             GameType.HiLo,
             GameType.TreasureIsland,
             GameType.FourGuardians,
-            GameType.Pontoon
+            GameType.Pontoon,
+            GameType.ChineseBlackjack,
         };
 
         private readonly IPartnerConfigService partnerConfigService;

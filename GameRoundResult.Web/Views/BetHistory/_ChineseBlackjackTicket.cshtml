@@ -1,0 +1,185 @@
+﻿@using Microsoft.Extensions.Localization
+@using GameRoundResult.Core.Constants
+@model ChineseBlackjackTicketViewModel
+
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<ChineseBlackjackTicketViewModel> ChineseBlackjackLocalizer
+
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,GameTicketViewModel,ChineseBlackjack" id="tolgee_namespace" readonly hidden />
+}
+<table class="table table-bordered table-blackjack">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th class="col-round-id">@ChineseBlackjackLocalizer["handid"]</th>
+            <th colspan="2">@ChineseBlackjackLocalizer["dealer"]</th>
+            <th colspan="2">@ChineseBlackjackLocalizer["player"]</th>
+            <th>@CommonLocalizer["Stake"]</th>
+            <th>@CommonLocalizer["WinLoss"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Bet != null)
+        {
+            <tr>
+                <td>
+                    @Model.Bet.Time.ToString(ViewFormat.TicketDateFormat, CultureInfo.InvariantCulture)
+                    <br />
+                    @Model.Bet.Time.ToString(ViewFormat.TicketTimeFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>
+                    @Model.Bet.HandId
+                </td>
+                <td class="blackjack-result">
+                    <div class="cards">
+                        @if (Model.Ended)
+                        {
+                            @foreach (var card in Model.DealerCards)
+                            {
+                                <div class="card card-type-@card.Suit">
+                                    <span>@card.Rank</span>
+                                    <img class="img" src="~/scss/images/card_@(card.Suit).png" asp-append-version="true" />
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <img class="card" src="~/scss/images/card_back.png" asp-append-version="true" />
+                            <img class="card" src="~/scss/images/card_back.png" asp-append-version="true" />
+                        }
+                    </div>
+                </td>
+                <td>
+                    @if (Model.Ended)
+                    {
+
+                        if (Model.DealerPoint <= ChineseBlackjack.MaxNonBustPointValue && Model.DealerCards.Count() == ChineseBlackjack.MaxCardsOnHand)
+                        {
+                            @ChineseBlackjackLocalizer["glossary_five-card"]
+                        }
+                        else if (Model.DealerCards.Count() == ChineseBlackjack.MinCardsOnHand)
+                        {
+                            if (Model.IsDealerBanBan())
+                            {
+                                @ChineseBlackjackLocalizer["glossary_hand_ranking_ban-ban"]
+                            }
+                            else if (Model.IsDealerBanLuck())
+                            {
+                                @ChineseBlackjackLocalizer["glossary_hand_ranking_ban-luck"]
+                            }
+                            else
+                            {
+                                @(Model.DealerPoint.ToString())
+                            }
+                        }
+                        else
+                        {
+                            @(Model.DealerPoint > ChineseBlackjack.MaxNonBustPointValue ? ChineseBlackjackLocalizer["glossary_bust"] : Model.DealerPoint.ToString())
+                        }
+                    }
+                    else
+                    {
+                        @("-")
+                    }
+                </td>
+                <td class="blackjack-result">
+                    <div class="cards">
+                        @foreach (var card in Model.Bet.Cards)
+                        {
+                            <div class="card card-type-@card.Suit">
+                                <span>@card.Rank</span>
+                                <img class="img" src="~/scss/images/card_@(card.Suit).png" asp-append-version="true" />
+                            </div>
+                        }
+                    </div>
+                </td>
+                <td>
+                    @if (Model.Bet.Total <= ChineseBlackjack.MaxNonBustPointValue && Model.Bet.Cards.Count() == ChineseBlackjack.MaxCardsOnHand)
+                    {
+                        @ChineseBlackjackLocalizer["glossary_five-card"]
+                    }
+                    else if (Model.Bet.Cards.Count() == ChineseBlackjack.MinCardsOnHand)
+                    {
+                        if (Model.Bet.Cards.All(card => card.Rank == "A"))
+                        {
+                            @ChineseBlackjackLocalizer["glossary_hand_ranking_ban-ban"]
+                        }
+                        else
+                        {
+                            var cardWithAceRank = Model.Bet.Cards.FirstOrDefault(card => card.Rank == "A");
+                            var cardWithoutAceRank = Model.Bet.Cards.FirstOrDefault(card => card.Rank != "A");
+                            if (cardWithAceRank != null
+                            && (cardWithoutAceRank.Rank == "10"
+                            || cardWithoutAceRank.Rank == "J"
+                            || cardWithoutAceRank.Rank == "Q"
+                            || cardWithoutAceRank.Rank == "K"))
+                            {
+                                @ChineseBlackjackLocalizer["glossary_hand_ranking_ban-luck"]
+                            }
+                            else
+                            {
+                                if (Model.Ended)
+                                {
+                                    if (Model.Bet.Total < ChineseBlackjack.MinNonBustPointValue)
+                                    {
+                                        if (Model.IsDealerBanBan() || Model.IsDealerBanLuck())
+                                        {
+                                            @Model.Bet.Total.ToString()
+                                        }
+                                        else
+                                        {
+                                            @ChineseBlackjackLocalizer["unqualified"]
+                                        }
+                                    }
+                                    else
+                                    {
+                                        @Model.Bet.Total.ToString()
+                                    }
+                                }
+                                else
+                                {
+                                    @string.Join("/", Model.Bet.SoftPoints)
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        @if (Model.Ended)
+                        {
+
+                            if (Model.Bet.Total > ChineseBlackjack.MaxNonBustPointValue)
+                            {
+                                @ChineseBlackjackLocalizer["glossary_bust"]
+                            }
+                            else if (Model.Bet.Total < ChineseBlackjack.MinNonBustPointValue)
+                            {
+                                @ChineseBlackjackLocalizer["unqualified"]
+                            }
+                            else
+                            {
+                                @Model.Bet.Total.ToString()
+                            }
+                        }
+                        else
+                        {
+                            @string.Join("/", Model.Bet.SoftPoints)
+                        }
+                    }
+                </td>
+                <td class="text-right">@Model.Bet.Bet.Format()</td>
+                <td class="text-right">@(Model.Ended ? Model.WinLoss.Format() : ChineseBlackjackLocalizer["unfinished_game"])</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="8" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -88,6 +88,9 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IPontoonTicketService, PontoonTicketService>();
             services.AddScoped<IPontoonBetRepository, PontoonBetRepository>();
 
+            services.AddScoped<IChineseBlackjackTicketService, ChineseBlackjackTicketService>();
+            services.AddScoped<IChineseBlackjackBetRepository, ChineseBlackjackBetRepository>();
+
             services.AddScoped<IGeneralGameSettingRepository, GeneralGameSettingRepository>();
             services.AddScoped<IGeneralGameSettingService, GeneralGameSettingService>();
 
@@ -136,6 +139,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(Win3CardsTicketAccessor));
             services.AddScoped(typeof(DragonTigerFightTicketAccessor));
             services.AddScoped<PontoonTicketAccessor>();
+            services.AddScoped<ChineseBlackjackTicketAccessor>();
             services.AddScoped(typeof(ColorGameTicketAccessor));
             services.AddScoped(typeof(BandarQiuQiuTicketAccessor));
 

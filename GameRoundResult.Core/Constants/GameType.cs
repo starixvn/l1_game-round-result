@@ -58,9 +58,10 @@
         FanTan = 60,
         WinThreeCards = 61,
         DragonTigerFight = 67,
-        Pontoon = 72,
         ColorGame = 71,
+        Pontoon = 72,
+        SpaceFlight = 73,
         BandarQiuQiu = 75,
-        SpaceFlight = 73
+        ChineseBlackjack =77,
     }
 }

@@ -1,0 +1,16 @@
+{
+  "dealer" : "เจ้ามือ",
+  "gameNames.77" : "แบล็คแจ็คจีน",
+  "game_name" : "แบล็คแจ็คจีน",
+  "glossary_bust" : "จั่วไพ่เกิน",
+  "glossary_five-card" : "ไพ่ 5 ใบ",
+  "glossary_hand_ranking_ban-ban" : "Ban-Ban",
+  "glossary_hand_ranking_ban-luck" : "Ban-Luck",
+  "glossary_hand_ranking_five-card_trick" : "ไพ่ 5 ใบ",
+  "hand_ranking_five-card_trick" : "ไพ่ 5 ใบ",
+  "handid" : "รหัสมือ",
+  "player" : "ผู้เล่น",
+  "unfinished_game" : "เกมที่ยังไม่เสร็จสิ้น",
+  "unqualified" : "ไม่เข้าเงื่อนไข",
+  "unsatisfied" : "ไม่พอใจ"
+}
