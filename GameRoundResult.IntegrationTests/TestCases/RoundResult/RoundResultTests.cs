@@ -114,6 +114,7 @@ namespace GameRoundResult.IntegrationTests
         {
             // arrange
             databaseHelper.InsertOperators();
+            databaseHelper.InsertGameConfigs();
             var model = GetRoundResultAccessUrlRequestModel();
             model.Language = language;
             var url = await BuildAccessUrl(model);

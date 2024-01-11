@@ -1,0 +1,7304 @@
+[{
+    "_id": {
+      "$oid": "5e7be62ce586ab438afb05f8"
+    },
+    "time": {
+      "$date": "2021-02-02T10:05:53.875Z"
+    },
+    "__v": 0,
+    "name": "xocxoc",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 1746306,
+    "bot_minbet": 0,
+    "bot_maxbet": 720000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0.01,
+      0.01,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "even": 20000000,
+      "odd": 20000000,
+      "red3": 10000000,
+      "white3": 10000000,
+      "red4": 2000000,
+      "white4": 2000000,
+      "red2": 20000000
+    },
+    "odds": {
+      "even": 1.96,
+      "odd": 1.96,
+      "red3": 3.75,
+      "white3": 3.75,
+      "red4": 14.4,
+      "white4": 14.4,
+      "red2": 2.4
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": true,
+    "gameId": 2,
+    "isBeta": false,
+    "siteExclusions": null,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "exchangeReload": false,
+    "randomMode": 2,
+    "slotsConfig": null,
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "5e7be638e586ab438afb05f9"
+    },
+    "time": {
+      "$date": "2020-11-19T01:40:11.195Z"
+    },
+    "__v": 0,
+    "name": "taixiu",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 1154016,
+    "bot_minbet": 0,
+    "bot_maxbet": 5000000,
+    "hour_maxbot": [
+      0,
+      0,
+      0.01,
+      0.01,
+      0.01,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {},
+    "odds": {
+      "big": 1.96,
+      "small": 1.96
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0.3,
+    "gameId": 1,
+    "isBeta": false,
+    "exchangeReload": false,
+    "randomMode": 1,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "5e7be645e586ab438afb05fa"
+    },
+    "time": {
+      "$date": "2020-12-10T05:30:40.872Z"
+    },
+    "__v": 0,
+    "name": "baucua",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 1921113,
+    "bot_minbet": 0,
+    "bot_maxbet": 550000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "fish": 10000000,
+      "prawn": 10000000,
+      "crab": 10000000,
+      "stag": 10000000,
+      "gourd": 10000000,
+      "rooster": 10000000
+    },
+    "odds": {
+      "single": 2,
+      "double": 3.5,
+      "triple": 6
+    },
+    "delayStartTime": 25,
+    "enableFreeBet": false,
+    "gameId": 3,
+    "isBeta": false,
+    "exchangeReload": false,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "randomMode": 2,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "5e9726cd421d0721324d1bc8"
+    },
+    "time": {
+      "$date": "2020-11-19T01:40:28.324Z"
+    },
+    "__v": 0,
+    "name": "txturbo",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 1801035,
+    "bot_minbet": 0,
+    "bot_maxbet": 6000000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {},
+    "odds": {
+      "big": 1.96,
+      "small": 1.96
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0.3,
+    "gameId": 4,
+    "isBeta": false,
+    "exchangeReload": false,
+    "randomMode": 1,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "5e9a56e079bcca0be376eb5c"
+    },
+    "time": {
+      "$date": "2020-10-14T08:41:17.822Z"
+    },
+    "__v": 0,
+    "name": "oeturbo",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 1859670,
+    "bot_minbet": 0,
+    "bot_maxbet": 5200000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {},
+    "odds": {
+      "even": 1.96,
+      "odd": 1.96
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "gameId": 6,
+    "isBeta": false,
+    "exchangeReload": false,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0.3,
+    "randomMode": 1,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "5ea25f3f82f61d32833f07cc"
+    },
+    "time": {
+      "$date": "2020-11-19T01:56:01.420Z"
+    },
+    "__v": 0,
+    "name": "dragontiger",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 2044407,
+    "bot_minbet": 0,
+    "bot_maxbet": 420000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "dragon": 20000000,
+      "tiger": 20000000,
+      "tie": 2000000
+    },
+    "odds": {
+      "dragon": 2,
+      "tiger": 2,
+      "tie": 11
+    },
+    "delayStartTime": 10,
+    "enableFreeBet": false,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 7,
+    "isBeta": false,
+    "exchangeReload": false,
+    "randomMode": 2,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "5ebf53d906e3a226ce2251f5"
+    },
+    "time": {
+      "$date": "2020-11-19T01:56:46.232Z"
+    },
+    "__v": 0,
+    "name": "kenopromax",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 1891162,
+    "bot_minbet": 0,
+    "bot_maxbet": 500000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "big": 20000000,
+      "small": 20000000,
+      "even": 20000000,
+      "odd": 20000000,
+      "earth": 2000000,
+      "fire": 4000000,
+      "gold": 2000000,
+      "water": 20000000,
+      "wood": 4000000
+    },
+    "odds": {
+      "big": 1.96,
+      "small": 1.96,
+      "even": 1.96,
+      "odd": 1.96,
+      "earth": 9.2,
+      "fire": 4.6,
+      "gold": 9.2,
+      "water": 2.4,
+      "wood": 4.6
+    },
+    "delayStartTime": 25,
+    "enableFreeBet": false,
+    "gameId": 8,
+    "isBeta": false,
+    "exchangeReload": false,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "randomMode": 2,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "5ed20e64fc2ddd4e77e60db7"
+    },
+    "time": {
+      "$date": "2020-10-22T02:40:54.879Z"
+    },
+    "__v": 0,
+    "name": "minisedie",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 1962537,
+    "bot_minbet": 0,
+    "bot_maxbet": 420000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "even": 20000000,
+      "odd": 20000000,
+      "red3": 10000000,
+      "white3": 10000000,
+      "red4": 2000000,
+      "white4": 2000000
+    },
+    "odds": {
+      "even": 1.96,
+      "odd": 1.96,
+      "red3": 3.75,
+      "white3": 3.75,
+      "red4": 14.4,
+      "white4": 14.4
+    },
+    "delayStartTime": 25,
+    "enableFreeBet": false,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 9,
+    "isBeta": false,
+    "exchangeReload": false,
+    "randomMode": 2,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "5edb114a37e2ea7203ec32bf"
+    },
+    "time": {
+      "$date": "2020-11-19T01:56:19.146Z"
+    },
+    "__v": 0,
+    "name": "baccarat",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 1645120,
+    "bot_minbet": 0,
+    "bot_maxbet": 480000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "player": 20000000,
+      "banker": 20000000,
+      "big": 20000000,
+      "small": 20000000,
+      "tie": 2000000,
+      "playerPair": 2000000,
+      "bankerPair": 2000000
+    },
+    "odds": {
+      "player": 2,
+      "banker": 1.95,
+      "big": 1.54,
+      "small": 2.5,
+      "tie": 9,
+      "playerPair": 12,
+      "bankerPair": 12
+    },
+    "delayStartTime": 15,
+    "enableFreeBet": false,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 10,
+    "isBeta": false,
+    "exchangeReload": false,
+    "randomMode": 2,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "5ef5c6aaaf60c13fa6c913a8"
+    },
+    "time": {
+      "$date": "2020-10-29T04:22:43.427Z"
+    },
+    "__v": 0,
+    "name": "kenomax",
+    "enabled": true,
+    "botenabled": false,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 1224974,
+    "bot_minbet": 0,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "big": 20000000,
+      "small": 20000000,
+      "even": 20000000,
+      "odd": 20000000,
+      "earth": 2000000,
+      "fire": 4000000,
+      "gold": 2000000,
+      "water": 20000000,
+      "wood": 4000000
+    },
+    "odds": {
+      "big": 1.96,
+      "small": 1.96,
+      "even": 1.96,
+      "odd": 1.96,
+      "earth": 9.2,
+      "fire": 4.6,
+      "gold": 9.2,
+      "water": 2.4,
+      "wood": 4.6
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "gameId": 12,
+    "isBeta": false,
+    "exchangeReload": true,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "5ef5c6b4af60c13fa6c913a9"
+    },
+    "time": {
+      "$date": "2020-10-29T04:22:58.304Z"
+    },
+    "__v": 0,
+    "name": "kenomax2",
+    "enabled": true,
+    "botenabled": false,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 1225027,
+    "bot_minbet": 0,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "big": 20000000,
+      "small": 20000000,
+      "even": 20000000,
+      "odd": 20000000,
+      "earth": 2000000,
+      "fire": 4000000,
+      "gold": 2000000,
+      "water": 20000000,
+      "wood": 4000000
+    },
+    "odds": {
+      "big": 1.96,
+      "small": 1.96,
+      "even": 1.96,
+      "odd": 1.96,
+      "earth": 9.2,
+      "fire": 4.6,
+      "gold": 9.2,
+      "water": 2.4,
+      "wood": 4.6
+    },
+    "delayStartTime": 30,
+    "enableFreeBet": false,
+    "exchangeReload": true,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "type": 0,
+    "gameId": 13
+  },
+  {
+    "_id": {
+      "$oid": "5ef5c6bdaf60c13fa6c913aa"
+    },
+    "time": {
+      "$date": "2020-10-29T04:23:14.487Z"
+    },
+    "__v": 0,
+    "name": "kenomini",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 1901254,
+    "bot_minbet": 0,
+    "bot_maxbet": 1000000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "big": 20000000,
+      "small": 20000000,
+      "even": 20000000,
+      "odd": 20000000,
+      "earth": 2000000,
+      "fire": 4000000,
+      "gold": 2000000,
+      "water": 20000000,
+      "wood": 4000000
+    },
+    "odds": {
+      "big": 1.98,
+      "small": 1.94,
+      "even": 1.96,
+      "odd": 1.96,
+      "earth": 9.2,
+      "fire": 4.6,
+      "gold": 9.2,
+      "water": 2.4,
+      "wood": 4.6
+    },
+    "delayStartTime": 15,
+    "enableFreeBet": false,
+    "gameId": 14,
+    "isBeta": false,
+    "exchangeReload": false,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "type": 0,
+    "randomMode": 1
+  },
+  {
+    "_id": {
+      "$oid": "5ef5c6c4af60c13fa6c913ab"
+    },
+    "time": {
+      "$date": "2020-10-29T04:23:31.438Z"
+    },
+    "__v": 0,
+    "name": "kenomini2",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 2099127,
+    "bot_minbet": 0,
+    "bot_maxbet": 1000000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "big": 20000000,
+      "small": 20000000,
+      "even": 20000000,
+      "odd": 20000000,
+      "earth": 2000000,
+      "fire": 4000000,
+      "gold": 2000000,
+      "water": 20000000,
+      "wood": 4000000
+    },
+    "odds": {
+      "big": 1.98,
+      "small": 1.94,
+      "even": 1.96,
+      "odd": 1.96,
+      "earth": 9.2,
+      "fire": 4.6,
+      "gold": 9.2,
+      "water": 2.4,
+      "wood": 4.6
+    },
+    "delayStartTime": 25,
+    "enableFreeBet": false,
+    "exchangeReload": false,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "type": 0,
+    "randomMode": 1,
+    "gameId": 15
+  },
+  {
+    "_id": {
+      "$oid": "5ef5c6cbaf60c13fa6c913ac"
+    },
+    "time": {
+      "$date": "2020-10-29T04:22:28.887Z"
+    },
+    "__v": 0,
+    "name": "kenoeast",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 2450712,
+    "bot_minbet": 0,
+    "bot_maxbet": 1000000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "big": 20000000,
+      "small": 20000000,
+      "even": 20000000,
+      "odd": 20000000,
+      "earth": 2000000,
+      "fire": 4000000,
+      "gold": 2000000,
+      "water": 20000000,
+      "wood": 4000000
+    },
+    "odds": {
+      "big": 1.96,
+      "small": 1.96,
+      "even": 1.96,
+      "odd": 1.96,
+      "earth": 9.2,
+      "fire": 4.6,
+      "gold": 9.2,
+      "water": 2.4,
+      "wood": 4.6
+    },
+    "delayStartTime": 0,
+    "exchangeReload": false,
+    "enableFreeBet": false,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "type": 0,
+    "randomMode": 1,
+    "gameId": 16
+  },
+  {
+    "_id": {
+      "$oid": "5ef5c6d1af60c13fa6c913ad"
+    },
+    "time": {
+      "$date": "2020-10-29T04:24:37.260Z"
+    },
+    "__v": 0,
+    "name": "kenowest",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 2592858,
+    "bot_minbet": 0,
+    "bot_maxbet": 1000000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "big": 20000000,
+      "small": 20000000,
+      "even": 20000000,
+      "odd": 20000000,
+      "earth": 2000000,
+      "fire": 4000000,
+      "gold": 2000000,
+      "water": 20000000,
+      "wood": 4000000
+    },
+    "odds": {
+      "big": 1.96,
+      "small": 1.96,
+      "even": 1.96,
+      "odd": 1.96,
+      "earth": 9.2,
+      "fire": 4.6,
+      "gold": 9.2,
+      "water": 2.4,
+      "wood": 4.6
+    },
+    "delayStartTime": 10,
+    "enableFreeBet": false,
+    "exchangeReload": false,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "type": 0,
+    "randomMode": 1,
+    "gameId": 17
+  },
+  {
+    "_id": {
+      "$oid": "5ef5c6d8af60c13fa6c913ae"
+    },
+    "time": {
+      "$date": "2020-10-29T04:24:19.361Z"
+    },
+    "__v": 0,
+    "name": "kenosouth",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 2591433,
+    "bot_minbet": 0,
+    "bot_maxbet": 1000000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "big": 20000000,
+      "small": 20000000,
+      "even": 20000000,
+      "odd": 20000000,
+      "earth": 2000000,
+      "fire": 4000000,
+      "gold": 2000000,
+      "water": 20000000,
+      "wood": 4000000
+    },
+    "odds": {
+      "big": 1.96,
+      "small": 1.96,
+      "even": 1.96,
+      "odd": 1.96,
+      "earth": 9.2,
+      "fire": 4.6,
+      "gold": 9.2,
+      "water": 2.4,
+      "wood": 4.6
+    },
+    "delayStartTime": 20,
+    "enableFreeBet": false,
+    "exchangeReload": false,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "type": 0,
+    "randomMode": 1,
+    "gameId": 18
+  },
+  {
+    "_id": {
+      "$oid": "5ef5c6e0af60c13fa6c913af"
+    },
+    "time": {
+      "$date": "2020-10-29T04:23:46.011Z"
+    },
+    "__v": 0,
+    "name": "kenonorth",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 2591251,
+    "bot_minbet": 0,
+    "bot_maxbet": 1000000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "big": 20000000,
+      "small": 20000000,
+      "even": 20000000,
+      "odd": 20000000,
+      "earth": 2000000,
+      "fire": 4000000,
+      "gold": 2000000,
+      "water": 20000000,
+      "wood": 4000000
+    },
+    "odds": {
+      "big": 1.96,
+      "small": 1.96,
+      "even": 1.96,
+      "odd": 1.96,
+      "earth": 9.2,
+      "fire": 4.6,
+      "gold": 9.2,
+      "water": 2.4,
+      "wood": 4.6
+    },
+    "delayStartTime": 30,
+    "enableFreeBet": false,
+    "exchangeReload": false,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "type": 0,
+    "randomMode": 1,
+    "gameId": 19
+  },
+  {
+    "_id": {
+      "$oid": "5f4759db2a828b3f7516def6"
+    },
+    "time": {
+      "$date": "2020-11-05T08:31:31.617Z"
+    },
+    "__v": 0,
+    "name": "roulette",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 1153596,
+    "bot_minbet": 0,
+    "bot_maxbet": 1200000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "straightUp": 2000000,
+      "split": 4000000,
+      "street": 6000000,
+      "triangle": 6000000,
+      "corner": 8000000,
+      "fourNumbers": 8000000,
+      "line": 12000000,
+      "column": 20000000,
+      "dozen": 20000000,
+      "redBlack": 20000000,
+      "oddEven": 20000000,
+      "bigSmall": 20000000
+    },
+    "odds": {
+      "straightUp": 36,
+      "split": 18,
+      "street": 12,
+      "triangle": 12,
+      "corner": 9,
+      "fourNumbers": 9,
+      "line": 6,
+      "column": 3,
+      "dozen": 3,
+      "redBlack": 2,
+      "oddEven": 2,
+      "bigSmall": 2
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "exchangeReload": false,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "type": 0,
+    "gameId": 21
+  },
+  {
+    "_id": {
+      "$oid": "5f472b3500c5e01fc4fde8ca"
+    },
+    "time": {
+      "$date": "2020-10-08T06:08:12.704Z"
+    },
+    "__v": 0,
+    "name": "luckywheel",
+    "enabled": true,
+    "botenabled": false,
+    "minbet": 1000,
+    "maxbet": 1000,
+    "maxbot": 0,
+    "disabledround": null,
+    "bot_minbet": 0,
+    "bot_maxbet": 0,
+    "hour_maxbot": null,
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": null,
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "exchangeReload": true,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "5f589efcfbae507601e5ae7b"
+    },
+    "time": {
+      "$date": "2020-11-19T07:42:38.849Z"
+    },
+    "__v": 0,
+    "name": "vipsedie",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 50000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 1894999,
+    "bot_minbet": 0,
+    "bot_maxbet": 2500000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "even": 20000000,
+      "odd": 20000000,
+      "red2": 20000000,
+      "red3": 10000000,
+      "white3": 10000000,
+      "red4": 2000000,
+      "white4": 2000000
+    },
+    "odds": {
+      "even": 1.96,
+      "odd": 1.96,
+      "red2": 2.4,
+      "red3": 3.75,
+      "white3": 3.75,
+      "red4": 14.4,
+      "white4": 14.4
+    },
+    "delayStartTime": 15,
+    "enableFreeBet": false,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 22,
+    "isBeta": false,
+    "exchangeReload": false,
+    "reloadExchange": true,
+    "randomMode": 2,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "5f9a65c2ef226e0001f72c41"
+    },
+    "time": {
+      "$date": "2020-11-19T01:38:22.351Z"
+    },
+    "__v": 0,
+    "name": "specialsedie",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 2239466,
+    "bot_minbet": 0,
+    "bot_maxbet": 6500000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {},
+    "odds": {
+      "even": 1.96,
+      "odd": 1.96
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0.3,
+    "gameId": 24,
+    "isBeta": false,
+    "exchangeReload": false,
+    "reloadExchange": true,
+    "randomMode": 1,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "5fb7858a5d391f0001df16fc"
+    },
+    "time": {
+      "$date": "2020-12-10T03:23:14.614Z"
+    },
+    "__v": 0,
+    "name": "blackjack",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 649,
+    "bot_minbet": 0,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {},
+    "odds": {
+      "regular": 2,
+      "blackjack": 2.5
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "siteExclusions": null,
+    "gameId": 23,
+    "isBeta": false,
+    "exchangeReload": false,
+    "reloadExchange": true,
+    "randomMode": 2,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "slotsConfig": null,
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "5fbc68c23d4d0d0001d3209d"
+    },
+    "time": {
+      "$date": "2020-12-11T04:06:19.029Z"
+    },
+    "__v": 0,
+    "name": "vipfishprawncrab",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 50000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 1610622,
+    "bot_minbet": 0,
+    "bot_maxbet": 500000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "fish": 20000000,
+      "prawn": 20000000,
+      "crab": 20000000,
+      "stag": 20000000,
+      "gourd": 20000000,
+      "rooster": 20000000,
+      "anyTriple": 2000000,
+      "mountain": 20000000,
+      "ocean": 20000000
+    },
+    "odds": {
+      "single": 2,
+      "double": 3.5,
+      "triple": 6,
+      "anyTriple": 31,
+      "mountain": 1.96,
+      "ocean": 1.96
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "exchangeReload": false,
+    "reloadExchange": true,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "randomMode": 2,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "type": 0,
+    "gameId": 26
+  },
+  {
+    "_id": {
+      "$oid": "5fd1ecebb89a680001c732f2"
+    },
+    "time": {
+      "$date": "2020-12-23T02:18:04.851Z"
+    },
+    "__v": 0,
+    "name": "sicbo",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 1213300,
+    "bot_minbet": 0,
+    "bot_maxbet": 3000000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "specific1": 20000000,
+      "specific2": 20000000,
+      "specific3": 20000000,
+      "specific4": 20000000,
+      "specific5": 20000000,
+      "specific6": 20000000,
+      "big": 20000000,
+      "small": 20000000,
+      "anyTriple": 2000000,
+      "total4": 2000000,
+      "total5": 2000000,
+      "total6": 2000000,
+      "total7": 2000000,
+      "total8": 10000000,
+      "total9": 10000000,
+      "total10": 10000000,
+      "total11": 10000000,
+      "total12": 10000000,
+      "total13": 10000000,
+      "total14": 2000000,
+      "total15": 2000000,
+      "total16": 2000000,
+      "total17": 2000000
+    },
+    "odds": {
+      "single": 2,
+      "double": 3.5,
+      "triple": 6,
+      "big": 2,
+      "small": 2,
+      "anyTriple": 31,
+      "total4": 61,
+      "total5": 31,
+      "total6": 18,
+      "total7": 13,
+      "total8": 9,
+      "total9": 7,
+      "total10": 7,
+      "total11": 7,
+      "total12": 7,
+      "total13": 9,
+      "total14": 13,
+      "total15": 18,
+      "total16": 31,
+      "total17": 61
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "gameId": 25,
+    "isBeta": false,
+    "exchangeReload": false,
+    "reloadExchange": true,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "randomMode": 3,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "5fea9b8d057a396720753380"
+    },
+    "time": {
+      "$date": "2021-01-13T01:25:29.396Z"
+    },
+    "__v": 0,
+    "name": "vipsediewar",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 1266778,
+    "bot_minbet": 0,
+    "bot_maxbet": 800000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "player": 20000000,
+      "banker": 20000000,
+      "tie": 20000000,
+      "even": 20000000,
+      "odd": 20000000,
+      "playerEven": 20000000,
+      "playerOdd": 20000000,
+      "playerRed3": 10000000,
+      "playerWhite3": 10000000,
+      "playerRed4": 2000000,
+      "playerWhite4": 2000000,
+      "bankerEven": 20000000,
+      "bankerOdd": 20000000,
+      "bankerRed3": 10000000,
+      "bankerWhite3": 10000000,
+      "bankerRed4": 2000000,
+      "bankerWhite4": 2000000
+    },
+    "odds": {
+      "player": 2.6,
+      "banker": 2.6,
+      "tie": 3.5,
+      "even": 1.96,
+      "odd": 1.96,
+      "playerEven": 1.96,
+      "playerOdd": 1.96,
+      "playerRed3": 3.75,
+      "playerWhite3": 3.75,
+      "playerRed4": 14.4,
+      "playerWhite4": 14.4,
+      "bankerEven": 1.96,
+      "bankerOdd": 1.96,
+      "bankerRed3": 3.75,
+      "bankerWhite3": 3.75,
+      "bankerRed4": 14.4,
+      "bankerWhite4": 14.4
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "exchangeReload": false,
+    "reloadExchange": true,
+    "randomMode": 2,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "type": 0,
+    "gameId": 28
+  },
+  {
+    "_id": {
+      "$oid": "5fea9b9b057a396720753381"
+    },
+    "time": {
+      "$date": "2021-01-13T01:24:05.772Z"
+    },
+    "__v": 0,
+    "name": "vipbaccarat",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 50000,
+    "maxbet": 20000000,
+    "maxbot": 0,
+    "disabledround": 1480278,
+    "bot_minbet": 0,
+    "bot_maxbet": 500000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "player": 20000000,
+      "banker": 20000000,
+      "big": 20000000,
+      "small": 20000000,
+      "tie": 2000000,
+      "playerPair": 2000000,
+      "bankerPair": 2000000
+    },
+    "odds": {
+      "player": 2,
+      "banker": 1.95,
+      "big": 1.54,
+      "small": 2.5,
+      "tie": 9,
+      "playerPair": 12,
+      "bankerPair": 12
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "gameId": 27,
+    "isBeta": false,
+    "exchangeReload": false,
+    "reloadExchange": true,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "randomMode": 2,
+    "siteExclusions": null,
+    "slotsConfig": null,
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "6090f014d3a7ca0001de015e"
+    },
+    "time": {
+      "$date": "2021-05-20T05:58:41.202Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "lottery",
+    "enabled": true,
+    "botenabled": false,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 1263246,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "4Sets": 2000000,
+      "special": 1000000,
+      "head": 5000000,
+      "tail": 5000000,
+      "27Sets": 20000000,
+      "others": 20000000
+    },
+    "odds": {
+      "4Sets": 24,
+      "special": 90,
+      "head": 9,
+      "tail": 9,
+      "27Sets": 3.6,
+      "others": 1.96
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "exchangeReload": false,
+    "reloadExchange": true,
+    "bot_minbet": null,
+    "gameId": 31
+  },
+  {
+    "_id": {
+      "$oid": "60cc0a6581780700012c3164"
+    },
+    "time": {
+      "$date": "2021-07-01T02:07:32.690Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "threecards",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 1932435,
+    "bot_maxbet": 800000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "red": 20000000,
+      "black": 20000000,
+      "diamonds": 20000000,
+      "hearts": 20000000,
+      "spades": 20000000,
+      "clubs": 20000000
+    },
+    "odds": {
+      "red": 1.96,
+      "black": 1.96,
+      "diamonds": 1.68,
+      "hearts": 1.68,
+      "spades": 1.68,
+      "clubs": 1.68
+    },
+    "delayStartTime": 25,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [
+      "12bet"
+    ],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 35,
+    "isBeta": false,
+    "exchangeReload": false,
+    "reloadExchange": true,
+    "bot_minbet": null,
+    "randomMode": 3
+  },
+  {
+    "_id": {
+      "$oid": "614a971c0176e9000149d514"
+    },
+    "time": {
+      "$date": "2021-10-11T07:53:01.130Z"
+    },
+    "__v": 0,
+    "type": 2,
+    "name": "heroesslot",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 0,
+    "maxbet": 0,
+    "disabledround": 23646,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": null,
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": {
+      "mode": 1,
+      "bigWinRatio": 2.5,
+      "stakeLevels": [
+        {
+          "stake": 1,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 5,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 10,
+          "jackpot": 0,
+          "botRatio": 0.2
+        }
+      ],
+      "icons": {
+        "0": {
+          "2": 0,
+          "3": 2,
+          "4": 5,
+          "5": 10
+        },
+        "1": {
+          "2": 0,
+          "3": 5,
+          "4": 10,
+          "5": 25
+        },
+        "2": {
+          "2": 0,
+          "3": 5,
+          "4": 25,
+          "5": 50
+        },
+        "3": {
+          "2": 0,
+          "3": 10,
+          "4": 30,
+          "5": 150
+        },
+        "4": {
+          "2": 0,
+          "3": 12,
+          "4": 45,
+          "5": 275
+        },
+        "5": {
+          "2": 0,
+          "3": 16,
+          "4": 60,
+          "5": 375
+        },
+        "6": {
+          "2": 0,
+          "3": 20,
+          "4": 75,
+          "5": 500
+        },
+        "7": {
+          "2": 0,
+          "3": 3,
+          "4": 6,
+          "5": 18
+        },
+        "8": {
+          "2": 0,
+          "3": 3,
+          "4": 4,
+          "5": 5
+        },
+        "9": {
+          "2": 8,
+          "3": 50,
+          "4": 1000,
+          "5": 8000
+        },
+        "10": {
+          "2": 4,
+          "3": 25,
+          "4": 100,
+          "5": 5000
+        }
+      },
+      "bonus": {
+        "min": 8,
+        "max": 28
+      },
+      "jackpot": {
+        "enabled": false,
+        "excludeUUS": false,
+        "winningRatio": 0,
+        "playerContributionRatio": 0,
+        "botContributionRatio": 0
+      },
+      "symbolWeight": {
+        "1": [
+          [
+            55,
+            50,
+            45,
+            40,
+            35,
+            30,
+            25,
+            20,
+            15,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 38,
+    "isBeta": false,
+    "exchangeReload": false,
+    "reloadExchange": true,
+    "bot_minbet": null
+  },
+  {
+    "_id": {
+      "$oid": "61920dc34e108e0001a8d3cc"
+    },
+    "time": {
+      "$date": "2021-11-29T04:11:23.935Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "kenomatch1",
+    "enabled": true,
+    "botenabled": false,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 814896,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "fhBlue": 20000000,
+      "fhRed": 20000000,
+      "fhOver": 20000000,
+      "fhUnder": 20000000,
+      "fhOdd": 20000000,
+      "fhEven": 20000000,
+      "ftBlue": 20000000,
+      "ftRed": 20000000,
+      "ftOver": 20000000,
+      "ftUnder": 20000000,
+      "ftOdd": 20000000,
+      "ftEven": 20000000,
+      "liveFTOdd": 20000000,
+      "liveFTEven": 20000000
+    },
+    "odds": {
+      "fhBlue": 1.96,
+      "fhRed": 1.96,
+      "fhOver": 1.96,
+      "fhUnder": 1.96,
+      "fhOdd": 1.96,
+      "fhEven": 1.96,
+      "ftBlue": 1.96,
+      "ftRed": 1.96,
+      "ftOver": 1.96,
+      "ftUnder": 1.96,
+      "ftOdd": 1.96,
+      "ftEven": 1.96,
+      "liveFTOdd": 1.96,
+      "liveFTEven": 1.96
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": false,
+    "gameId": 36,
+    "exchangeReload": false,
+    "reloadExchange": true,
+    "bot_minbet": null
+  },
+  {
+    "_id": {
+      "$oid": "61920dde4e108e0001a8d3ce"
+    },
+    "time": {
+      "$date": "2021-11-29T04:12:29.537Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "kenomatch2",
+    "enabled": true,
+    "botenabled": false,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 812916,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "fhBlue": 20000000,
+      "fhRed": 20000000,
+      "fhOver": 20000000,
+      "fhUnder": 20000000,
+      "fhOdd": 20000000,
+      "fhEven": 20000000,
+      "ftBlue": 20000000,
+      "ftRed": 20000000,
+      "ftOver": 20000000,
+      "ftUnder": 20000000,
+      "ftOdd": 20000000,
+      "ftEven": 20000000,
+      "liveFTOdd": 20000000,
+      "liveFTEven": 20000000
+    },
+    "odds": {
+      "fhBlue": 1.96,
+      "fhRed": 1.96,
+      "fhOver": 1.96,
+      "fhUnder": 1.96,
+      "fhOdd": 1.96,
+      "fhEven": 1.96,
+      "ftBlue": 1.96,
+      "ftRed": 1.96,
+      "ftOver": 1.96,
+      "ftUnder": 1.96,
+      "ftOdd": 1.96,
+      "ftEven": 1.96,
+      "liveFTOdd": 1.96,
+      "liveFTEven": 1.96
+    },
+    "delayStartTime": 15,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": false,
+    "gameId": 37,
+    "exchangeReload": false,
+    "reloadExchange": true,
+    "bot_minbet": null
+  },
+  {
+    "_id": {
+      "$oid": "61920df04e108e0001a8d3d0"
+    },
+    "time": {
+      "$date": "2021-11-29T04:13:34.450Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "kenopower1",
+    "enabled": true,
+    "botenabled": false,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 1130475,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "blue": 20000000,
+      "red": 20000000,
+      "big": 20000000,
+      "small": 20000000,
+      "odd": 20000000,
+      "even": 20000000,
+      "blueBig": 20000000,
+      "blueSmall": 20000000,
+      "redBig": 20000000,
+      "redSmall": 20000000
+    },
+    "odds": {
+      "blue": 1.96,
+      "red": 1.96,
+      "big": 1.96,
+      "small": 1.96,
+      "odd": 1.96,
+      "even": 1.96,
+      "blueBig": 1.96,
+      "blueSmall": 1.96,
+      "redBig": 1.96,
+      "redSmall": 1.96
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": false,
+    "gameId": 40,
+    "exchangeReload": false,
+    "reloadExchange": true,
+    "bot_minbet": null
+  },
+  {
+    "_id": {
+      "$oid": "61920dfd4e108e0001a8d3d2"
+    },
+    "time": {
+      "$date": "2021-11-15T07:36:29.254Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "oddeven",
+    "enabled": true,
+    "botenabled": false,
+    "minbet": 1000,
+    "maxbet": 2000000,
+    "disabledround": null,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": null,
+    "delayStartTime": 5,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 5,
+    "exchangeReload": true,
+    "reloadExchange": true,
+    "bot_minbet": null
+  },
+  {
+    "_id": {
+      "$oid": "619214c54e108e0001a8d3d4"
+    },
+    "time": {
+      "$date": "2021-11-29T04:14:04.995Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "kenopower2",
+    "enabled": true,
+    "botenabled": false,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 1173768,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "blue": 20000000,
+      "red": 20000000,
+      "big": 20000000,
+      "small": 20000000,
+      "odd": 20000000,
+      "even": 20000000,
+      "blueBig": 20000000,
+      "blueSmall": 20000000,
+      "redBig": 20000000,
+      "redSmall": 20000000
+    },
+    "odds": {
+      "blue": 1.96,
+      "red": 1.96,
+      "big": 1.96,
+      "small": 1.96,
+      "odd": 1.96,
+      "even": 1.96,
+      "blueBig": 1.96,
+      "blueSmall": 1.96,
+      "redBig": 1.96,
+      "redSmall": 1.96
+    },
+    "delayStartTime": 15,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": false,
+    "gameId": 41,
+    "exchangeReload": false,
+    "reloadExchange": true,
+    "bot_minbet": null
+  },
+  {
+    "_id": {
+      "$oid": "6205dda17c7f9c0001762208"
+    },
+    "time": {
+      "$date": "2022-04-26T10:26:27.214Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "bitcoinmaster",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 450073,
+    "bot_maxbet": 1000000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "up": 20000000,
+      "down": 20000000,
+      "odd": 20000000,
+      "even": 20000000
+    },
+    "odds": {
+      "up": 1.96,
+      "down": 1.96,
+      "odd": 1.96,
+      "even": 1.96
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0.3,
+    "isBeta": true,
+    "gameId": 43,
+    "exchangeReload": false,
+    "randomMode": 1
+  },
+  {
+    "_id": {
+      "$oid": "620b6fb74cbb9c00014331d6"
+    },
+    "time": {
+      "$date": "2022-04-26T10:30:38.859Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "casinoholdempoker",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000,
+    "disabledround": 505,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "anteBet": 20000,
+      "aaBet": 20000,
+      "callBet": 20000
+    },
+    "odds": {
+      "CallBet_callBet": 2,
+      "AnteBet_highCards": 2,
+      "AnteBet_onePair": 2,
+      "AnteBet_twoPairs": 2,
+      "AnteBet_threeKind": 2,
+      "AnteBet_straight": 2,
+      "AnteBet_flush": 3,
+      "AnteBet_fullHouse": 4,
+      "AnteBet_fourKind": 11,
+      "AnteBet_straightFlush": 21,
+      "AnteBet_royalFlush": 101,
+      "AABet_pairAces": 8,
+      "AABet_twoPairs": 8,
+      "AABet_threeKind": 8,
+      "AABet_straight": 8,
+      "AABet_flush": 21,
+      "AABet_fullHouse": 31,
+      "AABet_fourKind": 41,
+      "AABet_straightFlush": 51,
+      "AABet_royalFlush": 101
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 39,
+    "exchangeReload": false,
+    "randomMode": 1
+  },
+  {
+    "_id": {
+      "$oid": "627a1fb4018c3b00012aab82"
+    },
+    "time": {
+      "$date": "2022-05-06T05:08:34.940Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "texasholdempoker",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10,
+    "maxbet": 20000,
+    "disabledround": 127,
+    "bot_maxbet": 10,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": {
+      "call": 2,
+      "turn": 2,
+      "river": 2,
+      "AnteBet_highCard": 1,
+      "AnteBet_onePair": 1,
+      "AnteBet_twoPairs": 1,
+      "AnteBet_threeKind": 1,
+      "AnteBet_straight": 2,
+      "AnteBet_flush": 2,
+      "AnteBet_fullHouse": 2,
+      "AnteBet_fourKind": 2,
+      "AnteBet_straightFlush": 2,
+      "AnteBet_royalFlush": 2
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 42,
+    "randomMode": 1,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "628db1295346dd000111458b"
+    },
+    "time": {
+      "$date": "2022-05-06T04:58:17.247Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "hilo",
+    "enabled": true,
+    "botenabled": false,
+    "minbet": 10,
+    "maxbet": 20000,
+    "disabledround": 131,
+    "bot_maxbet": 10,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": {
+      "high3": 0.05,
+      "high4": 0.16,
+      "high5": 0.28,
+      "high6": 0.44,
+      "high7": 0.63,
+      "high8": 0.9,
+      "high9": 1.27,
+      "high10": 1.83,
+      "high11": 2.76,
+      "high12": 4.62,
+      "high13": 10.2,
+      "low3": 10.2,
+      "low4": 4.62,
+      "low5": 2.76,
+      "low6": 1.83,
+      "low7": 1.27,
+      "low8": 0.9,
+      "low9": 0.63,
+      "low10": 0.44,
+      "low11": 0.28,
+      "low12": 0.16,
+      "low13": 0.05
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 45,
+    "randomMode": 0,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "6242e0975b28200001b48db4"
+    },
+    "time": {
+      "$date": "2021-03-18T06:27:47.883Z"
+    },
+    "__v": 0,
+    "type": 2,
+    "name": "fourguardians",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 0,
+    "maxbet": 0,
+    "disabledround": 8172133,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": null,
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": {
+      "mode": 1,
+      "bigWinRatio": 2.5,
+      "stakeLevels": [
+        {
+          "stake": 1,
+          "jackpot": 5000,
+          "botRatio": 40
+        },
+        {
+          "stake": 5,
+          "jackpot": 25000,
+          "botRatio": 40
+        },
+        {
+          "stake": 10,
+          "jackpot": 50000,
+          "botRatio": 20
+        }
+      ],
+      "icons": {
+        "0": {
+          "2": 0,
+          "3": 2,
+          "4": 5,
+          "5": 10
+        },
+        "1": {
+          "2": 0,
+          "3": 5,
+          "4": 10,
+          "5": 25
+        },
+        "2": {
+          "2": 0,
+          "3": 5,
+          "4": 25,
+          "5": 50
+        },
+        "3": {
+          "2": 0,
+          "3": 10,
+          "4": 30,
+          "5": 150
+        },
+        "4": {
+          "2": 0,
+          "3": 12,
+          "4": 45,
+          "5": 275
+        },
+        "5": {
+          "2": 0,
+          "3": 16,
+          "4": 60,
+          "5": 375
+        },
+        "6": {
+          "2": 0,
+          "3": 20,
+          "4": 75,
+          "5": 500
+        },
+        "7": {
+          "2": 0,
+          "3": 3,
+          "4": 6,
+          "5": 18
+        },
+        "8": {
+          "2": 0,
+          "3": 3,
+          "4": 4,
+          "5": 5
+        },
+        "9": {
+          "2": 8,
+          "3": 50,
+          "4": 1000,
+          "5": 8000
+        },
+        "10": {
+          "2": 4,
+          "3": 25,
+          "4": 100,
+          "5": 0
+        }
+      },
+      "bonus": {
+        "min": 8,
+        "max": 28
+      },
+      "jackpot": {
+        "enabled": true,
+        "winningRatio": 0.98,
+        "playerContributionRatio": 0.025,
+        "botContributionRatio": 0.001,
+        "allowedCurrency": "INH",
+        "excludeTestCurrency": false
+      }
+    },
+    "siteExclusions": [
+      "xtu168",
+      "M88",
+      "Kutech",
+      "wanfang",
+      "Saba789",
+      "BigGaming",
+      "ab6688",
+      "zt828"
+    ],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 29,
+    "randomMode": 0,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "627e03d3211d640001159244"
+    },
+    "time": {
+      "$date": "2022-06-09T05:34:24.541Z"
+    },
+    "__v": 0,
+    "type": 2,
+    "name": "nightclub",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 0,
+    "maxbet": 0,
+    "disabledround": 144,
+    "bot_maxbet": 10,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": null,
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": {
+      "mode": 1,
+      "bigWinRatio": 2.5,
+      "stakeLevels": [
+        {
+          "stake": 1,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 5,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 10,
+          "jackpot": 0,
+          "botRatio": 0.2
+        }
+      ],
+      "icons": {
+        "0": {
+          "2": 0,
+          "3": 2,
+          "4": 5,
+          "5": 10
+        },
+        "1": {
+          "2": 0,
+          "3": 5,
+          "4": 10,
+          "5": 25
+        },
+        "2": {
+          "2": 0,
+          "3": 5,
+          "4": 25,
+          "5": 50
+        },
+        "3": {
+          "2": 0,
+          "3": 10,
+          "4": 30,
+          "5": 150
+        },
+        "4": {
+          "2": 0,
+          "3": 12,
+          "4": 45,
+          "5": 275
+        },
+        "5": {
+          "2": 0,
+          "3": 16,
+          "4": 60,
+          "5": 375
+        },
+        "6": {
+          "2": 0,
+          "3": 20,
+          "4": 75,
+          "5": 500
+        },
+        "7": {
+          "2": 0,
+          "3": 3,
+          "4": 6,
+          "5": 18
+        },
+        "8": {
+          "2": 0,
+          "3": 3,
+          "4": 4,
+          "5": 5
+        },
+        "9": {
+          "2": 8,
+          "3": 50,
+          "4": 1000,
+          "5": 8000
+        },
+        "10": {
+          "2": 4,
+          "3": 25,
+          "4": 100,
+          "5": 5000
+        }
+      },
+      "bonus": {
+        "min": 8,
+        "max": 28
+      },
+      "jackpot": {
+        "enabled": false,
+        "excludeTestCurrency": false,
+        "winningRatio": 0,
+        "playerContributionRatio": 0,
+        "botContributionRatio": 0,
+        "allowedCurrency": "INH"
+      }
+    },
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 46,
+    "randomMode": 0,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "628defaaa2bd8f00016315f2"
+    },
+    "time": {
+      "$date": "2022-07-28T02:59:36.871Z"
+    },
+    "__v": 0,
+    "type": 3,
+    "name": "treasureisland",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 0,
+    "maxbet": 0,
+    "disabledround": 7504814,
+    "bot_maxbet": 10,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": null,
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 47,
+    "randomMode": 0,
+    "cascadingSlotsConfig": {
+      "mode": 1,
+      "bigWinRatio": 2.5,
+      "multiplierBonus": {
+        "min": 2,
+        "max": 21
+      },
+      "betLevels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "betMultiplier": 20,
+      "maxWinPerRound": 2000,
+      "oddsByCounts": {
+        "0": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 5
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 15
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 40
+          }
+        ],
+        "1": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 8
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 18
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 80
+          }
+        ],
+        "2": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 10
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 20
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 100
+          }
+        ],
+        "3": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 16
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 24
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 160
+          }
+        ],
+        "4": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 20
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 30
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 200
+          }
+        ],
+        "5": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 30
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 40
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 240
+          }
+        ],
+        "6": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 40
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 100
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 300
+          }
+        ],
+        "7": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 50
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 200
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 500
+          }
+        ],
+        "8": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 200
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 500
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 1000
+          }
+        ]
+      },
+      "freeSpins": {
+        "initialOdds": [
+          {
+            "count": 4,
+            "odds": 3
+          },
+          {
+            "count": 5,
+            "odds": 6
+          },
+          {
+            "count": 6,
+            "odds": 18
+          }
+        ],
+        "additionalOdds": [
+          {
+            "count": 4,
+            "odds": 5
+          }
+        ]
+      }
+    },
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "62ecc8a430f8fd00019eaf84"
+    },
+    "time": {
+      "$date": "2022-08-30T07:11:37.886Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "blockchainbaccarat",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 692738,
+    "bot_maxbet": 280000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "player": 20000000,
+      "banker": 20000000,
+      "big": 20000000,
+      "small": 20000000,
+      "tie": 2000000,
+      "playerPair": 2000000,
+      "bankerPair": 2000000
+    },
+    "odds": {
+      "player": 2,
+      "banker": 1.95,
+      "big": 1.54,
+      "small": 2.5,
+      "tie": 9,
+      "playerPair": 12,
+      "bankerPair": 12
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 48,
+    "randomMode": 1,
+    "cascadingSlotsConfig": null,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "62f3757a35adf0cf60ae1ea3"
+    },
+    "time": {
+      "$date": "2022-08-30T08:00:22.382Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "megakeno",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 711228,
+    "bot_maxbet": 2000000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "big": 20000000,
+      "small": 20000000,
+      "even": 20000000,
+      "odd": 20000000,
+      "earth": 2000000,
+      "fire": 4000000,
+      "gold": 2000000,
+      "water": 20000000,
+      "wood": 4000000
+    },
+    "odds": {
+      "big": 1.96,
+      "small": 1.96,
+      "even": 1.96,
+      "odd": 1.96,
+      "earth": 9.2,
+      "fire": 4.6,
+      "gold": 9.2,
+      "water": 2.4,
+      "wood": 4.6
+    },
+    "delayStartTime": 30,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 52,
+    "randomMode": 1,
+    "cascadingSlotsConfig": null,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "62f376b9d5551f0001543423"
+    },
+    "time": {
+      "$date": "2022-08-30T08:01:35.011Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "megakeno2",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 815380,
+    "bot_maxbet": 1000000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "big": 20000000,
+      "small": 20000000,
+      "even": 20000000,
+      "odd": 20000000,
+      "earth": 2000000,
+      "fire": 4000000,
+      "gold": 2000000,
+      "water": 20000000,
+      "wood": 4000000
+    },
+    "odds": {
+      "big": 1.96,
+      "small": 1.96,
+      "even": 1.96,
+      "odd": 1.96,
+      "earth": 9.2,
+      "fire": 4.6,
+      "gold": 9.2,
+      "water": 2.4,
+      "wood": 4.6
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 53,
+    "randomMode": 1,
+    "cascadingSlotsConfig": null,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "6322f83294be5f0001f27cec"
+    },
+    "time": {
+      "$date": "2022-10-24T08:22:27.692Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "minisedie2",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 960596,
+    "bot_maxbet": 400000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "even": 20000000,
+      "odd": 20000000,
+      "red3": 10000000,
+      "white3": 10000000,
+      "red4": 2000000,
+      "white4": 2000000
+    },
+    "odds": {
+      "even": 1.96,
+      "odd": 1.96,
+      "red3": 3.75,
+      "white3": 3.75,
+      "red4": 14.4,
+      "white4": 14.4
+    },
+    "delayStartTime": 10,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 56,
+    "randomMode": 1,
+    "cascadingSlotsConfig": null,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "63296ae303633a00013ecaec"
+    },
+    "time": {
+      "$date": "2022-10-04T08:10:48.890Z"
+    },
+    "__v": 0,
+    "type": 2,
+    "name": "waytogoal",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 0,
+    "maxbet": 0,
+    "disabledround": 617,
+    "bot_maxbet": 10,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": null,
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": {
+      "mode": 1,
+      "bigWinRatio": 2.5,
+      "bonus": {
+        "min": 8,
+        "max": 28
+      },
+      "stakeLevels": [
+        {
+          "stake": 1,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 5,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 10,
+          "jackpot": 0,
+          "botRatio": 0.2
+        }
+      ],
+      "icons": {
+        "0": {
+          "2": 0,
+          "3": 2,
+          "4": 5,
+          "5": 10
+        },
+        "1": {
+          "2": 0,
+          "3": 5,
+          "4": 10,
+          "5": 25
+        },
+        "2": {
+          "2": 0,
+          "3": 5,
+          "4": 25,
+          "5": 50
+        },
+        "3": {
+          "2": 0,
+          "3": 10,
+          "4": 30,
+          "5": 150
+        },
+        "4": {
+          "2": 0,
+          "3": 12,
+          "4": 45,
+          "5": 275
+        },
+        "5": {
+          "2": 0,
+          "3": 16,
+          "4": 60,
+          "5": 375
+        },
+        "6": {
+          "2": 0,
+          "3": 20,
+          "4": 75,
+          "5": 500
+        },
+        "7": {
+          "2": 0,
+          "3": 3,
+          "4": 6,
+          "5": 18
+        },
+        "8": {
+          "2": 0,
+          "3": 3,
+          "4": 4,
+          "5": 5
+        },
+        "9": {
+          "2": 8,
+          "3": 50,
+          "4": 1000,
+          "5": 8000
+        },
+        "10": {
+          "2": 4,
+          "3": 25,
+          "4": 100,
+          "5": 5000
+        }
+      },
+      "jackpot": {
+        "enabled": false,
+        "excludeTestCurrency": false,
+        "winningRatio": 0,
+        "playerContributionRatio": 0,
+        "botContributionRatio": 0,
+        "allowedCurrency": "INH"
+      },
+      "symbolWeight": {
+        "1": [
+          [
+            55,
+            50,
+            45,
+            40,
+            35,
+            30,
+            25,
+            20,
+            15,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 49,
+    "randomMode": 0,
+    "cascadingSlotsConfig": null,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "632c2b8708fd7a0001719cc9"
+    },
+    "time": {
+      "$date": "2022-10-04T08:20:07.718Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "unbalancedbigsmall1",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 501565,
+    "bot_maxbet": 400000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": {
+      "big": 1.96,
+      "small": 1.96
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 50,
+    "randomMode": 1,
+    "cascadingSlotsConfig": null,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "632c2b8f08fd7a0001719ccb"
+    },
+    "time": {
+      "$date": "2022-10-04T08:30:01.816Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "unbalancedbigsmall2",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 746244,
+    "bot_maxbet": 350000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": {
+      "big": 1.96,
+      "small": 1.96
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 51,
+    "randomMode": 1,
+    "cascadingSlotsConfig": null,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "632c2b9808fd7a0001719ccd"
+    },
+    "time": {
+      "$date": "2022-10-04T08:27:10.783Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "unbalancedbigsmall3",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 601974,
+    "bot_maxbet": 300000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": {
+      "big": 1.96,
+      "small": 1.96
+    },
+    "delayStartTime": 10,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 54,
+    "randomMode": 2,
+    "cascadingSlotsConfig": null,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "632c2c2f08fd7a0001719cd2"
+    },
+    "time": {
+      "$date": "2022-10-04T08:34:00.662Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "unbalancedbigsmall4",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 895628,
+    "bot_maxbet": 400000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": {
+      "big": 1.96,
+      "small": 1.96
+    },
+    "delayStartTime": 15,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 55,
+    "randomMode": 2,
+    "cascadingSlotsConfig": null,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "633d19353ad19f000173d67a"
+    },
+    "time": {
+      "$date": "2022-10-24T08:34:10.853Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "minisedie3",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 849839,
+    "bot_maxbet": 500000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "even": 20000000,
+      "odd": 20000000,
+      "red3": 10000000,
+      "white3": 10000000,
+      "red4": 2000000,
+      "white4": 2000000
+    },
+    "odds": {
+      "even": 1.96,
+      "odd": 1.96,
+      "red3": 3.75,
+      "white3": 3.75,
+      "red4": 14.4,
+      "white4": 14.4
+    },
+    "delayStartTime": 20,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 57,
+    "randomMode": 1,
+    "cascadingSlotsConfig": null,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "633d19423ad19f000173d67c"
+    },
+    "time": {
+      "$date": "2022-10-24T08:39:08.495Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "minisedie4",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 692874,
+    "bot_maxbet": 500000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "even": 20000000,
+      "odd": 20000000,
+      "red3": 10000000,
+      "white3": 10000000,
+      "red4": 2000000,
+      "white4": 2000000
+    },
+    "odds": {
+      "even": 1.96,
+      "odd": 1.96,
+      "red3": 3.75,
+      "white3": 3.75,
+      "red4": 14.4,
+      "white4": 14.4
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 58,
+    "randomMode": 1,
+    "cascadingSlotsConfig": null,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "6385a5ab4a26ba0001e6cce1"
+    },
+    "time": {
+      "$date": "2022-12-05T07:25:49.278Z"
+    },
+    "__v": 0,
+    "type": 4,
+    "name": "fruitslot",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 40000000,
+    "disabledround": 539597,
+    "bot_maxbet": 2000000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "bar": 2000000,
+      "tripleSeven": 2000000,
+      "star": 2000000,
+      "watermelon": 10000000,
+      "bell": 10000000,
+      "lemon": 10000000,
+      "orange": 10000000,
+      "cherry": 10000000,
+      "big": 40000000,
+      "small": 40000000
+    },
+    "odds": {
+      "bar": 100,
+      "bar50": 50,
+      "bar25": 25,
+      "tripleSeven": 40,
+      "tripleSeven3": 3,
+      "star": 30,
+      "star3": 3,
+      "watermelon": 20,
+      "watermelon3": 3,
+      "bell": 20,
+      "bell3": 3,
+      "lemon": 15,
+      "lemon3": 3,
+      "orange": 10,
+      "orange3": 3,
+      "cherry": 5,
+      "cherry3": 3,
+      "big": 1.96,
+      "small": 1.96
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 59,
+    "randomMode": 1,
+    "cascadingSlotsConfig": null,
+    "slotRNGConfig": {
+      "mode": 1,
+      "luckySpinFrom": 2,
+      "luckySpinTo": 3
+    },
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "639aa19daa44a60001dcc658"
+    },
+    "time": {
+      "$date": "2022-12-29T08:25:10.286Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "fantan",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 40000000,
+    "disabledround": 454219,
+    "bot_maxbet": 1000000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "even": 40000000,
+      "odd": 40000000,
+      "fan1": 20000000,
+      "fan2": 20000000,
+      "fan3": 20000000,
+      "fan4": 20000000,
+      "kwok12": 40000000,
+      "kwok23": 40000000,
+      "kwok34": 40000000,
+      "kwok41": 40000000,
+      "chun123": 40000000,
+      "chun124": 40000000,
+      "chun134": 40000000,
+      "chun234": 40000000
+    },
+    "odds": {
+      "even": 1.96,
+      "odd": 1.96,
+      "fan1": 3.85,
+      "fan2": 3.85,
+      "fan3": 3.85,
+      "fan4": 3.85,
+      "kwok12": 1.96,
+      "kwok23": 1.96,
+      "kwok34": 1.96,
+      "kwok41": 1.96,
+      "chun123": 1.31,
+      "chun124": 1.31,
+      "chun134": 1.31,
+      "chun234": 1.31
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "isBeta": true,
+    "gameId": 60,
+    "randomMode": 1,
+    "cascadingSlotsConfig": null,
+    "slotRNGConfig": null,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "63ec7cf2d63c73de0b4c4878"
+    },
+    "time": {
+      "$date": "2023-01-04T06:45:58.122Z"
+    },
+    "__v": 0,
+    "type": 2,
+    "name": "happyfish",
+    "displayName": "Happy Fish",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 0,
+    "maxbet": 0,
+    "disabledround": 179,
+    "bot_maxbet": 10,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": null,
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": {
+      "mode": 1,
+      "bigWinRatio": 2.5,
+      "bonus": {
+        "min": 8,
+        "max": 28
+      },
+      "stakeLevels": [
+        {
+          "stake": 1,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 5,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 10,
+          "jackpot": 0,
+          "botRatio": 0.2
+        }
+      ],
+      "icons": {
+        "0": {
+          "2": 0,
+          "3": 2,
+          "4": 5,
+          "5": 10
+        },
+        "1": {
+          "2": 0,
+          "3": 5,
+          "4": 10,
+          "5": 25
+        },
+        "2": {
+          "2": 0,
+          "3": 5,
+          "4": 25,
+          "5": 50
+        },
+        "3": {
+          "2": 0,
+          "3": 10,
+          "4": 30,
+          "5": 150
+        },
+        "4": {
+          "2": 0,
+          "3": 12,
+          "4": 45,
+          "5": 275
+        },
+        "5": {
+          "2": 0,
+          "3": 16,
+          "4": 60,
+          "5": 375
+        },
+        "6": {
+          "2": 0,
+          "3": 20,
+          "4": 75,
+          "5": 500
+        },
+        "7": {
+          "2": 0,
+          "3": 3,
+          "4": 6,
+          "5": 18
+        },
+        "8": {
+          "2": 0,
+          "3": 3,
+          "4": 4,
+          "5": 5
+        },
+        "9": {
+          "2": 8,
+          "3": 50,
+          "4": 1000,
+          "5": 8000
+        },
+        "10": {
+          "2": 4,
+          "3": 25,
+          "4": 100,
+          "5": 5000
+        }
+      },
+      "jackpot": {
+        "enabled": false,
+        "excludeTestCurrency": false,
+        "winningRatio": 0,
+        "playerContributionRatio": 0,
+        "botContributionRatio": 0,
+        "allowedCurrency": "INH"
+      },
+      "symbolWeight": {
+        "1": [
+          [
+            55,
+            50,
+            45,
+            40,
+            35,
+            30,
+            25,
+            20,
+            15,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 63,
+    "randomMode": 0,
+    "cascadingSlotsConfig": null,
+    "slotRNGConfig": null,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "63eeec1175dbeadb8e3e1d56"
+    },
+    "name": "fortunecat",
+    "__v": 0,
+    "bot_maxbet": 10,
+    "botenabled": true,
+    "cascadingSlotsConfig": null,
+    "choices_maxbet": null,
+    "delayStartTime": 0,
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "enableFreeBet": false,
+    "exchangeReload": false,
+    "gameId": 62,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "isBeta": true,
+    "maxbet": 0,
+    "minbet": 0,
+    "odds": null,
+    "randomMode": 0,
+    "siteExclusions": [],
+    "slotRNGConfig": null,
+    "slotsConfig": {
+      "mode": 1,
+      "bigWinRatio": 2.5,
+      "bonus": {
+        "min": 8,
+        "max": 28
+      },
+      "stakeLevels": [
+        {
+          "stake": 1,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 5,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 10,
+          "jackpot": 0,
+          "botRatio": 0.2
+        }
+      ],
+      "icons": {
+        "0": {
+          "2": 1,
+          "3": 2,
+          "4": 5,
+          "5": 10
+        },
+        "1": {
+          "2": 1,
+          "3": 5,
+          "4": 10,
+          "5": 25
+        },
+        "2": {
+          "2": 1,
+          "3": 5,
+          "4": 25,
+          "5": 50
+        },
+        "3": {
+          "2": 1,
+          "3": 10,
+          "4": 30,
+          "5": 150
+        },
+        "4": {
+          "2": 1,
+          "3": 12,
+          "4": 45,
+          "5": 275
+        },
+        "5": {
+          "2": 1,
+          "3": 16,
+          "4": 60,
+          "5": 375
+        },
+        "6": {
+          "2": 1,
+          "3": 20,
+          "4": 75,
+          "5": 500
+        },
+        "7": {
+          "2": 1,
+          "3": 3,
+          "4": 6,
+          "5": 18
+        },
+        "8": {
+          "2": 1,
+          "3": 3,
+          "4": 4,
+          "5": 5
+        },
+        "9": {
+          "2": 8,
+          "3": 50,
+          "4": 1000,
+          "5": 8000
+        },
+        "10": {
+          "2": 4,
+          "3": 25,
+          "4": 100,
+          "5": 5000
+        }
+      },
+      "jackpot": {
+        "enabled": false,
+        "excludeTestCurrency": false,
+        "winningRatio": 0,
+        "playerContributionRatio": 0,
+        "botContributionRatio": 0,
+        "allowedCurrency": "INH"
+      },
+      "symbolWeight": {
+        "1": [
+          [
+            55,
+            50,
+            45,
+            40,
+            35,
+            30,
+            25,
+            20,
+            15,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "time": {
+      "$date": "2023-01-04T06:45:58.122Z"
+    },
+    "type": 2,
+    "enabled": true,
+    "disabledround": 20
+  },
+  {
+    "_id": {
+      "$oid": "63eeec1175dbeadb8e3e1d57"
+    },
+    "name": "winthreecards",
+    "__v": 0,
+    "bot_maxbet": 4000000,
+    "botenabled": true,
+    "cascadingSlotsConfig": null,
+    "choices_maxbet": {
+      "dragon": 40000000,
+      "phoenix": 40000000,
+      "pair8Plus": 20000000,
+      "straight": 5000000,
+      "flush": 5000000,
+      "straightFlush": 500000,
+      "threeOfAKind": 500000
+    },
+    "delayStartTime": 0,
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "enableFreeBet": false,
+    "exchangeReload": false,
+    "gameId": 61,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "isBeta": true,
+    "maxbet": 40000000,
+    "minbet": 10000,
+    "odds": {
+      "dragon": 1.96,
+      "phoenix": 1.96,
+      "pair8Plus": 3,
+      "straight": 8,
+      "flush": 9,
+      "straightFlush": 101,
+      "threeOfAKind": 121
+    },
+    "randomMode": 1,
+    "siteExclusions": [],
+    "slotRNGConfig": null,
+    "slotsConfig": null,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "time": {
+      "$date": "2023-01-30T07:48:31.759Z"
+    },
+    "type": 1,
+    "disabledround": 391035,
+    "enabled": true
+  },
+  {
+    "_id": {
+      "$oid": "646bf401cdf276c9326de791"
+    },
+    "name": "magicforest",
+    "__v": 0,
+    "bot_maxbet": 10,
+    "botenabled": true,
+    "cascadingSlotsConfig": null,
+    "choices_maxbet": null,
+    "delayStartTime": 0,
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "displayName": "Magic Forest",
+    "enableFreeBet": false,
+    "exchangeReload": false,
+    "gameId": 64,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "maxbet": 0,
+    "minbet": 0,
+    "odds": null,
+    "randomMode": 0,
+    "siteExclusions": [],
+    "slotRNGConfig": null,
+    "slotsConfig": {
+      "mode": 1,
+      "bigWinRatio": 2.5,
+      "bonus": {
+        "min": 8,
+        "max": 28
+      },
+      "stakeLevels": [
+        {
+          "stake": 1,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 5,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 10,
+          "jackpot": 0,
+          "botRatio": 0.2
+        }
+      ],
+      "icons": {
+        "0": {
+          "2": 0,
+          "3": 2,
+          "4": 5,
+          "5": 10
+        },
+        "1": {
+          "2": 0,
+          "3": 5,
+          "4": 10,
+          "5": 25
+        },
+        "2": {
+          "2": 0,
+          "3": 5,
+          "4": 25,
+          "5": 50
+        },
+        "3": {
+          "2": 0,
+          "3": 10,
+          "4": 30,
+          "5": 150
+        },
+        "4": {
+          "2": 0,
+          "3": 12,
+          "4": 45,
+          "5": 275
+        },
+        "5": {
+          "2": 0,
+          "3": 16,
+          "4": 60,
+          "5": 375
+        },
+        "6": {
+          "2": 0,
+          "3": 20,
+          "4": 75,
+          "5": 500
+        },
+        "7": {
+          "2": 0,
+          "3": 3,
+          "4": 6,
+          "5": 18
+        },
+        "8": {
+          "2": 0,
+          "3": 3,
+          "4": 4,
+          "5": 5
+        },
+        "9": {
+          "2": 8,
+          "3": 50,
+          "4": 1000,
+          "5": 8000
+        },
+        "10": {
+          "2": 4,
+          "3": 25,
+          "4": 100,
+          "5": 5000
+        }
+      },
+      "jackpot": {
+        "enabled": false,
+        "excludeTestCurrency": false,
+        "winningRatio": 0,
+        "playerContributionRatio": 0,
+        "botContributionRatio": 0,
+        "allowedCurrency": "INH"
+      },
+      "symbolWeight": {
+        "1": [
+          [
+            55,
+            50,
+            45,
+            40,
+            35,
+            30,
+            25,
+            20,
+            15,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "time": {
+      "$date": "2023-01-04T06:45:58.122Z"
+    },
+    "type": 2,
+    "disabledround": 2052,
+    "enabled": true
+  },
+  {
+    "_id": {
+      "$oid": "64af5b55d07c85da786706df"
+    },
+    "time": {
+      "$date": "2021-03-18T06:27:47.883Z"
+    },
+    "__v": 0,
+    "type": 2,
+    "name": "magicforestjackpot",
+    "displayName": "Magic Forest Jackpot",
+    "enabled": true,
+    "botenabled": false,
+    "minbet": 0,
+    "maxbet": 0,
+    "disabledround": 5,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": null,
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": {
+      "mode": 1,
+      "bigWinRatio": 2.5,
+      "bonus": {
+        "min": 8,
+        "max": 28
+      },
+      "stakeLevels": [
+        {
+          "stake": 1,
+          "jackpot": 5000000,
+          "botRatio": 40
+        },
+        {
+          "stake": 5,
+          "jackpot": 50000000,
+          "botRatio": 40
+        },
+        {
+          "stake": 10,
+          "jackpot": 250000000,
+          "botRatio": 20
+        }
+      ],
+      "icons": {
+        "0": {
+          "2": 0,
+          "3": 2,
+          "4": 5,
+          "5": 10
+        },
+        "1": {
+          "2": 0,
+          "3": 5,
+          "4": 10,
+          "5": 25
+        },
+        "2": {
+          "2": 0,
+          "3": 5,
+          "4": 25,
+          "5": 50
+        },
+        "3": {
+          "2": 0,
+          "3": 10,
+          "4": 30,
+          "5": 150
+        },
+        "4": {
+          "2": 0,
+          "3": 12,
+          "4": 45,
+          "5": 275
+        },
+        "5": {
+          "2": 0,
+          "3": 16,
+          "4": 60,
+          "5": 375
+        },
+        "6": {
+          "2": 0,
+          "3": 20,
+          "4": 75,
+          "5": 500
+        },
+        "7": {
+          "2": 0,
+          "3": 3,
+          "4": 6,
+          "5": 18
+        },
+        "8": {
+          "2": 0,
+          "3": 3,
+          "4": 4,
+          "5": 5
+        },
+        "9": {
+          "2": 8,
+          "3": 50,
+          "4": 1000,
+          "5": 8000
+        },
+        "10": {
+          "2": 4,
+          "3": 25,
+          "4": 100,
+          "5": 5000
+        }
+      },
+      "jackpot": {
+        "enabled": true,
+        "excludeTestCurrency": false,
+        "winningRatio": 0.98,
+        "playerContributionRatio": 0.025,
+        "botContributionRatio": 0.001,
+        "allowedCurrency": "INH"
+      }
+    },
+    "siteExclusions": [
+      "xtu168",
+      "M88",
+      "Kutech",
+      "wanfang",
+      "Saba789",
+      "BigGaming",
+      "ab6688",
+      "zt828"
+    ],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 112,
+    "randomMode": 0,
+    "cascadingSlotsConfig": null,
+    "slotRNGConfig": null
+  },
+  {
+    "_id": {
+      "$oid": "64b0f881c21f5d4269d31569"
+    },
+    "time": {
+      "$date": "2021-03-18T06:27:47.883Z"
+    },
+    "__v": 0,
+    "type": 2,
+    "name": "magicforest2",
+    "displayName": "Magic Forest 2",
+    "enabled": true,
+    "botenabled": false,
+    "minbet": 0,
+    "maxbet": 0,
+    "disabledround": 5,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": null,
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": {
+      "mode": 1,
+      "bigWinRatio": 2.5,
+      "bonus": {
+        "min": 8,
+        "max": 28
+      },
+      "stakeLevels": [
+        {
+          "stake": 1,
+          "jackpot": 5000000,
+          "botRatio": 40
+        },
+        {
+          "stake": 5,
+          "jackpot": 50000000,
+          "botRatio": 40
+        },
+        {
+          "stake": 10,
+          "jackpot": 250000000,
+          "botRatio": 20
+        }
+      ],
+      "icons": {
+        "0": {
+          "2": 0,
+          "3": 2,
+          "4": 5,
+          "5": 10
+        },
+        "1": {
+          "2": 0,
+          "3": 5,
+          "4": 10,
+          "5": 25
+        },
+        "2": {
+          "2": 0,
+          "3": 5,
+          "4": 25,
+          "5": 50
+        },
+        "3": {
+          "2": 0,
+          "3": 10,
+          "4": 30,
+          "5": 150
+        },
+        "4": {
+          "2": 0,
+          "3": 12,
+          "4": 45,
+          "5": 275
+        },
+        "5": {
+          "2": 0,
+          "3": 16,
+          "4": 60,
+          "5": 375
+        },
+        "6": {
+          "2": 0,
+          "3": 20,
+          "4": 75,
+          "5": 500
+        },
+        "7": {
+          "2": 0,
+          "3": 3,
+          "4": 6,
+          "5": 18
+        },
+        "8": {
+          "2": 0,
+          "3": 3,
+          "4": 4,
+          "5": 5
+        },
+        "9": {
+          "2": 8,
+          "3": 50,
+          "4": 1000,
+          "5": 8000
+        },
+        "10": {
+          "2": 4,
+          "3": 25,
+          "4": 100,
+          "5": 5000
+        }
+      },
+      "jackpot": {
+        "enabled": true,
+        "excludeTestCurrency": false,
+        "winningRatio": 0.98,
+        "playerContributionRatio": 0.025,
+        "botContributionRatio": 0.001,
+        "allowedCurrency": "INH"
+      }
+    },
+    "siteExclusions": [
+      "xtu168",
+      "M88",
+      "Kutech",
+      "wanfang",
+      "Saba789",
+      "BigGaming",
+      "ab6688",
+      "zt828"
+    ],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 114,
+    "randomMode": 0,
+    "cascadingSlotsConfig": null,
+    "slotRNGConfig": null
+  },
+  {
+    "_id": {
+      "$oid": "64b89b080362a8ccebaf940b"
+    },
+    "time": {
+      "$date": "2023-01-04T06:45:58.122Z"
+    },
+    "__v": 0,
+    "type": 2,
+    "name": "missionimpossible",
+    "displayName": "Mission Impossible",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 0,
+    "maxbet": 0,
+    "disabledround": 8,
+    "bot_maxbet": 10,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": null,
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": {
+      "mode": 1,
+      "bigWinRatio": 2.5,
+      "bonus": {
+        "min": 8,
+        "max": 28
+      },
+      "stakeLevels": [
+        {
+          "stake": 1,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 5,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 10,
+          "jackpot": 0,
+          "botRatio": 0.2
+        }
+      ],
+      "icons": {
+        "0": {
+          "2": 0,
+          "3": 2,
+          "4": 5,
+          "5": 10
+        },
+        "1": {
+          "2": 0,
+          "3": 5,
+          "4": 10,
+          "5": 25
+        },
+        "2": {
+          "2": 0,
+          "3": 5,
+          "4": 25,
+          "5": 50
+        },
+        "3": {
+          "2": 0,
+          "3": 10,
+          "4": 30,
+          "5": 150
+        },
+        "4": {
+          "2": 0,
+          "3": 12,
+          "4": 45,
+          "5": 275
+        },
+        "5": {
+          "2": 0,
+          "3": 16,
+          "4": 60,
+          "5": 375
+        },
+        "6": {
+          "2": 0,
+          "3": 20,
+          "4": 75,
+          "5": 500
+        },
+        "7": {
+          "2": 0,
+          "3": 3,
+          "4": 6,
+          "5": 18
+        },
+        "8": {
+          "2": 0,
+          "3": 3,
+          "4": 4,
+          "5": 5
+        },
+        "9": {
+          "2": 8,
+          "3": 50,
+          "4": 1000,
+          "5": 8000
+        },
+        "10": {
+          "2": 4,
+          "3": 25,
+          "4": 100,
+          "5": 5000
+        }
+      },
+      "jackpot": {
+        "enabled": false,
+        "excludeTestCurrency": false,
+        "winningRatio": 0,
+        "playerContributionRatio": 0,
+        "botContributionRatio": 0,
+        "allowedCurrency": "INH"
+      },
+      "symbolWeight": {
+        "1": [
+          [
+            51,
+            50,
+            45,
+            40,
+            35,
+            30,
+            25,
+            20,
+            15,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "2": [
+          [
+            54,
+            50,
+            45,
+            40,
+            35,
+            30,
+            25,
+            20,
+            15,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2
+          ]
+        ],
+        "3": [
+          [
+            33,
+            50,
+            45,
+            40,
+            35,
+            30,
+            25,
+            20,
+            15,
+            10,
+            5
+          ],
+          [
+            3,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            3
+          ],
+          [
+            3,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 68,
+    "randomMode": 0,
+    "cascadingSlotsConfig": null,
+    "slotRNGConfig": null
+  },
+  {
+    "_id": {
+      "$oid": "64d361a6ef5d06dffbaac570"
+    },
+    "time": {
+      "$date": "2023-01-04T06:45:58.122Z"
+    },
+    "__v": 0,
+    "type": 2,
+    "name": "djclub",
+    "displayName": "DJ Club",
+    "enabled": true,
+    "botenabled": false,
+    "minbet": 0,
+    "maxbet": 0,
+    "disabledround": 81,
+    "bot_maxbet": 10,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": null,
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": {
+      "mode": 1,
+      "bigWinRatio": 2.5,
+      "bonus": {
+        "min": 8,
+        "max": 28
+      },
+      "stakeLevels": [
+        {
+          "stake": 1,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 5,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 10,
+          "jackpot": 0,
+          "botRatio": 0.2
+        }
+      ],
+      "icons": {
+        "0": {
+          "2": 0,
+          "3": 2,
+          "4": 5,
+          "5": 10
+        },
+        "1": {
+          "2": 0,
+          "3": 5,
+          "4": 10,
+          "5": 25
+        },
+        "2": {
+          "2": 0,
+          "3": 5,
+          "4": 25,
+          "5": 50
+        },
+        "3": {
+          "2": 0,
+          "3": 10,
+          "4": 30,
+          "5": 150
+        },
+        "4": {
+          "2": 0,
+          "3": 12,
+          "4": 45,
+          "5": 275
+        },
+        "5": {
+          "2": 0,
+          "3": 16,
+          "4": 60,
+          "5": 375
+        },
+        "6": {
+          "2": 0,
+          "3": 20,
+          "4": 75,
+          "5": 500
+        },
+        "7": {
+          "2": 0,
+          "3": 3,
+          "4": 6,
+          "5": 18
+        },
+        "8": {
+          "2": 0,
+          "3": 3,
+          "4": 4,
+          "5": 5
+        },
+        "9": {
+          "2": 8,
+          "3": 50,
+          "4": 1000,
+          "5": 8000
+        },
+        "10": {
+          "2": 4,
+          "3": 25,
+          "4": 100,
+          "5": 5000
+        }
+      },
+      "jackpot": {
+        "enabled": false,
+        "excludeTestCurrency": false,
+        "winningRatio": 0,
+        "playerContributionRatio": 0,
+        "botContributionRatio": 0,
+        "allowedCurrency": "INH"
+      },
+      "symbolWeight": {
+        "1": [
+          [
+            55,
+            50,
+            45,
+            40,
+            35,
+            30,
+            25,
+            20,
+            15,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 65,
+    "randomMode": 0,
+    "cascadingSlotsConfig": null,
+    "slotRNGConfig": null,
+    "exchangeReload": false
+  },
+  {
+    "_id": {
+      "$oid": "64d36390ef5d06dffbaac574"
+    },
+    "time": {
+      "$date": "2023-01-04T06:45:58.122Z"
+    },
+    "__v": 0,
+    "type": 2,
+    "name": "blackpink",
+    "displayName": "BLACKPINK",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 0,
+    "maxbet": 0,
+    "disabledround": 179,
+    "bot_maxbet": 10,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": null,
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": {
+      "mode": 1,
+      "bigWinRatio": 2.5,
+      "bonus": {
+        "min": 8,
+        "max": 28
+      },
+      "stakeLevels": [
+        {
+          "stake": 1,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 5,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 10,
+          "jackpot": 0,
+          "botRatio": 0.2
+        }
+      ],
+      "icons": {
+        "0": {
+          "2": 0,
+          "3": 2,
+          "4": 5,
+          "5": 10
+        },
+        "1": {
+          "2": 0,
+          "3": 5,
+          "4": 10,
+          "5": 25
+        },
+        "2": {
+          "2": 0,
+          "3": 5,
+          "4": 25,
+          "5": 50
+        },
+        "3": {
+          "2": 0,
+          "3": 10,
+          "4": 30,
+          "5": 150
+        },
+        "4": {
+          "2": 0,
+          "3": 12,
+          "4": 45,
+          "5": 275
+        },
+        "5": {
+          "2": 0,
+          "3": 16,
+          "4": 60,
+          "5": 375
+        },
+        "6": {
+          "2": 0,
+          "3": 20,
+          "4": 75,
+          "5": 500
+        },
+        "7": {
+          "2": 0,
+          "3": 3,
+          "4": 6,
+          "5": 18
+        },
+        "8": {
+          "2": 0,
+          "3": 3,
+          "4": 4,
+          "5": 5
+        },
+        "9": {
+          "2": 8,
+          "3": 50,
+          "4": 1000,
+          "5": 8000
+        },
+        "10": {
+          "2": 4,
+          "3": 25,
+          "4": 100,
+          "5": 5000
+        }
+      },
+      "jackpot": {
+        "enabled": false,
+        "excludeTestCurrency": false,
+        "winningRatio": 0,
+        "playerContributionRatio": 0,
+        "botContributionRatio": 0,
+        "allowedCurrency": "INH"
+      },
+      "symbolWeight": {
+        "1": [
+          [
+            55,
+            50,
+            45,
+            40,
+            35,
+            30,
+            25,
+            20,
+            15,
+            10,
+            4
+          ],
+          [
+            1,
+            1,
+            1,
+            2,
+            2,
+            2,
+            2,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "2": [
+          [
+            55,
+            50,
+            45,
+            40,
+            35,
+            30,
+            25,
+            20,
+            15,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "3": [
+          [
+            55,
+            50,
+            45,
+            40,
+            35,
+            30,
+            25,
+            20,
+            15,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            3,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2
+          ]
+        ]
+      }
+    },
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 69,
+    "randomMode": 0,
+    "cascadingSlotsConfig": null,
+    "slotRNGConfig": null
+  },
+  {
+    "_id": {
+      "$oid": "64fa9ca8a13ffddbababdacf"
+    },
+    "time": {
+      "$date": "2021-03-18T06:27:47.883Z"
+    },
+    "__v": 0,
+    "type": 2,
+    "name": "transformers",
+    "displayName": "Transformers",
+    "enabled": true,
+    "botenabled": false,
+    "minbet": 0,
+    "maxbet": 0,
+    "disabledround": 77,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": null,
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": {
+      "mode": 1,
+      "bigWinRatio": 2.5,
+      "bonus": {
+        "min": 8,
+        "max": 28
+      },
+      "stakeLevels": [
+        {
+          "stake": 1,
+          "jackpot": 5000000,
+          "botRatio": 40
+        },
+        {
+          "stake": 5,
+          "jackpot": 25000000,
+          "botRatio": 40
+        },
+        {
+          "stake": 10,
+          "jackpot": 50000000,
+          "botRatio": 20
+        }
+      ],
+      "icons": {
+        "0": {
+          "2": 0,
+          "3": 2,
+          "4": 5,
+          "5": 10
+        },
+        "1": {
+          "2": 0,
+          "3": 5,
+          "4": 10,
+          "5": 25
+        },
+        "2": {
+          "2": 0,
+          "3": 5,
+          "4": 25,
+          "5": 50
+        },
+        "3": {
+          "2": 0,
+          "3": 10,
+          "4": 30,
+          "5": 150
+        },
+        "4": {
+          "2": 0,
+          "3": 12,
+          "4": 45,
+          "5": 275
+        },
+        "5": {
+          "2": 0,
+          "3": 16,
+          "4": 60,
+          "5": 375
+        },
+        "6": {
+          "2": 0,
+          "3": 20,
+          "4": 75,
+          "5": 500
+        },
+        "7": {
+          "2": 0,
+          "3": 3,
+          "4": 6,
+          "5": 18
+        },
+        "8": {
+          "2": 0,
+          "3": 3,
+          "4": 4,
+          "5": 5
+        },
+        "9": {
+          "2": 8,
+          "3": 50,
+          "4": 1000,
+          "5": 8000
+        },
+        "10": {
+          "2": 4,
+          "3": 25,
+          "4": 100,
+          "5": 5000
+        }
+      },
+      "jackpot": {
+        "enabled": true,
+        "excludeTestCurrency": false,
+        "winningRatio": 0.98,
+        "playerContributionRatio": 0.025,
+        "botContributionRatio": 0.001,
+        "allowedCurrency": "INH"
+      },
+      "symbolWeight": {
+        "1": [
+          [
+            55,
+            50,
+            45,
+            40,
+            35,
+            30,
+            25,
+            20,
+            15,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "siteExclusions": [
+      "xtu168",
+      "M88",
+      "Kutech",
+      "wanfang",
+      "Saba789",
+      "BigGaming",
+      "ab6688",
+      "zt828"
+    ],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 70,
+    "randomMode": 0,
+    "cascadingSlotsConfig": null,
+    "slotRNGConfig": null
+  },
+  {
+    "_id": {
+      "$oid": "651b8755387e0858046b177b"
+    },
+    "time": {
+      "$date": "2023-10-03T03:15:33.424Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "pontoon",
+    "displayName": "",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": 269,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0.001,
+      0.001,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": {
+      "regular": 2,
+      "pontoon": 3,
+      "fiveCardTrick": 3
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 72,
+    "randomMode": 2,
+    "cascadingSlotsConfig": null,
+    "slotRNGConfig": null
+  },
+  {
+    "_id": {
+      "$oid": "655c6534ce0f284b6a26480c"
+    },
+    "time": {
+      "$date": "2023-11-21T08:07:16.740Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "bandarqiuqiu",
+    "displayName": "",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 40000000,
+    "disabledround": 1,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [
+      0,
+      0,
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0,
+      0.01,
+      0.01,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "spade": 40000000,
+      "heart": 40000,
+      "club": 40000000,
+      "diamond": 40000000
+    },
+    "odds": {
+      "sixDevil": 6,
+      "twin": 5,
+      "small": 3,
+      "big": 3,
+      "qiuQiu": 2.5,
+      "ordinaryCard": 1.9
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 75,
+    "randomMode": 1,
+    "cascadingSlotsConfig": null,
+    "slotRNGConfig": null
+  },
+  {
+    "_id": {
+      "$oid": "655da271ce0f284b6a26480f"
+    },
+    "time": {
+      "$date": "2023-11-22T06:40:49.984Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "colorgame",
+    "displayName": "",
+    "enabled": true,
+    "botenabled": false,
+    "minbet": 10,
+    "maxbet": 5000,
+    "disabledround": 10991,
+    "bot_maxbet": 10,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "yellow": 5000,
+      "red": 5000,
+      "pink": 5000,
+      "white": 5000,
+      "blue": 5000,
+      "green": 5000,
+      "hot": 5000,
+      "cold": 5000
+    },
+    "odds": {
+      "single": 2,
+      "double": 3.5,
+      "triple": 6,
+      "hot": 1.96,
+      "cold": 1.96
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 71,
+    "randomMode": 1,
+    "cascadingSlotsConfig": null,
+    "slotRNGConfig": null
+  },
+  {
+    "_id": {
+      "$oid": "6593c687321a1bdf9a0b2281"
+    },
+    "time": {
+      "$date": "2024-01-02T08:17:11.582Z"
+    },
+    "__v": 0,
+    "type": 1,
+    "name": "dragontigerfight",
+    "displayName": "",
+    "enabled": true,
+    "botenabled": false,
+    "minbet": 10000,
+    "maxbet": 40000000,
+    "disabledround": 1,
+    "bot_maxbet": 10000,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": {
+      "dragon": 40000000,
+      "tiger": 40000000,
+      "tie": 40000000,
+      "redDragon": 40000000,
+      "blackDragon": 40000000,
+      "redTiger": 40000000,
+      "blackTiger": 40000000
+    },
+    "odds": {
+      "dragon": 2,
+      "tiger": 2,
+      "tie": 11,
+      "redDragon": 1.96,
+      "blackDragon": 1.96,
+      "redTiger": 1.96,
+      "blackTiger": 1.96
+    },
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 67,
+    "randomMode": 1,
+    "cascadingSlotsConfig": null,
+    "slotRNGConfig": null,
+    "crashConfig": null
+  },
+  {
+    "_id": {
+      "$oid": "6596316c7d43dfb7421a2848"
+    },
+    "time": {
+      "$date": "2022-07-28T02:59:36.871Z"
+    },
+    "__v": 0,
+    "type": 3,
+    "name": "candyland",
+    "displayName": "Candy Land",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 0,
+    "maxbet": 0,
+    "disabledround": 7504814,
+    "bot_maxbet": 10,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": null,
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 66,
+    "randomMode": 0,
+    "cascadingSlotsConfig": {
+      "mode": 1,
+      "bigWinRatio": 2.5,
+      "multiplierBonus": {
+        "min": 2,
+        "max": 21
+      },
+      "betLevels": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "betMultiplier": 20,
+      "maxWinPerRound": 2000,
+      "oddsByCounts": {
+        "0": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 5
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 15
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 40
+          }
+        ],
+        "1": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 8
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 18
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 80
+          }
+        ],
+        "2": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 10
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 20
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 100
+          }
+        ],
+        "3": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 16
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 24
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 160
+          }
+        ],
+        "4": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 20
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 30
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 200
+          }
+        ],
+        "5": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 30
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 40
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 240
+          }
+        ],
+        "6": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 40
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 100
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 300
+          }
+        ],
+        "7": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 50
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 200
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 500
+          }
+        ],
+        "8": [
+          {
+            "from": 8,
+            "to": 9,
+            "odds": 200
+          },
+          {
+            "from": 10,
+            "to": 11,
+            "odds": 500
+          },
+          {
+            "from": 12,
+            "to": 30,
+            "odds": 1000
+          }
+        ]
+      },
+      "freeSpins": {
+        "initialOdds": [
+          {
+            "count": 4,
+            "odds": 3
+          },
+          {
+            "count": 5,
+            "odds": 6
+          },
+          {
+            "count": 6,
+            "odds": 18
+          }
+        ],
+        "additionalOdds": [
+          {
+            "count": 4,
+            "odds": 5
+          }
+        ]
+      }
+    },
+    "slotRNGConfig": null,
+    "crashConfig": null
+  },
+  {
+    "_id": {
+      "$oid": "65966f2b7d43dfb7421a284e"
+    },
+    "time": {
+      "$date": "2023-01-04T06:45:58.122Z"
+    },
+    "__v": 0,
+    "type": 2,
+    "name": "onepiece",
+    "displayName": "One Piece",
+    "enabled": false,
+    "botenabled": true,
+    "minbet": 0,
+    "maxbet": 0,
+    "disabledround": 0,
+    "bot_maxbet": 10,
+    "hour_maxbot": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": null,
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": {
+      "mode": 1,
+      "bigWinRatio": 2.5,
+      "bonus": {
+        "min": 8,
+        "max": 28
+      },
+      "stakeLevels": [
+        {
+          "stake": 1,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 5,
+          "jackpot": 0,
+          "botRatio": 0.4
+        },
+        {
+          "stake": 10,
+          "jackpot": 0,
+          "botRatio": 0.2
+        }
+      ],
+      "icons": {
+        "0": {
+          "2": 0,
+          "3": 2,
+          "4": 5,
+          "5": 10
+        },
+        "1": {
+          "2": 0,
+          "3": 5,
+          "4": 10,
+          "5": 25
+        },
+        "2": {
+          "2": 0,
+          "3": 5,
+          "4": 25,
+          "5": 50
+        },
+        "3": {
+          "2": 0,
+          "3": 10,
+          "4": 30,
+          "5": 150
+        },
+        "4": {
+          "2": 0,
+          "3": 12,
+          "4": 45,
+          "5": 275
+        },
+        "5": {
+          "2": 0,
+          "3": 16,
+          "4": 60,
+          "5": 375
+        },
+        "6": {
+          "2": 0,
+          "3": 20,
+          "4": 75,
+          "5": 500
+        },
+        "7": {
+          "2": 0,
+          "3": 3,
+          "4": 6,
+          "5": 18
+        },
+        "8": {
+          "2": 0,
+          "3": 3,
+          "4": 4,
+          "5": 5
+        },
+        "9": {
+          "2": 8,
+          "3": 50,
+          "4": 1000,
+          "5": 8000
+        },
+        "10": {
+          "2": 4,
+          "3": 25,
+          "4": 100,
+          "5": 5000
+        }
+      },
+      "jackpot": {
+        "enabled": false,
+        "excludeTestCurrency": false,
+        "winningRatio": 0,
+        "playerContributionRatio": 0,
+        "botContributionRatio": 0,
+        "allowedCurrency": "INH"
+      },
+      "symbolWeight": {
+        "1": [
+          [
+            55,
+            50,
+            45,
+            40,
+            35,
+            30,
+            25,
+            20,
+            15,
+            10,
+            4
+          ],
+          [
+            1,
+            1,
+            1,
+            2,
+            2,
+            2,
+            2,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "2": [
+          [
+            55,
+            50,
+            45,
+            40,
+            35,
+            30,
+            25,
+            20,
+            15,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "3": [
+          [
+            55,
+            50,
+            45,
+            40,
+            35,
+            30,
+            25,
+            20,
+            15,
+            10,
+            5
+          ],
+          [
+            1,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            3,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2
+          ]
+        ]
+      }
+    },
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 74,
+    "randomMode": 0,
+    "cascadingSlotsConfig": null,
+    "slotRNGConfig": null,
+    "crashConfig": null
+  }]

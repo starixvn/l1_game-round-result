@@ -72,6 +72,14 @@ namespace GameRoundResult.IntegrationTests
 
         public MongoClient mongoClient { get; private set; }
 
+        public void InsertGameConfigs()
+        {
+            var collectionName = "game_configs";
+            var path = Path.Combine(ProjectDir, $"Core/Stubs/{collectionName}.json");
+            string json = File.ReadAllText(path);
+            InsertData(collectionName, json);
+        }
+
         public void InsertOperators()
         {
             var collectionName = "partners";
