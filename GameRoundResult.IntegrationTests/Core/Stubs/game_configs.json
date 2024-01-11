@@ -7301,4 +7301,66 @@
     "cascadingSlotsConfig": null,
     "slotRNGConfig": null,
     "crashConfig": null
+  },
+  {
+     "_id": {
+      "$oid": "650429b7b30c3dab37bb1eea"
+    },
+    "time": {
+      "$date": "2021-01-27T05:44:23.069Z"
+    },
+    "__v": 0,
+    "type": 5,
+    "name": "spaceflight",
+    "enabled": true,
+    "botenabled": false,
+    "minbet": 1,
+    "maxbet": 3000,
+    "disabledround": 115039,
+    "bot_maxbet": 200,
+    "hour_maxbot": [
+      0,
+      0.05,
+      0.1,
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.05,
+      0.05,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+    "choices_maxbet": null,
+    "odds": {},
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "siteExclusions": null,
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "exchangeReload": false,
+    "reloadExchange": true,
+    "randomMode": 3,
+    "displayName": "Spaceflight",
+    "gameId": 73,
+    "maxMultiplier": 2000,
+    "crashConfig": {
+      "maxWinPerRound": 25,
+      "maxMultiplier": 2000,
+      "crashAtBase": 3
+    }
   }]

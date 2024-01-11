@@ -30,9 +30,12 @@ namespace GameRoundResult.Web.Handlers
     {
         public static void InitApi(this IServiceCollection services, CloudServiceConfig cloudServiceConfig)
         {
-            var client = InitHttpClient(cloudServiceConfig.CloudResultUrl, cloudServiceConfig.OnPremiseProxy);
+            if (!string.IsNullOrEmpty(cloudServiceConfig.CloudResultUrl))
+            {
+                var client = InitHttpClient(cloudServiceConfig.CloudResultUrl, cloudServiceConfig.OnPremiseProxy);
 
-            services.AddSingleton(RestService.For<ICloudResultApi>(client, new RefitSettings(new NewtonsoftJsonContentSerializer())));
+                services.AddSingleton(RestService.For<ICloudResultApi>(client, new RefitSettings(new NewtonsoftJsonContentSerializer())));
+            }  
         }
 
         private static HttpClient InitHttpClient(string url, string proxy)
