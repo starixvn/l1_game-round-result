@@ -11,12 +11,14 @@ using Newtonsoft.Json;
 using Xunit;
 using AngleSharp.Html.Dom;
 using GameRoundResult.Web;
+using GameRoundResult.IntegrationTests.Core.Helpers;
 
 namespace GameRoundResult.IntegrationTests
 {
     public class GameRoundResultTests : IntegrationTestBase
     {
-        public GameRoundResultTests(CustomWebApplicationFactory<Program> factory, GameAdminApiFixture gameAdminApiFixture) : base(factory, gameAdminApiFixture)
+        public GameRoundResultTests(CustomWebApplicationFactory<Program> factory, GameManagementServiceFixture gameManagementServiceFixture) 
+            : base(factory, gameManagementServiceFixture)
         {
         }
 

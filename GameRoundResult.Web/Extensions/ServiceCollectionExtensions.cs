@@ -209,14 +209,21 @@ namespace GameRoundResult.Web.Extensions
         {
             var gameManagementConfig = configuration.GetSection("GameManagementConfig").Get<GameManagementConfig>();
 
-            IdentityServerManager.Initialize(gameManagementConfig.IdentityServerAuth);
-
-            var refitSettings = new RefitSettings
+            if (!string.IsNullOrWhiteSpace(gameManagementConfig.IdentityServerAuth?.Url))
             {
-                AuthorizationHeaderValueGetter = IdentityServerManager.GetAccessToken,
-            };
+                IdentityServerManager.Initialize(gameManagementConfig.IdentityServerAuth);
 
-            services.AddSingleton(RestService.For<IGameManagementApi>(gameManagementConfig.Url, refitSettings));
+                var refitSettings = new RefitSettings
+                {
+                    AuthorizationHeaderValueGetter = IdentityServerManager.GetAccessToken,
+                };
+
+                services.AddSingleton(RestService.For<IGameManagementApi>(gameManagementConfig.Url, refitSettings));
+            }
+            else
+            {
+                services.AddSingleton(RestService.For<IGameManagementApi>(gameManagementConfig.Url));
+            }
         }
     }
 }

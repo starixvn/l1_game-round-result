@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using GameRoundResult.Core.Constants;
+using GameRoundResult.IntegrationTests.Core.Helpers;
 using GameRoundResult.IntegrationTests.Helpers;
 using GameRoundResult.Web;
 using GameRoundResult.Web.Models;
@@ -15,7 +16,8 @@ namespace GameRoundResult.IntegrationTests
 {
     public class BetHistoryTests : IntegrationTestBase
     {
-        public BetHistoryTests(CustomWebApplicationFactory<Program> factory, GameAdminApiFixture gameAdminApiFixture) : base(factory, gameAdminApiFixture)
+        public BetHistoryTests(CustomWebApplicationFactory<Program> factory, GameManagementServiceFixture gameManagementServiceFixture) 
+            : base(factory, gameManagementServiceFixture)
         {
             databaseHelper.ClearAllData();
         }
@@ -126,7 +128,7 @@ namespace GameRoundResult.IntegrationTests
             databaseHelper.InsertDataGameStubs(gameName, "BetHistory", testcase);
             var url = await BuildAccessUrl(model);
             var expected = ReadTextFromFile(gameName, language, testcase);
-            gameAdminApi.SetGameConfigApiResponse(gameId, gameName, gameType);
+            gameManagementService.SetGameConfigApiResponse(gameId, gameName, gameType);
 
             // act
             var response = await TestDriver.GetAsync(url);

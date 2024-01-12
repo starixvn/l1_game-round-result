@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Services;
+using GameRoundResult.IntegrationTests.Core.Helpers;
 using GameRoundResult.Web;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
@@ -15,7 +16,8 @@ namespace GameRoundResult.IntegrationTests
 {
     public class RetrieveEndRoundTests : IntegrationTestBase
     {
-        public RetrieveEndRoundTests(CustomWebApplicationFactory<Program> factory, GameAdminApiFixture gameAdminApiFixture) : base(factory, gameAdminApiFixture)
+        public RetrieveEndRoundTests(CustomWebApplicationFactory<Program> factory, GameManagementServiceFixture gameManagementServiceFixture) 
+            : base(factory, gameManagementServiceFixture)
         {
         }
 
@@ -40,7 +42,7 @@ namespace GameRoundResult.IntegrationTests
             var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
             databaseHelper.InsertCurrencyAndOperatorStub();
             databaseHelper.InsertDataGameStubs(gameName, "RetrieveEndRound", testcase);
-            gameAdminApi.SetGameConfigApiResponse(gameId, gameName, gameType);
+            gameManagementService.SetGameConfigApiResponse(gameId, gameName, gameType);
 
             var expected = ReadTextFromFile(gameName, testcase);
 

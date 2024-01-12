@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.RegularExpressions;
+using GameRoundResult.IntegrationTests.Core.Helpers;
 using GameRoundResult.Web;
 using Xunit;
 
@@ -13,9 +14,9 @@ namespace GameRoundResult.IntegrationTests
         protected readonly HttpClient TestDriver;
         protected string ProjectDir = Directory.GetCurrentDirectory();
         protected readonly DatabaseHelper databaseHelper;
-        protected readonly GameAdminApiFixture gameAdminApi;
+        protected readonly GameManagementServiceFixture gameManagementService;
 
-        public IntegrationTestBase(CustomWebApplicationFactory<Program> factory, GameAdminApiFixture gameAdminApiFixture)
+        public IntegrationTestBase(CustomWebApplicationFactory<Program> factory, GameManagementServiceFixture gameManagementServiceFixture)
         {
             TestDriver = factory.CreateClient();
             TestDriver.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue
@@ -23,7 +24,7 @@ namespace GameRoundResult.IntegrationTests
                 NoCache = true
             };
             this.databaseHelper = factory.databaseHelper;
-            this.gameAdminApi = gameAdminApiFixture;
+            this.gameManagementService = gameManagementServiceFixture;
         }
 
         protected const string OperatorId = "ONEworks1";
