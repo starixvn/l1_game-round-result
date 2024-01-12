@@ -125,7 +125,7 @@ namespace GameRoundResult.Web.Controllers
                 var authenticationResult = await partnerRequestAuthentication.Authorize(model.Auth.OperatorId, Request, model.Auth.OperatorSecret);
                 if (authenticationResult.IsAuthorize)
                 {
-                    var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}^^{authenticationResult.OperatorSecret}^^{model.GameTypeId}^^{model.GameRoundId}^^{model.PlayerId}^^{model.FreeBet}",
+                    var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}^^{authenticationResult.OperatorSecret}^^{model.GameTypeId}^^{model.GameRoundId}^^{model.PlayerId}^^{model.FreeBet}^^{model.SiteId}",
                             TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
                     model.Language = StandardizeLanguage(model.Language);
                     var redirectUrl = Url.Action("Index", "BetHistory", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
