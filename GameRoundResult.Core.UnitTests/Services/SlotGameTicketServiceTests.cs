@@ -23,7 +23,7 @@ namespace GameRoundResult.Core.UnitTests.Services
         }
 
         [Theory, AutoData]
-        public async Task GetAsync_ReturnCorrectResult(long roundId, int playerId, string operatorId, string gameName)
+        public async Task GetAsync_ReturnCorrectResult(long roundId, string playerId, string operatorId, string gameName)
         {
             //Arrnage
             var roundEntity = fixture.Create<SlotGameRound>();

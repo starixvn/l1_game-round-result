@@ -6,7 +6,7 @@ namespace GameRoundResult.Core.Services
 {
     public interface IPontoonTicketService
     {
-        Task<(PontoonRound, PontoonBet)> GetAsync(long handId, int playerId, string operatorId);
+        Task<(PontoonRound, PontoonBet)> GetAsync(long handId, string playerId, string operatorId);
     }
 
     public class PontoonTicketService : IPontoonTicketService
@@ -18,7 +18,7 @@ namespace GameRoundResult.Core.Services
             this.repository = repository;
         }
 
-        public async Task<(PontoonRound, PontoonBet)> GetAsync(long handId, int playerId, string operatorId)
+        public async Task<(PontoonRound, PontoonBet)> GetAsync(long handId, string playerId, string operatorId)
         {
             return await repository.GetAsync(handId, playerId, operatorId);
         }

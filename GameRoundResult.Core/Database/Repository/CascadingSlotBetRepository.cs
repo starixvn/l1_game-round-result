@@ -11,9 +11,9 @@
 
     public interface ICascadingSlotBetRepository
     {
-        Task<(BaseCascadingSlotRoundEntity, BaseCascadingSlotTotalMultiplierEntity)> GetAsync(long roundId, int playerId, string operatorId, string gameName);
+        Task<(BaseCascadingSlotRoundEntity, BaseCascadingSlotTotalMultiplierEntity)> GetAsync(long roundId, string playerId, string operatorId, string gameName);
 
-        Task<BaseCascadingSlotRoundEntity> GetEndRoundAsync(long roundId, int playerId, string operatorId, string gameName);
+        Task<BaseCascadingSlotRoundEntity> GetEndRoundAsync(long roundId, string playerId, string operatorId, string gameName);
     }
 
     public class CascadingSlotBetRepository : GameBetRepository, ICascadingSlotBetRepository
@@ -22,7 +22,7 @@
         {
         }
 
-        public async Task<(BaseCascadingSlotRoundEntity, BaseCascadingSlotTotalMultiplierEntity)> GetAsync(long roundId, int playerId, string operatorId, string gameName)
+        public async Task<(BaseCascadingSlotRoundEntity, BaseCascadingSlotTotalMultiplierEntity)> GetAsync(long roundId, string playerId, string operatorId, string gameName)
         {
             var round = await GetRoundCollection<BaseCascadingSlotRoundEntity>(gameName)
                .Find(x => x.RoundId == roundId && x.PlayerId == playerId && x.OperatorId == operatorId)
@@ -43,15 +43,15 @@
             return (round, null);
         }
 
-        public Task<BaseCascadingSlotRoundEntity> GetEndRoundAsync(long roundId, int playerId, string operatorId, string gameName)
+        public Task<BaseCascadingSlotRoundEntity> GetEndRoundAsync(long roundId, string playerId, string operatorId, string gameName)
             => GetRoundCollection<BaseCascadingSlotRoundEntity>(gameName)
                 .Find(EndRoundFilter(roundId, playerId, operatorId))
                 .FirstOrDefaultAsync();
 
-        private static Expression<Func<BaseCascadingSlotRoundEntity, bool>> EndRoundFilter(long roundId, int playerId, string operatorId)
+        private static Expression<Func<BaseCascadingSlotRoundEntity, bool>> EndRoundFilter(long roundId, string playerId, string operatorId)
             => DefaultFilter(roundId, playerId, operatorId);
 
-        private static Expression<Func<BaseCascadingSlotRoundEntity, bool>> DefaultFilter(long roundId, int playerId, string operatorId)
+        private static Expression<Func<BaseCascadingSlotRoundEntity, bool>> DefaultFilter(long roundId, string playerId, string operatorId)
         {
             Expression<Func<BaseCascadingSlotRoundEntity, bool>> defaultExpression = bet =>
                   bet.PlayerId == playerId

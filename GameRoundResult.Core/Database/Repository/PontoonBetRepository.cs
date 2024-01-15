@@ -6,7 +6,7 @@ namespace GameRoundResult.Core.Database.Repository
 {
     public interface IPontoonBetRepository
     {
-        Task<(PontoonRound, PontoonBet)> GetAsync(long handId, int playerId, string operatorId);
+        Task<(PontoonRound, PontoonBet)> GetAsync(long handId, string playerId, string operatorId);
     }
     public class PontoonBetRepository : GameBetRepository, IPontoonBetRepository
     {
@@ -14,7 +14,7 @@ namespace GameRoundResult.Core.Database.Repository
         {
         }
 
-        public async Task<(PontoonRound, PontoonBet)> GetAsync(long handId, int playerId, string operatorId)
+        public async Task<(PontoonRound, PontoonBet)> GetAsync(long handId, string playerId, string operatorId)
         {
             var bet = await database.GetCollection<PontoonBet>(Document.GetCollectionName(typeof(PontoonBet)))
                 .Find(x => x.HandId == handId && x.PlayerId == playerId && x.OperatorId == operatorId)

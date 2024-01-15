@@ -42,8 +42,8 @@
       "big": 1.96,
       "small": 1.96
     },
-    "playerId": 123,
-    "memberId": 123,
+    "playerId": "123",
+    "memberId": "123",
     "siteId": "4100300",
     "freeBet": false,
     "currency": "$US",

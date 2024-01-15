@@ -28,7 +28,7 @@ namespace GameRoundResult.IntegrationTests
             string gameName,
             GameConfigsType gameType,
             string testcase,
-            int playerId,
+            string playerId,
             int roundId
             )
         {
@@ -79,7 +79,7 @@ namespace GameRoundResult.IntegrationTests
                 FreeBet = false,
                 GameRoundId = 1,
                 GameTypeId = (byte)GameType.BigSmall,
-                PlayerId = 123
+                PlayerId = "123"
             };
         }
 

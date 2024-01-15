@@ -46,7 +46,7 @@
     },
     "currency": "$US",
     "rate": 1,
-    "playerId": 601,
+    "playerId": "601",
     "operatorId": "ONEworks1",
     "__v": 4,
     "__archive": {

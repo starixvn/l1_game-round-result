@@ -45,7 +45,7 @@
     },
     "siteId": "4100300",
     "currency": "$US",
-    "playerId": 600,
+    "playerId": "600",
     "operatorId": "ONEworks1",
     "rate": 1,
     "__v": 4,

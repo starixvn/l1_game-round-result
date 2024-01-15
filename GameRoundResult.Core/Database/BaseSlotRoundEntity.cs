@@ -9,7 +9,7 @@ namespace GameRoundResult.Core.Database
     {
         public string SiteId { get; set; }
 
-        public int PlayerId { get; set; }
+        public string PlayerId { get; set; }
 
         public string OperatorId { get; set; }
 

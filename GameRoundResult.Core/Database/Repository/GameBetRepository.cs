@@ -12,12 +12,12 @@ namespace GameRoundResult.Core.Database.Repository
 {
     public interface IGameBetRepository
     {
-        Task<(TRoundEntity, IEnumerable<TBetEntity>, TOneEntity)> GetAsync<TRoundEntity, TOneEntity, TBetEntity>(long roundId, int playerId, bool freeBet, string operatorId)
+        Task<(TRoundEntity, IEnumerable<TBetEntity>, TOneEntity)> GetAsync<TRoundEntity, TOneEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId)
             where TRoundEntity : GameRound
             where TOneEntity : BaseBetEntity
             where TBetEntity : BaseBetLogEntity;
 
-        Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, int playerId, bool freeBet, string operatorId)
+        Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId)
             where TRoundEntity : GameRound
             where TBetEntity : BaseBetEntity;
     }
@@ -31,7 +31,7 @@ namespace GameRoundResult.Core.Database.Repository
             this.database = database;
         }
 
-        protected async Task<IEnumerable<T>> GetBetsAsync<T>(long roundId, int playerId, bool freeBet, string collectionName, string operatorId,
+        protected async Task<IEnumerable<T>> GetBetsAsync<T>(long roundId, string playerId, bool freeBet, string collectionName, string operatorId,
             Expression<Func<T, bool>> filter = null) where T : BaseBetEntity
         {
             Expression<Func<T, bool>> defaultExpression = bet =>
@@ -49,7 +49,7 @@ namespace GameRoundResult.Core.Database.Repository
                 .ToListAsync();
         }
 
-        protected virtual async Task<IEnumerable<T>> GetBetLogsAsync<T>(long roundId, int playerId, string collectionName, string operatorId,
+        protected virtual async Task<IEnumerable<T>> GetBetLogsAsync<T>(long roundId, string playerId, string collectionName, string operatorId,
             Expression<Func<T, bool>> filter = null) where T : BaseBetLogEntity
         {
             Expression<Func<T, bool>> defaultExpression = bet =>
@@ -67,7 +67,7 @@ namespace GameRoundResult.Core.Database.Repository
         protected async Task<T> GetRoundAsync<T>(long roundId, string collectionName) where T : GameRound
             => await database.GetCollection<T>(collectionName).Find(x => x.RoundId == roundId).FirstOrDefaultAsync();
 
-        public virtual async Task<(TRoundEntity, IEnumerable<TBetEntity>, TOneEntity)> GetAsync<TRoundEntity, TOneEntity, TBetEntity>(long roundId, int playerId, bool freeBet, string operatorId)
+        public virtual async Task<(TRoundEntity, IEnumerable<TBetEntity>, TOneEntity)> GetAsync<TRoundEntity, TOneEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId)
             where TRoundEntity : GameRound
             where TOneEntity : BaseBetEntity
             where TBetEntity : BaseBetLogEntity
@@ -79,7 +79,7 @@ namespace GameRoundResult.Core.Database.Repository
             return (round, bets, one);
         }
 
-        public virtual async Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, int playerId, bool freeBet, string operatorId)
+        public virtual async Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId)
             where TRoundEntity : GameRound
             where TBetEntity : BaseBetEntity
         {

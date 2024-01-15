@@ -206,7 +206,7 @@
     "siteId": "4100300",
     "currency": "$US",
     "operatorId": "ONEworks1",
-    "playerId": 291192,
+    "playerId": "291192",
     "__v": 0,
     "endTime": {
       "$date": {

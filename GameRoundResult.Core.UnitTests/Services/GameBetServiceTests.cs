@@ -23,7 +23,7 @@ namespace GameRoundResult.Core.UnitTests.Services
         }
 
         [Theory, AutoData]
-        public async Task GameBetService_ReturnCorrectResult(long roundId, int memberId, bool freeBet, string partnerId)
+        public async Task GameBetService_ReturnCorrectResult(long roundId, string memberId, bool freeBet, string partnerId)
         {
             //Arrnage
             var roundEntity = fixture.Create<SeDieRound>();
@@ -40,7 +40,7 @@ namespace GameRoundResult.Core.UnitTests.Services
 
 
         [Theory, AutoData]
-        public async Task GameBetService_WithBetLogs_ReturnCorrectResult(long roundId, int memberId, bool freeBet, string partnerId)
+        public async Task GameBetService_WithBetLogs_ReturnCorrectResult(long roundId, string memberId, bool freeBet, string partnerId)
         {
             //Arrnage
             var roundEntity = fixture.Create<SicBoRound>();

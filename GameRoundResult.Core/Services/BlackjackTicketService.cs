@@ -6,7 +6,7 @@ namespace GameRoundResult.Core.Services
 {
     public interface IBlackjackTicketService
     {
-        Task<(BlackjackRound, BlackjackBet)> GetAsync(long handId, int playerId, string operatorId);
+        Task<(BlackjackRound, BlackjackBet)> GetAsync(long handId, string playerId, string operatorId);
     }
 
     public class BlackjackTicketService : IBlackjackTicketService
@@ -18,7 +18,7 @@ namespace GameRoundResult.Core.Services
             this.repository = repository;
         }
 
-        public async Task<(BlackjackRound, BlackjackBet)> GetAsync(long handId, int playerId, string operatorId)
+        public async Task<(BlackjackRound, BlackjackBet)> GetAsync(long handId, string playerId, string operatorId)
         {
             return await repository.GetAsync(handId, playerId, operatorId);
         }

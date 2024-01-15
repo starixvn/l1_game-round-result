@@ -6,7 +6,7 @@
 
     public interface ICascadingSlotTicketService
     {
-        Task<(BaseCascadingSlotRoundEntity, BaseCascadingSlotTotalMultiplierEntity)> GetAsync(long roundId, int playerId, string operatorId, string gameName);
+        Task<(BaseCascadingSlotRoundEntity, BaseCascadingSlotTotalMultiplierEntity)> GetAsync(long roundId, string playerId, string operatorId, string gameName);
     }
 
     public class CascadingSlotTicketService : ICascadingSlotTicketService
@@ -18,7 +18,7 @@
             this.repository = repository;
         }
 
-        public async Task<(BaseCascadingSlotRoundEntity, BaseCascadingSlotTotalMultiplierEntity)> GetAsync(long roundId, int playerId, string operatorId, string gameName)
+        public async Task<(BaseCascadingSlotRoundEntity, BaseCascadingSlotTotalMultiplierEntity)> GetAsync(long roundId, string playerId, string operatorId, string gameName)
             => await repository.GetAsync(roundId, playerId, operatorId, gameName);
     }
 }

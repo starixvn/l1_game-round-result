@@ -23,7 +23,7 @@
       "hot": 1.95,
       "cold": 1.95
     },
-    "playerId": 123,
+    "playerId": "123",
     "siteId": "4100300",
     "freeBet": false,
     "currency": "$US",
