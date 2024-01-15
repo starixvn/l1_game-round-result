@@ -7,7 +7,7 @@ namespace GameRoundResult.Web.CrashGames
 {
     public interface ICrashGameTicketService
     {
-        Task<(CrashGameRound, CrashGameBet, IEnumerable<CrashGameBetLog>)> GetAsync(long roundId, int playerId, string operatorId, string gameName);
+        Task<(CrashGameRound, CrashGameBet, IEnumerable<CrashGameBetLog>)> GetAsync(long roundId, string playerId, string operatorId, string gameName);
     }
 
     public class CrashGameTicketService : ICrashGameTicketService
@@ -19,7 +19,7 @@ namespace GameRoundResult.Web.CrashGames
             this.repository = repository;
         }
 
-        public Task<(CrashGameRound, CrashGameBet, IEnumerable<CrashGameBetLog>)> GetAsync(long roundId, int playerId, string operatorId, string gameName)
+        public Task<(CrashGameRound, CrashGameBet, IEnumerable<CrashGameBetLog>)> GetAsync(long roundId, string playerId, string operatorId, string gameName)
         => repository.GetAsync(roundId, playerId, operatorId, gameName);
     }
 }
