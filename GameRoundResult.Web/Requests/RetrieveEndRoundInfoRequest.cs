@@ -16,7 +16,5 @@ namespace GameRoundResult.Web.Requests
         public string PlayerId { get; set; }
 
         public bool FreeBet { get; set; }
-
-        public string SiteId { get; set; }
     }
 }
