@@ -6,7 +6,7 @@ namespace GameRoundResult.Core.Database.Repository
 {
     public interface IChineseBlackjackBetRepository
     {
-        Task<(ChineseBlackjackRound, ChineseBlackjackBet)> GetAsync(long handId, int playerId, string operatorId);
+        Task<(ChineseBlackjackRound, ChineseBlackjackBet)> GetAsync(long handId, string playerId, string operatorId);
     }
     public class ChineseBlackjackBetRepository : GameBetRepository, IChineseBlackjackBetRepository
     {
@@ -14,7 +14,7 @@ namespace GameRoundResult.Core.Database.Repository
         {
         }
 
-        public async Task<(ChineseBlackjackRound, ChineseBlackjackBet)> GetAsync(long handId, int playerId, string operatorId)
+        public async Task<(ChineseBlackjackRound, ChineseBlackjackBet)> GetAsync(long handId, string playerId, string operatorId)
         {
             var bet = await database.GetCollection<ChineseBlackjackBet>(Document.GetCollectionName(typeof(ChineseBlackjackBet)))
                 .Find(x => x.HandId == handId && x.PlayerId == playerId && x.OperatorId == operatorId)
