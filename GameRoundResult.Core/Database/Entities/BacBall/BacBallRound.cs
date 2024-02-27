@@ -3,33 +3,33 @@ using System.Collections.Generic;
 
 namespace GameRoundResult.Core.Database.Entities.BacBall
 {
-    [CollectionName("bacball_rounds")]
+    [CollectionName("baccaratball_rounds")]
     public class BacBallRound : GameRound
     {
-        public BacBallRoundResult Result { get; set; }
+        public long DrawId { get; set; }
 
-        public Dictionary<string, int> SettlementResult { get; set; }
+        public List<BacBallRoundResult> Result { get; set; }
+
+        public List<BacBallSettlementResult> SettlementResult { get; set; }
     }   
 
     public class BacBallRoundResult
     {
-        public BacBallResultItem Banker { get; set; }
+        public int Player { get; set; }
 
-        public BacBallResultItem Spade { get; set; }
+        public int Banker { get; set; }
 
-        public BacBallResultItem Heart { get; set; }
-
-        public BacBallResultItem Club { get; set; }
-
-        public BacBallResultItem Diamond { get; set; }
+        public long DrawId { get; set; }
     }
 
-    public class BacBallResultItem
+    public class BacBallSettlementResult
     {
-        public List<string> Dominoes { get; set; }
+        public bool Player { get; set; }
 
-        public int HandRankingId { get; set; }
+        public bool Banker { get; set; }
 
-        public IEnumerable<int> PipsOfSet { get; set; }
+        public bool Tie { get; set; }
+
+        public long DrawId { get; set; }
     }
 }

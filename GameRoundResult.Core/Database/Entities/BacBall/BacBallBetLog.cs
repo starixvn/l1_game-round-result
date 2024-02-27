@@ -2,7 +2,7 @@
 
 namespace GameRoundResult.Core.Database.Entities.BacBall
 {
-    [CollectionName("bacball_betlogs")]
+    [CollectionName("baccaratball_betlogs")]
     public class BacBallBetLog : BaseBetLogEntity
     {
         public decimal Amount { get; set; }

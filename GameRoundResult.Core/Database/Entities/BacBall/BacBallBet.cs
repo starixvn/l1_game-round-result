@@ -3,9 +3,11 @@ using System.Collections.Generic;
 
 namespace GameRoundResult.Core.Database.Entities.BacBall
 {
-    [CollectionName("bacball_bets")]
+    [CollectionName("baccaratball_bets")]
     public class BacBallBet : BaseBetEntity
     {
+        public long DrawId { get; set; }
+
         public decimal Banker { get; set; }
 
         public decimal Player { get; set; }

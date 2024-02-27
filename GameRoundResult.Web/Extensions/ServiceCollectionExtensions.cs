@@ -195,6 +195,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<DragonTigerFightEndGameInfoService>();
             services.AddScoped<ColorGameEndGameInfoService>();
             services.AddScoped<BandarQiuQiuEndGameInfoService>();
+            services.AddScoped<BacBallEndGameInfoService>();
 
             services.AddSlotGames();
             services.AddCascadingSlotGames();
