@@ -24,6 +24,7 @@ namespace GameRoundResult.Web.Handlers
         public async Task<GameTicketViewModel> Handle(GetGameTicketRequest request, CancellationToken cancellationToken)
         {
             var response = await gameManagementApi.GetGameConfigById((byte)request.GameId);
+            SentrySdk.CaptureMessage(string.Format("GetGameConfigById {0}", Newtonsoft.Json.JsonConvert.SerializeObject(response)), Sentry.Protocol.SentryLevel.Error);
 
             if (response?.Data == null && string.IsNullOrWhiteSpace(response?.Data?.Name))
             {
