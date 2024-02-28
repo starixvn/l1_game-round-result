@@ -6,6 +6,7 @@ using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
 using MediatR;
+using Sentry;
 
 namespace GameRoundResult.Web.Handlers
 {
@@ -31,7 +32,10 @@ namespace GameRoundResult.Web.Handlers
 
             request.GameConfigs = response.Data;
 
+            
+
             var service = serviceFactory.GetService(request.GameId, request.GameConfigs.Type);
+            SentrySdk.CaptureMessage(string.Format("GameConfigs {0} {1}", Newtonsoft.Json.JsonConvert.SerializeObject(request.GameConfigs), service), Sentry.Protocol.SentryLevel.Error);
 
             var gameTicket = await service.GetAsync(request);
 
