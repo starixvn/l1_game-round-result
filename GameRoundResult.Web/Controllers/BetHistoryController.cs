@@ -173,7 +173,7 @@ namespace GameRoundResult.Web.Controllers
         private async Task<GameTicketViewModel> GetGameTicket(GameType gameType, long roundId, string playerId, string operatorId, bool freeBet)
         {
             var config = operatorConfigs.FirstOrDefault(x => x.OperatorId == operatorId);
-            SentrySdk.CaptureMessage(string.Format("operatorConfigs {0} {1}", operatorId, config, operatorConfigs), Sentry.Protocol.SentryLevel.Error);
+            SentrySdk.CaptureMessage(string.Format("operatorConfigs {0} {1}", operatorId, Newtonsoft.Json.JsonConvert.SerializeObject(config), Newtonsoft.Json.JsonConvert.SerializeObject(operatorConfigs)), Sentry.Protocol.SentryLevel.Error);
             var timeZoneInfo = TZConvert.GetTimeZoneInfo(config.TimeZone);
             var result = await mediator.Send(new GetGameTicketRequest(gameType, roundId, playerId, timeZoneInfo,
                 operatorId, freeBet, systemType));
