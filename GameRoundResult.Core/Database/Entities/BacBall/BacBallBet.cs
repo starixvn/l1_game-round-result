@@ -11,11 +11,13 @@ namespace GameRoundResult.Core.Database.Entities.BacBall
         public decimal Banker { get; set; }
 
         public decimal Player { get; set; }
-        
+
+        public decimal Tie { get; set; }
+
         public Dictionary<string, decimal> Odds { get; set; }
 
         public double TotalAmount { get; set; }
 
-        public decimal TotalBet => Banker + Player;
+        public decimal TotalBet => Banker + Player + Tie;
     }
 }

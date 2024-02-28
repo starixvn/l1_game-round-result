@@ -705,3 +705,26 @@ div table.bandar-qiuqiu-table {
         }
     }
 }
+
+.bacball-result {
+    height: 30px;
+    width: 30px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    padding-top: 5px;
+    margin: 10px 5px 10px 5px;
+    
+    &.player {
+        border: solid 2px blue;
+    }
+
+    &.banker {
+        border: solid 2px black;
+    }
+}
+
+.no-data {
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+}
