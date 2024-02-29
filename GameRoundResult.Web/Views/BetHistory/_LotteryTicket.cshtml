@@ -78,7 +78,7 @@
                 foreach (var betChoice in bet.Choices.FourSets)
                 {
                     var rowSpan = bet.Choices.FourSets.Count();
-                    byte occurence = settlementResult.Occurrences.Seventh.ContainsKey(betChoice.Key) ? settlementResult.Occurrences.Seventh[betChoice.Key] : (byte)0;
+                    byte occurence = settlementResult.Occurrences.Seventh.ContainsKey(betChoice.Key) ? settlementResult.Occurrences.Seventh[betChoice.Key] : (int)0;
                     var cssClass = occurence > 0 ? "text-blue bold" : string.Empty;
 
                     <tr>
@@ -240,7 +240,7 @@
                 foreach (var betChoice in bet.Choices.TwentySevenSets)
                 {
                     var rowSpan = bet.Choices.TwentySevenSets.Count();
-                    byte occurence = settlementResult.Occurrences.All.ContainsKey(betChoice.Key) ? settlementResult.Occurrences.All[betChoice.Key] : (byte)0;
+                    byte occurence = settlementResult.Occurrences.All.ContainsKey(betChoice.Key) ? settlementResult.Occurrences.All[betChoice.Key] : (int)0;
                     var cssClass = occurence > 0 ? "text-blue bold" : string.Empty;
                     <tr>
                         @if (renderGroupInfo)
