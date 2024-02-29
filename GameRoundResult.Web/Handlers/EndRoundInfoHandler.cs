@@ -43,10 +43,8 @@ namespace GameRoundResult.Web.Handlers
             {
                 SentrySdk.CaptureMessage(JsonConvert.SerializeObject(cloudServiceConfig) + JsonConvert.SerializeObject(request));
 
-                SentrySdk.CaptureMessage(string.Format("ShouldCallCloudService",Sentry.Protocol.SentryLevel.Error));
                 if (cloudServiceConfig?.ShouldCallCloudService((int)request.GameTypeId) == true)
                 {
-                    SentrySdk.CaptureMessage(string.Format("ShouldCallCloudService true", Sentry.Protocol.SentryLevel.Error));
                     return await this.GetCloudEndRoundInfo(request);
                 }
 
@@ -55,7 +53,7 @@ namespace GameRoundResult.Web.Handlers
                 if (validatorResult.IsValid)
                 {
                     var response = await gameManagementApi.GetGameConfigById(request.GameTypeId);
-                    SentrySdk.CaptureMessage(string.Format("GameConfigs {0}", Newtonsoft.Json.JsonConvert.SerializeObject(response)), Sentry.Protocol.SentryLevel.Error);
+                    
                     if (response?.Data == null || string.IsNullOrWhiteSpace(response?.Data.Name))
                     {
                         return EndRoundInfoError.SB1006;

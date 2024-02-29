@@ -22,7 +22,7 @@ namespace GameRoundResult.Core.Services
                 return EndRoundInfoError.SB1001;
             }
 
-            var totalBetAmount = bets.Sum(x => x.Player + x.Banker);
+            var totalBetAmount = bets.Sum(x => x.Player + x.Banker + x.Tie);
             var totalBetWin = bets.Sum(x => x.Betwin);
 
             return new EndRoundInfoResult
