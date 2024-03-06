@@ -627,7 +627,7 @@ div table.bandar-qiuqiu-table .result-table {
   .bacball-result.player {
     border: solid 2px blue; }
   .bacball-result.banker {
-    border: solid 2px black; }
+    border: solid 2px red; }
 
 .no-data {
   padding-top: 7px !important;

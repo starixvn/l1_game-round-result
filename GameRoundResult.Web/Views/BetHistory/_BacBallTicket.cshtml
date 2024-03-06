@@ -3,6 +3,7 @@
 @inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
 @inject IJsonStringLocalizer<BacBall> Localizer
 @inject IJsonStringLocalizer<RoundResultViewModel> RoundResultLocalizer
+@inject IJsonStringLocalizer<SabaNumber> SabaNumberLocalizer
 
 @if (Model.EnableTolgee)
 {
@@ -13,8 +14,8 @@
     <thead>
         <tr>
             <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
-            <th>@CommonLocalizer["RoundId"]</th>
-            <th>@CommonLocalizer["Result"] <br /> @RoundResultLocalizer["Player"] | @RoundResultLocalizer["Banker"] </th>
+            <th>@SabaNumberLocalizer["glossary_draw_id"]</th>
+            <th>@CommonLocalizer["Result"] <br /> @Localizer["glossary_player"] | @Localizer["glossary_banker"] </th>
         </tr>
     </thead>
     <tbody>
@@ -61,7 +62,7 @@
     <tbody>
         @if (Model.BetLogs.Any() && Model.RoundResult != null)
         {
-            foreach (var bet in Model.BetLogs)
+            foreach (var bet in Model.BetLogs.OrderByDescending(b => b.Time))
             {               
                 <tr class="@Model.GetRowBetClass(bet.ChoiceDisplay)">
                     <td>

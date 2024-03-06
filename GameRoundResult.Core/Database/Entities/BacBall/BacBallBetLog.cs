@@ -2,7 +2,7 @@
 
 namespace GameRoundResult.Core.Database.Entities.BacBall
 {
-    [CollectionName("baccaratball_betlogs")]
+    [CollectionName("bacball_betlogs")]
     public class BacBallBetLog : BaseBetLogEntity
     {
         public long DrawId { get; set; }

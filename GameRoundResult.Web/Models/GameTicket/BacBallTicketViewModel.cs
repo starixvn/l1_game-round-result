@@ -27,7 +27,14 @@ namespace GameRoundResult.Web.Models
 
         public decimal GetBetLogWin(BacBallBetLogViewModel bet)
         {
-            return IsWinningChoice(bet.ChoiceDisplay) ? Odds[bet.Choice] * bet.Amount : 0;
+            if(IsWinningChoice("Tie") && (bet.ChoiceDisplay == "Player" || bet.ChoiceDisplay == "Banker"))
+            {
+                return bet.Amount;
+            }
+            else
+            {
+                return IsWinningChoice(bet.ChoiceDisplay) ? Odds[bet.Choice] * bet.Amount : 0;
+            }            
         }
 
         public int GetResultValue(string displayedChoice)
