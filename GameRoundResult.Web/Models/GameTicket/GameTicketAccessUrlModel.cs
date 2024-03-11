@@ -54,7 +54,7 @@ namespace GameRoundResult.Web.Models
         public long GameRoundId { get; set; }
 
         [Required]
-        public int PlayerId { get; set; }
+        public string PlayerId { get; set; }
 
         public string SiteId { get; set; }
 

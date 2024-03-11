@@ -59,7 +59,7 @@ namespace GameRoundResult.IntegrationTests
                 GameRoundId = 1,
                 GameTypeId = GameType.BigSmall,
                 Language = "en-US",
-                PlayerId = 99
+                PlayerId = "99"
             };
 
             // act
@@ -114,7 +114,7 @@ namespace GameRoundResult.IntegrationTests
             string gameName,
             GameConfigsType gameType,
             string testcase,
-            int playerId,
+            string playerId,
             long roundId,
             string language)
         {
@@ -160,7 +160,7 @@ namespace GameRoundResult.IntegrationTests
                 GameRoundId = 1,
                 GameTypeId = GameType.BigSmall,
                 Language = "en-US",
-                PlayerId = 123
+                PlayerId = "123"
             };
         }
 
