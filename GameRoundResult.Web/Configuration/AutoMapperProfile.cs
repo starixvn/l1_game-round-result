@@ -426,6 +426,8 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<BandarQiuQiuBetLog, BandarQiuQiuBetLogViewModel>();
             CreateMap<BacBallBetLog, BacBallBetLogViewModel > ();
+
+            CreateMap<BacBallRound, BacBallRoundResultViewModel>();
         }
     }
 }
