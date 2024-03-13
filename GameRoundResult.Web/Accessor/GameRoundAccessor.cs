@@ -32,9 +32,42 @@ namespace GameRoundResult.Web.Accessor
         public async Task<(long, IEnumerable<RoundResultViewModel>)> GetAsync(GetRoundResultRequest request)
         {
             var utcDate = TimeZoneInfo.ConvertTimeToUtc(request.Date, request.TimeZoneInfo);
-            var result = await gameRoundResultService.GetGameRoundResultAsync<TRoundEntity>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize);
-           
-            return (result.Item1, result.Item2.Select(x => x.ToViewModel<TRoundEntity, TRoundViewModel>(mapper, request.TimeZoneInfo)));
+            if(request.GameType == Core.Constants.GameType.BacBall)
+            {
+                return await GetBacBallAsync(request, utcDate);
+            }
+            else
+            {
+                var result = await gameRoundResultService.GetGameRoundResultAsync<TRoundEntity>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize);
+                return (result.Item1, result.Item2.Select(x => x.ToViewModel<TRoundEntity, TRoundViewModel>(mapper, request.TimeZoneInfo)));
+            }
+        }
+
+        private async Task<(long, IEnumerable<RoundResultViewModel>)> GetBacBallAsync(GetRoundResultRequest request, DateTime utcDate)
+        {
+            var result = await gameRoundResultService.GetBacBallRoundResultAsync(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize);
+            var roundResults = new List<BacBallRoundResultViewModel>();
+            foreach (var bacBallRound in result.Item2)
+            {
+                for (var i = bacBallRound.Result.Count - 1; i >= 0; i--)
+                {
+                    if (request.RoundId == 0 || (request.RoundId == bacBallRound.Result[i].DrawId))
+                    {
+                        var roundResult = new BacBallRoundResultViewModel
+                        {
+                            DrawId = bacBallRound.Result[i].DrawId,
+                            Result = bacBallRound.Result[i],
+                            SettlementResult = bacBallRound.SettlementResult[i],
+                            Time = TimeZoneInfo.ConvertTimeFromUtc(bacBallRound.Time, request.TimeZoneInfo),
+                            TimeZone = request.TimeZoneInfo
+                        };
+                        roundResults.Add(roundResult);
+                    }
+                }
+
+            }
+
+            return (result.Item1, roundResults);
         }
     }
 }

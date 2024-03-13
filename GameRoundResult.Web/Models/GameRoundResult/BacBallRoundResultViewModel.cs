@@ -8,16 +8,19 @@ using System.Linq;
 namespace GameRoundResult.Web.Models
 {
     public class BacBallRoundResultViewModel : RoundResultViewModel
-    {       
+    {
+        public long DrawId { get; set; }
 
-        public List<BacBallRoundResult> Result { get; set; }
+        public BacBallRoundResult Result { get; set; }
 
-        public List<BacBallSettlementResult> SettlementResult { get; set; }
+        public BacBallSettlementResult SettlementResult { get; set; }
 
         public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            var result = new List<string>(base.ToDataTableArray(stringLocalizer))
+            var result = new List<string>()
             {
+               base.ToDataTableArray(stringLocalizer).First(),
+               DrawId.ToString(),
                $"{GetResult(stringLocalizer)}",
                $"{GetWinningTextResult(stringLocalizer)}",
                
@@ -30,10 +33,8 @@ namespace GameRoundResult.Web.Models
         {
             var tagBuilder = new TagBuilder("table");
             tagBuilder.AddCssClass($"result-table");
-            foreach(var result in Result)
-            {
-                tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice(result, stringLocalizer));
-            }
+            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice(Result, stringLocalizer));
+
             return tagBuilder.GetHtmlString();            
         }      
 
@@ -63,44 +64,32 @@ namespace GameRoundResult.Web.Models
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"result-row");           
 
-            foreach (var settlementResult in SettlementResult.Select((value, i) => new { i, value })) {
-                var winningText = this.GetWinningOption(settlementResult.value, settlementResult.i, stringLocalizer);
-                var contentBuilder = new TagBuilder("div");
-                contentBuilder.AddCssClass($"result-row");
-                contentBuilder.InnerHtml.AppendHtml(winningText);
-                tagBuilder.InnerHtml.AppendHtml(contentBuilder);
-            }
+            var winningText = GetWinningOption(SettlementResult, stringLocalizer);
+            var contentBuilder = new TagBuilder("div");
+            contentBuilder.AddCssClass($"result-row");
+            contentBuilder.InnerHtml.AppendHtml(winningText);
+            tagBuilder.InnerHtml.AppendHtml(contentBuilder);            
 
             return tagBuilder.GetHtmlString();
         }
 
-        public string GetWinningOption(BacBallSettlementResult settlementResult, int index, IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public string GetWinningOption(BacBallSettlementResult settlementResult, IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             string option = "";
             if (settlementResult.Player)
             {
-                option = this.GetText(stringLocalizer, "player");
+                option = GetText(stringLocalizer, "player");
             }
             else if (settlementResult.Banker)
             {
-                option = this.GetText(stringLocalizer, "banker");
+                option = GetText(stringLocalizer, "banker");
             }
             else
             {
-                option = this.GetText(stringLocalizer, "tie");
+                option = GetText(stringLocalizer, "tie");
             }
 
-            var order = index switch
-            {
-                0 => "1st",
-                1 => "2nd",
-                2 => "3rd",
-                3 => "4th",
-                _ => ""
-            };
-
-
-            return string.Format("{0}: {1}", order, option);
+            return option;            
         }
 
         public string GetText(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string key)
