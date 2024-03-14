@@ -707,20 +707,23 @@ div table.bandar-qiuqiu-table {
 }
 
 .bacball-result {
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 35px;
     background-color: #bbb;
     border-radius: 50%;
     display: inline-block;
-    padding-top: 5px;
+    padding-top: 9px;
+    font-weight: bold;
     margin: 10px 5px 10px 5px;
-    
+
     &.player {
-        border: solid 2px blue;
+        background: url(../images/bacball/player.png) no-repeat;
+        background-size: 35px 35px;
     }
 
     &.banker {
-        border: solid 2px red;
+        background: url(../images/bacball/banker.png) no-repeat;
+        background-size: 35px 35px;
     }
 }
 
