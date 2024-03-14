@@ -716,13 +716,13 @@ div table.bandar-qiuqiu-table {
     font-weight: bold;
     margin: 10px 5px 10px 5px;
 
-    &.player {
-        background: url(../images/bacball/player.png) no-repeat;
+    &.green-ball {
+        background: url(../images/bacball/green-ball.png) no-repeat;
         background-size: 35px 35px;
     }
 
-    &.banker {
-        background: url(../images/bacball/banker.png) no-repeat;
+    &.red-ball {
+        background: url(../images/bacball/red-ball.png) no-repeat;
         background-size: 35px 35px;
     }
 }

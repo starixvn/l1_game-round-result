@@ -1,4 +1,6 @@
-﻿@model BacBallTicketViewModel
+﻿@using BacBallColorViewModel = GameRoundResult.Web.Models.GameRoundResult.BacBallColorViewModel;
+
+@model BacBallTicketViewModel
 
 @inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
 @inject IJsonStringLocalizer<BacBall> Localizer
@@ -31,8 +33,8 @@
                 <td>
                     <div class="text-center">
                         <span>
-                            <span class="bacball-result player">@Model.GetResultValue("Player")</span>
-                            <span class="bacball-result banker">@Model.GetResultValue("Banker")</span>
+                            <span class="bacball-result @BacBallColorViewModel.GetBallColor(@Model.GetResultValue("Player"))">@Model.GetResultValue("Player")</span>
+                            <span class="bacball-result @BacBallColorViewModel.GetBallColor(@Model.GetResultValue("Banker"))">@Model.GetResultValue("Banker")</span>
                         </span>     
                     </div>
                 </td>

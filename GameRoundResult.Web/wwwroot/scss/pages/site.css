@@ -625,11 +625,11 @@ div table.bandar-qiuqiu-table .result-table {
   padding-top: 9px;
   font-weight: bold;
   margin: 10px 5px 10px 5px; }
-  .bacball-result.player {
-    background: url(../images/bacball/player.png) no-repeat;
+  .bacball-result.green-ball {
+    background: url(../images/bacball/green-ball.png) no-repeat;
     background-size: 35px 35px; }
-  .bacball-result.banker {
-    background: url(../images/bacball/banker.png) no-repeat;
+  .bacball-result.red-ball {
+    background: url(../images/bacball/red-ball.png) no-repeat;
     background-size: 35px 35px; }
 
 .no-data {

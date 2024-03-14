@@ -1,6 +1,7 @@
 ﻿using GameRoundResult.Core.Database.Entities.BacBall;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
+using GameRoundResult.Web.Models.GameRoundResult;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace GameRoundResult.Web.Models
 
         public BacBallRoundResult Result { get; set; }
 
-        public BacBallSettlementResult SettlementResult { get; set; }
+        public BacBallSettlementResult SettlementResult { get; set; }        
 
         public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
@@ -43,8 +44,8 @@ namespace GameRoundResult.Web.Models
 
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"result-row");           
-            tagBuilder.InnerHtml.AppendHtml(this.BuildBall(result.Player.ToString(), "player"));
-            tagBuilder.InnerHtml.AppendHtml(this.BuildBall(result.Banker.ToString(), "banker"));
+            tagBuilder.InnerHtml.AppendHtml(this.BuildBall(result.Player.ToString(), BacBallColorViewModel.GetBallColor(result.Player)));
+            tagBuilder.InnerHtml.AppendHtml(this.BuildBall(result.Banker.ToString(), BacBallColorViewModel.GetBallColor(result.Banker)));
 
 
             return tagBuilder;
