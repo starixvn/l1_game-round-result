@@ -43,6 +43,11 @@ namespace GameRoundResult.Web.Models
                 return $"_Baccarat{PartialPostfix}";
             }
 
+            if (GameType == GameType.BacBall1)
+            {
+                return $"_{Enum.GetName(typeof(GameType), GameType)}{PartialPostfix}";
+            }
+
             return Enum.IsDefined(typeof(GameType), GameType)
                 ? $"_{TransformToViewName(Enum.GetName(typeof(GameType), GameType))}{PartialPostfix}"
                 : $"_SlotGame{PartialPostfix}";
