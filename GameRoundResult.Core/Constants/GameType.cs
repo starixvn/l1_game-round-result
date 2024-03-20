@@ -63,6 +63,7 @@
         SpaceFlight = 73,
         BandarQiuQiu = 75,
         ChineseBlackjack =77,
-        BacBall1 = 1001
+        BacBall1 = 1001,
+        BacBall2 = 1002
     }
 }

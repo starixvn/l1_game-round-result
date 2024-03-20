@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.BacBall1;
+using GameRoundResult.Core.Database.Entities.BacBall2;
 using GameRoundResult.Core.Database.Repository;
 
 namespace GameRoundResult.Core.Services
@@ -13,6 +14,7 @@ namespace GameRoundResult.Core.Services
         Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int gameType, int page, int pageSize) where GR : GameRound;
 
         Task<(long, IEnumerable<BacBall1Round>)> GetBacBall1RoundResultAsync(DateTime date, long roundId, int gameType, int page, int pageSize);
+        Task<(long, IEnumerable<BacBall2Round>)> GetBacBall2RoundResultAsync(DateTime date, long roundId, int gameType, int page, int pageSize);
     }
 
     public class GameRoundResultService : IGameRoundResultService
@@ -29,6 +31,11 @@ namespace GameRoundResult.Core.Services
         public async Task<(long, IEnumerable<BacBall1Round>)> GetBacBall1RoundResultAsync(DateTime date, long roundId, int gameType, int page, int pageSize) 
         {
             return await repository.GetBacBall1RoundResultAsync(date, roundId, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<BacBall2Round>)> GetBacBall2RoundResultAsync(DateTime date, long roundId, int gameType, int page, int pageSize)
+        {
+            return await repository.GetBacBall2RoundResultAsync(date, roundId, page, pageSize);
         }
 
         public async Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int gameType, int page, int pageSize) where GR : GameRound

@@ -2,6 +2,7 @@
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.BacBall1;
+using GameRoundResult.Core.Database.Entities.BacBall2;
 using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
 using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
@@ -101,6 +102,14 @@ namespace GameRoundResult.Web.Extensions
         public static BacBall1BetLogViewModel ToViewModel(this BacBall1BetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<BacBall1BetLog, BacBall1BetLogViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static BacBall2BetLogViewModel ToViewModel(this BacBall2BetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<BacBall2BetLog, BacBall2BetLogViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });

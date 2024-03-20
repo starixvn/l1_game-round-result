@@ -36,6 +36,10 @@ namespace GameRoundResult.Web.Accessor
             {
                 return await GetBacBall1Async(request, utcDate);
             }
+            else if (request.GameType == Core.Constants.GameType.BacBall2)
+            {
+                return await GetBacBall2Async(request, utcDate);
+            }
             else
             {
                 var result = await gameRoundResultService.GetGameRoundResultAsync<TRoundEntity>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize);
@@ -54,6 +58,33 @@ namespace GameRoundResult.Web.Accessor
                     if (request.RoundId == 0 || (request.RoundId == bacBallRound.Result[i].DrawId))
                     {
                         var roundResult = new BacBall1RoundResultViewModel
+                        {
+                            DrawId = bacBallRound.Result[i].DrawId,
+                            Result = bacBallRound.Result[i],
+                            SettlementResult = bacBallRound.SettlementResult[i],
+                            Time = TimeZoneInfo.ConvertTimeFromUtc(bacBallRound.Time, request.TimeZoneInfo),
+                            TimeZone = request.TimeZoneInfo
+                        };
+                        roundResults.Add(roundResult);
+                    }
+                }
+
+            }
+
+            return (result.Item1, roundResults);
+        }
+
+        private async Task<(long, IEnumerable<RoundResultViewModel>)> GetBacBall2Async(GetRoundResultRequest request, DateTime utcDate)
+        {
+            var result = await gameRoundResultService.GetBacBall2RoundResultAsync(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize);
+            var roundResults = new List<BacBall2RoundResultViewModel>();
+            foreach (var bacBallRound in result.Item2)
+            {
+                for (var i = bacBallRound.Result.Count - 1; i >= 0; i--)
+                {
+                    if (request.RoundId == 0 || (request.RoundId == bacBallRound.Result[i].DrawId))
+                    {
+                        var roundResult = new BacBall2RoundResultViewModel
                         {
                             DrawId = bacBallRound.Result[i].DrawId,
                             Result = bacBallRound.Result[i],

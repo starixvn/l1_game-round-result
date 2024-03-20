@@ -88,6 +88,9 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IBacBall1TicketService, BacBall1TicketService>();
             services.AddScoped<IBacBall1BetRepository, BacBall1BetRepository>();
 
+            services.AddScoped<IBacBall2TicketService, BacBall2TicketService>();
+            services.AddScoped<IBacBall2BetRepository, BacBall2BetRepository>();
+
             services.AddScoped<IPontoonTicketService, PontoonTicketService>();
             services.AddScoped<IPontoonBetRepository, PontoonBetRepository>();
 
@@ -146,6 +149,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(ColorGameTicketAccessor));
             services.AddScoped(typeof(BandarQiuQiuTicketAccessor));
             services.AddScoped(typeof(BacBall1TicketAccessor));
+            services.AddScoped(typeof(BacBall2TicketAccessor));
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
 
@@ -200,6 +204,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<ColorGameEndGameInfoService>();
             services.AddScoped<BandarQiuQiuEndGameInfoService>();
             services.AddScoped<BacBall1EndGameInfoService>();
+            services.AddScoped<BacBall2EndGameInfoService>();
 
             services.AddSlotGames();
             services.AddCascadingSlotGames();
