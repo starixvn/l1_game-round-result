@@ -34,7 +34,7 @@ namespace GameRoundResult.Web.Accessor
             var utcDate = TimeZoneInfo.ConvertTimeToUtc(request.Date, request.TimeZoneInfo);
             if(request.GameType == Core.Constants.GameType.BacBall1)
             {
-                return await GetBacBallAsync(request, utcDate);
+                return await GetBacBall1Async(request, utcDate);
             }
             else
             {
@@ -43,17 +43,17 @@ namespace GameRoundResult.Web.Accessor
             }
         }
 
-        private async Task<(long, IEnumerable<RoundResultViewModel>)> GetBacBallAsync(GetRoundResultRequest request, DateTime utcDate)
+        private async Task<(long, IEnumerable<RoundResultViewModel>)> GetBacBall1Async(GetRoundResultRequest request, DateTime utcDate)
         {
-            var result = await gameRoundResultService.GetBacBallRoundResultAsync(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize);
-            var roundResults = new List<BacBallRoundResultViewModel>();
+            var result = await gameRoundResultService.GetBacBall1RoundResultAsync(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize);
+            var roundResults = new List<BacBall1RoundResultViewModel>();
             foreach (var bacBallRound in result.Item2)
             {
                 for (var i = bacBallRound.Result.Count - 1; i >= 0; i--)
                 {
                     if (request.RoundId == 0 || (request.RoundId == bacBallRound.Result[i].DrawId))
                     {
-                        var roundResult = new BacBallRoundResultViewModel
+                        var roundResult = new BacBall1RoundResultViewModel
                         {
                             DrawId = bacBallRound.Result[i].DrawId,
                             Result = bacBallRound.Result[i],

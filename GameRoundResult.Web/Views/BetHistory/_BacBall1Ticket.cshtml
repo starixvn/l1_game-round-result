@@ -1,6 +1,6 @@
-﻿@using BacBallColorViewModel = GameRoundResult.Web.Models.GameRoundResult.BacBallColorViewModel;
+﻿@using BacBall1ColorViewModel = GameRoundResult.Web.Models.GameRoundResult.BacBall1ColorViewModel;
 
-@model BacBallTicketViewModel
+@model BacBall1TicketViewModel
 
 @inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
 @inject IJsonStringLocalizer<BacBall> Localizer
@@ -9,7 +9,7 @@
 
 @if (Model.EnableTolgee)
 {
-    <input value="GameTicketResultViewModel,GameTicketViewModel,RoundResultViewModel,BacBall,SabaNumber" id="tolgee_namespace" readonly hidden/>
+    <input value="GameTicketResultViewModel,GameTicketViewModel,RoundResultViewModel,BacBall1,SabaNumber" id="tolgee_namespace" readonly hidden/>
 }
 
 <table class="table table-bordered table-dragon-tiger-fight bandar-qiuqiu-table">
@@ -33,8 +33,8 @@
                 <td>
                     <div class="text-center">
                         <span>
-                            <span class="bacball-result @BacBallColorViewModel.GetBallColor(@Model.GetResultValue("Player"))">@Model.GetResultValue("Player")</span>
-                            <span class="bacball-result @BacBallColorViewModel.GetBallColor(@Model.GetResultValue("Banker"))">@Model.GetResultValue("Banker")</span>
+                            <span class="bacball-result @BacBall1ColorViewModel.GetBallColor(@Model.GetResultValue("Player"))">@Model.GetResultValue("Player")</span>
+                            <span class="bacball-result @BacBall1ColorViewModel.GetBallColor(@Model.GetResultValue("Banker"))">@Model.GetResultValue("Banker")</span>
                         </span>     
                     </div>
                 </td>

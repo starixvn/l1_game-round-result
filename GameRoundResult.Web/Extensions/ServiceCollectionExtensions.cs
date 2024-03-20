@@ -85,8 +85,8 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IBlackjackTicketService, BlackjackTicketService>();
             services.AddScoped<IBlackjackBetRepository, BlackjackBetRepository>();
 
-            services.AddScoped<IBacBallTicketService, BacBallTicketService>();
-            services.AddScoped<IBacBallBetRepository, BacBallBetRepository>();
+            services.AddScoped<IBacBall1TicketService, BacBall1TicketService>();
+            services.AddScoped<IBacBall1BetRepository, BacBall1BetRepository>();
 
             services.AddScoped<IPontoonTicketService, PontoonTicketService>();
             services.AddScoped<IPontoonBetRepository, PontoonBetRepository>();
@@ -145,7 +145,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<ChineseBlackjackTicketAccessor>();
             services.AddScoped(typeof(ColorGameTicketAccessor));
             services.AddScoped(typeof(BandarQiuQiuTicketAccessor));
-            services.AddScoped(typeof(BacBallTicketAccessor));
+            services.AddScoped(typeof(BacBall1TicketAccessor));
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
 
@@ -199,7 +199,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<DragonTigerFightEndGameInfoService>();
             services.AddScoped<ColorGameEndGameInfoService>();
             services.AddScoped<BandarQiuQiuEndGameInfoService>();
-            services.AddScoped<BacBallEndGameInfoService>();
+            services.AddScoped<BacBall1EndGameInfoService>();
 
             services.AddSlotGames();
             services.AddCascadingSlotGames();

@@ -1,10 +1,10 @@
 ﻿using GameRoundResult.Core._Share;
 using System.Collections.Generic;
 
-namespace GameRoundResult.Core.Database.Entities.BacBall
+namespace GameRoundResult.Core.Database.Entities.BacBall1
 {
     [CollectionName("bacball1_bets")]
-    public class BacBallBet : BaseBetEntity
+    public class BacBall1Bet : BaseBetEntity
     {
         public long DrawId { get; set; }
 

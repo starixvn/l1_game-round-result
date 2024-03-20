@@ -32,7 +32,7 @@ namespace GameRoundResult.Web.ViewFactory
         private const string dragonTigerFight = "_DragonTigerFightRoundResult";
         private const string colorGame = "_ColorGameRoundResult";
         private const string bandarQiuQiu = "_BandarQiuQiuRoundResult";
-        private const string bacball = "_BacBallRoundResult";
+        private const string bacball = "_BacBall1RoundResult";
 
         private readonly Dictionary<GameType, string> views = new()
         {

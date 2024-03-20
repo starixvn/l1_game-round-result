@@ -2,7 +2,7 @@
 using System.Linq;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
-using GameRoundResult.Core.Database.Entities.BacBall;
+using GameRoundResult.Core.Database.Entities.BacBall1;
 using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
 using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
@@ -425,9 +425,9 @@ namespace GameRoundResult.Web.Configuration
                 }));
 
             CreateMap<BandarQiuQiuBetLog, BandarQiuQiuBetLogViewModel>();
-            CreateMap<BacBallBetLog, BacBallBetLogViewModel > ();
+            CreateMap<BacBall1BetLog, BacBall1BetLogViewModel > ();
 
-            CreateMap<BacBallRound, BacBallRoundResultViewModel>();
+            CreateMap<BacBall1Round, BacBall1RoundResultViewModel>();
         }
     }
 }

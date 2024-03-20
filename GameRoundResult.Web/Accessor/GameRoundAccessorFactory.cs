@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
-using GameRoundResult.Core.Database.Entities.BacBall;
+using GameRoundResult.Core.Database.Entities.BacBall1;
 using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
 using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
@@ -69,7 +69,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.DragonTigerFight, typeof(GameRoundAccessor<DragonTigerFightRound, DragonTigerFightRoundResultViewModel>) },
             { GameType.ColorGame, typeof(GameRoundAccessor<ColorGameRound, ColorGameRoundResultViewModel>) },
             { GameType.BandarQiuQiu, typeof(GameRoundAccessor<BandarQiuQiuRound, BandarQiuQiuRoundResultViewModel>) },
-            { GameType.BacBall1, typeof(GameRoundAccessor<BacBallRound, BacBallRoundResultViewModel>) },
+            { GameType.BacBall1, typeof(GameRoundAccessor<BacBall1Round, BacBall1RoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;

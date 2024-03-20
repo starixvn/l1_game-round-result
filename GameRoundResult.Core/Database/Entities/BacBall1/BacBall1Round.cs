@@ -1,19 +1,19 @@
 ﻿using GameRoundResult.Core._Share;
 using System.Collections.Generic;
 
-namespace GameRoundResult.Core.Database.Entities.BacBall
+namespace GameRoundResult.Core.Database.Entities.BacBall1
 {
     [CollectionName("bacball1_rounds")]
-    public class BacBallRound : GameRound
+    public class BacBall1Round : GameRound
     {
         public long DrawId { get; set; }
 
-        public List<BacBallRoundResult> Result { get; set; }
+        public List<BacBall1RoundResult> Result { get; set; }
 
-        public List<BacBallSettlementResult> SettlementResult { get; set; }
+        public List<BacBall1SettlementResult> SettlementResult { get; set; }
     }   
 
-    public class BacBallRoundResult
+    public class BacBall1RoundResult
     {
         public int Player { get; set; }
 
@@ -22,7 +22,7 @@ namespace GameRoundResult.Core.Database.Entities.BacBall
         public long DrawId { get; set; }
     }
 
-    public class BacBallSettlementResult
+    public class BacBall1SettlementResult
     {
         public bool Player { get; set; }
 

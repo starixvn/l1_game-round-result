@@ -1,4 +1,4 @@
-﻿@inject IJsonStringLocalizer<BacBall> BacBallLocalizer
+﻿@inject IJsonStringLocalizer<BacBall> BacBall1Localizer
 @inject IJsonStringLocalizer<RoundResultViewModel> RoundResultLocalizer
 @inject IJsonStringLocalizer<SabaNumber> SabaNumberLocalizer
 @inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
@@ -9,7 +9,7 @@
         <tr>
             <th class="col-date">@RoundResultLocalizer["Date"]</th>
             <th>@SabaNumberLocalizer["glossary_draw_id"]</th>
-            <th class="col-result" style="min-width: 350px;">@CommonLocalizer["Result"] <br /> @BacBallLocalizer["glossary_player"] | @BacBallLocalizer["glossary_banker"]</th>
+            <th class="col-result" style="min-width: 350px;">@CommonLocalizer["Result"] <br /> @BacBall1Localizer["glossary_player"] | @BacBall1Localizer["glossary_banker"]</th>
             <th>@RoundResultLocalizer["WinningOptions"]</th>
         </tr>
     </thead>

@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using GameRoundResult.Core._Share;
 using GameRoundResult.Core.Database.Entities;
-using GameRoundResult.Core.Database.Entities.BacBall;
+using GameRoundResult.Core.Database.Entities.BacBall1;
 using GameRoundResult.Core.Extensions;
 using MongoDB.Driver;
 
@@ -16,7 +16,7 @@ namespace GameRoundResult.Core.Database.Repository
 
         Task<(long, IEnumerable<GR>)> GetCrashGameRoundResultAsync<GR>(DateTime date, long roundId, string displayName, int page, int pageSize) where GR : GameRound;
 
-        Task<(long, IEnumerable<BacBallRound>)> GetBacBallRoundResultAsync(DateTime date, long roundId, int page, int pageSizes);
+        Task<(long, IEnumerable<BacBall1Round>)> GetBacBall1RoundResultAsync(DateTime date, long roundId, int page, int pageSizes);
     }
 
     public class GameRoundRepository : IGameRoundRepository
@@ -70,18 +70,18 @@ namespace GameRoundResult.Core.Database.Repository
                 : await GetRoundResultAsync<GR>(date, roundId, collectionName, page, pageSize);
         }
 
-        public async Task<(long, IEnumerable<BacBallRound>)> GetBacBallRoundResultAsync(DateTime date, long roundId, int page, int pageSize) 
+        public async Task<(long, IEnumerable<BacBall1Round>)> GetBacBall1RoundResultAsync(DateTime date, long roundId, int page, int pageSize) 
         {
-            var collectionName = Document.GetCollectionName(typeof(BacBallRound));
+            var collectionName = Document.GetCollectionName(typeof(BacBall1Round));
            
             var fromDate = date;
             var toDate = fromDate.AddDays(1);
 
-            Expression<Func<BacBallRound, bool>> defaultExpression = x => (x.Time >= fromDate && x.Time < toDate);
-            var roundFilter = Builders<BacBallRound>.Filter.ElemMatch(x => x.Result, y => y.DrawId == roundId);
+            Expression<Func<BacBall1Round, bool>> defaultExpression = x => (x.Time >= fromDate && x.Time < toDate);
+            var roundFilter = Builders<BacBall1Round>.Filter.ElemMatch(x => x.Result, y => y.DrawId == roundId);
 
             var expression = roundId == 0 ? defaultExpression : roundFilter;
-            var cursor = database.GetCollection<BacBallRound>(collectionName).Find(expression);
+            var cursor = database.GetCollection<BacBall1Round>(collectionName).Find(expression);
 
             var total = await cursor.CountDocumentsAsync();
             var data = await cursor.SortByDescending(x => x.Id).Skip(page).Limit(pageSize).ToListAsync();

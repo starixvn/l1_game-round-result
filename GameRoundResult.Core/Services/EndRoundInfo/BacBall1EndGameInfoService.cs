@@ -1,4 +1,4 @@
-﻿using GameRoundResult.Core.Database.Entities.BacBall;
+﻿using GameRoundResult.Core.Database.Entities.BacBall1;
 using MongoDB.Driver;
 using System;
 using System.Linq;
@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace GameRoundResult.Core.Services
 {
-    public class BacBallEndGameInfoService : BaseEndGameInfoService<BacBallRound, BacBallBet>, IEndGameInfoService
+    public class BacBall1EndGameInfoService : BaseEndGameInfoService<BacBall1Round, BacBall1Bet>, IEndGameInfoService
     {
-        public BacBallEndGameInfoService(IMongoDatabase database) : base(database)
+        public BacBall1EndGameInfoService(IMongoDatabase database) : base(database)
         {
         }
 
@@ -34,14 +34,14 @@ namespace GameRoundResult.Core.Services
             };
         }
 
-        protected override async Task<BacBallRound> GetRoundAsync(RetrieveEndGameInfoRequest request)
+        protected override async Task<BacBall1Round> GetRoundAsync(RetrieveEndGameInfoRequest request)
         {
             var roundEntity = await roundCollection.Find(x => x.DrawId != 1).FirstOrDefaultAsync();
 
             return roundEntity;
         }
 
-        protected override Expression<Func<BacBallBet, bool>> GetBetFilterExpression(RetrieveEndGameInfoRequest request)
+        protected override Expression<Func<BacBall1Bet, bool>> GetBetFilterExpression(RetrieveEndGameInfoRequest request)
             => (bet) => bet.DrawId == request.GameRoundId && bet.PlayerId == request.PlayerId && bet.Paid;
     }
 }
