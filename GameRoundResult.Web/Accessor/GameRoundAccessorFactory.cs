@@ -69,7 +69,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.DragonTigerFight, typeof(GameRoundAccessor<DragonTigerFightRound, DragonTigerFightRoundResultViewModel>) },
             { GameType.ColorGame, typeof(GameRoundAccessor<ColorGameRound, ColorGameRoundResultViewModel>) },
             { GameType.BandarQiuQiu, typeof(GameRoundAccessor<BandarQiuQiuRound, BandarQiuQiuRoundResultViewModel>) },
-            { GameType.BacBall, typeof(GameRoundAccessor<BacBallRound, BacBallRoundResultViewModel>) },
+            { GameType.BacBall1, typeof(GameRoundAccessor<BacBallRound, BacBallRoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;

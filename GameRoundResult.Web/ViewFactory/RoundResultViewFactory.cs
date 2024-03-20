@@ -84,7 +84,7 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.DragonTigerFight, dragonTigerFight },
             { GameType.ColorGame, colorGame },
             { GameType.BandarQiuQiu, bandarQiuQiu },
-            { GameType.BacBall, bacball },
+            { GameType.BacBall1, bacball },
         };
 
         public string GetView(GameType game, bool isCrashGame)

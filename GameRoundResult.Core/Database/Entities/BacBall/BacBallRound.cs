@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GameRoundResult.Core.Database.Entities.BacBall
 {
-    [CollectionName("bacball_rounds")]
+    [CollectionName("bacball1_rounds")]
     public class BacBallRound : GameRound
     {
         public long DrawId { get; set; }

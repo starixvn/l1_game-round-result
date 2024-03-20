@@ -32,7 +32,7 @@ namespace GameRoundResult.Web.Accessor
         public async Task<(long, IEnumerable<RoundResultViewModel>)> GetAsync(GetRoundResultRequest request)
         {
             var utcDate = TimeZoneInfo.ConvertTimeToUtc(request.Date, request.TimeZoneInfo);
-            if(request.GameType == Core.Constants.GameType.BacBall)
+            if(request.GameType == Core.Constants.GameType.BacBall1)
             {
                 return await GetBacBallAsync(request, utcDate);
             }
