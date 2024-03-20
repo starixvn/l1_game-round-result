@@ -63,5 +63,6 @@
         SpaceFlight = 73,
         BandarQiuQiu = 75,
         ChineseBlackjack =77,
+        FootballDice = 78,
     }
 }
