@@ -7,7 +7,7 @@ namespace GameRoundResult.Core.Services
 {
     public interface IBacBall2TicketService
     {
-        Task<(BacBall2Round, BacBall2Bet, IEnumerable<BacBall2BetLog>)> GetAsync(long drawId, int playerId, string operatorId);
+        Task<(BacBall2Round, BacBall2Bet, IEnumerable<BacBall2BetLog>)> GetAsync(long drawId, string playerId, string operatorId);
     }
 
     public class BacBall2TicketService : IBacBall2TicketService
@@ -19,7 +19,7 @@ namespace GameRoundResult.Core.Services
             this.repository = repository;
         }
 
-        public async Task<(BacBall2Round, BacBall2Bet, IEnumerable<BacBall2BetLog>)> GetAsync(long drawId, int playerId, string operatorId)
+        public async Task<(BacBall2Round, BacBall2Bet, IEnumerable<BacBall2BetLog>)> GetAsync(long drawId, string playerId, string operatorId)
         {
             return await repository.GetAsync(drawId, playerId, operatorId);
         }

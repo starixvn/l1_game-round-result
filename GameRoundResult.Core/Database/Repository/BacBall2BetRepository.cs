@@ -8,7 +8,7 @@ namespace GameRoundResult.Core.Database.Repository
 {
     public interface IBacBall2BetRepository
     {
-        Task<(BacBall2Round, BacBall2Bet, IEnumerable<BacBall2BetLog>)> GetAsync(long handId, int playerId, string operatorId);
+        Task<(BacBall2Round, BacBall2Bet, IEnumerable<BacBall2BetLog>)> GetAsync(long handId, string playerId, string operatorId);
     }
     public class BacBall2BetRepository : GameBetRepository, IBacBall2BetRepository
     {
@@ -16,7 +16,7 @@ namespace GameRoundResult.Core.Database.Repository
         {
         }
 
-        public async Task<(BacBall2Round, BacBall2Bet, IEnumerable<BacBall2BetLog>)> GetAsync(long drawId, int playerId, string operatorId)
+        public async Task<(BacBall2Round, BacBall2Bet, IEnumerable<BacBall2BetLog>)> GetAsync(long drawId, string playerId, string operatorId)
         {
             var bet = await GetCollection<BacBall2Bet>()
                 .Find(x => x.DrawId == drawId && x.PlayerId == playerId && x.OperatorId == operatorId)
