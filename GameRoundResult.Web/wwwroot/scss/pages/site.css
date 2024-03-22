@@ -615,3 +615,13 @@ div table.bandar-qiuqiu-table .result-table {
     width: 75px;
     padding-left: 0;
     text-align: left; }
+
+.football-dice-result {
+    width: 4.5rem;
+    height: 3.9rem;
+    display: flex;
+}
+
+.football-dice-result span{
+    margin:auto;
+}

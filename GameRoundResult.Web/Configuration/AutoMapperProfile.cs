@@ -355,7 +355,7 @@ namespace GameRoundResult.Web.Configuration
                 {
                     return new DragonTigerFightResultViewModel
                     {
-                        Dragon = new Models.DragonTigerFightCard { Rank = source.Result.Dragon.Rank, Suit = source.Result.Dragon.Suit},
+                        Dragon = new Models.DragonTigerFightCard { Rank = source.Result.Dragon.Rank, Suit = source.Result.Dragon.Suit },
                         Tiger = new Models.DragonTigerFightCard { Rank = source.Result.Tiger.Rank, Suit = source.Result.Tiger.Suit }
                     };
                 }))
@@ -383,7 +383,7 @@ namespace GameRoundResult.Web.Configuration
                         Dice3 = source.Result.Dice3,
                     };
                 }));
-                
+
             CreateMap<ColorGameBetLog, ColorGameBetLogViewModel>();
 
             CreateMap<BandarQiuQiuRound, BandarQiuQiuRoundResultViewModel>()
@@ -391,7 +391,8 @@ namespace GameRoundResult.Web.Configuration
                 {
                     return new BandarQiuQiuRoundResultModel
                     {
-                        Banker = new BandarQiuQiuResultItemViewModel() { 
+                        Banker = new BandarQiuQiuResultItemViewModel()
+                        {
                             Dominoes = source.Result.Banker.Dominoes,
                             HandRankingId = source.Result.Banker.HandRankingId,
                             PipsOfSet = source.Result.Banker.PipsOfSet
@@ -424,6 +425,27 @@ namespace GameRoundResult.Web.Configuration
                 }));
 
             CreateMap<BandarQiuQiuBetLog, BandarQiuQiuBetLogViewModel>();
+
+            CreateMap<FootballDiceRound, FootballDiceRoundResultViewModel>()
+            .ForMember(x => x.Result, opt => opt.MapFrom((source, destination, i, context) =>
+            {
+                return new FootballDiceResultViewModel
+                {
+                    Home = source.Result.Home,
+                    Away = source.Result.Away,
+                    HomeValue = source.Result.Home.ElementAt(0) + source.Result.Home.ElementAt(1),
+                    AwayValue = source.Result.Away.ElementAt(0) + source.Result.Away.ElementAt(1),
+                };
+            }))
+            .ForMember(x => x.SettlementResult, opt => opt.MapFrom((source, destination, i, context) =>
+            {
+                return new FootballDiceSettlementResultViewModel
+                {
+                    Home = source.SettlementResult.Home,
+                    Away = source.SettlementResult.Away,
+                    Draw = source.SettlementResult.Draw,
+                };
+            }));
         }
     }
 }

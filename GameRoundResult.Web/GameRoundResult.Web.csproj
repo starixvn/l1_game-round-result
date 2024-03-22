@@ -227,6 +227,7 @@
 
   <ItemGroup>
     <Folder Include="Resources\Tolgee\ChineseBlackjack\" />
+    <Folder Include="wwwroot\scss\images\football-dice\" />
   </ItemGroup>
 
 
