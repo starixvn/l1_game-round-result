@@ -426,6 +426,7 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<BandarQiuQiuBetLog, BandarQiuQiuBetLogViewModel>();
 
+            CreateMap<FootballDiceBetLog, FootballDiceBetLogViewModel>();
             CreateMap<FootballDiceRound, FootballDiceRoundResultViewModel>()
             .ForMember(x => x.Result, opt => opt.MapFrom((source, destination, i, context) =>
             {
@@ -435,15 +436,6 @@ namespace GameRoundResult.Web.Configuration
                     Away = source.Result.Away,
                     HomeValue = source.Result.Home.ElementAt(0) + source.Result.Home.ElementAt(1),
                     AwayValue = source.Result.Away.ElementAt(0) + source.Result.Away.ElementAt(1),
-                };
-            }))
-            .ForMember(x => x.SettlementResult, opt => opt.MapFrom((source, destination, i, context) =>
-            {
-                return new FootballDiceSettlementResultViewModel
-                {
-                    Home = source.SettlementResult.Home,
-                    Away = source.SettlementResult.Away,
-                    Draw = source.SettlementResult.Draw,
                 };
             }));
         }

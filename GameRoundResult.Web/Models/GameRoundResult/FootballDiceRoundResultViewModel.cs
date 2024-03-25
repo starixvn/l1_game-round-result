@@ -10,7 +10,7 @@ namespace GameRoundResult.Web.Models
     {
         public FootballDiceResultViewModel Result { get; set; }
 
-        public FootballDiceSettlementResultViewModel SettlementResult { get; set; }
+        public Dictionary<string, bool> SettlementResult { get; set; }
 
         public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
@@ -23,11 +23,10 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        private string GetDiceContent()
+        public string GetDiceContent()
         {
             var div = new TagBuilder("div");
             div.AddCssClass("dice-list");
-
 
             foreach (var dice in Result.Home)
             {
@@ -40,9 +39,9 @@ namespace GameRoundResult.Web.Models
 
             var resultWrapper = new TagBuilder("div");
             var result = new TagBuilder("span");
-            result.InnerHtml.AppendHtml(SettlementResult.Home ? $"<b>{Result.HomeValue}</b>" : $"{Result.HomeValue}");
+            result.InnerHtml.AppendHtml(SettlementResult["home"] ? $"<b>{Result.HomeValue}</b>" : $"{Result.HomeValue}");
             result.InnerHtml.Append(" | ");
-            result.InnerHtml.AppendHtml(SettlementResult.Away ? $"<b>{Result.AwayValue}</b>" : $"{Result.AwayValue}");
+            result.InnerHtml.AppendHtml(SettlementResult["away"] ? $"<b>{Result.AwayValue}</b>" : $"{Result.AwayValue}");
 
             resultWrapper.AddCssClass("football-dice-result");
             resultWrapper.InnerHtml.AppendHtml(result);
@@ -57,28 +56,28 @@ namespace GameRoundResult.Web.Models
                 div.InnerHtml.AppendHtml(tagBuilder);
             }
 
-
             return div.GetHtmlString();
         }
 
         private string GetResultContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
+            var winningKey = SettlementResult.FirstOrDefault(choice => choice.Value == true).Key;
             var tagBuilder = new TagBuilder("span");
             tagBuilder.AddCssClass("bold");
 
-            if (SettlementResult.Home)
+            if (SettlementResult["home"])
             {
                 tagBuilder.AddCssClass("text-red");
                 tagBuilder.InnerHtml.Append(stringLocalizer["Home"]);
             }
-           
-            if(SettlementResult.Away)
+
+            if (SettlementResult["away"])
             {
                 tagBuilder.AddCssClass("text-blue");
                 tagBuilder.InnerHtml.Append(stringLocalizer["Away"]);
             }
 
-            if(SettlementResult.Draw)
+            if (SettlementResult["draw"])
             {
                 tagBuilder.InnerHtml.Append(stringLocalizer["Draw"]);
             }
