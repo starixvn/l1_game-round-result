@@ -64,6 +64,8 @@
         BandarQiuQiu = 75,
         ChineseBlackjack =77,
         BacBall1 = 1001,
-        BacBall2 = 1002
+        BacBall2 = 1002,
+        NextBall1 = 1003,
+        NextBall2 = 1004
     }
 }

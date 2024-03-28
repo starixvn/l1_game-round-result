@@ -205,6 +205,8 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<BandarQiuQiuEndGameInfoService>();
             services.AddScoped<BacBall1EndGameInfoService>();
             services.AddScoped<BacBall2EndGameInfoService>();
+            services.AddScoped<NextBall1EndGameInfoService>();
+            services.AddScoped<NextBall2EndGameInfoService>();
 
             services.AddSlotGames();
             services.AddCascadingSlotGames();
