@@ -26,37 +26,31 @@ namespace GameRoundResult.Web.Models
         public string GetDiceContent()
         {
             var div = new TagBuilder("div");
+            div.AddCssClass("football-dice-result");
+
+            div.InnerHtml.AppendHtml(GetResult("home", Result.HomeValue));
+            div.InnerHtml.AppendHtml(GetResult("away", Result.AwayValue));
+
+            return div.GetHtmlString();
+        }
+
+        private TagBuilder GetResult(string choice, int value)
+        {
+            var div = new TagBuilder("div");
             div.AddCssClass("dice-list");
 
             foreach (var dice in Result.Home)
             {
                 var tagBuilder = new TagBuilder("img");
                 tagBuilder.AddCssClass("dice");
-                tagBuilder.Attributes.Add("src", $"/scss/images/football-dice/dice-home-{dice}.png");
+                tagBuilder.Attributes.Add("src", $"/scss/images/football-dice/dice-{choice}-{dice}.png");
 
                 div.InnerHtml.AppendHtml(tagBuilder);
             }
 
-            var resultWrapper = new TagBuilder("div");
-            var result = new TagBuilder("span");
-            result.InnerHtml.AppendHtml(SettlementResult["home"] ? $"<b>{Result.HomeValue}</b>" : $"{Result.HomeValue}");
-            result.InnerHtml.Append(" | ");
-            result.InnerHtml.AppendHtml(SettlementResult["away"] ? $"<b>{Result.AwayValue}</b>" : $"{Result.AwayValue}");
+            div.InnerHtml.AppendHtml(SettlementResult[choice] ? $"<b>{value}</b>" : $"{value}");
 
-            resultWrapper.AddCssClass("football-dice-result");
-            resultWrapper.InnerHtml.AppendHtml(result);
-            div.InnerHtml.AppendHtml(resultWrapper);
-
-            foreach (var dice in Result.Away)
-            {
-                var tagBuilder = new TagBuilder("img");
-                tagBuilder.AddCssClass("dice");
-                tagBuilder.Attributes.Add("src", $"/scss/images/football-dice/dice-away-{dice}.png");
-
-                div.InnerHtml.AppendHtml(tagBuilder);
-            }
-
-            return div.GetHtmlString();
+            return div;
         }
 
         private string GetResultContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)

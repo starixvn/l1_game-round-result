@@ -17,15 +17,19 @@ namespace GameRoundResult.Web.Models
 
         public decimal GetOdds(string choice)
         {
-            var isWin = this.RoundResult.SettlementResult[choice.ToLower()];
-
-            return isWin ? Odds[choice] : 0;
+            return Odds[choice];
         }
 
         public decimal GetBetLogWin(FootballDiceBetLogViewModel bet)
         {
-            var isWin = this.RoundResult.SettlementResult[bet.Choice.ToLower()];
-            return isWin ? GetOdds(bet.Choice) * bet.Amount : 0;
+            var isWin = RoundResult.SettlementResult[bet.Choice.ToLower()];
+
+            if(isWin)
+            {
+                return  GetOdds(bet.Choice) * bet.Amount;
+            }
+
+            return RoundResult.SettlementResult["draw"] ? bet.Amount : 0;
         }
     }
 

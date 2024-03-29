@@ -746,10 +746,19 @@ div table.bandar-qiuqiu-table .result-table .result-row .pip-of-set-column {
 }
 
 .football-dice-result {
-  width: 4.5rem;
-  height: 3.9rem;
   display: flex;
+  justify-content: center;
 }
-.football-dice-result span {
-  margin: auto;
+.football-dice-result .dice-list {
+  margin: 0.5rem;
+  vertical-align: middle;
+  align-items: center;
+}
+.football-dice-result .dice-list:last-child:before {
+  position: relative;
+  left: -0.5rem;
+  content: "";
+  height: 1.8rem;
+  width: 0.1rem;
+  background-color: #222;
 }
