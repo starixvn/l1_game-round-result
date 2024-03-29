@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Services;
+using GameRoundResult.Web._Shared;
 using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
@@ -22,23 +23,22 @@ namespace GameRoundResult.Web.Accessor
     {
         private readonly IMapper mapper;
         private readonly IGameRoundResultService gameRoundResultService;
+        private readonly IGameDrawTypeFactory gameDrawTypeFactory;
 
-        public GameRoundAccessor(IGameRoundResultService gameRoundResultService, IMapper mapper)
+        public GameRoundAccessor(IGameRoundResultService gameRoundResultService, IMapper mapper, IGameDrawTypeFactory gameDrawTypeFactory)
         {
             this.gameRoundResultService = gameRoundResultService;
             this.mapper = mapper;
+            this.gameDrawTypeFactory = gameDrawTypeFactory;
         }
 
         public async Task<(long, IEnumerable<RoundResultViewModel>)> GetAsync(GetRoundResultRequest request)
         {
             var utcDate = TimeZoneInfo.ConvertTimeToUtc(request.Date, request.TimeZoneInfo);
-            if(request.GameType == Core.Constants.GameType.BacBall1)
+
+            if (request.IsGameDraw)
             {
-                return await GetBacBall1Async(request, utcDate);
-            }
-            else if (request.GameType == Core.Constants.GameType.BacBall2)
-            {
-                return await GetBacBall2Async(request, utcDate);
+                return await GetGameDrawAsync(request, utcDate);
             }
             else
             {
@@ -47,57 +47,10 @@ namespace GameRoundResult.Web.Accessor
             }
         }
 
-        private async Task<(long, IEnumerable<RoundResultViewModel>)> GetBacBall1Async(GetRoundResultRequest request, DateTime utcDate)
+        private async Task<(long, IEnumerable<RoundResultViewModel>)> GetGameDrawAsync(GetRoundResultRequest request, DateTime utcDate)
         {
-            var result = await gameRoundResultService.GetBacBall1RoundResultAsync(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize);
-            var roundResults = new List<BacBall1RoundResultViewModel>();
-            foreach (var bacBallRound in result.Item2)
-            {
-                for (var i = bacBallRound.Result.Count - 1; i >= 0; i--)
-                {
-                    if (request.RoundId == 0 || (request.RoundId == bacBallRound.Result[i].DrawId))
-                    {
-                        var roundResult = new BacBall1RoundResultViewModel
-                        {
-                            DrawId = bacBallRound.Result[i].DrawId,
-                            Result = bacBallRound.Result[i],
-                            SettlementResult = bacBallRound.SettlementResult[i],
-                            Time = TimeZoneInfo.ConvertTimeFromUtc(bacBallRound.Time, request.TimeZoneInfo),
-                            TimeZone = request.TimeZoneInfo
-                        };
-                        roundResults.Add(roundResult);
-                    }
-                }
-
-            }
-
-            return (result.Item1, roundResults);
-        }
-
-        private async Task<(long, IEnumerable<RoundResultViewModel>)> GetBacBall2Async(GetRoundResultRequest request, DateTime utcDate)
-        {
-            var result = await gameRoundResultService.GetBacBall2RoundResultAsync(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize);
-            var roundResults = new List<BacBall2RoundResultViewModel>();
-            foreach (var bacBallRound in result.Item2)
-            {
-                for (var i = bacBallRound.Result.Count - 1; i >= 0; i--)
-                {
-                    if (request.RoundId == 0 || (request.RoundId == bacBallRound.Result[i].DrawId))
-                    {
-                        var roundResult = new BacBall2RoundResultViewModel
-                        {
-                            DrawId = bacBallRound.Result[i].DrawId,
-                            Result = bacBallRound.Result[i],
-                            SettlementResult = bacBallRound.SettlementResult[i],
-                            Time = TimeZoneInfo.ConvertTimeFromUtc(bacBallRound.Time, request.TimeZoneInfo),
-                            TimeZone = request.TimeZoneInfo
-                        };
-                        roundResults.Add(roundResult);
-                    }
-                }
-
-            }
-
+            var result = await gameDrawTypeFactory.GetGameDrawType(request, utcDate);
+            var roundResults = GameDrawTicketAccessorHelper.GetRoundResult(request,result.Item2);
             return (result.Item1, roundResults);
         }
     }

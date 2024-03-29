@@ -38,4 +38,11 @@ namespace GameRoundResult.Web.Models
 
         public string DisplayAmount => Amount.Format();
     }
+
+    public class TranslationBetLogViewModel : BetLogViewModel
+    {
+        public virtual string ChoiceDisplay => char.ToUpper(Choice[0]) + Choice.Substring(1);
+
+        public string TolgeeChoiceKey => "glossary_" + Choice;
+    }
 }

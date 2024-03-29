@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
-using GameRoundResult.Core.Database.Entities.BacBall1;
-using GameRoundResult.Core.Database.Entities.BacBall2;
+using GameRoundResult.Core.Database.Entities.GameDraw;
 using GameRoundResult.Core.Database.Repository;
 
 namespace GameRoundResult.Core.Services
@@ -13,8 +12,10 @@ namespace GameRoundResult.Core.Services
     {
         Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int gameType, int page, int pageSize) where GR : GameRound;
 
-        Task<(long, IEnumerable<BacBall1Round>)> GetBacBall1RoundResultAsync(DateTime date, long roundId, int gameType, int page, int pageSize);
-        Task<(long, IEnumerable<BacBall2Round>)> GetBacBall2RoundResultAsync(DateTime date, long roundId, int gameType, int page, int pageSize);
+        Task<(long, IEnumerable<GD>)> GetGameDrawResultAsync<GD, R, S>(DateTime date, long drawId, int gameType, int page, int pageSize) 
+            where GD : GameDraw<R, S>
+            where R : GameDrawBase
+            where S : GameDrawBase;
     }
 
     public class GameRoundResultService : IGameRoundResultService
@@ -28,16 +29,6 @@ namespace GameRoundResult.Core.Services
             this.generalGameConfigRepository = generalGameConfigRepository;
         }
 
-        public async Task<(long, IEnumerable<BacBall1Round>)> GetBacBall1RoundResultAsync(DateTime date, long roundId, int gameType, int page, int pageSize) 
-        {
-            return await repository.GetBacBall1RoundResultAsync(date, roundId, page, pageSize);
-        }
-
-        public async Task<(long, IEnumerable<BacBall2Round>)> GetBacBall2RoundResultAsync(DateTime date, long roundId, int gameType, int page, int pageSize)
-        {
-            return await repository.GetBacBall2RoundResultAsync(date, roundId, page, pageSize);
-        }
-
         public async Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int gameType, int page, int pageSize) where GR : GameRound
         {
             var gameInfo = await generalGameConfigRepository.GetConfigById(gameType);
@@ -48,6 +39,14 @@ namespace GameRoundResult.Core.Services
             }
 
             return await repository.GetGameRoundResultAsync<GR>(date, roundId, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<GD>)> GetGameDrawResultAsync<GD, R, S>(DateTime date, long drawId, int gameType, int page, int pageSize)
+            where GD : GameDraw<R,S>
+            where R : GameDrawBase
+            where S : GameDrawBase
+        {
+            return await repository.GetDrawResultAsync<GD, R, S>(date, drawId, page, pageSize);
         }
     }
 }

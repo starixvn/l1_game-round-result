@@ -1,0 +1,109 @@
+﻿using GameRoundResult.Core.Database.Entities.NextBall;
+using GameRoundResult.Web.Configuration;
+using GameRoundResult.Web.Extensions;
+using GameRoundResult.Web.Models.GameRoundResult;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace GameRoundResult.Web.Models
+{
+    public class NextBallRoundResultViewModel : RoundResultViewModel
+    {
+        public long DrawId { get; set; }
+
+        public NextBallRoundResult Result { get; set; }
+
+        public NextBallSettlementResult SettlementResult { get; set; }
+
+        public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            var result = new List<string>()
+            {
+               base.ToDataTableArray(stringLocalizer).First(),
+               DrawId.ToString(),
+               $"{GetResult(stringLocalizer)}",
+               $"{GetWinningTextResult(stringLocalizer)}",
+
+            };
+
+            return result;
+        }
+
+        public string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            var tagBuilder = new TagBuilder("table");
+            tagBuilder.AddCssClass($"result-table");
+            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice(Result, stringLocalizer));
+
+            return tagBuilder.GetHtmlString();
+        }
+
+        private TagBuilder BuildResultByChoice(NextBallRoundResult result, IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+
+            var tagBuilder = new TagBuilder("div");
+            tagBuilder.AddCssClass($"result-row");
+            tagBuilder.InnerHtml.AppendHtml(this.BuildBall(result.Ball.ToString(), BallColorViewModel.GetBallColor(result.Ball)));
+
+            return tagBuilder;
+        }
+
+        private TagBuilder BuildBall(string choice, string cls)
+        {
+            var tagBuilder = new TagBuilder("span");
+            tagBuilder.AddCssClass($"result-column result-text bacball-result " + cls);
+            tagBuilder.InnerHtml.AppendHtml(choice);
+
+            return tagBuilder;
+        }
+
+        public string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            var tagBuilder = new TagBuilder("div");
+            tagBuilder.AddCssClass($"result-row");
+
+            var winningText = GetWinningOption(SettlementResult, stringLocalizer);
+            var contentBuilder = new TagBuilder("div");
+            contentBuilder.AddCssClass($"result-row");
+            contentBuilder.InnerHtml.AppendHtml(winningText);
+            tagBuilder.InnerHtml.AppendHtml(contentBuilder);
+
+            return tagBuilder.GetHtmlString();
+        }
+
+        public string GetWinningOption(NextBallSettlementResult settlementResult, IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            StringBuilder sb = new StringBuilder();
+            
+            if (settlementResult.Over)
+            {
+                sb.Append(GetText(stringLocalizer, "over"));
+            }
+            if (settlementResult.Under)
+            {
+                sb.Append(GetText(stringLocalizer, "under"));
+            }
+
+            sb.Append(", ");
+
+            if (settlementResult.Odd)
+            {
+                sb.Append(GetText(stringLocalizer, "odd"));
+            }
+            if (settlementResult.Even)
+            {
+                sb.Append(GetText(stringLocalizer, "even"));
+            }
+
+            return sb.ToString();
+        }
+
+        public string GetText(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string key)
+        {
+            var betChoice = new TranslationBetLogViewModel { Choice = key };
+            return stringLocalizer.GetStringWithNamcespace(betChoice.TolgeeChoiceKey, "NextBall");
+        }
+    }
+}

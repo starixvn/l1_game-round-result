@@ -73,6 +73,8 @@ namespace GameRoundResult.Web.Accessor
             { GameType.ChineseBlackjack, typeof(ChineseBlackjackTicketAccessor) },
             { GameType.BacBall1, typeof(BacBall1TicketAccessor) },
             { GameType.BacBall2, typeof(BacBall2TicketAccessor) },
+            { GameType.NextBall1, typeof(NextBall1TicketAccessor) },
+            { GameType.NextBall2, typeof(NextBall2TicketAccessor) },
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()

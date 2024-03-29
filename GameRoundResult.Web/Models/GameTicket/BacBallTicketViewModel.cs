@@ -1,16 +1,16 @@
-﻿using GameRoundResult.Core.Database.Entities.BacBall2;
+﻿using GameRoundResult.Core.Database.Entities.BacBall;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace GameRoundResult.Web.Models
 {
-    public class BacBall2TicketViewModel : GameTicketViewModel
+    public class BacBallTicketViewModel : GameTicketViewModel
     {
         public long DrawId { get; set; }
 
-        public BacBall2Round RoundResult { get; set; }
+        public BacBall1Round RoundResult { get; set; }
 
-        public IEnumerable<BacBall2BetLogViewModel> BetLogs { get; set; }
+        public IEnumerable<TranslationBetLogViewModel> BetLogs { get; set; }
 
         public Dictionary<string, decimal> Odds { get; set; }
 
@@ -25,7 +25,7 @@ namespace GameRoundResult.Web.Models
             return IsWinningChoice(displayedChoice) ? "bold text-blue" : string.Empty;
         }
 
-        public decimal GetBetLogWin(BacBall2BetLogViewModel bet)
+        public decimal GetBetLogWin(TranslationBetLogViewModel bet)
         {
             if(IsWinningChoice("Tie") && (bet.ChoiceDisplay == "Player" || bet.ChoiceDisplay == "Banker"))
             {
@@ -34,7 +34,7 @@ namespace GameRoundResult.Web.Models
             else
             {
                 return IsWinningChoice(bet.ChoiceDisplay) ? Odds[bet.Choice] * bet.Amount : 0;
-            }            
+            }
         }
 
         public int GetResultValue(string displayedChoice)
@@ -42,12 +42,5 @@ namespace GameRoundResult.Web.Models
             var result = RoundResult.Result.FirstOrDefault(r => r.DrawId == DrawId);
             return int.Parse(result.GetType().GetProperty(displayedChoice).GetValue(result, null).ToString());
         }
-    }
-
-    public class BacBall2BetLogViewModel : BetLogViewModel
-    {
-        public virtual string ChoiceDisplay => char.ToUpper(Choice[0]) + Choice.Substring(1);
-
-        public string TolgeeChoiceKey => "glossary_" + Choice;
     }
 }

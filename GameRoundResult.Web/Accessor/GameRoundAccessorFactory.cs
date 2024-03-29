@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
-using GameRoundResult.Core.Database.Entities.BacBall1;
-using GameRoundResult.Core.Database.Entities.BacBall2;
+using GameRoundResult.Core.Database.Entities.BacBall;
 using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
 using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
+using GameRoundResult.Core.Database.Entities.NextBall;
 using GameRoundResult.Web.CrashGames.ViewModels;
 using GameRoundResult.Web.Models;
-using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GameRoundResult.Web.Accessor
@@ -70,8 +69,10 @@ namespace GameRoundResult.Web.Accessor
             { GameType.DragonTigerFight, typeof(GameRoundAccessor<DragonTigerFightRound, DragonTigerFightRoundResultViewModel>) },
             { GameType.ColorGame, typeof(GameRoundAccessor<ColorGameRound, ColorGameRoundResultViewModel>) },
             { GameType.BandarQiuQiu, typeof(GameRoundAccessor<BandarQiuQiuRound, BandarQiuQiuRoundResultViewModel>) },
-            { GameType.BacBall1, typeof(GameRoundAccessor<BacBall1Round, BacBall1RoundResultViewModel>) },
-            { GameType.BacBall2, typeof(GameRoundAccessor<BacBall2Round, BacBall2RoundResultViewModel>) },
+            { GameType.BacBall1, typeof(GameRoundAccessor<BacBall1Round, BacBallRoundResultViewModel>) },
+            { GameType.BacBall2, typeof(GameRoundAccessor<BacBall2Round, BacBallRoundResultViewModel>) },
+            { GameType.NextBall1, typeof(GameRoundAccessor<NextBall1Round, NextBallRoundResultViewModel>) },
+            { GameType.NextBall2, typeof(GameRoundAccessor<NextBall2Round, NextBallRoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;

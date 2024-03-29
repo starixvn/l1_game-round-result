@@ -1,15 +1,15 @@
 ﻿using GameRoundResult.Core._Share;
+using GameRoundResult.Core.Database.Entities.GameDraw;
 
 namespace GameRoundResult.Core.Database.Entities.NextBall
 {
-    [CollectionName("nexball1_betlogs")]
-    public class NextBall1BetLog : BaseBetLogEntity
+    [CollectionName("nextball1_betlogs")]
+    public class NextBall1BetLog : GameDrawBaseBetEntity
     {
-        public long DrawId { get; set; }
         public decimal Amount { get; set; }
         public string Choice { get; set; }
     }
 
-    [CollectionName("nexball2_betlogs")]
+    [CollectionName("nextball2_betlogs")]
     public class NextBall2BetLog : NextBall1BetLog { }
 }

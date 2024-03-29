@@ -1,26 +1,20 @@
 ﻿using GameRoundResult.Core._Share;
+using GameRoundResult.Core.Database.Entities.GameDraw;
 using System.Collections.Generic;
 
 namespace GameRoundResult.Core.Database.Entities.NextBall
 {
     [CollectionName("nextball1_rounds")]
-    public class NextBall1Round : GameRound
+    public class NextBall1Round : GameDraw<NextBallRoundResult, NextBallSettlementResult>
     {
-        public long DrawId { get; set; }
-
-        public List<NextBallRoundResult> Result { get; set; }
-
-        public List<NextBallSettlementResult> SettlementResult { get; set; }
     }
 
-    public class NextBallRoundResult
+    public class NextBallRoundResult : GameDrawBase
     {
         public int Ball { get; set; }
-
-        public long DrawId { get; set; }
     }
 
-    public class NextBallSettlementResult
+    public class NextBallSettlementResult : GameDrawBase
     {
         public bool Odd { get; set; }
 
@@ -29,8 +23,6 @@ namespace GameRoundResult.Core.Database.Entities.NextBall
         public bool Over { get; set; }
 
         public bool Under { get; set; }
-
-        public long DrawId { get; set; }
     }
 
     [CollectionName("nextball2_rounds")]

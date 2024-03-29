@@ -1,17 +1,18 @@
-﻿using GameRoundResult.Core.Database.Entities.BacBall1;
+﻿using GameRoundResult.Core.Database.Entities.GameDraw;
 using MongoDB.Driver;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace GameRoundResult.Core.Services
+namespace GameRoundResult.Core.Services.EndRoundInfo
 {
-    public class BacBall1EndGameInfoService : BaseEndGameInfoService<BacBall1Round, BacBall1Bet>, IEndGameInfoService
+    public class BaseDrawEndGameInfoService<Round, Bet, Result, Settlement> : BaseEndGameInfoService<Round, Bet>, IEndGameInfoService
+        where Round : GameDraw<Result, Settlement>
+        where Bet : GameDrawBaseBetEntity
+        where Result : GameDrawBase
     {
-        public BacBall1EndGameInfoService(IMongoDatabase database) : base(database)
-        {
-        }
+        public BaseDrawEndGameInfoService(IMongoDatabase database) : base(database) { }
 
         public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request)
         {
@@ -22,7 +23,7 @@ namespace GameRoundResult.Core.Services
                 return EndRoundInfoError.SB1001;
             }
 
-            var totalBetAmount = bets.Sum(x => x.Player + x.Banker + x.Tie);
+            var totalBetAmount = bets.Sum(x => x.TotalBet);
             var totalBetWin = bets.Sum(x => x.Betwin);
 
             return new EndRoundInfoResult
@@ -34,15 +35,15 @@ namespace GameRoundResult.Core.Services
             };
         }
 
-        protected override async Task<BacBall1Round> GetRoundAsync(RetrieveEndGameInfoRequest request)
+        protected override async Task<Round> GetRoundAsync(RetrieveEndGameInfoRequest request)
         {
-            var roundFilter = Builders<BacBall1Round>.Filter.ElemMatch(x => x.Result, y => y.DrawId == request.GameRoundId);
+            var roundFilter = Builders<Round>.Filter.ElemMatch(x => x.Result, y => y.DrawId == request.GameRoundId);
             var roundEntity = await roundCollection.Find(roundFilter).FirstOrDefaultAsync();
 
             return roundEntity;
         }
 
-        protected override Expression<Func<BacBall1Bet, bool>> GetBetFilterExpression(RetrieveEndGameInfoRequest request)
+        protected override Expression<Func<Bet, bool>> GetBetFilterExpression(RetrieveEndGameInfoRequest request)
             => (bet) => bet.DrawId == request.GameRoundId && bet.PlayerId == request.PlayerId && bet.Paid;
     }
 }
