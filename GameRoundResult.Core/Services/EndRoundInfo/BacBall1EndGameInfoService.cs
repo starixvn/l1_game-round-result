@@ -36,7 +36,8 @@ namespace GameRoundResult.Core.Services
 
         protected override async Task<BacBall1Round> GetRoundAsync(RetrieveEndGameInfoRequest request)
         {
-            var roundEntity = await roundCollection.Find(x => x.DrawId != 1).FirstOrDefaultAsync();
+            var roundFilter = Builders<BacBall1Round>.Filter.ElemMatch(x => x.Result, y => y.DrawId == request.GameRoundId);
+            var roundEntity = await roundCollection.Find(roundFilter).FirstOrDefaultAsync();
 
             return roundEntity;
         }
