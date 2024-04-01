@@ -28,18 +28,18 @@ namespace GameRoundResult.Web.Models
             var div = new TagBuilder("div");
             div.AddCssClass("football-dice-result");
 
-            div.InnerHtml.AppendHtml(GetResult("home", Result.HomeValue));
-            div.InnerHtml.AppendHtml(GetResult("away", Result.AwayValue));
+            div.InnerHtml.AppendHtml(GetResult("home", Result.HomeValue, Result.Home));
+            div.InnerHtml.AppendHtml(GetResult("away", Result.AwayValue, Result.Away));
 
             return div.GetHtmlString();
         }
 
-        private TagBuilder GetResult(string choice, int value)
+        private TagBuilder GetResult(string choice, int value, IEnumerable<byte> dices)
         {
             var div = new TagBuilder("div");
             div.AddCssClass("dice-list");
 
-            foreach (var dice in Result.Home)
+            foreach (var dice in dices)
             {
                 var tagBuilder = new TagBuilder("img");
                 tagBuilder.AddCssClass("dice");
