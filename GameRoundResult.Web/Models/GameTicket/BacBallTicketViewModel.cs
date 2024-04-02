@@ -1,46 +1,25 @@
 ﻿using GameRoundResult.Core.Database.Entities.BacBall;
-using System.Collections.Generic;
-using System.Linq;
+using GameRoundResult.Web.Models.GameTicket;
 
 namespace GameRoundResult.Web.Models
 {
-    public class BacBallTicketViewModel : GameTicketViewModel
+    public class BacBallTicketViewModel : GameDrawTicketViewModel<BacBall1Round, BacBallRoundResult, BacBallSettlementResult>
     {
-        public long DrawId { get; set; }
-
-        public BacBall1Round RoundResult { get; set; }
-
-        public IEnumerable<TranslationBetLogViewModel> BetLogs { get; set; }
-
-        public Dictionary<string, decimal> Odds { get; set; }
-
-        public virtual bool IsWinningChoice(string displayedChoice)
+        public override decimal GetBetLogWin(TranslationBetLogViewModel bet)
         {
-            var settlementResult = RoundResult.SettlementResult.FirstOrDefault(r => r.DrawId == DrawId);
-            return bool.Parse(settlementResult.GetType().GetProperty(displayedChoice).GetValue(settlementResult, null).ToString());
-        }
-
-        public string GetRowBetClass(string displayedChoice)
-        {
-            return IsWinningChoice(displayedChoice) ? "bold text-blue" : string.Empty;
-        }
-
-        public decimal GetBetLogWin(TranslationBetLogViewModel bet)
-        {
-            if(IsWinningChoice("Tie") && (bet.ChoiceDisplay == "Player" || bet.ChoiceDisplay == "Banker"))
+            if (IsWinningChoice("Tie") && (bet.ChoiceDisplay == "Player" || bet.ChoiceDisplay == "Banker"))
             {
                 return bet.Amount;
             }
             else
             {
-                return IsWinningChoice(bet.ChoiceDisplay) ? Odds[bet.Choice] * bet.Amount : 0;
+                return base.GetBetLogWin(bet);
             }
         }
 
         public int GetResultValue(string displayedChoice)
         {
-            var result = RoundResult.Result.FirstOrDefault(r => r.DrawId == DrawId);
-            return int.Parse(result.GetType().GetProperty(displayedChoice).GetValue(result, null).ToString());
+            return int.Parse(DrawResult.GetType().GetProperty(displayedChoice).GetValue(DrawResult, null).ToString());
         }
     }
 }

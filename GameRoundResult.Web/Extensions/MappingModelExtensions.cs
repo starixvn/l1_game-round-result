@@ -9,6 +9,7 @@ using GameRoundResult.Core.Database.Entities.DragonTigerFight;
 using GameRoundResult.Web.CrashGames.ViewModels;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
+using GameRoundResult.Core.Database.Entities.GameDraw;
 
 namespace GameRoundResult.Web.Extensions
 {
@@ -76,7 +77,7 @@ namespace GameRoundResult.Web.Extensions
         }
 
         public static DragonTigerFightRoundResultViewModel ToViewModel(this DragonTigerFightRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
-        {           
+        {
             return mapper.Map<DragonTigerFightRound, DragonTigerFightRoundResultViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
@@ -99,33 +100,19 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
-        public static TranslationBetLogViewModel ToViewModel(this BacBall1BetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        public static TranslationBetLogViewModel ToViewModelTicketBetLog<T>(this T entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+            where T : GameDrawBaseBetEntity
         {
-            return mapper.Map<BacBall1BetLog, TranslationBetLogViewModel>(entity, opts =>
+            return mapper.Map<T, TranslationBetLogViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });
         }
 
-        public static TranslationBetLogViewModel ToViewModel(this BacBall2BetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        public static T ToViewModelTicketResult<T>(this T entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+            where T : GameDrawResultBase
         {
-            return mapper.Map<BacBall2BetLog, TranslationBetLogViewModel>(entity, opts =>
-            {
-                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
-            });
-        }
-
-         public static TranslationBetLogViewModel ToViewModel(this LuckyNext1BetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
-        {
-            return mapper.Map<LuckyNext1BetLog, TranslationBetLogViewModel>(entity, opts =>
-            {
-                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
-            });
-        }
-
-        public static TranslationBetLogViewModel ToViewModel(this LuckyNext2BetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
-        {
-            return mapper.Map<LuckyNext2BetLog, TranslationBetLogViewModel>(entity, opts =>
+            return mapper.Map<T, T>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });

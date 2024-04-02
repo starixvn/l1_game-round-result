@@ -8,5 +8,8 @@ namespace GameRoundResult.Core.Database.Entities.GameDraw
         public virtual decimal TotalBet { get; }
 
         public long DrawId { get; set; }
+
+        public Dictionary<string, decimal> Odds { get; set; }
+
     }
 }

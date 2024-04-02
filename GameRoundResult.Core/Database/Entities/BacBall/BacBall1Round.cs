@@ -9,7 +9,7 @@ namespace GameRoundResult.Core.Database.Entities.BacBall
     {
     }   
 
-    public class BacBallRoundResult : GameDrawBase
+    public class BacBallRoundResult : GameDrawResultBase
     {
         public int Player { get; set; }
 

@@ -1,5 +1,4 @@
-﻿using GameRoundResult.Core._Share;
-using System.Collections.Generic;
+﻿using System;
 
 namespace GameRoundResult.Core.Database.Entities.GameDraw
 {
@@ -8,4 +7,8 @@ namespace GameRoundResult.Core.Database.Entities.GameDraw
         public long DrawId { get; set; }
     }
 
+    public class GameDrawResultBase : GameDrawBase
+    {
+        public DateTime Time { get; set; }
+    }
 }

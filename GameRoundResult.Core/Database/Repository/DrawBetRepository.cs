@@ -18,7 +18,7 @@ namespace GameRoundResult.Core.Database.Repository
         where Draw : GameDraw<Result, Settlement>
         where Bets : GameDrawBaseBetEntity
         where BetLogs : GameDrawBaseBetEntity
-        where Result : GameDrawBase
+        where Result : GameDrawResultBase
     {
         public DrawBetRepository(IMongoDatabase database) : base(database) { }
 

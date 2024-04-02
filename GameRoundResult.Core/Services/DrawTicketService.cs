@@ -9,7 +9,7 @@ namespace GameRoundResult.Core.Services
      where Draw : GameDraw<Result, Settlement>
      where Bets : GameDrawBaseBetEntity
      where BetLogs : GameDrawBaseBetEntity
-     where Result : GameDrawBase
+     where Result : GameDrawResultBase
     {
         Task<(Draw, Bets, IEnumerable<BetLogs>)> GetAsync(long drawId, string playerId, string operatorId);
     }
@@ -18,7 +18,7 @@ namespace GameRoundResult.Core.Services
         where Draw : GameDraw<Result, Settlement>
         where Bets : GameDrawBaseBetEntity
         where BetLogs : GameDrawBaseBetEntity
-        where Result : GameDrawBase
+        where Result : GameDrawResultBase
     {
         private readonly IDrawBetRepository<Draw, Bets, BetLogs, Result, Settlement> repository;
 
