@@ -3,7 +3,8 @@ using GameRoundResult.Web.Models.GameTicket;
 
 namespace GameRoundResult.Web.Models
 {
-    public class LuckyNextTicketViewModel : GameDrawTicketViewModel<LuckyNext1Round, LuckyNextRoundResult, LuckyNextSettlementResult>
+    public class LuckyNextTicketViewModel<Draw> : GameDrawTicketViewModel<Draw, LuckyNextRoundResult, LuckyNextSettlementResult>
+        where Draw : LuckyNext1Round
     {
         public int GetResultValue()
         {

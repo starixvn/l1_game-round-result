@@ -1,6 +1,5 @@
 ﻿using GameRoundResult.Core._Share;
 using GameRoundResult.Core.Database.Entities.GameDraw;
-using System.Collections.Generic;
 
 namespace GameRoundResult.Core.Database.Entities.LuckyNext
 {
@@ -14,7 +13,6 @@ namespace GameRoundResult.Core.Database.Entities.LuckyNext
         public decimal Over { get; set; }
         public decimal Under { get; set; }
 
-        public Dictionary<string, decimal> Odds { get; set; }
 
         public double TotalAmount { get; set; }
 

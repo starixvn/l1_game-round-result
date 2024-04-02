@@ -3,7 +3,8 @@ using GameRoundResult.Web.Models.GameTicket;
 
 namespace GameRoundResult.Web.Models
 {
-    public class BacBallTicketViewModel : GameDrawTicketViewModel<BacBall1Round, BacBallRoundResult, BacBallSettlementResult>
+    public class BacBallTicketViewModel<Draw>: GameDrawTicketViewModel<Draw, BacBallRoundResult, BacBallSettlementResult>
+        where Draw : BacBall1Round
     {
         public override decimal GetBetLogWin(TranslationBetLogViewModel bet)
         {

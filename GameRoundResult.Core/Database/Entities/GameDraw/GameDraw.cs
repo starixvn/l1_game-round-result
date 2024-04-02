@@ -1,5 +1,4 @@
-﻿using GameRoundResult.Core._Share;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace GameRoundResult.Core.Database.Entities.GameDraw
 {

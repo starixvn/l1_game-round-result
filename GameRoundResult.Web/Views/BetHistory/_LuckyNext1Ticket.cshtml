@@ -1,6 +1,7 @@
 ﻿@using BallColorViewModel = GameRoundResult.Web.Models.GameRoundResult.BallColorViewModel;
+@using GameRoundResult.Core.Database.Entities.LuckyNext
 
-@model LuckyNextTicketViewModel
+@model LuckyNextTicketViewModel<LuckyNext1Round>
 
 @inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
 @inject IJsonStringLocalizer<LuckyNext> Localizer
@@ -9,7 +10,7 @@
 
 @if (Model.EnableTolgee)
 {
-    <input value="GameTicketResultViewModel,GameTicketViewModel,RoundResultViewModel,LuckyNext,SabaNumber" id="tolgee_namespace" readonly hidden/>
+    <input value="GameTicketResultViewModel,GameTicketViewModel,RoundResultViewModel,NextBall,SabaNumber" id="tolgee_namespace" readonly hidden />
 }
 
 <table class="table table-bordered table-dragon-tiger-fight bandar-qiuqiu-table">
@@ -35,7 +36,7 @@
                     <div class="text-center">
                         <span>
                             <span class="bacball-result @BallColorViewModel.GetBallColor(@Model.GetResultValue())">@Model.GetResultValue()</span>
-                        </span>     
+                        </span>
                     </div>
                 </td>
             </tr>
@@ -65,7 +66,7 @@
         @if (Model.BetLogs.Any() && Model.RoundResult != null)
         {
             foreach (var bet in Model.BetLogs.OrderByDescending(b => b.Time))
-            {               
+            {
                 <tr class="@Model.GetRowBetClass(bet.ChoiceDisplay)">
                     <td>
                         @bet.DateDisplay
@@ -76,7 +77,7 @@
                     <td>@Model.Odds[bet.Choice]</td>
                     <td>@bet.Amount.Format()</td>
                     <td>@Model.GetBetLogWin(bet).Format()</td>
-                </tr>                
+                </tr>
             }
             <tr class="total">
                 <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>

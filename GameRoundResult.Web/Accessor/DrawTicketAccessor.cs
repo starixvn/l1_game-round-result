@@ -5,18 +5,20 @@ using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameTicket;
 using GameRoundResult.Web.Requests;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace GameRoundResult.Web.Accessor
 {
-    public class DrawTicketAccessor<ITicketService, Draw, Bet, BetLog, Result, Settle> : IGameTicketAccessor
+    public class DrawTicketAccessor<ITicketService, Draw, Bet, BetLog, Result, Settle, VM> : IGameTicketAccessor
         where ITicketService : IDrawTicketService<Draw, Bet, BetLog, Result, Settle>
-         where Draw : GameDraw<Result, Settle>
+        where Draw : GameDraw<Result, Settle>
         where Bet : GameDrawBaseBetEntity
         where BetLog : GameDrawBaseBetEntity
         where Result : GameDrawResultBase
         where Settle : GameDrawBase
+        where VM : GameDrawTicketViewModel<Draw, Result, Settle>
     {
         private readonly ITicketService gameBetService;
         private readonly IMapper mapper;
@@ -33,24 +35,29 @@ namespace GameRoundResult.Web.Accessor
         {
             var result = await gameBetService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId);
 
-            result.Item1.Result.ForEach(x => x.ToViewModelTicketResult(mapper, request.TimeZoneInfo));
-
-            var viewModel = new GameDrawTicketViewModel<Draw, Result, Settle>
+            var viewModel = createViewModel();
+            if (result.Item1 != null)
             {
-                RoundResult = result.Item1,
-                BetLogs = result.Item3?.Select(x => x.ToViewModelTicketBetLog(mapper, request.TimeZoneInfo)),
-                Odds = result.Item2?.Odds,
-                TotalBet = result.Item2?.TotalBet ?? 0,
-                BetWin = result.Item2?.Betwin ?? 0,
-                DrawId = request.RoundId
-            };
+                result.Item1.Result.ForEach(x => x.ToViewModelTicketResult(mapper, request.TimeZoneInfo));
+                viewModel.RoundResult = result.Item1;
+            }
+            viewModel.BetLogs = result.Item3?.Select(x => x.ToViewModelTicketBetLog(mapper, request.TimeZoneInfo));
+            viewModel.Odds = result.Item2?.Odds;
+            viewModel.TotalBet = result.Item2?.TotalBet ?? 0;
+            viewModel.BetWin = result.Item2?.Betwin ?? 0;
+            viewModel.DrawId = request.RoundId;
+
 
             if (!string.IsNullOrEmpty(result.Item2?.Currency))
             {
                 viewModel.FractionalOddsFormat = await currencyGroupService.GetFractionalOddsFormat(result.Item2.Currency, request.OperatorId);
             }
-
             return viewModel;
+        }
+
+        private VM createViewModel()
+        {
+            return (VM)Activator.CreateInstance(typeof(VM), new object[] { });
         }
     }
 }

@@ -43,6 +43,11 @@ namespace GameRoundResult.Web.Models
                 return $"_Baccarat{PartialPostfix}";
             }
 
+            if (IsDrawGame)
+            {
+                return $"_{Enum.GetName(typeof(GameType), GameType)}{PartialPostfix}";
+            }
+
             return Enum.IsDefined(typeof(GameType), GameType)
                 ? $"_{TransformToViewName(Enum.GetName(typeof(GameType), GameType))}{PartialPostfix}"
                 : $"_SlotGame{PartialPostfix}";
@@ -62,6 +67,17 @@ namespace GameRoundResult.Web.Models
                 or GameType.KenoNorth
                 or GameType.MegaKeno
                 or GameType.MegaKeno2 => true,
+                _ => false
+            };
+
+        private bool IsDrawGame
+            => GameType switch
+            {
+                GameType.BacBall1
+                or GameType.BacBall2
+                or GameType.LuckyNext1
+                or GameType.LuckyNext2
+                => true,
                 _ => false
             };
 
