@@ -2,10 +2,10 @@
 using GameRoundResult.Core.Database.Entities.GameDraw;
 using System.Collections.Generic;
 
-namespace GameRoundResult.Core.Database.Entities.NextBall
+namespace GameRoundResult.Core.Database.Entities.LuckyNext
 {
-    [CollectionName("nextball1_bets")]
-    public class NextBall1Bet : GameDrawBaseBetEntity
+    [CollectionName("luckynext1_bets")]
+    public class LuckyNext1Bet : GameDrawBaseBetEntity
     {
         public decimal Odd { get; set; }
 
@@ -21,8 +21,8 @@ namespace GameRoundResult.Core.Database.Entities.NextBall
         public override decimal TotalBet => Odd + Even + Over + Under;
     }
 
-    [CollectionName("nextball2_bets")]
-    public class NextBall2Bet : NextBall1Bet
+    [CollectionName("luckynext2_bets")]
+    public class LuckyNext2Bet : LuckyNext1Bet
     {
     }
 }

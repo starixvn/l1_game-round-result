@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities.BacBall;
-using GameRoundResult.Core.Database.Entities.NextBall;
+using GameRoundResult.Core.Database.Entities.LuckyNext;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Requests;
 
@@ -38,11 +38,11 @@ namespace GameRoundResult.Web.Accessor
                 { GameType.BacBall2, await gameRoundResultService.GetGameDrawResultAsync
                 <BacBall2Round, BacBallRoundResult, BacBallSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
                 
-                { GameType.NextBall1, await gameRoundResultService.GetGameDrawResultAsync
-                <NextBall1Round, NextBallRoundResult, NextBallSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
+                { GameType.LuckyNext1, await gameRoundResultService.GetGameDrawResultAsync
+                <LuckyNext1Round, LuckyNextRoundResult, LuckyNextSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
                 
-                { GameType.NextBall2, await gameRoundResultService.GetGameDrawResultAsync
-                <NextBall2Round, NextBallRoundResult, NextBallSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
+                { GameType.LuckyNext2, await gameRoundResultService.GetGameDrawResultAsync
+                <LuckyNext2Round, LuckyNextRoundResult, LuckyNextSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
             };
 
             return roundResultType[request.GameType];

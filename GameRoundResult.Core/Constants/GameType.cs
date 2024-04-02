@@ -65,7 +65,7 @@
         ChineseBlackjack =77,
         BacBall1 = 1001,
         BacBall2 = 1002,
-        NextBall1 = 1003,
-        NextBall2 = 1004
+        LuckyNext1 = 1003,
+        LuckyNext2 = 1004
     }
 }

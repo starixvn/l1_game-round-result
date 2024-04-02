@@ -36,8 +36,8 @@ namespace GameRoundResult.Web.Requests
                 return 
                     GameType == GameType.BacBall1 ||
                     GameType == GameType.BacBall2 ||
-                    GameType == GameType.NextBall1 ||
-                    GameType == GameType.NextBall2;
+                    GameType == GameType.LuckyNext1 ||
+                    GameType == GameType.LuckyNext2;
             }
         }
     }

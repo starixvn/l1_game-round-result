@@ -3,7 +3,7 @@ using System.Linq;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.BacBall;
-using GameRoundResult.Core.Database.Entities.NextBall;
+using GameRoundResult.Core.Database.Entities.LuckyNext;
 using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
 using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
@@ -433,11 +433,11 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<BacBall2BetLog, TranslationBetLogViewModel>();
             CreateMap<BacBall2Round, BacBallRoundResultViewModel>();
 
-            CreateMap<NextBall1BetLog, TranslationBetLogViewModel> ();
-            CreateMap<NextBall1Round, NextBallRoundResultViewModel>();
+            CreateMap<LuckyNext1BetLog, TranslationBetLogViewModel> ();
+            CreateMap<LuckyNext1Round, LuckyNextRoundResultViewModel>();
 
-            CreateMap<NextBall2BetLog, TranslationBetLogViewModel>();
-            CreateMap<NextBall2Round, NextBallRoundResultViewModel>();
+            CreateMap<LuckyNext2BetLog, TranslationBetLogViewModel>();
+            CreateMap<LuckyNext2Round, LuckyNextRoundResultViewModel>();
         }
     }
 }

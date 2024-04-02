@@ -1,14 +1,14 @@
-﻿using GameRoundResult.Core.Database.Entities.NextBall;
+﻿using GameRoundResult.Core.Database.Entities.LuckyNext;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace GameRoundResult.Web.Models
 {
-    public class NextBallTicketViewModel : GameTicketViewModel
+    public class LuckyNextTicketViewModel : GameTicketViewModel
     {
         public long DrawId { get; set; }
 
-        public NextBall1Round RoundResult { get; set; }
+        public LuckyNext1Round RoundResult { get; set; }
 
         public IEnumerable<TranslationBetLogViewModel> BetLogs { get; set; }
 

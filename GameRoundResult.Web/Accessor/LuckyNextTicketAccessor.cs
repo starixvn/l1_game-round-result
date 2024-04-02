@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using GameRoundResult.Core.Database.Entities.NextBall;
+using GameRoundResult.Core.Database.Entities.LuckyNext;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Models;
@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 
 namespace GameRoundResult.Web.Accessor
 {
-    public class NextBallTicketAccessor<ITicketService, Draw, Bets, BetLogs> : IGameTicketAccessor
-        where ITicketService : IDrawTicketService<Draw, Bets, BetLogs, NextBallRoundResult, NextBallSettlementResult>
-        where Draw : NextBall1Round
-        where Bets : NextBall1Bet
-        where BetLogs : NextBall1BetLog
+    public class LuckyNextTicketAccessor<ITicketService, Draw, Bets, BetLogs> : IGameTicketAccessor
+        where ITicketService : IDrawTicketService<Draw, Bets, BetLogs, LuckyNextRoundResult, LuckyNextSettlementResult>
+        where Draw : LuckyNext1Round
+        where Bets : LuckyNext1Bet
+        where BetLogs : LuckyNext1BetLog
     {
         private readonly ITicketService gameBetService;
         private readonly IMapper mapper;
         private readonly ICurrencyGroupService currencyGroupService;
 
-        public NextBallTicketAccessor(ITicketService gameBetService, IMapper mapper, ICurrencyGroupService currencyGroupService)
+        public LuckyNextTicketAccessor(ITicketService gameBetService, IMapper mapper, ICurrencyGroupService currencyGroupService)
         {
             this.gameBetService = gameBetService;
             this.mapper = mapper;
@@ -30,7 +30,7 @@ namespace GameRoundResult.Web.Accessor
         {
             var result = await gameBetService.GetAsync(request.RoundId, request.PlayerId, request.OperatorId);
 
-            var viewModel = new NextBallTicketViewModel
+            var viewModel = new LuckyNextTicketViewModel
             {
                 RoundResult = result.Item1,
                 BetLogs = result.Item3?.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
@@ -48,14 +48,14 @@ namespace GameRoundResult.Web.Accessor
         }
     }
 
-    public class NextBall1TicketAccessor : NextBallTicketAccessor<INextBall1TicketService, NextBall1Round, NextBall1Bet, NextBall1BetLog>
+    public class LuckyNext1TicketAccessor : LuckyNextTicketAccessor<ILuckyNext1TicketService, LuckyNext1Round, LuckyNext1Bet, LuckyNext1BetLog>
     {
-        public NextBall1TicketAccessor(INextBall1TicketService gameBetService, IMapper mapper, ICurrencyGroupService currencyGroupService)
+        public LuckyNext1TicketAccessor(ILuckyNext1TicketService gameBetService, IMapper mapper, ICurrencyGroupService currencyGroupService)
             : base(gameBetService, mapper, currencyGroupService) { }
     }
-    public class NextBall2TicketAccessor : NextBallTicketAccessor<INextBall2TicketService, NextBall2Round, NextBall2Bet, NextBall2BetLog>
+    public class LuckyNext2TicketAccessor : LuckyNextTicketAccessor<ILuckyNext2TicketService, LuckyNext2Round, LuckyNext2Bet, LuckyNext2BetLog>
     {
-        public NextBall2TicketAccessor(INextBall2TicketService gameBetService, IMapper mapper, ICurrencyGroupService currencyGroupService)
+        public LuckyNext2TicketAccessor(ILuckyNext2TicketService gameBetService, IMapper mapper, ICurrencyGroupService currencyGroupService)
             : base(gameBetService, mapper, currencyGroupService) { }
     }
 }

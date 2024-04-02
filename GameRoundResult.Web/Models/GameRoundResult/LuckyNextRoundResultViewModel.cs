@@ -1,4 +1,4 @@
-﻿using GameRoundResult.Core.Database.Entities.NextBall;
+﻿using GameRoundResult.Core.Database.Entities.LuckyNext;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Models.GameRoundResult;
@@ -9,13 +9,13 @@ using System.Text;
 
 namespace GameRoundResult.Web.Models
 {
-    public class NextBallRoundResultViewModel : RoundResultViewModel
+    public class LuckyNextRoundResultViewModel : RoundResultViewModel
     {
         public long DrawId { get; set; }
 
-        public NextBallRoundResult Result { get; set; }
+        public LuckyNextRoundResult Result { get; set; }
 
-        public NextBallSettlementResult SettlementResult { get; set; }
+        public LuckyNextSettlementResult SettlementResult { get; set; }
 
         public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
@@ -40,7 +40,7 @@ namespace GameRoundResult.Web.Models
             return tagBuilder.GetHtmlString();
         }
 
-        private TagBuilder BuildResultByChoice(NextBallRoundResult result, IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private TagBuilder BuildResultByChoice(LuckyNextRoundResult result, IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
 
             var tagBuilder = new TagBuilder("div");
@@ -73,7 +73,7 @@ namespace GameRoundResult.Web.Models
             return tagBuilder.GetHtmlString();
         }
 
-        public string GetWinningOption(NextBallSettlementResult settlementResult, IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public string GetWinningOption(LuckyNextSettlementResult settlementResult, IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             StringBuilder sb = new StringBuilder();
             
@@ -103,7 +103,7 @@ namespace GameRoundResult.Web.Models
         public string GetText(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string key)
         {
             var betChoice = new TranslationBetLogViewModel { Choice = key };
-            return stringLocalizer.GetStringWithNamcespace(betChoice.TolgeeChoiceKey, "NextBall");
+            return stringLocalizer.GetStringWithNamcespace(betChoice.TolgeeChoiceKey, "LuckyNext");
         }
     }
 }

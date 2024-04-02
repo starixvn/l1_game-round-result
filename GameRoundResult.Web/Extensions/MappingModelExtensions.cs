@@ -2,7 +2,7 @@
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.BacBall;
-using GameRoundResult.Core.Database.Entities.NextBall;
+using GameRoundResult.Core.Database.Entities.LuckyNext;
 using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
 using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
@@ -115,17 +115,17 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
-         public static TranslationBetLogViewModel ToViewModel(this NextBall1BetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+         public static TranslationBetLogViewModel ToViewModel(this LuckyNext1BetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return mapper.Map<NextBall1BetLog, TranslationBetLogViewModel>(entity, opts =>
+            return mapper.Map<LuckyNext1BetLog, TranslationBetLogViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });
         }
 
-        public static TranslationBetLogViewModel ToViewModel(this NextBall2BetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        public static TranslationBetLogViewModel ToViewModel(this LuckyNext2BetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
-            return mapper.Map<NextBall2BetLog, TranslationBetLogViewModel>(entity, opts =>
+            return mapper.Map<LuckyNext2BetLog, TranslationBetLogViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });

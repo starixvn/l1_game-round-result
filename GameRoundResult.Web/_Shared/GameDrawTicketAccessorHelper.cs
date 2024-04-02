@@ -1,6 +1,6 @@
 ﻿using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities.BacBall;
-using GameRoundResult.Core.Database.Entities.NextBall;
+using GameRoundResult.Core.Database.Entities.LuckyNext;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
 using System;
@@ -21,18 +21,18 @@ namespace GameRoundResult.Web._Shared
                 case (GameType.BacBall2):
                     return GetDrawResultBacBall((IEnumerable<BacBall2Round>)result, request);
 
-                case (GameType.NextBall1):
-                    return GetDrawResultNextBall((IEnumerable<NextBall1Round>)result, request);
+                case (GameType.LuckyNext1):
+                    return GetDrawResultLuckyNext((IEnumerable<LuckyNext1Round>)result, request);
 
-                case (GameType.NextBall2):
-                    return GetDrawResultNextBall((IEnumerable<NextBall2Round>)result, request);
+                case (GameType.LuckyNext2):
+                    return GetDrawResultLuckyNext((IEnumerable<LuckyNext2Round>)result, request);
 
                 default:
                     return new List<RoundResultViewModel>();
             }
         }
 
-        private static IEnumerable<RoundResultViewModel> GetDrawResultNextBall(IEnumerable<NextBall1Round> result, GetRoundResultRequest request)
+        private static IEnumerable<RoundResultViewModel> GetDrawResultLuckyNext(IEnumerable<LuckyNext1Round> result, GetRoundResultRequest request)
         {
             var roundResults = new List<RoundResultViewModel>();
 
@@ -42,7 +42,7 @@ namespace GameRoundResult.Web._Shared
                 {
                     if (request.RoundId == 0 || (request.RoundId == gameDraw.Result[i].DrawId))
                     {
-                        var roundResult = new NextBallRoundResultViewModel
+                        var roundResult = new LuckyNextRoundResultViewModel
                         {
                             DrawId = gameDraw.Result[i].DrawId,
                             Result = gameDraw.Result[i],

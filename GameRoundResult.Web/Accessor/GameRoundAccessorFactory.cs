@@ -6,7 +6,7 @@ using GameRoundResult.Core.Database.Entities.BacBall;
 using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
 using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
-using GameRoundResult.Core.Database.Entities.NextBall;
+using GameRoundResult.Core.Database.Entities.LuckyNext;
 using GameRoundResult.Web.CrashGames.ViewModels;
 using GameRoundResult.Web.Models;
 using Microsoft.Extensions.DependencyInjection;
@@ -71,8 +71,8 @@ namespace GameRoundResult.Web.Accessor
             { GameType.BandarQiuQiu, typeof(GameRoundAccessor<BandarQiuQiuRound, BandarQiuQiuRoundResultViewModel>) },
             { GameType.BacBall1, typeof(GameRoundAccessor<BacBall1Round, BacBallRoundResultViewModel>) },
             { GameType.BacBall2, typeof(GameRoundAccessor<BacBall2Round, BacBallRoundResultViewModel>) },
-            { GameType.NextBall1, typeof(GameRoundAccessor<NextBall1Round, NextBallRoundResultViewModel>) },
-            { GameType.NextBall2, typeof(GameRoundAccessor<NextBall2Round, NextBallRoundResultViewModel>) },
+            { GameType.LuckyNext1, typeof(GameRoundAccessor<LuckyNext1Round, LuckyNextRoundResultViewModel>) },
+            { GameType.LuckyNext2, typeof(GameRoundAccessor<LuckyNext2Round, LuckyNextRoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;

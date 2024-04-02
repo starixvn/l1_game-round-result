@@ -91,11 +91,11 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<IBacBall2TicketService, BacBall2TicketService>();
             services.AddScoped<IBacBall2BetRepository, BacBall2BetRepository>();
 
-            services.AddScoped<INextBall1TicketService, NextBall1TicketService>();
-            services.AddScoped<INextBall1BetRepository, NextBall1BetRepository>();
+            services.AddScoped<ILuckyNext1TicketService, LuckyNext1TicketService>();
+            services.AddScoped<ILuckyNext1BetRepository, LuckyNext1BetRepository>();
 
-            services.AddScoped<INextBall2TicketService, NextBall2TicketService>();
-            services.AddScoped<INextBall2BetRepository, NextBall2BetRepository>();
+            services.AddScoped<ILuckyNext2TicketService, LuckyNext2TicketService>();
+            services.AddScoped<ILuckyNext2BetRepository, LuckyNext2BetRepository>();
 
             services.AddScoped<IPontoonTicketService, PontoonTicketService>();
             services.AddScoped<IPontoonBetRepository, PontoonBetRepository>();
@@ -156,8 +156,8 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(BandarQiuQiuTicketAccessor));
             services.AddScoped(typeof(BacBall1TicketAccessor));
             services.AddScoped(typeof(BacBall2TicketAccessor));
-            services.AddScoped(typeof(NextBall1TicketAccessor));
-            services.AddScoped(typeof(NextBall2TicketAccessor));
+            services.AddScoped(typeof(LuckyNext1TicketAccessor));
+            services.AddScoped(typeof(LuckyNext2TicketAccessor));
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
             services.AddScoped<IGameDrawTypeFactory, GameDrawTypeFactory>();
@@ -214,8 +214,8 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<BandarQiuQiuEndGameInfoService>();
             services.AddScoped<BacBall1EndGameInfoService>();
             services.AddScoped<BacBall2EndGameInfoService>();
-            services.AddScoped<NextBall1EndGameInfoService>();
-            services.AddScoped<NextBall2EndGameInfoService>();
+            services.AddScoped<LuckyNext1EndGameInfoService>();
+            services.AddScoped<LuckyNext2EndGameInfoService>();
 
             services.AddSlotGames();
             services.AddCascadingSlotGames();
