@@ -23,11 +23,12 @@
     <tbody>
         @if (Model.RoundResult != null)
         {
+            var time = Model.DrawResult.Time;
             <tr>
                 <td>
-                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture)
+                    @time.ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture)
                     <br />
-                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                    @time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
                 </td>
                 <td>@Model.DrawId</td>
                 <td>
