@@ -23,31 +23,20 @@ namespace GameRoundResult.Web.Models
             {
                base.ToDataTableArray(stringLocalizer).First(),
                DrawId.ToString(),
-               $"{GetResult(stringLocalizer)}",
+               $"{GetResult()}",
                $"{GetWinningTextResult(stringLocalizer)}",
-
             };
 
             return result;
         }
 
-        public string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public string GetResult()
         {
-            var tagBuilder = new TagBuilder("table");
-            tagBuilder.AddCssClass($"result-table");
-            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice(Result, stringLocalizer));
-
-            return tagBuilder.GetHtmlString();
-        }
-
-        private TagBuilder BuildResultByChoice(LuckyNextRoundResult result, IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
-        {
-
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"result-row");
-            tagBuilder.InnerHtml.AppendHtml(this.BuildBall(result.Ball.ToString(), BallColorViewModel.GetBallColor(result.Ball)));
+            tagBuilder.InnerHtml.AppendHtml(this.BuildBall(Result.Ball.ToString(), BallColorViewModel.GetBallColor(Result.Ball)));
 
-            return tagBuilder;
+            return tagBuilder.GetHtmlString();
         }
 
         private TagBuilder BuildBall(string choice, string cls)

@@ -22,33 +22,23 @@ namespace GameRoundResult.Web.Models
             {
                base.ToDataTableArray(stringLocalizer).First(),
                DrawId.ToString(),
-               $"{GetResult(stringLocalizer)}",
-               $"{GetWinningTextResult(stringLocalizer)}",
 
+               $"{GetResult()}",
+               $"{GetWinningOption(SettlementResult, stringLocalizer)}",
+               
             };
 
             return result;
         }
 
-        public string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetResult()
         {
-            var tagBuilder = new TagBuilder("table");
-            tagBuilder.AddCssClass($"result-table");
-            tagBuilder.InnerHtml.AppendHtml(this.BuildResultByChoice(Result, stringLocalizer));
-
-            return tagBuilder.GetHtmlString();
-        }
-
-        private TagBuilder BuildResultByChoice(BacBallRoundResult result, IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
-        {
-
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"result-row");
-            tagBuilder.InnerHtml.AppendHtml(this.BuildBall(result.Player.ToString(), BallColorViewModel.GetBallColor(result.Player)));
-            tagBuilder.InnerHtml.AppendHtml(this.BuildBall(result.Banker.ToString(), BallColorViewModel.GetBallColor(result.Banker)));
+            tagBuilder.InnerHtml.AppendHtml(this.BuildBall(Result.Player.ToString(), BallColorViewModel.GetBallColor(Result.Player)));
+            tagBuilder.InnerHtml.AppendHtml(this.BuildBall(Result.Banker.ToString(), BallColorViewModel.GetBallColor(Result.Banker)));
 
-
-            return tagBuilder;
+            return tagBuilder.GetHtmlString();
         }
 
         private TagBuilder BuildBall(string choice, string cls)
@@ -76,7 +66,7 @@ namespace GameRoundResult.Web.Models
 
         public string GetWinningOption(BacBallSettlementResult settlementResult, IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            string option = "";
+            string option;
             if (settlementResult.Player)
             {
                 option = GetText(stringLocalizer, "player");
