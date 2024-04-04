@@ -143,6 +143,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(ColorGameTicketAccessor));
             services.AddScoped(typeof(BandarQiuQiuTicketAccessor));
             services.AddScoped(typeof(FootballDiceTicketAccessor));
+            services.AddScoped(typeof(FootballSlotTicketAccessor<,,>));
 
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
@@ -198,6 +199,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<ColorGameEndGameInfoService>();
             services.AddScoped<BandarQiuQiuEndGameInfoService>();
             services.AddScoped<FootballDiceEndGameInfoService>();
+            services.AddScoped<FootballSlotEndGameInfoService>();
 
             services.AddSlotGames();
             services.AddCascadingSlotGames();

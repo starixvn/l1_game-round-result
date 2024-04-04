@@ -64,5 +64,6 @@
         BandarQiuQiu = 75,
         ChineseBlackjack =77,
         FootballDice = 78,
+        FootballSlot = 79,
     }
 }
