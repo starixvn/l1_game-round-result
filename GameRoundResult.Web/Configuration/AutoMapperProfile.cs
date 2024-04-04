@@ -438,6 +438,11 @@ namespace GameRoundResult.Web.Configuration
                     AwayValue = source.Result.Away.ElementAt(0) + source.Result.Away.ElementAt(1),
                 };
             }));
+
+            CreateMap<FootballSlotRound, FootballSlotRoundResultViewModel>()
+                .ForMember(x => x.SymbolsResult, opt => opt.MapFrom(x => x.Result.Symbols))
+                .ForMember(x => x.NumberResult, opt => opt.MapFrom(x => x.Result.Number));
+            CreateMap<FootballSlotBetLog, FootballSlotBetLogViewModel>();
         }
     }
 }
