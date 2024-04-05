@@ -1,0 +1,75 @@
+[
+  {
+    "_id": {
+      "$oid": "660f7b74bf63b4803f549e43"
+    },
+    "time": {
+      "$date": "2024-04-05T04:17:56.228Z"
+    },
+    "ended": false,
+    "id": 1,
+    "drawId": 4,
+    "result": [
+      {
+        "time": {
+          "$date": "2024-04-05T04:17:56.228Z"
+        },
+        "player": 23,
+        "banker": 9,
+        "drawId": 1
+      },
+      {
+        "time": {
+          "$date": "2024-04-05T04:18:23.097Z"
+        },
+        "player": 9,
+        "banker": 30,
+        "drawId": 2
+      },
+      {
+        "time": {
+          "$date": "2024-04-05T04:18:50.142Z"
+        },
+        "player": 28,
+        "banker": 22,
+        "drawId": 3
+      },
+      {
+        "time": {
+          "$date": "2024-04-05T04:19:17.142Z"
+        },
+        "player": 26,
+        "banker": 22,
+        "drawId": 4
+      }
+    ],
+    "settlementResult": [
+      {
+        "player": true,
+        "banker": false,
+        "tie": false,
+        "drawId": 1
+      },
+      {
+        "player": false,
+        "banker": true,
+        "tie": false,
+        "drawId": 2
+      },
+      {
+        "player": true,
+        "banker": false,
+        "tie": false,
+        "drawId": 3
+      },
+      {
+        "player": true,
+        "banker": false,
+        "tie": false,
+        "drawId": 4
+      }
+    ],
+    "exchangeRateId": 3,
+    "__v": 0
+  }
+]

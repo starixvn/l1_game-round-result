@@ -1,0 +1,11 @@
+{
+  "game_name_1001": "Bac Ball 1",
+  "game_name_1002": "Bac Ball 2",
+  "glossary_banker": "Banker",
+  "glossary_player": "Player",
+  "glossary_tie": "Tie",
+  "pf_algorithm": "Index Value = ((Random number + X) mod Number of balls left) + 1",
+  "pf_algorithm_random_number": "Random number",
+  "BacBall1": "Bac Ball 1",
+  "BacBall2": "Bac Ball 2"
+}

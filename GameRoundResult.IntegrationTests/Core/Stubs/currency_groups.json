@@ -151,5 +151,14 @@
     "name": "2Wgroup",
     "enabled": true,
     "partnerId": "ONEworks1"
+  },
+  {
+    "_id": {
+      "$oid": "61b953ad815d6c000196a14c"
+    },
+    "enabled": true,
+    "fractionalOddsFormat": false,
+    "name": "Cash_INH",
+    "partnerId": "ONEworksVGCash"
   }
 ]

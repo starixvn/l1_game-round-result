@@ -7303,7 +7303,7 @@
     "crashConfig": null
   },
   {
-     "_id": {
+    "_id": {
       "$oid": "650429b7b30c3dab37bb1eea"
     },
     "time": {
@@ -7363,4 +7363,82 @@
       "maxMultiplier": 2000,
       "crashAtBase": 3
     }
-  }]
+  },
+  {
+    "_id": {
+      "$oid": "65b358ba1f7b479c2d5863b3"
+    },
+    "time": {
+      "$date": "2024-01-26T07:01:14.965Z"
+    },
+    "__v": 0,
+    "type": 6,
+    "name": "bacball1",
+    "displayName": "BacBall 1",
+    "enabled": true,
+    "botenabled": true,
+    "minbet": 10000,
+    "maxbet": 20000000,
+    "disabledround": null,
+    "bot_maxbet": 500000,
+    "hour_maxbot": [
+      0,
+      0,
+      0.2,
+      0.2,
+      0.2,
+      0.2,
+      0.2,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút. Cảm ơn.",
+    "choices_maxbet": {
+      "player": 20000000,
+      "banker": 20000000,
+      "tie": 1000000
+    },
+    "odds": null,
+    "delayStartTime": 0,
+    "enableFreeBet": false,
+    "slotsConfig": null,
+    "siteExclusions": [],
+    "smartBotEnabled": false,
+    "smartBotGroupRatio": 0,
+    "gameId": 1001,
+    "randomMode": 1,
+    "cascadingSlotsConfig": null,
+    "slotRNGConfig": null,
+    "crashConfig": null,
+    "margin": [
+      {
+        "max": 10,
+        "player": 0.05,
+        "banker": 0.05,
+        "tie": 0.2
+      },
+      {
+        "max": 29,
+        "player": 0.05,
+        "banker": 0.05,
+        "tie": 0.2
+      }
+    ],
+    "maxWinPerRound": 25
+  }
+]
