@@ -75,7 +75,7 @@
                         @bet.TimeDisplay
                             </td>
                             <td>@Localizer[bet.TolgeeChoiceKey]</td>
-                            <td>@Model.Odds[bet.Choice]</td>
+                            <td>@Model.Odds[bet.Choice].FormatOdds(Model.FractionalOddsFormat)</td>
                             <td>@bet.Amount.Format()</td>
                             <td>@Model.GetBetLogWin(bet).Format()</td>
                         </tr>                
