@@ -7,5 +7,6 @@
   "pf_algorithm": "Index Value = ((Random number + X) mod Number of balls left) + 1",
   "pf_algorithm_random_number": "Random number",
   "BacBall1": "Bac Ball 1",
-  "BacBall2": "Bac Ball 2"
+  "BacBall2": "Bac Ball 2",
+  "glossary_draw_id": "Draw"
 }
