@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GameRoundResult.Core.Constants;
 
 namespace GameRoundResult.Web.Models
 {
@@ -17,6 +18,11 @@ namespace GameRoundResult.Web.Models
 
         public decimal GetOdds(string choice)
         {
+            if(choice == FootballDiceOdds.Draw && RoundResult.SettlementResult[FootballDiceOdds.Draw12])
+            {
+                return Odds[FootballDiceOdds.Draw12];
+            }
+
             return Odds[choice];
         }
 
@@ -29,7 +35,7 @@ namespace GameRoundResult.Web.Models
                 return  GetOdds(bet.Choice) * bet.Amount;
             }
 
-            return RoundResult.SettlementResult["draw"] ? bet.Amount : 0;
+            return RoundResult.SettlementResult[FootballDiceOdds.Draw] ? bet.Amount : 0;
         }
     }
 
