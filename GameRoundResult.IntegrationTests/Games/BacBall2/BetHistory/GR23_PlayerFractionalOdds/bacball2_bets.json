@@ -1,0 +1,25 @@
+[
+  {
+    "uid": "62342b4ac46c7910b22b3b35",
+    "name": "Player",
+    "drawId": 48586,
+    "roundId": 12147,
+    "player": 4000,
+    "banker": 0,
+    "tie": 0,
+    "paid": true,
+    "betwin": 0,
+    "time": "2024-04-05T07:29:48.650+00:00",
+    "odds": {
+      "player": 1.95,
+      "banker": 1.95,
+      "tie": 9
+    },
+    "playerId": "123",
+    "siteId": "4100300",
+    "freeBet": false,
+    "currency": "EUR",
+    "rate": 1,
+    "operatorId": "ONEworks1"
+  }
+]
