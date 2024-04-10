@@ -92,7 +92,7 @@ namespace GameRoundResult.Web.Models
         public string GetText(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string key)
         {
             var betChoice = new TranslationBetLogViewModel { Choice = key };
-            return stringLocalizer.GetStringWithNamcespace(betChoice.TolgeeChoiceKey, "LuckyNext");
+            return stringLocalizer.GetStringWithNamcespace(betChoice.TolgeeChoiceKey, "NextBall");
         }
     }
 }
