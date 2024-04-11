@@ -11,14 +11,14 @@ namespace GameRoundResult.Web.Models
     {
         private readonly Dictionary<string, List<string>> GroupChoices = new Dictionary<string, List<string>>
         {
-            ["bar"] = new List<string> { "bar", "bar50", "bar25" },
-            ["star"] = new List<string> { "star", "star3" },
-            ["tripleSeven"] = new List<string> { "tripleSeven", "tripleSeven3" },
-            ["watermelon"] = new List<string> { "watermelon", "watermelon3" },
-            ["bell"] = new List<string> { "bell", "bell3" },
-            ["orange"] = new List<string> { "orange", "orange3" },
-            ["lemon"] = new List<string> { "lemon", "lemon3" },
-            ["cherry"] = new List<string> { "cherry", "cherry3" },
+            ["cup"] = new List<string> { "cup", "cup50", "cup25" },
+            ["hostCountry"] = new List<string> { "hostCountry", "hostCountry3" },
+            ["mascot"] = new List<string> { "mascot", "mascot3" },
+            ["franceShirt"] = new List<string> { "franceShirt", "franceShirt3" },
+            ["englandShirt"] = new List<string> { "englandShirt", "englandShirt3" },
+            ["tickets"] = new List<string> { "tickets", "tickets3" },
+            ["ball"] = new List<string> { "ball", "ball3" },
+            ["shoes"] = new List<string> { "shoes", "shoes3" },
         };
 
         private const string LuckySymbol = "lucky";
@@ -155,10 +155,10 @@ namespace GameRoundResult.Web.Models
 
         public virtual TagBuilder GetResultImage(string symbol)
         {
-            const string BarSymbol = "bar";
-            const string Bar100Symbol = "bar100";
+            const string cupSymbol = "cup";
+            const string cup100Symbol = "cup100";
             var img = new TagBuilder("img");
-            img.Attributes.Add("src", string.Format(folderImage, symbol.Equals(BarSymbol) ? Bar100Symbol : symbol));
+            img.Attributes.Add("src", string.Format(folderImage, symbol.Equals(cupSymbol) ? cup100Symbol : symbol));
             return img;
         }
 
