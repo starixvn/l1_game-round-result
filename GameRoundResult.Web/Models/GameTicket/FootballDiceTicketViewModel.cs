@@ -18,9 +18,14 @@ namespace GameRoundResult.Web.Models
 
         public decimal GetOdds(string choice)
         {
-            if(choice == FootballDiceOdds.Draw && RoundResult.SettlementResult[FootballDiceOdds.Draw12])
+            if (choice == FootballDiceOdds.Draw)
             {
-                return Odds[FootballDiceOdds.Draw12];
+                if (RoundResult.SettlementResult[FootballDiceOdds.Draw])
+                {
+                    return RoundResult.SettlementResult[FootballDiceOdds.Draw12] ? Odds[FootballDiceOdds.Draw12] : Odds[FootballDiceOdds.Draw];
+                }
+
+                return 0;
             }
 
             return Odds[choice];
