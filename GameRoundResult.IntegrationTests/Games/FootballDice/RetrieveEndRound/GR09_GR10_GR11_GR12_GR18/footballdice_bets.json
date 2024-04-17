@@ -1,0 +1,28 @@
+[
+  {
+    "freeBet": false,
+    "roundId": 1,
+    "uid": "62e883e0108dbdbdc1ac3422",
+    "__v": 0,
+    "away": 1,
+    "betwin": 1.96,
+    "currency": "$US",
+    "draw": 0,
+    "home": 0,
+    "name": "FWB",
+    "odds": {
+      "high3": 1.96,
+      "high4": 1.96,
+      "high5": 8
+    },
+    "operatorId": "ONEworks1",
+    "paid": true,
+    "playerId": "291192",
+    "rate": 1,
+    "siteId": "4100300",
+    "time": {
+      "$date": "2024-03-12T04:21:05.378Z"
+    },
+    "totalAmount": 1
+  }
+]

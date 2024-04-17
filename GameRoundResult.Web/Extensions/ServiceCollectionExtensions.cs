@@ -142,6 +142,8 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<ChineseBlackjackTicketAccessor>();
             services.AddScoped(typeof(ColorGameTicketAccessor));
             services.AddScoped(typeof(BandarQiuQiuTicketAccessor));
+            services.AddScoped(typeof(FootballDiceTicketAccessor));
+
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
 
@@ -195,6 +197,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<DragonTigerFightEndGameInfoService>();
             services.AddScoped<ColorGameEndGameInfoService>();
             services.AddScoped<BandarQiuQiuEndGameInfoService>();
+            services.AddScoped<FootballDiceEndGameInfoService>();
 
             services.AddSlotGames();
             services.AddCascadingSlotGames();
