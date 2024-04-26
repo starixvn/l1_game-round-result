@@ -16,7 +16,8 @@ namespace GameRoundResult.Web.RoundHistory
     public class RoundHistoryAccessorFactory : IRoundHistoryAccessorFactory
     {
         private readonly Dictionary<GameType, Type> services = new()
-        {           
+        {
+            { GameType.BacBall1, typeof(DrawRoundHistoryAccessor<BacBall1Round, BacBallRoundResultViewModel, BacBall1Bet, RoundHistoryBetViewModel, BacBallRoundResult, BacBallSettlementResult>) },
         };
 
         private readonly IServiceProvider serviceProvider;

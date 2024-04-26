@@ -41,6 +41,11 @@ namespace GameRoundResult.Web.Models
             return tagBuilder.GetHtmlString();
         }
 
+        public override string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            return GetResult();
+        }       
+
         private TagBuilder BuildBall(string choice, string cls)
         {
             var tagBuilder = new TagBuilder("span");
@@ -50,7 +55,7 @@ namespace GameRoundResult.Web.Models
             return tagBuilder;
         }
 
-        public string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public override string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"result-row");

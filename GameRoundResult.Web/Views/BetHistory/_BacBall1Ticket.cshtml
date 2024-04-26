@@ -65,20 +65,11 @@
     </thead>
     <tbody>
         @if (Model.BetLogs.Any() && Model.RoundResult != null)
-        {
-            foreach (var bet in Model.BetLogs.OrderByDescending(b => b.Time))
-            {               
-                        <tr class="@Model.GetRowBetClass(bet.ChoiceDisplay)">
-                            <td>
-                        @bet.DateDisplay
-                                <br />
-                        @bet.TimeDisplay
-                            </td>
-                            <td>@Localizer[bet.TolgeeChoiceKey]</td>
-                            <td>@Model.Odds[bet.Choice].FormatOdds(Model.FractionalOddsFormat)</td>
-                            <td>@bet.Amount.Format()</td>
-                            <td>@Model.GetBetLogWin(bet).Format()</td>
-                        </tr>                
+        {           
+             
+            foreach(var row in Model.BuildBetLogs(RoundResultLocalizer))
+            {
+                @Html.Raw(row)
             }
                 <tr class="total">
                     <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>
