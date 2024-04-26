@@ -13,9 +13,6 @@ namespace GameRoundResult.Core.Database.Entities.LuckyNext
         public decimal Over { get; set; }
         public decimal Under { get; set; }
 
-
-        public double TotalAmount { get; set; }
-
         public override decimal TotalBet => Odd + Even + Over + Under;
     }
 

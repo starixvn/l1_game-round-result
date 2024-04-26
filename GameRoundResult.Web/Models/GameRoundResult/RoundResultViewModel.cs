@@ -25,9 +25,26 @@ namespace GameRoundResult.Web.Models
 
         public long RoundId { get; set; }
 
+        public long ExchangeRateId { get; set; }
+
         public virtual IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             return new[] { $"{DateDisplay}<br />{Time.ToString(ViewFormat.RoundTimeFormat, CultureInfo.InvariantCulture)}", RoundId.ToString() };
+        }
+
+        public virtual string GetDate()
+        {
+            return $"{DateDisplay}<br />{Time.ToString(ViewFormat.RoundTimeFormat, CultureInfo.InvariantCulture)}";
+        }
+
+        public virtual string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            return string.Empty;
+        }
+
+        public virtual string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            return string.Empty;
         }
     }
 }

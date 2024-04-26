@@ -9,6 +9,8 @@ using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
+using GameRoundResult.Core.Database.Entities.RoundHistory;
+using GameRoundResult.Web.Models.RoundHistory;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -438,6 +440,8 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<LuckyNext2BetLog, TranslationBetLogViewModel>();
             CreateMap<LuckyNext2Round, LuckyNextRoundResultViewModel>();
+
+            CreateMap<RoundHistoryBetEntity, RoundHistoryBetViewModel>();
         }
     }
 }

@@ -1,15 +1,9 @@
-﻿using GameRoundResult.Core._Share;
-using System.Collections.Generic;
+﻿using GameRoundResult.Core.Database.Entities.RoundHistory;
 
 namespace GameRoundResult.Core.Database.Entities.GameDraw
 {
-    public class GameDrawBaseBetEntity: BaseBetEntity
+    public class GameDrawBaseBetEntity: RoundHistoryBetEntity
     {
         public virtual decimal TotalBet { get; }
-
-        public long DrawId { get; set; }
-
-        public Dictionary<string, decimal> Odds { get; set; }
-
     }
 }
