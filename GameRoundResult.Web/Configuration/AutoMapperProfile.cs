@@ -469,6 +469,8 @@ namespace GameRoundResult.Web.Configuration
             
             CreateMap<SeBall1BetLog, TranslationBetLogViewModel>();
             CreateMap<SeBall1Round, SeBallRoundResultViewModel>();
+
+            CreateMap<RoundHistoryBetEntity, RoundHistoryBetViewModel>();
         }
     }
 }

@@ -13,9 +13,6 @@ namespace GameRoundResult.Core.Database.Entities.BacBall
 
         public decimal Tie { get; set; }
 
-
-        public double TotalAmount { get; set; }
-
         public override decimal TotalBet => Banker + Player + Tie;
     }
 
