@@ -4,6 +4,7 @@ using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.BacBall;
 using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
+using GameRoundResult.Core.Database.Entities.CoinToss;
 using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
 using GameRoundResult.Core.Database.Entities.LuckyNext;
@@ -75,6 +76,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.BacBall2, typeof(GameRoundAccessor<BacBall2Round, BacBallRoundResultViewModel>) },
             { GameType.LuckyNext1, typeof(GameRoundAccessor<LuckyNext1Round, LuckyNextRoundResultViewModel>) },
             { GameType.LuckyNext2, typeof(GameRoundAccessor<LuckyNext2Round, LuckyNextRoundResultViewModel>) },
+            { GameType.CoinToss, typeof(GameRoundAccessor<CoinTossRound, CoinTossRoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;
