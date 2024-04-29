@@ -73,6 +73,7 @@ namespace GameRoundResult.Web.Services
             { GameType.ChineseBlackjack, typeof(BankingGameEndGameInfoService<ChineseBlackjackRound, ChineseBlackjackBet>) },
             { GameType.FootballDice, typeof(FootballDiceEndGameInfoService) },
             { GameType.FootballSlot, typeof(FootballSlotEndGameInfoService) },
+            { GameType.CoinToss, typeof(CoinTossEndGameInfoService) },
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()

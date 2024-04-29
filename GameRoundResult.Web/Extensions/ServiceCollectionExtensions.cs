@@ -203,6 +203,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<BandarQiuQiuEndGameInfoService>();
             services.AddScoped<FootballDiceEndGameInfoService>();
             services.AddScoped<FootballSlotEndGameInfoService>();
+            services.AddScoped<CoinTossEndGameInfoService>();
 
             services.AddScoped<IRoundHistoryRepository, RoundHistoryRepository>();
             services.AddScoped<IRoundHistoryService, RoundHistoryService>();
