@@ -68,5 +68,9 @@
 }(jQuery));
 
 $(document).ready(function () {
-    gameRoundResult.init();
+    gameRoundResult.init();    
 });
+
+function showModal(selector) {
+    $(selector).modal('show');
+}

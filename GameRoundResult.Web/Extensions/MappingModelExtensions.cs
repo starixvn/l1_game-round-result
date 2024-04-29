@@ -7,6 +7,8 @@ using GameRoundResult.Core.Database.Entities.DragonTigerFight;
 using GameRoundResult.Web.CrashGames.ViewModels;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
+using GameRoundResult.Core.Database.Entities.RoundHistory;
+using GameRoundResult.Web.Models.RoundHistory;
 
 namespace GameRoundResult.Web.Extensions
 {
@@ -21,6 +23,18 @@ namespace GameRoundResult.Web.Extensions
                 {
                     dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo);
                     dest.TimeZone = timeZoneInfo;
+                });
+            });
+        }
+
+        public static TBetViewModel ToBetViewModel<TBetEntity, TBetViewModel>(this TBetEntity entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+           where TBetEntity : RoundHistoryBetEntity where TBetViewModel : RoundHistoryBetViewModel
+        {
+            return mapper.Map<TBetEntity, TBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) =>
+                {
+                    dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo);
                 });
             });
         }

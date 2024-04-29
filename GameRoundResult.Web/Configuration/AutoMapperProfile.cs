@@ -7,6 +7,8 @@ using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
+using GameRoundResult.Core.Database.Entities.RoundHistory;
+using GameRoundResult.Web.Models.RoundHistory;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -349,6 +351,7 @@ namespace GameRoundResult.Web.Configuration
                         };
                     }));
             CreateMap<Win3CardsSettlementResult, Win3CardsSettlementResultViewModel>();
+
             CreateMap<Win3CardsBetLog, Win3CardsBetLogViewModel>();
             CreateMap<DragonTigerFightRound, DragonTigerFightRoundResultViewModel>()
                 .ForMember(x => x.Result, opt => opt.MapFrom((source, destination, i, context) =>
@@ -443,6 +446,8 @@ namespace GameRoundResult.Web.Configuration
                 .ForMember(x => x.SymbolsResult, opt => opt.MapFrom(x => x.Result.Symbols))
                 .ForMember(x => x.NumberResult, opt => opt.MapFrom(x => x.Result.Number));
             CreateMap<FootballSlotBetLog, FootballSlotBetLogViewModel>();
+
+            CreateMap<RoundHistoryBetEntity, RoundHistoryBetViewModel>();
         }
-    }
+    }            
 }

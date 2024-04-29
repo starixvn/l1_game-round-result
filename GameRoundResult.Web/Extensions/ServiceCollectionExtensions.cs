@@ -4,13 +4,16 @@ using FluentValidation;
 using GameRoundResult.Core._Share;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Repository;
+using GameRoundResult.Core.Database.Repository.RoundHistory;
 using GameRoundResult.Core.Services;
+using GameRoundResult.Core.Services.RoundHistory;
 using GameRoundResult.Web._Shared;
 using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.CascadingSlotGames;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.CrashGames;
 using GameRoundResult.Web.Requests;
+using GameRoundResult.Web.RoundHistory;
 using GameRoundResult.Web.Services;
 using GameRoundResult.Web.SlotGames;
 using GameRoundResult.Web.Validators;
@@ -201,6 +204,13 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<FootballDiceEndGameInfoService>();
             services.AddScoped<FootballSlotEndGameInfoService>();
 
+            services.AddScoped<IRoundHistoryRepository, RoundHistoryRepository>();
+            services.AddScoped<IRoundHistoryService, RoundHistoryService>();
+            services.AddScoped<IRoundHistoryAccessorFactory, RoundHistoryAccessorFactory>();
+            services.AddScoped(typeof(RoundHistoryAccessor<,,,>));
+            services.AddScoped(typeof(DrawRoundHistoryAccessor<,,,,,>));
+            services.AddScoped<IUserInfoService, UserInfoService>();
+            
             services.AddSlotGames();
             services.AddCascadingSlotGames();
             services.AddTransient(typeof(IJsonStringLocalizer<>), typeof(JsonStringLocalizer<>));
