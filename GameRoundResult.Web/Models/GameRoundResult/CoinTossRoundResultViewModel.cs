@@ -12,8 +12,6 @@ namespace GameRoundResult.Web.Models
 
         public CoinTossSettlementResult SettlementResult { get; set; }
 
-        private readonly string Head = "head";
-        private readonly string Tail = "tail";                
         public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
@@ -26,7 +24,12 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        public string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public virtual bool IsWin(string choice)
+        {
+            return choice.ToLower() == "head" ? SettlementResult.Head : SettlementResult.Tail;
+        }
+
+        public override string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"");
@@ -41,7 +44,7 @@ namespace GameRoundResult.Web.Models
             return tagBuilder.GetHtmlString();            
         }
 
-        public string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public override string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var key = SettlementResult.Head ? "trump" : "biden";            
 
@@ -50,15 +53,8 @@ namespace GameRoundResult.Web.Models
 
         public string GetText(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string key)
         {
-            var betChoice = new CoinTossBetLogViewModel { Choice = key };
-            return stringLocalizer.GetStringWithNamcespace(betChoice.TolgeeChoiceKey, "CoinToss");
+            var betChoice = new BetLogViewModel { Choice = key };
+            return stringLocalizer.GetStringWithNamcespace(betChoice.ChoiceKey, "CoinToss");
         }        
-    }
-
-    public class CoinTossBetLogViewModel : BetLogViewModel
-    {
-        public virtual string ChoiceDisplay => char.ToUpper(Choice[0]) + Choice.Substring(1);
-
-        public string TolgeeChoiceKey => "glossary_" + Choice;
-    }    
+    }   
 }
