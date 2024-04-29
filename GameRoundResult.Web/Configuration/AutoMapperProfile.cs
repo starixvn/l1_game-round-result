@@ -9,6 +9,7 @@ using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
 using GameRoundResult.Core.Database.Entities.RoundHistory;
 using GameRoundResult.Web.Models.RoundHistory;
+using GameRoundResult.Core.Database.Entities.CoinToss;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -448,6 +449,8 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<FootballSlotBetLog, FootballSlotBetLogViewModel>();
 
             CreateMap<RoundHistoryBetEntity, RoundHistoryBetViewModel>();
+
+            CreateMap<CoinTossRound, CoinTossRoundResultViewModel>();
         }
-    }            
+    }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
+using GameRoundResult.Core.Database.Entities.CoinToss;
 using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
 using GameRoundResult.Web.CrashGames.ViewModels;
@@ -70,6 +71,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.BandarQiuQiu, typeof(GameRoundAccessor<BandarQiuQiuRound, BandarQiuQiuRoundResultViewModel>) },
             { GameType.FootballDice, typeof(GameRoundAccessor<FootballDiceRound, FootballDiceRoundResultViewModel>) },
             { GameType.FootballSlot, typeof(GameRoundAccessor<FootballSlotRound, FootballSlotRoundResultViewModel>) },
+            { GameType.CoinToss, typeof(GameRoundAccessor<CoinTossRound, CoinTossRoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;
