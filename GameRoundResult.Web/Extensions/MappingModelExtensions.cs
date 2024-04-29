@@ -1,5 +1,4 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
 using GameRoundResult.Core.Database.Entities.ColorGame;
@@ -8,7 +7,10 @@ using GameRoundResult.Web.CrashGames.ViewModels;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
 using GameRoundResult.Core.Database.Entities.RoundHistory;
+using GameRoundResult.Core.Database.Entities.CoinToss;
+using GameRoundResult.Core.Database.Entities.GameDraw;
 using GameRoundResult.Web.Models.RoundHistory;
+using System;
 
 namespace GameRoundResult.Web.Extensions
 {
@@ -370,6 +372,13 @@ namespace GameRoundResult.Web.Extensions
         public static FootballSlotBetLogViewModel ToViewModel(this FootballSlotBetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<FootballSlotBetLog, FootballSlotBetLogViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+        public static BetLogViewModel ToViewModel(this CoinTossBetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<CoinTossBetLog, BetLogViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });
