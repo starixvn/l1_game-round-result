@@ -224,6 +224,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<BacBall2EndGameInfoService>();
             services.AddScoped<LuckyNext1EndGameInfoService>();
             services.AddScoped<LuckyNext2EndGameInfoService>();
+            services.AddScoped<CoinTossEndGameInfoService>();
 
             services.AddScoped<IRoundHistoryRepository, RoundHistoryRepository>();
             services.AddScoped<IRoundHistoryService, RoundHistoryService>();
