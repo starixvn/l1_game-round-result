@@ -1,5 +1,6 @@
 ﻿using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities.BacBall;
+using GameRoundResult.Core.Database.Entities.CoinToss;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.RoundHistory;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,7 +17,8 @@ namespace GameRoundResult.Web.RoundHistory
     public class RoundHistoryAccessorFactory : IRoundHistoryAccessorFactory
     {
         private readonly Dictionary<GameType, Type> services = new()
-        {           
+        {
+            { GameType.CoinToss, typeof(RoundHistoryAccessor<CoinTossRound, CoinTossRoundResultViewModel, CoinTossBet, RoundHistoryBetViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;
