@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameRoundResult.Integration
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{35ED6511-4482-47F3-9DB8-611B5C667452}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRoundResult.Web.UnitTests", "GameRoundResult.Web.UnitTests\GameRoundResult.Web.UnitTests.csproj", "{E418ED51-911A-492B-8DB9-9335A8FF804F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameRoundResult.Web.UnitTests", "GameRoundResult.Web.UnitTests\GameRoundResult.Web.UnitTests.csproj", "{E418ED51-911A-492B-8DB9-9335A8FF804F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

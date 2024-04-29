@@ -1,0 +1,16 @@
+﻿using GameRoundResult.Core.Constants;
+
+namespace GameRoundResult.Core.Models.RoundHistory
+{
+    public class RoundHistoryRequestBase
+    {
+        public GameType Game { get; set; }
+        public long RoundId { get; set; }
+        public string Nickname { get; set; }
+        public bool ExcludeUUS { get; set; }
+        public bool ExcludeBot { get; set; }
+        public string PartnerId { get; set; }
+        public string Username { get; set; }
+        public bool ConvertToUSD { get; set; }
+    }
+}
