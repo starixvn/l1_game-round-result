@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
+using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.BacBall;
 using GameRoundResult.Core.Database.Entities.LuckyNext;
 using GameRoundResult.Core.Services;
@@ -30,19 +31,22 @@ namespace GameRoundResult.Web.Accessor
 
         public async Task<(long, IEnumerable<object>)> GetGameDrawType(GetRoundResultRequest request, DateTime utcDate)
         {
-            Dictionary<GameType, (long, IEnumerable<object> )> roundResultType = new()
+            Dictionary<GameType, (long, IEnumerable<object>)> roundResultType = new()
             {
                 { GameType.BacBall1, await gameRoundResultService.GetGameDrawResultAsync
                 <BacBall1Round, BacBallRoundResult, BacBallSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
-                
+
                 { GameType.BacBall2, await gameRoundResultService.GetGameDrawResultAsync
                 <BacBall2Round, BacBallRoundResult, BacBallSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
-                
+
                 { GameType.LuckyNext1, await gameRoundResultService.GetGameDrawResultAsync
                 <LuckyNext1Round, LuckyNextRoundResult, LuckyNextSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
-                
+
                 { GameType.LuckyNext2, await gameRoundResultService.GetGameDrawResultAsync
                 <LuckyNext2Round, LuckyNextRoundResult, LuckyNextSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
+
+                { GameType.SeBall1, await gameRoundResultService.GetGameDrawResultAsync
+                <SeBall1Round, SeBallRoundResult, SeBallSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
             };
 
             return roundResultType[request.GameType];

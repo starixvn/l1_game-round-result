@@ -77,6 +77,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.LuckyNext1, typeof(GameRoundAccessor<LuckyNext1Round, LuckyNextRoundResultViewModel>) },
             { GameType.LuckyNext2, typeof(GameRoundAccessor<LuckyNext2Round, LuckyNextRoundResultViewModel>) },
             { GameType.CoinToss, typeof(GameRoundAccessor<CoinTossRound, CoinTossRoundResultViewModel>) },
+            { GameType.SeBall1, typeof(GameRoundAccessor<SeBall1Round, SeBallRoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;
@@ -89,7 +90,7 @@ namespace GameRoundResult.Web.Accessor
         public IGameRoundAccessor GetService(GameType game, bool isCrashGame)
         {
             var serviceType = isCrashGame ? typeof(GameRoundAccessor<CrashGameRound, CrashGameRoundResultViewModel>) : services[game];
-            return (IGameRoundAccessor)serviceProvider.GetRequiredService(serviceType);        
+            return (IGameRoundAccessor)serviceProvider.GetRequiredService(serviceType);
         }
     }
 }

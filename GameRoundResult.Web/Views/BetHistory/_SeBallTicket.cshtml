@@ -1,0 +1,104 @@
+﻿@using BallColorViewModel = GameRoundResult.Web.Models.GameRoundResult.BallColorViewModel;
+@using GameRoundResult.Core.Database.Entities
+
+@model SeBallTicketViewModel<SeBall1Round>
+
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<SeBall> Localizer
+@inject IJsonStringLocalizer<RoundResultViewModel> RoundResultLocalizer
+@inject IJsonStringLocalizer<SabaNumber> SabaNumberLocalizer
+
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,GameTicketViewModel,RoundResultViewModel,SeBall,SabaNumber" id="tolgee_namespace" readonly hidden />
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th>@SabaNumberLocalizer["glossary_draw_id"]</th>
+            <th>@CommonLocalizer["Result"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null)
+        {
+            var time = Model.DrawResult.Time;
+            <tr>
+                <td>
+                    @time.ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture)
+                    <br />
+                    @time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@Model.DrawId</td>
+                <td class="text-center">
+                    @{
+                        for(var i = 0; i < Model.DrawResult.Balls.Count; i++)
+                        {
+                            var ball = Model.DrawResult.Balls[i];
+                            <span class="bacball-result @BallColorViewModel.GetBallColor(ball)">@ball</span>
+                        }
+                    }
+                    - @Model.DrawResult.Balls.Sum()
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center no-data">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["BetTime"] (@Model.TimeOffsetString)</th>
+            <th>@CommonLocalizer["BetChoice"]</th>
+            <th>@CommonLocalizer["Odds"]</th>
+            <th>@CommonLocalizer["Stake"]</th>
+            <th>@CommonLocalizer["Win"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.BetLogs.Any() && Model.RoundResult != null)
+        {
+            foreach (var bet in Model.BetLogs.OrderByDescending(b => b.Time))
+            {
+                <tr class="@Model.GetRowBetClass(bet.ChoiceDisplay)">
+                    <td>
+                        @bet.DateDisplay
+                        <br />
+                        @bet.TimeDisplay
+                    </td>
+                    <td>@Html.Raw(@Model.GetDisplayChoice(Localizer, bet))</td>
+                    <td>@Model.Odds[bet.Choice].FormatOdds(Model.FractionalOddsFormat)</td>
+                    <td>@bet.Amount.Format()</td>
+                    <td>@Model.GetBetLogWin(bet).Format()</td>
+                </tr>
+            }
+            <tr class="total">
+                <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>
+                <td>@Model.TotalBet.Format()</td>
+                <td>@Model.BetWin.Format()</td>
+            </tr>
+            <tr class="total">
+                <td colspan="3" class="text-right">@CommonLocalizer["WinLoss"]</td>
+                <td colspan="2" class="@Model.WinLossRowClassName">@Model.WinLoss.Format()</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

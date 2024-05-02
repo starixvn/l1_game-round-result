@@ -1,0 +1,50 @@
+﻿using System.Collections.Generic;
+using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Web.Extensions;
+using GameRoundResult.Web.Models.GameTicket;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Localization;
+
+namespace GameRoundResult.Web.Models
+{
+    public class SeBallTicketViewModel<TRound> : GameDrawTicketViewModel<TRound, SeBallRoundResult, SeBallSettlementResult>
+        where TRound : SeBall1Round
+    {
+        public string GetDisplayChoice(IStringLocalizer localizer, TranslationBetLogViewModel betlog)
+        {
+            var subChoices = new List<string>() { "blue4", "blue3", "red2", "red3", "red4" };
+            var index = subChoices.FindIndex(c => c == betlog.Choice);
+            if (index >= 0)
+            {
+                return SeBallHtmlHelper.RenderSubBetChoiceImages(index).GetHtmlString();
+            }
+            return localizer[betlog.ChoiceDisplay];
+        }
+    }
+
+    public abstract class SeBallHtmlHelper
+    {
+        public static TagBuilder RenderSubBetChoiceImages(int redCount)
+        {
+            var tagBuilder = new TagBuilder("div");
+            for (var i = 0; i < redCount; i++)
+            {
+                tagBuilder.InnerHtml.AppendHtml(RenderChip(true));
+            }
+            for (var j = 0; j < 4 - redCount; j++)
+            {
+                tagBuilder.InnerHtml.AppendHtml(RenderChip(false));
+            }
+            return tagBuilder;
+        }
+
+        public static TagBuilder RenderChip(bool isRed)
+        {
+            var img = new TagBuilder("img");
+            var color = isRed ? "red" : "blue";
+            img.AddCssClass($"img pb-2");
+            img.Attributes.Add("src", $"/scss/images/number-games/{color}-chip.png");
+            return img;
+        }
+    }
+}

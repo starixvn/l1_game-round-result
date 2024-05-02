@@ -1,11 +1,11 @@
 ﻿using GameRoundResult.Core.Constants;
+using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.BacBall;
 using GameRoundResult.Core.Database.Entities.LuckyNext;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
 using System;
 using System.Collections.Generic;
-
 
 namespace GameRoundResult.Web._Shared
 {
@@ -26,6 +26,9 @@ namespace GameRoundResult.Web._Shared
 
                 case (GameType.LuckyNext2):
                     return GetDrawResultLuckyNext((IEnumerable<LuckyNext2Round>)result, request);
+
+                case (GameType.SeBall1):
+                    return GetSeBallResult((IEnumerable<SeBall1Round>)result, request);
 
                 default:
                     return new List<RoundResultViewModel>();
@@ -68,6 +71,31 @@ namespace GameRoundResult.Web._Shared
                     if (request.RoundId == 0 || (request.RoundId == gameDraw.Result[i].DrawId))
                     {
                         var roundResult = new BacBallRoundResultViewModel
+                        {
+                            DrawId = gameDraw.Result[i].DrawId,
+                            Result = gameDraw.Result[i],
+                            SettlementResult = gameDraw.SettlementResult[i],
+                            Time = TimeZoneInfo.ConvertTimeFromUtc(gameDraw.Time, request.TimeZoneInfo),
+                            TimeZone = request.TimeZoneInfo
+                        };
+                        roundResults.Add(roundResult);
+                    }
+                }
+            }
+            return roundResults;
+        }
+
+        private static IEnumerable<RoundResultViewModel> GetSeBallResult(IEnumerable<SeBall1Round> result, GetRoundResultRequest request)
+        {
+            var roundResults = new List<RoundResultViewModel>();
+
+            foreach (var gameDraw in result)
+            {
+                for (var i = gameDraw.Result.Count - 1; i >= 0; i--)
+                {
+                    if (request.RoundId == 0 || (request.RoundId == gameDraw.Result[i].DrawId))
+                    {
+                        var roundResult = new SeBallRoundResultViewModel
                         {
                             DrawId = gameDraw.Result[i].DrawId,
                             Result = gameDraw.Result[i],

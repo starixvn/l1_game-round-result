@@ -69,6 +69,7 @@
         BacBall2 = 1002,
         LuckyNext1 = 1003,
         LuckyNext2 = 1004,
-        CoinToss = 80
+        CoinToss = 80,
+        SeBall1 = 1005
     }
 }

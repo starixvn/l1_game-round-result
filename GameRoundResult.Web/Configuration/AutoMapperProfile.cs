@@ -456,7 +456,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<BacBall2BetLog, TranslationBetLogViewModel>();
             CreateMap<BacBall2Round, BacBallRoundResultViewModel>();
 
-            CreateMap<LuckyNext1BetLog, TranslationBetLogViewModel> ();
+            CreateMap<LuckyNext1BetLog, TranslationBetLogViewModel>();
             CreateMap<LuckyNext1Round, LuckyNextRoundResultViewModel>();
 
             CreateMap<LuckyNext2BetLog, TranslationBetLogViewModel>();
@@ -466,6 +466,9 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<CoinTossRound, CoinTossRoundResultViewModel>();
             CreateMap<CoinTossBetLog, BetLogViewModel>();
+            
+            CreateMap<SeBall1BetLog, TranslationBetLogViewModel>();
+            CreateMap<SeBall1Round, SeBallRoundResultViewModel>();
         }
     }
 }
