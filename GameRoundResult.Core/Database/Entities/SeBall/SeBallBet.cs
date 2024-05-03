@@ -16,8 +16,6 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal Blue3 { get; set; }
         public decimal Blue4 { get; set; }
 
-        public double TotalAmount { get; set; }
-
         public override decimal TotalBet => Odd + Even + Red2 + Red3 + Red4 + Blue3 + Blue4;
     }
 }

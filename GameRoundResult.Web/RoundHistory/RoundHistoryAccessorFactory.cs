@@ -1,5 +1,6 @@
 ﻿using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities.CoinToss;
+using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.BacBall;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.RoundHistory;
@@ -19,6 +20,7 @@ namespace GameRoundResult.Web.RoundHistory
         private readonly Dictionary<GameType, Type> services = new()
         {
             { GameType.CoinToss, typeof(RoundHistoryAccessor<CoinTossRound, CoinTossRoundResultViewModel, CoinTossBet, RoundHistoryBetViewModel>) },
+            { GameType.SeBall1, typeof(DrawRoundHistoryAccessor<SeBall1Round, SeBallRoundResultViewModel, SeBall1Bet, RoundHistoryBetViewModel, SeBallRoundResult, SeBallSettlementResult>) },
         };
 
         private readonly IServiceProvider serviceProvider;

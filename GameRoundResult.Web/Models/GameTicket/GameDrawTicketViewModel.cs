@@ -21,7 +21,7 @@ namespace GameRoundResult.Web.Models.GameTicket
 
         public DateTime Time => DrawResult.Time;
 
-        public string GetRowBetClass(string displayedChoice)
+        public override string GetRowBetClass(string displayedChoice)
         {
             return IsWinningChoice(displayedChoice) ? "bold text-blue" : string.Empty;
         }

@@ -1,0 +1,41 @@
+[
+  {
+    "_id": {
+      "$oid": "66332c2c978ceb5b8aa0324a"
+    },
+    "freeBet": false,
+    "roundId": 1,
+    "drawId": 1,
+    "uid": "6633298c430bbaca871ba901",
+    "__v": 0,
+    "betwin": 40,
+    "blue3": 10,
+    "blue4": 10,
+    "clientSeed": "0000",
+    "currency": "$US",
+    "even": 0,
+    "name": "Gray91334",
+    "odd": 40,
+    "odds": {
+      "odd": 2,
+      "even": 2,
+      "red2": 4,
+      "red3": 4,
+      "red4": 4,
+      "blue3": 4,
+      "blue4": 4
+    },
+    "operatorId": "ONEworks1",
+    "paid": true,
+    "playerId": "123",
+    "rate": 1000,
+    "red2": 10,
+    "red3": 10,
+    "red4": 10,
+    "siteId": "4100300",
+    "time": {
+      "$date": "2024-05-02T06:01:16.246Z"
+    },
+    "totalAmount": 90
+  }
+]

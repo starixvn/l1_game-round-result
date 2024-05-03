@@ -1,24 +1,47 @@
 ﻿using System.Collections.Generic;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Models.GameTicket;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Localization;
 
 namespace GameRoundResult.Web.Models
 {
     public class SeBallTicketViewModel<TRound> : GameDrawTicketViewModel<TRound, SeBallRoundResult, SeBallSettlementResult>
         where TRound : SeBall1Round
     {
-        public string GetDisplayChoice(IStringLocalizer localizer, TranslationBetLogViewModel betlog)
+        protected override string GetChoice(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string choice)
         {
             var subChoices = new List<string>() { "blue4", "blue3", "red2", "red3", "red4" };
-            var index = subChoices.FindIndex(c => c == betlog.Choice);
+            var index = subChoices.FindIndex(c => c == choice);
             if (index >= 0)
             {
                 return SeBallHtmlHelper.RenderSubBetChoiceImages(index).GetHtmlString();
             }
-            return localizer[betlog.ChoiceDisplay];
+            var betChoice = new BetLogViewModel { Choice = choice };
+            return stringLocalizer.GetStringWithNamcespace(betChoice.ChoiceKey, "SeBall");
+        }
+
+        protected override decimal GetOdds(string choice)
+        {
+            return Odds[choice];
+        }
+
+        public override IEnumerable<string> BuildBetLogs(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, bool convertToUSD = false, int baseCurrencyMultiplier = 1)
+        {
+            var result = new List<string>();
+            foreach (var bet in BetLogs)
+            {
+                result.Add(BuildRow(stringLocalizer, bet, convertToUSD, baseCurrencyMultiplier));
+            }
+
+            return result;
+        }
+
+        public override decimal GetBetLogWin(BetLogViewModel bet)
+        {
+            var isWin = IsWinningChoice(bet.DisplayedChoice);
+            return isWin ? Odds[bet.Choice] * bet.Amount : 0;
         }
     }
 
@@ -42,7 +65,7 @@ namespace GameRoundResult.Web.Models
         {
             var img = new TagBuilder("img");
             var color = isRed ? "red" : "blue";
-            img.AddCssClass($"img pb-2");
+            img.AddCssClass($"img");
             img.Attributes.Add("src", $"/scss/images/number-games/{color}-chip.png");
             return img;
         }

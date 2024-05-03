@@ -1,0 +1,40 @@
+[
+  {
+    "_id": {
+      "$oid": "66286636e838ff2ad3369e61"
+    },
+    "uid": "6605479c0c847f95df7b7b39",
+    "drawId": 1,
+    "roundId": 1,
+    "freeBet": false,
+    "betwin": 19.6,
+    "clientSeed": "4925",
+    "currency": "$US",
+    "name": "Player",
+    "odds": {
+      "blue3": 3.75,
+      "blue4": 14.4,
+      "even": 1.96,
+      "odd": 1.96,
+      "red2": 2.4,
+      "red3": 3.75,
+      "red4": 14.4
+    },
+    "operatorId": "ONEworks1",
+    "paid": true,
+    "playerId": "123",
+    "rate": 1000,
+    "siteId": "4100300",
+    "time": {
+      "$date": "2024-05-01T01:53:58.225Z"
+    },
+    "totalAmount": 10,
+    "blue3": 0,
+    "blue4": 0,
+    "even": 0,
+    "odd": 10,
+    "red2": 0,
+    "red3": 0,
+    "red4": 0
+  }
+]

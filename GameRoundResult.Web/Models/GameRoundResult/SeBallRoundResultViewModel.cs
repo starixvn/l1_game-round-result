@@ -29,6 +29,11 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
+        public override string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            return GetResult();
+        }
+
         public string GetResult()
         {
             var tagBuilder = new TagBuilder("div");
@@ -49,16 +54,13 @@ namespace GameRoundResult.Web.Models
             return tagBuilder;
         }
 
-        public string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public override string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"result-row");
 
             var winningText = GetWinningOption(SettlementResult, stringLocalizer);
-            var contentBuilder = new TagBuilder("div");
-            contentBuilder.AddCssClass($"result-row");
-            contentBuilder.InnerHtml.AppendHtml(winningText);
-            tagBuilder.InnerHtml.AppendHtml(contentBuilder);
+            tagBuilder.InnerHtml.AppendHtml(winningText);
 
             return tagBuilder.GetHtmlString();
         }

@@ -1,0 +1,12 @@
+﻿{
+  "data": [
+    [
+      "05/01/2024<br/>04:43 PM",
+      "1",
+      "<div class=\"result-row\"><span class=\"result-column result-text bacball-result green-ball\">52</span><span class=\"result-column result-text bacball-result green-ball\">28</span><span class=\"result-column result-text bacball-result green-ball\">48</span><span class=\"result-column result-text bacball-result green-ball\">40</span></div>",
+      "<div class=\"result-row\"><div>Even, <img class=\"img\" src=\"/scss/images/number-games/blue-chip.png\"><img class=\"img\" src=\"/scss/images/number-games/blue-chip.png\"><img class=\"img\" src=\"/scss/images/number-games/blue-chip.png\"><img class=\"img\" src=\"/scss/images/number-games/blue-chip.png\"></div></div>"
+    ]
+  ],
+  "recordsFiltered": 1,
+  "recordsTotal": 1
+}

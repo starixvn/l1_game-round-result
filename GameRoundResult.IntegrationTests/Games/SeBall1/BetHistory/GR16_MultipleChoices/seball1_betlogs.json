@@ -1,0 +1,191 @@
+[
+  {
+    "_id": {
+      "$oid": "66332c2c978cebfaaba03248"
+    },
+    "amount": 10,
+    "rebet": false,
+    "roundId": 1,
+    "drawId": 1,
+    "uid": "6633298c430bbaca871ba901",
+    "name": "Gray91334",
+    "time": {
+      "$date": "2024-05-02T06:01:16.210Z"
+    },
+    "choice": "odd",
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1000,
+    "operatorId": "ONEworks1",
+    "playerId": "123",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "66332c2c978ceb2978a0324c"
+    },
+    "amount": 10,
+    "rebet": false,
+    "roundId": 1,
+    "drawId": 1,
+    "uid": "6633298c430bbaca871ba901",
+    "name": "Gray91334",
+    "time": {
+      "$date": "2024-05-02T06:01:16.358Z"
+    },
+    "choice": "red2",
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1000,
+    "operatorId": "ONEworks1",
+    "playerId": "123",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "66332c2e978ceb396ba03250"
+    },
+    "amount": 10,
+    "rebet": false,
+    "roundId": 1,
+    "drawId": 1,
+    "uid": "6633298c430bbaca871ba901",
+    "name": "Gray91334",
+    "time": {
+      "$date": "2024-05-02T06:01:18.030Z"
+    },
+    "choice": "red3",
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1000,
+    "operatorId": "ONEworks1",
+    "playerId": "123",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "66332c2e978ceb4372a03254"
+    },
+    "amount": 10,
+    "rebet": false,
+    "roundId": 1,
+    "drawId": 1,
+    "uid": "6633298c430bbaca871ba901",
+    "name": "Gray91334",
+    "time": {
+      "$date": "2024-05-02T06:01:18.178Z"
+    },
+    "choice": "red4",
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1000,
+    "operatorId": "ONEworks1",
+    "playerId": "123",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "66332c2e978ceb265fa03258"
+    },
+    "amount": 10,
+    "rebet": false,
+    "roundId": 1,
+    "drawId": 1,
+    "uid": "6633298c430bbaca871ba901",
+    "name": "Gray91334",
+    "time": {
+      "$date": "2024-05-02T06:01:18.331Z"
+    },
+    "choice": "blue3",
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1000,
+    "operatorId": "ONEworks1",
+    "playerId": "123",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "66332c2e978ceb188aa0325c"
+    },
+    "amount": 10,
+    "rebet": false,
+    "roundId": 1,
+    "drawId": 1,
+    "uid": "6633298c430bbaca871ba901",
+    "name": "Gray91334",
+    "time": {
+      "$date": "2024-05-02T06:01:18.484Z"
+    },
+    "choice": "blue4",
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1000,
+    "operatorId": "ONEworks1",
+    "playerId": "123",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "66332c2e978cebe102a03260"
+    },
+    "amount": 10,
+    "rebet": false,
+    "roundId": 1,
+    "drawId": 1,
+    "uid": "6633298c430bbaca871ba901",
+    "name": "Gray91334",
+    "time": {
+      "$date": "2024-05-02T06:01:18.640Z"
+    },
+    "choice": "odd",
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1000,
+    "operatorId": "ONEworks1",
+    "playerId": "123",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "66332c2e978ceb28a4a03264"
+    },
+    "amount": 10,
+    "rebet": false,
+    "roundId": 1,
+    "drawId": 1,
+    "uid": "6633298c430bbaca871ba901",
+    "name": "Gray91334",
+    "time": {
+      "$date": "2024-05-02T06:01:18.788Z"
+    },
+    "choice": "odd",
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1000,
+    "operatorId": "ONEworks1",
+    "playerId": "123",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "66332c2e978ceb6ea6a03268"
+    },
+    "amount": 10,
+    "rebet": false,
+    "roundId": 1,
+    "drawId": 1,
+    "uid": "6633298c430bbaca871ba901",
+    "name": "Gray91334",
+    "time": {
+      "$date": "2024-05-02T06:01:18.886Z"
+    },
+    "choice": "odd",
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1000,
+    "operatorId": "ONEworks1",
+    "playerId": "123",
+    "__v": 0
+  }
+]

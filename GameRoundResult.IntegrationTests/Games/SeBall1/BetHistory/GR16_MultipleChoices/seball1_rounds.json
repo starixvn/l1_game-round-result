@@ -1,0 +1,41 @@
+[
+  {
+    "_id": {
+      "$oid": "66332c3b978ceb5714a0326f"
+    },
+    "time": {
+      "$date": "2024-05-02T06:01:31.071Z"
+    },
+    "ended": true,
+    "id": 1,
+    "drawId": 1,
+    "result": [
+      {
+        "balls": [
+          51,
+          16,
+          56,
+          3
+        ],
+        "time": {
+          "$date": "2024-05-02T06:01:31.071Z"
+        },
+        "drawId": 1
+      }
+    ],
+    "settlementResult": [
+      {
+        "odd": false,
+        "even": true,
+        "red3": false,
+        "red4": false,
+        "blue3": false,
+        "blue4": true,
+        "red2": false,
+        "drawId": 1
+      }
+    ],
+    "exchangeRateId": 3,
+    "__v": 0
+  }
+]

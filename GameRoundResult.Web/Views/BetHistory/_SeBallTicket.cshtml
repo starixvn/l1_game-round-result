@@ -17,7 +17,7 @@
     <thead>
         <tr>
             <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
-            <th>@SabaNumberLocalizer["glossary_draw_id"]</th>
+            <th>@CommonLocalizer["RoundId"]</th>
             <th>@CommonLocalizer["Result"]</th>
         </tr>
     </thead>
@@ -68,19 +68,9 @@
     <tbody>
         @if (Model.BetLogs.Any() && Model.RoundResult != null)
         {
-            foreach (var bet in Model.BetLogs.OrderByDescending(b => b.Time))
+            foreach (var row in Model.BuildBetLogs(RoundResultLocalizer))
             {
-                <tr class="@Model.GetRowBetClass(bet.ChoiceDisplay)">
-                    <td>
-                        @bet.DateDisplay
-                        <br />
-                        @bet.TimeDisplay
-                    </td>
-                    <td>@Html.Raw(@Model.GetDisplayChoice(Localizer, bet))</td>
-                    <td>@Model.Odds[bet.Choice].FormatOdds(Model.FractionalOddsFormat)</td>
-                    <td>@bet.Amount.Format()</td>
-                    <td>@Model.GetBetLogWin(bet).Format()</td>
-                </tr>
+                @Html.Raw(row)
             }
             <tr class="total">
                 <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>
