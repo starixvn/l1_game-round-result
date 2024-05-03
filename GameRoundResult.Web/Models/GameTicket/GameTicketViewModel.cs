@@ -15,7 +15,7 @@ namespace GameRoundResult.Web.Models
         public GameConfigsType GameType { get; set; }
         public TimeSpan TimeZoneOffset { get; set; }
 
-        public string TimeOffsetString => $"GMT{TimeZoneOffset.Hours:+#;-#}";    
+        public string TimeOffsetString => $"GMT{TimeZoneOffset.Hours:+#;-#}";
 
         public bool? FractionalOddsFormat { get; set; }
 
@@ -31,7 +31,7 @@ namespace GameRoundResult.Web.Models
 
         public virtual IEnumerable<string> BuildBetLogs(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, bool? isFrationalFormat = false, bool convertToUSD = false, int baseCurrencyMultiplier = 1)
         {
-            return new List<string>();            
+            return new List<string>();
         }
 
         public virtual string GetRowBetClass(string choice)
@@ -63,7 +63,7 @@ namespace GameRoundResult.Web.Models
             AddColumn(rowBuilder, $"{GetChoice(stringLocalizer, bet.Choice)}");
             AddColumn(rowBuilder, $"{GetOdds(bet.Choice).FormatOddsWithZero(isFrationalFormat)}");
             AddColumn(rowBuilder, $"{(convertToUSD ? bet.ConvertToBase(bet.Amount, baseCurrencyMultiplier).Format() : bet.Amount.Format())}");
-            AddColumn(rowBuilder, $"{(convertToUSD ? bet.ConvertToBase(GetBetLogWin(bet), baseCurrencyMultiplier).Format() : GetBetLogWin(bet).Format()) }");
+            AddColumn(rowBuilder, $"{(convertToUSD ? bet.ConvertToBase(GetBetLogWin(bet), baseCurrencyMultiplier).Format() : GetBetLogWin(bet).Format())}");
 
             return rowBuilder.GetHtmlString();
         }

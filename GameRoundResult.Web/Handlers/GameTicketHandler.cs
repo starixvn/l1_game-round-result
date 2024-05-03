@@ -23,18 +23,16 @@ namespace GameRoundResult.Web.Handlers
 
         public async Task<GameTicketViewModel> Handle(GetGameTicketRequest request, CancellationToken cancellationToken)
         {
-            /*
             var response = await gameManagementApi.GetGameConfigById((int)request.GameId);
-            
+
             if (response?.Data == null && string.IsNullOrWhiteSpace(response?.Data?.Name))
             {
                 return null;
             }
 
-            request.GameConfigs = response.Data;            
-            */
+            request.GameConfigs = response.Data;
 
-            var service = serviceFactory.GetService(request.GameId, Core.Constants.GameConfigsType.RNG);
+            var service = serviceFactory.GetService(request.GameId, request.GameConfigs.Type);
             var gameTicket = await service.GetAsync(request);
 
             if (gameTicket != null)

@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
 using GameRoundResult.Core.Database.Entities.GameDraw;
-using GameRoundResult.Core.Database.Entities.RoundHistory;
-using GameRoundResult.Core.RoundHistory.Entities;
 using GameRoundResult.Core.Services.RoundHistory;
 using GameRoundResult.Web._Shared;
 using GameRoundResult.Web.Models;
@@ -18,15 +16,14 @@ using System.Linq.Expressions;
 namespace GameRoundResult.Web.RoundHistory
 {
     public class DrawRoundHistoryAccessor<TRoundEntity, TRoundViewModel, TBetEntity, TBetViewModel, TResult, TSettlementResult> : RoundHistoryAccessor<TRoundEntity, TRoundViewModel, TBetEntity, TBetViewModel>
-        where TResult: GameDrawBase
+        where TResult : GameDrawBase
         where TRoundEntity : GameDraw<TResult, TSettlementResult>
         where TRoundViewModel : RoundResultViewModel
-        where TBetEntity : RoundHistoryBetEntity, new()
+        where TBetEntity : GameDrawBaseBetEntity, new()
         where TBetViewModel : RoundHistoryBetViewModel
     {
-
         public DrawRoundHistoryAccessor(IRoundHistoryService roundHistoryService, IMapper mapper, IConfiguration configuration) : base(roundHistoryService, mapper, configuration)
-        {            
+        {
         }
 
         protected override TRoundViewModel MapRoundResult(TRoundEntity roundResult, TimeZoneInfo timeZone, RoundHistoryRequest request)
