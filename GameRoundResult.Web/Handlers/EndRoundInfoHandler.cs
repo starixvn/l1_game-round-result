@@ -56,7 +56,7 @@ namespace GameRoundResult.Web.Handlers
 
                     if (response?.Data == null || string.IsNullOrWhiteSpace(response?.Data.Name))
                     {
-                        return EndRoundInfoError.SB1006;
+                        return EndRoundInfoError.SB1001;
                     }
 
                     var gameConfigs = response.Data;

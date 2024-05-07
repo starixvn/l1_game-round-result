@@ -1,14 +1,26 @@
-﻿@inject IJsonStringLocalizer<GameTicketViewModel> Localizer
+﻿@using System.Threading
+
+@inject IJsonStringLocalizer<GameTicketViewModel> Localizer
+@model bool
 
 @section Styles {
     <link href="~/css/pages/error-page.min.css" rel="stylesheet" asp-append-version="true" />
 }
 
-@if (Model.EnableTolgee)
+@if (Model)
 {
-    <input value="GameTicketResultViewModel,GameTicketViewModel" id="tolgee_namespace" readonly hidden/>
+    <input value="GameTicketResultViewModel,GameTicketViewModel" id="tolgee_namespace" readonly hidden />
+    <input id="tolgee_language" value="@Thread.CurrentThread.CurrentCulture.Name" hidden readonly />
 }
 <div class="error-form">
     <img src="~/scss/images/game_not_support.jpg" alt="Error" asp-append-version="true" />
     <p class="desc">@Localizer["GameNotSupported"]</p>
 </div>
+
+@section Scripts {
+    @if (Model)
+    {
+        <script src="~/lib/tolgee/index.js"></script>
+        <script src="~/js/tolgee.js"></script>
+    }
+}

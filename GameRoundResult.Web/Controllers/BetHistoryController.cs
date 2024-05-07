@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Database.Entities.Player;
 using GameRoundResult.Core.Extensions;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web._Shared;
@@ -88,9 +89,11 @@ namespace GameRoundResult.Web.Controllers
 
                     if (viewModel.GameTicketResult == null)
                     {
-                        return View("GameNotSupported");
+
+                        return View("GameNotSupported", enableTolgee);
                     }
 
+                    viewModel.GameTicketResult.EnableTolgee = enableTolgee;
                     return View(viewModel);
                 }
 
@@ -176,7 +179,6 @@ namespace GameRoundResult.Web.Controllers
             var timeZoneInfo = TZConvert.GetTimeZoneInfo(config.TimeZone);
             var result = await mediator.Send(new GetGameTicketRequest(gameType, roundId, playerId, timeZoneInfo,
                 operatorId, freeBet, systemType));
-            result.EnableTolgee = enableTolgee;
 
             return result;
         }
