@@ -19,6 +19,7 @@ namespace GameRoundResult.IntegrationTests
         public RetrieveEndRoundTests(CustomWebApplicationFactory<Program> factory, GameManagementServiceFixture gameManagementServiceFixture) 
             : base(factory, gameManagementServiceFixture)
         {
+            databaseHelper.ClearAllData();
         }
 
         #region Index
