@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using TimeZoneConverter;
 
@@ -25,14 +24,15 @@ namespace GameRoundResult.Web.Controllers
         private readonly IConfiguration configuration;
         private readonly IPartnerRequestAuthentication partnerRequestAuthentication;
         private readonly ITimeLimitedDataProtector dataProtector;
-        private readonly HostConfiguration hostConfiguration;       
+        private readonly HostConfiguration hostConfiguration;
 
         public RoundHistoryController(
-            IMediator mediator, 
-            IConfiguration configuration, 
+            IMediator mediator,
+            IConfiguration configuration,
             IPartnerRequestAuthentication partnerRequestAuthentication,
             IDataProtectionProvider dataProtectionProvider,
-            IOptions<HostConfiguration> hostConfigurationOptions) {
+            IOptions<HostConfiguration> hostConfigurationOptions)
+        {
             this.mediator = mediator;
             this.configuration = configuration;
             this.partnerRequestAuthentication = partnerRequestAuthentication;
@@ -62,9 +62,9 @@ namespace GameRoundResult.Web.Controllers
                 Username = data[8],
                 PartnerId = data[9]
             };
-                
+
             var viewModel = await mediator.Send(request);
-          
+
             return View("~/RoundHistory/Views/Index.cshtml", viewModel);
         }
 
@@ -87,7 +87,7 @@ namespace GameRoundResult.Web.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetAccessUrl([FromBody] RoundHistoryRequest model)
-        {            
+        {
             var authenticationResult = await partnerRequestAuthentication.Authorize(model.Auth.OperatorId, Request, model.Auth.OperatorSecret);
             if (authenticationResult.IsAuthorize)
             {
@@ -97,7 +97,7 @@ namespace GameRoundResult.Web.Controllers
                 var redirectUrl = Url.Action("Index", "RoundHistory", new { queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
 
                 return Ok(redirectUrl);
-            }    
+            }
 
             return BadRequest();
         }

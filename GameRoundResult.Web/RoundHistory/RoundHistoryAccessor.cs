@@ -30,7 +30,7 @@ namespace GameRoundResult.Web.RoundHistory
     {
         private readonly IRoundHistoryService roundHistoryService;
         private readonly IMapper mapper;
-        private readonly IConfiguration configuration;        
+        private readonly IConfiguration configuration;
 
         public RoundHistoryAccessor(IRoundHistoryService roundHistoryService, IMapper mapper, IConfiguration configuration)
         {
@@ -54,16 +54,16 @@ namespace GameRoundResult.Web.RoundHistory
                 BaseCurrencyMultiplier = BaseCurrencyConfig.MultiplierMapper[configuration["SystemType"]],
                 BaseCurrency = BaseCurrencyConfig.CurrencyMapper[configuration["SystemType"]]
             };
-        }     
+        }
 
         protected virtual TRoundViewModel MapRoundResult(TRoundEntity roundResult, TimeZoneInfo timeZone, RoundHistoryRequest request)
         {
             var roundViewModel = roundResult?.ToViewModel<TRoundEntity, TRoundViewModel>(mapper, timeZone);
             return roundViewModel;
         }
-        
+
         protected virtual FilterDefinition<TRoundEntity> BuildRoundFilterExpression(long roundId)
-        {            
+        {
             var filter = Builders<TRoundEntity>.Filter.Eq(x => x.RoundId, roundId);
             return filter;
         }
