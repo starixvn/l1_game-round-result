@@ -1,0 +1,57 @@
+[
+  {
+    "time": {
+      "$date": "2024-04-05T07:29:29.021+00:00"
+    },
+    "ended": false,
+    "id": 12147,
+    "drawId": 48587,
+    "result": [
+      {
+        "time": {
+          "$date": "2024-04-05T07:29:29.021+00:00"
+        },
+        "player": 1,
+        "banker": 30,
+        "drawId": 48585
+      },
+      {
+        "time": {
+          "$date": "2024-04-05T07:29:56.024+00:00"
+        },
+        "player": 10,
+        "banker": 8,
+        "drawId": 48586
+      },
+      {
+        "time": {
+          "$date": "2024-04-05T07:30:23.023+00:00"
+        },
+        "player": 2,
+        "banker": 25,
+        "drawId": 48587
+      }
+    ],
+    "settlementResult": [
+      {
+        "player": false,
+        "banker": true,
+        "tie": false,
+        "drawId": 48585
+      },
+      {
+        "player": true,
+        "banker": false,
+        "tie": false,
+        "drawId": 48586
+      },
+      {
+        "player": false,
+        "banker": true,
+        "tie": false,
+        "drawId": 48587
+      }
+    ],
+    "exchangeRateId": 4816
+  }
+]

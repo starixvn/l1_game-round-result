@@ -1,0 +1,70 @@
+[
+  {
+    "uid": "62342b4ac46c7910b22b3b35",
+    "name": "Player",
+    "drawId": 48586,
+    "roundId": 12147,
+    "choice": "banker",
+    "amount": 1000,
+    "time": {
+      "$date": "2024-04-05T07:29:48.644+00:00"
+    },
+    "playerId": "123",
+    "siteId": "4100300",
+    "freeBet": false,
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1"
+  },
+  {
+    "uid": "62342b4ac46c7910b22b3b35",
+    "name": "Player",
+    "drawId": 48586,
+    "roundId": 12147,
+    "choice": "banker",
+    "amount": 1000,
+    "time": {
+      "$date": "2024-04-05T07:29:51.966+00:00"
+    },
+    "playerId": "123",
+    "siteId": "4100300",
+    "freeBet": false,
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1"
+  },
+  {
+    "uid": "62342b4ac46c7910b22b3b35",
+    "name": "Player",
+    "drawId": 48586,
+    "roundId": 12147,
+    "choice": "tie",
+    "amount": 1000,
+    "time": {
+      "$date": "2024-04-05T07:29:52.487+00:00"
+    },
+    "playerId": "123",
+    "siteId": "4100300",
+    "freeBet": false,
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1"
+  },
+  {
+    "uid": "62342b4ac46c7910b22b3b35",
+    "name": "Player",
+    "drawId": 48586,
+    "roundId": 12147,
+    "choice": "banker",
+    "amount": 1000,
+    "time": {
+      "$date": "2024-04-05T07:29:52.788+00:00"
+    },
+    "playerId": "123",
+    "siteId": "4100300",
+    "freeBet": false,
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1"
+  }
+]

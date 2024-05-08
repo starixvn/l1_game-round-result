@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "time": {
+      "$date": "2024-12-01T08:00:00.000Z"
+    },
+    "result": [
+      {
+        "time": {
+          "$date": "2024-12-01T08:00:00.000Z"
+        },
+        "player": 17,
+        "banker": 9,
+        "drawId": 1
+      }
+    ],
+    "drawId": 1,
+    "settlementResult": [
+      {
+        "player": true,
+        "banker": false,
+        "tie": false,
+        "drawId": 1
+      }
+    ],
+    "exchangeRateId": 3
+  }
+]

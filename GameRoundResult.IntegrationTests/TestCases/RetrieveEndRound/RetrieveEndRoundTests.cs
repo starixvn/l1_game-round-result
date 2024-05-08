@@ -37,7 +37,7 @@ namespace GameRoundResult.IntegrationTests
         {
             // arrange
             var model = GetModel();
-            model.GameTypeId = (byte) gameId;
+            model.GameTypeId = gameId;
             model.PlayerId = playerId;
             model.GameRoundId = roundId;
             var content = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
