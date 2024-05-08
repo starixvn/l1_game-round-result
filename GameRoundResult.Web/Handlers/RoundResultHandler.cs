@@ -24,7 +24,7 @@ namespace GameRoundResult.Web.Handlers
 
         public async Task<(long, IEnumerable<RoundResultViewModel>)> Handle(GetRoundResultRequest request, CancellationToken cancellationToken)
         {
-            var isCrashGame = await generalGameSettingService.IsCrashGame((byte)request.GameType);
+            var isCrashGame = await generalGameSettingService.IsCrashGame((int)request.GameType);
             var accessor = factory.GetService(request.GameType, isCrashGame);
 
             if (accessor != null)

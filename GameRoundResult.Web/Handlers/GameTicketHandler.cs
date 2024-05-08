@@ -6,6 +6,7 @@ using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
 using MediatR;
+using Sentry;
 
 namespace GameRoundResult.Web.Handlers
 {
@@ -22,17 +23,16 @@ namespace GameRoundResult.Web.Handlers
 
         public async Task<GameTicketViewModel> Handle(GetGameTicketRequest request, CancellationToken cancellationToken)
         {
-            var response = await gameManagementApi.GetGameConfigById((byte)request.GameId);
-
+            var response = await gameManagementApi.GetGameConfigById((int)request.GameId);
+            
             if (response?.Data == null && string.IsNullOrWhiteSpace(response?.Data?.Name))
             {
                 return null;
             }
 
-            request.GameConfigs = response.Data;
+            request.GameConfigs = response.Data;            
 
             var service = serviceFactory.GetService(request.GameId, request.GameConfigs.Type);
-
             var gameTicket = await service.GetAsync(request);
 
             if (gameTicket != null)

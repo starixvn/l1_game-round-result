@@ -728,3 +728,28 @@ div table.bandar-qiuqiu-table {
     }
 }
 
+.bacball-result {
+    height: 35px;
+    width: 35px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    padding-top: 9px;
+    font-weight: bold;
+    margin: 10px 5px 10px 5px;
+
+    &.green-ball {
+        background: url(../images/bacball/green-ball.png) no-repeat;
+        background-size: 35px 35px;
+    }
+
+    &.red-ball {
+        background: url(../images/bacball/red-ball.png) no-repeat;
+        background-size: 35px 35px;
+    }
+}
+
+.no-data {
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+}

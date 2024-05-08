@@ -65,5 +65,9 @@
         ChineseBlackjack =77,
         FootballDice = 78,
         FootballSlot = 79,
+        BacBall1 = 1001,
+        BacBall2 = 1002,
+        LuckyNext1 = 1003,
+        LuckyNext2 = 1004
     }
 }

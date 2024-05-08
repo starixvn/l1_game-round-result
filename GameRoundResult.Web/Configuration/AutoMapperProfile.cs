@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Database.Entities.BacBall;
+using GameRoundResult.Core.Database.Entities.LuckyNext;
 using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
 using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
@@ -443,6 +445,18 @@ namespace GameRoundResult.Web.Configuration
                 .ForMember(x => x.SymbolsResult, opt => opt.MapFrom(x => x.Result.Symbols))
                 .ForMember(x => x.NumberResult, opt => opt.MapFrom(x => x.Result.Number));
             CreateMap<FootballSlotBetLog, FootballSlotBetLogViewModel>();
+            
+            CreateMap<BacBall1BetLog, TranslationBetLogViewModel> ();
+            CreateMap<BacBall1Round, BacBallRoundResultViewModel>();
+
+            CreateMap<BacBall2BetLog, TranslationBetLogViewModel>();
+            CreateMap<BacBall2Round, BacBallRoundResultViewModel>();
+
+            CreateMap<LuckyNext1BetLog, TranslationBetLogViewModel> ();
+            CreateMap<LuckyNext1Round, LuckyNextRoundResultViewModel>();
+
+            CreateMap<LuckyNext2BetLog, TranslationBetLogViewModel>();
+            CreateMap<LuckyNext2Round, LuckyNextRoundResultViewModel>();
         }
     }
 }

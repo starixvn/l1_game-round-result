@@ -34,6 +34,8 @@ namespace GameRoundResult.Web.ViewFactory
         private const string bandarQiuQiu = "_BandarQiuQiuRoundResult";
         private const string footballDice = "_FootballDiceRoundResult";
         private const string footballSlot = "_FootballSlotRoundResult";
+        private const string bacball = "_BacBallRoundResult";
+        private const string luckynext = "_LuckyNextRoundResult";
 
         private readonly Dictionary<GameType, string> views = new()
         {
@@ -81,12 +83,16 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.MiniSeDie4, sedie },
             { GameType.FruitSlot, fruitSlot },
             { GameType.FanTan, fantan },
-            { GameType.WinThreeCards, win3Cards},
+            { GameType.WinThreeCards, win3Cards },
             { GameType.DragonTigerFight, dragonTigerFight },
             { GameType.ColorGame, colorGame },
             { GameType.BandarQiuQiu, bandarQiuQiu },
             { GameType.FootballDice, footballDice },
             { GameType.FootballSlot, footballSlot },
+            { GameType.BacBall1, bacball },
+            { GameType.BacBall2, bacball },
+            { GameType.LuckyNext1, luckynext },
+            { GameType.LuckyNext2, luckynext },
         };
 
         public string GetView(GameType game, bool isCrashGame)

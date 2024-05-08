@@ -53,7 +53,7 @@ namespace GameRoundResult.Web.Handlers
                 if (validatorResult.IsValid)
                 {
                     var response = await gameManagementApi.GetGameConfigById(request.GameTypeId);
-
+                    
                     if (response?.Data == null || string.IsNullOrWhiteSpace(response?.Data.Name))
                     {
                         return EndRoundInfoError.SB1001;

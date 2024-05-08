@@ -1,12 +1,15 @@
 ﻿using System;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Database.Entities.BacBall;
+using GameRoundResult.Core.Database.Entities.LuckyNext;
 using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
 using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
 using GameRoundResult.Web.CrashGames.ViewModels;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
+using GameRoundResult.Core.Database.Entities.GameDraw;
 
 namespace GameRoundResult.Web.Extensions
 {
@@ -74,7 +77,7 @@ namespace GameRoundResult.Web.Extensions
         }
 
         public static DragonTigerFightRoundResultViewModel ToViewModel(this DragonTigerFightRound entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
-        {           
+        {
             return mapper.Map<DragonTigerFightRound, DragonTigerFightRoundResultViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
@@ -97,6 +100,23 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
+        public static TranslationBetLogViewModel ToViewModelTicketBetLog<T>(this T entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+            where T : GameDrawBaseBetEntity
+        {
+            return mapper.Map<T, TranslationBetLogViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static T ToViewModelTicketResult<T>(this T entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+            where T : GameDrawResultBase
+        {
+            return mapper.Map<T, T>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
 
         public static FishPrawnCrabBetViewModel ToViewModel(this FishPrawnCrabBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {

@@ -28,5 +28,17 @@ namespace GameRoundResult.Web.Requests
 
         public int Page { get; }
         public int PageSize { get; }
+
+        public bool IsGameDraw
+        {
+            get
+            {
+                return 
+                    GameType == GameType.BacBall1 ||
+                    GameType == GameType.BacBall2 ||
+                    GameType == GameType.LuckyNext1 ||
+                    GameType == GameType.LuckyNext2;
+            }
+        }
     }
 }

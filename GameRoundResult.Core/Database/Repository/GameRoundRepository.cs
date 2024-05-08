@@ -4,6 +4,8 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using GameRoundResult.Core._Share;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Database.Entities.BacBall;
+using GameRoundResult.Core.Database.Entities.GameDraw;
 using GameRoundResult.Core.Extensions;
 using MongoDB.Driver;
 
@@ -14,6 +16,10 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int page, int pageSize, Expression<Func<GR, bool>> filter = null) where GR : GameRound;
 
         Task<(long, IEnumerable<GR>)> GetCrashGameRoundResultAsync<GR>(DateTime date, long roundId, string displayName, int page, int pageSize) where GR : GameRound;
+
+        Task<(long, IEnumerable<GD>)> GetDrawResultAsync<GD, R, S>(DateTime date, long drawId, int page, int pageSize) 
+            where GD : GameDraw<R, S> 
+            where R : GameDrawBase;
     }
 
     public class GameRoundRepository : IGameRoundRepository
@@ -50,9 +56,9 @@ namespace GameRoundResult.Core.Database.Repository
 
         public async Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int page, int pageSize, Expression<Func<GR, bool>> filter = null) where GR : GameRound
         {
-           
-             var   collectionName = Document.GetCollectionName(typeof(GR));
-           
+
+            var collectionName = Document.GetCollectionName(typeof(GR));
+
             return string.IsNullOrWhiteSpace(collectionName)
                 ? throw new InvalidOperationException(nameof(collectionName))
                 : await GetRoundResultAsync<GR>(date, roundId, collectionName, page, pageSize, filter);
@@ -61,10 +67,31 @@ namespace GameRoundResult.Core.Database.Repository
         public async Task<(long, IEnumerable<GR>)> GetCrashGameRoundResultAsync<GR>(DateTime date, long roundId, string displayName, int page, int pageSize) where GR : GameRound
         {
             var collectionName = CollectionNameFormatter.Round(displayName);
-         
+
             return string.IsNullOrWhiteSpace(collectionName)
                 ? throw new InvalidOperationException(nameof(collectionName))
                 : await GetRoundResultAsync<GR>(date, roundId, collectionName, page, pageSize);
+        }
+
+        public async Task<(long, IEnumerable<GD>)> GetDrawResultAsync<GD, R, S>(DateTime date, long drawId, int page, int pageSize)
+            where GD : GameDraw<R, S>
+            where R : GameDrawBase
+        {
+            var collectionName = Document.GetCollectionName(typeof(GD));
+
+            var fromDate = date;
+            var toDate = fromDate.AddDays(1);
+
+            Expression<Func<GD, bool>> defaultExpression = x => (x.Time >= fromDate && x.Time < toDate);
+            var roundFilter = Builders<GD>.Filter.ElemMatch(x => x.Result, y => y.DrawId == drawId);
+
+            var expression = drawId == 0 ? defaultExpression : roundFilter;
+            var cursor = database.GetCollection<GD>(collectionName).Find(expression);
+
+            var total = await cursor.CountDocumentsAsync();
+            var data = await cursor.SortByDescending(x => x.Id).Skip(page).Limit(pageSize).ToListAsync();
+
+            return (total, data);
         }
     }
 }

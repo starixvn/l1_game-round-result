@@ -46,7 +46,7 @@ namespace GameRoundResult.Web.Models
                     }
                 };
 
-        public IEnumerable<SelectListItem> GameTypeItem => Enum.GetNames(typeof(GameType)).Select(game => new SelectListItem(game, ((byte)(GameType)Enum.Parse(typeof(GameType), game)).ToString()));
+        public IEnumerable<SelectListItem> GameTypeItem => Enum.GetNames(typeof(GameType)).Select(game => new SelectListItem(game, ((int)(GameType)Enum.Parse(typeof(GameType), game)).ToString()));
 
         public int GameRoundId { get; set; }
 
@@ -54,7 +54,7 @@ namespace GameRoundResult.Web.Models
 
         public string Language { get; set; }
 
-        public byte GameTypeId { get; set; }
+        public int GameTypeId { get; set; }
 
         public string OperatorId { get; set; }
 
