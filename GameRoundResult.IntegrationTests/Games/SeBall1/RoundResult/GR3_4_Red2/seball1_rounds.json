@@ -11,12 +11,7 @@
     "drawId": 1,
     "result": [
       {
-        "balls": [
-          50,
-          26,
-          48,
-          40
-        ],
+        "balls": [50, 25, 49, 40],
         "time": {
           "$date": "2024-05-01T09:43:13.026Z"
         },
@@ -35,6 +30,6 @@
         "drawId": 1
       }
     ],
-    "exchangeRateId": 3,
+    "exchangeRateId": 3
   }
 ]
