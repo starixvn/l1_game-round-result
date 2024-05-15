@@ -1,6 +1,6 @@
 ﻿namespace GameRoundResult.Web.Models
 {
-    public class SeBall
+    public class SeBall : TolgeeNamespace
     {
     }
 }

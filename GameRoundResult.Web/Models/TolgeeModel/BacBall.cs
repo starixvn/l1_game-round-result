@@ -1,6 +1,6 @@
 ﻿namespace GameRoundResult.Web.Models
 {
-    public class BacBall
+    public class BacBall : TolgeeNamespace
     {
     }
 }

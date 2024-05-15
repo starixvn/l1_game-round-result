@@ -1,6 +1,6 @@
 ﻿namespace GameRoundResult.Web.Models
 {
-    public class FootballDice
+    public class FootballDice : TolgeeNamespace
     {
     }
 }

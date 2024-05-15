@@ -1,6 +1,6 @@
 ﻿namespace GameRoundResult.Web.Models
 {
-    public class DragonTigerFight
+    public class DragonTigerFight : TolgeeNamespace
     {
     }
 }

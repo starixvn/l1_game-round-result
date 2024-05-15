@@ -1,6 +1,6 @@
 ﻿namespace GameRoundResult.Web.Models
 {
-    public class BandarQiuQiu
+    public class BandarQiuQiu : TolgeeNamespace
     {
     }
 }

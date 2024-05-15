@@ -3,6 +3,8 @@ using GameRoundResult.Web.Requests.RoundHistory;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using System.Reflection;
 
 namespace GameRoundResult.Web.Models.RoundHistory
 {
@@ -13,6 +15,14 @@ namespace GameRoundResult.Web.Models.RoundHistory
         public RoundHistoryRequest Request { get; set; }
         public int BaseCurrencyMultiplier { get; set; }
         public string BaseCurrency { get; set; }
+
+        public string GetTolgeeNamespaces()
+        {
+            var baseNs = "GameRoundResultViewModel,RoundResultViewModel,GameType,";
+            var types = Assembly.GetAssembly(typeof(TolgeeNamespace)).GetTypes().Where(type => type.IsSubclassOf(typeof(TolgeeNamespace)));
+            var ns = string.Join(',', types.Select(type => type.Name));
+            return baseNs + ns;
+        }
     }
 
     public class RoundHistoryBetViewModel

@@ -20,7 +20,7 @@
 @if (Model.EnableTolgee)
 {
     <input id="tolgee_language" value="@Model.Language" hidden readonly />
-    <input value="GameRoundResultViewModel,RoundResultViewModel,DragonTigerFight,ColorGame,GameType,BandarQiuQiu,BacBall,SabaNumber,NextBall,FootballDice,SeBall" id="tolgee_namespace" readonly hidden />
+    <input value="@Model.GetTolgeeNamespaces()" id="tolgee_namespace" readonly hidden />
 }
 
 <div class="header">
