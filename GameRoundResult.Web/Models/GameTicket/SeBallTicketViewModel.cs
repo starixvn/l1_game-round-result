@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
@@ -22,15 +23,15 @@ namespace GameRoundResult.Web.Models
             return stringLocalizer.GetStringWithNamcespace(betChoice.ChoiceKey, "SeBall");
         }
 
-        protected override decimal GetOdds(string choice)
+        protected override string GetOdds(string choice)
         {
-            return Odds[choice];
+            return Odds[choice].FormatOdds(FractionalOddsFormat);
         }
 
         public override IEnumerable<string> BuildBetLogs(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, bool convertToUSD = false, int baseCurrencyMultiplier = 1)
         {
             var result = new List<string>();
-            foreach (var bet in BetLogs)
+            foreach (var bet in BetLogs.OrderByDescending(log => log.Time))
             {
                 result.Add(BuildRow(stringLocalizer, bet, convertToUSD, baseCurrencyMultiplier));
             }

@@ -43,6 +43,8 @@ namespace GameRoundResult.Web.Models.RoundHistory
 
         public string OperatorId { get; set; }
 
+        public string OperatorName { get; set; }
+
         public string PlayerId { get; set; }
 
         public string Name { get; set; }

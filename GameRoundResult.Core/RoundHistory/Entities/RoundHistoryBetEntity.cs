@@ -10,6 +10,8 @@ namespace GameRoundResult.Core.Database.Entities.RoundHistory
 
         public string Nickname { get; set; }
 
+        public string OperatorName { get; set; }
+
         public decimal TotalAmount { get; set; }
 
         public Dictionary<string, decimal> Odds { get; set; }

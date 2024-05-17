@@ -49,9 +49,9 @@ namespace GameRoundResult.Web.Models
             return string.Empty;
         }
 
-        protected virtual decimal GetOdds(string choice)
+        protected virtual string GetOdds(string choice)
         {
-            return 0;
+            return "";
         }
 
         protected virtual string BuildRow(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, BetLogViewModel bet, bool? isFrationalFormat, bool convertToUSD, int baseCurrencyMultiplier)

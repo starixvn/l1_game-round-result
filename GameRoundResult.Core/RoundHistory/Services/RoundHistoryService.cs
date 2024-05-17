@@ -12,6 +12,7 @@ namespace GameRoundResult.Core.Services.RoundHistory
     public interface IRoundHistoryService
     {
         Task<TRound> GetRoundAsync<TRound>(long roundId, FilterDefinition<TRound> baseFilterExpression) where TRound : GameRound;
+
         Task<IEnumerable<TBetEntity>> GetBetsAsync<TBetEntity>(RoundHistoryRequestBase filter, FilterDefinition<TBetEntity> baseFilterExpression)
             where TBetEntity : RoundHistoryBetEntity, new();
     }
@@ -20,15 +21,17 @@ namespace GameRoundResult.Core.Services.RoundHistory
     {
         private readonly IRoundHistoryRepository roundHistoryRepository;
         protected readonly IUserInfoService userInfoService;
+        protected readonly IPartnerService partnerService;
 
-        public RoundHistoryService(IRoundHistoryRepository roundHistoryRepository, IUserInfoService userInfoService)
+        public RoundHistoryService(IRoundHistoryRepository roundHistoryRepository, IUserInfoService userInfoService, IPartnerService partnerService)
         {
             this.roundHistoryRepository = roundHistoryRepository;
             this.userInfoService = userInfoService;
+            this.partnerService = partnerService;
         }
 
         public Task<TRound> GetRoundAsync<TRound>(long roundId, FilterDefinition<TRound> baseFilterExpression) where TRound : GameRound
-        {            
+        {
             return roundHistoryRepository.GetRoundAsync<TRound>(roundId, baseFilterExpression);
         }
 
@@ -52,6 +55,7 @@ namespace GameRoundResult.Core.Services.RoundHistory
                 {
                     bet.Username = userInfo.Username;
                     bet.Nickname = userInfo.NickName;
+                    bet.OperatorName = partnerService.GetById(bet.OperatorId).Result.Name;
                     return bet;
                 }).ToList();
             }
