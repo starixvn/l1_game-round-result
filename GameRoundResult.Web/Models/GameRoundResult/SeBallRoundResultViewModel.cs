@@ -31,17 +31,21 @@ namespace GameRoundResult.Web.Models
 
         public override string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            return GetResult();
+            return GetResult(true);
         }
 
-        public string GetResult()
+        public string GetResult(bool hasSum = false)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"result-row");
             Result.Balls.ForEach(ball =>
             {
-                tagBuilder.InnerHtml.AppendHtml(this.BuildBall(ball.ToString(), BallColorViewModel.GetBallColor(ball)));
+                tagBuilder.InnerHtml.AppendHtml(BuildBall(ball.ToString(), BallColorViewModel.GetBallColor(ball)));
             });
+            if (hasSum)
+            {
+                tagBuilder.InnerHtml.Append($" - {Result.Balls.Sum()}");
+            }
             return tagBuilder.GetHtmlString();
         }
 
