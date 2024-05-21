@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TimeZoneConverter;
 
 namespace GameRoundResult.Web.Controllers
 {
@@ -70,9 +71,9 @@ namespace GameRoundResult.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetBetHistory(RoundHistoryBetLogRequest request)
         {
-            var result = await mediator.Send(new GetGameTicketRequest(request.Game, request.RoundId, request.UserId, 
-                TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time"), request.PartnerId, false, configuration["SystemType"]));
-
+            var timeZone = TZConvert.GetTimeZoneInfo("SE Asia Standard Time");
+            var result = await mediator.Send(new GetGameTicketRequest(request.Game, request.RoundId, request.UserId,
+                timeZone, request.PartnerId, false, configuration["SystemType"]));            
 
             var viewModel = new RoundHistoryBetLogViewModel
             {

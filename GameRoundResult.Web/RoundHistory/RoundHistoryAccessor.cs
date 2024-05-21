@@ -13,6 +13,7 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using TimeZoneConverter;
 
 namespace GameRoundResult.Web.RoundHistory
 {
@@ -40,7 +41,7 @@ namespace GameRoundResult.Web.RoundHistory
 
         public async Task<RoundHistoryViewModel> GetAsync(RoundHistoryRequest request)
         {
-            var timeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+            var timeZone = TZConvert.GetTimeZoneInfo("SE Asia Standard Time");
             var roundResult = await roundHistoryService.GetRoundAsync<TRoundEntity>(request.RoundId, BuildRoundFilterExpression(request.RoundId));
             var betResult = await roundHistoryService.GetBetsAsync<TBetEntity>(request, BuildBetFilterExpression(request.RoundId));
             var betViewModel = betResult.Select(r => r.ToBetViewModel<TBetEntity, TBetViewModel>(mapper, timeZone));
