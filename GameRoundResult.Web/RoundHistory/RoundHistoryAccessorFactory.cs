@@ -1,5 +1,4 @@
 ﻿using GameRoundResult.Core.Constants;
-using GameRoundResult.Core.Database.Entities.BacBall;
 using GameRoundResult.Core.Database.Entities.CoinToss;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.RoundHistory;
