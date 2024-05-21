@@ -13,7 +13,9 @@ namespace GameRoundResult.Core.Database.Entities.CoinToss
 
     public class CoinTossResult
     {
-        public int Coin { get; set; }
+        public bool Head { get; set; }
+
+        public bool Tail { get; set; }
     }
 
     public class CoinTossSettlementResult

@@ -31,19 +31,7 @@ namespace GameRoundResult.Web.RoundHistory
 
         protected override TRoundViewModel MapRoundResult(TRoundEntity roundResult, TimeZoneInfo timeZone, RoundHistoryRequest request)
         {
-            if (roundResult != null)
-            {
-                GetRoundResultRequest getRequest = new GetRoundResultRequest(request.Game, DateTime.Now, request.RoundId, timeZone, 1, 1);
-                var roundResults = GameDrawTicketAccessorHelper.GetRoundResult(getRequest, new List<TRoundEntity> { roundResult });
-                var viewModel = (TRoundViewModel)roundResults.First();
-                viewModel.ExchangeRateId = roundResult.ExchangeRateId;
-
-                return viewModel;
-            }
-            else
-            {
-                return null;
-            }
+           return null;           
         }
 
         protected override FilterDefinition<TRoundEntity> BuildRoundFilterExpression(long roundId)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace GameRoundResult.Core.Database.Entities.GameDraw
 {
