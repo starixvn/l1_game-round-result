@@ -61,7 +61,7 @@ namespace GameRoundResult.Web.Models
 
             AddColumn(rowBuilder, $"{bet.DateDisplay} <br/>  {bet.TimeDisplay}");
             AddColumn(rowBuilder, $"{GetChoice(stringLocalizer, bet.Choice)}");
-            AddColumn(rowBuilder, $"{GetOdds(bet.Choice)}");
+            AddColumn(rowBuilder, $"{GetOdds(bet.Choice).Format()}");
             AddColumn(rowBuilder, $"{(convertToUSD ? bet.ConvertToBase(bet.Amount, baseCurrencyMultiplier).Format() : bet.Amount.Format())}");
             AddColumn(rowBuilder, $"{(convertToUSD ? bet.ConvertToBase(GetBetLogWin(bet), baseCurrencyMultiplier).Format() : GetBetLogWin(bet).Format()) }");
 

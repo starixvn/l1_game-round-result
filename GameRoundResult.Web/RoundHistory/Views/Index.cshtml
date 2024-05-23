@@ -16,7 +16,7 @@
             <th>Round Id</th>
             <th>Exchange Id</th>
             <th class="col-result" style="min-width: 350px;">Result</th>
-            <th>WinningOptions</th>
+            <th>Winning Options</th>
         </tr>
     </thead>
     <tbody>
@@ -85,11 +85,11 @@
                         asp-route-userId="@bet.PlayerId"
                         asp-route-partnerId="@bet.OperatorId"
                         asp-route-convertToUSD="@Model.Request.ConvertToUSD">
-                        @(@Model.Request.ConvertToUSD ? (@bet.ConvertToBase(bet.TotalAmount)/@Model.BaseCurrencyMultiplier).Format() : @bet.TotalAmount.Format())
+                        @(@Model.Request.ConvertToUSD ? (@bet.ConvertToBase(bet.TotalAmount)/@Model.BaseCurrencyMultiplier).Format2Decimals() : @bet.TotalAmount.Format2Decimals())
                     </a>                   
                 </td>
                 <td>
-                    @(@Model.Request.ConvertToUSD ? (@bet.ConvertToBase(bet.Betwin)/@Model.BaseCurrencyMultiplier).Format() : @bet.Betwin.Format())
+                    @(@Model.Request.ConvertToUSD ? (@bet.ConvertToBase(bet.Betwin)/@Model.BaseCurrencyMultiplier).Format2Decimals() : @bet.Betwin.Format2Decimals())
                 </td>
             </tr>
         }    
