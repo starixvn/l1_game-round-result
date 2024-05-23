@@ -19,7 +19,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var row in Model.TicketModel.BuildBetLogs(RoundResultLocalizer, Model.ConvertToUSD, Model.BaseCurrencyMultiplier))
+        @foreach(var row in Model.TicketModel.BuildBetLogs(RoundResultLocalizer, Model.TicketModel.FractionalOddsFormat, Model.ConvertToUSD, Model.BaseCurrencyMultiplier ))
         {
             @Html.Raw(row)
         }

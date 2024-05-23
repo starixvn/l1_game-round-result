@@ -104,8 +104,8 @@
         {
             <tr class="total">
                 <td colspan="5" style="padding: 10px 20px; text-align: right;">Total in @Model.BaseCurrency</td>
-                <td class="text-center">@((Model.Bets.Sum(x => x.ConvertToBase(x.TotalAmount)) / Model.BaseCurrencyMultiplier).Format())</td>
-                <td class="text-center">@((Model.Bets.Sum(x => x.ConvertToBase(x.Betwin)) / Model.BaseCurrencyMultiplier).Format())</td>
+                <td class="text-center">@((Model.Bets.Sum(x => x.ConvertToBase(x.TotalAmount)) / Model.BaseCurrencyMultiplier).Format2Decimals())</td>
+                <td class="text-center">@((Model.Bets.Sum(x => x.ConvertToBase(x.Betwin)) / Model.BaseCurrencyMultiplier).Format2Decimals())</td>
             </tr>
         }
     </tbody>
