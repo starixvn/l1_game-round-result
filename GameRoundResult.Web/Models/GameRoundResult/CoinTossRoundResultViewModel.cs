@@ -46,7 +46,7 @@ namespace GameRoundResult.Web.Models
 
         public override string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            var key = SettlementResult.Head ? "trump" : "biden";            
+            var key = SettlementResult.Head ? "head" : "tail";            
 
             return GetText(stringLocalizer, key);
         }

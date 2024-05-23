@@ -60,7 +60,7 @@ namespace GameRoundResult.Web.Controllers
                 ExcludeUUS = bool.Parse(data[6]),
                 Nickname = data[7],
                 Username = data[8],
-                PartnerId = data[0]
+                PartnerId = data[9]
             };
                 
             var viewModel = await mediator.Send(request);
