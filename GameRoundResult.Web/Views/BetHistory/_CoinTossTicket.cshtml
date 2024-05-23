@@ -60,8 +60,8 @@
     </thead>
     <tbody>
         @if (Model.BetLogs.Any() && Model.RoundResult != null)
-        {           
-            foreach(var row in Model.BuildBetLogs(RoundResultLocalizer))
+        {           @Model.FractionalOddsFormat
+            foreach(var row in Model.BuildBetLogs(RoundResultLocalizer, @Model.FractionalOddsFormat))
             {
                 @Html.Raw(row)
             }

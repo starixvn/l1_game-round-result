@@ -29,7 +29,7 @@ namespace GameRoundResult.Web.Models
         public string WinLossRowClassName => WinLoss < 0 ? "text-red" : string.Empty;
         public bool EnableTolgee { get; set; }
 
-        public virtual IEnumerable<string> BuildBetLogs(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, bool convertToUSD = false, int baseCurrencyMultiplier = 1)
+        public virtual IEnumerable<string> BuildBetLogs(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, bool? isFrationalFormat = false, bool convertToUSD = false, int baseCurrencyMultiplier = 1)
         {
             return new List<string>();            
         }
@@ -54,14 +54,14 @@ namespace GameRoundResult.Web.Models
             return 0;
         }
 
-        protected virtual string BuildRow(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, BetLogViewModel bet, bool convertToUSD, int baseCurrencyMultiplier)
+        protected virtual string BuildRow(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, BetLogViewModel bet, bool? isFrationalFormat, bool convertToUSD, int baseCurrencyMultiplier)
         {
             var rowBuilder = new TagBuilder("tr");
             rowBuilder.AddCssClass(GetRowBetClass(bet.DisplayedChoice));
 
             AddColumn(rowBuilder, $"{bet.DateDisplay} <br/>  {bet.TimeDisplay}");
             AddColumn(rowBuilder, $"{GetChoice(stringLocalizer, bet.Choice)}");
-            AddColumn(rowBuilder, $"{GetOdds(bet.Choice).Format()}");
+            AddColumn(rowBuilder, $"{GetOdds(bet.Choice).FormatOddsWithZero(isFrationalFormat)}");
             AddColumn(rowBuilder, $"{(convertToUSD ? bet.ConvertToBase(bet.Amount, baseCurrencyMultiplier).Format() : bet.Amount.Format())}");
             AddColumn(rowBuilder, $"{(convertToUSD ? bet.ConvertToBase(GetBetLogWin(bet), baseCurrencyMultiplier).Format() : GetBetLogWin(bet).Format()) }");
 
