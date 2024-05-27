@@ -34,7 +34,7 @@ namespace GameRoundResult.Web.Models
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"");
 
-            var image = SettlementResult.Head ? "trump" : "biden";
+            var image = SettlementResult.Head ? "biden" : "trump";
 
             var img = new TagBuilder("img");
             img.AddCssClass($"img");
