@@ -10,8 +10,6 @@ namespace GameRoundResult.Web.Models
 
         public IEnumerable<DragonTigerFightBetLogViewModel> BetLogs { get; set; }
 
-        public Dictionary<string, decimal> Odds { get; set; }
-
         public List<string> BetChoices => new List<string> { "Dragon", "Tiger", "Tie", "BlackDragon", "RedDragon", "BlackTiger", "RedTiger" };
 
         public string GetRowBetClass(string choice)

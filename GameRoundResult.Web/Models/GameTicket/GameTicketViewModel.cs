@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
@@ -12,10 +11,11 @@ namespace GameRoundResult.Web.Models
     public class GameTicketViewModel
     {
         public int GameId { get; set; }
+        public string GameDisplayName { get; set; }
         public GameConfigsType GameType { get; set; }
         public TimeSpan TimeZoneOffset { get; set; }
 
-        public string TimeOffsetString => $"GMT{TimeZoneOffset.Hours:+#;-#}";    
+        public string TimeOffsetString => $"GMT{TimeZoneOffset.Hours:+#;-#}";
 
         public bool? FractionalOddsFormat { get; set; }
 
@@ -23,24 +23,51 @@ namespace GameRoundResult.Web.Models
         public decimal TotalBet { get; set; }
         public decimal BetWin { get; set; }
         public decimal WinLoss => BetWin - TotalBet;
-        public string DisplayWinLoss => WinLoss.Format();
-        public string DisplayTotalBet => TotalBet.Format();
-        public string DisplayBetWin => BetWin.Format();
+        public string DisplayWinLoss => DisplayAmount(WinLoss);
+        public string DisplayTotalBet => DisplayAmount(TotalBet);
+        public string DisplayBetWin => DisplayAmount(BetWin);
         public string WinLossRowClassName => WinLoss < 0 ? "text-red" : string.Empty;
         public bool EnableTolgee { get; set; }
 
+        public bool ConvertToBaseCurrency { get; set; }
+
+        public decimal BaseCurrencyMultiplier { get; set; }
+        public decimal Rate { get; set; }
+
+        public string DisplayAmount(decimal amount)
+        {
+            if(ConvertToBaseCurrency)
+            {
+                return (amount * Rate / BaseCurrencyMultiplier).Format();
+            }
+
+            return amount.Format();
+        }
+
+        public Dictionary<string, decimal> Odds { get; set; }
+
         public virtual IEnumerable<string> BuildBetLogs(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, bool? isFrationalFormat = false, bool convertToUSD = false, int baseCurrencyMultiplier = 1)
         {
-            return new List<string>();            
+            return new List<string>();
+        }
+
+        public virtual bool IsWinningChoice(string choice)
+        {
+            return false;
         }
 
         public virtual string GetRowBetClass(string choice)
         {
-            return string.Empty;
+            return IsWinningChoice(choice) ? "bold text-blue" : string.Empty;
         }
 
-        public virtual decimal GetBetLogWin(BetLogViewModel bet)
+        public virtual decimal GetBetLogWin(BetLogViewModel betLog)
         {
+            if (IsWinningChoice(betLog.Choice))
+            {
+                return betLog.Amount * Odds[betLog.Choice];
+            }
+
             return 0;
         }
 
@@ -51,7 +78,7 @@ namespace GameRoundResult.Web.Models
 
         protected virtual decimal GetOdds(string choice)
         {
-            return 0;
+            return Odds[choice];
         }
 
         protected virtual string BuildRow(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, BetLogViewModel bet, bool? isFrationalFormat, bool convertToUSD, int baseCurrencyMultiplier)
@@ -63,7 +90,7 @@ namespace GameRoundResult.Web.Models
             AddColumn(rowBuilder, $"{GetChoice(stringLocalizer, bet.Choice)}");
             AddColumn(rowBuilder, $"{GetOdds(bet.Choice).FormatOddsWithZero(isFrationalFormat)}");
             AddColumn(rowBuilder, $"{(convertToUSD ? bet.ConvertToBase(bet.Amount, baseCurrencyMultiplier).Format() : bet.Amount.Format())}");
-            AddColumn(rowBuilder, $"{(convertToUSD ? bet.ConvertToBase(GetBetLogWin(bet), baseCurrencyMultiplier).Format() : GetBetLogWin(bet).Format()) }");
+            AddColumn(rowBuilder, $"{(convertToUSD ? bet.ConvertToBase(GetBetLogWin(bet), baseCurrencyMultiplier).Format() : GetBetLogWin(bet).Format())}");
 
             return rowBuilder.GetHtmlString();
         }

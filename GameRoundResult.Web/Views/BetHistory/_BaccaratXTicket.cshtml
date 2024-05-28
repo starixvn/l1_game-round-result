@@ -1,0 +1,136 @@
+﻿@model BaccaratXTicketViewModel
+@using GameRoundResult.Core.Constants
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<BaccaratXTicketViewModel> Localizer
+
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,GameTicketViewModel,Bac81" id="tolgee_namespace" readonly hidden />
+}
+<table class="table table-bordered table-baccarat">
+    <thead>
+        <tr>
+            <th>@CommonLocalizer["Table"]</th>
+            <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
+            <th>@CommonLocalizer["Result"] (@Localizer["Player"] | @Localizer["Banker"])</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null)
+        {
+            <tr>
+                <td>@Model.GameDisplayName</td>
+                <td>@Model.RoundResult.RoundId</td>
+                <td>
+                    <div class="baccarat-result @(Model.RoundResult.AppliedMultipliers.Any() ? "with-multipliers" : string.Empty)">
+                        <div class="cards">
+                            @foreach (var card in Model.RoundResult.ConvertToCardList(Model.RoundResult.Result.Player))
+                            {
+                                <div class="card card-type-@card.Type">
+                                    <div class="multiplier">@Model.DisplayPlayerCardMultiplier(card)</div>
+                                    <span>@Card.CardLabels[card.Number]</span>
+                                    <img class="img" src="~/scss/images/card_@(card.Type).png" asp-append-version="true" />
+                                </div>
+                            }
+                        </div>
+                        <div class="cards">
+                            @foreach (var card in Model.RoundResult.ConvertToCardList(Model.RoundResult.Result.Banker))
+                            {
+                                <div class="card card-type-@card.Type">
+                                    <div class="multiplier">@Model.DisplayBankerCardMultiplier(card)</div>
+                                    <span>@Card.CardLabels[card.Number]</span>
+                                    <img class="img" src="~/scss/images/card_@(card.Type).png" asp-append-version="true" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model.RoundResult?.OddsMultipliers != null)
+{
+    <table class="table table-bordered table-baccarat">
+        <tbody>
+            <tr>
+                <td>@Localizer["lucky_card"]</td>
+                <td>
+                    <div class="baccarat-multiplier-cards">
+                        <div class="cards">
+                            @foreach (var card in Model.RoundResult.OddsMultipliers)
+                            {
+                                <div class="card card-type-@card.Type">
+                                    <div class="multiplier @()">@Model.FormatMultiplier(card.Value)</div>
+                                    <span>@Card.CardLabels[card.Number]</span>
+                                    <img class="img" src="~/scss/images/card_@(card.Type).png" asp-append-version="true" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+<table class="table table-bordered table-baccarat">
+    <thead>
+        <tr>
+            <th>
+                @CommonLocalizer["Time"] (@Model.TimeOffsetString)
+            </th>
+            <th>@CommonLocalizer["BetChoice"]</th>
+            <th>@CommonLocalizer["Odds"]</th>
+            <th>@Localizer["multiplier_value"]</th>
+            <th>@CommonLocalizer["Stake"]</th>
+            <th>@Localizer["extra_fee"]</th>
+            <th>@CommonLocalizer["Win"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.BetLogs.Any())
+        {
+            @foreach (var betLog in Model.BetLogs)
+            {
+                <tr class="@Model.GetRowBetClass(betLog.Choice)">
+                    <td>@FormatHelper.RoundDateTimeFormat(betLog.Time)</td>
+                    <td>@Localizer[betLog.ChoiceKey]</td>
+                    <td>@Model.Odds[betLog.Choice]</td>
+                    <td>@Model.DisplayMultipliersOnChoice(betLog.Choice)</td>
+                    <td>@Model.DisplayAmount(betLog.Amount)</td>
+                    <td>@Model.DisplayAmount(betLog.Fee)</td>
+                    <td class="text-right">@Model.DisplayAmount(Model.GetBetLogWin(betLog))</td>
+                </tr>
+            }
+
+            <tr class="total">
+                <td class="text-right" colspan="4">@CommonLocalizer["Total"]</td>
+                <td class="text-right">@Model.DisplayTotalBet</td>
+                <td class="text-right">@Model.DisplayFee</td>
+                <td class="text-right">@Model.DisplayBetWin</td>
+            </tr>
+            <tr class="total">
+                <td class="bold text-right" colspan="4">@CommonLocalizer["WinLoss"]</td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)" colspan="3">@Model.DisplayWinLoss</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="7" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

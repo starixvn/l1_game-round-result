@@ -17,5 +17,9 @@
         public string OperatorId { get; set; }
 
         public decimal Rate { get; set; }
+
+        public string Choice { get; set; }
+
+        public decimal Amount { get; set; }
     }
 }

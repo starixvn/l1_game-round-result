@@ -10,14 +10,14 @@ namespace GameRoundResult.Core.Database.Entities
 
         public Side Banker { get; set; }
 
-        public BaccaratResult Result { get; set; }
+        public BaccaratSettlementResult Result { get; set; }
     }
 
     public class BaseBaccaratRoundEntity : GameRound
     {
     }
 
-    public class BaccaratResult
+    public class BaccaratSettlementResult
     {
         public bool Player { get; set; }
         public bool Banker { get; set; }

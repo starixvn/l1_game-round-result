@@ -46,5 +46,10 @@ namespace GameRoundResult.Web.Models
         {
             return string.Empty;
         }
+
+        public virtual bool IsWinningChoice(string choice)
+        {
+            return false;
+        }
     }
 }

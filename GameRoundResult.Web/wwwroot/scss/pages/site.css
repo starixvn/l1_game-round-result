@@ -501,6 +501,44 @@ body {
   background-color: #222;
   content: "";
 }
+.baccarat-result.with-multipliers {
+  grid-template-rows: 50px;
+  align-items: center;
+}
+.baccarat-result.with-multipliers .card {
+  position: relative;
+}
+.baccarat-result.with-multipliers .card .multiplier {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: -1.7rem;
+}
+
+.baccarat-multiplier-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50px;
+  align-items: center;
+}
+.baccarat-multiplier-cards .cards {
+  display: flex;
+  justify-content: flex-start;
+}
+.baccarat-multiplier-cards .cards .card {
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  position: relative;
+}
+.baccarat-multiplier-cards .cards .card .multiplier {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: -1.7rem;
+}
+.baccarat-multiplier-cards .cards .card:last-child:before {
+  display: none;
+}
 
 #overlay {
   position: fixed; /* Sit on top of the page content */

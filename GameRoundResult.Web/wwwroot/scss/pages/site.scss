@@ -398,6 +398,51 @@ body {
             content: "";
         }
     }
+
+    &.with-multipliers {
+        grid-template-rows: 50px;
+        align-items: center;
+
+        .card {
+            position: relative;
+
+            .multiplier {
+                width: 100%;
+                text-align: center;
+                position: absolute;
+                top: -1.7rem
+            }
+        }
+    }
+}
+
+.baccarat-multiplier-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px;
+    align-items: center;
+
+    .cards {
+        display: flex;
+        justify-content: flex-start;
+
+        .card {
+            margin-left: 0.1rem;
+            margin-right: 0.1rem;
+            position: relative;
+
+            .multiplier {
+                width: 100%;
+                text-align: center;
+                position: absolute;
+                top: -1.7rem
+            }
+        }
+
+        .card:last-child:before {
+            display: none;
+        }
+    }
 }
 
 #overlay {
@@ -413,7 +458,6 @@ body {
     z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
 }
-
 // Loading icon
 
 .pulse-container {
@@ -519,7 +563,6 @@ body {
         }
     }
 }
-
 // Bitcoin-Master
 .bitcoin-master-result {
     .up {
@@ -653,7 +696,7 @@ body {
     }
 }
 
-.color-game-inferable-result{
+.color-game-inferable-result {
     height: 32px;
     display: inline-block;
     vertical-align: middle;
@@ -684,7 +727,7 @@ div table.bandar-qiuqiu-table {
             .result-text {
                 width: 80px;
             }
-            
+
             .domino-column {
                 border-right: none;
                 width: 160px;
@@ -705,8 +748,6 @@ div table.bandar-qiuqiu-table {
         }
     }
 }
-
-
 // FootballDice
 .football-dice-result {
     display: flex;
@@ -727,4 +768,3 @@ div table.bandar-qiuqiu-table {
         }
     }
 }
-

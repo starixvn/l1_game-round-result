@@ -18,6 +18,8 @@ namespace GameRoundResult.Web.Configuration
         public const string RoundTimeWithSecondFormat = "hh:mm:ss tt";
 
         public const string RoundDateFormat = "MM/dd/yyyy";
+
+        public const string RoundDateTimeFormat = "MM/dd/yyyy hh:mm:ss tt";
     }
 
     public static class FormatHelper
@@ -40,6 +42,12 @@ namespace GameRoundResult.Web.Configuration
         public static string RoundTimeWithSecondFormat(this DateTimeOffset dateTime)
         {
             return dateTime.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture);
+        }
+
+
+        public static string RoundDateTimeFormat(this DateTimeOffset dateTime)
+        {
+            return dateTime.ToString(ViewFormat.RoundDateTimeFormat, CultureInfo.InvariantCulture);
         }
 
         public static string FormatOdds(this decimal value, bool? frationalFormat)

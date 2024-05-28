@@ -75,6 +75,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.FootballSlot, typeof(FootballSlotTicketAccessor<FootballSlotRound, FootballSlotBet, FootballSlotBetLog>) },
             { GameType.CoinToss, typeof(CoinTossTicketAccessor) },
             { GameType.FootballCoinToss, typeof(FootballCoinTossTicketAccessor) },
+            { GameType.Bac81, typeof(BaccaratXTicketAccessor<Bac81Round, Bac81Bet, Bac81BetLog>) }
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()
