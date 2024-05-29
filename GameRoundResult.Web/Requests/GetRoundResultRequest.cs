@@ -29,7 +29,14 @@ namespace GameRoundResult.Web.Requests
         public int Page { get; }
         public int PageSize { get; }
 
-        private List<GameType> DrawGameIds = new List<GameType> { GameType.BacBall1, GameType.BacBall2, GameType.LuckyNext1, GameType.LuckyNext2, GameType.SeBall1 };
+        private List<GameType> DrawGameIds = new List<GameType> {
+            GameType.BacBall1,
+            GameType.BacBall2,
+            GameType.LuckyNext1,
+            GameType.LuckyNext2,
+            GameType.SeBall1,
+            GameType.LuckyThree
+        };
 
         public bool IsGameDraw => DrawGameIds.Contains(GameType);
     }

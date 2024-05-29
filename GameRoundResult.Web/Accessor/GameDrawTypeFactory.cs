@@ -47,6 +47,8 @@ namespace GameRoundResult.Web.Accessor
 
                 { GameType.SeBall1, await gameRoundResultService.GetGameDrawResultAsync
                 <SeBall1Round, SeBallRoundResult, SeBallSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
+                { GameType.LuckyThree, await gameRoundResultService.GetGameDrawResultAsync
+                <LuckyThreeRound, LuckyThreeRoundResult, LuckyThreeSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
             };
 
             return roundResultType[request.GameType];

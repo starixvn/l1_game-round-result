@@ -21,6 +21,7 @@ namespace GameRoundResult.Web.RoundHistory
         {
             { GameType.CoinToss, typeof(RoundHistoryAccessor<CoinTossRound, CoinTossRoundResultViewModel, CoinTossBet, RoundHistoryBetViewModel>) },
             { GameType.SeBall1, typeof(DrawRoundHistoryAccessor<SeBall1Round, SeBallRoundResultViewModel, SeBall1Bet, RoundHistoryBetViewModel, SeBallRoundResult, SeBallSettlementResult>) },
+            { GameType.LuckyThree, typeof(DrawRoundHistoryAccessor<LuckyThreeRound, LuckyThreeRoundResultViewModel, LuckyThreeBet, RoundHistoryBetViewModel, LuckyThreeRoundResult, LuckyThreeSettlementResult>) },
         };
 
         private readonly IServiceProvider serviceProvider;

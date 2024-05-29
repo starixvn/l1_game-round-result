@@ -38,6 +38,7 @@ namespace GameRoundResult.Web.ViewFactory
         private const string luckynext = "_LuckyNextRoundResult";
         private const string cointoss = "_CoinTossRoundResult";
         private const string seball = "_SeBallRoundResult";
+        private const string luckythree = "_LuckyThreeRoundResult";
 
         private readonly Dictionary<GameType, string> views = new()
         {
@@ -97,6 +98,7 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.LuckyNext2, luckynext },
             { GameType.CoinToss, cointoss },
             { GameType.SeBall1, seball },
+            { GameType.LuckyThree, luckythree },
         };
 
         public string GetView(GameType game, bool isCrashGame)

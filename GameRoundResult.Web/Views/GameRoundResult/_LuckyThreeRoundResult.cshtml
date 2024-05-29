@@ -1,0 +1,18 @@
+﻿@inject IJsonStringLocalizer<LuckyThreeRoundResultViewModel> LuckyThreeLocalizer
+@inject IJsonStringLocalizer<RoundResultViewModel> RoundResultLocalizer
+@inject IJsonStringLocalizer<SabaNumber> SabaNumberLocalizer
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+
+
+<table class="table table-bordered sticky-table table-dragon-tiger bandar-qiuqiu-table" style="width:100%">
+    <thead>
+        <tr>
+            <th class="col-date">@RoundResultLocalizer["Date"]</th>
+            <th>@SabaNumberLocalizer["glossary_draw_id"]</th>
+            <th class="col-result" style="min-width: 350px;">@CommonLocalizer["Result"] </th>
+            <th>@RoundResultLocalizer["WinningOptions"]</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>

@@ -449,8 +449,8 @@ namespace GameRoundResult.Web.Configuration
                 .ForMember(x => x.SymbolsResult, opt => opt.MapFrom(x => x.Result.Symbols))
                 .ForMember(x => x.NumberResult, opt => opt.MapFrom(x => x.Result.Number));
             CreateMap<FootballSlotBetLog, FootballSlotBetLogViewModel>();
-            
-            CreateMap<BacBall1BetLog, TranslationBetLogViewModel> ();
+
+            CreateMap<BacBall1BetLog, TranslationBetLogViewModel>();
             CreateMap<BacBall1Round, BacBallRoundResultViewModel>();
 
             CreateMap<BacBall2BetLog, TranslationBetLogViewModel>();
@@ -469,6 +469,8 @@ namespace GameRoundResult.Web.Configuration
             
             CreateMap<SeBall1BetLog, TranslationBetLogViewModel>();
             CreateMap<SeBall1Round, SeBallRoundResultViewModel>();
+            CreateMap<LuckyThreeBetLog, TranslationBetLogViewModel>();
+            CreateMap<LuckyThreeRound, LuckyThreeRoundResultViewModel>();
 
             CreateMap<RoundHistoryBetEntity, RoundHistoryBetViewModel>();
         }

@@ -103,6 +103,9 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<ISeBall1TicketService, SeBall1TicketService>();
             services.AddScoped<ISeBall1BetRepository, SeBall1BetRepository>();
 
+            services.AddScoped<ILuckyThreeTicketService, LuckyThreeTicketService>();
+            services.AddScoped<ILuckyThreeBetRepository, LuckyThreeBetRepository>();
+
             services.AddScoped<IPontoonTicketService, PontoonTicketService>();
             services.AddScoped<IPontoonBetRepository, PontoonBetRepository>();
 
@@ -169,6 +172,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(LuckyNext2TicketAccessor));
             services.AddScoped(typeof(CoinTossTicketAccessor));
             services.AddScoped(typeof(SeBall1TicketAccessor));
+            services.AddScoped(typeof(LuckyThreeTicketAccessor));
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
             services.AddScoped<IGameDrawTypeFactory, GameDrawTypeFactory>();
@@ -231,6 +235,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<LuckyNext2EndGameInfoService>();
             services.AddScoped<CoinTossEndGameInfoService>();
             services.AddScoped<SeBall1EndGameInfoService>();
+            services.AddScoped<LuckyThreeEndGameInfoService>();
 
             services.AddScoped<IRoundHistoryRepository, RoundHistoryRepository>();
             services.AddScoped<IRoundHistoryService, RoundHistoryService>();
@@ -238,7 +243,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(RoundHistoryAccessor<,,,>));
             services.AddScoped(typeof(DrawRoundHistoryAccessor<,,,,,>));
             services.AddScoped<IUserInfoService, UserInfoService>();
-            
+
             services.AddSlotGames();
             services.AddCascadingSlotGames();
             services.AddTransient(typeof(IJsonStringLocalizer<>), typeof(JsonStringLocalizer<>));

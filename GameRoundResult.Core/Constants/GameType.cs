@@ -62,7 +62,7 @@
         Pontoon = 72,
         SpaceFlight = 73,
         BandarQiuQiu = 75,
-        ChineseBlackjack =77,
+        ChineseBlackjack = 77,
         FootballDice = 78,
         FootballSlot = 79,
         BacBall1 = 1001,
@@ -70,6 +70,7 @@
         LuckyNext1 = 1003,
         LuckyNext2 = 1004,
         CoinToss = 80,
-        SeBall1 = 1005
+        SeBall1 = 1005,
+        LuckyThree = 1006
     }
 }
