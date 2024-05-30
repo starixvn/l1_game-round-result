@@ -1,0 +1,16 @@
+:root {
+    --text-color: #1a1a1a;
+    --bg-color: #f8f8f8;
+}
+
+[data-theme="dark"] {
+    --text-color: #fff;
+    --bg-color: #1a1a1a;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-size: 1.4rem;
+    color: var(--text-color);
+}

@@ -22,7 +22,8 @@
                 <td>@Model.GameDisplayName</td>
                 <td>@Model.RoundResult.RoundId</td>
                 <td>
-                    <div class="baccarat-result @(Model.RoundResult.AppliedMultipliers.Any() ? "with-multipliers" : string.Empty)">
+                    <div
+                        class="baccarat-result @(Model.RoundResult.AppliedMultipliers.Any() ? "with-multipliers" : string.Empty)">
                         <div class="cards">
                             @foreach (var card in Model.RoundResult.ConvertToCardList(Model.RoundResult.Result.Player))
                             {
@@ -70,7 +71,7 @@
                             @foreach (var card in Model.RoundResult.OddsMultipliers)
                             {
                                 <div class="card card-type-@card.Type">
-                                    <div class="multiplier @()">@Model.FormatMultiplier(card.Value)</div>
+                                    <div class="multiplier">@Model.FormatMultiplier(card.Value)</div>
                                     <span>@Card.CardLabels[card.Number]</span>
                                     <img class="img" src="~/scss/images/card_@(card.Type).png" asp-append-version="true" />
                                 </div>
@@ -121,7 +122,8 @@
             </tr>
             <tr class="total">
                 <td class="bold text-right" colspan="4">@CommonLocalizer["WinLoss"]</td>
-                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)" colspan="3">@Model.DisplayWinLoss</td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)" colspan="3">
+                    @Model.DisplayWinLoss</td>
             </tr>
         }
         else

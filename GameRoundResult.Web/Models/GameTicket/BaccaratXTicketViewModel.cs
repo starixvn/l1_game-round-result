@@ -17,7 +17,7 @@ namespace GameRoundResult.Web.Models
 
         public string DisplayFee => DisplayAmount(Fee);
 
-        public bool IsMultiplierCardApplied(BaccaratCard card) => RoundResult.AppliedMultipliers.Any()
+        public bool IsMultiplierCardApplied(BaccaratCard card) => RoundResult.AppliedMultipliers.Any();
 
         public string DisplayPlayerCardMultiplier(BaccaratCard card)
         {
@@ -47,7 +47,7 @@ namespace GameRoundResult.Web.Models
         {
             var multiplierCard = RoundResult.AppliedMultipliers.FirstOrDefault(x => x.Number == card.Number && x.Type == card.Type);
 
-            if(multiplierCard != null)
+            if (multiplierCard != null)
             {
                 return FormatMultiplier(multiplierCard.Value);
             }

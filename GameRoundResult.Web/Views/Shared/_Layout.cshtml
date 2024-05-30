@@ -2,20 +2,24 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <environment include="Development">
         <link href="~/scss/pages/site.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/pages/theme.css" rel="stylesheet" asp-append-version="true" />
     </environment>
     <environment exclude="Development">
-        <link href="~/scss/pages/site.min.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/scss/pages/site.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/pages/theme.css" rel="stylesheet" asp-append-version="true" />
     </environment>
     @RenderSection("Styles", required: false)
 
 </head>
-<body>
+
+<body data-theme="dark">
 
     <div class="main-container">
         @RenderBody()
@@ -36,4 +40,5 @@
     </environment>
     @RenderSection("Scripts", required: false)
 </body>
+
 </html>
