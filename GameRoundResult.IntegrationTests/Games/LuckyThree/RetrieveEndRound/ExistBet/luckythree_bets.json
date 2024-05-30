@@ -1,0 +1,39 @@
+[
+  {
+    "_id": {
+      "$oid": "66554312ce6f67105cf7f219"
+    },
+    "uid": "66553ace0c716e49f7942f3c",
+    "freeBet": false,
+    "roundId": 1,
+    "drawId": 2,
+    "__v": 0,
+    "betwin": 7860,
+    "blue2": 0,
+    "blue3": 0,
+    "clientSeed": "8197",
+    "currency": "$US",
+    "name": "Pumpkin95949",
+    "odds": {
+      "over": 2,
+      "under": 2,
+      "red2": 2.62,
+      "red3": 8.42,
+      "blue2": 2.62,
+      "blue3": 8.42
+    },
+    "operatorId": "ONEworks1",
+    "over": 0,
+    "paid": true,
+    "playerId": "123",
+    "rate": 1000,
+    "red2": 3000,
+    "red3": 0,
+    "siteId": "4100300",
+    "time": {
+      "$date": "2024-05-28T02:36:02.359Z"
+    },
+    "totalAmount": 3000,
+    "under": 0,
+  }
+]

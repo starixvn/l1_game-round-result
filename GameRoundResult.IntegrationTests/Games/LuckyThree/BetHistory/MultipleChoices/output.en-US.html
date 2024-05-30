@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Tickets</title>
+    <link href="/scss/pages/site.min.css?v=5wjumY_5AsTzyJCJGKZK5QwAnK71b3MZ9MSrSz5-XTM" rel="stylesheet" />
+    <link href="/scss/pages/game-ticket.min.css?v=FHzs9YI-T0La9XkxeFluMFOZjx6V7BK5poIsrpJNV2w" rel="stylesheet" />
+</head>
+<body>
+    <div class="main-container">
+        <div class="note"><span class="bold">Note:</span> Data are only available within the last 7 days from the current date.</div>
+        <div id="game-ticket">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="col-date">Time (GMT-4)</th>
+                        <th>Round</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            05/30/2024
+                            <br />
+                            02:20:55 AM
+                        </td>
+                        <td>3</td>
+                        <td class="text-center">
+                            <span class="bacball-result red-ball">6</span>
+                            <span class="bacball-result red-ball">26</span>
+                            <span class="bacball-result blue-ball">43</span>
+                            - 75
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="col-date">Bet Time (GMT-4)</th>
+                        <th>Bet Choice</th>
+                        <th>Odds</th>
+                        <th>Stake</th>
+                        <th>Win</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class=""><td>05/30/2024 <br>  02:20:44 AM</td><td><div><img class="img" src="/scss/images/number-games/red-chip.png"><img class="img" src="/scss/images/number-games/red-chip.png"><img class="img" src="/scss/images/number-games/red-chip.png"></div></td><td>8.48</td><td>10</td><td>0</td></tr>
+                    <tr class="bold text-blue"><td>05/30/2024 <br>  02:20:44 AM</td><td><div><img class="img" src="/scss/images/number-games/red-chip.png"><img class="img" src="/scss/images/number-games/red-chip.png"><img class="img" src="/scss/images/number-games/blue-chip.png"></div></td><td>2.61</td><td>10</td><td>26.1</td></tr>
+                    <tr class=""><td>05/30/2024 <br>  02:20:44 AM</td><td><div><img class="img" src="/scss/images/number-games/blue-chip.png"><img class="img" src="/scss/images/number-games/blue-chip.png"><img class="img" src="/scss/images/number-games/blue-chip.png"></div></td><td>8.48</td><td>10</td><td>0</td></tr>
+                    <tr class=""><td>05/30/2024 <br>  02:20:43 AM</td><td><div><img class="img" src="/scss/images/number-games/red-chip.png"><img class="img" src="/scss/images/number-games/blue-chip.png"><img class="img" src="/scss/images/number-games/blue-chip.png"></div></td><td>2.61</td><td>10</td><td>0</td></tr>
+                    <tr class=""><td>05/30/2024 <br>  02:20:43 AM</td><td>Over</td><td>2.17</td><td>10</td><td>0</td></tr>
+                    <tr class="total">
+                        <td colspan="3" class="text-right">Total</td>
+                        <td>50</td>
+                        <td>26.1</td>
+                    </tr>
+                    <tr class="total">
+                        <td colspan="3" class="text-right">Win Loss</td>
+                        <td colspan="2" class="text-red">-23.9</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="overlay">
+        <div class="pulse-container">
+            <div class="pulse-bubble pulse-bubble-1"></div>
+            <div class="pulse-bubble pulse-bubble-2"></div>
+            <div class="pulse-bubble pulse-bubble-3"></div>
+        </div>
+    </div>
+    <input type="hidden" value="en-US" id="culture" />
+
+    <script src="/lib/jquery/dist/jquery.js"></script>
+
+    <script src="/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+[
+  {
+    "_id": {
+      "$oid": "66581abbce6f676c09f906ee"
+    },
+    "freeBet": false,
+    "roundId": 1,
+    "drawId": 3,
+    "uid": "6600d9d6872e9385774eb0ca",
+    "__v": 0,
+    "betwin": 26.1,
+    "blue2": 10,
+    "blue3": 10,
+    "clientSeed": "7775",
+    "currency": "$US",
+    "name": "Spring23296",
+    "odds": {
+      "over": 2.17,
+      "under": 1.84,
+      "red2": 2.61,
+      "red3": 8.48,
+      "blue2": 2.61,
+      "blue3": 8.48
+    },
+    "operatorId": "ONEworks1",
+    "over": 10,
+    "paid": true,
+    "playerId": "123",
+    "rate": 1000,
+    "red2": 10,
+    "red3": 10,
+    "siteId": "4100300",
+    "time": {
+      "$date": "2024-05-30T06:20:43.095Z"
+    },
+    "totalAmount": 50,
+    "under": 0,
+    "__archive": {}
+  }
+]

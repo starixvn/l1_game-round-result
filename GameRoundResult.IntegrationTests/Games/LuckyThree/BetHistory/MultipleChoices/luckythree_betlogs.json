@@ -1,0 +1,107 @@
+[
+  {
+    "_id": {
+      "$oid": "66581abbce6f6766f4f906ec"
+    },
+    "amount": 10,
+    "rebet": false,
+    "roundId": 1,
+    "drawId": 3,
+    "uid": "6600d9d6872e9385774eb0ca",
+    "name": "Spring23296",
+    "time": {
+      "$date": "2024-05-30T06:20:43.075Z"
+    },
+    "choice": "over",
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1000,
+    "operatorId": "ONEworks1",
+    "playerId": "123",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "66581abbce6f67f603f906f0"
+    },
+    "amount": 10,
+    "rebet": false,
+    "roundId": 1,
+    "drawId": 3,
+    "uid": "6600d9d6872e9385774eb0ca",
+    "name": "Spring23296",
+    "time": {
+      "$date": "2024-05-30T06:20:43.409Z"
+    },
+    "choice": "blue2",
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1000,
+    "operatorId": "ONEworks1",
+    "playerId": "123",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "66581abcce6f67095cf906fc"
+    },
+    "amount": 10,
+    "rebet": false,
+    "roundId": 1,
+    "drawId": 3,
+    "uid": "6600d9d6872e9385774eb0ca",
+    "name": "Spring23296",
+    "time": {
+      "$date": "2024-05-30T06:20:44.804Z"
+    },
+    "choice": "red3",
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1000,
+    "operatorId": "ONEworks1",
+    "playerId": "123",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "66581abcce6f6731def906f8"
+    },
+    "amount": 10,
+    "rebet": false,
+    "roundId": 1,
+    "drawId": 3,
+    "uid": "6600d9d6872e9385774eb0ca",
+    "name": "Spring23296",
+    "time": {
+      "$date": "2024-05-30T06:20:44.484Z"
+    },
+    "choice": "red2",
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1000,
+    "operatorId": "ONEworks1",
+    "playerId": "123",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "66581abcce6f6741d6f906f4"
+    },
+    "amount": 10,
+    "rebet": false,
+    "roundId": 1,
+    "drawId": 3,
+    "uid": "6600d9d6872e9385774eb0ca",
+    "name": "Spring23296",
+    "time": {
+      "$date": "2024-05-30T06:20:44.028Z"
+    },
+    "choice": "blue3",
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1000,
+    "operatorId": "ONEworks1",
+    "playerId": "123",
+    "__v": 0
+  }
+]

@@ -1,0 +1,84 @@
+[
+  {
+    "_id": {
+      "$oid": "66554321ce6f67666ff7f226"
+    },
+    "time": {
+      "$date": "2024-05-28T02:36:17.010Z"
+    },
+    "ended": true,
+    "id": 972,
+    "drawId": 3,
+    "result": [
+      {
+        "balls": [
+          26,
+          17,
+          56
+        ],
+        "time": {
+          "$date": "2024-05-28T02:36:17.010Z"
+        },
+        "drawId": 1
+      },
+      {
+        "balls": [
+          22,
+          34,
+          55
+        ],
+        "time": {
+          "$date": "2024-05-28T02:36:38.012Z"
+        },
+        "drawId": 2
+      },
+      {
+        "balls": [
+          8,
+          58,
+          41
+        ],
+        "time": {
+          "$date": "2024-05-28T02:36:59.023Z"
+        },
+        "drawId": 3
+      }
+    ],
+    "settlementResult": [
+      {
+        "over": true,
+        "under": false,
+        "red2": true,
+        "red3": false,
+        "blue2": false,
+        "blue3": false,
+        "drawId": 1
+      },
+      {
+        "over": true,
+        "under": false,
+        "red2": true,
+        "red3": false,
+        "blue2": false,
+        "blue3": false,
+        "drawId": 2
+      },
+      {
+        "over": true,
+        "under": false,
+        "red2": true,
+        "red3": false,
+        "blue2": false,
+        "blue3": false,
+        "drawId": 3
+      }
+    ],
+    "exchangeRateId": 3,
+    "__v": 0,
+    "__archive": {
+      "eventtime": {
+        "$date": "2024-05-28T02:36:17.010Z"
+      }
+    }
+  }
+]

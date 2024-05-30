@@ -1,0 +1,66 @@
+[
+  {
+    "_id": {
+      "$oid": "6657fb89ce6f677c5af8fb55"
+    },
+    "time": {
+      "$date": "2024-05-30T04:07:37.024Z"
+    },
+    "ended": true,
+    "id": 3592,
+    "drawId": 1,
+    "result": [
+      {
+        "balls": [ 54, 46, 48 ],
+        "time": {
+          "$date": "2024-05-30T04:07:37.024Z"
+        },
+        "drawId": 1
+      },
+      {
+        "balls": [ 3, 60, 2 ],
+        "time": {
+          "$date": "2024-05-30T04:07:58.018Z"
+        },
+        "drawId": 2
+      },
+      {
+        "balls": [ 26, 23, 43 ],
+        "time": {
+          "$date": "2024-05-30T04:08:19.018Z"
+        },
+        "drawId": 3
+      }
+    ],
+    "settlementResult": [
+      {
+        "over": true,
+        "under": false,
+        "red2": false,
+        "red3": true,
+        "blue2": false,
+        "blue3": false,
+        "drawId": 10774
+      },
+      {
+        "over": false,
+        "under": true,
+        "red2": true,
+        "red3": false,
+        "blue2": false,
+        "blue3": false,
+        "drawId": 10775
+      },
+      {
+        "over": true,
+        "under": false,
+        "red2": false,
+        "red3": false,
+        "blue2": true,
+        "blue3": false,
+        "drawId": 10776
+      }
+    ],
+    "exchangeRateId": 3,
+  }
+]
