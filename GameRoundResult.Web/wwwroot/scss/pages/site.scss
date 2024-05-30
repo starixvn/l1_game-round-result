@@ -424,6 +424,9 @@ html {
             margin-left: 0.1rem;
             margin-right: 0.1rem;
             position: relative;
+            &.blur {
+                opacity: 0.7;
+            }
 
             .multiplier {
                 width: 100%;
