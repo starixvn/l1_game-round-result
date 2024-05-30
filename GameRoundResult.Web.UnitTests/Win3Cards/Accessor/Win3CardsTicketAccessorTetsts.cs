@@ -50,7 +50,7 @@ namespace GameRoundResult.Web.UnitTests.Accessor
             var actual = (Win3CardsTicketViewModel)await accessor.GetAsync(request);
 
             // assert
-            round.Received().ToViewModel<Win3CardsRound, Win3CardsRoundResultViewModel>(mapper, request.TimeZoneInfo);
+            round.Received().ToViewModel<Win3CardsRound, Win3CardsRoundResultViewModel>(mapper, request.TimeZoneOffset);
             Assert.Equal(roundResult, actual.RoundResult);
             Assert.Empty(actual.BetLogs);
             Assert.Equal(0, actual.TotalBet);
@@ -78,8 +78,8 @@ namespace GameRoundResult.Web.UnitTests.Accessor
             var actual = (Win3CardsTicketViewModel)await accessor.GetAsync(request);
 
             // assert
-            round.Received().ToViewModel<Win3CardsRound, Win3CardsRoundResultViewModel>(mapper, request.TimeZoneInfo);
-            betlog.Received().ToViewModel(mapper, request.TimeZoneInfo);
+            round.Received().ToViewModel<Win3CardsRound, Win3CardsRoundResultViewModel>(mapper, request.TimeZoneOffset);
+            betlog.Received().ToViewModel(mapper, request.TimeZoneOffset);
             Assert.Equal(roundResult, actual.RoundResult);
             Assert.Equal(2, actual.BetLogs.Count());
             Assert.Equal(20, actual.TotalBet);

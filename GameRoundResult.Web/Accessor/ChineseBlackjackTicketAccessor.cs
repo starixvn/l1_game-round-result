@@ -28,7 +28,7 @@ namespace GameRoundResult.Web.Accessor
                 DealerCards = ChineseBlackjackResult.Item1?.Result.Select(x => mapper.Map<CardViewModel>(x)),
                 DealerPoint = ChineseBlackjackResult.Item1?.SettlementResult ?? 0,
                 Ended = ChineseBlackjackResult.Item1?.Ended ?? false,
-                Bet = ChineseBlackjackResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo),
+                Bet = ChineseBlackjackResult.Item2?.ToViewModel(mapper, request.TimeZoneOffset),
             };
         }
     }

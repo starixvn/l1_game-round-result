@@ -28,7 +28,7 @@ namespace GameRoundResult.Web.Accessor
                 DealerCards = blackjackResult.Item1?.Result.Select(x => mapper.Map<CardViewModel>(x)),
                 DealerPoint = blackjackResult.Item1?.SettlementResult ?? 0,
                 Ended = blackjackResult.Item1?.Ended ?? false,
-                Bet = blackjackResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo),
+                Bet = blackjackResult.Item2?.ToViewModel(mapper, request.TimeZoneOffset),
             };
         }
     }

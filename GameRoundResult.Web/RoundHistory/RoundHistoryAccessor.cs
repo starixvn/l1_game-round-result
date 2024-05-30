@@ -44,7 +44,7 @@ namespace GameRoundResult.Web.RoundHistory
             var timeZone = TZConvert.GetTimeZoneInfo("SE Asia Standard Time");
             var roundResult = await roundHistoryService.GetRoundAsync<TRoundEntity>(request.RoundId, BuildRoundFilterExpression(request.RoundId));
             var betResult = await roundHistoryService.GetBetsAsync<TBetEntity>(request, BuildBetFilterExpression(request.RoundId));
-            var betViewModel = betResult.Select(r => r.ToBetViewModel<TBetEntity, TBetViewModel>(mapper, timeZone));
+            var betViewModel = betResult.Select(r => r.ToBetViewModel<TBetEntity, TBetViewModel>(mapper, timeZone.BaseUtcOffset));
 
             return new RoundHistoryViewModel
             {
@@ -58,7 +58,7 @@ namespace GameRoundResult.Web.RoundHistory
 
         protected virtual TRoundViewModel MapRoundResult(TRoundEntity roundResult, TimeZoneInfo timeZone, RoundHistoryRequest request)
         {
-            var roundViewModel = roundResult?.ToViewModel<TRoundEntity, TRoundViewModel>(mapper, timeZone);
+            var roundViewModel = roundResult?.ToViewModel<TRoundEntity, TRoundViewModel>(mapper, timeZone.BaseUtcOffset);
             return roundViewModel;
         }
         

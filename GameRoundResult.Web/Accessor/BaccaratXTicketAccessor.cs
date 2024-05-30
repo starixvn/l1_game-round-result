@@ -31,8 +31,8 @@ namespace GameRoundResult.Web.Accessor
 
             return new BaccaratXTicketViewModel
             {
-                RoundResult = baccaratXResult.Item1?.ToViewModel<TRoundEntity, BaccaratXRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                BetLogs = baccaratXResult.Item2.Select(x => x.ToBetLogViewModel<TBetLogEntity, BaccaratXBetLogViewModel>(mapper, request.TimeZoneInfo)),
+                RoundResult = baccaratXResult.Item1?.ToViewModel<TRoundEntity, BaccaratXRoundResultViewModel>(mapper, request.TimeZoneOffset),
+                BetLogs = baccaratXResult.Item2.Select(x => x.ToBetLogViewModel<TBetLogEntity, BaccaratXBetLogViewModel>(mapper, request.TimeZoneOffset)),
                 Odds = baccaratXResult.Item3?.Odds,
                 TotalBet = baccaratXResult.Item3?.TotalAmount ?? 0,
                 BetWin = baccaratXResult.Item3?.Betwin ?? 0,

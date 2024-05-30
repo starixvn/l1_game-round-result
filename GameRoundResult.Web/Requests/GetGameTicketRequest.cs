@@ -7,12 +7,12 @@ namespace GameRoundResult.Web.Requests
 {
     public class GetGameTicketRequest : IRequest<GameTicketViewModel>
     {
-        public GetGameTicketRequest(GameType gameId, long roundId, string playerId, TimeZoneInfo timeZoneInfo, string operatorId, bool freeBet, string systemType)
+        public GetGameTicketRequest(GameType gameId, long roundId, string playerId, TimeSpan timeZoneOffset, string operatorId, bool freeBet, string systemType)
         {
             GameId = gameId;
             PlayerId = playerId;
             RoundId = roundId;
-            TimeZoneInfo = timeZoneInfo;
+            TimeZoneOffset = timeZoneOffset;
             OperatorId = operatorId;
             FreeBet = freeBet;
             SystemType = systemType;
@@ -24,7 +24,7 @@ namespace GameRoundResult.Web.Requests
 
         public GameType GameId { get; }
 
-        public TimeZoneInfo TimeZoneInfo { get; }
+        public TimeSpan TimeZoneOffset { get; }
 
         public bool FreeBet { get; }
 

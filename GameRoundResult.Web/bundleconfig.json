@@ -28,5 +28,11 @@
     "inputFiles": [
       "wwwroot/js/tolgee.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/css/pages/theme.min.css",
+    "inputFiles": [
+      "wwwroot/css/pages/theme.css"
+    ]
   }
 ]

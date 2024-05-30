@@ -73,7 +73,7 @@ namespace GameRoundResult.Web.Controllers
         {
             var timeZone = TZConvert.GetTimeZoneInfo("SE Asia Standard Time");
             var result = await mediator.Send(new GetGameTicketRequest(request.Game, request.RoundId, request.UserId,
-                timeZone, request.PartnerId, false, configuration["SystemType"]));            
+                timeZone.BaseUtcOffset, request.PartnerId, false, configuration["SystemType"]));            
 
             var viewModel = new RoundHistoryBetLogViewModel
             {

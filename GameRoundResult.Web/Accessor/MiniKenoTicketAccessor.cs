@@ -27,8 +27,8 @@ namespace GameRoundResult.Web.Accessor
 
             return new RNGKenoTicketViewModel
             {
-                RoundResult = result.Item1?.ToViewModel<TKenoRound, KenoRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
+                RoundResult = result.Item1?.ToViewModel<TKenoRound, KenoRoundResultViewModel>(mapper, request.TimeZoneOffset),
+                Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneOffset)
             };
         }
     }

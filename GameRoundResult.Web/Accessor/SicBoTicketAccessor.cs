@@ -26,8 +26,8 @@ namespace GameRoundResult.Web.Accessor
 
             return new SicBoTicketViewModel
             {
-                RoundResult = result.Item1?.ToViewModel<SicBoRound, SicBoRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bets = result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                RoundResult = result.Item1?.ToViewModel<SicBoRound, SicBoRoundResultViewModel>(mapper, request.TimeZoneOffset),
+                Bets = result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneOffset)),
                 TotalBet = result.Item3?.TotalAmount ?? 0,
                 TotalBetWin = result.Item3?.Betwin ?? 0
             };

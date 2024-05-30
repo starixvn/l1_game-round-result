@@ -63,5 +63,9 @@ namespace GameRoundResult.Web.Models
         public bool FreeBet { get; set; }
 
         public bool CallFromCloudService { get; set; }
+
+        public string Mode { get; set; } = Theme.Light;
+
+        public double? TimeZoneOffset { get; set; }
     }
 }

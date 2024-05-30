@@ -46,7 +46,7 @@ namespace GameRoundResult.Web.SlotGames.Handlers
             if (result != null)
             {
                 viewModel.RoundResult = mapper.Map<ClassicSlotRoundResultViewModel>(result);
-                viewModel.RoundResult.TimeZone = request.TimeZoneInfo;
+                viewModel.RoundResult.TimeZoneOffset = request.TimeZoneOffset;
             }
 
             return viewModel;

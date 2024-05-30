@@ -27,8 +27,8 @@ namespace GameRoundResult.Web.Accessor
 
             return new BaccaratTicketViewModel
             {
-                RoundResult = result.Item1?.ToViewModel<TBaseRoundEntity, BaccaratRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
+                RoundResult = result.Item1?.ToViewModel<TBaseRoundEntity, BaccaratRoundResultViewModel>(mapper, request.TimeZoneOffset),
+                Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneOffset)
             };
         }
     }

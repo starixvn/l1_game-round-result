@@ -28,7 +28,7 @@ namespace GameRoundResult.Web.Accessor
             var utcDate = TimeZoneInfo.ConvertTimeToUtc(request.Date, request.TimeZoneInfo);
             var result = await gameRoundResultService.GetGameRoundResultAsync<TRoundEntity>(utcDate, request.RoundId, request.Page, request.PageSize);
 
-            return (result.Item1, result.Item2.Select(x => x.ToViewModel<TRoundEntity, KenoPowerRoundResultViewModel>(mapper, request.TimeZoneInfo)));
+            return (result.Item1, result.Item2.Select(x => x.ToViewModel<TRoundEntity, KenoPowerRoundResultViewModel>(mapper, request.TimeZoneInfo.BaseUtcOffset)));
         }
     }
 }

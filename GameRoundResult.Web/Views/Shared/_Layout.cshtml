@@ -13,13 +13,13 @@
     </environment>
     <environment exclude="Development">
         <link href="~/scss/pages/site.min.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/css/pages/theme.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/pages/theme.min.css" rel="stylesheet" asp-append-version="true" />
     </environment>
     @RenderSection("Styles", required: false)
 
 </head>
 
-<body data-theme="dark">
+<body data-theme="@Context.Request.Query["mode"].ToString()">
 
     <div class="main-container">
         @RenderBody()

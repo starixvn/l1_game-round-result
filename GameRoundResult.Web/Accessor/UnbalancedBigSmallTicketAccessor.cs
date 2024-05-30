@@ -31,8 +31,8 @@ namespace GameRoundResult.Web.Accessor
 
             return new UnbalancedBigSmallTicketViewModel
             {
-                RoundResult = bigSmallResult.Item1?.ToViewModel<TRoundEntity, BigSmallRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                BetLogs = bigSmallResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                RoundResult = bigSmallResult.Item1?.ToViewModel<TRoundEntity, BigSmallRoundResultViewModel>(mapper, request.TimeZoneOffset),
+                BetLogs = bigSmallResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneOffset)),
                 TotalBetAmount = bigSmallResult.Item3?.TotalAmount ?? 0,
                 TotalBetWin = bigSmallResult.Item3?.Betwin ?? 0,
             };

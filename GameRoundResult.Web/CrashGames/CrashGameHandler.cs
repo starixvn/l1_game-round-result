@@ -32,13 +32,13 @@ namespace GameRoundResult.Web.CrashGames.Handlers
             {
                 GameId = gameConfigs.GameId,
                 GameType = gameConfigs.Type,
-                BetLogs = betLogs.Select(betLog => betLog.ToViewModel(mapper, request.TimeZoneInfo))
+                BetLogs = betLogs.Select(betLog => betLog.ToViewModel(mapper, request.TimeZoneOffset))
             };
 
             if (round != null)
             {
                 viewModel.RoundResult = mapper.Map<CrashGameRoundResultViewModel>(round);
-                viewModel.RoundResult.TimeZone = request.TimeZoneInfo;
+                viewModel.RoundResult.TimeZoneOffset = request.TimeZoneOffset;
             }
 
             if (bet != null)

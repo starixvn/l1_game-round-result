@@ -26,8 +26,8 @@ namespace GameRoundResult.Web.Accessor
 
             return new OddEvenTicketViewModel
             {
-                RoundResult = result.Item1?.ToViewModel<TurboOddEvenRound, OddEvenRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bets = result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo))
+                RoundResult = result.Item1?.ToViewModel<TurboOddEvenRound, OddEvenRoundResultViewModel>(mapper, request.TimeZoneOffset),
+                Bets = result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneOffset))
             };
         }
     }

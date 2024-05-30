@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
-using GameRoundResult.Core.Database.Entities.Player;
 using GameRoundResult.Core.Extensions;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web._Shared;
@@ -61,7 +60,7 @@ namespace GameRoundResult.Web.Controllers
 
         [HttpGet]
         [Route("{culture=vi-VN}/[controller]/{queryKey}", Order = 0)]
-        public async Task<IActionResult> Index(string queryKey)
+        public async Task<IActionResult> Index(string queryKey, [FromQuery] double? timeZoneOffset)
         {
             try
             {
@@ -82,14 +81,12 @@ namespace GameRoundResult.Web.Controllers
                     var viewModel = new GameTicketResultViewModel
                     {
                         GameType = gameType,
-                        GameTicketResult = await GetGameTicket(gameType, roundId, formatPlayerId , operatorId, freeBet),
+                        GameTicketResult = await GetGameTicket(gameType, roundId, formatPlayerId, operatorId, freeBet, timeZoneOffset),
                         Language = Thread.CurrentThread.CurrentCulture.Name,
                         EnableTolgee = enableTolgee
                     };
-
                     if (viewModel.GameTicketResult == null)
                     {
-
                         return View("GameNotSupported", enableTolgee);
                     }
 
@@ -131,7 +128,9 @@ namespace GameRoundResult.Web.Controllers
                     var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}^^{authenticationResult.OperatorSecret}^^{model.GameTypeId}^^{model.GameRoundId}^^{model.PlayerId}^^{model.FreeBet}^^{model.SiteId}",
                             TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
                     model.Language = StandardizeLanguage(model.Language);
-                    var redirectUrl = Url.Action("Index", "BetHistory", new { culture = model.Language, queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
+                    var redirectUrl = Url.Action("Index", "BetHistory", 
+                        new { culture = model.Language, queryKey, mode = model.Mode, timeZoneOffset = model.TimeZoneOffset }, 
+                        hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
 
                     log.Result = new AccessUrlResponse { RedirectUrl = redirectUrl };
                     log.ResponseTimeStamp = DateTimeOffset.UtcNow;
@@ -173,11 +172,11 @@ namespace GameRoundResult.Web.Controllers
             SiteId = model.SiteId
         });
 
-        private async Task<GameTicketViewModel> GetGameTicket(GameType gameType, long roundId, string playerId, string operatorId, bool freeBet)
+        private async Task<GameTicketViewModel> GetGameTicket(GameType gameType, long roundId, string playerId, string operatorId, bool freeBet, double? timeZoneOffset)
         {
             var config = operatorConfigs.FirstOrDefault(x => x.OperatorId == operatorId);
-            var timeZoneInfo = TZConvert.GetTimeZoneInfo(config.TimeZone);
-            var result = await mediator.Send(new GetGameTicketRequest(gameType, roundId, playerId, timeZoneInfo,
+            var offset = timeZoneOffset.HasValue ? TimeSpan.FromHours(timeZoneOffset.Value) : TZConvert.GetTimeZoneInfo(config.TimeZone).BaseUtcOffset;
+            var result = await mediator.Send(new GetGameTicketRequest(gameType, roundId, playerId, offset,
                 operatorId, freeBet, systemType));
 
             return result;

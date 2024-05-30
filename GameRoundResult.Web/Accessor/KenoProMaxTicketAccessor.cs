@@ -25,8 +25,8 @@ namespace GameRoundResult.Web.Accessor
 
             return new KenoProMaxTicketViewModel
             {
-                RoundResult = result.Item1?.ToViewModel<KenoProMaxRound, KenoRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
+                RoundResult = result.Item1?.ToViewModel<KenoProMaxRound, KenoRoundResultViewModel>(mapper, request.TimeZoneOffset),
+                Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneOffset)
             };
         }
     }

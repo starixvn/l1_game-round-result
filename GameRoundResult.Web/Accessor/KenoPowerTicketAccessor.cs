@@ -33,8 +33,8 @@ namespace GameRoundResult.Web.Accessor
 
             var viewModel = new KenoPowerTicketViewModel
             {
-                RoundResult = result.Item1?.ToViewModel<TRoundEntity, KenoPowerRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bets = result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                RoundResult = result.Item1?.ToViewModel<TRoundEntity, KenoPowerRoundResultViewModel>(mapper, request.TimeZoneOffset),
+                Bets = result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneOffset)),
                 TotalBet = result.Item3?.TotalAmount ?? 0,
                 TotalBetWin = result.Item3?.Betwin ?? 0,
                 Odds = result.Item3?.Odds,

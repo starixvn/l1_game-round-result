@@ -32,8 +32,8 @@ namespace GameRoundResult.Web.Accessor
 
             return new FruitSlotTicketViewModel
             {
-                RoundResult = result.Item1?.ToViewModel<TRound, FruitSlotRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bets = result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                RoundResult = result.Item1?.ToViewModel<TRound, FruitSlotRoundResultViewModel>(mapper, request.TimeZoneOffset),
+                Bets = result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneOffset)),
                 Odds = result.Item3?.Odds,
                 TotalBet = result.Item3?.TotalAmount ?? 0,
                 BetWin = result.Item3?.Betwin ?? 0

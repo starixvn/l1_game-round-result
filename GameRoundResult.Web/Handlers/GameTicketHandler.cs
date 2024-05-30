@@ -37,7 +37,7 @@ namespace GameRoundResult.Web.Handlers
 
             if (gameTicket != null)
             {
-                gameTicket.TimeZoneOffset = request.TimeZoneInfo.GetUtcOffset(DateTimeOffset.UtcNow);
+                gameTicket.TimeZoneOffset = request.TimeZoneOffset;
                 gameTicket.GameDisplayName = request.GameConfigs.DisplayName;
             }
 
