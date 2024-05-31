@@ -79,7 +79,7 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        private string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public override string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             string result;
 
