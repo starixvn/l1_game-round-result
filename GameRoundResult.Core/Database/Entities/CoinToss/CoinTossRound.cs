@@ -1,11 +1,11 @@
 ﻿using GameRoundResult.Core._Share;
-using GameRoundResult.Core.RoundHistory.Entities;
 
 namespace GameRoundResult.Core.Database.Entities.CoinToss
 {
     [CollectionName("cointoss_rounds")]
-    public class CoinTossRound : RoundHistoryRoundEntity
+    public class CoinTossRound : GameRound
     {
+        public long DrawId { get; set; }
         public CoinTossResult Result { get; set; }
 
         public CoinTossSettlementResult SettlementResult { get; set; }
@@ -22,6 +22,6 @@ namespace GameRoundResult.Core.Database.Entities.CoinToss
     {
         public bool Head { get; set; }
 
-        public bool Tail { get; set; }        
-    }       
+        public bool Tail { get; set; }
+    }
 }

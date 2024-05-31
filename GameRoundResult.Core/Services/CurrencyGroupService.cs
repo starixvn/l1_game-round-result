@@ -6,7 +6,7 @@ namespace GameRoundResult.Core.Services
 {
     public interface ICurrencyGroupService
     {
-        Task<bool?> GetFractionalOddsFormat(string currencyname, string operatorId);
+        Task<bool> GetFractionalOddsFormat(string currencyname, string operatorId);
     }
 
     public class CurrencyGroupService : ICurrencyGroupService
@@ -22,17 +22,17 @@ namespace GameRoundResult.Core.Services
             this.cache = cache;
         }
 
-        public async Task<bool?> GetFractionalOddsFormat(string currencyname, string operatorId)
+        public async Task<bool> GetFractionalOddsFormat(string currencyname, string operatorId)
         {
-            var oldFractionalOddsFormat = cache.GetCache<bool?>($"{operatorId}-{currencyname}");
+            var oldFractionalOddsFormat = cache.GetCache<bool>($"{operatorId}-{currencyname}");
             if (oldFractionalOddsFormat != default)
             {
                 return oldFractionalOddsFormat;
             }
             var currency = await currencyRepository.Get(currencyname, operatorId);
             var currencyGroup = await currencyGroupRepository.GetById(currency?.GroupId);
-            cache.SetCache($"{operatorId}-{currencyname}", currencyGroup?.FractionalOddsFormat);
-            return currencyGroup?.FractionalOddsFormat;
+            cache.SetCache($"{operatorId}-{currencyname}", currencyGroup?.FractionalOddsFormat ?? false);
+            return currencyGroup?.FractionalOddsFormat ?? false ;
         }
     }
 }

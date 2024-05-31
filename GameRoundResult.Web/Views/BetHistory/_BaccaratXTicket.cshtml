@@ -28,7 +28,7 @@
                             @foreach (var card in Model.RoundResult.ConvertToCardList(Model.RoundResult.Result.Player))
                             {
                                 <div class="card card-type-@card.Type">
-                                    <div class="multiplier">@Model.DisplayPlayerCardMultiplier(card)</div>
+                                    <div class="multiplier">@Model.RoundResult.DisplayPlayerCardMultiplier(card)</div>
                                     <span>@Card.CardLabels[card.Number]</span>
                                     <img class="img" src="~/scss/images/card_@(card.Type).png" asp-append-version="true" />
                                 </div>
@@ -38,7 +38,7 @@
                             @foreach (var card in Model.RoundResult.ConvertToCardList(Model.RoundResult.Result.Banker))
                             {
                                 <div class="card card-type-@card.Type">
-                                    <div class="multiplier">@Model.DisplayBankerCardMultiplier(card)</div>
+                                    <div class="multiplier">@Model.RoundResult.DisplayBankerCardMultiplier(card)</div>
                                     <span>@Card.CardLabels[card.Number]</span>
                                     <img class="img" src="~/scss/images/card_@(card.Type).png" asp-append-version="true" />
                                 </div>
@@ -71,7 +71,7 @@
                             @foreach (var card in Model.RoundResult.OddsMultipliers)
                             {
                                 <div class="card card-type-@card.Type @(Model.RoundResult.IsMultiplierCardApplied(card) ? string.Empty : "blur" )">
-                                    <div class="multiplier">@Model.FormatMultiplier(card.Value)</div>
+                                    <div class="multiplier">@Model.RoundResult.FormatMultiplier(card.Value)</div>
                                     <span>@Card.CardLabels[card.Number]</span>
                                     <img class="img" src="~/scss/images/card_@(card.Type).png" asp-append-version="true" />
                                 </div>

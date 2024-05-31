@@ -17,45 +17,6 @@ namespace GameRoundResult.Web.Models
 
         public string DisplayFee => DisplayAmount(Fee);
 
-
-        public string DisplayPlayerCardMultiplier(BaccaratCard card)
-        {
-            var settlementResult = RoundResult.SettlementResult;
-
-            if (settlementResult["tie"] || settlementResult["player"] || settlementResult["playerPair"])
-            {
-                return GetCardMultiplier(card);
-            }
-
-            return string.Empty;
-        }
-
-        public string DisplayBankerCardMultiplier(BaccaratCard card)
-        {
-            var settlementResult = RoundResult.SettlementResult;
-
-            if (settlementResult["tie"] || settlementResult["banker"] || settlementResult["bankerPair"])
-            {
-                return GetCardMultiplier(card);
-            }
-
-            return string.Empty;
-        }
-
-        private string GetCardMultiplier(BaccaratCard card)
-        {
-            var multiplierCard = RoundResult.AppliedMultipliers.FirstOrDefault(x => x.Number == card.Number && x.Type == card.Type);
-
-            if (multiplierCard != null)
-            {
-                return FormatMultiplier(multiplierCard.Value);
-            }
-
-            return string.Empty;
-        }
-
-        public string FormatMultiplier(byte multiplier) => $"{multiplier}x";
-
         public string DisplayMultipliersOnChoice(string choice)
         {
             if (Multipliers.ContainsKey(choice))

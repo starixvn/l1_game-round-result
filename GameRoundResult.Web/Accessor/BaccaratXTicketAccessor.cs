@@ -18,11 +18,13 @@ namespace GameRoundResult.Web.Accessor
     {
         private readonly IGameBetService gameBetService;
         private readonly IMapper mapper;
+        private readonly ICurrencyGroupService currencyGroupService;
 
-        public BaccaratXTicketAccessor(IGameBetService gameBetService, IMapper mapper)
+        public BaccaratXTicketAccessor(IGameBetService gameBetService, IMapper mapper, ICurrencyGroupService currencyGroupService)
         {
             this.gameBetService = gameBetService;
             this.mapper = mapper;
+            this.currencyGroupService = currencyGroupService;
         }
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
@@ -37,7 +39,8 @@ namespace GameRoundResult.Web.Accessor
                 TotalBet = baccaratXResult.Item3?.TotalAmount ?? 0,
                 BetWin = baccaratXResult.Item3?.Betwin ?? 0,
                 Multipliers = baccaratXResult.Item3?.Multipliers,
-                Rate = baccaratXResult.Item3?.Rate ?? 0
+                Rate = baccaratXResult.Item3?.Rate ?? 0,
+                FractionalOddsFormat = await currencyGroupService.GetFractionalOddsFormat(baccaratXResult.Item3?.Currency, request.OperatorId)
             };
         }
     }

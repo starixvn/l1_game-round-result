@@ -1,4 +1,5 @@
 ﻿using GameRoundResult.Core.Constants;
+using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.CoinToss;
 using GameRoundResult.Core.Database.Entities.FootballCoinToss;
 using GameRoundResult.Web.Models;
@@ -20,6 +21,7 @@ namespace GameRoundResult.Web.RoundHistory
         {
             { GameType.CoinToss, typeof(RoundHistoryAccessor<CoinTossRound, CoinTossRoundResultViewModel, CoinTossBet, RoundHistoryBetViewModel>) },
             { GameType.FootballCoinToss, typeof(RoundHistoryAccessor<FootballCoinTossRound, FootballCoinTossRoundResultViewModel, FootballCoinTossBet, RoundHistoryBetViewModel>) },
+            { GameType.Bac81, typeof(RoundHistoryAccessor<Bac81Round, BaccaratXRoundResultViewModel, Bac81Bet, RoundHistoryBetViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;

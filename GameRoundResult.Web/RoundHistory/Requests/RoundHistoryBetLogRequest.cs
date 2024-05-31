@@ -9,5 +9,6 @@ namespace GameRoundResult.Web.Requests.RoundHistory
         public string PartnerId { get; set; }
         public string UserId { get; set; }
         public bool ConvertToUSD { get; set; }
+        public bool FreeBet { get; set; }
     }
 }

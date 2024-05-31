@@ -23,6 +23,40 @@ namespace GameRoundResult.Web.Models
 
         public bool IsMultiplierCardApplied(BaccaratCard card) => AppliedMultipliers.Any(x => x.Type == card.Type && x.Number == card.Number);
 
+        public string DisplayPlayerCardMultiplier(BaccaratCard card)
+        {
+            if (SettlementResult["tie"] || SettlementResult["player"] || SettlementResult["playerPair"])
+            {
+                return GetCardMultiplier(card);
+            }
+
+            return string.Empty;
+        }
+
+        public string DisplayBankerCardMultiplier(BaccaratCard card)
+        {
+            if (SettlementResult["tie"] || SettlementResult["banker"] || SettlementResult["bankerPair"])
+            {
+                return GetCardMultiplier(card);
+            }
+
+            return string.Empty;
+        }
+
+        private string GetCardMultiplier(BaccaratCard card)
+        {
+            var multiplierCard = AppliedMultipliers.FirstOrDefault(x => x.Number == card.Number && x.Type == card.Type);
+
+            if (multiplierCard != null)
+            {
+                return FormatMultiplier(multiplierCard.Value);
+            }
+
+            return string.Empty;
+        }
+
+        public string FormatMultiplier(byte multiplier) => $"{multiplier}x";
+
         public IEnumerable<BaccaratCard> ConvertToCardList(BaccaratCardResult side)
         {
             var list = new List<BaccaratCard> { side.FirstCard, side.SecondCard };
@@ -38,14 +72,14 @@ namespace GameRoundResult.Web.Models
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
-               GetResultContent(),
-               GetWinningOptionsContent(stringLocalizer)
+               GetResult(stringLocalizer),
+               GetWinningTextResult(stringLocalizer)
             };
 
             return result;
         }
 
-        private string GetWinningOptionsContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             string result;
 
@@ -72,10 +106,10 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        private string GetResultContent()
+        public override string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var tagBuilder = new TagBuilder("div");
-            tagBuilder.AddCssClass($"baccarat-result");
+            tagBuilder.AddCssClass($"baccarat-result {(AppliedMultipliers.Any() ? "with-multipliers" : string.Empty)}");
 
             tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(ConvertToCardList(Result.Player)));
             tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(ConvertToCardList(Result.Banker)));
@@ -83,7 +117,7 @@ namespace GameRoundResult.Web.Models
             return tagBuilder.GetHtmlString();
         }
 
-        private static TagBuilder GetCardBuilder(IEnumerable<BaccaratCard> cards)
+        private TagBuilder GetCardBuilder(IEnumerable<BaccaratCard> cards)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"cards");
@@ -96,10 +130,14 @@ namespace GameRoundResult.Web.Models
             return tagBuilder;
         }
 
-        private static TagBuilder GetCardBuilder(BaccaratCard card)
+        private TagBuilder GetCardBuilder(BaccaratCard card)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"card card-type-{card.Type}");
+
+            var multiplierDiv = new TagBuilder("div");
+            multiplierDiv.AddCssClass("multiplier");
+            multiplierDiv.InnerHtml.Append(DisplayPlayerCardMultiplier(card));
 
             var span = new TagBuilder("span");
             span.InnerHtml.Append(Core.Constants.Card.CardLabels[card.Number]);

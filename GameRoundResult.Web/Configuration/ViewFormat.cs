@@ -50,13 +50,13 @@ namespace GameRoundResult.Web.Configuration
             return dateTime.ToString(ViewFormat.RoundDateTimeFormat, CultureInfo.InvariantCulture);
         }
 
-        public static string FormatOdds(this decimal value, bool? frationalFormat)
+        public static string FormatOdds(this decimal value, bool frationalFormat)
         {
             var odds = frationalFormat == true ? value - 1 : value;
             return odds.ToString(ViewFormat.NumberFormat, CultureInfo.InvariantCulture);
         }
 
-        public static string FormatOddsWithZero(this decimal value, bool? frationalFormat)
+        public static string FormatOddsWithZero(this decimal value, bool frationalFormat)
         {
             if(value == 0)
             {

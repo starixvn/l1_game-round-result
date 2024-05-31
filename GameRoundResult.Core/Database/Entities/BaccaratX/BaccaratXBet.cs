@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using GameRoundResult.Core._Share;
+using GameRoundResult.Core.Database.Entities.RoundHistory;
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    public class BaccaratXBet : BaseBetEntity
+    public class BaccaratXBet : RoundHistoryBetEntity
     {
         public decimal Banker { get; set; }
 
