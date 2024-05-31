@@ -139,6 +139,7 @@ namespace GameRoundResult.Web.Models
             var multiplierDiv = new TagBuilder("div");
             multiplierDiv.AddCssClass("multiplier");
             multiplierDiv.InnerHtml.Append(displayMultiplier(card));
+            tagBuilder.InnerHtml.AppendHtml(multiplierDiv);
 
             var span = new TagBuilder("span");
             span.InnerHtml.Append(Core.Constants.Card.CardLabels[card.Number]);
