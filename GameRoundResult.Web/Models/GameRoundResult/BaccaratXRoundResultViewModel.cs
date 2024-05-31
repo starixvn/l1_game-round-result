@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Configuration;
@@ -111,33 +112,33 @@ namespace GameRoundResult.Web.Models
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"baccarat-result {(AppliedMultipliers.Any() ? "with-multipliers" : string.Empty)}");
 
-            tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(ConvertToCardList(Result.Player)));
-            tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(ConvertToCardList(Result.Banker)));
+            tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(ConvertToCardList(Result.Player), DisplayPlayerCardMultiplier));
+            tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(ConvertToCardList(Result.Banker), DisplayBankerCardMultiplier));
 
             return tagBuilder.GetHtmlString();
         }
 
-        private TagBuilder GetCardBuilder(IEnumerable<BaccaratCard> cards)
+        private TagBuilder GetCardBuilder(IEnumerable<BaccaratCard> cards, Func<BaccaratCard, string> displayMultiplier)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"cards");
 
             foreach (var card in cards)
             {
-                tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(card));
+                tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(card, displayMultiplier));
             }
 
             return tagBuilder;
         }
 
-        private TagBuilder GetCardBuilder(BaccaratCard card)
+        private TagBuilder GetCardBuilder(BaccaratCard card, Func<BaccaratCard, string> displayMultiplier)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"card card-type-{card.Type}");
 
             var multiplierDiv = new TagBuilder("div");
             multiplierDiv.AddCssClass("multiplier");
-            multiplierDiv.InnerHtml.Append(DisplayPlayerCardMultiplier(card));
+            multiplierDiv.InnerHtml.Append(displayMultiplier(card));
 
             var span = new TagBuilder("span");
             span.InnerHtml.Append(Core.Constants.Card.CardLabels[card.Number]);
