@@ -29,9 +29,9 @@
                 </td>
                 <td>@Model.RoundResult.RoundId</td>
                 <td>
-                    <div class="text-center">
-                        <span>
-                            @Html.Raw(@Model.RoundResult.GetResult(RoundResultLocalizer))
+                    <div>
+                        <span class="cointoss-result">
+                            @Html.Raw(@Model.RoundResult.GetResult(RoundResultLocalizer)) - @Html.Raw(@Model.RoundResult.GetWinningTextResult(RoundResultLocalizer))
                         </span>     
                     </div>
                 </td>
@@ -60,7 +60,7 @@
     </thead>
     <tbody>
         @if (Model.BetLogs.Any() && Model.RoundResult != null)
-        {           @Model.FractionalOddsFormat
+        {
             foreach(var row in Model.BuildBetLogs(RoundResultLocalizer, @Model.FractionalOddsFormat))
             {
                 @Html.Raw(row)

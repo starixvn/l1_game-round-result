@@ -59,53 +59,56 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var bet in Model.Bets) { 
-            <tr>
-                <td style="padding: 15px 5px;">
-                    @bet.DateDisplay <br />
-                    @bet.TimeDisplay                    
-                </td>
-                <td>
-                   @bet.OperatorId
-                </td>
-                <td>
-                   @bet.Username
-                </td>
-                <td>
-                   @bet.Name
-                </td>
-                <td>
-                   @bet.Currency
-                </td>
-                <td>
-                    <a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#modal .modal-body" data-ajax-success="showModal('#modal')"
+        @if (Model.Bets.Any() && Model.Round != null)
+        {
+            @foreach (var bet in Model.Bets)
+            {
+                <tr>
+                    <td style="padding: 15px 5px;">
+                        @bet.DateDisplay <br />
+                        @bet.TimeDisplay                    
+                    </td>
+                    <td>
+                        @bet.OperatorId
+                    </td>
+                    <td>
+                        @bet.Username
+                    </td>
+                    <td>
+                        @bet.Name
+                    </td>
+                    <td>
+                        @bet.Currency
+                    </td>
+                    <td>
+                        <a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#modal .modal-body" data-ajax-success="showModal('#modal')"
                         asp-action="GetBetHistory"
                         asp-route-game="@Model.Request.Game"
                         asp-route-roundId="@Model.Request.RoundId"
                         asp-route-userId="@bet.PlayerId"
                         asp-route-partnerId="@bet.OperatorId"
                         asp-route-convertToUSD="@Model.Request.ConvertToUSD">
-                        @(@Model.Request.ConvertToUSD ? (@bet.ConvertToBase(bet.TotalAmount)/@Model.BaseCurrencyMultiplier).Format2Decimals() : @bet.TotalAmount.Format2Decimals())
-                    </a>                   
-                </td>
-                <td>
-                    @(@Model.Request.ConvertToUSD ? (@bet.ConvertToBase(bet.Betwin)/@Model.BaseCurrencyMultiplier).Format2Decimals() : @bet.Betwin.Format2Decimals())
-                </td>
-            </tr>
-        }    
-        
-        @if (!Model.Bets.Any())
+                            @(@Model.Request.ConvertToUSD ? (@bet.ConvertToBase(bet.TotalAmount) / @Model.BaseCurrencyMultiplier).Format2Decimals() : @bet.TotalAmount.Format2Decimals())
+                        </a>                   
+                    </td>
+                    <td>
+                        @(@Model.Request.ConvertToUSD ? (@bet.ConvertToBase(bet.Betwin) / @Model.BaseCurrencyMultiplier).Format2Decimals() : @bet.Betwin.Format2Decimals())
+                    </td>
+                </tr>
+            }
+            if (Model.Request.ConvertToUSD)
+            {
+                <tr class="total">
+                    <td colspan="5" style="padding: 10px 20px; text-align: right;">Total in @Model.BaseCurrency</td>
+                    <td class="text-center">@((Model.Bets.Sum(x => x.ConvertToBase(x.TotalAmount)) / Model.BaseCurrencyMultiplier).Format2Decimals())</td>
+                    <td class="text-center">@((Model.Bets.Sum(x => x.ConvertToBase(x.Betwin)) / Model.BaseCurrencyMultiplier).Format2Decimals())</td>
+                </tr>
+            }
+        }
+        else
         {
             <tr>
                 <td class="text-center" colspan="7" style="padding: 5px;">No data</td>
-            </tr>
-        }
-        else if (Model.Request.ConvertToUSD)
-        {
-            <tr class="total">
-                <td colspan="5" style="padding: 10px 20px; text-align: right;">Total in @Model.BaseCurrency</td>
-                <td class="text-center">@((Model.Bets.Sum(x => x.ConvertToBase(x.TotalAmount)) / Model.BaseCurrencyMultiplier).Format2Decimals())</td>
-                <td class="text-center">@((Model.Bets.Sum(x => x.ConvertToBase(x.Betwin)) / Model.BaseCurrencyMultiplier).Format2Decimals())</td>
             </tr>
         }
     </tbody>
