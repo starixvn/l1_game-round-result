@@ -55,7 +55,7 @@ namespace GameRoundResult.Web.UnitTests.Accessor
             Assert.Empty(actual.BetLogs);
             Assert.Equal(0, actual.TotalBet);
             Assert.Equal(0, actual.BetWin);
-            Assert.Null(actual.FractionalOddsFormat);
+            Assert.False(actual.FractionalOddsFormat);
         }
 
         [Fact]
