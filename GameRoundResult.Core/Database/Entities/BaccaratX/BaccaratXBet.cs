@@ -16,8 +16,6 @@ namespace GameRoundResult.Core.Database.Entities
 
         public decimal Tie { get; set; }
 
-        public decimal TotalAmount { get; set; }
-
         public decimal Fee { get; set; }
 
         public Dictionary<string, IEnumerable<byte>> Multipliers { get; set; }
