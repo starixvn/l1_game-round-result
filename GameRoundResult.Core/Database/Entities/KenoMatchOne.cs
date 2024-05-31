@@ -28,8 +28,6 @@ namespace GameRoundResult.Core.Database.Entities
 
         public decimal TotalAmount { get; set; }
         public decimal Refund { get; set; }
-
-        public Dictionary<string, decimal> Odds { get; set; }
     }
 
     [CollectionName("kenomatch1_ones")]

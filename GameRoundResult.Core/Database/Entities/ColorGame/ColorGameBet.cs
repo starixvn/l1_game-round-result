@@ -22,8 +22,6 @@ namespace GameRoundResult.Core.Database.Entities.ColorGame
 
         public decimal Cold { get; set; }
 
-        public Dictionary<string, decimal> Odds { get; set; }
-
         public double TotalAmount { get; set; }
 
         public decimal TotalBet => Yellow + Red + Pink + White + Blue + Green + Hot + Cold;

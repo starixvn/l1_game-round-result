@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using GameRoundResult.Core._Share;
+﻿using GameRoundResult.Core._Share;
 
 namespace GameRoundResult.Core.Database.Entities
 {
@@ -18,8 +17,6 @@ namespace GameRoundResult.Core.Database.Entities
 
         public decimal TotalAmount { get; set; }
         public decimal Refund { get; set; }
-
-        public Dictionary<string, decimal> Odds { get; set; }
     }
 
     [CollectionName("kenopower1_ones")]

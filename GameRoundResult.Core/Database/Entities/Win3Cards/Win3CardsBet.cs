@@ -6,8 +6,6 @@ namespace GameRoundResult.Core.Database.Entities
     [CollectionName("winthreecards_bets")]
     public class Win3CardsBet : BaseBetEntity
     {
-        public Dictionary<string, decimal> Odds { get; set; }
-
         public decimal Dragon { get; set; }
 
         public decimal Phoenix { get; set; }
