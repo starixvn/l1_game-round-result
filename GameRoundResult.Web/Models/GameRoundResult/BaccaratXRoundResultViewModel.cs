@@ -21,6 +21,8 @@ namespace GameRoundResult.Web.Models
 
         public decimal ExtraFeeRatio { get; set; }
 
+        public bool IsMultiplierCardApplied(BaccaratCard card) => AppliedMultipliers.Any(x => x.Type == card.Type && x.Number == card.Number);
+
         public IEnumerable<BaccaratCard> ConvertToCardList(BaccaratCardResult side)
         {
             var list = new List<BaccaratCard> { side.FirstCard, side.SecondCard };

@@ -17,7 +17,6 @@ namespace GameRoundResult.Web.Models
 
         public string DisplayFee => DisplayAmount(Fee);
 
-        public bool IsMultiplierCardApplied(BaccaratCard card) => RoundResult.AppliedMultipliers.Any();
 
         public string DisplayPlayerCardMultiplier(BaccaratCard card)
         {
