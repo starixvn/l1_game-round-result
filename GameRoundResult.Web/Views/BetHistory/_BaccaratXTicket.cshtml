@@ -59,7 +59,7 @@
     </tbody>
 </table>
 
-@if (Model.RoundResult?.OddsMultipliers.Any())
+@if(Model.RoundResult != null && Model.RoundResult.OddsMultipliers.Any())
 {
     <partial name="_BaccaratXMultiplierCards"  for="RoundResult"/>
 }

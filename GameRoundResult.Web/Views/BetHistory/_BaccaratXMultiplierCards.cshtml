@@ -1,6 +1,7 @@
-﻿@inject IJsonStringLocalizer<BaccaratXTicketViewModel> Localizer
-
+﻿@using GameRoundResult.Core.Constants
 @model BaccaratXRoundResultViewModel
+
+@inject IJsonStringLocalizer<BaccaratXTicketViewModel> Localizer
 
 <table class="table table-bordered table-baccarat">
     <tbody>
@@ -11,8 +12,8 @@
                     <div class="cards">
                         @foreach (var card in Model.OddsMultipliers)
                         {
-                            <div class="card card-type-@card.Type @(Model.RoundResult.IsMultiplierCardApplied(card) ? string.Empty : "blur" )">
-                                <div class="multiplier">@Model.RoundResult.FormatMultiplier(card.Value)</div>
+                            <div class="card card-type-@card.Type @(Model.IsMultiplierCardApplied(card) ? string.Empty : "blur" )">
+                                <div class="multiplier">@Model.FormatMultiplier(card.Value)</div>
                                 <span>@Card.CardLabels[card.Number]</span>
                                 <img class="img" src="~/scss/images/card_@(card.Type).png" asp-append-version="true" />
                             </div>
