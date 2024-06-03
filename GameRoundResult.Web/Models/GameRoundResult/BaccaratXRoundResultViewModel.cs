@@ -16,9 +16,9 @@ namespace GameRoundResult.Web.Models
 
         public Dictionary<string, bool> SettlementResult { get; set; }
 
-        public IEnumerable<BaccaratXMultiplierCard> OddsMultipliers { get; set; }
+        public IEnumerable<BaccaratXMultiplierCard> OddsMultipliers { get; set; } = Enumerable.Empty<BaccaratXMultiplierCard>();
 
-        public IEnumerable<BaccaratXMultiplierCard> AppliedMultipliers { get; set; }
+        public IEnumerable<BaccaratXMultiplierCard> AppliedMultipliers { get; set; } = Enumerable.Empty<BaccaratXMultiplierCard>();
 
         public decimal ExtraFeeRatio { get; set; }
 

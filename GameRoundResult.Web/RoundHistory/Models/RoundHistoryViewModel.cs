@@ -1,4 +1,5 @@
-﻿using GameRoundResult.Web.Configuration;
+﻿using GameRoundResult.Core.Constants;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Requests.RoundHistory;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ namespace GameRoundResult.Web.Models.RoundHistory
 {
     public class RoundHistoryViewModel
     {
+        public GameType Game { get; set; }
         public RoundResultViewModel Round { get; set; }
         public IEnumerable<RoundHistoryBetViewModel> Bets { get; set; }
         public RoundHistoryRequest Request { get; set; }

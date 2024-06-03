@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Configuration;
 
 namespace GameRoundResult.Web.Models
@@ -26,7 +24,6 @@ namespace GameRoundResult.Web.Models
 
             return "-";
         }
-
 
         public override bool IsWinningChoice(string choice)
         {

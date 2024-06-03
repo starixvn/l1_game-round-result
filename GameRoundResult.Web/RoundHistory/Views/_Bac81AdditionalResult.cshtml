@@ -1,0 +1,8 @@
+﻿@using GameRoundResult.Web.Models.RoundHistory
+
+@model BaccaratXRoundResultViewModel
+
+@if (Model.OddsMultipliers.Any())
+{
+    <partial name="~/Views/BetHisotry/_BaccaratXMultiplierCards.cshtml" for="Model" />
+}

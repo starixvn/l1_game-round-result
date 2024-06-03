@@ -24,6 +24,7 @@ namespace GameRoundResult.Web.Handlers
             if (accessor != null)
             {
                 var result = await accessor.GetAsync(request);
+                result.Game = request.Game;
                 return result;
             }
 

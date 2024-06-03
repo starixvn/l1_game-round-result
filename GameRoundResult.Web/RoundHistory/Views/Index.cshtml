@@ -1,6 +1,7 @@
 ﻿@using GameRoundResult.Web.Models.RoundHistory
 @model RoundHistoryViewModel
 @inject IJsonStringLocalizer<RoundResultViewModel> Localizer
+@inject Microsoft.AspNetCore.Mvc.ViewEngines.ICompositeViewEngine ViewEngine
 
 @section Styles {
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -8,7 +9,7 @@
 }
 
 <input id="tolgee_language" value="en-US" hidden readonly />
-<input value="GameRoundResultViewModel,RoundResultViewModel,GameType,CoinToss,BacBall,FootballCoinToss" id="tolgee_namespace" readonly hidden />
+<input value="GameRoundResultViewModel,RoundResultViewModel,GameType,CoinToss,BacBall,FootballCoinToss,Bac81" id="tolgee_namespace" readonly hidden />
 
 <table class="table table-bordered sticky-table" style="width:100%">
     <thead>
@@ -45,6 +46,11 @@
         }
     </tbody>
 </table>
+
+@if(ViewEngine.FindView(ViewContext, $"_{Model.Game.ToString()}AdditionalResult", false).Success && Model.Round != null)
+{
+    <partial name="_@(Model.Game.ToString())AdditionResult" for="Round"/>
+}
 
 <table class="table table-bordered sticky-table table-dragon-tiger bandar-qiuqiu-table" style="width:100%; margin-top: 10px;">
     <thead>
