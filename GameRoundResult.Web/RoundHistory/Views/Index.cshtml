@@ -49,7 +49,7 @@
 
 @if(ViewEngine.FindView(ViewContext, $"_{Model.Game.ToString()}AdditionalResult", false).Success && Model.Round != null)
 {
-    <partial name="_@(Model.Game.ToString())AdditionResult" for="Round"/>
+    <partial name="_@(Model.Game.ToString())AdditionalResult" for="Round"/>
 }
 
 <table class="table table-bordered sticky-table table-dragon-tiger bandar-qiuqiu-table" style="width:100%; margin-top: 10px;">
