@@ -222,6 +222,8 @@ namespace GameRoundResult.Web.Extensions
             services.AddCrashGames();
             services.AddScoped<IPartnerRequestAuthentication, PartnerRequestAuthentication>();
             services.AddScoped<IHmacHelpers, HmacHelpers>();
+
+            services.AddScoped<IRoundHistoryAdditionalViewFactory, RoundHistoryAdditionalViewFactory>();
         }
 
         public static void AddValidators(this IServiceCollection services)

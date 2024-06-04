@@ -61,7 +61,7 @@
 
 @if(Model.RoundResult != null && Model.RoundResult.OddsMultipliers.Any())
 {
-    <partial name="_BaccaratXMultiplierCards"  for="RoundResult"/>
+    <partial name="_BaccaratXMultiplierCards" for="RoundResult"/>
 }
 
 <table class="table table-bordered table-baccarat">
@@ -102,7 +102,7 @@
             </tr>
             <tr class="total">
                 <td class="bold text-right" colspan="4">@CommonLocalizer["WinLoss"]</td>
-                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)" colspan="3">
+                <td class="bold text-right @Model.WinLossRowClassName" colspan="3">
                     @Model.DisplayWinLoss</td>
             </tr>
         }
