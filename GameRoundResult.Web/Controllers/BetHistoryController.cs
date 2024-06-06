@@ -122,7 +122,7 @@ namespace GameRoundResult.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                var authenticationResult = await partnerRequestAuthentication.Authorize(model.Auth.OperatorId, Request, model.Auth.OperatorSecret);
+                var authenticationResult = await partnerRequestAuthentication.Authorize(model.Auth.OperatorId, Request, model.Auth.OperatorSecret, model.InternalAuth);
                 if (authenticationResult.IsAuthorize)
                 {
                     var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}^^{authenticationResult.OperatorSecret}^^{model.GameTypeId}^^{model.GameRoundId}^^{model.PlayerId}^^{model.FreeBet}^^{model.SiteId}",
@@ -184,5 +184,10 @@ namespace GameRoundResult.Web.Controllers
 
         private bool isVG2System()
             => this.systemType == "VG2";
+
+        private bool IsInternalClient(InternalAuth internalAuth)
+        {
+            return internalClient.Any(x => x.Name == internalAuth.Id && x.Key == internalAuth.Key);
+        }
     }
 }
