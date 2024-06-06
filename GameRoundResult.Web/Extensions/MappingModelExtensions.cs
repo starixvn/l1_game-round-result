@@ -44,18 +44,6 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
-        public static TBetViewModel ToBetViewModel<TBetEntity, TBetViewModel>(this TBetEntity entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
-           where TBetEntity : RoundHistoryBetEntity where TBetViewModel : RoundHistoryBetViewModel
-        {
-            return mapper.Map<TBetEntity, TBetViewModel>(entity, opts =>
-            {
-                opts.AfterMap((source, dest) =>
-                {
-                    dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo);
-                });
-            });
-        }
-
         public static BigSmallBetViewModel ToViewModel(this BigSmallBet entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<BigSmallBet, BigSmallBetViewModel>(entity, opts =>

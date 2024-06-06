@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
 namespace GameRoundResult.Web.Models
 {
     public class GameTicketViewModel
@@ -49,9 +47,9 @@ namespace GameRoundResult.Web.Models
             return string.Empty;
         }
 
-        protected virtual string GetOdds(string choice)
+        protected virtual decimal GetOdds(string choice)
         {
-            return "";
+            return 0;
         }
 
         protected virtual string BuildRow(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, BetLogViewModel bet, bool? isFrationalFormat, bool convertToUSD, int baseCurrencyMultiplier)
