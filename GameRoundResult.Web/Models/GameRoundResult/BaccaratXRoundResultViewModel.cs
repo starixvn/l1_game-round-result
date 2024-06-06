@@ -18,35 +18,25 @@ namespace GameRoundResult.Web.Models
 
         public IEnumerable<BaccaratXMultiplierCard> OddsMultipliers { get; set; } = Enumerable.Empty<BaccaratXMultiplierCard>();
 
-        public IEnumerable<BaccaratXMultiplierCard> AppliedMultipliers { get; set; } = Enumerable.Empty<BaccaratXMultiplierCard>();
+        public AppliedMultipliers AppliedMultipliers { get; set; } = new();
 
         public decimal ExtraFeeRatio { get; set; }
 
-        public bool IsMultiplierCardApplied(BaccaratCard card) => AppliedMultipliers.Any(x => x.Type == card.Type && x.Number == card.Number);
+        public bool HasAnyMultiplierCardApplied => AppliedMultipliers.Player.Any() || AppliedMultipliers.Banker.Any();
 
-        public string DisplayPlayerCardMultiplier(BaccaratCard card)
+        public bool IsMultiplierCardApplied(BaccaratXMultiplierCard card)
         {
-            if (SettlementResult["tie"] || SettlementResult["player"] || SettlementResult["playerPair"])
-            {
-                return GetCardMultiplier(card);
-            }
-
-            return string.Empty;
+            return AppliedMultipliers.Player.Any(x => x.Type == card.Type && x.Number == card.Number) ||
+                AppliedMultipliers.Banker.Any(x => x.Type == card.Type && x.Number == card.Number);
         }
 
-        public string DisplayBankerCardMultiplier(BaccaratCard card)
-        {
-            if (SettlementResult["tie"] || SettlementResult["banker"] || SettlementResult["bankerPair"])
-            {
-                return GetCardMultiplier(card);
-            }
+        public string DisplayPlayerCardMultiplier(BaccaratCard card) => GetCardMultiplier(AppliedMultipliers.Player, card);
 
-            return string.Empty;
-        }
+        public string DisplayBankerCardMultiplier(BaccaratCard card) => GetCardMultiplier(AppliedMultipliers.Banker, card);
 
-        private string GetCardMultiplier(BaccaratCard card)
+        private string GetCardMultiplier(IEnumerable<BaccaratXMultiplierCard> side, BaccaratCard card)
         {
-            var multiplierCard = AppliedMultipliers.FirstOrDefault(x => x.Number == card.Number && x.Type == card.Type);
+            var multiplierCard = side.FirstOrDefault(x => x.Number == card.Number && x.Type == card.Type);
 
             if (multiplierCard != null)
             {
@@ -110,7 +100,7 @@ namespace GameRoundResult.Web.Models
         public override string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var tagBuilder = new TagBuilder("div");
-            tagBuilder.AddCssClass($"baccarat-result {(AppliedMultipliers.Any() ? "with-multipliers" : string.Empty)}");
+            tagBuilder.AddCssClass($"baccarat-result {(HasAnyMultiplierCardApplied ? "with-multipliers" : string.Empty)}");
 
             tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(ConvertToCardList(Result.Player), DisplayPlayerCardMultiplier));
             tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(ConvertToCardList(Result.Banker), DisplayBankerCardMultiplier));

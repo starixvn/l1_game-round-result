@@ -22,8 +22,7 @@
                 <td>@Model.GameDisplayName</td>
                 <td>@Model.RoundResult.RoundId</td>
                 <td>
-                    <div
-                        class="baccarat-result @(Model.RoundResult.AppliedMultipliers.Any() ? "with-multipliers" : string.Empty)">
+                    <div class="baccarat-result @(Model.RoundResult.HasAnyMultiplierCardApplied ? "with-multipliers" : string.Empty)">
                         <div class="cards">
                             @foreach (var card in Model.RoundResult.ConvertToCardList(Model.RoundResult.Result.Player))
                             {
