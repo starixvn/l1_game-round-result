@@ -28,7 +28,7 @@ namespace GameRoundResult.Web.Models
             return Odds[choice];
         }
 
-        public virtual IEnumerable<string> BuildBetLogs(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, bool? isFrationalFormat = false, bool convertToUSD = false, int baseCurrencyMultiplier = 1)
+        public override IEnumerable<string> BuildBetLogs(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, bool? isFrationalFormat = false, bool convertToUSD = false, int baseCurrencyMultiplier = 1)
         {
             var result = new List<string>();
             foreach (var bet in BetLogs.OrderByDescending(log => log.Time))
