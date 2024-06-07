@@ -184,10 +184,5 @@ namespace GameRoundResult.Web.Controllers
 
         private bool isVG2System()
             => this.systemType == "VG2";
-
-        private bool IsInternalClient(InternalAuth internalAuth)
-        {
-            return internalClient.Any(x => x.Name == internalAuth.Id && x.Key == internalAuth.Key);
-        }
     }
 }
