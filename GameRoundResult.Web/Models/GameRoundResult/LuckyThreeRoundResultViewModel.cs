@@ -56,7 +56,7 @@ namespace GameRoundResult.Web.Models
             tagBuilder.InnerHtml.Append(GetText(stringLocalizer, settlementResult.Over ? "over" : "under") + ", ");
             var subChoices = new List<string>() { "Blue3", "Blue2", "Red2", "Red3" };
             var redCount = subChoices.FindIndex(choice => bool.Parse(settlementResult.GetType().GetProperty(choice).GetValue(settlementResult, null).ToString()));
-            for (var i = 1; i <= 3; i++)
+            for (var i = 3; i >= 1; i--)
             {
                 tagBuilder.InnerHtml.AppendHtml(SeBallHtmlHelper.RenderChip(redCount >= i));
             }

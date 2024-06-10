@@ -4,7 +4,7 @@
       "05/30/2024<br/>11:07 AM",
       "3",
       "<div class=\"result-row\"><span class=\"result-column result-text bacball-result red-ball\">26</span><span class=\"result-column result-text bacball-result blue-ball\">23</span><span class=\"result-column result-text bacball-result blue-ball\">43</span> - 92</div>",
-      "<div class=\"result-row\"><div>Over, <img class=\"img\" src=\"/scss/images/number-games/red-chip.png\"><img class=\"img\" src=\"/scss/images/number-games/blue-chip.png\"><img class=\"img\" src=\"/scss/images/number-games/blue-chip.png\"></div></div>"
+      "<div class=\"result-row\"><div>Over, <img class=\"img\" src=\"/scss/images/number-games/blue-chip.png\"><img class=\"img\" src=\"/scss/images/number-games/blue-chip.png\"><img class=\"img\" src=\"/scss/images/number-games/red-chip.png\"></div></div>"
     ]
   ],
   "recordsFiltered": 1,

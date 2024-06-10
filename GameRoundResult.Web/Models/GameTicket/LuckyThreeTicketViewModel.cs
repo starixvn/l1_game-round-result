@@ -20,7 +20,7 @@ namespace GameRoundResult.Web.Models
             if (index >= 0)
             {
                 var tagBuilder = new TagBuilder("div");
-                for (var i = 1; i <= 3; i++)
+                for (var i = 3; i >= 1; i--)
                 {
                     tagBuilder.InnerHtml.AppendHtml(SeBallHtmlHelper.RenderChip(index >= i));
                 }
