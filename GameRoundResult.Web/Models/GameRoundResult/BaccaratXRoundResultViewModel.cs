@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
@@ -64,6 +65,7 @@ namespace GameRoundResult.Web.Models
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
                GetResult(stringLocalizer),
+               GetMultiplierCards(),
                GetWinningTextResult(stringLocalizer)
             };
 
@@ -102,33 +104,33 @@ namespace GameRoundResult.Web.Models
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"baccarat-result {(HasAnyMultiplierCardApplied ? "with-multipliers" : string.Empty)}");
 
-            tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(ConvertToCardList(Result.Player), DisplayPlayerCardMultiplier));
-            tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(ConvertToCardList(Result.Banker), DisplayBankerCardMultiplier));
+            tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(ConvertToCardList(Result.Player), AppliedMultipliers.Player));
+            tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(ConvertToCardList(Result.Banker), AppliedMultipliers.Banker));
 
             return tagBuilder.GetHtmlString();
         }
 
-        private TagBuilder GetCardBuilder(IEnumerable<BaccaratCard> cards, Func<BaccaratCard, string> displayMultiplier)
+        private TagBuilder GetCardBuilder(IEnumerable<BaccaratCard> cards, IEnumerable<BaccaratXMultiplierCard> appliedMultiplierCards)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"cards");
 
             foreach (var card in cards)
             {
-                tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(card, displayMultiplier));
+                tagBuilder.InnerHtml.AppendHtml(GetCardBuilder(card, appliedMultiplierCards));
             }
 
             return tagBuilder;
         }
 
-        private TagBuilder GetCardBuilder(BaccaratCard card, Func<BaccaratCard, string> displayMultiplier)
+        private TagBuilder GetCardBuilder(BaccaratCard card, IEnumerable<BaccaratXMultiplierCard> appliedMultiplierCards)
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"card card-type-{card.Type}");
 
             var multiplierDiv = new TagBuilder("div");
             multiplierDiv.AddCssClass("multiplier");
-            multiplierDiv.InnerHtml.Append(displayMultiplier(card));
+            multiplierDiv.InnerHtml.Append(GetCardMultiplier(appliedMultiplierCards, card));
             tagBuilder.InnerHtml.AppendHtml(multiplierDiv);
 
             var span = new TagBuilder("span");
@@ -141,6 +143,31 @@ namespace GameRoundResult.Web.Models
             tagBuilder.InnerHtml.AppendHtml(img);
 
             return tagBuilder;
+        }
+
+        private string GetMultiplierCards()
+        {
+            var tagBuilder = new TagBuilder("div");
+            tagBuilder.AddCssClass("baccarat-multiplier-cards");
+
+            var cardsDiv = new TagBuilder("div");
+            cardsDiv.AddCssClass($"cards");
+            var appliedMultiplierCards = AppliedMultipliers.Player.Concat(AppliedMultipliers.Banker);
+
+            foreach (var multiplierCard in OddsMultipliers)
+            {
+                var cardBuilder = GetCardBuilder(multiplierCard, appliedMultiplierCards);
+                if(!IsMultiplierCardApplied(multiplierCard))
+                {
+                    cardBuilder.AddCssClass("blur");
+                }
+
+                cardsDiv.InnerHtml.AppendHtml(cardBuilder);
+            }
+
+            tagBuilder.InnerHtml.AppendHtml(cardsDiv);
+
+            return tagBuilder.GetHtmlString();
         }
     }
 }

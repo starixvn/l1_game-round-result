@@ -510,13 +510,13 @@ html {
 
 .baccarat-multiplier-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 50px;
   align-items: center;
 }
 .baccarat-multiplier-cards .cards {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 }
 .baccarat-multiplier-cards .cards .card {
   margin-left: 0.1rem;
@@ -524,7 +524,7 @@ html {
   position: relative;
 }
 .baccarat-multiplier-cards .cards .card.blur {
-  opacity: 0.7;
+  opacity: 0.6;
 }
 .baccarat-multiplier-cards .cards .card .multiplier {
   width: 100%;

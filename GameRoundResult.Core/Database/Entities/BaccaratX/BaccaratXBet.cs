@@ -18,6 +18,8 @@ namespace GameRoundResult.Core.Database.Entities
 
         public decimal Fee { get; set; }
 
+        public decimal Amount { get; set; }
+
         public Dictionary<string, IEnumerable<byte>> Multipliers { get; set; }
     }
 

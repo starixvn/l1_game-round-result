@@ -412,20 +412,20 @@ html {
 
 .baccarat-multiplier-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: 50px;
     align-items: center;
 
     .cards {
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
 
         .card {
             margin-left: 0.1rem;
             margin-right: 0.1rem;
             position: relative;
             &.blur {
-                opacity: 0.7;
+                opacity: 0.6;
             }
 
             .multiplier {

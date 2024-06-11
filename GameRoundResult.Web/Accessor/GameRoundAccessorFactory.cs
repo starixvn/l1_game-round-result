@@ -74,6 +74,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.FootballSlot, typeof(GameRoundAccessor<FootballSlotRound, FootballSlotRoundResultViewModel>) },
             { GameType.CoinToss, typeof(GameRoundAccessor<CoinTossRound, CoinTossRoundResultViewModel>) },
             { GameType.FootballCoinToss, typeof(GameRoundAccessor<FootballCoinTossRound, FootballCoinTossRoundResultViewModel>) },
+            { GameType.Bac81, typeof(GameRoundAccessor<Bac81Round, BaccaratXRoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;
