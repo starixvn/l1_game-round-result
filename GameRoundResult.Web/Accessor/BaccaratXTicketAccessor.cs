@@ -38,7 +38,7 @@ namespace GameRoundResult.Web.Accessor
                 Odds = baccaratXResult.Item3?.Odds,
                 TotalBet = baccaratXResult.Item3?.TotalAmount ?? 0,
                 BetWin = baccaratXResult.Item3?.Betwin ?? 0,
-                AmountExcludingFee = baccaratXResult.Item3?.Betwin ?? 0,
+                AmountExcludingFee = baccaratXResult.Item3?.Amount ?? 0,
                 Multipliers = baccaratXResult.Item3?.Multipliers,
                 Rate = baccaratXResult.Item3?.Rate ?? 0,
                 FractionalOddsFormat = await currencyGroupService.GetFractionalOddsFormat(baccaratXResult.Item3?.Currency, request.OperatorId)
