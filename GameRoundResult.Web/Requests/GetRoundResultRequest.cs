@@ -35,7 +35,8 @@ namespace GameRoundResult.Web.Requests
             Core.Constants.GameType.LuckyNext1,
             Core.Constants.GameType.LuckyNext2,
             Core.Constants.GameType.SeBall1,
-            Core.Constants.GameType.LuckyThree
+            Core.Constants.GameType.LuckyThree,
+            Core.Constants.GameType.SicBall
         };
 
         public bool IsGameDraw => DrawGameIds.Contains((GameType)GameType);

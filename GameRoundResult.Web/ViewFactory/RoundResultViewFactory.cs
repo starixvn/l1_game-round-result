@@ -103,6 +103,7 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.CoinToss, cointoss },
             { GameType.SeBall1, seball },
             { GameType.LuckyThree, luckynext },
+            { GameType.SicBall, seball },
             { GameType.FootballCoinToss, footballcointoss },
             { GameType.Bac81, baccaratX },
             { GameType.Bac82, baccaratX },

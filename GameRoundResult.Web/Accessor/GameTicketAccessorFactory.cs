@@ -82,6 +82,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.CoinToss, typeof(CoinTossTicketAccessor) },
             { GameType.SeBall1, typeof(SeBall1TicketAccessor) },
             { GameType.LuckyThree, typeof(LuckyThreeTicketAccessor) },
+            { GameType.SicBall, typeof(SicBallTicketAccessor) },
             { GameType.FootballCoinToss, typeof(FootballCoinTossTicketAccessor) },
             { GameType.Bac81, typeof(BaccaratXTicketAccessor) },
             { GameType.Bac82, typeof(BaccaratXTicketAccessor) },
