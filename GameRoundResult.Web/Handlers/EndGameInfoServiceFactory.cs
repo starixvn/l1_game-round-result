@@ -80,6 +80,7 @@ namespace GameRoundResult.Web.Services
             { GameType.CoinToss, typeof(CoinTossEndGameInfoService) },
             { GameType.SeBall1, typeof(SeBall1EndGameInfoService) },
             { GameType.LuckyThree, typeof(LuckyThreeEndGameInfoService) },
+            { GameType.SicBall, typeof(SicBallEndGameInfoService) },
             { GameType.FootballCoinToss, typeof(FootballCoinTossEndGameInfoService) },
         };
 
