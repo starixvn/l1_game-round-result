@@ -35,6 +35,9 @@ namespace GameRoundResult.Web._Shared
                 case (GameType.LuckyThree):
                     return GetViewModel<LuckyThreeRound, LuckyThreeRoundResult, LuckyThreeSettlementResult, LuckyThreeRoundResultViewModel>((IEnumerable<LuckyThreeRound>)result, request);
 
+                case (GameType.SicBall):
+                    return GetViewModel<SicBallRound, SicBallRoundResult, SicBallSettlementResult, SicBallRoundResultViewModel>((IEnumerable<SicBallRound>)result, request);
+
                 default:
                     return new List<RoundResultViewModel>();
             }

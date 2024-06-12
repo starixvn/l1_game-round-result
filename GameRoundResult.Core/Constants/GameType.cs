@@ -81,6 +81,7 @@
         Bac90 = 90,
         Bac91 = 91,
         Bac92 = 92,
+        SicBall = 1007,
         FootballCoinToss = 93,
         SeDie3 = 95,
         KaraKrus = 96,

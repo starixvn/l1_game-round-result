@@ -475,6 +475,8 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<SeBall1Round, SeBallRoundResultViewModel>();
             CreateMap<LuckyThreeBetLog, TranslationBetLogViewModel>();
             CreateMap<LuckyThreeRound, LuckyThreeRoundResultViewModel>();
+            CreateMap<SicBallBetLog, TranslationBetLogViewModel>();
+            CreateMap<SicBallRound, SicBallRoundResultViewModel>();
 
             CreateMap<RoundHistoryBetEntity, RoundHistoryBetViewModel>();
 
