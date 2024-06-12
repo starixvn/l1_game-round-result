@@ -107,6 +107,9 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<ILuckyThreeTicketService, LuckyThreeTicketService>();
             services.AddScoped<ILuckyThreeBetRepository, LuckyThreeBetRepository>();
 
+            services.AddScoped<ISicBallTicketService, SicBallTicketService>();
+            services.AddScoped<ISicBallBetRepository, SicBallBetRepository>();
+
             services.AddScoped<IPontoonTicketService, PontoonTicketService>();
             services.AddScoped<IPontoonBetRepository, PontoonBetRepository>();
 
@@ -173,6 +176,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(CoinTossTicketAccessor));
             services.AddScoped(typeof(SeBall1TicketAccessor));
             services.AddScoped(typeof(LuckyThreeTicketAccessor));
+            services.AddScoped(typeof(SicBallTicketAccessor));
             services.AddScoped(typeof(FootballCoinTossTicketAccessor));
             services.AddScoped(typeof(SeDie3TicketAccessor<,,>));
             services.AddScoped(typeof(KaraKrusTicketAccessor<,,>));
@@ -241,6 +245,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<CoinTossEndGameInfoService>();
             services.AddScoped<SeBall1EndGameInfoService>();
             services.AddScoped<LuckyThreeEndGameInfoService>();
+            services.AddScoped<SicBallEndGameInfoService>();
             services.AddScoped<FootballCoinTossEndGameInfoService>();
             services.AddScoped<BaccaratXEndGameInfoService>();
             services.AddScoped<SeDie3EndGameInfoService>();
