@@ -152,11 +152,10 @@ namespace GameRoundResult.Web.Models
 
             var cardsDiv = new TagBuilder("div");
             cardsDiv.AddCssClass($"cards");
-            var appliedMultiplierCards = AppliedMultipliers.Player.Concat(AppliedMultipliers.Banker);
 
             foreach (var multiplierCard in OddsMultipliers)
             {
-                var cardBuilder = GetCardBuilder(multiplierCard, appliedMultiplierCards);
+                var cardBuilder = GetCardBuilder(multiplierCard, OddsMultipliers);
                 if(!IsMultiplierCardApplied(multiplierCard))
                 {
                     cardBuilder.AddCssClass("blur");

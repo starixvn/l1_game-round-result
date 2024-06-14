@@ -22,7 +22,8 @@ namespace GameRoundResult.Core.Services
             var round = await GetRoundAsync(request);
             var bets = await GetBetsAsync(request);
 
-            if (round == null || !bets.Any())
+
+            if(round == null || !bets.Any())
             {
                 return EndRoundInfoError.SB1001;
             }
