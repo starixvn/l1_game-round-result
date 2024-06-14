@@ -46,14 +46,14 @@ namespace GameRoundResult.Web.Models
         {
             if (Multipliers.ContainsKey(choice))
             {
-                var odds = Odds[choice];
+                var odds = Odds[choice] - 1;
 
                 foreach (var multiplier in Multipliers[choice])
                 {
                     odds *= multiplier;
                 }
 
-                return odds;
+                return odds + 1;
             }
 
             return Odds[choice];
