@@ -20,7 +20,7 @@ namespace GameRoundResult.Core.Database.Entities
 
         public decimal Amount { get; set; }
 
-        public Dictionary<string, IEnumerable<byte>> Multipliers { get; set; }
+        public Dictionary<string, IEnumerable<byte>> Multipliers { get; set; } = new Dictionary<string, IEnumerable<byte>>();
     }
 
     [CollectionName("bac81_bets")]

@@ -3,7 +3,7 @@ using GameRoundResult.Web.Configuration;
 
 namespace GameRoundResult.Web.Models
 {
-    [TolgeeNamespace("Bac81")]
+    [TolgeeNamespace("BaccaratX")]
     public class BaccaratXTicketViewModel : GameTicketViewModel
     {
         public BaccaratXRoundResultViewModel RoundResult { get; set; }

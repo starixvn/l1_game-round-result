@@ -11,7 +11,7 @@ namespace GameRoundResult.Web.Models
 {
     public class BaccaratXRoundResultViewModel : RoundResultViewModel
     {
-        private const string tolgeeNameSpace = "Bac81";
+        private const string tolgeeNameSpace = "BaccaratX";
 
         public BaccaratResult Result { get; set; }
 
