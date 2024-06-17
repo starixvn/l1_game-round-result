@@ -4,6 +4,7 @@
     --table-bg: #fff;
     --table-border-color: #ddd;
     --baccarat-sperate-card: #222;
+    --table-bg-total: #fdf6e0;
 }
 
 [data-theme="dark"] {
@@ -12,6 +13,7 @@
     --table-bg: #121f2c;
     --table-border-color:#364252;
     --baccarat-sperate-card: #ddd;
+    --table-bg-total: #000;
 }
 
 body {
@@ -26,9 +28,12 @@ body {
 }
 
 .table {
-    background-color: var(--table-bg);
-   
+    background-color: var(--table-bg);   
 }
+.table .total {
+    background-color: var(--table-bg-total);
+}
+
 .table.table-bordered thead th, .table td, .table th {
     border-color: var(--table-border-color);
 }
