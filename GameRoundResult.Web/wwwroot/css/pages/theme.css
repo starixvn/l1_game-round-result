@@ -5,6 +5,7 @@
     --table-border-color: #ddd;
     --baccarat-sperate-card: #222;
     --table-bg-total: #fdf6e0;
+    --bet-win-text-color: #004ac3;
 }
 
 [data-theme="dark"] {
@@ -40,4 +41,8 @@ body {
 
 .baccarat-result .cards:last-child:before{
     background-color: var(--baccarat-sperate-card);
+}
+
+.bet-win-text {
+    color: var(--bet-win-text-color);
 }

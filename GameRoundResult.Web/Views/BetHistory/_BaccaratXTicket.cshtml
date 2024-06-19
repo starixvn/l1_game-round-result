@@ -92,7 +92,7 @@
                     <td class="@cssClass">@Model.DisplayMultipliersOnChoice(betLog.Choice)</td>
                     <td class="@cssClass">@Model.DisplayAmount(betLog.Amount)</td>
                     <td>@Model.DisplayAmount(betLog.Fee)</td>
-                    <td class="text-right">@Model.DisplayAmount(Model.GetBetLogWin(betLog))</td>
+                    <td class="text-right @cssClass">@Model.DisplayAmount(Model.GetBetLogWin(betLog))</td>
                 </tr>
             }
 

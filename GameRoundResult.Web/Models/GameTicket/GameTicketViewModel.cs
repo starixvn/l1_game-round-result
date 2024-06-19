@@ -58,7 +58,7 @@ namespace GameRoundResult.Web.Models
 
         public virtual string GetRowBetClass(string choice)
         {
-            return IsWinningChoice(choice) ? "bold text-blue" : string.Empty;
+            return IsWinningChoice(choice) ? "bold bet-win-text" : string.Empty;
         }
 
         public virtual decimal GetBetLogWin(BetLogViewModel betLog)
