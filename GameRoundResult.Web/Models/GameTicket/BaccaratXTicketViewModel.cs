@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using GameRoundResult.Web.Configuration;
 
 namespace GameRoundResult.Web.Models
@@ -19,7 +20,7 @@ namespace GameRoundResult.Web.Models
 
         public string DisplayMultipliersOnChoice(string choice)
         {
-            if (Multipliers.ContainsKey(choice))
+            if (Multipliers.ContainsKey(choice) && Multipliers[choice].Any())
             {
                 return string.Join("x", Multipliers[choice]);
             }

@@ -49,7 +49,7 @@ namespace GameRoundResult.Web.Models
             }
 
             return Enum.IsDefined(typeof(GameType), GameType)
-                ? $"_{TransformToViewName(Enum.GetName(typeof(GameType), GameType))}{PartialPostfix}"
+                ? $"{PartialSuffix}_{TransformToViewName(Enum.GetName(typeof(GameType), GameType))}{PartialPostfix}.cshtml"
                 : $"_SlotGame{PartialPostfix}";
         }
 
