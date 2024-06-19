@@ -17,6 +17,7 @@ namespace GameRoundResult.Web.Models
 
         public string DisplayFee => DisplayAmount(Fee);
         public string DisplayAmountExcludingFee => DisplayAmount(AmountExcludingFee);
+        public override string WinLossRowClassName => WinLoss < 0 ? "text-red" : "text-blue";
 
         public string DisplayMultipliersOnChoice(string choice)
         {

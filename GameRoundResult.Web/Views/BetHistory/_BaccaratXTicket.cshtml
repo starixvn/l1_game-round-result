@@ -84,12 +84,13 @@
         {
             @foreach (var betLog in Model.BetLogs)
             {
-                <tr class="@Model.GetRowBetClass(betLog.Choice)">
+                var cssClass = Model.GetRowBetClass(betLog.Choice);
+                <tr>
                     <td>@FormatHelper.RoundDateTimeFormat(betLog.Time)</td>
-                    <td>@Localizer[betLog.ChoiceKey]</td>
-                    <td>@Model.Odds[betLog.Choice]</td>
-                    <td>@Model.DisplayMultipliersOnChoice(betLog.Choice)</td>
-                    <td>@Model.DisplayAmount(betLog.Amount)</td>
+                    <td class="@cssClass">@Localizer[betLog.ChoiceKey]</td>
+                    <td class="@cssClass">@Model.DisplayOdds(betLog.Choice)</td>
+                    <td class="@cssClass">@Model.DisplayMultipliersOnChoice(betLog.Choice)</td>
+                    <td class="@cssClass">@Model.DisplayAmount(betLog.Amount)</td>
                     <td>@Model.DisplayAmount(betLog.Fee)</td>
                     <td class="text-right">@Model.DisplayAmount(Model.GetBetLogWin(betLog))</td>
                 </tr>

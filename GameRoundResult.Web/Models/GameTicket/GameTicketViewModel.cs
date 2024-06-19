@@ -26,7 +26,7 @@ namespace GameRoundResult.Web.Models
         public string DisplayWinLoss => DisplayAmount(WinLoss);
         public string DisplayTotalBet => DisplayAmount(TotalBet);
         public string DisplayBetWin => DisplayAmount(BetWin);
-        public string WinLossRowClassName => WinLoss < 0 ? "text-red" : string.Empty;
+        public virtual string WinLossRowClassName => WinLoss < 0 ? "text-red" : string.Empty;
         public bool EnableTolgee { get; set; }
 
         public bool ConvertToBaseCurrency { get; set; }
@@ -76,7 +76,7 @@ namespace GameRoundResult.Web.Models
             return string.Empty;
         }
 
-        protected virtual string DisplayOdds(string choice)
+        public virtual string DisplayOdds(string choice)
         {
             return Odds[choice].FormatOddsWithZero(FractionalOddsFormat);
         }
