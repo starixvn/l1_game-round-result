@@ -75,6 +75,7 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpGet]
+        [Route("{culture=en-US}/[controller]/[action]", Order = 0)]
         public async Task<IActionResult> GetBetHistory(RoundHistoryBetLogRequest request)
         {
             var timeZone = TZConvert.GetTimeZoneInfo("SE Asia Standard Time");
