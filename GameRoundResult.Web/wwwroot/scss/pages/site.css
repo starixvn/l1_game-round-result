@@ -494,6 +494,11 @@ html {
   background-color: #222;
   content: "";
 }
+.baccarat-result .cards .score {
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+  align-content: center;
+}
 .baccarat-result.with-multipliers {
   grid-template-rows: 50px;
   align-items: center;

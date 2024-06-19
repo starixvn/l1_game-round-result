@@ -13,7 +13,7 @@ namespace GameRoundResult.Web.Models
     {
         private const string tolgeeNameSpace = "BaccaratX";
 
-        public BaccaratResult Result { get; set; }
+        public BaccaratXResult Result { get; set; }
 
         public Dictionary<string, bool> SettlementResult { get; set; }
 

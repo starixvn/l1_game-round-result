@@ -6,7 +6,7 @@ namespace GameRoundResult.Core.Database.Entities
 {
     public class BaccaratXRound : BaseBaccaratRoundEntity
     {
-        public BaccaratResult Result { get; set; }
+        public BaccaratXResult Result { get; set; }
 
         public Dictionary<string, bool> SettlementResult { get; set; }
 
@@ -15,6 +15,18 @@ namespace GameRoundResult.Core.Database.Entities
         public AppliedMultipliers AppliedMultipliers { get; set; }
 
         public decimal ExtraFeeRatio { get; set; }
+    }
+
+    public class BaccaratXResult
+    {
+        public BaccaratXCardResult Player { get; set; }
+
+        public BaccaratXCardResult Banker { get; set; }
+    }
+
+    public class BaccaratXCardResult : BaccaratCardResult
+    {
+        public byte Score { get; set; }
     }
 
     public class AppliedMultipliers
