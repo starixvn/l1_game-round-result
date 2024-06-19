@@ -45,7 +45,7 @@ namespace GameRoundResult.Web.Models
 
             if (IsBaccaratX)
             {
-                return $"{PartialSuffix}_BaccaratX{PartialPostfix}";
+                return $"{PartialSuffix}_BaccaratX{PartialPostfix}.cshtml";
             }
 
             return Enum.IsDefined(typeof(GameType), GameType)
