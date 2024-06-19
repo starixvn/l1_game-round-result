@@ -7,6 +7,7 @@ namespace GameRoundResult.Web.Models
     public class GameTicketResultViewModel
     {
         private const string PartialPostfix = "Ticket";
+        private const string PartialSuffix = "~/Views/BetHistory/";
         public GameType GameType { get; set; }
 
         public GameTicketViewModel GameTicketResult { get; set; }
@@ -14,7 +15,6 @@ namespace GameRoundResult.Web.Models
         public string Language { get; set; }
 
         public bool EnableTolgee { get; set; }
-
 
         public string GetPartialViewName()
         {
@@ -43,10 +43,9 @@ namespace GameRoundResult.Web.Models
                 return $"_Baccarat{PartialPostfix}";
             }
 
-
-            if(IsBaccaratX)
+            if (IsBaccaratX)
             {
-                return $"_BaccaratX{PartialPostfix}";
+                return $"{PartialSuffix}_BaccaratX{PartialPostfix}";
             }
 
             return Enum.IsDefined(typeof(GameType), GameType)
@@ -86,7 +85,6 @@ namespace GameRoundResult.Web.Models
 
         private bool IsCrashGame
             => GameTicketResult.GameType == GameConfigsType.Crash;
-
 
         private static string TransformToViewName(string name)
         => Regex.Replace(name, @"[\d-]", string.Empty).Replace("Turbo", string.Empty);

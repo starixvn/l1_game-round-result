@@ -94,11 +94,11 @@
                    asp-route-userId="@bet.PlayerId"
                    asp-route-partnerId="@bet.OperatorId"
                    asp-route-convertToUSD="@Model.Request.ConvertToUSD">
-                            @Model.DisplayAmount(bet.TotalAmount, bet.Rate);
+                            @Model.DisplayAmount(bet.TotalAmount, bet.Rate)
                         </a>
                     </td>
                     <td>
-                        @Model.DisplayAmount(bet.Betwin, bet.Rate);
+                        @Model.DisplayAmount(bet.Betwin, bet.Rate)
                     </td>
                 </tr>
             }
