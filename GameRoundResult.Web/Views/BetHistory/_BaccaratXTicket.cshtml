@@ -60,7 +60,7 @@
 
 @if(Model.RoundResult != null && Model.RoundResult.OddsMultipliers.Any())
 {
-    <partial name="_BaccaratXMultiplierCards" for="RoundResult"/>
+    <partial name="~/Views/BetHistory/_BaccaratXMultiplierCards.cshtml" for="RoundResult" />
 }
 
 <table class="table table-bordered table-baccarat">
