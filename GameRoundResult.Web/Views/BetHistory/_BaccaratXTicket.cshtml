@@ -32,10 +32,9 @@
                                     <img class="img" src="~/scss/images/card_@(card.Type).png" asp-append-version="true" />
                                 </div>
                             }
-                            <div class="score">@Model.RoundResult.Result.Player.Score</div>
+                            <div class="score">- @Model.RoundResult.Result.Player.Score</div>
                         </div>
                         <div class="cards">
-                            <div class="score">@Model.RoundResult.Result.Banker.Score</div>
                             @foreach (var card in Model.RoundResult.ConvertToCardList(Model.RoundResult.Result.Banker))
                             {
                                 <div class="card card-type-@card.Type">
@@ -44,6 +43,7 @@
                                     <img class="img" src="~/scss/images/card_@(card.Type).png" asp-append-version="true" />
                                 </div>
                             }
+                            <div class="score">- @Model.RoundResult.Result.Banker.Score</div>
                         </div>
                     </div>
                 </td>

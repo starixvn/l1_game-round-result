@@ -498,6 +498,7 @@ html {
   margin-left: 0.2rem;
   margin-right: 0.2rem;
   align-content: center;
+  font-weight: bold;
 }
 .baccarat-result.with-multipliers {
   grid-template-rows: 50px;
