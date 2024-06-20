@@ -14,6 +14,7 @@ namespace GameRoundResult.Web.Models
         public Dictionary<string, IEnumerable<byte>> Multipliers { get; set; }
         public decimal Fee { get; set; }
         public decimal AmountExcludingFee { get; set; }
+        public bool ReachMaxWin { get; set; }
 
         public string DisplayFee => DisplayAmount(Fee);
         public string DisplayAmountExcludingFee => DisplayAmount(AmountExcludingFee);

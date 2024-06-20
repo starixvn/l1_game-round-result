@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GameRoundResult.Web.Models
 {
+    [TolgeeNamespace("Common")]
     public class GameTicketViewModel
     {
         public int GameId { get; set; }

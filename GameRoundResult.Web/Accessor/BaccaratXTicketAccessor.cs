@@ -42,7 +42,8 @@ namespace GameRoundResult.Web.Accessor
                 AmountExcludingFee = baccaratXResult.Item3?.Amount ?? 0,
                 Multipliers = baccaratXResult.Item3?.Multipliers,
                 Rate = baccaratXResult.Item3?.Rate ?? 0,
-                FractionalOddsFormat = await currencyGroupService.GetFractionalOddsFormat(baccaratXResult.Item3?.Currency, request.OperatorId)
+                ReachMaxWin = baccaratXResult.Item3?.ReachMaxWin ?? false,
+                FractionalOddsFormat = await currencyGroupService.GetFractionalOddsFormat(baccaratXResult.Item3?.Currency, request.OperatorId),
             };
         }
     }
