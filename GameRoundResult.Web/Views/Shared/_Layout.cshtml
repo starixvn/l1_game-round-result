@@ -9,11 +9,9 @@
     <title>@ViewData["Title"]</title>
     <environment include="Development">
         <link href="~/scss/pages/site.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/css/pages/theme.css" rel="stylesheet" asp-append-version="true" />
     </environment>
     <environment exclude="Development">
         <link href="~/scss/pages/site.min.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/css/pages/theme.min.css" rel="stylesheet" asp-append-version="true" />
     </environment>
     @RenderSection("Styles", required: false)
 

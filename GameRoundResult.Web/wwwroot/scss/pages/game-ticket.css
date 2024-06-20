@@ -9,8 +9,36 @@
 .table .col-date {
   width: 10rem;
 }
+.table .line-break {
+  border-bottom: 4px solid var(--table-border-color);
+}
+
+.game-ticket-container {
+  width: 100%;
+}
+
+.table-baccaratx-bet {
+  display: none;
+}
+
+.table-baccaratx-bet-vertical tr td.title {
+  width: 17rem;
+}
 
 @media only screen and (min-width: 651px) {
+  .game-ticket-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    margin: auto;
+  }
+  .table-baccaratx-bet-vertical {
+    display: none;
+  }
+  .table-baccaratx-bet {
+    display: table;
+  }
   .table {
     max-width: 63rem;
   }

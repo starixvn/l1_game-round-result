@@ -1,13 +1,44 @@
 ﻿@import "../base/_variables.scss";
 @import "../base/_roboto.scss";
+@import "../components/_theme.scss";
 @import "../components/_button.scss";
 @import "../components/_forms.scss";
 @import "../components/_table.scss";
 
+body {
+    background-color: var(--bg-color);
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-size: 1.4rem;
+    color: var(--text-color);
+}
+
+.language-options a {
+    color: var(--text-color);
+}
+
+.table {
+    background-color: var(--table-bg);
+}
+
+.table .total {
+    background-color: var(--table-bg-total);
+}
+
+.table.table-bordered thead th, .table td, .table th {
+    border-color: var(--table-border-color);
+}
+
+.baccarat-result .cards:last-child:before {
+    background-color: var(--baccarat-sperate-card);
+}
+
+.bet-win-text {
+    color: var(--bet-win-text-color);
+}
+
 html {
     font-size: 10px;
 }
-
 
 .clearfix::after {
     content: "";
@@ -30,6 +61,10 @@ html {
 
 .text-right {
     text-align: right !important;
+}
+
+.text-left {
+    text-align: left !important;
 }
 
 .bold {
@@ -431,6 +466,7 @@ html {
             margin-left: 0.1rem;
             margin-right: 0.1rem;
             position: relative;
+
             &.blur {
                 opacity: 0.6;
             }

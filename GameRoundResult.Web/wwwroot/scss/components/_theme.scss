@@ -1,0 +1,18 @@
+﻿:root {
+    --text-color: #1a1a1a;
+    --bg-color: #f8f8f8;
+    --table-bg: #fff;
+    --table-border-color: #ddd;
+    --baccarat-sperate-card: #222;
+    --table-bg-total: #fdf6e0;
+    --bet-win-text-color: #004ac3;
+}
+
+[data-theme="dark"] {
+    --text-color: #fff;
+    --bg-color: #000;
+    --table-bg: #121f2c;
+    --table-border-color: #364252;
+    --baccarat-sperate-card: #ddd;
+    --table-bg-total: #000;
+}

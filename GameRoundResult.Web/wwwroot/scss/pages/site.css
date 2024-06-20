@@ -13,6 +13,25 @@
   font-weight: bold;
   src: url("../fonts/Roboto/Roboto-Bold.ttf") format("truetype"); /* Legacy iOS */
 }
+:root {
+  --text-color: #1a1a1a;
+  --bg-color: #f8f8f8;
+  --table-bg: #fff;
+  --table-border-color: #ddd;
+  --baccarat-sperate-card: #222;
+  --table-bg-total: #fdf6e0;
+  --bet-win-text-color: #004ac3;
+}
+
+[data-theme=dark] {
+  --text-color: #fff;
+  --bg-color: #000;
+  --table-bg: #121f2c;
+  --table-border-color: #364252;
+  --baccarat-sperate-card: #ddd;
+  --table-bg-total: #000;
+}
+
 .btn-submit {
   min-width: 9rem;
   height: 3.6rem;
@@ -143,6 +162,37 @@
   border-bottom: 2px solid #ddd;
 }
 
+body {
+  background-color: var(--bg-color);
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  color: var(--text-color);
+}
+
+.language-options a {
+  color: var(--text-color);
+}
+
+.table {
+  background-color: var(--table-bg);
+}
+
+.table .total {
+  background-color: var(--table-bg-total);
+}
+
+.table.table-bordered thead th, .table td, .table th {
+  border-color: var(--table-border-color);
+}
+
+.baccarat-result .cards:last-child:before {
+  background-color: var(--baccarat-sperate-card);
+}
+
+.bet-win-text {
+  color: var(--bet-win-text-color);
+}
+
 html {
   font-size: 10px;
 }
@@ -168,6 +218,10 @@ html {
 
 .text-right {
   text-align: right !important;
+}
+
+.text-left {
+  text-align: left !important;
 }
 
 .bold {
