@@ -129,7 +129,7 @@
 
 <table class="table table-bordered table-baccarat table-baccaratx-bet-vertical">
     <tbody>
-        @if (Model.BetLogs.Any())
+        @if (Model.RoundResult != null && Model.BetLogs.Any())
         {
             @foreach (var betLog in Model.BetLogs)
             {
