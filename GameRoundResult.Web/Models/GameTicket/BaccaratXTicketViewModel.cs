@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Configuration;
 
 namespace GameRoundResult.Web.Models
@@ -7,6 +8,7 @@ namespace GameRoundResult.Web.Models
     [TolgeeNamespace("BaccaratX")]
     public class BaccaratXTicketViewModel : GameTicketViewModel
     {
+        private IEnumerable<string> RefundChoices { get; } = new[] { BaccaratBetChoice.Player, BaccaratBetChoice.Banker };
         public BaccaratXRoundResultViewModel RoundResult { get; set; }
 
         public IEnumerable<BaccaratXBetLogViewModel> BetLogs { get; set; }
@@ -35,6 +37,11 @@ namespace GameRoundResult.Web.Models
             return RoundResult.SettlementResult[choice];
         }
 
+        public override string GetRowBetClass(string choice)
+        {
+            return IsWinningChoice(choice) || ShouldRefund(choice) ? "bold bet-win-text" : string.Empty;
+        }
+
         public override decimal GetBetLogWin(BetLogViewModel betLog)
         {
             if (IsWinningChoice(betLog.Choice))
@@ -42,8 +49,16 @@ namespace GameRoundResult.Web.Models
                 return betLog.Amount * CalculateFinalOdds(betLog.Choice);
             }
 
+            if (ShouldRefund(betLog.Choice))
+            {
+                return betLog.Amount;
+            }
+
             return 0;
         }
+
+        private bool ShouldRefund(string choice)
+            => RoundResult.SettlementResult[BaccaratBetChoice.Tie] && RefundChoices.Any(x => x == choice);
 
         private decimal CalculateFinalOdds(string choice)
         {
