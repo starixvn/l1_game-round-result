@@ -33,75 +33,75 @@
     align-content: center;
     margin: auto;
   }
-  .table-baccaratx-bet-vertical {
+  .game-ticket-container .table-baccaratx-bet-vertical {
     display: none;
   }
-  .table-baccaratx-bet {
+  .game-ticket-container .table-baccaratx-bet {
     display: table;
   }
-  .table {
+  .game-ticket-container .table {
     max-width: 63rem;
   }
-  .table .col-date {
+  .game-ticket-container .table .col-date {
     width: 17rem;
   }
-  .table .col-round-id {
+  .game-ticket-container .table .col-round-id {
     width: 8rem;
   }
-  .table.table-keno {
+  .game-ticket-container .table.table-keno {
     max-width: 100rem;
   }
-  .table.table-dragon-tiger .cards {
+  .game-ticket-container .table.table-dragon-tiger .cards {
     display: flex;
     justify-content: center;
   }
-  .table.table-baccarat {
+  .game-ticket-container .table.table-baccarat {
     max-width: 72rem;
   }
-  .table.table-blackjack {
+  .game-ticket-container .table.table-blackjack {
     max-width: 120rem;
   }
-  .table.table-blackjack .split-hand {
+  .game-ticket-container .table.table-blackjack .split-hand {
     height: 3rem;
     margin-bottom: -1rem;
   }
-  .table.table-blackjack .col-round-id {
+  .game-ticket-container .table.table-blackjack .col-round-id {
     width: 16rem;
   }
-  .table.table-four-guardians {
+  .game-ticket-container .table.table-four-guardians {
     max-width: 100rem;
   }
-  .table.table-vip-se-die-war {
+  .game-ticket-container .table.table-vip-se-die-war {
     max-width: 100rem;
   }
-  .table.table-keno-match {
+  .game-ticket-container .table.table-keno-match {
     max-width: 100rem;
   }
-  .table.table-keno-power {
+  .game-ticket-container .table.table-keno-power {
     max-width: 100rem;
   }
-  .table.table-bitcoin-master {
+  .game-ticket-container .table.table-bitcoin-master {
     max-width: 66rem;
   }
-  .table.table-casino-holdem {
+  .game-ticket-container .table.table-casino-holdem {
     max-width: 90rem;
   }
-  .table.table-hilo {
+  .game-ticket-container .table.table-hilo {
     max-width: 80rem;
   }
-  .table.table-night-club, .table.table-way-to-goal {
+  .game-ticket-container .table.table-night-club, .game-ticket-container .table.table-way-to-goal {
     max-width: 90rem;
   }
-  .table.table-night-club .col-round-id, .table.table-way-to-goal .col-round-id {
+  .game-ticket-container .table.table-night-club .col-round-id, .game-ticket-container .table.table-way-to-goal .col-round-id {
     width: 9rem;
   }
-  .table.table-cascading-slot {
+  .game-ticket-container .table.table-cascading-slot {
     max-width: 100rem;
   }
-  .table.table-win3cards {
+  .game-ticket-container .table.table-win3cards {
     max-width: 70rem;
   }
-  .table.table-fortune-cat {
+  .game-ticket-container .table.table-fortune-cat {
     max-width: 100rem;
   }
 }

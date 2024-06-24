@@ -41,100 +41,100 @@
         flex-direction: column;
         align-content: center;
         margin: auto;
-    }
 
-    .table-baccaratx-bet-vertical {
-        display: none;
-    }
-
-    .table-baccaratx-bet {
-        display: table;
-    }
-
-    .table {
-        max-width: 63rem;
-
-        .col-date {
-            width: 17rem;
+        .table-baccaratx-bet-vertical {
+            display: none;
         }
 
-        .col-round-id {
-            width: 8rem;
+        .table-baccaratx-bet {
+            display: table;
         }
 
-        &.table-keno {
-            max-width: 100rem;
-        }
+        .table {
+            max-width: 63rem;
 
-        &.table-dragon-tiger .cards {
-            display: flex;
-            justify-content: center;
-        }
-
-        &.table-baccarat {
-            max-width: 72rem;
-        }
-
-        &.table-blackjack {
-            max-width: 120rem;
-
-            .split-hand {
-                height: 3rem;
-                margin-bottom: -1rem;
+            .col-date {
+                width: 17rem;
             }
 
             .col-round-id {
-                width: 16rem;
+                width: 8rem;
             }
-        }
 
-        &.table-four-guardians {
-            max-width: 100rem;
-        }
-
-        &.table-vip-se-die-war {
-            max-width: 100rem;
-        }
-
-        &.table-keno-match {
-            max-width: 100rem;
-        }
-
-        &.table-keno-power {
-            max-width: 100rem;
-        }
-
-        &.table-bitcoin-master {
-            max-width: 66rem;
-        }
-
-        &.table-casino-holdem {
-            max-width: 90rem;
-        }
-
-        &.table-hilo {
-            max-width: 80rem;
-        }
-
-        &.table-night-club,
-        &.table-way-to-goal {
-            max-width: 90rem;
-
-            .col-round-id {
-                width: 9rem;
+            &.table-keno {
+                max-width: 100rem;
             }
-        }
 
-        &.table-cascading-slot {
-            max-width: 100rem;
-        }
+            &.table-dragon-tiger .cards {
+                display: flex;
+                justify-content: center;
+            }
 
-        &.table-win3cards {
-            max-width: 70rem;
-        }
+            &.table-baccarat {
+                max-width: 72rem;
+            }
 
-        &.table-fortune-cat {
-            max-width: 100rem;
+            &.table-blackjack {
+                max-width: 120rem;
+
+                .split-hand {
+                    height: 3rem;
+                    margin-bottom: -1rem;
+                }
+
+                .col-round-id {
+                    width: 16rem;
+                }
+            }
+
+            &.table-four-guardians {
+                max-width: 100rem;
+            }
+
+            &.table-vip-se-die-war {
+                max-width: 100rem;
+            }
+
+            &.table-keno-match {
+                max-width: 100rem;
+            }
+
+            &.table-keno-power {
+                max-width: 100rem;
+            }
+
+            &.table-bitcoin-master {
+                max-width: 66rem;
+            }
+
+            &.table-casino-holdem {
+                max-width: 90rem;
+            }
+
+            &.table-hilo {
+                max-width: 80rem;
+            }
+
+            &.table-night-club,
+            &.table-way-to-goal {
+                max-width: 90rem;
+
+                .col-round-id {
+                    width: 9rem;
+                }
+            }
+
+            &.table-cascading-slot {
+                max-width: 100rem;
+            }
+
+            &.table-win3cards {
+                max-width: 70rem;
+            }
+
+            &.table-fortune-cat {
+                max-width: 100rem;
+            }
         }
     }
 }
