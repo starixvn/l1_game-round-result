@@ -16,12 +16,10 @@
 .game-ticket-container {
   width: 100%;
 }
-
-.table-baccaratx-bet {
+.game-ticket-container .table-baccaratx-bet {
   display: none;
 }
-
-.table-baccaratx-bet-vertical tr td.title {
+.game-ticket-container .table-baccaratx-bet-vertical tr td.title {
   width: 17rem;
 }
 
