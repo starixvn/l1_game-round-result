@@ -66,7 +66,7 @@ namespace GameRoundResult.Web.Models
 
         public string Mode { get; set; } = Theme.Light;
 
-        public double? TimeZoneOffset { get; set; }
+        public int? TimeZoneOffset { get; set; }
 
         public InternalAuth InternalAuth { get; set; } = new();
     }

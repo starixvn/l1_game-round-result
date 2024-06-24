@@ -60,7 +60,7 @@ namespace GameRoundResult.Web.Controllers
 
         [HttpGet]
         [Route("{culture=vi-VN}/[controller]/{queryKey}", Order = 0)]
-        public async Task<IActionResult> Index(string queryKey, [FromQuery] double? timeZoneOffset)
+        public async Task<IActionResult> Index(string queryKey, [FromQuery] int? timeZoneOffset)
         {
             try
             {
@@ -172,7 +172,7 @@ namespace GameRoundResult.Web.Controllers
             SiteId = model.SiteId
         });
 
-        private async Task<GameTicketViewModel> GetGameTicket(GameType gameType, long roundId, string playerId, string operatorId, bool freeBet, double? timeZoneOffset)
+        private async Task<GameTicketViewModel> GetGameTicket(GameType gameType, long roundId, string playerId, string operatorId, bool freeBet, int? timeZoneOffset)
         {
             var config = operatorConfigs.FirstOrDefault(x => x.OperatorId == operatorId);
             var offset = timeZoneOffset.HasValue ? TimeSpan.FromHours(timeZoneOffset.Value) : TZConvert.GetTimeZoneInfo(config.TimeZone).BaseUtcOffset;
