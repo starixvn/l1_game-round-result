@@ -19,7 +19,8 @@
 .game-ticket-container .table-baccaratx-bet {
   display: none;
 }
-.game-ticket-container .table-baccaratx-bet-vertical tr td.title {
+
+.table-baccaratx-bet-vertical tr td.title {
   width: 17rem;
 }
 

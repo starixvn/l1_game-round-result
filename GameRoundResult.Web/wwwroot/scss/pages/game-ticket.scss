@@ -22,12 +22,13 @@
         display: none;
     }
 
-    .table-baccaratx-bet-vertical {
-        tr {
-            td {
-                &.title {
-                    width: 17rem;
-                }
+}
+
+.table-baccaratx-bet-vertical {
+    tr {
+        td {
+            &.title {
+                width: 17rem;
             }
         }
     }
