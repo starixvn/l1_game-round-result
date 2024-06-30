@@ -67,9 +67,7 @@ namespace GameRoundResult.Web.Models
 
         public override string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            var key = SettlementResult.Home ? "home" : "away";            
-
-            return GetText(stringLocalizer, key);
+            return GetWinningCode();            
         }
 
         public string GetText(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string key)
