@@ -74,6 +74,7 @@ namespace GameRoundResult.Web.Services
             { GameType.FootballDice, typeof(FootballDiceEndGameInfoService) },
             { GameType.FootballSlot, typeof(FootballSlotEndGameInfoService) },
             { GameType.CoinToss, typeof(CoinTossEndGameInfoService) },
+            { GameType.FootballCoinToss, typeof(FootballCoinTossEndGameInfoService) },
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()
