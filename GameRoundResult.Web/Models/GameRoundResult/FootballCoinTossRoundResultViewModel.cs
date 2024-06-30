@@ -38,6 +38,14 @@ namespace GameRoundResult.Web.Models
             return SettlementResult.Home ? homeCode : awayCode;            
         }
 
+        public string GetChoiceCode(string choice)
+        {
+            var homeCode = Match?.Home?.ToUpper() ?? "Home";
+            var awayCode = Match?.Away?.ToUpper() ?? "Away";
+            return choice == "home" ? homeCode : awayCode;
+        }
+
+
         public string GetFormattedResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = GetResult(stringLocalizer);
