@@ -9,6 +9,15 @@ namespace GameRoundResult.Core.Database.Entities.FootballCoinToss
         public FootballCoinTossResult Result { get; set; }
 
         public FootballCoinTossSettlementResult SettlementResult { get; set; }
+
+        public FootballCoinTossMatch Match { get; set; }
+    }
+
+    public class FootballCoinTossMatch
+    {
+        public string Home { get; set; }
+
+        public string Away { get; set; }
     }
 
     public class FootballCoinTossResult

@@ -24,7 +24,7 @@ namespace GameRoundResult.Web.Models
 
         protected override string GetChoice(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string choice)
         {
-            return RoundResult.GetText(stringLocalizer, choice);
+            return RoundResult.GetWinningCode().ToUpper();
         }
 
         protected override decimal GetOdds(string choice)
