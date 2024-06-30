@@ -1,4 +1,4 @@
-﻿using GameRoundResult.Core.Database.Entities.FootballCoin;
+﻿using GameRoundResult.Core.Database.Entities.FootballCoinToss;
 using MongoDB.Driver;
 using System.Linq;
 using System.Threading.Tasks;

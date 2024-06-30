@@ -1,7 +1,7 @@
 ﻿using GameRoundResult.Core._Share;
 using GameRoundResult.Core.RoundHistory.Entities;
 
-namespace GameRoundResult.Core.Database.Entities.FootballCoin
+namespace GameRoundResult.Core.Database.Entities.FootballCoinToss
 {
     [CollectionName("footballcointoss_rounds")]
     public class FootballCoinTossRound : RoundHistoryRoundEntity

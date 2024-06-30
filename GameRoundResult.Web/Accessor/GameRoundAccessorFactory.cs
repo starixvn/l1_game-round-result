@@ -6,6 +6,7 @@ using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
 using GameRoundResult.Core.Database.Entities.CoinToss;
 using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
+using GameRoundResult.Core.Database.Entities.FootballCoinToss;
 using GameRoundResult.Web.CrashGames.ViewModels;
 using GameRoundResult.Web.Models;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
@@ -72,6 +73,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.FootballDice, typeof(GameRoundAccessor<FootballDiceRound, FootballDiceRoundResultViewModel>) },
             { GameType.FootballSlot, typeof(GameRoundAccessor<FootballSlotRound, FootballSlotRoundResultViewModel>) },
             { GameType.CoinToss, typeof(GameRoundAccessor<CoinTossRound, CoinTossRoundResultViewModel>) },
+            { GameType.FootballCoinToss, typeof(GameRoundAccessor<FootballCoinTossRound, FootballCoinTossRoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;

@@ -35,6 +35,7 @@ namespace GameRoundResult.Web.ViewFactory
         private const string footballDice = "_FootballDiceRoundResult";
         private const string footballSlot = "_FootballSlotRoundResult";
         private const string cointoss = "_CoinTossRoundResult";
+        private const string footballcointoss = "_FootballCoinTossRoundResult";
 
         private readonly Dictionary<GameType, string> views = new()
         {
@@ -89,6 +90,7 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.FootballDice, footballDice },
             { GameType.FootballSlot, footballSlot },
             { GameType.CoinToss, cointoss },
+            { GameType.FootballCoinToss, footballcointoss },
         };
 
         public string GetView(GameType game, bool isCrashGame)
