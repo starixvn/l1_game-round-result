@@ -1,0 +1,7 @@
+﻿.football-cointoss-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-top: 5px;
+  margin-bottom: 5px; }

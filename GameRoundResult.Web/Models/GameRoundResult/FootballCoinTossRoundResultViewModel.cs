@@ -54,7 +54,9 @@ namespace GameRoundResult.Web.Models
             {
                 var img = new TagBuilder("img");
                 img.AddCssClass($"img");
-                img.Attributes.Add("src", $"/scss/images/football-cointoss/{this.GetWinningCode()}.png");                
+                img.Attributes.Add("src", $"/scss/images/football-cointoss/{this.GetWinningCode()}.png"); 
+                img.Attributes.Add("width", "50px");
+                img.Attributes.Add("height", "50px");
                 return img.GetHtmlString() + $"&nbsp; - {GetWinningCode()}";
             }
             else
