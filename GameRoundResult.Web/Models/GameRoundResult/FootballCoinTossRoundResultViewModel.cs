@@ -19,7 +19,7 @@ namespace GameRoundResult.Web.Models
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
                $"{GetFormattedResult(stringLocalizer)}",
-               $"{GetWinningCode()}",
+               $"{GetWinningTextResult(stringLocalizer)}",
                
             };
 
@@ -65,23 +65,22 @@ namespace GameRoundResult.Web.Models
                 img.Attributes.Add("src", $"/scss/images/football-cointoss/{this.GetWinningCode()}.png"); 
                 img.Attributes.Add("width", "50px");
                 img.Attributes.Add("height", "50px");
-                return img.GetHtmlString() + $"&nbsp; - {GetWinningCode()}";
+                return img.GetHtmlString() + $"&nbsp; - {GetText(stringLocalizer, GetWinningCode())}";
             }
             else
             {
-                return GetWinningCode();
+                return GetText(stringLocalizer, GetWinningCode());
             }
         }
 
         public override string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            return GetWinningCode();            
+            return GetText(stringLocalizer, GetWinningCode());            
         }
 
         public string GetText(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string key)
         {
-            var betChoice = new BetLogViewModel { Choice = key };
-            return stringLocalizer.GetStringWithNamcespace(betChoice.ChoiceKey, "FootballCoinToss");
+            return stringLocalizer.GetStringWithNamcespace("bet_option_" + key, "FootballCoinToss");
         }        
     }   
 }
