@@ -73,3 +73,9 @@
 @media only screen and (min-width: 500px) {
   .filter select.form-control {
     width: 17rem; } }
+
+.football-cointoss-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700; }

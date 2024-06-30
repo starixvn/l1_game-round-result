@@ -18,8 +18,8 @@ namespace GameRoundResult.Web.Models
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
-               $"{GetResult(stringLocalizer)} - {GetWinningCode().ToUpper()}",
-               $"{GetWinningCode().ToUpper()}",
+               $"{GetFormattedResult(stringLocalizer)}",
+               $"{GetWinningCode()}",
                
             };
 
@@ -33,20 +33,34 @@ namespace GameRoundResult.Web.Models
 
         public string GetWinningCode()
         {
-            return SettlementResult.Home ? Match.Home : Match.Away;
+            var homeCode = Match?.Home?.ToUpper() ?? "Home";
+            var awayCode = Match?.Away?.ToUpper() ?? "Away";
+            return SettlementResult.Home ? homeCode : awayCode;            
+        }
+
+        public string GetFormattedResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            var result = GetResult(stringLocalizer);
+            var tagBuilder = new TagBuilder("span");
+            tagBuilder.AddCssClass($"football-cointoss-result");
+            
+            tagBuilder.InnerHtml.AppendHtml(result);
+            return tagBuilder.GetHtmlString();
         }
 
         public override string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            var tagBuilder = new TagBuilder("div");
-            tagBuilder.AddCssClass($"");
-
-            var img = new TagBuilder("img");
-            img.AddCssClass($"img");
-            img.Attributes.Add("src", $"/scss/images/football-cointoss/{this.GetWinningCode()}.png");
-
-            tagBuilder.InnerHtml.AppendHtml(img);
-            return tagBuilder.GetHtmlString();
+            if (Match != null && Match.Home != null)
+            {
+                var img = new TagBuilder("img");
+                img.AddCssClass($"img");
+                img.Attributes.Add("src", $"/scss/images/football-cointoss/{this.GetWinningCode()}.png");                
+                return img.GetHtmlString() + $"&nbsp; - {GetWinningCode()}";
+            }
+            else
+            {
+                return GetWinningCode();
+            }
         }
 
         public override string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
