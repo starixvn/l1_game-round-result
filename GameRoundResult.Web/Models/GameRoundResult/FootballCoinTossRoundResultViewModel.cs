@@ -24,12 +24,12 @@ namespace GameRoundResult.Web.Models
 
         public virtual bool IsWin(string choice)
         {
-            return choice.ToLower() == "head" ? SettlementResult.Head : SettlementResult.Tail;
+            return choice.ToLower() == "home" ? SettlementResult.Home : SettlementResult.Away;
         }       
 
         public override string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
-            var key = SettlementResult.Head ? "home" : "away";            
+            var key = SettlementResult.Home ? "home" : "away";            
 
             return GetText(stringLocalizer, key);
         }

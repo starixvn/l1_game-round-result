@@ -24,8 +24,7 @@ namespace GameRoundResult.Web.Models
 
         protected override string GetChoice(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string choice)
         {
-            var key = (choice == "head") ? "home" : "away";
-            return RoundResult.GetText(stringLocalizer, key);
+            return RoundResult.GetText(stringLocalizer, choice);
         }
 
         protected override decimal GetOdds(string choice)

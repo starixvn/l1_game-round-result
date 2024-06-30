@@ -6,10 +6,10 @@ namespace GameRoundResult.Core.Database.Entities.FootballCoinToss
     [CollectionName("footballcointoss_bets")]
     public class FootballCoinTossBet : RoundHistoryBetEntity
     {
-        public decimal Head { get; set; }
+        public decimal Home { get; set; }
 
-        public decimal Tail { get; set; }        
+        public decimal Away { get; set; }        
         
-        public decimal TotalBet => Head + Tail;
+        public decimal TotalBet => Home + Away;
     }
 }

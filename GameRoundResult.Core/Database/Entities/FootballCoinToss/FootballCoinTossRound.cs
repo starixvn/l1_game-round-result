@@ -13,15 +13,15 @@ namespace GameRoundResult.Core.Database.Entities.FootballCoinToss
 
     public class FootballCoinTossResult
     {
-        public bool Head { get; set; }
+        public bool Home { get; set; }
 
-        public bool Tail { get; set; }
+        public bool Away { get; set; }
     }
 
     public class FootballCoinTossSettlementResult
     {
-        public bool Head { get; set; }
+        public bool Home { get; set; }
 
-        public bool Tail { get; set; }        
+        public bool Away { get; set; }        
     }       
 }
