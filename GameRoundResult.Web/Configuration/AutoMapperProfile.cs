@@ -455,6 +455,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<CoinTossBetLog, BetLogViewModel>();
 
             CreateMap<FootballCoinTossRound, FootballCoinTossRoundResultViewModel>();
+            CreateMap<FootballCoinTossBetLog, BetLogViewModel>();
         }
     }
 }
