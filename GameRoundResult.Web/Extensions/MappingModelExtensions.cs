@@ -391,11 +391,11 @@ namespace GameRoundResult.Web.Extensions
         {
             return mapper.Map<CoinTossBetLog, BetLogViewModel>(entity, opts =>
             {
-                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+                opts.AfterMap((source, dest) => dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours));
             });
         }
 
-        public static BetLogViewModel ToViewModel(this FootballCoinTossBetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        public static BetLogViewModel ToViewModel(this FootballCoinTossBetLog entity, IMapper mapper, TimeSpan timeZoneOffset)
         {
             return mapper.Map<FootballCoinTossBetLog, BetLogViewModel>(entity, opts =>
             {
