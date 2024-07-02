@@ -8,6 +8,7 @@ using GameRoundResult.Core.Database.Entities.CoinToss;
 using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
 using GameRoundResult.Core.Database.Entities.LuckyNext;
+using GameRoundResult.Core.Database.Entities.FootballCoinToss;
 using GameRoundResult.Web.CrashGames.ViewModels;
 using GameRoundResult.Web.Models;
 using Microsoft.Extensions.DependencyInjection;
@@ -79,6 +80,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.CoinToss, typeof(GameRoundAccessor<CoinTossRound, CoinTossRoundResultViewModel>) },
             { GameType.SeBall1, typeof(GameRoundAccessor<SeBall1Round, SeBallRoundResultViewModel>) },
             { GameType.LuckyThree, typeof(GameRoundAccessor<LuckyThreeRound, LuckyThreeRoundResultViewModel>) },
+            { GameType.FootballCoinToss, typeof(GameRoundAccessor<FootballCoinTossRound, FootballCoinTossRoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;

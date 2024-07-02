@@ -1,0 +1,88 @@
+﻿@model FootballCoinTossTicketViewModel
+@using GameRoundResult.Core.Constants
+
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<FootballCoinToss> Localizer
+@inject IJsonStringLocalizer<RoundResultViewModel> RoundResultLocalizer
+
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,GameTicketViewModel,RoundResultViewModel,FootballCoinToss" id="tolgee_namespace" readonly hidden/>
+}
+
+<table class="table table-bordered table-dragon-tiger-fight bandar-qiuqiu-table">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th>@CommonLocalizer["RoundId"]</th>
+            <th>@CommonLocalizer["Result"] </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null)
+        {
+            <tr>
+                <td>
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture)
+                    <br />
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@Model.RoundResult.RoundId</td>
+                <td>
+                    <div>
+                        <span class="cointoss-result" style="margin-top: 5px; margin-bottom: 5px;">
+                            @Html.Raw(@Model.RoundResult.GetResult(RoundResultLocalizer))                             
+                        </span>     
+                    </div>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["BetTime"] (@Model.TimeOffsetString)</th>
+            <th>@CommonLocalizer["BetChoice"]</th>
+            <th>@CommonLocalizer["Odds"]</th>
+            <th>@CommonLocalizer["Stake"]</th>
+            <th>@CommonLocalizer["Win"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.BetLogs.Any() && Model.RoundResult != null)
+        {
+            foreach(var row in Model.BuildBetLogs(RoundResultLocalizer, @Model.FractionalOddsFormat))
+            {
+                @Html.Raw(row)
+            }
+
+            <tr class="total">
+                <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>
+                <td>@Model.TotalBet.Format()</td>
+                <td>@Model.BetWin.Format()</td>
+            </tr>
+            <tr class="total">
+                <td colspan="3" class="text-right">@CommonLocalizer["WinLoss"]</td>
+                <td colspan="2" class="@Model.WinLossRowClassName">@Model.WinLoss.Format()</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

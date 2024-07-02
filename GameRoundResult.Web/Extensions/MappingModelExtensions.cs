@@ -14,6 +14,7 @@ using GameRoundResult.Core.Database.Entities.CoinToss;
 using GameRoundResult.Core.Database.Entities.GameDraw;
 using GameRoundResult.Web.Models.RoundHistory;
 using System;
+using GameRoundResult.Core.Database.Entities.FootballCoinToss;
 
 namespace GameRoundResult.Web.Extensions
 {
@@ -399,6 +400,14 @@ namespace GameRoundResult.Web.Extensions
         public static BetLogViewModel ToViewModel(this CoinTossBetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
         {
             return mapper.Map<CoinTossBetLog, BetLogViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
+            });
+        }
+
+        public static BetLogViewModel ToViewModel(this FootballCoinTossBetLog entity, IMapper mapper, TimeZoneInfo timeZoneInfo)
+        {
+            return mapper.Map<FootballCoinTossBetLog, BetLogViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = TimeZoneInfo.ConvertTimeFromUtc(source.Time, timeZoneInfo));
             });

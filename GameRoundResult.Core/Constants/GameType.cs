@@ -71,6 +71,7 @@
         LuckyNext2 = 1004,
         CoinToss = 80,
         SeBall1 = 1005,
-        LuckyThree = 1006
+        LuckyThree = 1006,
+        FootballCoinToss = 93
     }
 }

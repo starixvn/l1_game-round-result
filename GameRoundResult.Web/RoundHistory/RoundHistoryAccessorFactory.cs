@@ -2,6 +2,7 @@
 using GameRoundResult.Core.Database.Entities.CoinToss;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.BacBall;
+using GameRoundResult.Core.Database.Entities.FootballCoinToss;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.RoundHistory;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +23,7 @@ namespace GameRoundResult.Web.RoundHistory
             { GameType.CoinToss, typeof(RoundHistoryAccessor<CoinTossRound, CoinTossRoundResultViewModel, CoinTossBet, RoundHistoryBetViewModel>) },
             { GameType.SeBall1, typeof(DrawRoundHistoryAccessor<SeBall1Round, SeBallRoundResultViewModel, SeBall1Bet, RoundHistoryBetViewModel, SeBallRoundResult, SeBallSettlementResult>) },
             { GameType.LuckyThree, typeof(DrawRoundHistoryAccessor<LuckyThreeRound, LuckyThreeRoundResultViewModel, LuckyThreeBet, RoundHistoryBetViewModel, LuckyThreeRoundResult, LuckyThreeSettlementResult>) },
+            { GameType.FootballCoinToss, typeof(RoundHistoryAccessor<FootballCoinTossRound, FootballCoinTossRoundResultViewModel, FootballCoinTossBet, RoundHistoryBetViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;
