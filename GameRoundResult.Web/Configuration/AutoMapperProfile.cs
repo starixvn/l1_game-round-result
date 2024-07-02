@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Database.Entities.BacBall;
+using GameRoundResult.Core.Database.Entities.LuckyNext;
 using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
 using GameRoundResult.Core.Database.Entities.ColorGame;
 using GameRoundResult.Core.Database.Entities.DragonTigerFight;
@@ -354,11 +356,118 @@ namespace GameRoundResult.Web.Configuration
                     }));
             CreateMap<Win3CardsSettlementResult, Win3CardsSettlementResultViewModel>();
 
+            CreateMap<Win3CardsBetLog, Win3CardsBetLogViewModel>();
+            CreateMap<DragonTigerFightRound, DragonTigerFightRoundResultViewModel>()
+                .ForMember(x => x.Result, opt => opt.MapFrom((source, destination, i, context) =>
+                {
+                    return new DragonTigerFightResultViewModel
+                    {
+                        Dragon = new Models.DragonTigerFightCard { Rank = source.Result.Dragon.Rank, Suit = source.Result.Dragon.Suit },
+                        Tiger = new Models.DragonTigerFightCard { Rank = source.Result.Tiger.Rank, Suit = source.Result.Tiger.Suit }
+                    };
+                }))
+                .ForMember(x => x.SettlementResult, opt => opt.MapFrom((source, destination, i, context) =>
+                {
+                    return new DragonTigerFightSettlementResultViewModel
+                    {
+                        Dragon = source.SettlementResult.Dragon,
+                        Tiger = source.SettlementResult.Tiger,
+                        Tie = source.SettlementResult.Tie,
+                        BlackDragon = source.SettlementResult.BlackDragon,
+                        BlackTiger = source.SettlementResult.BlackTiger,
+                        RedDragon = source.SettlementResult.RedDragon,
+                        RedTiger = source.SettlementResult.RedTiger,
+                    };
+                }));
+            CreateMap<DragonTigerFightBetLog, DragonTigerFightBetLogViewModel>();
+            CreateMap<ColorGameRound, ColorGameRoundResultViewModel>()
+                .ForMember(x => x.Result, opt => opt.MapFrom((source, destination, i, context) =>
+                {
+                    return new ColorGameResultViewModel
+                    {
+                        Dice1 = source.Result.Dice1,
+                        Dice2 = source.Result.Dice2,
+                        Dice3 = source.Result.Dice3,
+                    };
+                }));
+
+            CreateMap<ColorGameBetLog, ColorGameBetLogViewModel>();
+
+            CreateMap<BandarQiuQiuRound, BandarQiuQiuRoundResultViewModel>()
+                .ForMember(x => x.Result, opt => opt.MapFrom((source, destination, i, context) =>
+                {
+                    return new BandarQiuQiuRoundResultModel
+                    {
+                        Banker = new BandarQiuQiuResultItemViewModel()
+                        {
+                            Dominoes = source.Result.Banker.Dominoes,
+                            HandRankingId = source.Result.Banker.HandRankingId,
+                            PipsOfSet = source.Result.Banker.PipsOfSet
+                        },
+                        Spade = new BandarQiuQiuResultItemViewModel()
+                        {
+                            Dominoes = source.Result.Spade.Dominoes,
+                            HandRankingId = source.Result.Spade.HandRankingId,
+                            PipsOfSet = source.Result.Spade.PipsOfSet
+                        },
+                        Heart = new BandarQiuQiuResultItemViewModel()
+                        {
+                            Dominoes = source.Result.Heart.Dominoes,
+                            HandRankingId = source.Result.Heart.HandRankingId,
+                            PipsOfSet = source.Result.Heart.PipsOfSet
+                        },
+                        Club = new BandarQiuQiuResultItemViewModel()
+                        {
+                            Dominoes = source.Result.Club.Dominoes,
+                            HandRankingId = source.Result.Club.HandRankingId,
+                            PipsOfSet = source.Result.Club.PipsOfSet
+                        },
+                        Diamond = new BandarQiuQiuResultItemViewModel()
+                        {
+                            Dominoes = source.Result.Diamond.Dominoes,
+                            HandRankingId = source.Result.Diamond.HandRankingId,
+                            PipsOfSet = source.Result.Diamond.PipsOfSet
+                        },
+                    };
+                }));
+
+            CreateMap<BandarQiuQiuBetLog, BandarQiuQiuBetLogViewModel>();
+
+            CreateMap<FootballDiceBetLog, FootballDiceBetLogViewModel>();
+            CreateMap<FootballDiceRound, FootballDiceRoundResultViewModel>()
+            .ForMember(x => x.Result, opt => opt.MapFrom((source, destination, i, context) =>
+            {
+                return new FootballDiceResultViewModel
+                {
+                    Home = source.Result.Home,
+                    Away = source.Result.Away,
+                    HomeValue = source.Result.Home.ElementAt(0) + source.Result.Home.ElementAt(1),
+                    AwayValue = source.Result.Away.ElementAt(0) + source.Result.Away.ElementAt(1),
+                };
+            }));
+
+            CreateMap<FootballSlotRound, FootballSlotRoundResultViewModel>()
+                .ForMember(x => x.SymbolsResult, opt => opt.MapFrom(x => x.Result.Symbols))
+                .ForMember(x => x.NumberResult, opt => opt.MapFrom(x => x.Result.Number));
+            CreateMap<FootballSlotBetLog, FootballSlotBetLogViewModel>();
+
+            CreateMap<BacBall1BetLog, TranslationBetLogViewModel>();
+            CreateMap<BacBall1Round, BacBallRoundResultViewModel>();
+
+            CreateMap<BacBall2BetLog, TranslationBetLogViewModel>();
+            CreateMap<BacBall2Round, BacBallRoundResultViewModel>();
+
+            CreateMap<LuckyNext1BetLog, TranslationBetLogViewModel>();
+            CreateMap<LuckyNext1Round, LuckyNextRoundResultViewModel>();
+
+            CreateMap<LuckyNext2BetLog, TranslationBetLogViewModel>();
+            CreateMap<LuckyNext2Round, LuckyNextRoundResultViewModel>();
+
             CreateMap<RoundHistoryBetEntity, RoundHistoryBetViewModel>();
 
             CreateMap<CoinTossRound, CoinTossRoundResultViewModel>();
             CreateMap<CoinTossBetLog, BetLogViewModel>();
-            
+
             CreateMap<SeBall1BetLog, TranslationBetLogViewModel>();
             CreateMap<SeBall1Round, SeBallRoundResultViewModel>();
             CreateMap<LuckyThreeBetLog, TranslationBetLogViewModel>();
