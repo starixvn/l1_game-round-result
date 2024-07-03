@@ -91,7 +91,6 @@ namespace GameRoundResult.Web.Models
             AddColumn(rowBuilder, $"{GetChoice(stringLocalizer, bet.Choice)}");
             AddColumn(rowBuilder, $"{DisplayOdds(bet.Choice)}");
             AddColumn(rowBuilder, $"{DisplayAmount(bet.Amount)}");
-            AddColumn(rowBuilder, $"{DisplayAmount(bet.Amount)}");
             AddColumn(rowBuilder, $"{DisplayAmount(GetBetLogWin(bet))}");
 
             return rowBuilder.GetHtmlString();

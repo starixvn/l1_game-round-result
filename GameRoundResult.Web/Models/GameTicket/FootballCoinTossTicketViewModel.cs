@@ -9,8 +9,6 @@ namespace GameRoundResult.Web.Models
 
         public IEnumerable<BetLogViewModel> BetLogs { get; set; }
 
-        public Dictionary<string, decimal> Odds { get; set; }
-
         public override string GetRowBetClass(string choice)
         {
             return RoundResult.IsWin(choice) ? "bold text-blue" : string.Empty;
