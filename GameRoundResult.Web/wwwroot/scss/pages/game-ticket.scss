@@ -34,6 +34,7 @@
     }
 }
 
+
 @media only screen and (min-width: 651px) {
     .game-ticket-container {
         display: flex;
@@ -71,7 +72,21 @@
             }
 
             &.table-baccarat {
-                max-width: 72rem;
+                width: 80rem;
+                table-layout: fixed;
+                .col-time {
+                    width: 24rem;
+                }
+                .col-betchoice {
+                    width: 12rem;
+                }
+                .col-odds{
+                    width: 8rem;
+                }
+                .col-win {
+                    width: 8rem;
+                }
+               
             }
 
             &.table-blackjack {

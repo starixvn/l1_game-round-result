@@ -23,7 +23,8 @@
             <tr>
                 <td>@Model.RoundResult.RoundId</td>
                 <td>
-                    <div class="baccarat-result @(Model.RoundResult.HasAnyMultiplierCardApplied ? "with-multipliers" : string.Empty)">
+                    <div
+                        class="baccarat-result @(Model.RoundResult.HasAnyMultiplierCardApplied ? "with-multipliers" : string.Empty)">
                         <div class="cards">
                             @foreach (var card in Model.RoundResult.ConvertToCardList(Model.RoundResult.Result.Player))
                             {
@@ -69,15 +70,13 @@
 <table class="table table-bordered table-baccarat table-baccaratx-bet">
     <thead>
         <tr>
-            <th>
-                @CommonLocalizer["Time"] (@Model.TimeOffsetString)
-            </th>
-            <th>@CommonLocalizer["BetChoice"]</th>
-            <th>@CommonLocalizer["Odds"]</th>
+            <th class="col-time">@CommonLocalizer["Time"] (@Model.TimeOffsetString) </th>
+            <th class="col-betchoice">@CommonLocalizer["BetChoice"]</th>
+            <th class=" col-odds">@CommonLocalizer["Odds"]</th>
             <th>@Localizer["multiplier_value"]</th>
             <th>@CommonLocalizer["Stake"]</th>
             <th>@Localizer["extra_fee"]</th>
-            <th>@CommonLocalizer["Win"]</th>
+            <th class="col-win">@CommonLocalizer["Win"]</th>
         </tr>
     </thead>
     <tbody>
