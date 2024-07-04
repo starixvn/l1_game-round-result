@@ -80,7 +80,7 @@ namespace GameRoundResult.Web.Models
 
         public string GetText(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string key)
         {
-            return stringLocalizer.GetStringWithNamcespace("bet_option_" + key, "FootballCoinToss");
+            return stringLocalizer.GetStringWithNamcespace("glossary_" + key, "FootballCoinToss");
         }        
     }   
 }
