@@ -33,15 +33,15 @@ namespace GameRoundResult.Web.Models
 
         public string GetWinningCode()
         {
-            var homeCode = Match?.Home?.ToUpper() ?? "home";
-            var awayCode = Match?.Away?.ToUpper() ?? "away";
+            var homeCode = Match?.Home ?? "home";
+            var awayCode = Match?.Away ?? "away";
             return SettlementResult.Home ? homeCode : awayCode;            
         }
 
         public string GetChoiceCode(string choice)
         {
-            var homeCode = Match?.Home?.ToUpper() ?? "home";
-            var awayCode = Match?.Away?.ToUpper() ?? "away";
+            var homeCode = Match?.Home ?? "home";
+            var awayCode = Match?.Away ?? "away";
             return choice == "home" ? homeCode : awayCode;
         }
 
