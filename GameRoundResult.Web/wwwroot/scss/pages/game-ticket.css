@@ -39,7 +39,7 @@
     display: table;
   }
   .game-ticket-container .table {
-    max-width: 63rem;
+    width: 63rem;
   }
   .game-ticket-container .table .col-date {
     width: 17rem;
@@ -48,14 +48,27 @@
     width: 8rem;
   }
   .game-ticket-container .table.table-keno {
-    max-width: 100rem;
+    width: 100rem;
   }
   .game-ticket-container .table.table-dragon-tiger .cards {
     display: flex;
     justify-content: center;
   }
   .game-ticket-container .table.table-baccarat {
-    max-width: 72rem;
+    width: 80rem;
+    table-layout: fixed;
+  }
+  .game-ticket-container .table.table-baccarat .col-time {
+    width: 24rem;
+  }
+  .game-ticket-container .table.table-baccarat .col-betchoice {
+    width: 12rem;
+  }
+  .game-ticket-container .table.table-baccarat .col-odds {
+    width: 8rem;
+  }
+  .game-ticket-container .table.table-baccarat .col-win {
+    width: 8rem;
   }
   .game-ticket-container .table.table-blackjack {
     max-width: 120rem;

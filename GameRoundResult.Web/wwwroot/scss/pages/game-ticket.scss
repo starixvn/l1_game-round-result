@@ -52,7 +52,7 @@
         }
 
         .table {
-            max-width: 63rem;
+            width: 63rem;
 
             .col-date {
                 width: 17rem;
@@ -63,7 +63,7 @@
             }
 
             &.table-keno {
-                max-width: 100rem;
+                width: 100rem;
             }
 
             &.table-dragon-tiger .cards {
