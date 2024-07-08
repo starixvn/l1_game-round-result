@@ -12,9 +12,9 @@ namespace GameRoundResult.Web.Extensions
                 .AddRedirect("(?i)zh-TW/BetHistory/(.*)", "zh-Hant/BetHistory/$1")
                 .AddRedirect("(?i)zh-CN", "zh-Hans")
                 .AddRedirect("(?i)zh-TW", "zh-Hant")
-                .AddRedirect("(?i)vi/(.*)", "vi-VN/$1")
-                .AddRedirect("(?i)id/(.*)", "id-ID/$1")
-                .AddRedirect("(?i)th/(.*)", "th-TH/$1");
+                .AddRedirect("(?i)vi/BetHistory/(.*)", "vi-VN/BetHistory/$1")
+                .AddRedirect("(?i)id/BetHistory/(.*)", "id-ID/BetHistory/$1")
+                .AddRedirect("(?i)th/BetHistory/(.*)", "th-TH/BetHistory/$1");
 
             return app.UseRewriter(options);
         }
