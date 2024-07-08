@@ -13,6 +13,21 @@
   font-weight: bold;
   src: url("../fonts/Roboto/Roboto-Bold.ttf") format("truetype"); /* Legacy iOS */
 }
+@font-face {
+  font-family: "Noto";
+  font-weight: normal;
+  src: url("../fonts/Noto/noto-serif-regular.ttf") format("truetype"); /* Legacy iOS */
+}
+@font-face {
+  font-family: "Noto";
+  font-weight: 600;
+  src: url("../fonts/Noto/noto-serif-bold.ttf") format("truetype"); /* Legacy iOS */
+}
+@font-face {
+  font-family: "Noto";
+  font-weight: bold;
+  src: url("../fonts/Noto/noto-serif-bold.ttf") format("truetype"); /* Legacy iOS */
+}
 :root {
   --text-color: #1a1a1a;
   --bg-color: #f8f8f8;
@@ -20,6 +35,7 @@
   --table-border-color: #ddd;
   --baccarat-sperate-card: #222;
   --table-bg-total: #fdf6e0;
+  --table-header-bg: none;
   --bet-win-text-color: #004ac3;
 }
 
@@ -30,7 +46,8 @@
   --table-border-color: #364252;
   --baccarat-sperate-card: #ddd;
   --table-bg-total: #121f2c;
-  --bet-win-text-color: #d3cb0a ;
+  --table-header-bg: #121f2c;
+  --bet-win-text-color: #f1e344;
 }
 
 .btn-submit {
@@ -165,7 +182,7 @@
 
 body {
   background-color: var(--bg-color);
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-family: "Noto", "Roboto", Arial, Helvetica, sans-serif;
   font-size: 1.8rem;
   color: var(--text-color);
 }
@@ -389,7 +406,7 @@ html {
 .card {
   position: relative;
   display: inline-block;
-  height: 3.2rem;
+  height: 3.5rem;
   width: 2.5rem;
   margin-left: 0.4rem;
   margin-right: 0.4rem;
@@ -401,7 +418,7 @@ html {
 .card span {
   position: relative;
   top: -0.6rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 .card .img {
   position: absolute;
@@ -418,6 +435,9 @@ html {
   height: 1.8rem;
   width: 0.1rem;
   background-color: #222;
+}
+.card.high-light {
+  border: 0.2rem solid var(--bet-win-text-color);
 }
 
 .cards .split:before {
@@ -566,7 +586,8 @@ html {
   width: 100%;
   text-align: center;
   position: absolute;
-  top: -2.1rem;
+  top: -2.3rem;
+  color: var(--bet-win-text-color);
 }
 
 .baccarat-multiplier-cards {
@@ -591,7 +612,8 @@ html {
   width: 100%;
   text-align: center;
   position: absolute;
-  top: -2.1rem;
+  top: -2.3rem;
+  color: var(--bet-win-text-color);
 }
 .baccarat-multiplier-cards .cards .card:last-child:before {
   display: none;

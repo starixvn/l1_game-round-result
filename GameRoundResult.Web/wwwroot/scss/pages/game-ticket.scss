@@ -54,12 +54,16 @@
         .table {
             width: 63rem;
 
+            th {
+                background-color: var(--table-header-bg);
+            }
+
             .col-date {
                 width: 17rem;
             }
 
             .col-round-id {
-                width: 8rem;
+                width: 10rem;
             }
 
             &.table-keno {
@@ -72,21 +76,28 @@
             }
 
             &.table-baccarat {
-                width: 80rem;
+                width: 90rem;
                 table-layout: fixed;
+
                 .col-time {
                     width: 24rem;
                 }
+
                 .col-betchoice {
                     width: 12rem;
                 }
-                .col-odds{
+
+                .col-odds {
                     width: 8rem;
                 }
+
                 .col-win {
-                    width: 8rem;
+                    width: 12rem;
                 }
-               
+
+                .col-multipliers {
+                    width: 13rem;
+                }
             }
 
             &.table-blackjack {

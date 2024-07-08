@@ -28,8 +28,9 @@
                         <div class="cards">
                             @foreach (var card in Model.RoundResult.ConvertToCardList(Model.RoundResult.Result.Player))
                             {
-                                <div class="card card-type-@card.Type">
-                                    <div class="multiplier">@Model.RoundResult.DisplayPlayerCardMultiplier(card)</div>
+                                var multiplier = Model.RoundResult.DisplayPlayerCardMultiplier(card);
+                                <div class="card card-type-@card.Type @(string.IsNullOrWhiteSpace(multiplier) ? string.Empty : "high-light")">
+                                    <div class="multiplier">@multiplier</div>
                                     <span>@Card.CardLabels[card.Number]</span>
                                     <img class="img" src="~/scss/images/card_@(card.Type).png" asp-append-version="true" />
                                 </div>
@@ -39,8 +40,9 @@
                         <div class="cards">
                             @foreach (var card in Model.RoundResult.ConvertToCardList(Model.RoundResult.Result.Banker))
                             {
-                                <div class="card card-type-@card.Type">
-                                    <div class="multiplier">@Model.RoundResult.DisplayBankerCardMultiplier(card)</div>
+                                var multiplier = Model.RoundResult.DisplayBankerCardMultiplier(card);
+                                <div class="card card-type-@card.Type @(string.IsNullOrWhiteSpace(multiplier) ? string.Empty : "high-light")">
+                                    <div class="multiplier">@multiplier</div>
                                     <span>@Card.CardLabels[card.Number]</span>
                                     <img class="img" src="~/scss/images/card_@(card.Type).png" asp-append-version="true" />
                                 </div>
@@ -72,8 +74,8 @@
         <tr>
             <th class="col-time">@CommonLocalizer["Time"] (@Model.TimeOffsetString) </th>
             <th class="col-betchoice">@CommonLocalizer["BetChoice"]</th>
-            <th class=" col-odds">@CommonLocalizer["Odds"]</th>
-            <th>@Localizer["multiplier_value"]</th>
+            <th class="col-odds">@CommonLocalizer["Odds"]</th>
+            <th class="col-multipliers">@Localizer["multiplier_value"]</th>
             <th>@CommonLocalizer["Stake"]</th>
             <th>@Localizer["extra_fee"]</th>
             <th class="col-win">@CommonLocalizer["Win"]</th>

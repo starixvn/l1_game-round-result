@@ -1,5 +1,6 @@
 ﻿@import "../base/_variables.scss";
 @import "../base/_roboto.scss";
+@import "../base/_noto.scss";
 @import "../components/_theme.scss";
 @import "../components/_button.scss";
 @import "../components/_forms.scss";
@@ -7,7 +8,7 @@
 
 body {
     background-color: var(--bg-color);
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-family: "Noto", "Roboto", Arial, Helvetica, sans-serif;
     font-size: 1.8rem;
     color: var(--text-color);
 }
@@ -243,7 +244,7 @@ html {
     position: relative;
     //float: left;
     display: inline-block;
-    height: 3.2rem;
+    height: 3.5rem;
     width: 2.5rem;
     margin-left: 0.4rem;
     margin-right: 0.4rem;
@@ -255,7 +256,7 @@ html {
     span {
         position: relative;
         top: -0.6rem;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
 
     .img {
@@ -274,6 +275,10 @@ html {
         height: 1.8rem;
         width: 0.1rem;
         background-color: #222;
+    }
+
+    &.high-light {
+        border: 0.2rem solid var(--bet-win-text-color);
     }
 }
 
@@ -446,7 +451,8 @@ html {
                 width: 100%;
                 text-align: center;
                 position: absolute;
-                top: -2.1rem;
+                top: -2.3rem;
+                color: var(--bet-win-text-color);
             }
         }
     }
@@ -475,7 +481,8 @@ html {
                 width: 100%;
                 text-align: center;
                 position: absolute;
-                top: -2.1rem;
+                top: -2.3rem;
+                color: var(--bet-win-text-color);
             }
         }
 

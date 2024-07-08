@@ -41,11 +41,14 @@
   .game-ticket-container .table {
     width: 63rem;
   }
+  .game-ticket-container .table th {
+    background-color: var(--table-header-bg);
+  }
   .game-ticket-container .table .col-date {
     width: 17rem;
   }
   .game-ticket-container .table .col-round-id {
-    width: 8rem;
+    width: 10rem;
   }
   .game-ticket-container .table.table-keno {
     width: 100rem;
@@ -55,7 +58,7 @@
     justify-content: center;
   }
   .game-ticket-container .table.table-baccarat {
-    width: 80rem;
+    width: 90rem;
     table-layout: fixed;
   }
   .game-ticket-container .table.table-baccarat .col-time {
@@ -68,7 +71,10 @@
     width: 8rem;
   }
   .game-ticket-container .table.table-baccarat .col-win {
-    width: 8rem;
+    width: 12rem;
+  }
+  .game-ticket-container .table.table-baccarat .col-multipliers {
+    width: 13rem;
   }
   .game-ticket-container .table.table-blackjack {
     max-width: 120rem;
