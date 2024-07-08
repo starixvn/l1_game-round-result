@@ -15,16 +15,14 @@
         <link href="~/scss/pages/game-ticket.min.css" rel="stylesheet" asp-append-version="true" />
     </environment>
 }
-<div class="game-ticket-container">
-    @if (Model.EnableTolgee)
-    {
-        <input id="tolgee_language" value="@Model.Language" hidden readonly />
-    }
-    <div class="note"><span class="bold">@Localizer["Note"]:</span> @Localizer["NoteDetail"] </div>
+@if (Model.EnableTolgee)
+{
+    <input id="tolgee_language" value="@Model.Language" hidden readonly />
+}
+<div class="note"><span class="bold">@Localizer["Note"]:</span> @Localizer["NoteDetail"] </div>
 
-    <div id="game-ticket">
-        <partial name="@Model.GetPartialViewName()" for="GameTicketResult" view-data="ViewData" />
-    </div>
+<div id="game-ticket">
+    <partial name="@Model.GetPartialViewName()" for="GameTicketResult" view-data="ViewData" />
 </div>
 
 
