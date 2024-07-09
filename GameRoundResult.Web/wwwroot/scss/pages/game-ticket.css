@@ -64,13 +64,16 @@
     width: 13rem;
   }
   .main-container .table.table-baccarat .col-odds {
-    width: 8rem;
+    width: 12rem;
   }
   .main-container .table.table-baccarat .col-win {
     width: 12rem;
   }
   .main-container .table.table-baccarat .col-multipliers {
-    width: 13rem;
+    width: 14rem;
+  }
+  .main-container .table.table-baccarat .col-stake {
+    width: 12rem;
   }
   .main-container .table.table-blackjack {
     max-width: 120rem;
