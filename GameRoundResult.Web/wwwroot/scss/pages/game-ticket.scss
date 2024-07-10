@@ -54,6 +54,7 @@
 
             th {
                 background-color: var(--table-header-bg);
+                color: var(--table-header-color);
             }
 
             .col-date {
@@ -81,7 +82,7 @@
                 }
 
                 .col-betchoice {
-                    width: 13rem;
+                    width: 14rem;
                 }
 
                 .col-odds {
