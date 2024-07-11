@@ -75,7 +75,7 @@
 <table class="table table-bordered table-baccarat table-baccaratx-bet">
     <thead>
         <tr>
-            <th class="col-time">@CommonLocalizer["Time"] (@Model.TimeOffsetString) </th>
+            <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString) </th>
             <th class="col-betchoice">@CommonLocalizer["BetChoice"]</th>
             <th class="col-odds">@CommonLocalizer["Odds"]</th>
             <th class="col-multipliers">@Localizer["multiplier_value"]</th>
@@ -91,7 +91,11 @@
             {
                 var cssClass = Model.GetRowBetClass(betLog.Choice);
                 <tr>
-                    <td>@FormatHelper.RoundDateTimeFormat(betLog.Time)</td>
+                    <td>
+                        @betLog.DateDisplay
+                        <br />
+                        @betLog.TimeDisplay
+                    </td>
                     <td class="@cssClass">@Localizer[betLog.ChoiceKey]</td>
                     <td class="@cssClass">@Model.DisplayOdds(betLog.Choice)</td>
                     <td class="@cssClass">@Model.DisplayMultipliersOnChoice(betLog.Choice)</td>
