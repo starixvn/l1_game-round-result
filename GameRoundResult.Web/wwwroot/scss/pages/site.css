@@ -49,6 +49,9 @@
   --table-header-bg: #2a2726;
   --bet-win-text-color: #f1e344;
   --table-header-color: #edbb02;
+  --scrollbar-background: #16202d;
+  --scrollbar-thumb-background: #294057;
+  --scrollbar-thumb-opacity: 0.6;
 }
 
 .btn-submit {
@@ -179,6 +182,21 @@
   border-right: 1px solid #ddd;
   border-top: 1px solid #ddd;
   border-bottom: 2px solid #ddd;
+}
+
+body[data-theme=dark]::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  background-color: var(--scrollbar-background, 1);
+}
+body[data-theme=dark]::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.6rem;
+  background-color: var(--scrollbar-background);
+}
+body[data-theme=dark]::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-background);
+  background-image: var(--scrollbar-thumb-background);
+  opacity: var(--scrollbar-thumb-opacity, 1);
 }
 
 body {

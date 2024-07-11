@@ -6,6 +6,25 @@
 @import "../components/_forms.scss";
 @import "../components/_table.scss";
 
+body[data-theme="dark"] {
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+        background-color: var(--scrollbar-background, 1);
+    }
+
+    &::-webkit-scrollbar {
+        width: 0.5rem;
+        height: 0.6rem;
+        background-color: var(--scrollbar-background);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--scrollbar-thumb-background);
+        background-image: var(--scrollbar-thumb-background);
+        opacity: var(--scrollbar-thumb-opacity, 1);
+    }
+}
+
 body {
     background-color: var(--bg-color);
     font-family: "Noto", "Roboto", Arial, Helvetica, sans-serif;
