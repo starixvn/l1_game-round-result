@@ -204,10 +204,6 @@ body {
   border-color: var(--table-border-color);
 }
 
-.baccarat-result .cards:last-child:before {
-  background-color: var(--baccarat-sperate-card);
-}
-
 .bet-win-text {
   color: var(--bet-win-text-color);
 }
@@ -567,7 +563,7 @@ html {
   height: 1.8rem;
   width: 0.1rem;
   margin: 0 0.6rem;
-  background-color: #222;
+  background-color: var(--baccarat-sperate-card);
   content: "";
 }
 .baccarat-result .cards .score {
@@ -579,6 +575,7 @@ html {
 .baccarat-result.with-multipliers {
   grid-template-rows: 50px;
   align-items: center;
+  margin-top: 1rem;
 }
 .baccarat-result.with-multipliers .card {
   position: relative;
@@ -596,6 +593,7 @@ html {
   grid-template-columns: 1fr;
   grid-template-rows: 50px;
   align-items: center;
+  margin-top: 1rem;
 }
 .baccarat-multiplier-cards .cards {
   display: flex;
