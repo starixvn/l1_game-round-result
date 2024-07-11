@@ -23,8 +23,7 @@
             <tr>
                 <td>@Model.RoundResult.RoundId</td>
                 <td>
-                    <div
-                        class="baccarat-result @(Model.RoundResult.HasAnyMultiplierCardApplied ? "with-multipliers" : string.Empty)">
+                    <div class="baccarat-result @(Model.RoundResult.HasAnyMultiplierCardApplied ? "with-multipliers" : string.Empty)">
                         <div class="cards">
                             @foreach (var card in Model.RoundResult.ConvertToCardList(Model.RoundResult.Result.Player))
                             {
@@ -35,7 +34,9 @@
                                     <img class="img" src="~/scss/images/card_@(card.Type).png" asp-append-version="true" />
                                 </div>
                             }
-                            <div class="score">@Model.RoundResult.Result.Player.Score</div>
+                            <div class="score @(Model.IsWinningChoice(BaccaratBetChoice.Player) ? "bet-win-text" : string.Empty)">
+                                @Model.RoundResult.Result.Player.Score
+                            </div>
                         </div>
                         <div class="cards">
                             @foreach (var card in Model.RoundResult.ConvertToCardList(Model.RoundResult.Result.Banker))
@@ -47,7 +48,9 @@
                                     <img class="img" src="~/scss/images/card_@(card.Type).png" asp-append-version="true" />
                                 </div>
                             }
-                            <div class="score">@Model.RoundResult.Result.Banker.Score</div>
+                            <div class="score @(Model.IsWinningChoice(BaccaratBetChoice.Banker) ? "bet-win-text" : string.Empty)">
+                                @Model.RoundResult.Result.Banker.Score
+                            </div>
                         </div>
                     </div>
                 </td>
