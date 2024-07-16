@@ -11,8 +11,6 @@ namespace GameRoundResult.Web.Models
 
         public IEnumerable<LotteryBetViewModel> Bets { get; set; }
 
-        public LotteryOddsViewModel Odds { get; set; }
-
         public decimal TotalBet { get; set; }
 
         public decimal TotalBetWin { get; set; }

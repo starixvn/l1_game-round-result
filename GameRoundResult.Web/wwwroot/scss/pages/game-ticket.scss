@@ -50,7 +50,7 @@
         }
 
         .table {
-            width: 63rem;
+            width: 75rem;
 
             th {
                 background-color: var(--table-header-bg);
@@ -58,7 +58,7 @@
             }
 
             .col-date {
-                width: 17rem;
+                width: 18rem;
             }
 
             .col-round-id {
@@ -103,7 +103,7 @@
             }
 
             &.table-blackjack {
-                max-width: 120rem;
+                width: 120rem;
 
                 .split-hand {
                     height: 3rem;
@@ -116,36 +116,32 @@
             }
 
             &.table-four-guardians {
-                max-width: 100rem;
-            }
-
-            &.table-vip-se-die-war {
-                max-width: 100rem;
+                width: 100rem;
             }
 
             &.table-keno-match {
-                max-width: 100rem;
+                width: 100rem;
             }
 
             &.table-keno-power {
-                max-width: 100rem;
+                width: 100rem;
             }
 
             &.table-bitcoin-master {
-                max-width: 66rem;
+                width: 80rem;
             }
 
             &.table-casino-holdem {
-                max-width: 90rem;
+                width: 90rem;
             }
 
             &.table-hilo {
-                max-width: 80rem;
+                width: 80rem;
             }
 
             &.table-night-club,
             &.table-way-to-goal {
-                max-width: 90rem;
+                width: 90rem;
 
                 .col-round-id {
                     width: 9rem;
@@ -153,15 +149,19 @@
             }
 
             &.table-cascading-slot {
-                max-width: 100rem;
+                width: 100rem;
             }
 
             &.table-win3cards {
-                max-width: 70rem;
+                width: 70rem;
             }
 
             &.table-fortune-cat {
-                max-width: 100rem;
+                width: 100rem;
+            }
+
+            &.table-lottery {
+                width: 100rem;
             }
         }
     }

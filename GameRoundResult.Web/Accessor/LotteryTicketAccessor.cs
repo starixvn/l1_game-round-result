@@ -48,7 +48,7 @@ namespace GameRoundResult.Web.Accessor
             {
                 ticketViewModel.TotalBet = result.Item3.TotalAmount;
                 ticketViewModel.TotalBetWin = result.Item3.Betwin;
-                ticketViewModel.Odds = mapper.Map<LotteryOddsViewModel>(result.Item3?.Odds);
+                ticketViewModel.Odds = result.Item3?.Odds;
                 ticketViewModel.Choices = mapper.Map<LotteryChoicesViewModel>(result.Item3.Choices);
             }
 

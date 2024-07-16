@@ -11,7 +11,7 @@
 {
     <input value="GameTicketResultViewModel,GameTicketViewModel,LotteryTicketViewModel" id="tolgee_namespace" readonly hidden/>
 }
-<table class="table table-bordered">
+<table class="table table-bordered table-lottery">
     <thead>
         <tr>
             <th class="col-date">@Localizer["Time"] (@Model.TimeOffsetString)</th>
@@ -99,7 +99,7 @@
                             @betChoice.Key
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.FourSets.FormatOdds(Model.FractionalOddsFormat)
+                            @Model.Odds["4Sets"].FormatOdds(Model.FractionalOddsFormat)
                             @if (occurence > 1)
                             {
                                 @("(")<span class="text-red">@($"x{occurence}")</span>@(")")
@@ -110,7 +110,7 @@
                             @betChoice.Value.Format()
                         </td>
                         <td class="text-right @cssClass">
-                            @((betChoice.Value * Model.Odds.FourSets * occurence).Format())
+                            @((betChoice.Value * Model.Odds["4Sets"] * occurence).Format())
                         </td>
                     </tr>
                 }
@@ -138,7 +138,7 @@
                             @betChoice.Key
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.Special.FormatOdds(Model.FractionalOddsFormat)
+                            @Model.Odds["special"].FormatOdds(Model.FractionalOddsFormat)
                         </td>
                         <td class="text-right @cssClass">
                             @betChoice.Value.Format()
@@ -146,7 +146,7 @@
                         <td class="text-right @cssClass">
                             @if (settlementResult.Special == betChoice.Key)
                             {
-                                @((betChoice.Value * Model.Odds.Special).Format())
+                                @((betChoice.Value * Model.Odds["special"]).Format())
                             }
                             else
                             {
@@ -180,7 +180,7 @@
                             @betChoice.Key
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.Head.FormatOdds(Model.FractionalOddsFormat)
+                            @Model.Odds["head"].FormatOdds(Model.FractionalOddsFormat)
                         </td>
                         <td class="text-right @cssClass">
                             @betChoice.Value.Format()
@@ -188,7 +188,7 @@
                         <td class="text-right @cssClass">
                             @if (settlementResult.Head == betChoice.Key)
                             {
-                                @((betChoice.Value * Model.Odds.Head).Format())
+                                @((betChoice.Value * Model.Odds["head"]).Format())
                             }
                             else
                             {
@@ -219,7 +219,7 @@
                             @betChoice.Key
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.Tail.FormatOdds(Model.FractionalOddsFormat)
+                            @Model.Odds["tail"].FormatOdds(Model.FractionalOddsFormat)
                         </td>
                         <td class="text-right @cssClass">
                             @betChoice.Value.Format()
@@ -227,7 +227,7 @@
                         <td class="text-right @cssClass">
                             @if (settlementResult.Tail == betChoice.Key)
                             {
-                                @((betChoice.Value * Model.Odds.Tail).Format())
+                                @((betChoice.Value * Model.Odds["tail"]).Format())
                             }
                             else
                             {
@@ -261,7 +261,7 @@
                             @betChoice.Key
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.TwentySevenSets.FormatOdds(Model.FractionalOddsFormat)
+                            @Model.Odds["27Sets"].FormatOdds(Model.FractionalOddsFormat)
                             @if (occurence > 1)
                             {
                                 @("(")<span class="text-red">@($"x{occurence}")</span>@(")")
@@ -272,7 +272,7 @@
                             @betChoice.Value.Format()
                         </td>
                         <td class="text-right @cssClass">
-                            @((betChoice.Value * Model.Odds.TwentySevenSets * occurence).Format())
+                            @((betChoice.Value * Model.Odds["27Sets"] * occurence).Format())
                         </td>
                     </tr>
                 }
@@ -301,7 +301,7 @@
                             @betChoice.Key.Replace("-", ", ")
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.Parlay2.FormatOdds(Model.FractionalOddsFormat)
+                            @Model.Odds["parlay2"].FormatOdds(Model.FractionalOddsFormat)
                         </td>
                         <td class="text-right @cssClass">
                             @betChoice.Value.Format()
@@ -309,7 +309,7 @@
                         <td class="text-right @cssClass">
                             @if (win)
                             {
-                                @((betChoice.Value * Model.Odds.Parlay2).Format())
+                                @((betChoice.Value * Model.Odds["parlay2"]).Format())
                             }
                             else
                             {
@@ -343,7 +343,7 @@
                             @betChoice.Key.Replace("-", ", ")
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.Parlay3.FormatOdds(Model.FractionalOddsFormat)
+                            @Model.Odds["parlay3"].FormatOdds(Model.FractionalOddsFormat)
                         </td>
                         <td class="text-right @cssClass">
                             @betChoice.Value.Format()
@@ -351,7 +351,7 @@
                         <td class="text-right @cssClass">
                             @if (win)
                             {
-                                @((betChoice.Value * Model.Odds.Parlay3).Format())
+                                @((betChoice.Value * Model.Odds["parlay3"]).Format())
                             }
                             else
                             {
@@ -385,7 +385,7 @@
                             @betChoice.Key.Replace("-", ", ")
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.Parlay4.FormatOdds(Model.FractionalOddsFormat)
+                            @Model.Odds["parlay4"].FormatOdds(Model.FractionalOddsFormat)
                         </td>
                         <td class="text-right @cssClass">
                             @betChoice.Value.Format()
@@ -393,7 +393,7 @@
                         <td class="text-right @cssClass">
                             @if (win)
                             {
-                                @((betChoice.Value * Model.Odds.Parlay4).Format())
+                                @((betChoice.Value * Model.Odds["parlay4"]).Format())
                             }
                             else
                             {
@@ -427,7 +427,7 @@
                             @LotteryLocalizer[@betChoice.Key]
                         </td>
                         <td class="@cssClass">
-                            @Model.Odds.Others.FormatOdds(Model.FractionalOddsFormat)
+                            @Model.Odds["others"].FormatOdds(Model.FractionalOddsFormat)
                         </td>
                         <td class="text-right @cssClass">
                             @betChoice.Value.Format()
@@ -435,7 +435,7 @@
                         <td class="text-right @cssClass">
                             @if (win)
                             {
-                                @((betChoice.Value * Model.Odds.Others).Format())
+                                @((betChoice.Value * Model.Odds["others"]).Format())
                             }
                             else
                             {

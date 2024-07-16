@@ -36,14 +36,14 @@
     display: table;
   }
   .main-container .table {
-    width: 63rem;
+    width: 75rem;
   }
   .main-container .table th {
     background-color: var(--table-header-bg);
     color: var(--table-header-color);
   }
   .main-container .table .col-date {
-    width: 17rem;
+    width: 18rem;
   }
   .main-container .table .col-round-id {
     width: 10rem;
@@ -77,7 +77,7 @@
     width: 12rem;
   }
   .main-container .table.table-blackjack {
-    max-width: 120rem;
+    width: 120rem;
   }
   .main-container .table.table-blackjack .split-hand {
     height: 3rem;
@@ -87,40 +87,40 @@
     width: 16rem;
   }
   .main-container .table.table-four-guardians {
-    max-width: 100rem;
-  }
-  .main-container .table.table-vip-se-die-war {
-    max-width: 100rem;
+    width: 100rem;
   }
   .main-container .table.table-keno-match {
-    max-width: 100rem;
+    width: 100rem;
   }
   .main-container .table.table-keno-power {
-    max-width: 100rem;
+    width: 100rem;
   }
   .main-container .table.table-bitcoin-master {
-    max-width: 66rem;
+    width: 80rem;
   }
   .main-container .table.table-casino-holdem {
-    max-width: 90rem;
+    width: 90rem;
   }
   .main-container .table.table-hilo {
-    max-width: 80rem;
+    width: 80rem;
   }
   .main-container .table.table-night-club, .main-container .table.table-way-to-goal {
-    max-width: 90rem;
+    width: 90rem;
   }
   .main-container .table.table-night-club .col-round-id, .main-container .table.table-way-to-goal .col-round-id {
     width: 9rem;
   }
   .main-container .table.table-cascading-slot {
-    max-width: 100rem;
+    width: 100rem;
   }
   .main-container .table.table-win3cards {
-    max-width: 70rem;
+    width: 70rem;
   }
   .main-container .table.table-fortune-cat {
-    max-width: 100rem;
+    width: 100rem;
+  }
+  .main-container .table.table-lottery {
+    width: 100rem;
   }
 }
 .table-four-guardians .table-paylines, .table-night-club .table-paylines, .table-way-to-goal .table-paylines, .table-fortune-cat .table-paylines {

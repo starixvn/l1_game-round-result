@@ -100,7 +100,7 @@
             {
                 <tr class="@(settlementResult.Red ? "bold text-blue" : string.Empty)">
                     <td>@Localizer["Red"]</td>
-                    <td class="text-right">@Model.Bet.Odds.Red.FormatOdds(Model.FractionalOddsFormat)</td>
+                    <td class="text-right">@Model.Bet.Odds["red"].FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Red.Format()</td>
                 </tr>
             }
@@ -108,7 +108,7 @@
             {
                 <tr class="@(settlementResult.Black ? "bold text-blue" : string.Empty)">
                     <td>@Localizer["Black"]</td>
-                    <td class="text-right">@Model.Bet.Odds.Black.FormatOdds(Model.FractionalOddsFormat)</td>
+                    <td class="text-right">@Model.Bet.Odds["black"].FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Black.Format()</td>
                 </tr>
             }
@@ -116,7 +116,7 @@
             {
                 <tr class="@(settlementResult.Diamonds ? "bold text-blue" : string.Empty)">
                     <td>@Localizer["Diamonds"]</td>
-                    <td class="text-right">@Model.Bet.Odds.Diamonds.FormatOdds(Model.FractionalOddsFormat)</td>
+                    <td class="text-right">@Model.Bet.Odds["diamonds"].FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Diamonds.Format()</td>
                 </tr>
             }
@@ -125,7 +125,7 @@
             {
                 <tr class="@(settlementResult.Hearts ? "bold text-blue" : string.Empty)">
                     <td>@Localizer["Hearts"]</td>
-                    <td class="text-right">@Model.Bet.Odds.Hearts.FormatOdds(Model.FractionalOddsFormat)</td>
+                    <td class="text-right">@Model.Bet.Odds["hearts"].FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Hearts.Format()</td>
                 </tr>
             }
@@ -134,7 +134,7 @@
             {
                 <tr class="@(settlementResult.Spades ? "bold text-blue" : string.Empty)">
                     <td>@Localizer["Spades"]</td>
-                    <td class="text-right">@Model.Bet.Odds.Spades.FormatOdds(Model.FractionalOddsFormat)</td>
+                    <td class="text-right">@Model.Bet.Odds["spades"].FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Spades.Format()</td>
                 </tr>
             }
@@ -143,7 +143,7 @@
             {
                 <tr class="@(settlementResult.Clubs ? "bold text-blue" : string.Empty)">
                     <td>@Localizer["Clubs"]</td>
-                    <td class="text-right">@Model.Bet.Odds.Clubs.FormatOdds(Model.FractionalOddsFormat)</td>
+                    <td class="text-right">@Model.Bet.Odds["clubs"].FormatOdds(Model.FractionalOddsFormat)</td>
                     <td class="text-right">@Model.Bet.Clubs.Format()</td>
                 </tr>
             }

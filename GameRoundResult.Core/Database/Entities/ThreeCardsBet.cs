@@ -12,7 +12,7 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal Spades { get; set; }
         public decimal Clubs { get; set; }
 
-        public ThreeCardsOdds Odds { get; set; }
+       // public ThreeCardsOdds Odds { get; set; }
     }
 
     public class ThreeCardsOdds
