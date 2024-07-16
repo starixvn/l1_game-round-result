@@ -205,8 +205,6 @@ body {
   font-family: "Noto", "Roboto", Arial, Helvetica, sans-serif;
   font-size: 1.8rem;
   color: var(--text-color);
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
 }
 
 .language-options a {
@@ -898,4 +896,9 @@ div table.bandar-qiuqiu-table .result-table .result-row .pip-of-set-column {
   height: 1.8rem;
   width: 0.1rem;
   background-color: #222;
+}
+
+.keep-text-size {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }

@@ -14,7 +14,7 @@
     <thead>
         <tr>
             <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
-            <th>@CommonLocalizer["Result"] <br /> (@Localizer["glossary_player"] | @Localizer["glossary_banker"])</th>
+            <th class="keep-text-size">@CommonLocalizer["Result"] <br /> (@Localizer["glossary_player"] | @Localizer["glossary_banker"])</th>
         </tr>
     </thead>
     <tbody>
@@ -106,7 +106,7 @@
             }
 
             <tr class="total">
-                <td class="text-right" colspan="4">
+                <td class="text-right keep-text-size" colspan="4">
                     @if (Model.ReachMaxWin)
                     {
                         @($"({CommonLocalizer["you_reached_max_win"]})")
@@ -118,7 +118,7 @@
                 <td class="text-right">@Model.DisplayBetWin</td>
             </tr>
             <tr class="total">
-                <td class="bold text-right" colspan="4">@CommonLocalizer["WinLoss"]</td>
+                <td class="bold text-right keep-text-size" colspan="4">@CommonLocalizer["WinLoss"]</td>
                 <td class="bold text-right @Model.WinLossRowClassName" colspan="3">
                     @Model.DisplayWinLoss
                 </td>
