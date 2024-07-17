@@ -56,10 +56,7 @@
     justify-content: center;
   }
   .main-container .table.table-baccarat {
-    width: 90rem;
-  }
-  .main-container .table.table-baccarat .col-date {
-    width: 15rem;
+    width: 100rem;
   }
   .main-container .table.table-baccarat .col-betchoice {
     width: 14rem;
