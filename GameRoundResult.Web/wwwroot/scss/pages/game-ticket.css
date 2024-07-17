@@ -43,7 +43,7 @@
     color: var(--table-header-color);
   }
   .main-container .table .col-date {
-    width: 18rem;
+    width: 20rem;
   }
   .main-container .table .col-round-id {
     width: 10rem;
