@@ -164,7 +164,7 @@
 }
 .table-cascading-slot .symbol {
   max-width: 60px;
-  height: 100%;
+  max-height: 60px;
 }
 
 .table-dragon-tiger-fight .cards {
