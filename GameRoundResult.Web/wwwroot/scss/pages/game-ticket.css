@@ -36,14 +36,14 @@
     display: table;
   }
   .main-container .table {
-    width: 75rem;
+    width: 80rem;
   }
   .main-container .table th {
     background-color: var(--table-header-bg);
     color: var(--table-header-color);
   }
   .main-container .table .col-date {
-    width: 20rem;
+    width: 25rem;
   }
   .main-container .table .col-round-id {
     width: 10rem;
