@@ -19,7 +19,7 @@ namespace GameRoundResult.Web.Models.RoundHistory
 
         public string GetTolgeeNamespaces()
         {
-            var baseNs = "GameRoundResultViewModel,RoundResultViewModel,GameType,Bac81,";
+            var baseNs = "GameRoundResultViewModel,RoundResultViewModel,GameType,";
             var types = Assembly.GetAssembly(typeof(TolgeeNamespace)).GetTypes().Where(type => type.IsSubclassOf(typeof(TolgeeNamespace)));
             var ns = string.Join(',', types.Select(type => type.Name));
             return baseNs + ns;
