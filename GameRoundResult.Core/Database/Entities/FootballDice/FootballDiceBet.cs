@@ -13,8 +13,5 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal Draw { get; set; }
 
         public decimal TotalAmount { get; set; }
-
-        public Dictionary<string, decimal> Odds { get; set; }
-
     }
 }

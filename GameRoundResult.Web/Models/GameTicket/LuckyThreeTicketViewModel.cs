@@ -30,17 +30,17 @@ namespace GameRoundResult.Web.Models
             return stringLocalizer.GetStringWithNamcespace(betChoice.ChoiceKey, "LuckyThree");
         }
 
-        protected override decimal GetOdds(string choice)
+        protected decimal GetOdds(string choice)
         {
             return Odds[choice];
         }
 
-        public override IEnumerable<string> BuildBetLogs(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, bool? isFrationalFormat = false, bool convertToUSD = false, int baseCurrencyMultiplier = 1)
+        public override IEnumerable<string> BuildBetLogs(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>();
             foreach (var bet in BetLogs.OrderByDescending(log => log.Time))
             {
-                result.Add(BuildRow(stringLocalizer, bet, isFrationalFormat, convertToUSD, baseCurrencyMultiplier));
+                result.Add(BuildRow(stringLocalizer, bet));
             }
 
             return result;

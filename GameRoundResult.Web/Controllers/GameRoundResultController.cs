@@ -13,6 +13,7 @@ using GameRoundResult.Web.Handlers;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
 using GameRoundResult.Web.Requests;
+using GameRoundResult.Web.RoundHistory;
 using GameRoundResult.Web.ViewFactory;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;

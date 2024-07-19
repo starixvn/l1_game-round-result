@@ -13,6 +13,47 @@
   font-weight: bold;
   src: url("../fonts/Roboto/Roboto-Bold.ttf") format("truetype"); /* Legacy iOS */
 }
+@font-face {
+  font-family: "Noto";
+  font-weight: normal;
+  src: url("../fonts/Noto/noto-serif-regular.ttf") format("truetype"); /* Legacy iOS */
+}
+@font-face {
+  font-family: "Noto";
+  font-weight: 800;
+  src: url("../fonts/Noto/noto-serif-bold.ttf") format("truetype"); /* Legacy iOS */
+}
+@font-face {
+  font-family: "Noto";
+  font-weight: bold;
+  src: url("../fonts/Noto/noto-serif-bold.ttf") format("truetype"); /* Legacy iOS */
+}
+:root {
+  --text-color: #1a1a1a;
+  --bg-color: #f8f8f8;
+  --table-bg: #fff;
+  --table-border-color: #ddd;
+  --baccarat-sperate-card: #222;
+  --table-bg-total: #fdf6e0;
+  --table-header-bg: none;
+  --bet-win-text-color: #004ac3;
+}
+
+[data-theme=dark] {
+  --text-color: #fff;
+  --bg-color: #000;
+  --table-bg: #000;
+  --table-border-color: #364252;
+  --baccarat-sperate-card: #ddd;
+  --table-bg-total: #2a2726;
+  --table-header-bg: #2a2726;
+  --bet-win-text-color: #f1e344;
+  --table-header-color: #edbb02;
+  --scrollbar-background: #16202d;
+  --scrollbar-thumb-background: #294057;
+  --scrollbar-thumb-opacity: 0.6;
+}
+
 .btn-submit {
   min-width: 9rem;
   height: 3.6rem;
@@ -105,6 +146,7 @@
   border: 1px solid #ddd;
   vertical-align: middle;
   text-align: center;
+  font-size: 1.8rem;
 }
 .table.table-bordered thead th {
   border-bottom: 2px solid #ddd;
@@ -117,7 +159,7 @@
   background-color: #fdf6e0;
 }
 .table .total td {
-  font-weight: 600;
+  font-weight: 800;
 }
 .table.sticky-table {
   position: relative;
@@ -143,15 +185,50 @@
   border-bottom: 2px solid #ddd;
 }
 
-html {
-  font-size: 10px;
+body[data-theme=dark]::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  background-color: var(--scrollbar-background, 1);
+}
+body[data-theme=dark]::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.6rem;
+  background-color: var(--scrollbar-background);
+}
+body[data-theme=dark]::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-background);
+  background-image: var(--scrollbar-thumb-background);
+  opacity: var(--scrollbar-thumb-opacity, 1);
 }
 
 body {
-  background-color: #f8f8f8;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  font-size: 1.4rem;
-  color: #1a1a1a;
+  background-color: var(--bg-color);
+  font-family: "Noto", "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  color: var(--text-color);
+}
+
+.language-options a {
+  color: var(--text-color);
+}
+
+.table {
+  background-color: var(--table-bg);
+}
+
+.table .total {
+  background-color: var(--table-bg-total);
+}
+
+.table.table-bordered thead th, .table td, .table th {
+  border-color: var(--table-border-color);
+}
+
+.bet-win-text {
+  color: var(--bet-win-text-color);
+}
+
+html {
+  font-size: 10px;
 }
 
 .clearfix::after {
@@ -162,7 +239,7 @@ body {
 
 .page-title {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 800;
 }
 
 *, :before, :after {
@@ -175,6 +252,10 @@ body {
 
 .text-right {
   text-align: right !important;
+}
+
+.text-left {
+  text-align: left !important;
 }
 
 .bold {
@@ -341,7 +422,7 @@ body {
 .card {
   position: relative;
   display: inline-block;
-  height: 3.2rem;
+  height: 3.5rem;
   width: 2.5rem;
   margin-left: 0.4rem;
   margin-right: 0.4rem;
@@ -352,8 +433,8 @@ body {
 }
 .card span {
   position: relative;
-  top: -0.1rem;
-  font-size: 1.2rem;
+  top: -0.6rem;
+  font-size: 1.5rem;
 }
 .card .img {
   position: absolute;
@@ -370,6 +451,9 @@ body {
   height: 1.8rem;
   width: 0.1rem;
   background-color: #222;
+}
+.card.high-light {
+  border: 0.2rem solid var(--bet-win-text-color);
 }
 
 .cards .split:before {
@@ -498,8 +582,59 @@ body {
   height: 1.8rem;
   width: 0.1rem;
   margin: 0 0.6rem;
-  background-color: #222;
+  background-color: var(--baccarat-sperate-card);
   content: "";
+}
+.baccarat-result .cards .score {
+  margin-left: 1rem;
+  margin-right: 0.2rem;
+  align-content: center;
+  font-weight: bold;
+}
+.baccarat-result.with-multipliers {
+  grid-template-rows: 50px;
+  align-items: center;
+  margin-top: 1rem;
+}
+.baccarat-result.with-multipliers .card {
+  position: relative;
+}
+.baccarat-result.with-multipliers .card .multiplier {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: -2.3rem;
+  color: var(--bet-win-text-color);
+}
+
+.baccarat-multiplier-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px;
+  align-items: center;
+  margin-top: 1rem;
+}
+.baccarat-multiplier-cards .cards {
+  display: flex;
+  justify-content: center;
+}
+.baccarat-multiplier-cards .cards .card {
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  position: relative;
+}
+.baccarat-multiplier-cards .cards .card.blur {
+  opacity: 0.6;
+}
+.baccarat-multiplier-cards .cards .card .multiplier {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: -2.3rem;
+  color: var(--bet-win-text-color);
+}
+.baccarat-multiplier-cards .cards .card:last-child:before {
+  display: none;
 }
 
 #overlay {
@@ -761,6 +896,11 @@ div table.bandar-qiuqiu-table .result-table .result-row .pip-of-set-column {
   height: 1.8rem;
   width: 0.1rem;
   background-color: #222;
+}
+
+.keep-text-size {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 .bacball-result {

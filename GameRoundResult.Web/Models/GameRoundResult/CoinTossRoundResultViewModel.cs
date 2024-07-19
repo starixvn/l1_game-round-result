@@ -24,11 +24,6 @@ namespace GameRoundResult.Web.Models
             return result;
         }
 
-        public virtual bool IsWin(string choice)
-        {
-            return choice.ToLower() == "head" ? SettlementResult.Head : SettlementResult.Tail;
-        }
-
         public override string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var tagBuilder = new TagBuilder("div");

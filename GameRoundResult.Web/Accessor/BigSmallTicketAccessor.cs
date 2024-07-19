@@ -29,8 +29,8 @@ namespace GameRoundResult.Web.Accessor
 
             return new BigSmallTicketViewModel
             {
-                RoundResult = bigSmallResult.Item1?.ToViewModel<TRoundEntity, BigSmallRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bets = bigSmallResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo))
+                RoundResult = bigSmallResult.Item1?.ToViewModel<TRoundEntity, BigSmallRoundResultViewModel>(mapper, request.TimeZoneOffset),
+                Bets = bigSmallResult.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneOffset))
             };
         }
     }

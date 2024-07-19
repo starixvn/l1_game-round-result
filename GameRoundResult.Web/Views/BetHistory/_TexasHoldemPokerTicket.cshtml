@@ -207,16 +207,12 @@
                     </tr>
                 }
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td>@Localizer["Total"]</td>
+                    <td colspan="3" class="text-right">@Localizer["Total"]</td>
                     <td class="text-right">@Model.TotalBet.Format()</td>
                     <td class="text-right">@(Model.Ended ? Model.TotalWin.Format(): @CasinoHolemLocalizer["UnfinishedGame"])</td>
                 </tr>
                 <tr class="total">
-                    <td></td>
-                    <td></td>
-                    <td>@Localizer["WinLoss"]</td>
+                    <td colspan="3" class="text-right">@Localizer["WinLoss"]</td>
                     <td colspan="2" class="text-right">@Model.WinLossDisplayed</td>
                 </tr>
             }

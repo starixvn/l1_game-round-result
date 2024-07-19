@@ -1,4 +1,5 @@
 ﻿using GameRoundResult.Core.Constants;
+using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.CoinToss;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.BacBall;
@@ -24,6 +25,7 @@ namespace GameRoundResult.Web.RoundHistory
             { GameType.SeBall1, typeof(DrawRoundHistoryAccessor<SeBall1Round, SeBallRoundResultViewModel, SeBall1Bet, RoundHistoryBetViewModel, SeBallRoundResult, SeBallSettlementResult>) },
             { GameType.LuckyThree, typeof(DrawRoundHistoryAccessor<LuckyThreeRound, LuckyThreeRoundResultViewModel, LuckyThreeBet, RoundHistoryBetViewModel, LuckyThreeRoundResult, LuckyThreeSettlementResult>) },
             { GameType.FootballCoinToss, typeof(RoundHistoryAccessor<FootballCoinTossRound, FootballCoinTossRoundResultViewModel, FootballCoinTossBet, RoundHistoryBetViewModel>) },
+            { GameType.Bac81, typeof(RoundHistoryAccessor<Bac81Round, BaccaratXRoundResultViewModel, Bac81Bet, RoundHistoryBetViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;

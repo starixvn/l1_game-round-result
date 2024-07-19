@@ -56,7 +56,7 @@ namespace GameRoundResult.Web._Shared
                             Result = gameDraw.Result[i],
                             SettlementResult = gameDraw.SettlementResult[i],
                             Time = TimeZoneInfo.ConvertTimeFromUtc(gameDraw.Time, request.TimeZoneInfo),
-                            TimeZone = request.TimeZoneInfo
+                            TimeZoneOffset = request.TimeZoneInfo.BaseUtcOffset
                         };
                         roundResults.Add(roundResult);
                     }
@@ -81,7 +81,7 @@ namespace GameRoundResult.Web._Shared
                             Result = gameDraw.Result[i],
                             SettlementResult = gameDraw.SettlementResult[i],
                             Time = TimeZoneInfo.ConvertTimeFromUtc(gameDraw.Time, request.TimeZoneInfo),
-                            TimeZone = request.TimeZoneInfo
+                            TimeZoneOffset = request.TimeZoneInfo.BaseUtcOffset
                         };
                         roundResults.Add(roundResult);
                     }
@@ -106,7 +106,7 @@ namespace GameRoundResult.Web._Shared
                             Result = gameDraw.Result[i],
                             SettlementResult = gameDraw.SettlementResult[i],
                             Time = TimeZoneInfo.ConvertTimeFromUtc(gameDraw.Time, request.TimeZoneInfo),
-                            TimeZone = request.TimeZoneInfo
+                            TimeZoneOffset = request.TimeZoneInfo.BaseUtcOffset
                         };
                         roundResults.Add(roundResult);
                     }
@@ -135,7 +135,7 @@ namespace GameRoundResult.Web._Shared
                             Result = gameDraw.Result[i],
                             SettlementResult = gameDraw.SettlementResult[i],
                             Time = TimeZoneInfo.ConvertTimeFromUtc(gameDraw.Time, request.TimeZoneInfo),
-                            TimeZone = request.TimeZoneInfo
+                            TimeZoneOffset = request.TimeZoneInfo.BaseUtcOffset
                         };
                         roundResults.Add(roundResult);
                     }

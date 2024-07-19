@@ -81,6 +81,7 @@ namespace GameRoundResult.Web.Services
             { GameType.SeBall1, typeof(SeBall1EndGameInfoService) },
             { GameType.LuckyThree, typeof(LuckyThreeEndGameInfoService) },
             { GameType.FootballCoinToss, typeof(FootballCoinTossEndGameInfoService) },
+            { GameType.Bac81, typeof(BaccaratXEndGameInfoService<Bac81Round, Bac81Bet>) },
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()

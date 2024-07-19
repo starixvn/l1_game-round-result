@@ -10,6 +10,9 @@ namespace GameRoundResult.Web.Extensions
             var options = new RewriteOptions()
                 .AddRedirect("(?i)zh-CN/BetHistory/(.*)", "zh-Hans/BetHistory/$1")
                 .AddRedirect("(?i)zh-TW/BetHistory/(.*)", "zh-Hant/BetHistory/$1")
+                .AddRedirect("(?i)^id/BetHistory/(.*)", "id-ID/BetHistory/$1")
+                .AddRedirect("(?i)^th/BetHistory/(.*)", "th-TH/BetHistory/$1")
+                .AddRedirect("(?i)vi/BetHistory/(.*)", "vi-VN/BetHistory/$1")
                 .AddRedirect("(?i)zh-CN", "zh-Hans")
                 .AddRedirect("(?i)zh-TW", "zh-Hant");
 

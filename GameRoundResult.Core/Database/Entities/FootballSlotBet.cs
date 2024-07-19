@@ -6,7 +6,6 @@ namespace GameRoundResult.Core.Database.Entities
     [CollectionName("footballslot_bets")]
     public class FootballSlotBet : BaseBetEntity
     {
-        public Dictionary<string, decimal> Odds { get; set; }
         public decimal TotalAmount { get; set; }
     }
 }

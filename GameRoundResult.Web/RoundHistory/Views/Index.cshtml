@@ -1,8 +1,10 @@
 ﻿@using GameRoundResult.Web.Models.RoundHistory
 @model RoundHistoryViewModel
 @inject IJsonStringLocalizer<RoundResultViewModel> Localizer
+@inject Microsoft.AspNetCore.Mvc.ViewEngines.ICompositeViewEngine ViewEngine
 
 @section Styles {
+    <link href="~/scss/pages/game-ticket.min.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/scss/pages/site.min.css" rel="stylesheet" />
     <link href="~/scss/pages/modal.min.css" rel="stylesheet" />
@@ -11,9 +13,9 @@
 <input id="tolgee_language" value="en-US" hidden readonly />
 <input value="@Model.GetTolgeeNamespaces()" id="tolgee_namespace" readonly hidden />
 
-<table class="table table-bordered sticky-table table-dragon-tiger bandar-qiuqiu-table" style="width:100%">
+<table class="table table-bordered sticky-table" style="width:100%">
     <thead>
-        <tr>            
+        <tr>
             <th>Round Id</th>
             <th>Exchange Id</th>
             <th class="col-result" style="min-width: 350px;">Result</th>
@@ -23,34 +25,39 @@
     <tbody>
         @if (Model.Round != null)
         {
-         <tr>
-            <td style="padding: 15px 5px;">
-               @Html.Raw(@Model.Request.RoundId)
-            </td>
-              <td>
-               @Html.Raw(@Model.Round.ExchangeRateId)
-            </td>
-            <td>
-               @Html.Raw(@Model.Round.GetResult(Localizer))
-            </td>
-              <td _tolgee="true">
-               @Html.Raw(@Model.Round.GetWinningTextResult(Localizer))
-            </td>
-        </tr>
+            <tr>
+                <td style="padding: 15px 5px;">
+                    @Html.Raw(@Model.Request.RoundId)
+                </td>
+                <td>
+                    @Html.Raw(@Model.Round.ExchangeRateId)
+                </td>
+                <td>
+                    @Html.Raw(@Model.Round.GetResult(Localizer))
+                </td>
+                <td _tolgee="true">
+                    @Html.Raw(@Model.Round.GetWinningTextResult(Localizer))
+                </td>
+            </tr>
         }
         else
         {
-             <tr>
+            <tr>
                 <td class="text-center" colspan="4" style="padding: 5px;">No data</td>
             </tr>
         }
     </tbody>
 </table>
 
+@if (!string.IsNullOrWhiteSpace(Model.AdditionalViewName) && Model.Round != null)
+{
+    <partial name="@Model.AdditionalViewName" for="Round" />
+}
+
 <table class="table table-bordered sticky-table table-dragon-tiger bandar-qiuqiu-table" style="width:100%; margin-top: 10px;">
     <thead>
-        <tr>            
-            <th>Date <br/> (GMT+7)</th>
+        <tr>
+            <th>Date <br /> (GMT+7)</th>
             <th>Operator</th>
             <th>Username</th>
             <th>Nickname</th>
@@ -67,7 +74,7 @@
                 <tr>
                     <td style="padding: 15px 5px;">
                         @bet.DateDisplay <br />
-                        @bet.TimeDisplay                    
+                        @bet.TimeDisplay
                     </td>
                     <td>
                         @bet.OperatorId
@@ -83,17 +90,17 @@
                     </td>
                     <td>
                         <a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#modal .modal-body" data-ajax-success="showModal('#modal')"
-                        asp-action="GetBetHistory"
-                        asp-route-game="@Model.Request.Game"
-                        asp-route-roundId="@Model.Request.RoundId"
-                        asp-route-userId="@bet.PlayerId"
-                        asp-route-partnerId="@bet.OperatorId"
-                        asp-route-convertToUSD="@Model.Request.ConvertToUSD">
-                            @(@Model.Request.ConvertToUSD ? (@bet.ConvertToBase(bet.TotalAmount) / @Model.BaseCurrencyMultiplier).Format2Decimals() : @bet.TotalAmount.Format2Decimals())
-                        </a>                   
+                   asp-action="GetBetHistory"
+                   asp-route-game="@Model.Request.Game"
+                   asp-route-roundId="@Model.Request.RoundId"
+                   asp-route-userId="@bet.PlayerId"
+                   asp-route-partnerId="@bet.OperatorId"
+                   asp-route-convertToUSD="@Model.Request.ConvertToUSD">
+                            @Model.DisplayAmount(bet.TotalAmount, bet.Rate)
+                        </a>
                     </td>
                     <td>
-                        @(@Model.Request.ConvertToUSD ? (@bet.ConvertToBase(bet.Betwin) / @Model.BaseCurrencyMultiplier).Format2Decimals() : @bet.Betwin.Format2Decimals())
+                        @Model.DisplayAmount(bet.Betwin, bet.Rate)
                     </td>
                 </tr>
             }
@@ -101,8 +108,8 @@
             {
                 <tr class="total">
                     <td colspan="5" style="padding: 10px 20px; text-align: right;">Total in @Model.BaseCurrency</td>
-                    <td class="text-center">@((Model.Bets.Sum(x => x.ConvertToBase(x.TotalAmount)) / Model.BaseCurrencyMultiplier).Format2Decimals())</td>
-                    <td class="text-center">@((Model.Bets.Sum(x => x.ConvertToBase(x.Betwin)) / Model.BaseCurrencyMultiplier).Format2Decimals())</td>
+                    <td class="text-center">@Model.DisplayTotalBet</td>
+                    <td class="text-center">@Model.DisplayTotalBetwin</td>
                 </tr>
             }
         }
@@ -122,14 +129,14 @@
         <script src="~/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.js"></script>
         <script src="~/lib/data-tables/datatables.js"></script>
         <script src="~/lib/flatpickr/dist/flatpickr.js"></script>
-        <script src="~/js/game-round-result.js" asp-append-version="true"></script>       
+        <script src="~/js/game-round-result.js" asp-append-version="true"></script>
         <script src="~/lib/tolgee/index.js"></script>
-        <script src="~/js/tolgee.js" asp-append-version="true"></script>      
+        <script src="~/js/tolgee.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
-        <script src="~/js/game-round-result.min.js" asp-append-version="true"></script>        
+        <script src="~/js/game-round-result.min.js" asp-append-version="true"></script>
         <script src="~/lib/tolgee/index.js"></script>
-        <script src="~/js/tolgee.js" asp-append-version="true"></script>       
+        <script src="~/js/tolgee.js" asp-append-version="true"></script>
     </environment>
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>

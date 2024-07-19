@@ -40,7 +40,7 @@ namespace GameRoundResult.Web.CascadingSlotGames
             if (result.Item1 != null)
             {
                 viewModel.Round = mapper.Map<BaseCascadingSlotRoundViewModel>(result.Item1);
-                viewModel.Round.TimeZone = request.TimeZoneInfo;
+                viewModel.Round.TimeZoneOffset = request.TimeZoneOffset;
             }
 
             if (result.Item2 != null)
@@ -48,7 +48,7 @@ namespace GameRoundResult.Web.CascadingSlotGames
                 viewModel.Multipliers = result.Item2.Rounds.Select(x =>
                 {
                     var mappedModel = mapper.Map<BaseCascadingSlotRoundMultiplierViewModel>(x);
-                    mappedModel.TimeZone = request.TimeZoneInfo;
+                    mappedModel.TimeZoneOffset = request.TimeZoneOffset;
 
                     return mappedModel;
                 });

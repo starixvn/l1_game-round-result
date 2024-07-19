@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GameRoundResult.Web.Models
 {
@@ -19,7 +20,7 @@ namespace GameRoundResult.Web.Models
     {
         public DateTime Time { get; set; }
 
-        public ThreeCardsOddsViewModel Odds { get; set; }
+        public Dictionary<string, decimal> Odds { get; set; }
 
         public decimal Red { get; set; }
         public decimal Black { get; set; }

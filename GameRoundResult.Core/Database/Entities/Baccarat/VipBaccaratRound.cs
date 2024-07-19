@@ -7,7 +7,7 @@ namespace GameRoundResult.Core.Database.Entities
     {
         public VipBaccaratResult Result { get; set; }
 
-        public BaccaratResult SettlementResult { get; set; }
+        public BaccaratSettlementResult SettlementResult { get; set; }
     }
 
     public class VipBaccaratResult

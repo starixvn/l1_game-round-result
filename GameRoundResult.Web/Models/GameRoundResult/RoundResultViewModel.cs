@@ -9,13 +9,13 @@ namespace GameRoundResult.Web.Models
     {
         public DateTime Time { get; set; }
 
-        public DateTimeOffset UserTime => TimeZoneInfo.ConvertTimeFromUtc(Time, TimeZone);
+        public DateTimeOffset UserTime => Time.AddHours(TimeZoneOffset.TotalHours);
 
         public string DisplayRoundDate => UserTime.RoundDateFormat();
 
         public string DisplayRoundTime => UserTime.RoundTimeWithSecondFormat();
 
-        public TimeZoneInfo TimeZone { get; set; }
+        public TimeSpan TimeZoneOffset { get; set; }
     }
 
     public class RoundResultViewModel : TimeViewModel
@@ -45,6 +45,11 @@ namespace GameRoundResult.Web.Models
         public virtual string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             return string.Empty;
+        }
+
+        public virtual bool IsWinningChoice(string choice)
+        {
+            return false;
         }
     }
 }

@@ -43,7 +43,7 @@ namespace GameRoundResult.Web.Accessor
             else
             {
                 var result = await gameRoundResultService.GetGameRoundResultAsync<TRoundEntity>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize);
-                return (result.Item1, result.Item2.Select(x => x.ToViewModel<TRoundEntity, TRoundViewModel>(mapper, request.TimeZoneInfo)));
+                return (result.Item1, result.Item2.Select(x => x.ToViewModel<TRoundEntity, TRoundViewModel>(mapper, request.TimeZoneInfo.BaseUtcOffset)));
             }
         }
 

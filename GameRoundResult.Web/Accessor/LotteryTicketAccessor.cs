@@ -30,7 +30,7 @@ namespace GameRoundResult.Web.Accessor
 
             var ticketViewModel = new LotteryTicketViewModel
             {
-                Bets = result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                Bets = result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneOffset)),
             };
 
             if (result.Item2.Any())
@@ -40,7 +40,7 @@ namespace GameRoundResult.Web.Accessor
 
             if (result.Item1 != null)
             {
-                ticketViewModel.RoundResult = result.Item1.ToViewModel<LotteryRound, LotteryRoundResultViewModel>(mapper, request.TimeZoneInfo);
+                ticketViewModel.RoundResult = result.Item1.ToViewModel<LotteryRound, LotteryRoundResultViewModel>(mapper, request.TimeZoneOffset);
                 ticketViewModel.SettlementResult = mapper.Map<LotterySettlementResultViewModel>(result.Item1.SettlementResult);
             }
 
@@ -48,7 +48,7 @@ namespace GameRoundResult.Web.Accessor
             {
                 ticketViewModel.TotalBet = result.Item3.TotalAmount;
                 ticketViewModel.TotalBetWin = result.Item3.Betwin;
-                ticketViewModel.Odds = mapper.Map<LotteryOddsViewModel>(result.Item3?.Odds);
+                ticketViewModel.Odds = result.Item3?.Odds;
                 ticketViewModel.Choices = mapper.Map<LotteryChoicesViewModel>(result.Item3.Choices);
             }
 

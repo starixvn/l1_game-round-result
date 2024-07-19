@@ -61,19 +61,19 @@
     <tbody>
         @if (Model.BetLogs.Any() && Model.RoundResult != null)
         {
-            foreach(var row in Model.BuildBetLogs(RoundResultLocalizer, @Model.FractionalOddsFormat))
+            foreach(var row in Model.BuildBetLogs(RoundResultLocalizer))
             {
                 @Html.Raw(row)
             }
 
             <tr class="total">
                 <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>
-                <td>@Model.TotalBet.Format()</td>
-                <td>@Model.BetWin.Format()</td>
+                <td>@Model.DisplayTotalBet</td>
+                <td>@Model.DisplayBetWin</td>
             </tr>
             <tr class="total">
                 <td colspan="3" class="text-right">@CommonLocalizer["WinLoss"]</td>
-                <td colspan="2" class="@Model.WinLossRowClassName">@Model.WinLoss.Format()</td>
+                <td colspan="2" class="@Model.WinLossRowClassName">@Model.DisplayWinLoss</td>
             </tr>
         }
         else

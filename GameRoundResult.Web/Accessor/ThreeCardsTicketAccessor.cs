@@ -28,8 +28,8 @@ namespace GameRoundResult.Web.Accessor
             var result = await gameBetService.GetAsync<ThreeCardsRound, ThreeCardsBet>(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId);
             var viewModel = new ThreeCardsTicketViewModel
             {
-                RoundResult = result.Item1?.ToViewModel<ThreeCardsRound, ThreeCardsRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
+                RoundResult = result.Item1?.ToViewModel<ThreeCardsRound, ThreeCardsRoundResultViewModel>(mapper, request.TimeZoneOffset),
+                Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneOffset)
             };
             if (result.Item2 != null)
             {

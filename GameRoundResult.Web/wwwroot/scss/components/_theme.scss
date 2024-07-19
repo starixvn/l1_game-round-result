@@ -1,0 +1,25 @@
+﻿:root {
+    --text-color: #1a1a1a;
+    --bg-color: #f8f8f8;
+    --table-bg: #fff;
+    --table-border-color: #ddd;
+    --baccarat-sperate-card: #222;
+    --table-bg-total: #fdf6e0;
+    --table-header-bg: none;
+    --bet-win-text-color: #004ac3;
+}
+
+[data-theme="dark"] {
+    --text-color: #fff;
+    --bg-color: #000;
+    --table-bg: #000;
+    --table-border-color: #364252;
+    --baccarat-sperate-card: #ddd;
+    --table-bg-total: #2a2726;
+    --table-header-bg: #2a2726;
+    --bet-win-text-color: #f1e344;
+    --table-header-color: #edbb02;
+    --scrollbar-background: #16202d;
+    --scrollbar-thumb-background: #294057;
+    --scrollbar-thumb-opacity: 0.6;
+}

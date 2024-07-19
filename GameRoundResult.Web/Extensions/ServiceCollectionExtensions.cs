@@ -207,6 +207,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<BaccaratTicketAccessor<BaccaratRound, BaccaratBet>>();
             services.AddScoped<BaccaratTicketAccessor<VipBaccaratRound, VipBaccaratBet>>();
             services.AddScoped<BaccaratTicketAccessor<BlockchainBaccaratRound, BlockchainBaccaratBet>>();
+            services.AddScoped(typeof(BaccaratXTicketAccessor<,,>));
 
             services.AddScoped<BaccaratEndGameInfoService<BaccaratRound, BaccaratBet>>();
             services.AddScoped<BaccaratEndGameInfoService<VipBaccaratRound, VipBaccaratBet>>();
@@ -238,6 +239,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<SeBall1EndGameInfoService>();
             services.AddScoped<LuckyThreeEndGameInfoService>();
             services.AddScoped<FootballCoinTossEndGameInfoService>();
+            services.AddScoped(typeof(BaccaratXEndGameInfoService<,>));
 
             services.AddScoped<IRoundHistoryRepository, RoundHistoryRepository>();
             services.AddScoped<IRoundHistoryService, RoundHistoryService>();
@@ -252,6 +254,8 @@ namespace GameRoundResult.Web.Extensions
             services.AddCrashGames();
             services.AddScoped<IPartnerRequestAuthentication, PartnerRequestAuthentication>();
             services.AddScoped<IHmacHelpers, HmacHelpers>();
+
+            services.AddScoped<IRoundHistoryAdditionalViewFactory, RoundHistoryAdditionalViewFactory>();
         }
 
         public static void AddValidators(this IServiceCollection services)

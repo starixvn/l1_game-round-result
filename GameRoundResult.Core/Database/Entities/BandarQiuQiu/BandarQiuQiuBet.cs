@@ -14,8 +14,6 @@ namespace GameRoundResult.Core.Database.Entities.BandarQiuQiu
 
         public decimal Diamond { get; set; }
 
-        public Dictionary<string, decimal> Odds { get; set; }
-
         public double TotalAmount { get; set; }
 
         public decimal TotalBet => Spade + Heart + Club + Diamond;

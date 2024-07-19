@@ -72,6 +72,7 @@
         CoinToss = 80,
         SeBall1 = 1005,
         LuckyThree = 1006,
-        FootballCoinToss = 93
+        Bac81 = 81,
+        FootballCoinToss = 93,
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.RoundHistory;
 using GameRoundResult.Core.RoundHistory.Entities;
 using GameRoundResult.Core.RoundHistory.Models;
@@ -23,7 +24,7 @@ namespace GameRoundResult.Web.RoundHistory
     }
 
     public class RoundHistoryAccessor<TRoundEntity, TRoundViewModel, TBetEntity, TBetViewModel> : IRoundHistoryAccessor
-        where TRoundEntity : RoundHistoryRoundEntity
+        where TRoundEntity : GameRound
         where TRoundViewModel : RoundResultViewModel
         where TBetEntity : RoundHistoryBetEntity, new()
         where TBetViewModel : RoundHistoryBetViewModel
@@ -44,7 +45,7 @@ namespace GameRoundResult.Web.RoundHistory
             var timeZone = TZConvert.GetTimeZoneInfo("SE Asia Standard Time");
             var roundResult = await roundHistoryService.GetRoundAsync<TRoundEntity>(request.RoundId, BuildRoundFilterExpression(request.RoundId));
             var betResult = await roundHistoryService.GetBetsAsync<TBetEntity>(request, BuildBetFilterExpression(request.RoundId));
-            var betViewModel = betResult.Select(r => r.ToBetViewModel<TBetEntity, TBetViewModel>(mapper, timeZone));
+            var betViewModel = betResult.Select(r => r.ToBetViewModel<TBetEntity, TBetViewModel>(mapper, timeZone.BaseUtcOffset));
 
             return new RoundHistoryViewModel
             {
@@ -58,7 +59,7 @@ namespace GameRoundResult.Web.RoundHistory
 
         protected virtual TRoundViewModel MapRoundResult(TRoundEntity roundResult, TimeZoneInfo timeZone, RoundHistoryRequest request)
         {
-            var roundViewModel = roundResult?.ToViewModel<TRoundEntity, TRoundViewModel>(mapper, timeZone);
+            var roundViewModel = roundResult?.ToViewModel<TRoundEntity, TRoundViewModel>(mapper, timeZone.BaseUtcOffset);
             return roundViewModel;
         }
 

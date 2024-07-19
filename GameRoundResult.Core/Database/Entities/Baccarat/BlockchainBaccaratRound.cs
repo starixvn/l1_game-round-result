@@ -6,31 +6,31 @@ namespace GameRoundResult.Core.Database.Entities
     [CollectionName("blockchainbaccarat_rounds")]
     public class BlockchainBaccaratRound : BaseBaccaratRoundEntity
     {
-        public BlockchainBaccaratResult Result { get; set; }
+        public BaccaratResult Result { get; set; }
 
-        public BaccaratResult SettlementResult { get; set; }
+        public BaccaratSettlementResult SettlementResult { get; set; }
     }
 
-    public class BlockchainBaccaratResult
+    public class BaccaratResult
     {
-        public BlockchainBaccaratCardResult Player { get; set; }
+        public BaccaratCardResult Player { get; set; }
 
-        public BlockchainBaccaratCardResult Banker { get; set; }
+        public BaccaratCardResult Banker { get; set; }
     }
 
-    public class BlockchainBaccaratCardResult
+    public class BaccaratCardResult
     {
         [BsonElement("card1")]
-        public BlockchainBaccaratCard FirstCard { get; set; }
+        public BaccaratCard FirstCard { get; set; }
 
         [BsonElement("card2")]
-        public BlockchainBaccaratCard SecondCard { get; set; }
+        public BaccaratCard SecondCard { get; set; }
 
         [BsonElement("card3")]
-        public BlockchainBaccaratCard ThirdCard { get; set; }
+        public BaccaratCard ThirdCard { get; set; }
     }
 
-    public class BlockchainBaccaratCard
+    public class BaccaratCard
     {
         [BsonElement("rank")]
         public byte Number { get; set; }

@@ -26,8 +26,8 @@ namespace GameRoundResult.Web.Accessor
             var result = await gameBetService.GetAsync<FanTanRound, FanTanBet>(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId);
             var viewModel = new FanTanTicketViewModel
             {
-                RoundResult = result.Item1?.ToViewModel<FanTanRound, FanTanRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneInfo)
+                RoundResult = result.Item1?.ToViewModel<FanTanRound, FanTanRoundResultViewModel>(mapper, request.TimeZoneOffset),
+                Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneOffset)
             };
             if (result.Item2 != null)
             {

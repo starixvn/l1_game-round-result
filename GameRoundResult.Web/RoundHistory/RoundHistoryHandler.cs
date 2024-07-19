@@ -11,10 +11,12 @@ namespace GameRoundResult.Web.Handlers
     public class RoundHistoryHandler : IRequestHandler<RoundHistoryRequest, RoundHistoryViewModel>        
     {
         private readonly IRoundHistoryAccessorFactory factory;
+        private readonly IRoundHistoryAdditionalViewFactory additionalViewFactory;
 
-        public RoundHistoryHandler(IRoundHistoryAccessorFactory factory)
+        public RoundHistoryHandler(IRoundHistoryAccessorFactory factory, IRoundHistoryAdditionalViewFactory additionalViewFactory)
         {
             this.factory = factory;
+            this.additionalViewFactory = additionalViewFactory;
         }
 
         public async Task<RoundHistoryViewModel> Handle(RoundHistoryRequest request, CancellationToken cancellationToken)
@@ -24,6 +26,7 @@ namespace GameRoundResult.Web.Handlers
             if (accessor != null)
             {
                 var result = await accessor.GetAsync(request);
+                result.AdditionalViewName = additionalViewFactory.GetView(request.Game);
                 return result;
             }
 

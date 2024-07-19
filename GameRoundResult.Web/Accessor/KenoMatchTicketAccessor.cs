@@ -32,8 +32,8 @@ namespace GameRoundResult.Web.Accessor
             var result = await gameBetService.GetAsync<TRoundEntity, TOneEntity, TBetEntity>(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId);
             var viewModel = new KenoMatchTicketViewModel
             {
-                RoundResult = result.Item1?.ToViewModel<TRoundEntity, KenoMatchRoundResultViewModel>(mapper, request.TimeZoneInfo),
-                Bets = result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneInfo)),
+                RoundResult = result.Item1?.ToViewModel<TRoundEntity, KenoMatchRoundResultViewModel>(mapper, request.TimeZoneOffset),
+                Bets = result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneOffset)),
                 TotalBet = result.Item3?.TotalAmount ?? 0,
                 TotalBetWin = result.Item3?.Betwin ?? 0,
                 Refund = result.Item3?.Refund ?? 0

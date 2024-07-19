@@ -38,10 +38,10 @@ namespace GameRoundResult.Web.Accessor
             var viewModel = createViewModel();
             if (result.Item1 != null)
             {
-                result.Item1.Result.ForEach(x => x.ToViewModelTicketResult(mapper, request.TimeZoneInfo));
+                result.Item1.Result.ForEach(x => x.ToViewModelTicketResult(mapper, request.TimeZoneOffset));
                 viewModel.RoundResult = result.Item1;
             }
-            viewModel.BetLogs = result.Item3?.Select(x => x.ToViewModelTicketBetLog(mapper, request.TimeZoneInfo));
+            viewModel.BetLogs = result.Item3?.Select(x => x.ToViewModelTicketBetLog(mapper, request.TimeZoneOffset));
             viewModel.Odds = result.Item2?.Odds;
             viewModel.TotalBet = result.Item2?.TotalBet ?? 0;
             viewModel.BetWin = result.Item2?.Betwin ?? 0;

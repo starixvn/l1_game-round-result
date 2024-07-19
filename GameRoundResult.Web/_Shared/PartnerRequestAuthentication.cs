@@ -1,17 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Services;
+using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 
 namespace GameRoundResult.Web._Shared
 {
     public interface IPartnerRequestAuthentication
     {
-        Task<AuthenticationResult> Authorize(string partnerId, HttpRequest request, string partnerSecret);
+        Task<AuthenticationResult> Authorize(string partnerId, HttpRequest request, string partnerSecret, InternalAuth internalAuth = null);
 
         Task<AuthenticationResult> AuthorizeByKeyValue(string partnerId, string partnerSecret);
 
@@ -21,15 +25,25 @@ namespace GameRoundResult.Web._Shared
     public class PartnerRequestAuthentication : IPartnerRequestAuthentication
     {
         private readonly IPartnerService partnerService;
-        public readonly AuthenticationResult badRequestResult = new AuthenticationResult(false, string.Empty);
+        private readonly IEnumerable<AuthenticationClient> internalClient;
 
-        public PartnerRequestAuthentication(IPartnerService partnerService)
+        public readonly AuthenticationResult badRequestResult = new(false, string.Empty);
+
+        public PartnerRequestAuthentication(IPartnerService partnerService,
+            IOptions<List<AuthenticationClient>> internalClientOptions)
         {
             this.partnerService = partnerService;
+            internalClient = internalClientOptions.Value;
         }
 
-        public async Task<AuthenticationResult> Authorize(string partnerId, HttpRequest request, string partnerSecret)
+        public async Task<AuthenticationResult> Authorize(string partnerId, HttpRequest request, string partnerSecret, InternalAuth internalAuth = null)
         {
+            if (IsInternalClient(internalAuth ?? new()))
+            {
+                var partner = await partnerService.GetById(partnerId);
+                return partner != null ? new AuthenticationResult(true, partner.SecretKey) : badRequestResult;
+            }
+
             return string.IsNullOrEmpty(partnerSecret) ?
                  await AuthorizeByAccessKey(partnerId, request) :
                  await AuthorizeByKeyValue(partnerId, partnerSecret);
@@ -68,7 +82,11 @@ namespace GameRoundResult.Web._Shared
             var rawHashResult = Convert.ToBase64String(hashResult);
 
             return accessKey == rawHashResult ? new AuthenticationResult(true, partner.SecretKey) : badRequestResult;
+        }
 
+        private bool IsInternalClient(InternalAuth internalAuth)
+        {
+            return internalClient.Any(x => x.Name == internalAuth.Id && x.Key == internalAuth.Key);
         }
     }
 }

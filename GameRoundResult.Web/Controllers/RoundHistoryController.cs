@@ -2,15 +2,19 @@
 using GameRoundResult.Core.RoundHistory.Models;
 using GameRoundResult.Web._Shared;
 using GameRoundResult.Web.Configuration;
+using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.RoundHistory;
 using GameRoundResult.Web.Requests;
 using GameRoundResult.Web.Requests.RoundHistory;
 using MediatR;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Editing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System;
+using System.Security.AccessControl;
+using System.Threading;
 using System.Threading.Tasks;
 using TimeZoneConverter;
 
@@ -25,6 +29,7 @@ namespace GameRoundResult.Web.Controllers
         private readonly IPartnerRequestAuthentication partnerRequestAuthentication;
         private readonly ITimeLimitedDataProtector dataProtector;
         private readonly HostConfiguration hostConfiguration;
+        private readonly bool enableTolgee;
 
         public RoundHistoryController(
             IMediator mediator,
@@ -38,6 +43,7 @@ namespace GameRoundResult.Web.Controllers
             this.partnerRequestAuthentication = partnerRequestAuthentication;
             dataProtector = dataProtectionProvider.CreateProtector(dataProtectorKey).ToTimeLimitedDataProtector();
             hostConfiguration = hostConfigurationOptions.Value;
+            enableTolgee = bool.Parse(configuration["EnableTolgee"]);
         }
 
         [Route("[controller]")]
@@ -69,20 +75,25 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpGet]
+        [Route("{culture=en-US}/[controller]/[action]", Order = 0)]
         public async Task<IActionResult> GetBetHistory(RoundHistoryBetLogRequest request)
         {
             var timeZone = TZConvert.GetTimeZoneInfo("SE Asia Standard Time");
             var result = await mediator.Send(new GetGameTicketRequest(request.Game, request.RoundId, request.UserId,
-                timeZone, request.PartnerId, false, configuration["SystemType"]));            
+                timeZone.BaseUtcOffset, request.PartnerId, request.FreeBet, configuration["SystemType"]));
+            result.EnableTolgee = enableTolgee;
+            result.ConvertToBaseCurrency = request.ConvertToUSD;
+            result.BaseCurrencyMultiplier = BaseCurrencyConfig.MultiplierMapper[configuration["SystemType"]];
 
-            var viewModel = new RoundHistoryBetLogViewModel
+            var viewModel = new GameTicketResultViewModel
             {
-                TicketModel = result,
-                BaseCurrencyMultiplier = BaseCurrencyConfig.MultiplierMapper[configuration["SystemType"]],
-                BaseCurrency = BaseCurrencyConfig.CurrencyMapper[configuration["SystemType"]],
-                ConvertToUSD = request.ConvertToUSD
+                GameType = request.Game,
+                GameTicketResult = result,
+                Language = Thread.CurrentThread.CurrentCulture.Name,
+                EnableTolgee = enableTolgee,
             };
-            return PartialView("~/RoundHistory/Views/_BetLog.cshtml", viewModel);
+
+            return PartialView("~/Views/BetHistory/Index.cshtml", viewModel);
         }
 
         [HttpGet]

@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using System.Collections.Generic;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities
@@ -28,5 +29,7 @@ namespace GameRoundResult.Core.Database.Entities
         public string OperatorId { get; set; }
 
         public decimal Rate { get; set; }
+
+        public Dictionary<string, decimal> Odds { get; set; }
     }
 }

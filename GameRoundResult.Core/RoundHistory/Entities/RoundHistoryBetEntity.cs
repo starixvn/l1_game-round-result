@@ -14,6 +14,5 @@ namespace GameRoundResult.Core.Database.Entities.RoundHistory
 
         public decimal TotalAmount { get; set; }
 
-        public Dictionary<string, decimal> Odds { get; set; }
     }
 }

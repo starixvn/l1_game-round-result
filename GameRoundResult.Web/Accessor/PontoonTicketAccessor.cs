@@ -28,7 +28,7 @@ namespace GameRoundResult.Web.Accessor
                 DealerCards = pontoonResult.Item1?.Result.Select(x => mapper.Map<CardViewModel>(x)),
                 DealerPoint = pontoonResult.Item1?.SettlementResult ?? 0,
                 Ended = pontoonResult.Item1?.Ended ?? false,
-                Bet = pontoonResult.Item2?.ToViewModel(mapper, request.TimeZoneInfo),
+                Bet = pontoonResult.Item2?.ToViewModel(mapper, request.TimeZoneOffset),
             };
         }
     }

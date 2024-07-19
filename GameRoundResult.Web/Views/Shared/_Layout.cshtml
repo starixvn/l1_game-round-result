@@ -2,20 +2,30 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no">
     <title>@ViewData["Title"]</title>
     <environment include="Development">
         <link href="~/scss/pages/site.css" rel="stylesheet" asp-append-version="true" />
     </environment>
     <environment exclude="Development">
-        <link href="~/scss/pages/site.min.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/scss/pages/site.min.css" rel="stylesheet" asp-append-version="true" />
     </environment>
     @RenderSection("Styles", required: false)
 
 </head>
-<body>
+@{
+    var theme = string.Empty;
+    @if (Context.Request.Query["mode"].ToString() == GameRoundResult.Core.Constants.Theme.Dark)
+    {
+        theme = "data-theme=dark";
+    }
+
+}
+<!body @theme>
 
     <div class="main-container">
         @RenderBody()
@@ -35,5 +45,6 @@
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
     </environment>
     @RenderSection("Scripts", required: false)
-</body>
+</!body>
+
 </html>

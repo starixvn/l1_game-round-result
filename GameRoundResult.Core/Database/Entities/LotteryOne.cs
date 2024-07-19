@@ -9,8 +9,6 @@ namespace GameRoundResult.Core.Database.Entities
     {
         public LotteryChoices Choices { get; set; }
 
-        public LotteryOdds Odds { get; set; }
-
         public decimal TotalAmount { get; set; }
     }
 

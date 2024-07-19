@@ -290,7 +290,7 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<UnbalancedBigSmallBetLog, UnbalancedBigSmallBetLogViewModel>();
 
-            CreateMap<BlockchainBaccaratCard, DragonTigerCardViewModel>();
+            CreateMap<BaccaratCard, DragonTigerCardViewModel>();
             CreateMap<BlockchainBaccaratRound, BaccaratRoundResultViewModel>()
              .ForMember(x => x.PlayerCards, opt => opt.MapFrom((source, destination, i, context) =>
              {
@@ -477,6 +477,9 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<FootballCoinTossRound, FootballCoinTossRoundResultViewModel>();
             CreateMap<FootballCoinTossBetLog, BetLogViewModel>();
+            CreateMap<BaccaratXRound, BaccaratXRoundResultViewModel>();
+            CreateMap<BaccaratXBetLog, BaccaratXBetLogViewModel>();
+
         }
     }
 }
