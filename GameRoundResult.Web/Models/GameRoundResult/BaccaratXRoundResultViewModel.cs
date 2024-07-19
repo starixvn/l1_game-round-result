@@ -78,22 +78,22 @@ namespace GameRoundResult.Web.Models
 
             if (SettlementResult["player"])
             {
-                result = stringLocalizer.GetStringWithNamcespace("glossary_option_player", tolgeeNameSpace);
+                result = stringLocalizer.GetStringWithNamcespace("glossary_player", tolgeeNameSpace);
             }
             else
             {
-                result = SettlementResult["banker"] ? stringLocalizer.GetStringWithNamcespace("glossary_option_banker", tolgeeNameSpace)
-                    : stringLocalizer.GetStringWithNamcespace("glossary_option_tie", tolgeeNameSpace);
+                result = SettlementResult["banker"] ? stringLocalizer.GetStringWithNamcespace("glossary_banker", tolgeeNameSpace)
+                    : stringLocalizer.GetStringWithNamcespace("glossary_tie", tolgeeNameSpace);
             }
 
             if (SettlementResult["playerPair"])
             {
-                result = $"{result}, {stringLocalizer.GetStringWithNamcespace("glossary_option_player_pair", tolgeeNameSpace)}";
+                result = $"{result}, {stringLocalizer.GetStringWithNamcespace("glossary_player_pair", tolgeeNameSpace)}";
             }
 
             if (SettlementResult["bankerPair"])
             {
-                result = $"{result}, {stringLocalizer.GetStringWithNamcespace("glossary_option_banker_pair", tolgeeNameSpace)}";
+                result = $"{result}, {stringLocalizer.GetStringWithNamcespace("glossary_banker_pair", tolgeeNameSpace)}";
             }
 
             return result;

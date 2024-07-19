@@ -99,7 +99,7 @@ namespace GameRoundResult.Web.Models
                     choice = "banker_pair";
                 }
 
-                return $"glossary_option_{choice}";
+                return $"glossary_{choice}";
             }
         }
     }
