@@ -13,8 +13,6 @@ namespace GameRoundResult.Web.Models.GameTicket
         public long DrawId { get; set; }
         public IEnumerable<TranslationBetLogViewModel> BetLogs { get; set; }
 
-        public Dictionary<string, decimal> Odds { get; set; }
-
         public GameDraw RoundResult { get; set; }
 
         public Result DrawResult => RoundResult.Result.First(draw => draw.DrawId == DrawId);
