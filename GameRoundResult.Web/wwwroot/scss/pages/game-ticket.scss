@@ -19,7 +19,6 @@
     .table-baccaratx-bet {
         display: none;
     }
-
 }
 
 .table-baccaratx-bet-vertical {
@@ -32,15 +31,18 @@
     }
 }
 
-
-@media only screen and (min-width: 651px) {
+@media only screen and (min-width: 1000px) {
     .main-container {
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
         align-content: center;
         margin: auto;
+    }
+}
 
+@media only screen and (min-width: 651px) {
+    .main-container {
         .table-baccaratx-bet-vertical {
             display: none;
         }
