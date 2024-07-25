@@ -39,6 +39,7 @@ namespace GameRoundResult.Web.Handlers
             {
                 gameTicket.TimeZoneOffset = request.TimeZoneOffset;
                 gameTicket.GameDisplayName = request.GameConfigs.DisplayName;
+                gameTicket.GameName = request.GameConfigs.Name;
             }
 
             return gameTicket;
