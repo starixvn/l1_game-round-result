@@ -13,6 +13,7 @@ namespace GameRoundResult.Web.Models
     {
         public int GameId { get; set; }
         public string GameDisplayName { get; set; }
+        public string GameName { get; set; }
         public GameConfigsType GameType { get; set; }
         public TimeSpan TimeZoneOffset { get; set; }
 
