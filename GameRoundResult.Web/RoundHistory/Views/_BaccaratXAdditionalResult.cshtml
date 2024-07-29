@@ -1,8 +1,30 @@
-﻿@using GameRoundResult.Web.Models.RoundHistory
+﻿@using GameRoundResult.Core.Constants
+@using GameRoundResult.Web.Models.RoundHistory
+@inject IJsonStringLocalizer<BaccaratXTicketViewModel> Localizer
 
 @model BaccaratXRoundResultViewModel
 
 @if (Model.OddsMultipliers.Any())
 {
-    <partial name="~/Views/BetHistory/_BaccaratXMultiplierCards.cshtml" model="Model" />
+    <table class="table table-bordered" style="width:100%">
+        <tbody>
+            <tr>
+                <td class="bold col-fixed">@Localizer["lucky_card"]</td>
+                <td>
+                    <div class="baccarat-multiplier-cards">
+                        <div class="cards">
+                            @foreach (var card in Model.OddsMultipliers)
+                            {
+                                <div class="card card-type-@card.Type @(Model.IsMultiplierCardApplied(card) ? string.Empty : "blur" )">
+                                    <div class="multiplier">@Model.FormatMultiplier(card.Value)</div>
+                                    <span>@Card.CardLabels[card.Number]</span>
+                                    <img class="img" src="~/scss/images/card_@(card.Type).png" asp-append-version="true" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 }
