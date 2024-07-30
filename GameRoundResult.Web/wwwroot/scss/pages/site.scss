@@ -30,6 +30,8 @@ body {
     font-family: "Noto", "Roboto", Arial, Helvetica, sans-serif;
     font-size: 1.8rem;
     color: var(--text-color);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 .language-options a {
@@ -834,9 +836,4 @@ div table.bandar-qiuqiu-table {
             background-color: #222;
         }
     }
-}
-
-.keep-text-size {
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
 }
