@@ -24,3 +24,6 @@
   position: static;
   padding: 1.4rem;
 }
+.modal .modal-body table {
+  max-width: 100%;
+}
