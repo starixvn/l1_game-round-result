@@ -16,6 +16,12 @@
 .main-container .table-baccaratx-bet {
   display: none;
 }
+.main-container .table-baccarat-fixed {
+  table-layout: fixed;
+}
+.main-container .table-baccarat-fixed .col-fixed {
+  width: 10rem;
+}
 
 .table-baccaratx-bet-vertical tr td.title {
   width: 17rem;
@@ -121,6 +127,9 @@
   .main-container .table.table-lottery {
     width: 100rem;
   }
+  .main-container .table-baccarat-fixed .col-fixed {
+    width: 20rem;
+  }
 }
 .table-four-guardians .table-paylines, .table-night-club .table-paylines, .table-way-to-goal .table-paylines, .table-fortune-cat .table-paylines {
   margin: auto;
@@ -179,4 +188,10 @@
   align-items: center;
   justify-content: center;
   font-weight: 700;
+}
+
+@media only screen and (max-width: 391px) {
+  .table-baccarat-fixed th, .table-baccarat-fixed td {
+    padding: 0.4rem;
+  }
 }

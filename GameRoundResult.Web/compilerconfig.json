@@ -42,5 +42,9 @@
   {
     "outputFile": "wwwroot/scss/pages/demo.css",
     "inputFile": "wwwroot/scss/pages/demo.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/pages/modal.css",
+    "inputFile": "wwwroot/scss/pages/modal.scss"
   }
 ]

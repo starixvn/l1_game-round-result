@@ -30,6 +30,8 @@ body {
     font-family: "Noto", "Roboto", Arial, Helvetica, sans-serif;
     font-size: 1.8rem;
     color: var(--text-color);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 .language-options a {
@@ -411,6 +413,7 @@ html {
 .baccarat-result {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2rem;
 
     .cards {
         .card {
@@ -434,10 +437,11 @@ html {
         &:last-child {
             display: flex;
             justify-content: flex-start;
+            position: relative;
         }
 
         &:last-child:before {
-            position: relative;
+            position: absolute;
             top: 0.8rem;
             display: inline-block;
             height: 1.8rem;
@@ -445,6 +449,7 @@ html {
             margin: 0 0.6rem;
             background-color: var(--baccarat-sperate-card);
             content: "";
+            left: -1.9rem;
         }
 
         .score {
@@ -833,10 +838,6 @@ div table.bandar-qiuqiu-table {
     }
 }
 
-.keep-text-size {
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-}
 .bacball-result {
     height: 35px;
     width: 35px;

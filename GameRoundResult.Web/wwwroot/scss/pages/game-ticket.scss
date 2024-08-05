@@ -19,6 +19,12 @@
     .table-baccaratx-bet {
         display: none;
     }
+    .table-baccarat-fixed {
+        table-layout: fixed;
+        .col-fixed {
+            width: 10rem;
+        }
+    }
 }
 
 .table-baccaratx-bet-vertical {
@@ -163,6 +169,10 @@
                 width: 100rem;
             }
         }
+
+        .table-baccarat-fixed .col-fixed {
+            width: 20rem;
+        }
     }
 }
 
@@ -237,4 +247,12 @@
     align-items: center;
     justify-content: center;
     font-weight: 700;
+}
+
+@media only screen and (max-width: 391px) {
+    .table-baccarat-fixed {
+        th, td {
+            padding: 0.4rem;
+        }
+    }
 }
