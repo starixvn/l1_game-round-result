@@ -5,7 +5,7 @@
 
 @if (Model.EnableTolgee)
 {
-    <input value="GameTicketResultViewModel,Common,ClassicSlotTicketViewModel" id="tolgee_namespace" readonly hidden/>
+    <input value="GameTicketResultViewModel,Common,ClassicSlotTicketViewModel" id="tolgee_namespace" readonly hidden />
 }
 @if (Model.HasData)
 {
@@ -29,7 +29,7 @@
                     @Model.RoundResult.RoundId
                     <div>@Model.FreeSpinsLabel</div>
                 </td>
-                <td>              
+                <td>
                     @await Html.PartialAsync("_ClassicSlotBoard", Model)
                 </td>
             </tr>
@@ -49,30 +49,39 @@
             </tr>
         </thead>
         <tbody>
+            @if (Model.HasWinningPayline)
+            {
+                @await Html.PartialAsync("_Jackpot", Model)
+                @await Html.PartialAsync("_WinningPaylines", Model)
+                @await Html.PartialAsync("_Bonus", Model)
+                @await Html.PartialAsync("_FreeSpins", Model)
 
-            @await Html.PartialAsync("_Jackpot", Model)
-            @await Html.PartialAsync("_WinningPaylines", Model)
-            @await Html.PartialAsync("_Bonus", Model)
-            @await Html.PartialAsync("_FreeSpins", Model)
-            @await Html.PartialAsync("_NotWinningPaylines", Model)
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="bold text-right">@CommonLocalizer["Total"]</td>
+                    <td class="bold text-right">@Model.RoundResult.DisplayTotalAmount</td>
+                    <td class="bold text-right">@Model.RoundResult.DisplayTotalBetWin</td>
+                </tr>
 
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="bold text-right">@CommonLocalizer["Total"]</td>
-                <td class="bold text-right">@Model.RoundResult.DisplayTotalAmount</td>
-                <td class="bold text-right">@Model.RoundResult.DisplayTotalBetWin</td>
-            </tr>
+                <tr class="total">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="bold text-right">@CommonLocalizer["WinLoss"]</td>
+                    <td></td>
+                    <td class="bold text-right @(Model.IsLose ? "text-red" : string.Empty)">@Model.DisplayWinLoss</td>
+                </tr>
+            } else
+            {
+                <tr>
+                    <td colspan="6" class="text-center">
+                        @Localizer["non_winning_payline"]
+                    </td>
+                </tr>
+            }
 
-            <tr class="total">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="bold text-right">@CommonLocalizer["WinLoss"]</td>
-                <td></td>
-                <td class="bold text-right @(Model.IsLose ? "text-red" : string.Empty)">@Model.DisplayWinLoss</td>
-            </tr>
         </tbody>
     </table>
 }

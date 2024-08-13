@@ -1,8 +1,10 @@
 {
-  "Jackpot" : "Jackpot",
-  "NoSymbol" : "Jumlah Simbol",
-  "Odds" : "Odds",
-  "Payline" : "Garis",
-  "Stake" : "Taruhan",
-  "Symbol" : "Simbol"
+  "Jackpot": "Jackpot",
+  "NoSymbol": "Jumlah Simbol",
+  "Odds": "Odds",
+  "Payline": "Garis",
+  "Stake": "Taruhan",
+  "Symbol": "Simbol",
+  "non_winning_payline": "Paylines yang tidak menang"
+
 }

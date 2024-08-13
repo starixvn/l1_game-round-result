@@ -1,8 +1,9 @@
 {
-  "Jackpot" : "Jackpot",
-  "NoSymbol" : "Số lượng",
-  "Odds" : "Tỷ lệ cược",
-  "Payline" : "Dòng cược",
-  "Stake" : "Mức cược",
-  "Symbol" : "Biểu tượng"
+  "Jackpot": "Jackpot",
+  "NoSymbol": "Số lượng",
+  "Odds": "Tỷ lệ cược",
+  "Payline": "Dòng cược",
+  "Stake": "Mức cược",
+  "Symbol": "Biểu tượng",
+  "non_winning_payline": "Không có dòng cược thắng"
 }
