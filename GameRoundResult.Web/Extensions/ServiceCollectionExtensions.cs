@@ -150,6 +150,7 @@ namespace GameRoundResult.Web.Extensions
 
             services.AddScoped(typeof(CoinTossTicketAccessor));
             services.AddScoped(typeof(FootballCoinTossTicketAccessor));
+            services.AddScoped<SeDie3TicketAccessor>();
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
 
@@ -209,6 +210,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<CoinTossEndGameInfoService>();
             services.AddScoped<FootballCoinTossEndGameInfoService>();
             services.AddScoped(typeof(BaccaratXEndGameInfoService<,>));
+            services.AddScoped<SeDie3EndGameInfoService>();
 
             services.AddScoped<IRoundHistoryRepository, RoundHistoryRepository>();
             services.AddScoped<IRoundHistoryService, RoundHistoryService>();

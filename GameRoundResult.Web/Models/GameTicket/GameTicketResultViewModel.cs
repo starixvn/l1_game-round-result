@@ -47,7 +47,6 @@ namespace GameRoundResult.Web.Models
             {
                 return $"{PartialSuffix}_BaccaratX{PartialPostfix}.cshtml";
             }
-
             return Enum.IsDefined(typeof(GameType), GameType)
                 ? $"{PartialSuffix}_{TransformToViewName(Enum.GetName(typeof(GameType), GameType))}{PartialPostfix}.cshtml"
                 : $"_SlotGame{PartialPostfix}";
@@ -87,7 +86,14 @@ namespace GameRoundResult.Web.Models
             => GameTicketResult.GameType == GameConfigsType.Crash;
 
         private static string TransformToViewName(string name)
-        => Regex.Replace(name, @"[\d-]", string.Empty).Replace("Turbo", string.Empty);
+        {
+            if (name == "SeDie3")
+            {
+                return name;
+            }
+
+            return Regex.Replace(name, @"[\d-]", string.Empty).Replace("Turbo", string.Empty);
+        }
 
         private bool IsBaccaratX
               => GameType switch

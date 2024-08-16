@@ -68,5 +68,6 @@
         CoinToss = 80,
         Bac81 = 81,
         FootballCoinToss = 93,
+        SeDie3 = 95
     }
 }

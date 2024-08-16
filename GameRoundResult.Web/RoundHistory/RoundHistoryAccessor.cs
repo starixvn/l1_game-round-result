@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.RoundHistory;
-using GameRoundResult.Core.RoundHistory.Entities;
 using GameRoundResult.Core.RoundHistory.Models;
 using GameRoundResult.Core.Services.RoundHistory;
 using GameRoundResult.Web.Extensions;

@@ -458,6 +458,15 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<FootballCoinTossBetLog, BetLogViewModel>();
             CreateMap<BaccaratXRound, BaccaratXRoundResultViewModel>();
             CreateMap<BaccaratXBetLog, BaccaratXBetLogViewModel>();
+            CreateMap<SeDie3Bet, SeDie3BetViewModel>();
+            CreateMap<SeDie3Round, SeDie3RoundResultViewModel>()
+                .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new[]
+                {
+                    x.Result.FirstRedChip,
+                    x.Result.SecondRedChip ,
+                    x.Result.ThirdRedChip
+                }.OrderByDescending(x => x)));
+            CreateMap<SeDie3SettlementResultEntity, SeDie3SettlementResultViewModel>();
 
         }
     }
