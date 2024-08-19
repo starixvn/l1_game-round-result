@@ -10,7 +10,7 @@ namespace GameRoundResult.Core.Database.Entities.RoundHistory
 
         public string Nickname { get; set; }
 
-        public virtual decimal TotalAmount { get; set; }
+        public decimal TotalAmount { get; set; }
 
         public long DrawId { get; set; }
     }   

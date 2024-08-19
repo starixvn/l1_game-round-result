@@ -22,7 +22,5 @@ namespace GameRoundResult.Core.Database.Entities
 
         [BsonElement("white3")]
         public decimal ThreeWhite { get; set; }
-
-        public override decimal TotalAmount => Red + White + OneRed + TwoRed + ThreeRed + ThreeWhite;
     }
 }

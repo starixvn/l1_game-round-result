@@ -1,11 +1,8 @@
 ﻿using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
-using GameRoundResult.Web.Models.RoundHistory;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Sentry.Protocol;
 using System.Collections.Generic;
 using System.Linq;
-using System.Transactions;
 
 namespace GameRoundResult.Web.Models
 {
