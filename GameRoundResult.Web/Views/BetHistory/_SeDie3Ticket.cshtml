@@ -10,16 +10,15 @@
 @{
     var betTypes = new[]
     {
-        new { Name = "Red", Value = Model.Bet.Red, CssKey = "red", DisplayText = true, ChipCount = 0 },
-        new { Name = "White", Value = Model.Bet.White, CssKey = "white", DisplayText = true, ChipCount = 0 },
-        new { Name = "1Red", Value = Model.Bet.OneRed, CssKey = "red1", DisplayText = false, ChipCount = 1 },
-        new { Name = "2Red", Value = Model.Bet.TwoRed, CssKey = "red2", DisplayText = false, ChipCount = 2 },
-        new { Name = "3Red", Value = Model.Bet.ThreeRed, CssKey = "red3", DisplayText = false, ChipCount = 3 },
-        new { Name = "3White", Value = Model.Bet.ThreeWhite, CssKey = "white3", DisplayText = false, ChipCount = 3 }
+        new { Name = "Red", Value = Model.Bet.Red, CssKey = "red", DisplayText = true },
+        new { Name = "White", Value = Model.Bet.White, CssKey = "white", DisplayText = true },
+        new { Name = "1Red", Value = Model.Bet.OneRed, CssKey = "red1", DisplayText = false },
+        new { Name = "2Red", Value = Model.Bet.TwoRed, CssKey = "red2", DisplayText = false },
+        new { Name = "3Red", Value = Model.Bet.ThreeRed, CssKey = "red3", DisplayText = false },
+        new { Name = "3White", Value = Model.Bet.ThreeWhite, CssKey = "white3", DisplayText = false }
     };
 }
 
-<!-- Round and Result Table -->
 <table class="table table-bordered table-baccarat table-baccarat-fixed">
     <thead>
         <tr>
@@ -32,19 +31,18 @@
         {
             <tr>
                 <td>@Model.RoundResult.RoundId</td>
-                <td class="cointoss-result">
+                <td>
                     @foreach (var chip in Model.RoundResult.RedChips)
                     {
                         <i class="@(chip ? "red-chip" : "white-chip")"></i>
                     }
+                   
                     @if (Model.RoundResult.SettlementResult.Red)
                     {
-                        <!-- More red chips than white -->
                         @(" - " + CommonLocalizer["Red"])
                     }
                     else
                     {
-                        <!-- More white chips than red -->
                         @(" - " + CommonLocalizer["White"])
                     }
                 </td>
@@ -53,15 +51,14 @@
         else
         {
             <tr>
-                <td colspan="2" class="text-center">
-                    @CommonLocalizer["NoDataAvailable"]
-                </td>
+               <td colspan="2" class="text-center">
+                   @CommonLocalizer["NoDataAvailable"]
+               </td>
             </tr>
-        }
+        }   
     </tbody>
 </table>
 
-<!-- Bet Details Table -->
 <table class="table table-bordered table-baccarat table-baccaratx-bet">
     <thead>
         <tr>
@@ -89,11 +86,11 @@
                         <td>
                             @if (bet.DisplayText)
                             {
-                                @CommonLocalizer[bet.Name] <!-- Display as text -->
+                                @CommonLocalizer[bet.Name]
                             }
                             else
                             {                               
-                              @Html.Raw(Model.RenderChips(bet.CssKey)) <!-- Render chips from ViewModel -->                               
+                              @Html.Raw(Model.RenderChips(bet.CssKey))                            
                             }
                         </td>
                         <td class="text-right @cssClass">@Model.DisplayOdds(bet.CssKey)</td>

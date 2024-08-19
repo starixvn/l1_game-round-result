@@ -1,0 +1,23 @@
+[
+  {
+    "time": {
+      "$date": "2023-11-02T06:42:33.000Z"
+    },
+    "id": 3689,
+    "result": {
+      "red1": false,
+      "red2": false,
+      "red3": true
+    },
+    "settlementResult": {
+      "red": false,
+      "white": true,
+      "red1": true,
+      "red2": false,
+      "red3": false,
+      "white3": false
+    },
+    "exchangeRateId": 4817,
+    "__v": 0
+  }
+]
