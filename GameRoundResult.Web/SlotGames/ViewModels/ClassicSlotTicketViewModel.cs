@@ -35,8 +35,6 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
 
         public new decimal WinLoss => RoundResult.FreeSpin ? RoundResult.TotalBetWin : RoundResult.TotalBetWin - RoundResult.TotalAmount;
 
-        public string DisplayWinLoss => WinLoss.Format();
-
         private string SymbolImageName(string symbol)
         => IsJackpotSymbol(byte.Parse(symbol)) ? GetJackpotSymbolName() : $"{SymbolPrefix}-{symbol}";
 

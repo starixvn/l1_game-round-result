@@ -1,7 +1,13 @@
-﻿@model ClassicSlotTicketViewModel
+﻿@using GameRoundResult.Core.Constants
+
+@model ClassicSlotTicketViewModel
 
 @inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
 @inject IJsonStringLocalizer<ClassicSlotTicketViewModel> Localizer
+
+@{
+    var oldGames = new[] { 29, 38, 46, 49, 62 };
+}
 
 @if (Model.EnableTolgee)
 {
@@ -49,12 +55,17 @@
             </tr>
         </thead>
         <tbody>
-            @if (Model.HasWinningPayline)
+            @if (Model.HasWinningPayline || oldGames.Contains(Model.GameId))
             {
                 @await Html.PartialAsync("_Jackpot", Model)
                 @await Html.PartialAsync("_WinningPaylines", Model)
                 @await Html.PartialAsync("_Bonus", Model)
                 @await Html.PartialAsync("_FreeSpins", Model)
+
+                @if (oldGames.Contains(Model.GameId))
+                {
+                    @await Html.PartialAsync("_NotWinningPaylines", Model)
+                }
 
                 <tr>
                     <td></td>
@@ -73,7 +84,8 @@
                     <td></td>
                     <td class="bold text-right @(Model.IsLose ? "text-red" : string.Empty)">@Model.DisplayWinLoss</td>
                 </tr>
-            } else
+            }
+            else
             {
                 <tr>
                     <td colspan="6" class="text-center">
