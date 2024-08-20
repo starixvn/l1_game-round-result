@@ -1,19 +1,19 @@
 [
   {
     "time": {
-      "$date": "2023-11-02T06:42:33.000Z"
+      "$date": "2024-08-16T09:04:40.001Z"
     },
-    "id": 3689,
+    "id": 4220,
     "result": {
       "red1": false,
-      "red2": false,
+      "red2": true,
       "red3": true
     },
     "settlementResult": {
-      "red": false,
-      "white": true,
-      "red1": true,
-      "red2": false,
+      "red": true,
+      "white": false,
+      "red1": false,
+      "red2": true,
       "red3": false,
       "white3": false
     },

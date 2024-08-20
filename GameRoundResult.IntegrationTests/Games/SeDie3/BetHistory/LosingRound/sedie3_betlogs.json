@@ -1,0 +1,25 @@
+[
+  {
+    "amount": 1,
+    "freeBet": false,
+    "roundId": 4220,
+    "uid": "61b954f4e138c3497e6fc0be",
+    "name": "Pink10820",
+    "time": {
+      "$date": "2024-08-16T09:04:19.991Z"
+    },
+    "choice": "white",
+    "clientSentTime": {
+      "$date": "2024-08-16T09:04:19.926Z"
+    },
+    "receivedTime": {
+      "$date": "2024-08-16T09:04:19.954Z"
+    },
+    "siteId": "4100300",
+    "currency": "$US",
+    "rate": 1,
+    "operatorId": "ONEworks1",
+    "playerId": "6001",
+    "__v": 0
+  }
+]

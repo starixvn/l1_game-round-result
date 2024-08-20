@@ -1,12 +1,12 @@
 [
   {
+    "roundId": 12515,
     "freeBet": false,
-    "uid": "61b954f4e138c3497e6fc0be",
-    "roundId": 3683,
+    "uid": "66c321c17871fffd46cdb432",
     "__v": 0,
-    "betwin": 10.44,
-    "currency": "$US",
-    "name": "Pink10820",
+    "betwin": 98,
+    "currency": "WON",
+    "name": "Cable45725",
     "odds": {
       "red": 1.96,
       "white": 1.96,
@@ -17,18 +17,18 @@
     },
     "operatorId": "ONEworks1",
     "paid": true,
-    "playerId": "6001",
-    "rate": 1,
+    "playerId": "588",
+    "rate": 0.00076,
     "red": 0,
     "red1": 0,
-    "red2": 4,
-    "red3": 10,
+    "red2": 0,
+    "red3": 0,
     "siteId": "4100300",
     "time": {
-      "$date": "2023-11-02T06:42:24.927Z"
+      "$date": "2024-08-20T05:44:52.873Z"
     },
-    "totalAmount": 14,
-    "white": 0,
-    "white3": 0
+    "totalAmount": 20,
+    "white": 10,
+    "white3": 10
   }
 ]

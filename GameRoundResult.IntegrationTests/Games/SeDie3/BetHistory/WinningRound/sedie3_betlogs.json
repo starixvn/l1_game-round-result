@@ -1,0 +1,48 @@
+[
+  {
+    "amount": 10,
+    "freeBet": false,
+    "roundId": 12515,
+    "uid": "66c321c17871fffd46cdb432",
+    "name": "Cable45725",
+    "time": {
+      "$date": "2024-08-20T05:44:52.868Z"
+    },
+    "choice": "white",
+    "clientSentTime": {
+      "$date": "2024-08-20T05:44:52.834Z"
+    },
+    "receivedTime": {
+      "$date": "2024-08-20T05:44:52.834Z"
+    },
+    "siteId": "4100300",
+    "currency": "WON",
+    "rate": 0.00076,
+    "operatorId": "ONEworks1",
+    "playerId": "588",
+    "__v": 0
+  },
+  {
+    "amount": 10,
+    "freeBet": false,
+    "roundId": 12515,
+    "uid": "66c321c17871fffd46cdb432",
+    "name": "Cable45725",
+    "time": {
+      "$date": "2024-08-20T05:44:53.615Z"
+    },
+    "choice": "white3",
+    "clientSentTime": {
+      "$date": "2024-08-20T05:44:53.597Z"
+    },
+    "receivedTime": {
+      "$date": "2024-08-20T05:44:53.595Z"
+    },
+    "siteId": "4100300",
+    "currency": "WON",
+    "rate": 0.00076,
+    "operatorId": "ONEworks1",
+    "playerId": "588",
+    "__v": 0
+  }
+]

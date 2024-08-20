@@ -8,14 +8,14 @@
     <input value="GameTicketResultViewModel,Common,SeDie3TicketViewModel" id="tolgee_namespace" readonly hidden />
 }
 @{
-    var betTypes = new[]
+    var betTypes = new Dictionary<string, bool>
     {
-        new { CssKey = "red", DisplayText = true },
-        new { CssKey = "white", DisplayText = true },
-        new { CssKey = "red1", DisplayText = false },
-        new { CssKey = "red2", DisplayText = false },
-        new { CssKey = "red3", DisplayText = false },
-        new { CssKey = "white3", DisplayText = false }
+        { "red", true },
+        { "white", true },
+        { "red1", false },
+        { "red2", false },
+        { "red3", false },
+        { "white3", false }
     };
 }
 
@@ -77,7 +77,7 @@
         {
             @foreach (var betLog in Model.BetLogs)
             {
-                var displayText = betTypes.FirstOrDefault(bt => bt.CssKey == betLog.Choice).DisplayText;
+                var displayText = betTypes.TryGetValue(betLog.Choice, out var showText) && showText;
                 var cssClass = Model.GetRowBetClass(betLog.Choice);
                 <tr>
                     <td>
@@ -99,7 +99,6 @@
                     <td class="text-right @cssClass">@Model.DisplayAmount(betLog.Amount)</td>
                     <td class="text-right @cssClass">@Model.DisplayAmount(Model.GetBetLogWin(betLog))</td>
                 </tr>
-                <tr class="line-break"></tr>
             }
            
             <tr class="total">

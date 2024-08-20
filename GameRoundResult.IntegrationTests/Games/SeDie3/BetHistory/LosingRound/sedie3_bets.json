@@ -1,8 +1,8 @@
 [
   {
-    "roundId": 3689,
-    "uid": "61b954f4e138c3497e6fc0be",
     "freeBet": false,
+    "uid": "61b954f4e138c3497e6fc0be",
+    "roundId": 4220,
     "__v": 0,
     "betwin": 0,
     "currency": "$US",
@@ -19,16 +19,16 @@
     "paid": true,
     "playerId": "6001",
     "rate": 1,
-    "red": 19,
+    "red": 0,
     "red1": 0,
     "red2": 0,
     "red3": 0,
     "siteId": "4100300",
     "time": {
-      "$date": "2023-11-02T06:42:24.927Z"
+      "$date": "2024-08-16T09:04:19.999Z"
     },
-    "totalAmount": 19,
-    "white": 0,
+    "totalAmount": 1,
+    "white": 1,
     "white3": 0
   }
 ]
