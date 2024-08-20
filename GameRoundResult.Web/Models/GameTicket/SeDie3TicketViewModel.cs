@@ -9,9 +9,6 @@ namespace GameRoundResult.Web.Models
         public SeDie3RoundResultViewModel RoundResult { get; set; }
 
         public IEnumerable<SeDie3BetLogViewModel> BetLogs { get; set; }
-        public decimal WinLoss => BetWin - TotalBet;
-
-        public bool FreeBet { get; set; }
 
         public override string WinLossRowClassName => WinLoss < 0 ? "text-red" : "bet-win-text";
         public override bool IsWinningChoice(string choice)
@@ -49,8 +46,8 @@ namespace GameRoundResult.Web.Models
                 _ => 0
             };
 
-            var cssClass = choice.StartsWith("red") ? "red-chip" : "white-chip";
-            var oppositeCssClass = choice.StartsWith("red") ? "white-chip" : "red-chip";
+            var cssClass = choice.StartsWith("red") ? "dice-red" : "dice-white";
+            var oppositeCssClass = choice.StartsWith("red") ? "dice-white" : "dice-red";
 
             int oppositeChipCount = 3 - chipCount;
 

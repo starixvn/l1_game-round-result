@@ -32,12 +32,12 @@
             <tr>
                 <td>@Model.RoundResult.RoundId</td>
                 <td>
-                   
+                    <span class="sedie3-result">
                         @foreach (var chip in Model.RoundResult.RedChips)
                         {
-                            <i class="@(chip ? "red-chip" : "white-chip")"></i>
+                            <i class="@(chip ? "dice-red" : "dice-white")"></i>
                         }
-                        <span class="bold text-right">
+                        <span class="text">
                             @if (Model.RoundResult.SettlementResult.Red)
                             {
                                 @(" - " + CommonLocalizer["Red"])
@@ -47,7 +47,7 @@
                                 @(" - " + CommonLocalizer["White"])
                             }
                         </span>
-                   
+                    </span>                  
                 </td>
             </tr>
         }
@@ -104,17 +104,13 @@
            
             <tr class="total">
                 <td class="text-right" colspan="3">@CommonLocalizer["Total"]</td>
-                <td class="text-right">@Model.DisplayAmount(Model.TotalBet) @(Model.FreeBet ? "(Scoin)" : string.Empty)</td>
+                <td class="text-right">@Model.DisplayAmount(Model.TotalBet)</td>
                 <td class="text-right">@Model.DisplayAmount(Model.BetWin)</td>
             </tr>
-
-            @if (!Model.FreeBet)
-            {
-                <tr class="total">
-                    <td class="bold text-right" colspan="3">@CommonLocalizer["WinLoss"]</td>
-                    <td class="bold text-right @Model.WinLossRowClassName" colspan="2">@Model.DisplayAmount(Model.WinLoss)</td>
-                </tr>
-            }
+            <tr class="total">
+                <td class="bold text-right" colspan="3">@CommonLocalizer["WinLoss"]</td>
+                <td class="bold text-right @Model.WinLossRowClassName" colspan="2">@Model.DisplayAmount(Model.WinLoss)</td>
+            </tr>
         }
         else
         {

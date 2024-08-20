@@ -37,7 +37,6 @@ namespace GameRoundResult.Web.Accessor
                 Rate = result.Item3?.Rate ?? 0,
                 TotalBet = result.Item3?.TotalAmount ?? 0,
                 BetWin = result.Item3?.Betwin ?? 0,
-                FreeBet = result.Item3?.FreeBet ?? false,
                 FractionalOddsFormat = await currencyGroupService.GetFractionalOddsFormat(result.Item3?.Currency, request.OperatorId),
             };
         }
