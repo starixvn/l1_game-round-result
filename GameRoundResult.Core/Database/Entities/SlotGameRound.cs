@@ -47,6 +47,8 @@ namespace GameRoundResult.Core.Database.Entities
 
         [BsonRepresentation(BsonType.Decimal128, AllowTruncation = true)]
         public decimal WinningAmount { get; set; }
+
+        public string WinningPrize { get; set; }
     }
 
     public class SlotGameWinningLine
@@ -74,7 +76,7 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal Odds { get; set; }
     }
 
-    public class SlotGameJackpotContribution 
+    public class SlotGameJackpotContribution
     {
         public decimal ContributionRate { get; set; }
         public decimal BaseContributionAmount { get; set; }

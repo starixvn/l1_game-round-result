@@ -1,8 +1,9 @@
 {
-  "Jackpot" : "Jackpot",
-  "NoSymbol" : "No.of Symbol",
-  "Odds" : "Odds",
-  "Payline" : "Lines",
-  "Stake" : "Stake",
-  "Symbol" : "Symbol"
+  "Jackpot": "Jackpot",
+  "NoSymbol": "No.of Symbol",
+  "Odds": "Odds",
+  "Payline": "Lines",
+  "Stake": "Stake",
+  "Symbol": "Symbol",
+  "non_winning_payline": "Non-winning Paylines"
 }

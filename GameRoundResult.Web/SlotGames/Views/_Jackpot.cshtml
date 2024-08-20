@@ -1,8 +1,6 @@
 ﻿@using GameRoundResult.Core.Constants
 @inject IJsonStringLocalizer<ClassicSlotTicketViewModel> Localizer
 
-@inject IJsonStringLocalizer<ClassicSlotTicketViewModel> Localizer
-
 @model ClassicSlotTicketViewModel
 
 @if (Model.HasJackpot)
@@ -16,7 +14,7 @@
             <img class="symbol" src="@Model.GetSymbolUrl(SlotGameConstant.JackpotSymbol)" alt="" asp-append-version="true" />
         </td>
         <td>5</td>
-        <td>@Localizer["Jackpot"]</td>
+        <td>@(string.IsNullOrWhiteSpace(jackpot.WinningPrize) ? Localizer["Jackpot"] : Localizer[$"jackpot_{jackpot.WinningPrize}"])</td>
         <td class="text-right">@roundResult.Bet.Format()</td>
         <td class="text-right">@jackpot.WinningAmount.Format()</td>
     </tr>

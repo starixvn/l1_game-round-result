@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using GameRoundResult.Core.Constants;
+using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Models;
 
@@ -32,8 +34,6 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
         public ClassicSlotRoundResultViewModel RoundResult { get; set; }
 
         public new decimal WinLoss => RoundResult.FreeSpin ? RoundResult.TotalBetWin : RoundResult.TotalBetWin - RoundResult.TotalAmount;
-
-        public string DisplayWinLoss => WinLoss.Format();
 
         private string SymbolImageName(string symbol)
         => IsJackpotSymbol(byte.Parse(symbol)) ? GetJackpotSymbolName() : $"{SymbolPrefix}-{symbol}";
@@ -73,5 +73,6 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
         public bool HasJackpot => RoundResult.SettlementResult.Jackpot != null;
 
         public bool IsLose => WinLoss < 0;
+        public bool HasWinningPayline => HasBonus || HasFreeSpins || HasJackpot || RoundResult.SettlementResult.WinningPaylines.Any();
     }
 }
