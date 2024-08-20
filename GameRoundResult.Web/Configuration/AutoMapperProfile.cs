@@ -467,6 +467,7 @@ namespace GameRoundResult.Web.Configuration
                     x.Result.ThirdRedChip
                 }.OrderByDescending(x => x)));
             CreateMap<SeDie3SettlementResultEntity, SeDie3SettlementResultViewModel>();
+            CreateMap<SeDie3BetLog, SeDie3BetLogViewModel>();
 
         }
     }

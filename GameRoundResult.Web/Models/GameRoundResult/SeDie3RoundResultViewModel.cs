@@ -48,12 +48,10 @@ namespace GameRoundResult.Web.Models
 
             if (SettlementResult.Red)
             {
-                tagBuilder.AddCssClass("text-blue");
                 tagBuilder.InnerHtml.Append(stringLocalizer["Red"]);
             }
             else
             {
-                tagBuilder.AddCssClass("text-red");
                 tagBuilder.InnerHtml.Append(stringLocalizer["White"]);
             }
 

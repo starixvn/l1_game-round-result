@@ -8,11 +8,12 @@ namespace GameRoundResult.Web.Models
     {
         public SeDie3RoundResultViewModel RoundResult { get; set; }
 
-        public SeDie3BetViewModel Bet { get; set; }
+        public IEnumerable<SeDie3BetLogViewModel> BetLogs { get; set; }
+        public decimal WinLoss => BetWin - TotalBet;
 
-        public decimal TotalBet => Bet.Red + Bet.White + Bet.ThreeRed + Bet.OneRed + Bet.ThreeWhite + Bet.TwoRed;
-        public decimal TotalWin => Bet.BetWin;
-        public decimal WinLoss => Bet.FreeBet ? TotalWin : TotalWin - TotalBet;
+        public bool FreeBet { get; set; }
+
+        public override string WinLossRowClassName => WinLoss < 0 ? "text-red" : "bet-win-text";
         public override bool IsWinningChoice(string choice)
         {
             if (RoundResult?.SettlementResult == null)
@@ -32,28 +33,9 @@ namespace GameRoundResult.Web.Models
             };
         }
 
-        public decimal GetBetChoiceValue(string choice)
-        {
-            return choice switch
-            {
-                "red" => Bet.Red,
-                "white" => Bet.White,
-                "red1" => Bet.OneRed,
-                "red2" => Bet.TwoRed,
-                "red3" => Bet.ThreeRed,
-                "white3" => Bet.ThreeWhite,
-                _ => 0
-            };
-        }
-
         public override string GetRowBetClass(string choice)
         {
             return IsWinningChoice(choice) ? "bold bet-win-text" : string.Empty;
-        }
-
-        public decimal GetBetWin(string choice)
-        {
-            return IsWinningChoice(choice) ? GetBetChoiceValue(choice) * Odds[choice] : 0;
         }
 
         public string RenderChips(string choice)
@@ -84,7 +66,7 @@ namespace GameRoundResult.Web.Models
             }
 
             return sb.ToString();
-        }
+        }      
     }
 
     public class SeDie3BetViewModel
@@ -110,5 +92,16 @@ namespace GameRoundResult.Web.Models
         public Dictionary<string, decimal> Odds { get; set; }
 
         public decimal TotalAmount { get; set; }
+    }
+
+    public class SeDie3BetLogViewModel : BetLogViewModel
+    {
+        public override string ChoiceKey
+        {
+            get
+            {
+                return char.ToUpper(Choice[0]) + Choice.Substring(1);
+            }
+        }
     }
 }
