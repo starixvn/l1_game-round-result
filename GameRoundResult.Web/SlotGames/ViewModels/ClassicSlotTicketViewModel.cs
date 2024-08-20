@@ -33,7 +33,7 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
 
         public ClassicSlotRoundResultViewModel RoundResult { get; set; }
 
-        public new decimal WinLoss => RoundResult.FreeSpin ? RoundResult.TotalBetWin : RoundResult.TotalBetWin - RoundResult.TotalAmount;
+        public override decimal WinLoss => RoundResult.FreeSpin ? RoundResult.TotalBetWin : RoundResult.TotalBetWin - RoundResult.TotalAmount;
 
         private string SymbolImageName(string symbol)
         => IsJackpotSymbol(byte.Parse(symbol)) ? GetJackpotSymbolName() : $"{SymbolPrefix}-{symbol}";

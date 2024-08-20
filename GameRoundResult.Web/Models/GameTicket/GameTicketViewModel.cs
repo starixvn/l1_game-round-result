@@ -23,7 +23,7 @@ namespace GameRoundResult.Web.Models
         public string StaticResourceUrl { get; set; }
         public decimal TotalBet { get; set; }
         public decimal BetWin { get; set; }
-        public decimal WinLoss => BetWin - TotalBet;
+        public virtual decimal WinLoss => BetWin - TotalBet;
         public string DisplayWinLoss => DisplayAmount(WinLoss);
         public string DisplayTotalBet => DisplayAmount(TotalBet);
         public string DisplayBetWin => DisplayAmount(BetWin);
