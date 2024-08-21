@@ -190,6 +190,19 @@
   font-weight: 700;
 }
 
+.sedie3-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.sedie3-result span.text {
+  margin-left: 10px; /* Space between the chips and the text */
+  vertical-align: middle;
+  margin-top: -2px;
+}
+
 @media only screen and (max-width: 391px) {
   .table-baccarat-fixed th, .table-baccarat-fixed td {
     padding: 0.4rem;

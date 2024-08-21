@@ -1,0 +1,123 @@
+﻿@model SeDie3TicketViewModel
+
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<SeDie3TicketViewModel> Localizer
+
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,Common,SeDie3TicketViewModel" id="tolgee_namespace" readonly hidden />
+}
+@{
+    var betTypes = new Dictionary<string, bool>
+    {
+        { "red", true },
+        { "white", true },
+        { "red1", false },
+        { "red2", false },
+        { "red3", false },
+        { "white3", false }
+    };
+}
+
+<table class="table table-bordered table-baccarat table-baccarat-fixed">
+    <thead>
+        <tr>
+            <th class="col-round-id col-fixed">@CommonLocalizer["RoundId"]</th>
+            <th>@CommonLocalizer["Result"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null)
+        {
+            <tr>
+                <td>@Model.RoundResult.RoundId</td>
+                <td>
+                    <span class="sedie3-result">
+                        @foreach (var chip in Model.RoundResult.RedChips)
+                        {
+                            <i class="@(chip ? "dice-red" : "dice-white")"></i>
+                        }
+                        <span class="text">
+                            @if (Model.RoundResult.SettlementResult.Red)
+                            {
+                                @(" - " + CommonLocalizer["Red"])
+                            }
+                            else
+                            {
+                                @(" - " + CommonLocalizer["White"])
+                            }
+                        </span>
+                    </span>                  
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+               <td colspan="2" class="text-center">
+                   @CommonLocalizer["NoDataAvailable"]
+               </td>
+            </tr>
+        }   
+    </tbody>
+</table>
+
+<table class="table table-bordered table-baccarat table-baccaratx-bet">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th class="col-betchoice">@CommonLocalizer["BetChoice"]</th>
+            <th class="col-odds">@CommonLocalizer["Odds"]</th>
+            <th class="col-stake">@CommonLocalizer["Stake"]</th>
+            <th class="col-win">@CommonLocalizer["Win"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null && Model.BetLogs.Any())
+        {
+            @foreach (var betLog in Model.BetLogs)
+            {
+                var displayText = betTypes.TryGetValue(betLog.Choice, out var showText) && showText;
+                var cssClass = Model.GetRowBetClass(betLog.Choice);
+                <tr>
+                    <td>
+                        @betLog.DateDisplay
+                        <br />
+                        @betLog.TimeDisplay
+                    </td>
+                    <td>
+                        @if (displayText)
+                        {
+                            @CommonLocalizer[betLog.ChoiceKey]
+                        }
+                        else
+                        {
+                            @Html.Raw(Model.RenderChips(betLog.Choice))
+                        }
+                    </td>
+                    <td class="@cssClass">@Model.DisplayOdds(betLog.Choice)</td>
+                    <td class="text-right @cssClass">@Model.DisplayAmount(betLog.Amount)</td>
+                    <td class="text-right @cssClass">@Model.DisplayAmount(Model.GetBetLogWin(betLog))</td>
+                </tr>
+            }
+           
+            <tr class="total">
+                <td class="text-right" colspan="3">@CommonLocalizer["Total"]</td>
+                <td class="text-right">@Model.DisplayTotalBet</td>
+                <td class="text-right">@Model.DisplayBetWin</td>
+            </tr>
+            <tr class="total">
+                <td class="bold text-right" colspan="3">@CommonLocalizer["WinLoss"]</td>
+                <td class="bold text-right @Model.WinLossRowClassName" colspan="2">@Model.DisplayWinLoss</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

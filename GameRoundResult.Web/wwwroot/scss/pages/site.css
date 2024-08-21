@@ -926,3 +926,17 @@ div table.bandar-qiuqiu-table .result-table .result-row .pip-of-set-column {
   padding-top: 7px !important;
   padding-bottom: 7px !important;
 }
+
+.dice-red, .dice-white {
+  display: inline-block;
+  width: 3.6rem;
+  height: 3.7rem;
+}
+
+.dice-red {
+  background: url(../images/dice-red.png) no-repeat;
+}
+
+.dice-white {
+  background: url(../images/dice-white.png) no-repeat;
+}

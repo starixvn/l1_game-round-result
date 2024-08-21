@@ -82,6 +82,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.LuckyThree, typeof(GameRoundAccessor<LuckyThreeRound, LuckyThreeRoundResultViewModel>) },
             { GameType.FootballCoinToss, typeof(GameRoundAccessor<FootballCoinTossRound, FootballCoinTossRoundResultViewModel>) },
             { GameType.Bac81, typeof(GameRoundAccessor<Bac81Round, BaccaratXRoundResultViewModel>) },
+            { GameType.SeDie3, typeof(GameRoundAccessor<SeDie3Round, SeDie3RoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;

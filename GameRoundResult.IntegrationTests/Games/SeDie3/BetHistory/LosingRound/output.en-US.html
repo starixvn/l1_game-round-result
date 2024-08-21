@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Tickets</title>
+
+    <link href="/scss/pages/site.css" rel="stylesheet" />
+
+    <link href="/scss/pages/game-ticket.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="main-container">
+
+        <div class="note"><span class="bold">Note:</span> Data are only available within the last 7 days from the current date.</div>
+        <div id="game-ticket">
+            <table class="table table-bordered table-baccarat table-baccarat-fixed">
+                <thead>
+                    <tr>
+                        <th class="col-round-id col-fixed">Round</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            4220
+                        </td>
+                        <td>
+                            <span class ="sedie3-result">
+                                <i class="dice-red"></i><i class="dice-red"></i><i class="dice-white"></i>
+                                <span class="text"> - Red</span>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-bordered table-baccarat table-baccaratx-bet">
+                <thead>
+                    <tr>
+                        <th class="col-date">Time (GMT-4)</th>
+                        <th class="col-betchoice">Bet Choice</th>
+                        <th class="col-odds">Odds</th>
+                        <th class="col-stake">Stake</th>
+                        <th class="col-win">Win</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            08/16/2024
+                            <br>
+                            05:04:19 AM
+                        </td>
+                        <td>
+                            White
+                        </td>
+                        <td class="">1.96</td>
+                        <td class="text-right">1</td>
+                        <td class="text-right">0</td>
+                    </tr>
+                    <tr class="total">
+                        <td class="text-right" colspan="3">Total</td>
+                        <td class="text-right">1</td>
+                        <td class="text-right">0</td>
+                    </tr>
+                    <tr class="total">
+                        <td class="bold text-right" colspan="3">Win Loss</td>
+                        <td class="bold text-right text-red" colspan="2">-1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="overlay">
+        <div class="pulse-container">
+            <div class="pulse-bubble pulse-bubble-1"></div>
+            <div class="pulse-bubble pulse-bubble-2"></div>
+            <div class="pulse-bubble pulse-bubble-3"></div>
+        </div>
+    </div>
+    <input type="hidden" value="en-US" id="culture" />
+
+    <script src="/lib/jquery/dist/jquery.js"></script>
+
+    <script src="/lib/jquery-unobtrusive-ajax/jquery.unobtrusive-ajax.js"></script>
+</body>
+</html>
