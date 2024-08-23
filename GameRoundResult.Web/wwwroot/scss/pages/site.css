@@ -931,6 +931,7 @@ div table.bandar-qiuqiu-table .result-table .result-row .pip-of-set-column {
   display: inline-block;
   width: 3.6rem;
   height: 3.7rem;
+  transform: scale(0.9);
 }
 
 .dice-red {
