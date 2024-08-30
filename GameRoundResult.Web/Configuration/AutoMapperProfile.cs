@@ -11,6 +11,7 @@ using GameRoundResult.Core.Database.Entities.RoundHistory;
 using GameRoundResult.Web.Models.RoundHistory;
 using GameRoundResult.Core.Database.Entities.CoinToss;
 using GameRoundResult.Core.Database.Entities.FootballCoinToss;
+using GameRoundResult.Core.Database.Entities.KaraKrus;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -468,6 +469,15 @@ namespace GameRoundResult.Web.Configuration
                 }.OrderByDescending(x => x)));
             CreateMap<SeDie3SettlementResultEntity, SeDie3SettlementResultViewModel>();
             CreateMap<SeDie3BetLog, SeDie3BetLogViewModel>();
+            CreateMap<KaraKrusRound, KaraKrusRoundResultViewModel>()
+                .ForMember(x => x.HeadChips, opt => opt.MapFrom(x => new[]
+                {
+                    x.Result.FirstHeadChip,
+                    x.Result.SecondHeadChip ,
+                    x.Result.ThirdHeadChip
+                }.OrderByDescending(x => x)));
+            CreateMap<KaraKrusSettlementResultEntity, KaraKrusSettlementResultViewModel>();
+            CreateMap<KaraKrusBetLog, KaraKrusBetLogViewModel>();
 
         }
     }

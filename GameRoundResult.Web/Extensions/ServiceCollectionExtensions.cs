@@ -6,6 +6,7 @@ using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Database.Repository.RoundHistory;
 using GameRoundResult.Core.Services;
+using GameRoundResult.Core.Services.EndRoundInfo;
 using GameRoundResult.Core.Services.RoundHistory;
 using GameRoundResult.Web._Shared;
 using GameRoundResult.Web.Accessor;
@@ -151,6 +152,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(CoinTossTicketAccessor));
             services.AddScoped(typeof(FootballCoinTossTicketAccessor));
             services.AddScoped(typeof(SeDie3TicketAccessor<,,>));
+            services.AddScoped(typeof(KaraKrusTicketAccessor<,,>));
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
 
@@ -211,6 +213,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<FootballCoinTossEndGameInfoService>();
             services.AddScoped(typeof(BaccaratXEndGameInfoService<,>));
             services.AddScoped<SeDie3EndGameInfoService>();
+            services.AddScoped<KaraKrusEndGameInfoService>();
 
             services.AddScoped<IRoundHistoryRepository, RoundHistoryRepository>();
             services.AddScoped<IRoundHistoryService, RoundHistoryService>();
