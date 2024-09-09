@@ -878,3 +878,19 @@ div table.bandar-qiuqiu-table {
 .dice-white {
     background: url(../images/dice-white.png) no-repeat;
 }
+
+// kara krus
+.dice-kara, .dice-krus {
+    display: inline-block;
+    width: 3.6rem;
+    height: 3.7rem;
+    transform: scale(0.9);
+}
+
+.dice-kara {
+    background: url(../images/kara-krus/dice-kara.png) no-repeat;
+}
+
+.dice-krus {
+    background: url(../images/kara-krus/dice-krus.png) no-repeat;
+}

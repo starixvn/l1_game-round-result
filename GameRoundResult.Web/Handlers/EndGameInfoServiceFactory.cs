@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Services;
+using GameRoundResult.Core.Services.EndRoundInfo;
 using GameRoundResult.Web.CascadingSlotGames;
 using GameRoundResult.Web.CrashGames;
 using GameRoundResult.Web.SlotGames;
@@ -83,6 +84,7 @@ namespace GameRoundResult.Web.Services
             { GameType.FootballCoinToss, typeof(FootballCoinTossEndGameInfoService) },
             { GameType.Bac81, typeof(BaccaratXEndGameInfoService<Bac81Round, Bac81Bet>) },
             { GameType.SeDie3, typeof(SeDie3EndGameInfoService) },
+            { GameType.KaraKrus, typeof(KaraKrusEndGameInfoService) },
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()

@@ -422,13 +422,5 @@ namespace GameRoundResult.Web.Extensions
                 opts.AfterMap((source, dest) => dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours));
             });
         }
-
-        public static SeDie3BetViewModel ToViewModel(this SeDie3Bet entity, IMapper mapper, TimeSpan timeZoneOffset)
-        {
-            return mapper.Map<SeDie3Bet, SeDie3BetViewModel>(entity, opts =>
-            {
-                opts.AfterMap((source, dest) => dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours));
-            });
-        }
     }
 }

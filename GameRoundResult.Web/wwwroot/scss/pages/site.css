@@ -941,3 +941,18 @@ div table.bandar-qiuqiu-table .result-table .result-row .pip-of-set-column {
 .dice-white {
   background: url(../images/dice-white.png) no-repeat;
 }
+
+.dice-kara, .dice-krus {
+  display: inline-block;
+  width: 3.6rem;
+  height: 3.7rem;
+  transform: scale(0.9);
+}
+
+.dice-kara {
+  background: url(../images/kara-krus/dice-kara.png) no-repeat;
+}
+
+.dice-krus {
+  background: url(../images/kara-krus/dice-krus.png) no-repeat;
+}
