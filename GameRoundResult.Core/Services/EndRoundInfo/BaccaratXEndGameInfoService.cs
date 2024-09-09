@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Repository;
@@ -33,8 +34,8 @@ namespace GameRoundResult.Core.Services
             return new EndRoundInfoResult
             {
                 EndTime = round.Time,
-                ValidBetAmount = bet.TotalAmount,
-                TotalAmount = bet.TotalAmount,
+                ValidBetAmount =  Math.Round(bet.TotalAmount,2),
+                TotalAmount = Math.Round(bet.TotalAmount, 2),
                 TotalWin = bet.Betwin
             };
         }
