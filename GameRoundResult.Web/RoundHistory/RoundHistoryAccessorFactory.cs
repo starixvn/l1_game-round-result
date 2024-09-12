@@ -22,9 +22,11 @@ namespace GameRoundResult.Web.RoundHistory
         {
             { GameType.CoinToss, typeof(RoundHistoryAccessor<CoinTossRound, CoinTossRoundResultViewModel, CoinTossBet, RoundHistoryBetViewModel>) },
             { GameType.FootballCoinToss, typeof(RoundHistoryAccessor<FootballCoinTossRound, FootballCoinTossRoundResultViewModel, FootballCoinTossBet, RoundHistoryBetViewModel>) },
-            { GameType.Bac81, typeof(RoundHistoryAccessor<Bac81Round, BaccaratXRoundResultViewModel, Bac81Bet, RoundHistoryBetViewModel>) },
+            { GameType.Bac81, typeof(RoundHistoryAccessor<BaccaratXRound, BaccaratXRoundResultViewModel, BaccaratXBet, RoundHistoryBetViewModel>) },
             { GameType.SeDie3, typeof(RoundHistoryAccessor<SeDie3Round, SeDie3RoundResultViewModel, SeDie3Bet, RoundHistoryBetViewModel>) }, 
             { GameType.KaraKrus, typeof(RoundHistoryAccessor<KaraKrusRound, KaraKrusRoundResultViewModel, KaraKrusBet, RoundHistoryBetViewModel>) },
+            { GameType.Bac84, typeof(RoundHistoryAccessor<BaccaratXRound, BaccaratXRoundResultViewModel, BaccaratXBet, RoundHistoryBetViewModel>) },
+            { GameType.Bac98, typeof(RoundHistoryAccessor<BaccaratXRound, BaccaratXRoundResultViewModel, BaccaratXBet, RoundHistoryBetViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;
