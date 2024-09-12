@@ -42,8 +42,8 @@ namespace GameRoundResult.Web.RoundHistory
         public async Task<RoundHistoryViewModel> GetAsync(RoundHistoryRequest request)
         {
             var timeZone = TZConvert.GetTimeZoneInfo("SE Asia Standard Time");
-            var roundResult = await roundHistoryService.GetRoundAsync<TRoundEntity>(request.RoundId, BuildRoundFilterExpression(request.RoundId));
-            var betResult = await roundHistoryService.GetBetsAsync<TBetEntity>(request, BuildBetFilterExpression(request.RoundId));
+            var roundResult = await roundHistoryService.GetRoundAsync<TRoundEntity>(request.RoundId, BuildRoundFilterExpression(request.RoundId), request.GameConfigs.Name);
+            var betResult = await roundHistoryService.GetBetsAsync<TBetEntity>(request, BuildBetFilterExpression(request.RoundId), request.GameConfigs.Name);
             var betViewModel = betResult.Select(r => r.ToBetViewModel<TBetEntity, TBetViewModel>(mapper, timeZone.BaseUtcOffset));
 
             return new RoundHistoryViewModel

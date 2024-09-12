@@ -23,7 +23,7 @@
             <tr>
                 <td>@Model.RoundResult.RoundId</td>
                 <td>
-                    <div class="baccarat-result @(Model.RoundResult.HasAnyMultiplierCardApplied ? "with-multipliers" : string.Empty)">
+                    <div class="baccarat-result @(Model.ApplyMultiplier && Model.RoundResult.HasAnyMultiplierCardApplied ? "with-multipliers" : string.Empty)">
                         <div class="cards">
                             @foreach (var card in Model.RoundResult.ConvertToCardList(Model.RoundResult.Result.Player))
                             {
@@ -67,7 +67,7 @@
     </tbody>
 </table>
 
-@if (Model.RoundResult != null && Model.RoundResult.OddsMultipliers.Any())
+@if (Model.RoundResult != null && Model.ApplyMultiplier)
 {
     <partial name="~/Views/BetHistory/_BaccaratXMultiplierCards.cshtml" for="RoundResult" />
 }
@@ -78,7 +78,10 @@
             <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString) </th>
             <th class="col-betchoice">@CommonLocalizer["BetChoice"]</th>
             <th class="col-odds">@CommonLocalizer["Odds"]</th>
-            <th class="col-multipliers">@Localizer["multiplier_value"]</th>
+            @if (Model.ApplyMultiplier)
+            {
+                <th class="col-multipliers">@Localizer["multiplier_value"]</th>
+            }
             <th class="col-stake">@CommonLocalizer["Stake"]</th>
             <th>@Localizer["extra_fee"]</th>
             <th class="col-win">@CommonLocalizer["Win"]</th>
@@ -98,7 +101,10 @@
                     </td>
                     <td class="@cssClass">@Localizer[betLog.ChoiceKey]</td>
                     <td class="@cssClass">@Model.DisplayOdds(betLog.Choice)</td>
-                    <td class="@cssClass">@Model.DisplayMultipliersOnChoice(betLog.Choice)</td>
+                    @if (Model.ApplyMultiplier)
+                    {
+                        <td class="@cssClass">@Model.DisplayMultipliersOnChoice(betLog.Choice)</td>
+                    }
                     <td class="@cssClass">@Model.DisplayAmount(betLog.Amount)</td>
                     <td>@Model.DisplayAmount(betLog.Fee)</td>
                     <td class="text-right @cssClass">@Model.DisplayAmount(Model.GetBetLogWin(betLog))</td>
@@ -114,7 +120,10 @@
                     @CommonLocalizer["Total"]
                 </td>
                 <td class="text-right">@Model.DisplayAmountExcludingFee</td>
-                <td class="text-right">@Model.DisplayFee</td>
+                @if (Model.ApplyMultiplier)
+                {
+                    <td class="text-right">@Model.DisplayFee</td>
+                }
                 <td class="text-right">@Model.DisplayBetWin</td>
             </tr>
             <tr class="total">

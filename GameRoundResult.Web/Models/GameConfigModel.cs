@@ -18,6 +18,7 @@ namespace GameRoundResult.Web.Models
         public Dictionary<string, double> Odds { get; set; }
 
         public SlotsConfigModel SlotsConfig { get; set; }
+        public bool ApplyMultiplier { get; set; }
     }
 
     public class SlotsConfigModel

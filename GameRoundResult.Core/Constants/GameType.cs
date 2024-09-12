@@ -67,8 +67,10 @@
         FootballSlot = 79,
         CoinToss = 80,
         Bac81 = 81,
+        Bac84 = 84,
         FootballCoinToss = 93,
         SeDie3 = 95,
-        KaraKrus = 96
+        KaraKrus = 96,
+        Bac98 = 98,
     }
 }

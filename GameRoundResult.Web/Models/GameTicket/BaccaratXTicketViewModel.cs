@@ -17,7 +17,7 @@ namespace GameRoundResult.Web.Models
         public decimal Fee { get; set; }
         public decimal AmountExcludingFee { get; set; }
         public bool ReachMaxWin { get; set; }
-
+        public bool ApplyMultiplier { get; set; }
         public string DisplayFee => DisplayAmount(Fee);
         public string DisplayAmountExcludingFee => DisplayAmount(AmountExcludingFee);
         public override string WinLossRowClassName => WinLoss < 0 ? "text-red" : "bet-win-text";

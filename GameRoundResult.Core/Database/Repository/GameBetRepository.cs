@@ -20,6 +20,15 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId)
             where TRoundEntity : GameRound
             where TBetEntity : BaseBetEntity;
+
+        Task<(TRoundEntity, IEnumerable<TBetEntity>, TOneEntity)> GetAsync<TRoundEntity, TOneEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId, string gameName)
+            where TRoundEntity : GameRound
+            where TOneEntity : BaseBetEntity
+            where TBetEntity : BaseBetLogEntity;
+
+        Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId, string gameName)
+           where TRoundEntity : GameRound
+           where TBetEntity : BaseBetEntity;
     }
 
     public class GameBetRepository : IGameBetRepository
@@ -89,7 +98,31 @@ namespace GameRoundResult.Core.Database.Repository
             return (round, bet);
         }
 
+        public virtual async Task<(TRoundEntity, IEnumerable<TBetEntity>, TOneEntity)> GetAsync<TRoundEntity, TOneEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId, string gameName)
+            where TRoundEntity : GameRound
+            where TOneEntity : BaseBetEntity
+            where TBetEntity : BaseBetLogEntity
+        {
+            var round = await GetRoundAsync<TRoundEntity>(roundId, CollectionNameFormatter.Round(gameName));
+            var one = (await GetBetsAsync<TOneEntity>(roundId, playerId, freeBet, CollectionNameFormatter.Bet(gameName), operatorId)).FirstOrDefault();
+            var bets = await GetBetLogsAsync<TBetEntity>(roundId, playerId, CollectionNameFormatter.BetLog(gameName), operatorId);
+
+            return (round, bets, one);
+        }
+
+        public virtual async Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId, string gameName)
+            where TRoundEntity : GameRound
+            where TBetEntity : BaseBetEntity
+        {
+            var round = await GetRoundAsync<TRoundEntity>(roundId, CollectionNameFormatter.Round(gameName));
+            var bet = (await GetBetsAsync<TBetEntity>(roundId, playerId, freeBet, CollectionNameFormatter.Bet(gameName), operatorId)).FirstOrDefault();
+
+            return (round, bet);
+        }
+
         protected virtual IMongoCollection<T> GetRoundCollection<T>(string name) where T : GameRound
            => database.GetCollection<T>(CollectionNameFormatter.Round(name));
+
+      
     }
 }

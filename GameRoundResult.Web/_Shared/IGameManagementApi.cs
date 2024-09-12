@@ -8,7 +8,7 @@ namespace GameRoundResult.Web._Shared
     public interface IGameManagementApi
     {
         [Get("/game-configs/byid")]
-        Task<GameConfigResponse> GetGameConfigById([Query] byte gameId);
+        Task<GameConfigResponse> GetGameConfigById([Query] int gameId);
     }
 
     public class GameConfigResponse

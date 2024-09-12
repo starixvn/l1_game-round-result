@@ -96,7 +96,9 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.FootballCoinToss, footballcointoss },
             { GameType.Bac81, baccaratX },
             { GameType.SeDie3, sedie3 },
-            { GameType.KaraKrus, karakrus }
+            { GameType.KaraKrus, karakrus },
+            { GameType.Bac84, baccarat },
+            { GameType.Bac98, baccarat },
         };
 
         public string GetView(GameType game, bool isCrashGame)

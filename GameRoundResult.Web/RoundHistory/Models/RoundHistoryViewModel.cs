@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Requests.RoundHistory;
 

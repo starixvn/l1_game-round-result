@@ -98,7 +98,7 @@ namespace GameRoundResult.Web.Models
         private bool IsBaccaratX
               => GameType switch
               {
-                  GameType.Bac81 => true,
+                  GameType.Bac81 or GameType.Bac84 or GameType.Bac98 => true,
                   _ => false
               };
     }

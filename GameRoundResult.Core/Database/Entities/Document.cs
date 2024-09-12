@@ -16,7 +16,7 @@ namespace GameRoundResult.Core.Database.Entities
 
         public static string GetCollectionName(Type documentType)
         {
-            return ((CollectionNameAttribute)Attribute.GetCustomAttribute(documentType, typeof(CollectionNameAttribute))).CollectionName;
+            return ((CollectionNameAttribute)Attribute.GetCustomAttribute(documentType, typeof(CollectionNameAttribute)))?.CollectionName;
         }
     }
 }
