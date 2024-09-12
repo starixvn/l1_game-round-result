@@ -11,7 +11,7 @@ namespace GameRoundResult.Core.Database.Repository
 {
     public interface IGameRoundRepository
     {
-        Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int page, int pageSize, Expression<Func<GR, bool>> filter = null) where GR : GameRound;
+        Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int page, int pageSize, Expression<Func<GR, bool>> filter = null, string gameName = null) where GR : GameRound;
 
         Task<(long, IEnumerable<GR>)> GetCrashGameRoundResultAsync<GR>(DateTime date, long roundId, string displayName, int page, int pageSize) where GR : GameRound;
     }
@@ -48,11 +48,10 @@ namespace GameRoundResult.Core.Database.Repository
             return (total, data);
         }
 
-        public async Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int page, int pageSize, Expression<Func<GR, bool>> filter = null) where GR : GameRound
+        public async Task<(long, IEnumerable<GR>)> GetGameRoundResultAsync<GR>(DateTime date, long roundId, int page, int pageSize, Expression<Func<GR, bool>> filter = null, string gameName = null) where GR : GameRound
         {
-           
-             var   collectionName = Document.GetCollectionName(typeof(GR));
-           
+            var collectionName = Document.GetCollectionName(typeof(GR)) ?? CollectionNameFormatter.Round(gameName);
+
             return string.IsNullOrWhiteSpace(collectionName)
                 ? throw new InvalidOperationException(nameof(collectionName))
                 : await GetRoundResultAsync<GR>(date, roundId, collectionName, page, pageSize, filter);
@@ -61,7 +60,7 @@ namespace GameRoundResult.Core.Database.Repository
         public async Task<(long, IEnumerable<GR>)> GetCrashGameRoundResultAsync<GR>(DateTime date, long roundId, string displayName, int page, int pageSize) where GR : GameRound
         {
             var collectionName = CollectionNameFormatter.Round(displayName);
-         
+
             return string.IsNullOrWhiteSpace(collectionName)
                 ? throw new InvalidOperationException(nameof(collectionName))
                 : await GetRoundResultAsync<GR>(date, roundId, collectionName, page, pageSize);

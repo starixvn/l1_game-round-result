@@ -211,7 +211,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<FootballSlotEndGameInfoService>();
             services.AddScoped<CoinTossEndGameInfoService>();
             services.AddScoped<FootballCoinTossEndGameInfoService>();
-            services.AddScoped(typeof(BaccaratXEndGameInfoService<,>));
+            services.AddScoped<BaccaratXEndGameInfoService>();
             services.AddScoped<SeDie3EndGameInfoService>();
             services.AddScoped<KaraKrusEndGameInfoService>();
 

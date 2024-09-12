@@ -7,29 +7,24 @@ using MongoDB.Driver;
 
 namespace GameRoundResult.Core.Services
 {
-    public class BaccaratXEndGameInfoService<TBaseRoundEntity, TBaseBetEntity> : BaseEndGameInfoService<TBaseRoundEntity, TBaseBetEntity>, IEndGameInfoService
-       where TBaseRoundEntity : BaccaratXRound
-       where TBaseBetEntity : BaccaratXBet
+    public class BaccaratXEndGameInfoService : IEndGameInfoService
     {
         private readonly IGameBetRepository repository;
-        public BaccaratXEndGameInfoService(IMongoDatabase database, IGameBetRepository repository)
-           : base(database)
+
+        public BaccaratXEndGameInfoService( IGameBetRepository repository)
         {
             this.repository = repository;
         }
 
         public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request)
         {
-            var round = await GetRoundAsync(request);
-            var bets = await GetBetsAsync(request);
+            var (round, bet) = await repository.GetAsync<BaccaratXRound, BaccaratXBet>(
+                request.GameRoundId, request.PlayerId, request.FreeBet, request.OperatorId, request.GameName);
 
-
-            if(round == null || !bets.Any())
+            if(round == null || bet != null)
             {
                 return EndRoundInfoError.SB1001;
             }
-
-            var bet = bets.FirstOrDefault();
 
             return new EndRoundInfoResult
             {

@@ -32,7 +32,7 @@ namespace GameRoundResult.Core.Services
                 return await repository.GetCrashGameRoundResultAsync<GR>(date, roundId, gameInfo.DisplayName, page, pageSize);
             }
 
-            return await repository.GetGameRoundResultAsync<GR>(date, roundId, page, pageSize);
+            return await repository.GetGameRoundResultAsync<GR>(date, roundId, page, pageSize, gameName: gameInfo.Name);
         }
     }
 }

@@ -75,9 +75,12 @@ namespace GameRoundResult.Web.Accessor
             { GameType.FootballSlot, typeof(GameRoundAccessor<FootballSlotRound, FootballSlotRoundResultViewModel>) },
             { GameType.CoinToss, typeof(GameRoundAccessor<CoinTossRound, CoinTossRoundResultViewModel>) },
             { GameType.FootballCoinToss, typeof(GameRoundAccessor<FootballCoinTossRound, FootballCoinTossRoundResultViewModel>) },
-            { GameType.Bac81, typeof(GameRoundAccessor<Bac81Round, BaccaratXRoundResultViewModel>) },
+            { GameType.Bac81, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
             { GameType.SeDie3, typeof(GameRoundAccessor<SeDie3Round, SeDie3RoundResultViewModel>) },
             { GameType.KaraKrus, typeof(GameRoundAccessor<KaraKrusRound, KaraKrusRoundResultViewModel>) },
+            { GameType.Bac84, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
+            { GameType.Bac98, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
+
         };
 
         private readonly IServiceProvider serviceProvider;
