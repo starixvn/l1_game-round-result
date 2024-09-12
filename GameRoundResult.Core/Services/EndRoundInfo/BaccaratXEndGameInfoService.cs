@@ -21,7 +21,7 @@ namespace GameRoundResult.Core.Services
             var (round, bet) = await repository.GetAsync<BaccaratXRound, BaccaratXBet>(
                 request.GameRoundId, request.PlayerId, request.FreeBet, request.OperatorId, request.GameName);
 
-            if(round == null || bet != null)
+            if(round == null || bet == null)
             {
                 return EndRoundInfoError.SB1001;
             }
