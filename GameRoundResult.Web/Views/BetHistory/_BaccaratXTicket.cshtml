@@ -186,17 +186,18 @@
                     <td class="text-left">@CommonLocalizer["BetChoice"]</td>
                     <td class="text-right @cssClass">@Localizer[betLog.ChoiceKey]</td>
                 </tr>
+                <tr>
+                	<td class="text-left">@CommonLocalizer["Odds"]</td>
+                	<td class="text-right @cssClass">@Model.DisplayOdds(betLog.Choice)</td>
+                </tr>
                 @if (Model.ApplyMultiplier)
                 {
-                    <tr>
-                        <td class="text-left">@CommonLocalizer["Odds"]</td>
-                        <td class="text-right @cssClass">@Model.DisplayOdds(betLog.Choice)</td>
-                    </tr>
+   					<tr>
+                    	<td class="text-left">@Localizer["multiplier_value"]</td>
+                    	<td class="text-right @cssClass">@Model.DisplayMultipliersOnChoice(betLog.Choice)</td>
+                	</tr>
                 }
-                <tr>
-                    <td class="text-left">@Localizer["multiplier_value"]</td>
-                    <td class="text-right @cssClass">@Model.DisplayMultipliersOnChoice(betLog.Choice)</td>
-                </tr>
+             
                 <tr>
                     <td class="text-left">@CommonLocalizer["Stake"]</td>
                     <td class="text-right @cssClass">@Model.DisplayAmount(betLog.Amount)</td>
