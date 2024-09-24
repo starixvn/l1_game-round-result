@@ -6,6 +6,7 @@ using GameRoundResult.Web.Configuration;
 namespace GameRoundResult.Web.Models
 {
     [TolgeeNamespace("BaccaratX")]
+    [ViewName("BaccaratXTicket")]
     public class BaccaratXTicketViewModel : GameTicketViewModel
     {
         private IEnumerable<string> RefundChoices { get; } = new[] { BaccaratBetChoice.Player, BaccaratBetChoice.Banker };

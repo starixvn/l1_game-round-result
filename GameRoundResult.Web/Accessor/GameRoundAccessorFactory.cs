@@ -78,9 +78,21 @@ namespace GameRoundResult.Web.Accessor
             { GameType.Bac81, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
             { GameType.SeDie3, typeof(GameRoundAccessor<SeDie3Round, SeDie3RoundResultViewModel>) },
             { GameType.KaraKrus, typeof(GameRoundAccessor<KaraKrusRound, KaraKrusRoundResultViewModel>) },
+            { GameType.Bac82, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
+            { GameType.Bac83, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
             { GameType.Bac84, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
+            { GameType.Bac85, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
+            { GameType.Bac86, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
+            { GameType.Bac87, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
+            { GameType.Bac88, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
+            { GameType.Bac89, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
+            { GameType.Bac90, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
+            { GameType.Bac91, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
+            { GameType.Bac92, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
+            { GameType.Bac97, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
             { GameType.Bac98, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
-
+            { GameType.Bac100, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
+            { GameType.Bac101, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;
