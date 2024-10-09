@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using GameRoundResult.Core._Share;
 using GameRoundResult.Core.Constants;
+using GameRoundResult.Web.Configuration;
 
 namespace GameRoundResult.Web.Models
 {
@@ -47,10 +49,11 @@ namespace GameRoundResult.Web.Models
             {
                 return $"_{Enum.GetName(typeof(GameType), GameType)}{PartialPostfix}";
             }
-            
-            if (IsBaccaratX)
+            var viewName = GetViewNameAttribute();
+
+            if (!string.IsNullOrWhiteSpace(viewName))
             {
-                return $"{PartialSuffix}_BaccaratX{PartialPostfix}.cshtml";
+                return $"{PartialSuffix}_{viewName}.cshtml";
             }
             return Enum.IsDefined(typeof(GameType), GameType)
                 ? $"{PartialSuffix}_{TransformToViewName(Enum.GetName(typeof(GameType), GameType))}{PartialPostfix}.cshtml"
@@ -111,11 +114,9 @@ namespace GameRoundResult.Web.Models
             return Regex.Replace(name, @"[\d-]", string.Empty).Replace("Turbo", string.Empty);
         }
 
-        private bool IsBaccaratX
-              => GameType switch
-              {
-                  GameType.Bac81 => true,
-                  _ => false
-              };
+        private string GetViewNameAttribute()
+        {
+            return ((ViewNameAttribute)Attribute.GetCustomAttribute(GameTicketResult.GetType(), typeof(ViewNameAttribute)))?.Name;
+        }
     }
 }

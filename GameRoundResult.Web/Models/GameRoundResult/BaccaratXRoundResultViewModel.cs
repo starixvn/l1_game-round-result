@@ -65,9 +65,14 @@ namespace GameRoundResult.Web.Models
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
                GetResult(stringLocalizer),
-               GetMultiplierCards(),
-               GetWinningTextResult(stringLocalizer)
             };
+
+            if(OddsMultipliers.Any())
+            {
+                result.Add(GetMultiplierCards());
+            }
+
+            result.Add(GetWinningTextResult(stringLocalizer));
 
             return result;
         }

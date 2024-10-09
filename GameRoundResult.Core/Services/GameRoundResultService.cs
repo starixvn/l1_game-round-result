@@ -38,7 +38,7 @@ namespace GameRoundResult.Core.Services
                 return await repository.GetCrashGameRoundResultAsync<GR>(date, roundId, gameInfo.DisplayName, page, pageSize);
             }
 
-            return await repository.GetGameRoundResultAsync<GR>(date, roundId, page, pageSize);
+            return await repository.GetGameRoundResultAsync<GR>(date, roundId, page, pageSize, gameName: gameInfo.Name);
         }
 
         public async Task<(long, IEnumerable<GD>)> GetGameDrawResultAsync<GD, R, S>(DateTime date, long drawId, int gameType, int page, int pageSize)

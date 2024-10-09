@@ -1,25 +1,21 @@
 ﻿using System.Collections.Generic;
 using GameRoundResult.Core.Constants;
+using GameRoundResult.Web.Models;
 
 namespace GameRoundResult.Web.RoundHistory
 {
     public interface IRoundHistoryAdditionalViewFactory
     {
-        string GetView(GameType game);
+        string GetView(GameConfigModel gameConfig);
     }
 
     public class RoundHistoryAdditionalViewFactory : IRoundHistoryAdditionalViewFactory
     {
         private const string baccaratX = "_BaccaratXAdditionalResult";
 
-        private readonly Dictionary<GameType, string> views = new()
+        public string GetView(GameConfigModel gameConfig)
         {
-            { GameType.Bac81, baccaratX },
-        };
-
-        public string GetView(GameType game)
-        {
-            return views.ContainsKey(game) ? views[game] : string.Empty;
+            return gameConfig.ApplyMultiplier ? baccaratX : string.Empty;
         }
     }
 }

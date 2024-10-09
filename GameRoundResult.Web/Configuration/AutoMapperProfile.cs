@@ -478,7 +478,11 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<FootballCoinTossRound, FootballCoinTossRoundResultViewModel>();
             CreateMap<FootballCoinTossBetLog, BetLogViewModel>();
-            CreateMap<BaccaratXRound, BaccaratXRoundResultViewModel>();
+            CreateMap<BaccaratXRound, BaccaratXRoundResultViewModel>()
+                .ForAllMembers(opts =>
+                {
+                    opts.Condition((src, dest, srcMember) => srcMember != null);
+                });
             CreateMap<BaccaratXBetLog, BaccaratXBetLogViewModel>();
             CreateMap<SeDie3Bet, SeDie3BetViewModel>();
             CreateMap<SeDie3Round, SeDie3RoundResultViewModel>()

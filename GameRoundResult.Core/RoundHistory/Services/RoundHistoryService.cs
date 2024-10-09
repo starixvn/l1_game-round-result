@@ -11,9 +11,8 @@ namespace GameRoundResult.Core.Services.RoundHistory
 {
     public interface IRoundHistoryService
     {
-        Task<TRound> GetRoundAsync<TRound>(long roundId, FilterDefinition<TRound> baseFilterExpression) where TRound : GameRound;
-
-        Task<IEnumerable<TBetEntity>> GetBetsAsync<TBetEntity>(RoundHistoryRequestBase filter, FilterDefinition<TBetEntity> baseFilterExpression)
+        Task<TRound> GetRoundAsync<TRound>(long roundId, FilterDefinition<TRound> baseFilterExpression, string gameName) where TRound : GameRound;
+        Task<IEnumerable<TBetEntity>> GetBetsAsync<TBetEntity>(RoundHistoryRequestBase filter, FilterDefinition<TBetEntity> baseFilterExpression, string gameName)
             where TBetEntity : RoundHistoryBetEntity, new();
     }
 
@@ -30,15 +29,15 @@ namespace GameRoundResult.Core.Services.RoundHistory
             this.partnerService = partnerService;
         }
 
-        public Task<TRound> GetRoundAsync<TRound>(long roundId, FilterDefinition<TRound> baseFilterExpression) where TRound : GameRound
+        public Task<TRound> GetRoundAsync<TRound>(long roundId, FilterDefinition<TRound> baseFilterExpression, string gameName) where TRound : GameRound
         {
-            return roundHistoryRepository.GetRoundAsync<TRound>(roundId, baseFilterExpression);
+            return roundHistoryRepository.GetRoundAsync<TRound>(roundId, baseFilterExpression, gameName);
         }
 
-        public async Task<IEnumerable<TBetEntity>> GetBetsAsync<TBetEntity>(RoundHistoryRequestBase filter, FilterDefinition<TBetEntity> baseFilterExpression)
+        public async Task<IEnumerable<TBetEntity>> GetBetsAsync<TBetEntity>(RoundHistoryRequestBase filter, FilterDefinition<TBetEntity> baseFilterExpression, string gameName)
             where TBetEntity : RoundHistoryBetEntity, new()
         {
-            var bets = await roundHistoryRepository.GetBetsAsync<TBetEntity>(filter, baseFilterExpression);
+            var bets = await roundHistoryRepository.GetBetsAsync<TBetEntity>(filter, baseFilterExpression, gameName);
             var betsWithUserInfo = await GetBetRecordsWithUserInfo(bets, filter.Username, filter.ExcludeBot);
 
             return betsWithUserInfo;

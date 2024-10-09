@@ -9,12 +9,8 @@ using GameRoundResult.Web.Requests;
 
 namespace GameRoundResult.Web.Accessor
 {
-#pragma warning disable S2436 // Types and methods should not have too many generic parameters
-    public class BaccaratXTicketAccessor<TRoundEntity, TBetEntity, TBetLogEntity> : IGameTicketAccessor
-#pragma warning restore S2436 // Types and methods should not have too many generic parameters
-        where TRoundEntity : BaccaratXRound
-        where TBetEntity : BaccaratXBet
-        where TBetLogEntity : BaccaratXBetLog
+    public class BaccaratXTicketAccessor : IGameTicketAccessor
+
     {
         private readonly IGameBetService gameBetService;
         private readonly IMapper mapper;
@@ -29,12 +25,12 @@ namespace GameRoundResult.Web.Accessor
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
-            var baccaratXResult = await gameBetService.GetAsync<TRoundEntity, TBetEntity, TBetLogEntity>(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId);
+            var baccaratXResult = await gameBetService.GetAsync<BaccaratXRound, BaccaratXBet, BaccaratXBetLog>(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId, request.GameConfigs.Name);
 
             return new BaccaratXTicketViewModel
             {
-                RoundResult = baccaratXResult.Item1?.ToViewModel<TRoundEntity, BaccaratXRoundResultViewModel>(mapper, request.TimeZoneOffset),
-                BetLogs = baccaratXResult.Item2.Select(x => x.ToBetLogViewModel<TBetLogEntity, BaccaratXBetLogViewModel>(mapper, request.TimeZoneOffset)),
+                RoundResult = baccaratXResult.Item1?.ToViewModel<BaccaratXRound, BaccaratXRoundResultViewModel>(mapper, request.TimeZoneOffset),
+                BetLogs = baccaratXResult.Item2.Select(x => x.ToBetLogViewModel<BaccaratXBetLog, BaccaratXBetLogViewModel>(mapper, request.TimeZoneOffset)),
                 Odds = baccaratXResult.Item3?.Odds,
                 TotalBet = baccaratXResult.Item3?.TotalAmount ?? 0,
                 BetWin = baccaratXResult.Item3?.Betwin ?? 0,
@@ -44,6 +40,7 @@ namespace GameRoundResult.Web.Accessor
                 Rate = baccaratXResult.Item3?.Rate ?? 0,
                 ReachMaxWin = baccaratXResult.Item3?.ReachMaxWin ?? false,
                 FractionalOddsFormat = await currencyGroupService.GetFractionalOddsFormat(baccaratXResult.Item3?.Currency, request.OperatorId),
+                ApplyMultiplier = request.GameConfigs.ApplyMultiplier
             };
         }
     }

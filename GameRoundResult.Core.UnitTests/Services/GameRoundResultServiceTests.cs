@@ -33,6 +33,7 @@ namespace GameRoundResult.Core.UnitTests.Services
             var roundEntities = fixture.CreateMany<SeDieRound>();
             gameRoundRepository.GetGameRoundResultAsync<SeDieRound>(date, roundId, page, pageSize)
                 .Returns((roundEntities.Count(), roundEntities));
+            generalGameConfigRepository.GetConfigById(gameType).Returns(new GameConfigEntity());
 
             //Act
             var result = await gameRoundService.GetGameRoundResultAsync<SeDieRound>(date, roundId, gameType, page, pageSize);

@@ -104,8 +104,23 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.LuckyThree, luckynext },
             { GameType.FootballCoinToss, footballcointoss },
             { GameType.Bac81, baccaratX },
+            { GameType.Bac82, baccaratX },
+            { GameType.Bac83, baccaratX },
+            { GameType.Bac84, baccarat },
+            { GameType.Bac85, baccarat },
+            { GameType.Bac86, baccarat },
+            { GameType.Bac87, baccarat },
+            { GameType.Bac88, baccaratX },
+            { GameType.Bac89, baccaratX },
+            { GameType.Bac90, baccarat },
+            { GameType.Bac91, baccarat },
+            { GameType.Bac92, baccarat },
             { GameType.SeDie3, sedie3 },
-            { GameType.KaraKrus, karakrus }
+            { GameType.KaraKrus, karakrus },
+            { GameType.Bac97, baccarat },
+            { GameType.Bac98, baccarat },
+            { GameType.Bac100, baccarat },
+            { GameType.Bac101, baccarat },
         };
 
         public string GetView(GameType game, bool isCrashGame)

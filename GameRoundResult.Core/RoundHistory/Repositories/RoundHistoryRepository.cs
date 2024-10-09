@@ -1,4 +1,5 @@
-﻿using GameRoundResult.Core.Database.Entities;
+﻿using GameRoundResult.Core._Share;
+using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.RoundHistory;
 using GameRoundResult.Core.Extensions;
 using GameRoundResult.Core.Models.RoundHistory;
@@ -13,9 +14,9 @@ namespace GameRoundResult.Core.Database.Repository.RoundHistory
 {
     public interface IRoundHistoryRepository 
     {
-        Task<TRoundEntity> GetRoundAsync<TRoundEntity>(long roundId, FilterDefinition<TRoundEntity> baseFilterExpression) where TRoundEntity : GameRound;
+        Task<TRoundEntity> GetRoundAsync<TRoundEntity>(long roundId, FilterDefinition<TRoundEntity> baseFilterExpression, string gameName) where TRoundEntity : GameRound;
 
-        Task<IEnumerable<TBetEntity>> GetBetsAsync<TBetEntity>(RoundHistoryRequestBase filter, FilterDefinition<TBetEntity> baseFilterExpression)
+        Task<IEnumerable<TBetEntity>> GetBetsAsync<TBetEntity>(RoundHistoryRequestBase filter, FilterDefinition<TBetEntity> baseFilterExpression, string gameName)
             where TBetEntity : RoundHistoryBetEntity, new();
     }
 
@@ -27,13 +28,15 @@ namespace GameRoundResult.Core.Database.Repository.RoundHistory
             this.database = database;
         }
 
-        public async Task<TRoundEntity> GetRoundAsync<TRoundEntity>(long roundId, FilterDefinition<TRoundEntity> baseFilterExpression) where TRoundEntity : GameRound
-            =>  await database.GetCollection<TRoundEntity>(Document.GetCollectionName(typeof(TRoundEntity))).Find(baseFilterExpression).FirstOrDefaultAsync();       
+        public async Task<TRoundEntity> GetRoundAsync<TRoundEntity>(long roundId, FilterDefinition<TRoundEntity> baseFilterExpression, string gameName) where TRoundEntity : GameRound
+            =>  await database.GetCollection<TRoundEntity>(
+                Document.GetCollectionName(typeof(TRoundEntity)) ?? CollectionNameFormatter.Round(gameName))
+                .Find(baseFilterExpression).FirstOrDefaultAsync();       
 
-        public async Task<IEnumerable<TBetEntity>> GetBetsAsync<TBetEntity>(RoundHistoryRequestBase filter, FilterDefinition<TBetEntity> baseFilterExpression)
+        public async Task<IEnumerable<TBetEntity>> GetBetsAsync<TBetEntity>(RoundHistoryRequestBase filter, FilterDefinition<TBetEntity> baseFilterExpression, string gameName)
             where TBetEntity : RoundHistoryBetEntity, new()
         {
-            var betCollection = database.GetCollection<TBetEntity>(Document.GetCollectionName(typeof(TBetEntity)));
+            var betCollection = database.GetCollection<TBetEntity>(Document.GetCollectionName(typeof(TBetEntity)) ?? CollectionNameFormatter.Bet(gameName));
             var expression = GetExpression<TBetEntity>(baseFilterExpression, filter.RoundId, filter.Nickname, filter.ExcludeUUS, filter.PartnerId);
             var bets = await betCollection.Find(expression).SortBy(x => x.Id).ToListAsync();
 
