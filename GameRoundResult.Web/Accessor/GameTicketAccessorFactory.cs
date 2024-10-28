@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.KaraKrus;
+using GameRoundResult.Core.Database.Entities.SevenUpDown;
 using GameRoundResult.Web.CascadingSlotGames;
 using GameRoundResult.Web.CrashGames.Handlers;
 using GameRoundResult.Web.SlotGames.Handlers;
@@ -94,6 +95,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.Bac98, typeof(BaccaratXTicketAccessor) },
             { GameType.Bac100, typeof(BaccaratXTicketAccessor) },
             { GameType.Bac101, typeof(BaccaratXTicketAccessor) },
+            { GameType.SevenUpDown, typeof(SevenUpDownTicketAccessor<SevenUpDownRound, SevenUpDownBet, SevenUpDownBetLog>) },
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()

@@ -39,6 +39,7 @@ namespace GameRoundResult.Web.ViewFactory
         private const string baccaratX = "_BaccaratXRoundResult";
         private const string sedie3 = "_SeDie3RoundResult";
         private const string karakrus = "_KaraKrusRoundResult";
+        private const string sevenupdown = "_SevenUpDownRoundResult";
 
         private readonly Dictionary<GameType, string> views = new()
         {
@@ -112,6 +113,7 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.Bac98, baccarat },
             { GameType.Bac100, baccarat },
             { GameType.Bac101, baccarat },
+            { GameType.SevenUpDown, sevenupdown },
         };
 
         public string GetView(GameType game, bool isCrashGame)

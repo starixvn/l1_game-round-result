@@ -2,6 +2,7 @@
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.CoinToss;
 using GameRoundResult.Core.Database.Entities.FootballCoinToss;
+using GameRoundResult.Core.Database.Entities.SevenUpDown;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
 using GameRoundResult.Web.Models.RoundHistory;
@@ -40,6 +41,7 @@ namespace GameRoundResult.Web.RoundHistory
             { GameType.Bac98, typeof(RoundHistoryAccessor<BaccaratXRound, BaccaratXRoundResultViewModel, BaccaratXBet, RoundHistoryBetViewModel>) },
             { GameType.Bac100, typeof(RoundHistoryAccessor<BaccaratXRound, BaccaratXRoundResultViewModel, BaccaratXBet, RoundHistoryBetViewModel>) },
             { GameType.Bac101, typeof(RoundHistoryAccessor<BaccaratXRound, BaccaratXRoundResultViewModel, BaccaratXBet, RoundHistoryBetViewModel>) },
+            { GameType.SevenUpDown, typeof(RoundHistoryAccessor<SevenUpDownRound, SevenUpDownRoundResultViewModel, SevenUpDownBet, RoundHistoryBetViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;
