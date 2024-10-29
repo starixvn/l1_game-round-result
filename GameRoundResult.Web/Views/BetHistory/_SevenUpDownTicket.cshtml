@@ -27,10 +27,7 @@
                         {
                             <img class="dice" src="/scss/images/dice_@(dice).png" asp-append-version="true">
                         }
-                        <span class="text">
-                            
-                            - @Localizer[Model.WinningOption()]
-                        </span>
+                        @Html.Raw(@Model.GetWinningText(Localizer))
                     </span>
                 </td>            
             </tr>
@@ -51,10 +48,10 @@
         @if (Model.RoundResult != null)
         {
             <tr>
-                <td>@CommonLocalizer["multiplier_value"]</td>
+                <td class="bold col-fixed">@CommonLocalizer["multiplier_value"]</td>
                 <td>
                     <span class="cointoss-result">
-                        <span class="bold bet-win-text">@Model.GetMultiplierValue() </span>
+                        <span class="bold bet-win-text">@Html.Raw(@Model.GetMultiplierValue())</span>
                         <span class="text">
                             - @Localizer[Model.GetMultiplierChoice()]
                         </span>
@@ -97,7 +94,13 @@
             }
            
             <tr class="total">
-                <td class="text-right" colspan="4">@CommonLocalizer["Total"]</td>
+                <td class="text-right keep-text-size" colspan="4">
+                    @if (Model.ReachMaxWin)
+                    {
+                        @($"({CommonLocalizer["you_reached_max_win"]})")
+                    }
+                    @CommonLocalizer["Total"]
+                </td>
                 <td class="text-right">@Model.DisplayTotalBet</td>
                 <td class="text-right">@Model.DisplayBetWin</td>
             </tr>
@@ -160,9 +163,13 @@
                 <td class="text-right">@Model.DisplayTotalBet</td>
             </tr>
             <tr class="total">
-                <td class="text-right">                
+                <td class="text-right">
+                    @if (Model.ReachMaxWin)
+                    {
+                        @($"({CommonLocalizer["you_reached_max_win"]})")
+                    }
                     @CommonLocalizer["TotalWin"]
-                </td>
+                </td>              
                 <td class="text-right">@Model.DisplayBetWin</td>
             </tr>
             <tr class="total">

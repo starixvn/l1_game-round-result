@@ -8,6 +8,7 @@ using GameRoundResult.Core.Database.Entities.SevenUpDown;
 using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Models.GameTicket;
 using System.Linq;
+using GameRoundResult.Core.Database.Entities;
 
 namespace GameRoundResult.Web.Accessor
 {
@@ -39,6 +40,7 @@ namespace GameRoundResult.Web.Accessor
                 Rate = result.Item3?.Rate ?? 0,
                 TotalBet = result.Item3?.TotalAmount ?? 0,
                 BetWin = result.Item3?.Betwin ?? 0,
+                ReachMaxWin = result.Item3?.ReachMaxWin ?? false,
                 FractionalOddsFormat = await currencyGroupService.GetFractionalOddsFormat(result.Item3?.Currency, request.OperatorId),
             };
         }

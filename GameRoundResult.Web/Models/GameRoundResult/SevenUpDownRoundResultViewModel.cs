@@ -8,6 +8,7 @@ namespace GameRoundResult.Web.Models.GameRoundResult
 {
     public class SevenUpDownRoundResultViewModel : RoundResultViewModel
     {
+        private const string tolgeeNameSpace = "7Up7Down";
         public IEnumerable<byte> Dices { get; set; }
 
         public int Total => Dices.Sum(x => x);
@@ -20,14 +21,17 @@ namespace GameRoundResult.Web.Models.GameRoundResult
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
-                GetDiceContent(),
+                GetResult(stringLocalizer),
+
+                GetMultiplier(stringLocalizer),
+
                 GetWinningTextResult(stringLocalizer)
             };
 
             return result;
         }
 
-        private string GetDiceContent()
+        public override string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var div = new TagBuilder("div");
             div.AddCssClass("dice-list");
@@ -44,17 +48,35 @@ namespace GameRoundResult.Web.Models.GameRoundResult
             return div.GetHtmlString();
         }
 
+        public string GetMultiplier(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            var multiplierText = Multiplier != null ? $"{Multiplier.Value}x" : string.Empty;
+            var choiceText = Multiplier?.Choice?.ToLower() switch
+            {
+                "seven" => "7",
+                var choice when !string.IsNullOrEmpty(choice) => choice,
+                _ => string.Empty
+            };
+
+            var localizedChoiceKey = !string.IsNullOrEmpty(choiceText) ? $"glossary_{choiceText}" : string.Empty;
+            var localizedResult = !string.IsNullOrEmpty(localizedChoiceKey)
+                ? stringLocalizer.GetStringWithNamcespace(localizedChoiceKey, tolgeeNameSpace)
+                : string.Empty;
+
+            var tagBuilder = new TagBuilder("span");
+            tagBuilder.AddCssClass("bold");
+            tagBuilder.InnerHtml.Append($"{multiplierText} - {localizedResult}");
+            return tagBuilder.GetHtmlString();
+        }
+
         public override string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var tagBuilder = new TagBuilder("span");
             tagBuilder.AddCssClass("bold");
-
-            if (SettlementResult.Seven)
+            tagBuilder.InnerHtml.Append(Total.ToString());
+            if (Total != 7)
             {
-                tagBuilder.InnerHtml.Append(stringLocalizer["Seven"]);
-            }
-            else
-            {
+                tagBuilder.InnerHtml.Append(" - ");
                 if (SettlementResult.Up)
                 {
                     tagBuilder.InnerHtml.Append(stringLocalizer["Up"]);
@@ -63,8 +85,7 @@ namespace GameRoundResult.Web.Models.GameRoundResult
                 {
                     tagBuilder.InnerHtml.Append(stringLocalizer["Down"]);
                 }
-            }
-   
+            }              
             return tagBuilder.GetHtmlString();
         }
     }

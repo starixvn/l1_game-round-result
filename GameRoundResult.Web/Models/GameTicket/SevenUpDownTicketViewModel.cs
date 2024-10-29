@@ -1,5 +1,7 @@
 ﻿using GameRoundResult.Web.Configuration;
+using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Models.GameRoundResult;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 
@@ -14,6 +16,8 @@ namespace GameRoundResult.Web.Models.GameTicket
 
         public IEnumerable<SevenUpDownBetLogViewModel> BetLogs { get; set; }
 
+        public bool ReachMaxWin { get; set; }
+
         public override bool IsWinningChoice(string choice)
         {
             return choice.ToLower() switch
@@ -25,6 +29,8 @@ namespace GameRoundResult.Web.Models.GameTicket
             };
         }
 
+        public override string WinLossRowClassName => WinLoss < 0 ? "text-red" : "bet-win-text";
+
         public string WinningOption()
         {
             if (RoundResult.SettlementResult.Up)
@@ -35,18 +41,11 @@ namespace GameRoundResult.Web.Models.GameTicket
             {
                 return "glossary_down";
             }
-            else if (RoundResult.SettlementResult.Seven)
-            {
-                return "glossary_7";
-            }
-
+           
             return string.Empty;
         }
 
-        public string GetMultiplierValue()
-        {
-            return IsMultiplerValue ? $"{RoundResult.Multiplier.Value}x" : string.Empty;
-        }
+        public string GetMultiplierValue() => IsMultiplerValue ? $"{RoundResult.Multiplier.Value}x&nbsp;" : string.Empty;
 
         public string GetMultiplierChoice()
         {
@@ -61,13 +60,35 @@ namespace GameRoundResult.Web.Models.GameTicket
             };
         }
 
-        public string DisplayMultiplierValue(string choice)
+        public string DisplayMultiplierValue(string choice) =>
+            IsWinningChoice(choice) && IsMultiplerValue && RoundResult.Multiplier.Choice.Equals(choice, StringComparison.OrdinalIgnoreCase)
+            ? $"{RoundResult.Multiplier.Value}x" : "-";
+
+        public string GetWinningText(IJsonStringLocalizer<SevenUpDownTicketViewModel> stringLocalizer)
         {
-            if (IsMultiplerValue && RoundResult.Multiplier.Choice.Equals(choice, StringComparison.OrdinalIgnoreCase))
-            {
-                return $"{RoundResult.Multiplier.Value}x";
-            }
-            return "-";
+            var span = new TagBuilder("span");
+            span.AddCssClass("text");
+
+            string content = RoundResult.Total == 7
+                ? $"| {RoundResult.Total}"
+                : $"| {RoundResult.Total} - {stringLocalizer[WinningOption()]}";
+
+            span.InnerHtml.Append(content);
+
+            return span.GetHtmlString();
+        }
+
+        public override decimal GetBetLogWin(BetLogViewModel betLog) =>
+            IsWinningChoice(betLog.Choice)
+            ? betLog.Amount * CalculateFinalOdds(betLog.Choice) : 0;
+
+        private decimal CalculateFinalOdds(string choice)
+        {
+            if (!Odds.TryGetValue(choice, out var baseOdds)) return 1;
+
+            return IsMultiplerValue && RoundResult.Multiplier.Choice.Equals(choice, StringComparison.OrdinalIgnoreCase)
+                ? (baseOdds - 1) * RoundResult.Multiplier.Value + 1
+                : baseOdds;
         }
     }
 

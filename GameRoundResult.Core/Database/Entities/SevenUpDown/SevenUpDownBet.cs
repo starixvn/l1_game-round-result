@@ -11,5 +11,7 @@ namespace GameRoundResult.Core.Database.Entities.SevenUpDown
         public decimal Down { get; set; }
 
         public decimal Seven { get; set; }
+
+        public bool ReachMaxWin { get; set; }
     }
 }

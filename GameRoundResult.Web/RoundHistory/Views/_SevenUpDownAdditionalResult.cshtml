@@ -1,0 +1,22 @@
+﻿@using GameRoundResult.Core.Constants
+@using GameRoundResult.Web.Models.GameRoundResult;
+@inject IJsonStringLocalizer<RoundResultViewModel> Localizer
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+
+@model SevenUpDownRoundResultViewModel
+
+<table class="table table-bordered" style="width:100%">
+    <tbody>
+        <tr>
+            <td class="bold col-fixed">@CommonLocalizer["multiplier_value"]</td>
+            <td>
+                <div class="baccarat-multiplier-cards">
+                    <div class="cards">
+                        @Html.Raw(@Model.GetMultiplier(Localizer))
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
