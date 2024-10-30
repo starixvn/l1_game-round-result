@@ -68,7 +68,7 @@
             <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
             <th class="col-betchoice">@CommonLocalizer["BetChoice"]</th>
             <th class="col-odds">@CommonLocalizer["Odds"]</th>
-            <th class="col-odds">@CommonLocalizer["Multiplier"]</th>
+            <th class="col-odds">@CommonLocalizer["multiplier"]</th>
             <th class="col-stake">@CommonLocalizer["Stake"]</th>
             <th class="col-win">@CommonLocalizer["Win"]</th>
         </tr>
@@ -83,7 +83,7 @@
                     <td>
                         @betLog.DateDisplay @betLog.TimeDisplay
                     </td>
-                    <td>
+                    <td class="@cssClass">
                         @Localizer[betLog.ChoiceKey]
                     </td>
                     <td class="@cssClass">@Model.DisplayOdds(betLog.Choice)</td>
@@ -133,7 +133,7 @@
                 </tr>
                 <tr>
                     <td class="text-left">@CommonLocalizer["BetChoice"]</td>
-                    <td class="text-right">
+                    <td class="text-right @cssClass">
                         @Localizer[betLog.ChoiceKey]
                     </td>
                 </tr>
@@ -142,7 +142,7 @@
                     <td class="text-right @cssClass">@Model.DisplayOdds(betLog.Choice)</td>
                 </tr>
                 <tr>
-                    <td class="text-left">@CommonLocalizer["Odds"]</td>
+                    <td class="text-left">@CommonLocalizer["multiplier"]</td>
                     <td class="text-right @cssClass">@Model.DisplayMultiplierValue(betLog.Choice)</td>
                 </tr>
                 <tr>

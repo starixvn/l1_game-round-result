@@ -63,10 +63,17 @@ namespace GameRoundResult.Web.Models.GameRoundResult
                 ? stringLocalizer.GetStringWithNamcespace(localizedChoiceKey, tolgeeNameSpace)
                 : string.Empty;
 
-            var tagBuilder = new TagBuilder("span");
-            tagBuilder.AddCssClass("bold");
-            tagBuilder.InnerHtml.Append($"{multiplierText} - {localizedResult}");
-            return tagBuilder.GetHtmlString();
+            var multiplierTag = new TagBuilder("span");
+            multiplierTag.AddCssClass("bold");
+            multiplierTag.AddCssClass("bet-win-text");
+            multiplierTag.InnerHtml.Append(multiplierText);
+
+            var resultTag = new TagBuilder("span");
+            resultTag.AddCssClass("cointoss-result");
+            resultTag.InnerHtml.AppendHtml(multiplierTag);
+            resultTag.InnerHtml.AppendHtml($"&nbsp;- {localizedResult}");
+
+            return resultTag.GetHtmlString();
         }
 
         public override string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)

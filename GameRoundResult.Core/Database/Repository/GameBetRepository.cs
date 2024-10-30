@@ -81,7 +81,6 @@ namespace GameRoundResult.Core.Database.Repository
             where TOneEntity : BaseBetEntity
             where TBetEntity : BaseBetLogEntity
         {
-            var test = Document.GetCollectionName(typeof(TRoundEntity));
             var round = await GetRoundAsync<TRoundEntity>(roundId, Document.GetCollectionName(typeof(TRoundEntity)));
             var one = (await GetBetsAsync<TOneEntity>(roundId, playerId, freeBet, Document.GetCollectionName(typeof(TOneEntity)), operatorId)).FirstOrDefault();
             var bets = await GetBetLogsAsync<TBetEntity>(roundId, playerId, Document.GetCollectionName(typeof(TBetEntity)), operatorId);
