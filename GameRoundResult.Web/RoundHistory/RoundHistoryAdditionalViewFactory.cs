@@ -11,40 +11,31 @@ namespace GameRoundResult.Web.RoundHistory
 
     public class RoundHistoryAdditionalViewFactory : IRoundHistoryAdditionalViewFactory
     {
-        private static Dictionary<GameType, string> AdditionalResultMappings()
+        private static readonly Dictionary<GameType, string> AdditionalViewDictionary = new()
         {
-            var mappings = new Dictionary<GameType, string>();
-            AddMappings(mappings, new List<GameType>
-            {
-                GameType.Bac81, GameType.Bac82, GameType.Bac83, GameType.Bac84,
-                GameType.Bac85, GameType.Bac86, GameType.Bac87, GameType.Bac88,
-                GameType.Bac89, GameType.Bac90, GameType.Bac91, GameType.Bac92,
-                GameType.Bac97, GameType.Bac98, GameType.Bac100, GameType.Bac101
-            }, "_BaccaratXAdditionalResult");
-
-            AddMappings(mappings, new List<GameType>
-            { GameType.SevenUpDown}, "_SevenUpDownAdditionalResult");
-            return mappings;
-        }
-
-        private static void AddMappings(Dictionary<GameType, string> mappings, List<GameType> gameTypes, string view)
-        {
-            foreach (var gameType in gameTypes)
-            {
-                mappings[gameType] = view;
-            }
-        }
-
-        private readonly Dictionary<GameType, string> additionalViewDictionary;
-
-        public RoundHistoryAdditionalViewFactory()
-        {
-            additionalViewDictionary = AdditionalResultMappings();
-        }    
+            { GameType.Bac81, "_BaccaratXAdditionalResult" },
+            { GameType.Bac82, "_BaccaratXAdditionalResult" },
+            { GameType.Bac83, "_BaccaratXAdditionalResult" },
+            { GameType.Bac84, "_BaccaratXAdditionalResult" },
+            { GameType.Bac85, "_BaccaratXAdditionalResult" },
+            { GameType.Bac86, "_BaccaratXAdditionalResult" },
+            { GameType.Bac87, "_BaccaratXAdditionalResult" },
+            { GameType.Bac88, "_BaccaratXAdditionalResult" },
+            { GameType.Bac89, "_BaccaratXAdditionalResult" },
+            { GameType.Bac90, "_BaccaratXAdditionalResult" },
+            { GameType.Bac91, "_BaccaratXAdditionalResult" },
+            { GameType.Bac92, "_BaccaratXAdditionalResult" },
+            { GameType.Bac97, "_BaccaratXAdditionalResult" },
+            { GameType.Bac98, "_BaccaratXAdditionalResult" },
+            { GameType.Bac100, "_BaccaratXAdditionalResult" },
+            { GameType.Bac101, "_BaccaratXAdditionalResult" },
+            { GameType.SevenUpDown, "_SevenUpDownAdditionalResult" }
+        };
 
         public string GetView(GameConfigModel gameConfig)
         {
-            return additionalViewDictionary.TryGetValue((GameType)gameConfig.GameId, out var viewName)
+            return gameConfig.ApplyMultiplier &&
+                   AdditionalViewDictionary.TryGetValue((GameType)gameConfig.GameId, out var viewName)
                 ? viewName
                 : string.Empty;
         }
