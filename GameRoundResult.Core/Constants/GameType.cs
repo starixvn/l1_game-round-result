@@ -91,5 +91,6 @@
         Bac98 = 98,
         Bac100 = 100,
         Bac101 = 101,
+        SevenUpDown = 103,
     }
 }

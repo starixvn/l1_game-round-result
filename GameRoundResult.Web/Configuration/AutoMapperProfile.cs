@@ -14,6 +14,8 @@ using GameRoundResult.Web.Models.RoundHistory;
 using GameRoundResult.Core.Database.Entities.CoinToss;
 using GameRoundResult.Core.Database.Entities.FootballCoinToss;
 using GameRoundResult.Core.Database.Entities.KaraKrus;
+using GameRoundResult.Core.Database.Entities.SevenUpDown;
+using GameRoundResult.Web.Models.GameTicket;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -503,6 +505,15 @@ namespace GameRoundResult.Web.Configuration
                 }.OrderByDescending(x => x)));
             CreateMap<KaraKrusSettlementResultEntity, KaraKrusSettlementResultViewModel>();
             CreateMap<KaraKrusBetLog, KaraKrusBetLogViewModel>();
+            CreateMap<SevenUpDownRound, SevenUpDownRoundResultViewModel>()
+                .ForMember(x => x.Dices, opt => opt.MapFrom(x => new[] { x.Result.FirstDice, x.Result.SecondDice }))
+                .ForMember(dest => dest.Multiplier, opt => opt.MapFrom(src => new MultiplierViewModel
+                {
+                    Value = src.Result.Multiplier.Value,
+                    Choice = src.Result.Multiplier.Choice
+                }));
+            CreateMap<SevenUpDownSettlementResultEntity, SevenUpDownSettlementResultViewModel>();
+            CreateMap<SevenUpDownBetLog, SevenUpDownBetLogViewModel>();
 
         }
     }

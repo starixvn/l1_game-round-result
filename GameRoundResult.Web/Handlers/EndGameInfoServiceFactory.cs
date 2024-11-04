@@ -100,6 +100,7 @@ namespace GameRoundResult.Web.Services
             { GameType.Bac98, typeof(BaccaratXEndGameInfoService) },
             { GameType.Bac100, typeof(BaccaratXEndGameInfoService) },
             { GameType.Bac101, typeof(BaccaratXEndGameInfoService) },
+            { GameType.SevenUpDown, typeof(SevenUpDownEndGameInfoService) },
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()
