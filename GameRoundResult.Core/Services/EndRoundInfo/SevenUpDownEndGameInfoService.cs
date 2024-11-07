@@ -30,8 +30,8 @@ namespace GameRoundResult.Core.Services.EndRoundInfo
             return new EndRoundInfoResult
             {
                 EndTime = round.Time,
-                ValidBetAmount = request.FreeBet ? 0 : totalBetAmount,
-                TotalAmount = request.FreeBet ? 0 : totalBetAmount,
+                ValidBetAmount = totalBetAmount,
+                TotalAmount = totalBetAmount,
                 TotalWin = totalBetWin
             };
         }
