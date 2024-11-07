@@ -1,0 +1,31 @@
+[
+  {
+    "_id": {
+      "$oid": "6711de189b8add5264cb279b"
+    },
+    "freeBet": false,
+    "uid": "6711c03f273dabb16ac27ae5",
+    "roundId": 2166,
+    "__v": 0,
+    "betwin": 0,
+    "currency": "$US",
+    "down": 0,
+    "name": "Super94524",
+    "odds": {
+      "up": 2,
+      "down": 2,
+      "seven": 5
+    },
+    "operatorId": "ONEworks1",
+    "paid": true,
+    "playerId": "722446",
+    "rate": 1,
+    "seven": 0,
+    "siteId": "4100300",
+    "time": {
+      "$date": "2024-10-18T04:03:36.932Z"
+    },
+    "totalAmount": 30,
+    "up": 30
+  }
+]
