@@ -1,0 +1,33 @@
+[
+  {
+    "_id": {
+      "$oid": "672091153919ac57568f745a"
+    },
+    "freeBet": false,
+    "roundId": 33864,
+    "uid": "656565a161261a2009a7660c",
+    "__v": 0,
+    "betwin": 4000,
+    "currency": "$US",
+    "down": 0,
+    "maxWin": 4000,
+    "name": "Saturn98523",
+    "odds": {
+      "up": 3,
+      "down": 3,
+      "seven": 7
+    },
+    "operatorId": "ONEworks1",
+    "paid": true,
+    "playerId": "1003",
+    "rate": 1,
+    "reachMaxWin": true,
+    "seven": 0,
+    "siteId": "4100300",
+    "time": {
+      "$date": "2024-10-29T07:39:01.889Z"
+    },
+    "totalAmount": 2000,
+    "up": 2000
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "_id": {
+      "$oid": "6711de2c9b8add5e5acb27a6"
+    },
+    "time": {
+      "$date": "2024-10-18T04:03:56.005Z"
+    },
+    "id": 2166,
+    "result": {
+      "dice1": 4,
+      "dice2": 2,
+      "multiplier": {
+        "value": 2,
+        "choice": "down"
+      }
+    },
+    "settlementResult": {
+      "up": false,
+      "down": true,
+      "seven": false
+    },
+    "exchangeRateId": 3,
+    "__v": 0
+  }
+]
