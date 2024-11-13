@@ -104,6 +104,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.Bac101, typeof(BaccaratXTicketAccessor) },
             { GameType.SevenUpDown, typeof(SevenUpDownTicketAccessor<SevenUpDownRound, SevenUpDownBet, SevenUpDownBetLog>) },
             { GameType.SKMegaKeno, typeof(MiniKenoTicketAccessor<SKMegaKenoRound, SKMegaKenoBet>) },
+            { GameType.MarbleFootball, typeof(MarbleFootballTicketAccessor) },
             { GameType.SKMegaKeno2, typeof(MiniKenoTicketAccessor<SKMegaKeno2Round, SKMegaKeno2Bet>) },
             { GameType.SKKenoMini, typeof(MiniKenoTicketAccessor<SKKenoMiniRound, SKKenoMiniBet>) },
             { GameType.SKKenoMini2, typeof(MiniKenoTicketAccessor<SKKenoMini2Round, SKKenoMini2Bet>) },

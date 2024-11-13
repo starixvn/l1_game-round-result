@@ -91,6 +91,7 @@
         Bac101 = 101,
         SevenUpDown = 103,
 
+        MarbleFootball = 104,
         SKMegaKeno = 1501,
         SKMegaKeno2 = 1502,
         SKKenoMini = 1503,
