@@ -89,5 +89,6 @@
         Bac100 = 100,
         Bac101 = 101,
         SevenUpDown = 103,
+        MarbleFootball = 104,
     }
 }

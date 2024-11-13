@@ -514,7 +514,8 @@ namespace GameRoundResult.Web.Configuration
                 }));
             CreateMap<SevenUpDownSettlementResultEntity, SevenUpDownSettlementResultViewModel>();
             CreateMap<SevenUpDownBetLog, SevenUpDownBetLogViewModel>();
-
+            CreateMap<MarbleFootballBetLog, MarbleFootballBetLogViewModel>();
+            CreateMap<MarbleFootballRound, MarbleFootballRoundResultViewModel>();
         }
     }
 }
