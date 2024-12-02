@@ -5,10 +5,6 @@
 @inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
 @inject IJsonStringLocalizer<ClassicSlotTicketViewModel> Localizer
 
-@{
-    var oldGames = new[] { 29 };
-}
-
 @if (Model.EnableTolgee)
 {
     <input value="GameTicketResultViewModel,Common,ClassicSlotTicketViewModel" id="tolgee_namespace" readonly hidden />
@@ -55,17 +51,12 @@
             </tr>
         </thead>
         <tbody>
-            @if (Model.HasWinningPayline || oldGames.Contains(Model.GameId))
+            @if (Model.HasWinningPayline)
             {
                 @await Html.PartialAsync("_Jackpot", Model)
                 @await Html.PartialAsync("_WinningPaylines", Model)
                 @await Html.PartialAsync("_Bonus", Model)
                 @await Html.PartialAsync("_FreeSpins", Model)
-
-                @if (oldGames.Contains(Model.GameId))
-                {
-                    @await Html.PartialAsync("_NotWinningPaylines", Model)
-                }
 
                 <tr>
                     <td></td>

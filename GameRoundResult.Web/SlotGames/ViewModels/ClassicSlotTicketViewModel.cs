@@ -28,8 +28,7 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
 
         public bool EnableJackpotConfig { get; }
 
-        public bool EnabledJackpot => EnableJackpotConfig
-            && (GameId == (int)Core.Constants.GameType.FourGuardians || RoundResult?.JackpotContribution != null);
+        public bool EnabledJackpot => EnableJackpotConfig && RoundResult?.JackpotContribution != null;
 
         public ClassicSlotRoundResultViewModel RoundResult { get; set; }
 
