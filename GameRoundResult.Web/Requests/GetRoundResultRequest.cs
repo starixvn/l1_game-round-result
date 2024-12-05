@@ -8,7 +8,7 @@ namespace GameRoundResult.Web.Requests
 {
     public class GetRoundResultRequest : IRequest<(long, IEnumerable<RoundResultViewModel>)>
     {
-        public GetRoundResultRequest(GameType gameType, DateTime date, long roundId, TimeZoneInfo timeZoneInfo, int page, int pageSize)
+        public GetRoundResultRequest(int gameType, DateTime date, long roundId, TimeZoneInfo timeZoneInfo, int page, int pageSize)
         {
             GameType = gameType;
             Date = date;
@@ -22,7 +22,7 @@ namespace GameRoundResult.Web.Requests
 
         public DateTime Date { get; }
 
-        public GameType GameType { get; }
+        public int GameType { get; }
 
         public TimeZoneInfo TimeZoneInfo { get; }
 

@@ -89,19 +89,21 @@ namespace GameRoundResult.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetRoundResult(GameType gameType, [FromServices] IRoundResultViewFactory viewFactory)
+        public async Task<IActionResult> GetRoundResult(int gameType, [FromServices] IRoundResultViewFactory viewFactory)
         {
-            var isCrashGame = await generalGameSettingService.IsCrashGame((int)gameType);
-            if (Enum.IsDefined(typeof(GameType), gameType))
+            var isCrashGame = await generalGameSettingService.IsCrashGame(gameType);
+            if (!Enum.IsDefined(typeof(GameType), gameType) && !isCrashGame)
             {
-                return PartialView(viewFactory.GetView(gameType, isCrashGame));
+                throw new ArgumentException("Invalid game type", nameof(gameType));
+
             }
 
-            throw new ArgumentException("Invalid game type", nameof(gameType));
+            return PartialView(viewFactory.GetView(gameType, isCrashGame));
+
         }
 
         [ResponseCache(Duration = dataCacheDuration, VaryByQueryKeys = new[] { "start", "length", "gameType", "roundId", "userTimeZone", "date" })]
-        public async Task<IActionResult> GetData(int start, int length, GameType gameType, long roundId, string userTimeZone, DateTime date,
+        public async Task<IActionResult> GetData(int start, int length, int gameType, long roundId, string userTimeZone, DateTime date,
             [FromServices] IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, bool requestFromHistoryService)
         {
             if (cloudServiceConfig?.ShouldCallCloudService((int)gameType) == true && !requestFromHistoryService)
@@ -112,7 +114,7 @@ namespace GameRoundResult.Web.Controllers
             return await GetInternalData(start, length, gameType, roundId, userTimeZone, date, stringLocalizer);
         }
 
-        private async Task<IActionResult> GetInternalData(int start, int length, GameType gameType, long roundId, string userTimeZone, DateTime date, IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private async Task<IActionResult> GetInternalData(int start, int length, int gameType, long roundId, string userTimeZone, DateTime date, IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var clientTimeZone = User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.TimeZone)?.Value;
             var timeZoneInfo = string.IsNullOrWhiteSpace(clientTimeZone) ?
@@ -130,7 +132,7 @@ namespace GameRoundResult.Web.Controllers
             });
         }
 
-        private async Task<IActionResult> GetRemoteData(int start, int length, GameType gameType, long roundId, string userTimeZone, DateTime date)
+        private async Task<IActionResult> GetRemoteData(int start, int length, int gameType, long roundId, string userTimeZone, DateTime date)
         {
             var cloudResultApi = serviceProvider.GetService<ICloudResultApi>();
             var clientKey = User.Claims.FirstOrDefault(x => x.Type == CustomClaimTypes.ClientKey)?.Value;

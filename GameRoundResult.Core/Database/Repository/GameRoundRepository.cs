@@ -59,7 +59,7 @@ namespace GameRoundResult.Core.Database.Repository
 
         public async Task<(long, IEnumerable<GR>)> GetCrashGameRoundResultAsync<GR>(DateTime date, long roundId, string displayName, int page, int pageSize) where GR : GameRound
         {
-            var collectionName = CollectionNameFormatter.Round(displayName);
+            var collectionName = CollectionNameFormatter.Round(displayName.Replace(" ", string.Empty));
 
             return string.IsNullOrWhiteSpace(collectionName)
                 ? throw new InvalidOperationException(nameof(collectionName))

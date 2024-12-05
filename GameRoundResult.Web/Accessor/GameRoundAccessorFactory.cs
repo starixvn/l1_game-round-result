@@ -18,7 +18,7 @@ namespace GameRoundResult.Web.Accessor
 {
     public interface IGameRoundAccessorFactory
     {
-        IGameRoundAccessor GetService(GameType game, bool isCrashGame);
+        IGameRoundAccessor GetService(int game, bool isCrashGame);
     }
 
     public class GameRoundAccessorFactory : IGameRoundAccessorFactory
@@ -104,9 +104,9 @@ namespace GameRoundResult.Web.Accessor
             this.serviceProvider = serviceProvider;
         }
 
-        public IGameRoundAccessor GetService(GameType game, bool isCrashGame)
+        public IGameRoundAccessor GetService(int game, bool isCrashGame)
         {
-            var serviceType = isCrashGame ? typeof(GameRoundAccessor<CrashGameRound, CrashGameRoundResultViewModel>) : services[game];
+            var serviceType = isCrashGame ? typeof(GameRoundAccessor<CrashGameRound, CrashGameRoundResultViewModel>) : services[(GameType)game];
             return (IGameRoundAccessor)serviceProvider.GetRequiredService(serviceType);        
         }
     }

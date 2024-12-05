@@ -12,7 +12,7 @@ namespace GameRoundResult.Web.Requests
 
         public int Length { get; set; }
 
-        public GameType GameType { get; set; }
+        public int GameType { get; set; }
 
         public long RoundId { get; set; }
 
