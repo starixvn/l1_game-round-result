@@ -90,5 +90,18 @@
         Bac100 = 100,
         Bac101 = 101,
         SevenUpDown = 103,
+
+        SKMegaKeno = 1501,
+        SKMegaKeno2 = 1502,
+        SKKenoMini = 1503,
+        SKKenoMini2 = 1504,
+        SKKenoEast = 1505,
+        SKKenoWest = 1506,
+        SKKenoSouth = 1507,
+        SKKenoNorth = 1508,
+        SKKenoPower = 1509,
+        SKKenoPower2 = 1510,
+        SKKenoSoccer = 1511,
+        SKKenoSoccer2 = 1512,
     }
 }

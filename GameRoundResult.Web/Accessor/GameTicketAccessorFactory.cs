@@ -103,6 +103,18 @@ namespace GameRoundResult.Web.Accessor
             { GameType.Bac100, typeof(BaccaratXTicketAccessor) },
             { GameType.Bac101, typeof(BaccaratXTicketAccessor) },
             { GameType.SevenUpDown, typeof(SevenUpDownTicketAccessor<SevenUpDownRound, SevenUpDownBet, SevenUpDownBetLog>) },
+            { GameType.SKMegaKeno, typeof(MiniKenoTicketAccessor<SKMegaKenoRound, SKMegaKenoBet>) },
+            { GameType.SKMegaKeno2, typeof(MiniKenoTicketAccessor<SKMegaKeno2Round, SKMegaKeno2Bet>) },
+            { GameType.SKKenoMini, typeof(MiniKenoTicketAccessor<SKKenoMiniRound, SKKenoMiniBet>) },
+            { GameType.SKKenoMini2, typeof(MiniKenoTicketAccessor<SKKenoMini2Round, SKKenoMini2Bet>) },
+            { GameType.SKKenoEast, typeof(MiniKenoTicketAccessor<SKKenoEastRound, SKKenoEastBet>) },
+            { GameType.SKKenoWest, typeof(MiniKenoTicketAccessor<SKKenoWestRound, SKKenoWestBet>) },
+            { GameType.SKKenoSouth, typeof(MiniKenoTicketAccessor<SKKenoSouthRound, SKKenoSouthBet>) },
+            { GameType.SKKenoNorth, typeof(MiniKenoTicketAccessor<SKKenoNorthRound, SKKenoNorthBet>) },
+            { GameType.SKKenoSoccer, typeof(KenoMatchTicketAccessor<SKKenoSoccerRound, SKKenoSoccerBet, SKKenoSoccerBetLog>) },
+            { GameType.SKKenoSoccer2, typeof(KenoMatchTicketAccessor<SKKenoSoccer2Round, SKKenoSoccer2Bet, SKKenoSoccer2BetLog>) },
+            { GameType.SKKenoPower, typeof(KenoPowerTicketAccessor<SKKenoPowerRound, SKKenoPowerBet, SKKenoPowerBetLog>) },
+            { GameType.SKKenoPower2, typeof(KenoPowerTicketAccessor<SKKenoPower2Round, SKKenoPower2Bet, SKKenoPower2BetLog>) },
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()

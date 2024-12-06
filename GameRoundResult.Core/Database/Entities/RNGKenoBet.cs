@@ -58,4 +58,44 @@ namespace GameRoundResult.Core.Database.Entities
     public class MegaKeno2Bet : RNGKenoBet
     {
     }
+
+    [CollectionName("megakeno_betlogs")]
+    public class SKMegaKenoBetLog : RNGKenoBet
+    {
+    }
+
+    [CollectionName("megakeno2_betlogs")]
+    public class SKMegaKeno2BetLog : RNGKenoBet
+    {
+    }
+
+    [CollectionName("kenomini_betlogs")]
+    public class SKKenoMiniBetLog : RNGKenoBet
+    {
+    }
+
+    [CollectionName("kenomini2_betlogs")]
+    public class SKKenoMini2BetLog : RNGKenoBet
+    {
+    }
+
+    [CollectionName("kenoeast_betlogs")]
+    public class SKKenoEastBetLog : RNGKenoBet
+    {
+    }
+
+    [CollectionName("kenowest_betlogs")]
+    public class SKKenoWestBetLog : RNGKenoBet
+    {
+    }
+
+    [CollectionName("kenosouth_betlogs")]
+    public class SKKenoSouthBetLog : RNGKenoBet
+    {
+    }
+
+    [CollectionName("kenonorth_betlogs")]
+    public class SKKenoNorthBetLog : RNGKenoBet
+    {
+    }
 }

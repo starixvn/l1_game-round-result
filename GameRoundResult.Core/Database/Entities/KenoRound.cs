@@ -76,6 +76,48 @@ namespace GameRoundResult.Core.Database.Entities
 
     }
 
+    [CollectionName("kenomini_rounds")]
+    public class SKKenoMiniRound : KenoRound
+    {
+    }
+
+    [CollectionName("kenomini2_rounds")]
+    public class SKKenoMini2Round : KenoRound
+    {
+    }
+
+    [CollectionName("kenoeast_rounds")]
+    public class SKKenoEastRound : KenoRound
+    {
+    }
+
+    [CollectionName("kenowest_rounds")]
+    public class SKKenoWestRound : KenoRound
+    {
+    }
+
+    [CollectionName("kenosouth_rounds")]
+    public class SKKenoSouthRound : KenoRound
+    {
+    }
+
+    [CollectionName("kenonorth_rounds")]
+    public class SKKenoNorthRound : KenoRound
+    {
+    }
+
+    [CollectionName("megakeno_rounds")]
+    public class SKMegaKenoRound : KenoRound
+    {
+
+    }
+
+    [CollectionName("megakeno2_rounds")]
+    public class SKMegaKeno2Round : KenoRound
+    {
+
+    }
+
     public class SettlementResult
     {
         public bool Big { get; set; }

@@ -104,6 +104,18 @@ namespace GameRoundResult.Web.Accessor
             { GameType.Bac100, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
             { GameType.Bac101, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
             { GameType.SevenUpDown, typeof(GameRoundAccessor<SevenUpDownRound, SevenUpDownRoundResultViewModel>) },
+            { GameType.SKMegaKeno, typeof(GameRoundAccessor<SKMegaKenoRound, KenoRoundResultViewModel>) },
+            { GameType.SKMegaKeno2, typeof(GameRoundAccessor<SKMegaKeno2Round, KenoRoundResultViewModel>) },
+            { GameType.SKKenoMini, typeof(GameRoundAccessor<SKKenoMiniRound, KenoRoundResultViewModel>) },
+            { GameType.SKKenoMini2, typeof(GameRoundAccessor<SKKenoMini2Round, KenoRoundResultViewModel>) },
+            { GameType.SKKenoEast, typeof(GameRoundAccessor<SKKenoEastRound, KenoRoundResultViewModel>) },
+            { GameType.SKKenoWest, typeof(GameRoundAccessor<SKKenoWestRound, KenoRoundResultViewModel>) },
+            { GameType.SKKenoSouth, typeof(GameRoundAccessor<SKKenoSouthRound, KenoRoundResultViewModel>) },
+            { GameType.SKKenoNorth, typeof(GameRoundAccessor<SKKenoNorthRound, KenoRoundResultViewModel>) },
+            { GameType.SKKenoPower, typeof(KenoPowerRoundAccessor<SKKenoPowerRound>) },
+            { GameType.SKKenoPower2, typeof(KenoPowerRoundAccessor<SKKenoPower2Round>) },
+            { GameType.SKKenoSoccer, typeof(KenoMatchRoundAccessor<SKKenoSoccerRound>) },
+            { GameType.SKKenoSoccer2, typeof(KenoMatchRoundAccessor<SKKenoSoccer2Round>) },
         };
 
         private readonly IServiceProvider serviceProvider;

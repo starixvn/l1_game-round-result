@@ -124,6 +124,18 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.Bac100, baccarat },
             { GameType.Bac101, baccarat },
             { GameType.SevenUpDown, sevenupdown },
+            { GameType.SKMegaKeno, keno },
+            { GameType.SKMegaKeno2, keno },
+            { GameType.SKKenoMini, keno },
+            { GameType.SKKenoMini2, keno },
+            { GameType.SKKenoEast, keno },
+            { GameType.SKKenoWest, keno },
+            { GameType.SKKenoSouth, keno },
+            { GameType.SKKenoNorth, keno },
+            { GameType.SKKenoPower, kenoPower },
+            { GameType.SKKenoPower2, kenoPower },
+            { GameType.SKKenoSoccer, kenoMatch },
+            { GameType.SKKenoSoccer2, kenoMatch },
         };
 
         public string GetView(int game, bool isCrashGame)

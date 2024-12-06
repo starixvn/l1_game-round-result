@@ -39,4 +39,14 @@ namespace GameRoundResult.Core.Database.Entities
     public class KenoPower2Round : KenoPowerRound
     {
     }
+
+    [CollectionName("kenopower_rounds")]
+    public class SKKenoPowerRound : KenoPowerRound
+    {
+    }
+
+    [CollectionName("kenopower2_rounds")]
+    public class SKKenoPower2Round : KenoPowerRound
+    {
+    }
 }

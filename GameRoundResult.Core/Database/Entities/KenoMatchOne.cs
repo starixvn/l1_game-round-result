@@ -41,4 +41,14 @@ namespace GameRoundResult.Core.Database.Entities
     {
 
     }
+
+    [CollectionName("kenosoccer_bets")]
+    public class SKKenoSoccerBet : KenoMatchOne
+    {
+    }
+
+    [CollectionName("kenosoccer2_bets")]
+    public class SKKenoSoccer2Bet : KenoMatchOne
+    {
+    }
 }

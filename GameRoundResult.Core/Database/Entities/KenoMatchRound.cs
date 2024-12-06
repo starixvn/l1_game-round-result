@@ -46,7 +46,7 @@ namespace GameRoundResult.Core.Database.Entities
     }
 
     [CollectionName("kenomatch1_phiens")]
-    public class KenoMatch1Round: KenoMatchRound
+    public class KenoMatch1Round : KenoMatchRound
     {
 
     }
@@ -55,5 +55,15 @@ namespace GameRoundResult.Core.Database.Entities
     public class KenoMatch2Round : KenoMatchRound
     {
 
+    }
+
+    [CollectionName("kenosoccer_rounds")]
+    public class SKKenoSoccerRound : KenoMatchRound
+    {
+    }
+
+    [CollectionName("kenosoccer2_rounds")]
+    public class SKKenoSoccer2Round : KenoMatchRound
+    {
     }
 }

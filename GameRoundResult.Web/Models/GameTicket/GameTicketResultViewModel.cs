@@ -49,6 +49,18 @@ namespace GameRoundResult.Web.Models
             {
                 return $"_{Enum.GetName(typeof(GameType), GameType)}{PartialPostfix}";
             }
+
+            if (IsKenoPower)
+            {
+                return $"_KenoPower{PartialPostfix}";
+
+            }
+
+            if (IsKenoSoccer)
+            {
+                return $"_KenoMatch{PartialPostfix}";
+            }
+
             var viewName = GetViewNameAttribute();
 
             if (!string.IsNullOrWhiteSpace(viewName))
@@ -73,7 +85,15 @@ namespace GameRoundResult.Web.Models
                 or GameType.KenoSouth
                 or GameType.KenoNorth
                 or GameType.MegaKeno
-                or GameType.MegaKeno2 => true,
+                or GameType.MegaKeno2
+                or GameType.SKKenoMini
+                or GameType.SKKenoMini2
+                or GameType.SKKenoEast
+                or GameType.SKKenoWest
+                or GameType.SKKenoSouth
+                or GameType.SKKenoNorth
+                or GameType.SKMegaKeno
+                or GameType.SKMegaKeno2 => true,
                 _ => false
             };
 
@@ -113,6 +133,26 @@ namespace GameRoundResult.Web.Models
 
             return Regex.Replace(name, @"[\d-]", string.Empty).Replace("Turbo", string.Empty);
         }
+
+        private bool IsKenoSoccer
+            => GameType switch
+            {
+                GameType.KenoMatch1
+                or GameType.KenoMatch2
+                or GameType.SKKenoSoccer
+                or GameType.SKKenoSoccer2 => true,
+                _ => false
+            };
+
+        private bool IsKenoPower
+            => GameType switch
+            {
+                GameType.KenoPower1
+                or GameType.KenoPower2
+                or GameType.SKKenoPower
+                or GameType.SKKenoPower2 => true,
+                _ => false
+            };
 
         private string GetViewNameAttribute()
         {

@@ -230,6 +230,14 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<MiniKenoEndGameInfoService<KenoNorthRound, KenoNorthOne>>();
             services.AddScoped<MiniKenoEndGameInfoService<MegaKenoRound, MegaKenoOne>>();
             services.AddScoped<MiniKenoEndGameInfoService<MegaKeno2Round, MegaKeno2One>>();
+            services.AddScoped<MiniKenoEndGameInfoService<SKKenoMiniRound, SKKenoMiniBet>>();
+            services.AddScoped<MiniKenoEndGameInfoService<SKKenoMini2Round, SKKenoMini2Bet>>();
+            services.AddScoped<MiniKenoEndGameInfoService<SKKenoEastRound, SKKenoEastBet>>();
+            services.AddScoped<MiniKenoEndGameInfoService<SKKenoWestRound, SKKenoWestBet>>();
+            services.AddScoped<MiniKenoEndGameInfoService<SKKenoSouthRound, SKKenoSouthBet>>();
+            services.AddScoped<MiniKenoEndGameInfoService<SKKenoNorthRound, SKKenoNorthBet>>();
+            services.AddScoped<MiniKenoEndGameInfoService<SKMegaKenoRound, SKMegaKenoBet>>();
+            services.AddScoped<MiniKenoEndGameInfoService<SKMegaKeno2Round, SKMegaKeno2Bet>>();
             services.AddScoped<FruitSlotEndGameInfoService>();
             services.AddScoped<FanTanEndGameInfoService>();
             services.AddScoped<Win3CardsEndGameInfoService>();

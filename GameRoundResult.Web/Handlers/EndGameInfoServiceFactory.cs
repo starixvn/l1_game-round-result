@@ -102,6 +102,18 @@ namespace GameRoundResult.Web.Services
             { GameType.Bac100, typeof(BaccaratXEndGameInfoService) },
             { GameType.Bac101, typeof(BaccaratXEndGameInfoService) },
             { GameType.SevenUpDown, typeof(SevenUpDownEndGameInfoService) },
+            { GameType.SKMegaKeno, typeof(MiniKenoEndGameInfoService<SKMegaKenoRound, SKMegaKenoBet>) },
+            { GameType.SKMegaKeno2, typeof(MiniKenoEndGameInfoService<SKMegaKeno2Round, SKMegaKeno2Bet>) },
+            { GameType.SKKenoMini, typeof(MiniKenoEndGameInfoService<SKKenoMiniRound, SKKenoMiniBet>) },
+            { GameType.SKKenoMini2, typeof(MiniKenoEndGameInfoService<SKKenoMini2Round, SKKenoMini2Bet>) },
+            { GameType.SKKenoEast, typeof(MiniKenoEndGameInfoService<SKKenoEastRound, SKKenoEastBet>) },
+            { GameType.SKKenoWest, typeof(MiniKenoEndGameInfoService<SKKenoWestRound, SKKenoWestBet>) },
+            { GameType.SKKenoSouth, typeof(MiniKenoEndGameInfoService<SKKenoSouthRound, SKKenoSouthBet>) },
+            { GameType.SKKenoNorth, typeof(MiniKenoEndGameInfoService<SKKenoNorthRound, SKKenoNorthBet>) },
+            { GameType.SKKenoPower, typeof(KenoPowerEndGameInfoService<SKKenoPowerRound, SKKenoPowerBet>) },
+            { GameType.SKKenoPower2, typeof(KenoPowerEndGameInfoService<SKKenoPower2Round, SKKenoPower2Bet>) },
+            { GameType.SKKenoSoccer, typeof(KenoMatchEndGameInfoService<SKKenoSoccerRound, SKKenoSoccerBet>) },
+            { GameType.SKKenoSoccer2, typeof(KenoMatchEndGameInfoService<SKKenoSoccer2Round, SKKenoSoccer2Bet>) },
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()

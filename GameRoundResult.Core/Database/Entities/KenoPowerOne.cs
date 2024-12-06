@@ -28,4 +28,14 @@ namespace GameRoundResult.Core.Database.Entities
     public class KenoPower2One : KenoPowerOne
     {
     }
+
+    [CollectionName("kenopower_bets")]
+    public class SKKenoPowerBet : KenoPowerOne
+    {
+    }
+
+    [CollectionName("kenopower2_bets")]
+    public class SKKenoPower2Bet : KenoPowerOne
+    {
+    }
 }

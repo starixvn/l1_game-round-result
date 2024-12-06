@@ -18,4 +18,14 @@ namespace GameRoundResult.Core.Database.Entities
     public class KenoPower2Bet : KenoPowerBet
     {
     }
+
+    [CollectionName("kenopower_betlogs")]
+    public class SKKenoPowerBetLog : KenoPowerBet
+    {
+    }
+
+    [CollectionName("kenopower2_betlogs")]
+    public class SKKenoPower2BetLog : KenoPowerBet
+    {
+    }
 }
