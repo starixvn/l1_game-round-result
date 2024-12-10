@@ -30,7 +30,7 @@ namespace GameRoundResult.Web.RoundHistory
         {
             if (roundResult != null)
             {
-                GetRoundResultRequest getRequest = new GetRoundResultRequest(request.Game, DateTime.Now, request.RoundId, timeZone, 1, 1);
+                GetRoundResultRequest getRequest = new GetRoundResultRequest((int)request.Game, DateTime.Now, request.RoundId, timeZone, 1, 1);
                 var roundResults = GameDrawTicketAccessorHelper.GetRoundResult(getRequest, new List<TRoundEntity> { roundResult });
                 var viewModel = (TRoundViewModel)roundResults.First();
                 viewModel.ExchangeRateId = roundResult.ExchangeRateId;

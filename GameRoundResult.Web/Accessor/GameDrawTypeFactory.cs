@@ -51,7 +51,7 @@ namespace GameRoundResult.Web.Accessor
                 <LuckyThreeRound, LuckyThreeRoundResult, LuckyThreeSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
             };
 
-            return roundResultType[request.GameType];
+            return roundResultType[(GameType)request.GameType];
         }
     }
 }

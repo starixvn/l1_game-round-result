@@ -15,7 +15,7 @@ namespace GameRoundResult.Web._Shared
     {
         public static IEnumerable<RoundResultViewModel> GetRoundResult(GetRoundResultRequest request, IEnumerable<object> result)
         {
-            switch (request.GameType)
+            switch ((GameType)request.GameType)
             {
                 case (GameType.BacBall1):
                     return GetDrawResultBacBall((IEnumerable<BacBall1Round>)result, request);
