@@ -13,13 +13,14 @@ using GameRoundResult.Core.Database.Entities.SevenUpDown;
 using GameRoundResult.Web.CrashGames.ViewModels;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
+using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GameRoundResult.Web.Accessor
 {
     public interface IGameRoundAccessorFactory
     {
-        IGameRoundAccessor GetService(GameType game, bool isCrashGame);
+        IGameRoundAccessor GetService(int game, bool isCrashGame);
     }
 
     public class GameRoundAccessorFactory : IGameRoundAccessorFactory
@@ -111,9 +112,9 @@ namespace GameRoundResult.Web.Accessor
             this.serviceProvider = serviceProvider;
         }
 
-        public IGameRoundAccessor GetService(GameType game, bool isCrashGame)
+        public IGameRoundAccessor GetService(int game, bool isCrashGame)
         {
-            var serviceType = isCrashGame ? typeof(GameRoundAccessor<CrashGameRound, CrashGameRoundResultViewModel>) : services[game];
+            var serviceType = isCrashGame ? typeof(GameRoundAccessor<CrashGameRound, CrashGameRoundResultViewModel>) : services[(GameType)game];
             return (IGameRoundAccessor)serviceProvider.GetRequiredService(serviceType);
         }
     }

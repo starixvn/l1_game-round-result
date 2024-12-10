@@ -5,7 +5,7 @@ namespace GameRoundResult.Web.ViewFactory
 {
     public interface IRoundResultViewFactory
     {
-        string GetView(GameType game, bool isCrashGame);
+        string GetView(int game, bool isCrashGame);
     }
 
     public class RoundResultViewFactory : IRoundResultViewFactory
@@ -125,9 +125,9 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.SevenUpDown, sevenupdown },
         };
 
-        public string GetView(GameType game, bool isCrashGame)
+        public string GetView(int game, bool isCrashGame)
         {
-            return isCrashGame ? "_CrashGameRoundResult" : views[game];
+            return isCrashGame ? "_CrashGameRoundResult" : views[(GameType)game];
         }
     }
 }
