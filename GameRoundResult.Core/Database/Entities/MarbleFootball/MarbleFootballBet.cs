@@ -15,5 +15,9 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal Over { get; set; }
 
         public decimal Under { get; set; }
+
+        public decimal Odd { get; set; }
+
+        public decimal Even { get; set; }
     }
 }
