@@ -106,7 +106,7 @@ namespace GameRoundResult.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> GetAccessUrl([FromBody] BetHistoryAccessUrlRequestModel model)
         {
-            if (cloudServiceConfig?.ShouldCallCloudService((int)model.GameTypeId) == true)
+            if (cloudServiceConfig?.ShouldCallCloudService(model.GameTypeId) == true)
             {
                 var requestAccessUrlResult = await mediator.Send(model);
 

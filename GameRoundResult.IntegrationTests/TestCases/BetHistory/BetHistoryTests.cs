@@ -57,7 +57,7 @@ namespace GameRoundResult.IntegrationTests
                 },
                 FreeBet = false,
                 GameRoundId = 1,
-                GameTypeId = GameType.BigSmall,
+                GameTypeId = (int)GameType.BigSmall,
                 Language = "en-US",
                 PlayerId = "99"
             };
@@ -120,7 +120,7 @@ namespace GameRoundResult.IntegrationTests
         {
             // arrange
             var model = GetBetHistoryAccessUrlRequestModel();
-            model.GameTypeId = (GameType)gameId;
+            model.GameTypeId = gameId;
             model.PlayerId = playerId;
             model.Language = language;
             model.GameRoundId = roundId;
@@ -158,7 +158,7 @@ namespace GameRoundResult.IntegrationTests
                 },
                 FreeBet = false,
                 GameRoundId = 1,
-                GameTypeId = GameType.BigSmall,
+                GameTypeId = (int)GameType.BigSmall,
                 Language = "en-US",
                 PlayerId = "123"
             };

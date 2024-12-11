@@ -46,7 +46,7 @@ namespace GameRoundResult.Web.Models
     public class BetHistoryAccessUrlRequestModel : IRequest<GameTicketAccessUrlResultModel>
     {
         [Required]
-        public GameType GameTypeId { get; set; }
+        public int GameTypeId { get; set; }
 
         public AuthModel Auth { get; set; }
 
