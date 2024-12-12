@@ -1,5 +1,12 @@
 {
   "bet_choice_over_4.5" : "Over 4.5",
   "bet_choice_under_4.5" : "Under 4.5",
-  "game_name" : "Marble Football"
+  "game_name" : "Marble Football",
+  "glossary_away" : "Away",
+  "glossary_draw" : "Draw",
+  "glossary_even" : "Even",
+  "glossary_home" : "Home",
+  "glossary_odd" : "Odd",
+  "glossary_over" : "Over 4.5",
+  "glossary_under" : "Under 4.5"
 }

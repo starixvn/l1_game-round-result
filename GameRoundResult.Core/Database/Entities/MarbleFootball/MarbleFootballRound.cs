@@ -34,6 +34,8 @@ namespace GameRoundResult.Core.Database.Entities
 
         public bool Draw { get; set; }
 
+        public bool Draw4 { get; set; }
+
         public bool Over { get; set; }
 
         public bool Under { get; set; }
