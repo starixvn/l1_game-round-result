@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using GameRoundResult.Web.Configuration;
 
 namespace GameRoundResult.Web.Models
 {
+    [TolgeeNamespace("MarbleFootball")]
     public class MarbleFootballTicketViewModel : GameTicketViewModel
     {
         public MarbleFootballRoundResultViewModel RoundResult { get; set; }
@@ -22,6 +24,8 @@ namespace GameRoundResult.Web.Models
                 "draw" => RoundResult.SettlementResult.Draw,
                 "over" => RoundResult.SettlementResult.Over,
                 "under" => RoundResult.SettlementResult.Under,
+                "odd" => RoundResult.SettlementResult.Odd,
+                "even" => RoundResult.SettlementResult.Even,
                 _ => false,
             };
         }
@@ -33,6 +37,11 @@ namespace GameRoundResult.Web.Models
 
         public decimal GetOdds(string choice)
         {
+            if (choice == "draw" && RoundResult.SettlementResult.Draw4 == true)
+            {
+                return Odds["draw4"];
+            }
+
             return Odds[choice];
         }
 

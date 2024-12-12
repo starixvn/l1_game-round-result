@@ -8,8 +8,8 @@
 
 @if (Model.EnableTolgee)
 {
-    <input value="GameTicketResultViewModel,Common,RoundResultViewModel,MarbleFootballTicketViewModel" id="tolgee_namespace" readonly
-        hidden />
+    <input value="GameTicketResultViewModel,Common,RoundResultViewModel,MarbleFootballTicketViewModel" id="tolgee_namespace"
+        readonly hidden />
 }
 
 <table class="table table-bordered table-dragon-tiger-fight">
@@ -17,7 +17,10 @@
         <tr>
             <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
             <th>@CommonLocalizer["RoundId"]</th>
-            <th>@CommonLocalizer["Result"]</th>
+            <th>
+                @CommonLocalizer["Result"] <br /> (@Localizer["glossary_home"]|
+                @Localizer["glossary_away"])
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -31,11 +34,9 @@
                 </td>
                 <td>@Model.RoundResult.RoundId</td>
                 <td>
-                    <div class="text-center">
-                        <span>
-                            @Html.Raw(@Model.RoundResult.GetResult(RoundResultLocalizer))
-                        </span>
-                    </div>
+                    <span class="cointoss-result" style="margin-top: 5px; margin-bottom: 5px;">
+                        @Html.Raw(@Model.RoundResult.GetResult(RoundResultLocalizer))
+                    </span>
                 </td>
             </tr>
         }
