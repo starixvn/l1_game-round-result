@@ -11,6 +11,7 @@ namespace GameRoundResult.Web.Models
 {
     public class MarbleFootballRoundResultViewModel : RoundResultViewModel
     {
+        private const string tolgeeNameSpace = "MarbleFootball";
         public MarbleFootballResultEntity Result { get; set; }
 
         public MarbleFootballSettlementResultEntity SettlementResult { get; set; }
@@ -66,8 +67,8 @@ namespace GameRoundResult.Web.Models
 
             var result = new List<string>
             {
-                $"{Match?.Home ?? GetCommonText(stringLocalizer, "bet_choice_home")} &nbsp; {homeImg.GetHtmlString()} &nbsp; {homeScore}",
-                $"{Match?.Away ?? GetCommonText(stringLocalizer, "bet_choice_away")} &nbsp; {awayImg.GetHtmlString()} &nbsp; {awayScore}",
+                $"{Match?.Home ?? GetGameText(stringLocalizer, "glossary_home")} &nbsp; {homeImg.GetHtmlString()} &nbsp; {homeScore}",
+                $"{Match?.Away ?? GetGameText(stringLocalizer, "glossary_away")} &nbsp; {awayImg.GetHtmlString()} &nbsp; {awayScore}",
             };
 
             return string.Join(" | ", result);
@@ -80,26 +81,26 @@ namespace GameRoundResult.Web.Models
             var winningResults = new List<string>();
 
             if (SettlementResult.Home)
-                winningResults.Add(GetCommonText(stringLocalizer, "bet_choice_home"));
+                winningResults.Add(GetGameText(stringLocalizer, "glossary_home"));
             ;
 
             if (SettlementResult.Away)
-                winningResults.Add(GetCommonText(stringLocalizer, "bet_choice_away"));
+                winningResults.Add(GetGameText(stringLocalizer, "glossary_away"));
 
             if (SettlementResult.Draw)
-                winningResults.Add(GetCommonText(stringLocalizer, "bet_choice_draw"));
+                winningResults.Add(GetGameText(stringLocalizer, "glossary_draw"));
 
             if (SettlementResult.Over)
-                winningResults.Add(GetGameText(stringLocalizer, "bet_choice_over_4.5"));
+                winningResults.Add(GetGameText(stringLocalizer, "glossary_over"));
 
             if (SettlementResult.Under)
-                winningResults.Add(GetGameText(stringLocalizer, "bet_choice_under_4.5"));
+                winningResults.Add(GetGameText(stringLocalizer, "glossary_under"));
 
             if (SettlementResult.Odd)
-                winningResults.Add(GetCommonText(stringLocalizer, "bet_choice_odd"));
+                winningResults.Add(GetGameText(stringLocalizer, "glossary_odd"));
 
             if (SettlementResult.Even)
-                winningResults.Add(GetCommonText(stringLocalizer, "bet_choice_even"));
+                winningResults.Add(GetGameText(stringLocalizer, "glossary_even"));
 
             return string.Join(", ", winningResults);
         }
@@ -109,15 +110,7 @@ namespace GameRoundResult.Web.Models
             string key
         )
         {
-            return stringLocalizer.GetStringWithNamcespace(key, "MarbleFootball");
-        }
-
-        public string GetCommonText(
-            IJsonStringLocalizer<RoundResultViewModel> stringLocalizer,
-            string key
-        )
-        {
-            return stringLocalizer.GetStringWithNamcespace(key, "Common");
+            return stringLocalizer.GetStringWithNamcespace(key, tolgeeNameSpace);
         }
     }
 }
