@@ -105,7 +105,8 @@ namespace GameRoundResult.Web.Controllers
                 var queryKey = dataProtector.Protect(
                     $"{model.Auth.OperatorId}^^{authenticationResult.OperatorSecret}^^{model.RoundId}^^{model.ConvertToUSD}^^{model.ExcludeBot}^^{model.Game}^^{model.ExcludeUUS}^^{model.Nickname}^^{model.Username}^^{model.PartnerId}",
                     TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
-                var redirectUrl = Url.Action("Index", "RoundHistory", new { queryKey }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
+                var hostDomain = hostConfiguration.GetDomain(model.Auth.OperatorId);
+                var redirectUrl = Url.Action("Index", "RoundHistory", new { queryKey }, hostDomain.Scheme, hostDomain.Authority);
 
                 return Ok(redirectUrl);
             }

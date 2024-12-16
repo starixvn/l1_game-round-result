@@ -128,9 +128,10 @@ namespace GameRoundResult.Web.Controllers
                     var queryKey = dataProtector.Protect($"{model.Auth.OperatorId}^^{authenticationResult.OperatorSecret}^^{model.GameTypeId}^^{model.GameRoundId}^^{model.PlayerId}^^{model.FreeBet}^^{model.SiteId}",
                             TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
                     model.Language = StandardizeLanguage(model.Language);
+                    var hostDomain = hostConfiguration.GetDomain(model.Auth.OperatorId);
                     var redirectUrl = Url.Action("Index", "BetHistory", 
-                        new { culture = model.Language, queryKey, mode = model.Mode, timeZoneOffset = model.TimeZoneOffset }, 
-                        hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
+                        new { culture = model.Language, queryKey, mode = model.Mode, timeZoneOffset = model.TimeZoneOffset },
+                        hostDomain.Scheme, hostDomain.Authority);
 
                     log.Result = new AccessUrlResponse { RedirectUrl = redirectUrl };
                     log.ResponseTimeStamp = DateTimeOffset.UtcNow;

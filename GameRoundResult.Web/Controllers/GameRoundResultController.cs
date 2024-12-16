@@ -189,7 +189,8 @@ namespace GameRoundResult.Web.Controllers
                     var token = dataProtector.Protect($"{model.Auth.ClientID}^^{model.Auth.ClientKey}^^{model.GameId}^^{model.SiteName}^^{model.PartnerId}^^{model.CurrencyGroupId}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
                     model.Language = StandardizeLanguage(model.Language);
-                    var redirectUrl = Url.Action("Auth", "GameRoundResult", new { culture = model.Language, token }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
+                    var hostDomain = hostConfiguration.GetDomain(model.PartnerId);
+                    var redirectUrl = Url.Action("Auth", "GameRoundResult", new { culture = model.Language, token }, hostDomain.Scheme, hostDomain.Authority);
                     return Ok(new GameRoundResultAccessUrlResultModel { RedirectUrl = redirectUrl });
                 }
 
@@ -199,7 +200,8 @@ namespace GameRoundResult.Web.Controllers
                     var token = dataProtector.Protect($"{model.Auth.OperatorId}^^{model.Auth.OperatorSecret}^^{model.GameId}^{model.SiteName}^^{model.PartnerId}^^{model.CurrencyGroupId}",
                         TimeSpan.FromSeconds(dataProtectorLifeTimeSecond));
                     model.Language = StandardizeLanguage(model.Language);
-                    var redirectUrl = Url.Action("Auth", "GameRoundResult", new { culture = model.Language, token }, hostConfiguration.Domain.Scheme, hostConfiguration.Domain.Authority);
+                    var hostDomain = hostConfiguration.GetDomain(model.Auth.OperatorSecret);
+                    var redirectUrl = Url.Action("Auth", "GameRoundResult", new { culture = model.Language, token }, hostDomain.Scheme, hostDomain.Authority);
                     return Ok(new GameRoundResultAccessUrlResultModel { RedirectUrl = redirectUrl });
                 }
             }
