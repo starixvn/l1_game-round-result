@@ -45,6 +45,11 @@ namespace GameRoundResult.Web.Models
             };
         }
 
+        public override string DisplayOdds(string choice)
+        {
+            return GetOdds(choice).FormatOddsWithZero(FractionalOddsFormat);
+        }
+
         public override IEnumerable<string> BuildBetLogs(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>();
