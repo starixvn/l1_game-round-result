@@ -30,11 +30,6 @@ namespace GameRoundResult.Web.Models
             return stringLocalizer.GetStringWithNamcespace(betChoice.ChoiceKey, "LuckyThree");
         }
 
-        protected decimal GetOdds(string choice)
-        {
-            return Odds[choice];
-        }
-
         public override IEnumerable<string> BuildBetLogs(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>();
