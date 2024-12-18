@@ -968,19 +968,21 @@ div table.bandar-qiuqiu-table .result-table .result-row .pip-of-set-column {
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 10px;
+  gap: 3px;
 }
 
 .marble-football-home {
   flex: 1;
   justify-content: right;
+  text-align: right;
 }
 
 .marble-football-away {
   flex: 1;
   justify-content: left;
+  text-align: left;
 }
 
 .marble-football-divider {
-  padding: 0 1px;
+  padding: 0px;
 }
