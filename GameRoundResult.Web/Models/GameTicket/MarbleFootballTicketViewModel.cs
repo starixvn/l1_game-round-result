@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GameRoundResult.Web.Configuration;
 
 namespace GameRoundResult.Web.Models
@@ -17,7 +18,7 @@ namespace GameRoundResult.Web.Models
                 return false;
             }
 
-            return choice switch
+            return choice.ToLower() switch
             {
                 "home" => RoundResult.SettlementResult.Home,
                 "away" => RoundResult.SettlementResult.Away,
@@ -30,14 +31,16 @@ namespace GameRoundResult.Web.Models
             };
         }
 
+        public override string WinLossRowClassName => WinLoss < 0 ? "text-red" : "bet-win-text";
+
         public override string GetRowBetClass(string choice)
         {
-            return IsWinningChoice(choice) ? "bold text-blue" : string.Empty;
+            return IsWinningChoice(choice) ? "bold bet-win-text" : string.Empty;
         }
 
         public decimal GetOdds(string choice)
         {
-            if (choice == "draw" && RoundResult.SettlementResult.Draw4 == true)
+            if (choice.ToLower() == "draw" && RoundResult.SettlementResult.Draw4 == true)
             {
                 return Odds["draw4"];
             }
