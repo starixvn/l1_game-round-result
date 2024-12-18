@@ -208,3 +208,17 @@
     padding: 0.4rem;
   }
 }
+@media only screen and (max-width: 651px) {
+  .marble-football-result-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    font-size: 12px;
+  }
+  .marble-football-result-container img {
+    width: 35px;
+    height: 35px;
+  }
+}
