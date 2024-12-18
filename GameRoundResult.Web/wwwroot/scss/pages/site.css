@@ -932,3 +932,31 @@ div table.bandar-qiuqiu-table .result-table .result-row .pip-of-set-column {
 .dice-krus {
   background: url(../images/kara-krus/dice-krus.png) no-repeat;
 }
+
+.marble-football-result {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}
+
+.marble-football-result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.marble-football-home {
+  flex: 1;
+  justify-content: right;
+}
+
+.marble-football-away {
+  flex: 1;
+  justify-content: left;
+}
+
+.marble-football-divider {
+  padding: 0 1px;
+}
