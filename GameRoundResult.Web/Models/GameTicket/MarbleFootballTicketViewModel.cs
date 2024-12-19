@@ -45,7 +45,12 @@ namespace GameRoundResult.Web.Models
                 return Odds["draw4"];
             }
 
-            return Odds[choice];
+			if (choice.ToLower() == "draw" && RoundResult.SettlementResult.Draw == false)
+			{
+				return 0;
+			}
+
+			return Odds[choice];
         }
 
         public decimal GetBetLogWin(MarbleFootballBetLogViewModel bet)
