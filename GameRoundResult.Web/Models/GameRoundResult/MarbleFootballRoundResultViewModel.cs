@@ -31,36 +31,25 @@ namespace GameRoundResult.Web.Models
 
 		public string GetFormattedResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
 		{
-			var homeBuilder = new TagBuilder("span");
-			var awayBuilder = new TagBuilder("span");
+			return GetResult(stringLocalizer);
+		}
+
+		public override string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+		{
 			var resultBuilder = new TagBuilder("span");
 			var dividerBuilder = new TagBuilder("span");
 
-			homeBuilder.AddCssClass("marble-football-result marble-football-home");
-			awayBuilder.AddCssClass("marble-football-result marble-football-away");
 			resultBuilder.AddCssClass($"marble-football-result-container");
 			dividerBuilder.AddCssClass("marble-football-divider");
 
 			var homeContent = GetHomeResult(stringLocalizer);
 			var awayContent = GetAwayResult(stringLocalizer);
 
-			if (SettlementResult.Home)
-			{
-				homeBuilder.AddCssClass("bet-win-text");
-			}
-
-			if (SettlementResult.Away)
-			{
-				awayBuilder.AddCssClass("bet-win-text");
-			}
-
-			homeBuilder.InnerHtml.AppendHtml(homeContent);
-			awayBuilder.InnerHtml.AppendHtml(awayContent);
 			dividerBuilder.InnerHtml.Append("|");
 
-			resultBuilder.InnerHtml.AppendHtml(homeBuilder.GetHtmlString());
+			resultBuilder.InnerHtml.AppendHtml(homeContent);
 			resultBuilder.InnerHtml.AppendHtml(dividerBuilder.GetHtmlString());
-			resultBuilder.InnerHtml.AppendHtml(awayBuilder.GetHtmlString());
+			resultBuilder.InnerHtml.AppendHtml(awayContent);
 
 			return resultBuilder.GetHtmlString();
 		}
@@ -71,6 +60,7 @@ namespace GameRoundResult.Web.Models
 			var homeScore = fulltime.Count(score => score == 'H');
 
 			var homeName = "team_" + Match.Home;
+
 			var homeImg = new TagBuilder("img");
 			homeImg.AddCssClass($"img");
 			homeImg.Attributes.Add(
@@ -80,7 +70,25 @@ namespace GameRoundResult.Web.Models
 			homeImg.Attributes.Add("width", "50px");
 			homeImg.Attributes.Add("height", "50px");
 
-			return $"{GetGameText(stringLocalizer, homeName) + "&nbsp;"} {homeImg.GetHtmlString()} {"&nbsp;" + homeScore + "&nbsp;"}";
+			var nameBuilder = new TagBuilder("span");
+			nameBuilder.InnerHtml.AppendHtml(GetGameText(stringLocalizer, homeName));
+			var scoreBuilder = new TagBuilder("span");
+			scoreBuilder.InnerHtml.AppendHtml(homeScore.ToString());
+			var homeBuilder = new TagBuilder("span");
+
+			homeBuilder.AddCssClass("marble-football-result marble-football-home");
+
+			if (SettlementResult.Home)
+			{
+				homeBuilder.AddCssClass("bet-win-text");
+			}
+
+			homeBuilder.InnerHtml.AppendHtml(nameBuilder.GetHtmlString());
+			homeBuilder.InnerHtml.AppendHtml(homeImg.GetHtmlString());
+			homeBuilder.InnerHtml.AppendHtml(scoreBuilder.GetHtmlString());
+
+
+			return homeBuilder.GetHtmlString();
 		}
 
 		public string GetAwayResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
@@ -98,7 +106,24 @@ namespace GameRoundResult.Web.Models
 			awayImg.Attributes.Add("width", "50px");
 			awayImg.Attributes.Add("height", "50px");
 
-			return $"{"&nbsp;" + awayScore + "&nbsp;"} {awayImg.GetHtmlString()} {"&nbsp;" + GetGameText(stringLocalizer, awayName)}";
+			var nameBuilder = new TagBuilder("span");
+			nameBuilder.InnerHtml.AppendHtml(GetGameText(stringLocalizer, awayName));
+			var scoreBuilder = new TagBuilder("span");
+			scoreBuilder.InnerHtml.AppendHtml(awayScore.ToString());
+			var awayBuilder = new TagBuilder("span");
+
+			awayBuilder.AddCssClass("marble-football-result marble-football-away");
+
+			if (SettlementResult.Away)
+			{
+				awayBuilder.AddCssClass("bet-win-text");
+			}
+
+			awayBuilder.InnerHtml.AppendHtml(scoreBuilder.GetHtmlString());
+			awayBuilder.InnerHtml.AppendHtml(awayImg.GetHtmlString());
+			awayBuilder.InnerHtml.AppendHtml(nameBuilder.GetHtmlString());
+
+			return awayBuilder.GetHtmlString();
 		}
 
 		public override string GetWinningTextResult(
