@@ -47,7 +47,7 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
         => new($"{StaticResourceUrl}/_shared/classicslot/{PaylinePrefix}-{payline + 1}.png");
 
         public bool IsJackpotSymbol(byte number) =>
-            number == SlotGameConstant.JackpotSymbol && EnabledJackpot;
+            number == SlotGameConstant.JackpotSymbol && (EnabledJackpot || GameId == 29);
 
         public static string GetJackpotSymbolName()
         {
