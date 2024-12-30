@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using GameRoundResult.Core._Share;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Configuration;
 
@@ -32,6 +31,11 @@ namespace GameRoundResult.Web.Models
 
             if (IsClassicSlot)
             {
+                if (GameType == GameType.TapFortune)
+                {
+                    return $"{PartialSuffix}_TapFortune{PartialPostfix}.cshtml";
+                }
+
                 return $"_SlotGame{PartialPostfix}";
             }
 
