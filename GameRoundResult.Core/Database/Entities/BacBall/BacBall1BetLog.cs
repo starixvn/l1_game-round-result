@@ -14,4 +14,19 @@ namespace GameRoundResult.Core.Database.Entities.BacBall
     public class BacBall2BetLog : BacBall1BetLog
     {
     }
+
+    [CollectionName("baccaratnumber_betlogs")]
+    public class BaccaratNumberBetLog : BacBall1BetLog
+    {
+    }
+
+    [CollectionName("speedbaccaratnumber_betlogs")]
+    public class SpeedBaccaratNumberBetLog : BacBall1BetLog
+    {
+    }
+
+    [CollectionName("vipbaccaratnumber_betlogs")]
+    public class VIPBaccaratNumberBetLog : BacBall1BetLog
+    {
+    }
 }

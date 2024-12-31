@@ -20,6 +20,21 @@ namespace GameRoundResult.Core.Database.Entities.LuckyNext
     public class LuckyNext2Bet : LuckyNext1Bet
     {
     }
+
+    [CollectionName("luckynext_bets")]
+    public class LuckyNextBet : LuckyNext1Bet
+    {
+    }
+
+    [CollectionName("speedluckynext_bets")]
+    public class SpeedLuckyNextBet : LuckyNext1Bet
+    {
+    }
+
+    [CollectionName("vipluckynext_bets")]
+    public class VIPLuckyNextBet : LuckyNext1Bet
+    {
+    }
 }
 
 

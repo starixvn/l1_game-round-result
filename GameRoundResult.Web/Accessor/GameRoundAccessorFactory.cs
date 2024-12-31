@@ -76,15 +76,8 @@ namespace GameRoundResult.Web.Accessor
             { GameType.BandarQiuQiu, typeof(GameRoundAccessor<BandarQiuQiuRound, BandarQiuQiuRoundResultViewModel>) },
             { GameType.FootballDice, typeof(GameRoundAccessor<FootballDiceRound, FootballDiceRoundResultViewModel>) },
             { GameType.FootballSlot, typeof(GameRoundAccessor<FootballSlotRound, FootballSlotRoundResultViewModel>) },
-            { GameType.BacBall1, typeof(GameRoundAccessor<BacBall1Round, BacBallRoundResultViewModel>) },
-            { GameType.BacBall2, typeof(GameRoundAccessor<BacBall2Round, BacBallRoundResultViewModel>) },
-            { GameType.LuckyNext1, typeof(GameRoundAccessor<LuckyNext1Round, LuckyNextRoundResultViewModel>) },
-            { GameType.LuckyNext2, typeof(GameRoundAccessor<LuckyNext2Round, LuckyNextRoundResultViewModel>) },
-            { GameType.CoinToss, typeof(GameRoundAccessor<CoinTossRound, CoinTossRoundResultViewModel>) },
-            { GameType.SeBall1, typeof(GameRoundAccessor<SeBall1Round, SeBallRoundResultViewModel>) },
-            { GameType.LuckyThree, typeof(GameRoundAccessor<LuckyThreeRound, LuckyThreeRoundResultViewModel>) },
-            { GameType.SicBall, typeof(GameRoundAccessor<SicBallRound, SicBallRoundResultViewModel>) },
             { GameType.FootballCoinToss, typeof(GameRoundAccessor<FootballCoinTossRound, FootballCoinTossRoundResultViewModel>) },
+            { GameType.CoinToss, typeof(GameRoundAccessor<CoinTossRound, CoinTossRoundResultViewModel>) },
             { GameType.Bac81, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
             { GameType.SeDie3, typeof(GameRoundAccessor<SeDie3Round, SeDie3RoundResultViewModel>) },
             { GameType.KaraKrus, typeof(GameRoundAccessor<KaraKrusRound, KaraKrusRoundResultViewModel>) },
@@ -104,6 +97,20 @@ namespace GameRoundResult.Web.Accessor
             { GameType.Bac100, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
             { GameType.Bac101, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
             { GameType.SevenUpDown, typeof(GameRoundAccessor<SevenUpDownRound, SevenUpDownRoundResultViewModel>) },
+
+            //xD
+            { GameType.BacBall1, typeof(GameRoundAccessor<BacBall1Round, BacBallRoundResultViewModel>) },
+            { GameType.BacBall2, typeof(GameRoundAccessor<BacBall2Round, BacBallRoundResultViewModel>) },
+            { GameType.LuckyNext1, typeof(GameRoundAccessor<LuckyNext1Round, LuckyNextRoundResultViewModel>) },
+            { GameType.LuckyNext2, typeof(GameRoundAccessor<LuckyNext2Round, LuckyNextRoundResultViewModel>) },
+            { GameType.SeBall1, typeof(GameRoundAccessor<SeBall1Round, SeBallRoundResultViewModel>) },
+            { GameType.LuckyThree, typeof(GameRoundAccessor<LuckyThreeRound, LuckyThreeRoundResultViewModel>) },
+            { GameType.SicBall, typeof(GameRoundAccessor<SicBallRound, SicBallRoundResultViewModel>) },
+            { GameType.BaccaratNumber, typeof(GameRoundAccessor<BaccaratNumberRound, BacBallRoundResultViewModel>) },
+            { GameType.SpeedBaccaratNumber, typeof(GameRoundAccessor<SpeedBaccaratNumberRound, BacBallRoundResultViewModel>) },
+            { GameType.VIPBaccaratNumber, typeof(GameRoundAccessor<VIPBaccaratNumberRound, BacBallRoundResultViewModel>) },
+
+            //SK
         };
 
         private readonly IServiceProvider serviceProvider;

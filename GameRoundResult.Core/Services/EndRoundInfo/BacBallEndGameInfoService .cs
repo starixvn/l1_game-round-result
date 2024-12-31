@@ -13,4 +13,16 @@ namespace GameRoundResult.Core.Services
     {
         public BacBall2EndGameInfoService(IMongoDatabase database) : base(database) { }
     }
+    public class BaccaratNumberEndGameInfoService : BaseDrawEndGameInfoService<BaccaratNumberRound, BaccaratNumberBet, BacBallRoundResult, BacBallSettlementResult>
+    {
+        public BaccaratNumberEndGameInfoService(IMongoDatabase database) : base(database) { }
+    }
+    public class SpeedBaccaratNumberEndGameInfoService : BaseDrawEndGameInfoService<SpeedBaccaratNumberRound, SpeedBaccaratNumberBet, BacBallRoundResult, BacBallSettlementResult>
+    {
+        public SpeedBaccaratNumberEndGameInfoService(IMongoDatabase database) : base(database) { }
+    }
+    public class VIPBaccaratNumberEndGameInfoService : BaseDrawEndGameInfoService<VIPBaccaratNumberRound, VIPBaccaratNumberBet, BacBallRoundResult, BacBallSettlementResult>
+    {
+        public VIPBaccaratNumberEndGameInfoService(IMongoDatabase database) : base(database) { }
+    }
 }

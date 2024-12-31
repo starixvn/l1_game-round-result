@@ -91,24 +91,24 @@ namespace GameRoundResult.Web.Extensions
 
             services.AddScoped<IBacBall1TicketService, BacBall1TicketService>();
             services.AddScoped<IBacBall1BetRepository, BacBall1BetRepository>();
-
             services.AddScoped<IBacBall2TicketService, BacBall2TicketService>();
             services.AddScoped<IBacBall2BetRepository, BacBall2BetRepository>();
-
             services.AddScoped<ILuckyNext1TicketService, LuckyNext1TicketService>();
             services.AddScoped<ILuckyNext1BetRepository, LuckyNext1BetRepository>();
-
             services.AddScoped<ILuckyNext2TicketService, LuckyNext2TicketService>();
             services.AddScoped<ILuckyNext2BetRepository, LuckyNext2BetRepository>();
-
             services.AddScoped<ISeBall1TicketService, SeBall1TicketService>();
             services.AddScoped<ISeBall1BetRepository, SeBall1BetRepository>();
-
             services.AddScoped<ILuckyThreeTicketService, LuckyThreeTicketService>();
             services.AddScoped<ILuckyThreeBetRepository, LuckyThreeBetRepository>();
-
             services.AddScoped<ISicBallTicketService, SicBallTicketService>();
             services.AddScoped<ISicBallBetRepository, SicBallBetRepository>();
+            services.AddScoped<IBaccaratNumberTicketService, BaccaratNumberTicketService>();
+            services.AddScoped<IBaccaratNumberBetRepository, BaccaratNumberBetRepository>(); 
+            services.AddScoped<ISpeedBaccaratNumberTicketService, SpeedBaccaratNumberTicketService>();
+            services.AddScoped<ISpeedBaccaratNumberBetRepository, SpeedBaccaratNumberBetRepository>(); 
+            services.AddScoped<IVIPBaccaratNumberTicketService, VIPBaccaratNumberTicketService>();
+            services.AddScoped<IVIPBaccaratNumberBetRepository, VIPBaccaratNumberBetRepository>();
 
             services.AddScoped<IPontoonTicketService, PontoonTicketService>();
             services.AddScoped<IPontoonBetRepository, PontoonBetRepository>();
@@ -169,18 +169,22 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(BandarQiuQiuTicketAccessor));
             services.AddScoped(typeof(FootballDiceTicketAccessor));
             services.AddScoped(typeof(FootballSlotTicketAccessor<,,>));
-            services.AddScoped(typeof(BacBall1TicketAccessor));
-            services.AddScoped(typeof(BacBall2TicketAccessor));
-            services.AddScoped(typeof(LuckyNext1TicketAccessor));
-            services.AddScoped(typeof(LuckyNext2TicketAccessor));
             services.AddScoped(typeof(CoinTossTicketAccessor));
-            services.AddScoped(typeof(SeBall1TicketAccessor));
-            services.AddScoped(typeof(LuckyThreeTicketAccessor));
-            services.AddScoped(typeof(SicBallTicketAccessor));
             services.AddScoped(typeof(FootballCoinTossTicketAccessor));
             services.AddScoped(typeof(SeDie3TicketAccessor<,,>));
             services.AddScoped(typeof(KaraKrusTicketAccessor<,,>));
             services.AddScoped(typeof(SevenUpDownTicketAccessor<,,>));
+            //xD
+            services.AddScoped(typeof(BacBall1TicketAccessor));
+            services.AddScoped(typeof(BacBall2TicketAccessor));
+            services.AddScoped(typeof(LuckyNext1TicketAccessor));
+            services.AddScoped(typeof(LuckyNext2TicketAccessor));
+            services.AddScoped(typeof(SeBall1TicketAccessor));
+            services.AddScoped(typeof(LuckyThreeTicketAccessor));
+            services.AddScoped(typeof(SicBallTicketAccessor));
+            services.AddScoped(typeof(BaccaratNumberTicketAccessor));
+            services.AddScoped(typeof(SpeedBaccaratNumberTicketAccessor));
+            services.AddScoped(typeof(VIPBaccaratNumberTicketAccessor));
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
             services.AddScoped<IGameDrawTypeFactory, GameDrawTypeFactory>();
@@ -238,19 +242,23 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<BandarQiuQiuEndGameInfoService>();
             services.AddScoped<FootballDiceEndGameInfoService>();
             services.AddScoped<FootballSlotEndGameInfoService>();
-            services.AddScoped<BacBall1EndGameInfoService>();
-            services.AddScoped<BacBall2EndGameInfoService>();
-            services.AddScoped<LuckyNext1EndGameInfoService>();
-            services.AddScoped<LuckyNext2EndGameInfoService>();
             services.AddScoped<CoinTossEndGameInfoService>();
-            services.AddScoped<SeBall1EndGameInfoService>();
-            services.AddScoped<LuckyThreeEndGameInfoService>();
-            services.AddScoped<SicBallEndGameInfoService>();
             services.AddScoped<FootballCoinTossEndGameInfoService>();
             services.AddScoped<BaccaratXEndGameInfoService>();
             services.AddScoped<SeDie3EndGameInfoService>();
             services.AddScoped<KaraKrusEndGameInfoService>();
             services.AddScoped<SevenUpDownEndGameInfoService>();
+            //xD
+            services.AddScoped<BacBall1EndGameInfoService>();
+            services.AddScoped<BacBall2EndGameInfoService>();
+            services.AddScoped<LuckyNext1EndGameInfoService>();
+            services.AddScoped<LuckyNext2EndGameInfoService>();
+            services.AddScoped<SeBall1EndGameInfoService>();
+            services.AddScoped<LuckyThreeEndGameInfoService>();
+            services.AddScoped<SicBallEndGameInfoService>();
+            services.AddScoped<BaccaratNumberEndGameInfoService>();
+            services.AddScoped<SpeedBaccaratNumberEndGameInfoService>();
+            services.AddScoped<VIPBaccaratNumberEndGameInfoService>();
 
             services.AddScoped<IRoundHistoryRepository, RoundHistoryRepository>();
             services.AddScoped<IRoundHistoryService, RoundHistoryService>();

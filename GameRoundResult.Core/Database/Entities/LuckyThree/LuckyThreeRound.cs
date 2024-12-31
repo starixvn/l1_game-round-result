@@ -23,4 +23,13 @@ namespace GameRoundResult.Core.Database.Entities
         public bool Blue2 { get; set; }
         public bool Blue3 { get; set; }
     }
+
+    [CollectionName("tripleluck_rounds")]
+    public class TripleLuckRound : LuckyThreeRound { }
+
+    [CollectionName("speedtripleluck_rounds")]
+    public class SpeedTripleLuckRound : LuckyThreeRound { }
+
+    [CollectionName("viptripleluck_rounds")]
+    public class VIPTripleLuckRound : LuckyThreeRound { }
 }

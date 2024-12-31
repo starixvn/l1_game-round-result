@@ -26,4 +26,14 @@ namespace GameRoundResult.Core.Database.Entities
         public bool Blue3 { get; set; }
         public bool Blue4 { get; set; }
     }
+
+    [CollectionName("sedienumber_rounds")]
+    public class SeDieNumberRound : SeBall1Round { }
+
+    [CollectionName("speedsedienumber_rounds")]
+    public class SpeedSeDieNumberRound : SeBall1Round { }
+
+    [CollectionName("vipsedienumber_rounds")]
+    public class VIPSeDieNumberRound : SeBall1Round { }
+
 }

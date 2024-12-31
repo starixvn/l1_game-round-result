@@ -9,4 +9,14 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal Amount { get; set; }
         public string Choice { get; set; }
     }
+
+    [CollectionName("tripleluck_betlogs")]
+    public class TripleLuckBetLog : LuckyThreeBetLog { }
+
+    [CollectionName("speedtripleluck_betlogs")]
+    public class SpeedTripleLuckBetLog : LuckyThreeBetLog { }
+
+    [CollectionName("viptripleluck_betlogs")]
+    public class VIPTripleLuckBetLog : LuckyThreeBetLog { }
+
 }

@@ -75,14 +75,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.ChineseBlackjack, typeof(ChineseBlackjackTicketAccessor) },
             { GameType.FootballDice, typeof(FootballDiceTicketAccessor) },
             { GameType.FootballSlot, typeof(FootballSlotTicketAccessor<FootballSlotRound, FootballSlotBet, FootballSlotBetLog>) },
-            { GameType.BacBall1, typeof(BacBall1TicketAccessor) },
-            { GameType.BacBall2, typeof(BacBall2TicketAccessor) },
-            { GameType.LuckyNext1, typeof(LuckyNext1TicketAccessor) },
-            { GameType.LuckyNext2, typeof(LuckyNext2TicketAccessor) },
             { GameType.CoinToss, typeof(CoinTossTicketAccessor) },
-            { GameType.SeBall1, typeof(SeBall1TicketAccessor) },
-            { GameType.LuckyThree, typeof(LuckyThreeTicketAccessor) },
-            { GameType.SicBall, typeof(SicBallTicketAccessor) },
             { GameType.FootballCoinToss, typeof(FootballCoinTossTicketAccessor) },
             { GameType.Bac81, typeof(BaccaratXTicketAccessor) },
             { GameType.Bac82, typeof(BaccaratXTicketAccessor) },
@@ -103,6 +96,19 @@ namespace GameRoundResult.Web.Accessor
             { GameType.Bac100, typeof(BaccaratXTicketAccessor) },
             { GameType.Bac101, typeof(BaccaratXTicketAccessor) },
             { GameType.SevenUpDown, typeof(SevenUpDownTicketAccessor<SevenUpDownRound, SevenUpDownBet, SevenUpDownBetLog>) },
+            //xD
+            { GameType.BacBall1, typeof(BacBall1TicketAccessor) },
+            { GameType.BacBall2, typeof(BacBall2TicketAccessor) },
+            { GameType.LuckyNext1, typeof(LuckyNext1TicketAccessor) },
+            { GameType.LuckyNext2, typeof(LuckyNext2TicketAccessor) },
+            { GameType.SeBall1, typeof(SeBall1TicketAccessor) },
+            { GameType.LuckyThree, typeof(LuckyThreeTicketAccessor) },
+            { GameType.SicBall, typeof(SicBallTicketAccessor) },
+            { GameType.BaccaratNumber, typeof(BaccaratNumberTicketAccessor) },
+            { GameType.SpeedBaccaratNumber, typeof(SpeedBaccaratNumberTicketAccessor) },
+            { GameType.VIPBaccaratNumber, typeof(VIPBaccaratNumberTicketAccessor) },
+
+            //SK
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()

@@ -96,14 +96,8 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.BandarQiuQiu, bandarQiuQiu },
             { GameType.FootballDice, footballDice },
             { GameType.FootballSlot, footballSlot },
-            { GameType.BacBall1, bacball },
-            { GameType.BacBall2, bacball },
-            { GameType.LuckyNext1, luckynext },
-            { GameType.LuckyNext2, luckynext },
             { GameType.CoinToss, cointoss },
-            { GameType.SeBall1, seball },
-            { GameType.LuckyThree, luckynext },
-            { GameType.SicBall, seball },
+            
             { GameType.FootballCoinToss, footballcointoss },
             { GameType.Bac81, baccaratX },
             { GameType.Bac82, baccaratX },
@@ -124,6 +118,19 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.Bac100, baccarat },
             { GameType.Bac101, baccarat },
             { GameType.SevenUpDown, sevenupdown },
+
+            //xD
+            { GameType.BacBall1, bacball },
+            { GameType.BacBall2, bacball },
+            { GameType.LuckyNext1, luckynext },
+            { GameType.LuckyNext2, luckynext },
+            { GameType.SeBall1, seball },
+            { GameType.LuckyThree, luckynext },
+            { GameType.SicBall, seball },
+            { GameType.BaccaratNumber, bacball },
+            { GameType.SpeedBaccaratNumber, bacball },
+            { GameType.VIPBaccaratNumber, bacball },
+            //SK
         };
 
         public string GetView(int game, bool isCrashGame)

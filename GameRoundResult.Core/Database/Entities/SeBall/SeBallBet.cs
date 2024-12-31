@@ -18,4 +18,13 @@ namespace GameRoundResult.Core.Database.Entities
 
         public override decimal TotalBet => Odd + Even + Red2 + Red3 + Red4 + Blue3 + Blue4;
     }
+
+    [CollectionName("sedienumber_bets")]
+    public class SeDieNumberBet : SeBall1Bet { }
+
+    [CollectionName("speedsedienumber_bets")]
+    public class SpeedSeDieNumberBet : SeBall1Bet { }
+
+    [CollectionName("vipsedienumber_bets")]
+    public class VIPSeDieNumberBet : SeBall1Bet { }
 }

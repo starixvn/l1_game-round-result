@@ -14,4 +14,14 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal Blue3 { get; set; }
         public override decimal TotalBet => Over + Under + Red2 + Red3 + Blue2 + Blue3;
     }
+
+    [CollectionName("tripleluck_bets")]
+    public class TripleLuckBet : LuckyThreeBet { }
+
+    [CollectionName("speedtripleluck_bets")]
+    public class SpeedTripleLuckBet : LuckyThreeBet { }
+
+    [CollectionName("viptripleluck_bets")]
+    public class VIPTripleLuckBet : LuckyThreeBet { }
+
 }

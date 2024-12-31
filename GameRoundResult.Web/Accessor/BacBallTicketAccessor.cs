@@ -16,4 +16,40 @@ namespace GameRoundResult.Web.Accessor
         public BacBall2TicketAccessor(IBacBall2TicketService gameBetService, IMapper mapper, ICurrencyGroupService currencyGroupService)
             : base(gameBetService, mapper, currencyGroupService) { }
     }
+    public class BaccaratNumberTicketAccessor : DrawTicketAccessor<
+        IBaccaratNumberTicketService, 
+        BaccaratNumberRound, 
+        BaccaratNumberBet, 
+        BaccaratNumberBetLog, 
+        BacBallRoundResult, 
+        BacBallSettlementResult, 
+        BacBallTicketViewModel<BaccaratNumberRound>>
+    {
+        public BaccaratNumberTicketAccessor(IBaccaratNumberTicketService gameBetService, IMapper mapper, ICurrencyGroupService currencyGroupService)
+            : base(gameBetService, mapper, currencyGroupService) { }
+    }
+    public class SpeedBaccaratNumberTicketAccessor : DrawTicketAccessor<
+        ISpeedBaccaratNumberTicketService, 
+        SpeedBaccaratNumberRound, 
+        SpeedBaccaratNumberBet,
+        SpeedBaccaratNumberBetLog, 
+        BacBallRoundResult, 
+        BacBallSettlementResult, 
+        BacBallTicketViewModel<SpeedBaccaratNumberRound>>
+    {
+        public SpeedBaccaratNumberTicketAccessor(ISpeedBaccaratNumberTicketService gameBetService, IMapper mapper, ICurrencyGroupService currencyGroupService)
+            : base(gameBetService, mapper, currencyGroupService) { }
+    }
+    public class VIPBaccaratNumberTicketAccessor : DrawTicketAccessor<
+        IVIPBaccaratNumberTicketService, 
+        VIPBaccaratNumberRound, 
+        VIPBaccaratNumberBet, 
+        VIPBaccaratNumberBetLog, 
+        BacBallRoundResult, 
+        BacBallSettlementResult, 
+        BacBallTicketViewModel<VIPBaccaratNumberRound>>
+    {
+        public VIPBaccaratNumberTicketAccessor(IVIPBaccaratNumberTicketService gameBetService, IMapper mapper, ICurrencyGroupService currencyGroupService)
+            : base(gameBetService, mapper, currencyGroupService) { }
+    }
 }

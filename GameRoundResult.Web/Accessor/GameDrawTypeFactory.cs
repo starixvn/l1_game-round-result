@@ -51,6 +51,12 @@ namespace GameRoundResult.Web.Accessor
                 <LuckyThreeRound, LuckyThreeRoundResult, LuckyThreeSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
                  { GameType.SicBall, await gameRoundResultService.GetGameDrawResultAsync
                 <SicBallRound, SicBallRoundResult, SicBallSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
+                 { GameType.BaccaratNumber, await gameRoundResultService.GetGameDrawResultAsync
+                <BaccaratNumberRound, BacBallRoundResult, BacBallSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
+                 { GameType.SpeedBaccaratNumber, await gameRoundResultService.GetGameDrawResultAsync
+                <SpeedBaccaratNumberRound, BacBallRoundResult, BacBallSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
+                 { GameType.VIPBaccaratNumber, await gameRoundResultService.GetGameDrawResultAsync
+                <VIPBaccaratNumberRound, BacBallRoundResult, BacBallSettlementResult>(utcDate, request.RoundId, (int)request.GameType, request.Page, request.PageSize) },
             };
 
             return roundResultType[(GameType)request.GameType];

@@ -1,6 +1,5 @@
 ﻿using GameRoundResult.Core._Share;
 using GameRoundResult.Core.Database.Entities.GameDraw;
-using System.Collections.Generic;
 
 namespace GameRoundResult.Core.Database.Entities.BacBall
 {
@@ -31,4 +30,19 @@ namespace GameRoundResult.Core.Database.Entities.BacBall
     {
     }
 
+
+    [CollectionName("baccaratnumber_rounds")]
+    public class BaccaratNumberRound : BacBall1Round
+    {
+    }
+
+    [CollectionName("speedbaccaratnumber_rounds")]
+    public class SpeedBaccaratNumberRound : BacBall1Round
+    {
+    }
+
+    [CollectionName("vipbaccaratnumber_rounds")]
+    public class VIPBaccaratNumberRound : BacBall1Round
+    {
+    }
 }

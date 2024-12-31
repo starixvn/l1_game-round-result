@@ -5,7 +5,6 @@ using GameRoundResult.Core.Database.Entities.GameDraw;
 using GameRoundResult.Core.Database.Entities.LuckyNext;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Requests;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections.Generic;
 
@@ -37,6 +36,52 @@ namespace GameRoundResult.Web._Shared
 
                 case (GameType.SicBall):
                     return GetViewModel<SicBallRound, SicBallRoundResult, SicBallSettlementResult, SicBallRoundResultViewModel>((IEnumerable<SicBallRound>)result, request);
+
+                case (GameType.BaccaratNumber):
+                    return GetDrawResultBacBall((IEnumerable<BaccaratNumberRound>)result, request);
+
+                case (GameType.SpeedBaccaratNumber):
+                    return GetDrawResultBacBall((IEnumerable<SpeedBaccaratNumberRound>)result, request);
+
+                case (GameType.VIPBaccaratNumber):
+                    return GetDrawResultBacBall((IEnumerable<VIPBaccaratNumberRound>)result, request);
+
+                case (GameType.LuckyNext):
+                    return GetDrawResultLuckyNext((IEnumerable<LuckyNextRound>)result, request);
+
+                case (GameType.SpeedLuckyNext):
+                    return GetDrawResultLuckyNext((IEnumerable<SpeedLuckyNextRound>)result, request);
+
+                case (GameType.VIPLuckyNext):
+                    return GetDrawResultLuckyNext((IEnumerable<VIPLuckyNextRound>)result, request);
+
+                case (GameType.SeDieNumber):
+                    return GetSeBallResult((IEnumerable<SeDieNumberRound>)result, request);
+
+                case (GameType.SpeedSeDieNumber):
+                    return GetSeBallResult((IEnumerable<SpeedSeDieNumberRound>)result, request);
+
+                case (GameType.VIPSeDieNumber):
+                    return GetSeBallResult((IEnumerable<VIPSeDieNumberRound>)result, request);
+
+                case (GameType.TripleLuck):
+                    return GetViewModel<TripleLuckRound, LuckyThreeRoundResult, LuckyThreeSettlementResult, LuckyThreeRoundResultViewModel>((IEnumerable<TripleLuckRound>)result, request);
+
+                case (GameType.SpeedTripleLuck):
+                    return GetViewModel<SpeedTripleLuckRound, LuckyThreeRoundResult, LuckyThreeSettlementResult, LuckyThreeRoundResultViewModel>((IEnumerable<SpeedTripleLuckRound>)result, request);
+
+                case (GameType.VIPTripleLuck):
+                    return GetViewModel<VIPTripleLuckRound, LuckyThreeRoundResult, LuckyThreeSettlementResult, LuckyThreeRoundResultViewModel>((IEnumerable<VIPTripleLuckRound>)result, request);
+
+                case (GameType.SicBoNumber):
+                    return GetViewModel<SicBoNumberRound, SicBallRoundResult, SicBallSettlementResult, SicBallRoundResultViewModel>((IEnumerable<SicBoNumberRound>)result, request);
+
+                case (GameType.SpeedSicBoNumber):
+                    return GetViewModel<SpeedSicBoNumberRound, SicBallRoundResult, SicBallSettlementResult, SicBallRoundResultViewModel>((IEnumerable<SpeedSicBoNumberRound>)result, request);
+
+                case (GameType.VIPSicBoNumber):
+                    return GetViewModel<VIPSicBoNumberRound, SicBallRoundResult, SicBallSettlementResult, SicBallRoundResultViewModel>((IEnumerable<VIPSicBoNumberRound>)result, request);
+
 
                 default:
                     return new List<RoundResultViewModel>();

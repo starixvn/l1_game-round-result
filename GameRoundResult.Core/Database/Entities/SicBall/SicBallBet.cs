@@ -16,4 +16,14 @@ namespace GameRoundResult.Core.Database.Entities
         public decimal Specific6 { get; set; }
         public override decimal TotalBet => Big + Small + Specific1 + Specific2 + Specific3 + Specific4 + Specific5 + Specific6;
     }
+
+    [CollectionName("sicbonumber_bets")]
+    public class SicBoNumberBet : SicBallBet { }
+
+    [CollectionName("speedsicbonumber_bets")]
+    public class SpeedSicBoNumberBet : SicBallBet { }
+
+    [CollectionName("vipsicbonumber_bets")]
+    public class VIPSicBoNumberBet : SicBallBet { }
+
 }

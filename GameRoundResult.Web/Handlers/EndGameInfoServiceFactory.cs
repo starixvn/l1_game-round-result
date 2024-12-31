@@ -74,14 +74,7 @@ namespace GameRoundResult.Web.Services
             { GameType.ChineseBlackjack, typeof(BankingGameEndGameInfoService<ChineseBlackjackRound, ChineseBlackjackBet>) },
             { GameType.FootballDice, typeof(FootballDiceEndGameInfoService) },
             { GameType.FootballSlot, typeof(FootballSlotEndGameInfoService) },
-            { GameType.BacBall1, typeof(BacBall1EndGameInfoService) },
-            { GameType.BacBall2, typeof(BacBall2EndGameInfoService) },
-            { GameType.LuckyNext1, typeof(LuckyNext1EndGameInfoService) },
-            { GameType.LuckyNext2, typeof(LuckyNext2EndGameInfoService) },
             { GameType.CoinToss, typeof(CoinTossEndGameInfoService) },
-            { GameType.SeBall1, typeof(SeBall1EndGameInfoService) },
-            { GameType.LuckyThree, typeof(LuckyThreeEndGameInfoService) },
-            { GameType.SicBall, typeof(SicBallEndGameInfoService) },
             { GameType.FootballCoinToss, typeof(FootballCoinTossEndGameInfoService) },
             { GameType.Bac81, typeof(BaccaratXEndGameInfoService) },
             { GameType.Bac82, typeof(BaccaratXEndGameInfoService) },
@@ -102,6 +95,19 @@ namespace GameRoundResult.Web.Services
             { GameType.Bac100, typeof(BaccaratXEndGameInfoService) },
             { GameType.Bac101, typeof(BaccaratXEndGameInfoService) },
             { GameType.SevenUpDown, typeof(SevenUpDownEndGameInfoService) },
+
+            //xD
+            { GameType.BacBall1, typeof(BacBall1EndGameInfoService) },
+            { GameType.BacBall2, typeof(BacBall2EndGameInfoService) },
+            { GameType.LuckyNext1, typeof(LuckyNext1EndGameInfoService) },
+            { GameType.LuckyNext2, typeof(LuckyNext2EndGameInfoService) },
+            { GameType.SeBall1, typeof(SeBall1EndGameInfoService) },
+            { GameType.LuckyThree, typeof(LuckyThreeEndGameInfoService) },
+            { GameType.SicBall, typeof(SicBallEndGameInfoService) },
+            { GameType.BaccaratNumber, typeof(BaccaratNumberEndGameInfoService) },
+            { GameType.SpeedBaccaratNumber, typeof(SpeedBaccaratNumberEndGameInfoService) },
+            { GameType.VIPBaccaratNumber, typeof(VIPBaccaratNumberEndGameInfoService) },
+            //SK
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()
