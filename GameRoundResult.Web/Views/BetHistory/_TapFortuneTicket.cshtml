@@ -1,0 +1,65 @@
+﻿@using GameRoundResult.Core.Constants
+@using GameRoundResult.Web.SlotGames.ViewModels
+
+@model ClassicSlotTicketViewModel
+
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<ClassicSlotTicketViewModel> Localizer
+
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,Common,ClassicSlotTicketViewModel" id="tolgee_namespace" readonly hidden />
+}
+@if (Model.HasData)
+{
+    <table class="table table-bordered table-four-guardians">
+        <thead>
+            <tr>
+                <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+                <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
+                <th>@CommonLocalizer["BetAmount"]</th>
+                <th>@CommonLocalizer["Win"]</th>
+                <th>@CommonLocalizer["WinLoss"]</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>
+                    @Model.RoundResult.DisplayRoundDate
+                    <br />
+                    @Model.RoundResult.DisplayRoundTime
+                </td>
+                <td>
+                    @Model.RoundResult.RoundId
+                </td>
+                <td class="text-right">
+                    @Model.RoundResult.DisplayTotalAmount
+                </td>
+                <td class="text-right">
+                    @Model.RoundResult.DisplayTotalBetWin
+                </td>
+                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">
+                    @Model.DisplayWinLoss
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+}
+else
+{
+
+    <table class="table table-bordered table-four-guardians">
+        <tbody>
+
+            <tr>
+                <td colspan="5" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+}
