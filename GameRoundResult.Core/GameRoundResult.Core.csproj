@@ -12,6 +12,7 @@
   <ItemGroup>
     <PackageReference Include="IdentityModel" Version="4.6.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.28.0" />
   </ItemGroup>
 
