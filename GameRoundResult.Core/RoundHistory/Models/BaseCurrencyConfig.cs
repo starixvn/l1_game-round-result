@@ -10,12 +10,14 @@ namespace GameRoundResult.Core.RoundHistory.Models
             [SystemType.SC1] = 1,
             [SystemType.VG2] = 1000,
             [SystemType.GN] = 1,
+            [SystemType.HD] = 1,
         };
         public static Dictionary<string, string> CurrencyMapper = new Dictionary<string, string>
         {
             [SystemType.SC1] = "USD",
             [SystemType.VG2] = "INH",
             [SystemType.GN] = "USD",
+            [SystemType.HD] = "USD",
         };
     }
 }

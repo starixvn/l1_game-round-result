@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.Player;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 
 namespace GameRoundResult.Core.Database.Repository
@@ -20,9 +21,9 @@ namespace GameRoundResult.Core.Database.Repository
         private readonly IMongoCollection<RequestLog> ticketDetailLogCollection;
         private readonly IMongoCollection<SBLog> retrieveCollection;
 
-        public LogRepository(IMongoClient mongoClient)
+        public LogRepository(IMongoClient mongoClient, IConfiguration configuration)
         {
-            var database = mongoClient.GetDatabase("log");
+            var database = mongoClient.GetDatabase(configuration["DatabaseSettings:LogDatabaseName"] ?? "log");
             ticketDetailLogCollection = database.GetCollection<RequestLog>(TicketDetailLogCollectionName);
             retrieveCollection = database.GetCollection<SBLog>(RetrieveEndRoundCollectionName);
         }
