@@ -8,7 +8,7 @@ namespace GameRoundResult.Core.Extensions
         {
             if (operatorId == Operators.SabaPlay)
             {
-                return string.IsNullOrWhiteSpace(siteId) ? playerId : $"{siteId}~{playerId}";
+                return string.IsNullOrWhiteSpace(siteId) || playerId.Contains($"{siteId}~") ? playerId : $"{siteId}~{playerId}";
             }
 
             return playerId;
