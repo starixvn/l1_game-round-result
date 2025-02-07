@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using GameRoundResult.Core.Database.Entities.CoinMining;
+using GameRoundResult.Web.Configuration;
 
 namespace GameRoundResult.Web.Models.GameTicket
 {
+    [TolgeeNamespace("CoinMining")]
     public class CoinMiningTicketViewModel : GameTicketViewModel
     {
         public IEnumerable<CoinMiningBetLogViewModel> BetLogs { get; set; }
