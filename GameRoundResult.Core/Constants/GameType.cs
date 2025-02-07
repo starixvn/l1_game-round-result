@@ -90,6 +90,7 @@
         Bac101 = 101,
         SevenUpDown = 103,
         MarbleFootball = 104,
-        TapFortune = 107
+        TapFortune = 107,
+        CoinMining = 109
     }
 }

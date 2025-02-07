@@ -177,6 +177,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(SeDie3TicketAccessor<,,>));
             services.AddScoped(typeof(KaraKrusTicketAccessor<,,>));
             services.AddScoped(typeof(SevenUpDownTicketAccessor<,,>));
+            services.AddScoped(typeof(CoinMiningAccessor<,>));
             services.AddScoped(typeof(MarbleFootballTicketAccessor));
 
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Database.Entities.CoinMining;
 using GameRoundResult.Core.Database.Entities.KaraKrus;
 using GameRoundResult.Core.Database.Entities.SevenUpDown;
 using GameRoundResult.Web.CascadingSlotGames;
@@ -103,6 +104,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.Bac101, typeof(BaccaratXTicketAccessor) },
             { GameType.SevenUpDown, typeof(SevenUpDownTicketAccessor<SevenUpDownRound, SevenUpDownBet, SevenUpDownBetLog>) },
             { GameType.MarbleFootball, typeof(MarbleFootballTicketAccessor) },
+            { GameType.CoinMining, typeof(CoinMiningAccessor<CoinMiningBet, CoinMiningBetLog>) },
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()

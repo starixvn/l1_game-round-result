@@ -1,0 +1,53 @@
+﻿@using GameRoundResult.Web.Models.GameTicket
+@model CoinMiningTicketViewModel
+
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<CoinMiningTicketViewModel> Localizer
+
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,Common,RoundResultViewModel" id="tolgee_namespace" readonly hidden/>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
+            <th colspan="4">@CommonLocalizer["Crash Point"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Model.Bet.Time.ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture)
+                <br />
+                @Model.Bet.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+            </td>
+            <td>@Model.Bet.RoundId</td>
+            <td colspan="4">
+                @Model.GetMultiplier()
+            </td>
+        </tr>
+    </tbody>
+    <thead>
+        <tr>
+            <th>Mining Attempts</th>
+            <th>Result</th>
+            <th>Multiplier</th>
+            <th>Stake</th>
+            <th>Win</th>
+            <th>Win Loss</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Bet.TapCount</td>
+            <td>@CommonLocalizer[Model.GetResult()]</td>
+            <td>@Model.GetMultiplier()</td>
+            <td>@Model.Bet.Amount</td>
+            <td>@Model.Bet.Betwin</td>
+            <td>@Model.WinLoss</td>
+        </tr>
+    </tbody>
+</table>

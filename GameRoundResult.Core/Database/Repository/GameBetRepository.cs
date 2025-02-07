@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text;
 using System.Threading.Tasks;
 using GameRoundResult.Core._Share;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Database.Entities.CoinMining;
 using GameRoundResult.Core.Extensions;
 using MongoDB.Driver;
 
@@ -29,6 +31,10 @@ namespace GameRoundResult.Core.Database.Repository
         Task<(TRoundEntity, TBetEntity)> GetAsync<TRoundEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId, string gameName)
            where TRoundEntity : GameRound
            where TBetEntity : BaseBetEntity;
+
+        Task<(TOneEntity, IEnumerable<TBetEntity>)> GetBetAsync<TOneEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId, string gameName)
+           where TOneEntity : BaseBetCoinMiningEntity
+           where TBetEntity : BaseBetLogEntity;
     }
 
     public class GameBetRepository : IGameBetRepository
@@ -46,11 +52,27 @@ namespace GameRoundResult.Core.Database.Repository
             Expression<Func<T, bool>> defaultExpression = bet =>
 #pragma warning disable S1067 // Expressions should not be too complex
             bet.PlayerId == playerId 
-            && bet.RoundId == roundId 
-            && (!bet.FreeBet.HasValue || bet.FreeBet == freeBet) 
+            //&& bet.RoundId == roundId
+            //&& (!bet.FreeBet.HasValue || bet.FreeBet == freeBet) 
             && bet.OperatorId == operatorId;
 #pragma warning restore S1067 // Expressions should not be too complex
+            return await database
+                .GetCollection<T>(collectionName)
+                .Find(filter == null ? defaultExpression : defaultExpression.And(filter))
+                .SortByDescending(x => x.Id)
+                .ToListAsync();
+        }
 
+        protected async Task<IEnumerable<T>> GetBetsCoinmingAsync<T>(long roundId, string playerId, bool freeBet, string collectionName, string operatorId,
+           Expression<Func<T, bool>> filter = null) where T : BaseBetCoinMiningEntity
+        {
+            Expression<Func<T, bool>> defaultExpression = bet =>
+#pragma warning disable S1067 // Expressions should not be too complex
+            bet.PlayerId == playerId
+            //&& bet.RoundId == roundId
+            //&& (!bet.FreeBet.HasValue || bet.FreeBet == freeBet) 
+            && bet.OperatorId == operatorId;
+#pragma warning restore S1067 // Expressions should not be too complex
             return await database
                 .GetCollection<T>(collectionName)
                 .Find(filter == null ? defaultExpression : defaultExpression.And(filter))
@@ -123,6 +145,14 @@ namespace GameRoundResult.Core.Database.Repository
         protected virtual IMongoCollection<T> GetRoundCollection<T>(string name) where T : GameRound
            => database.GetCollection<T>(CollectionNameFormatter.Round(name));
 
-      
+        public virtual async Task<(TOneEntity, IEnumerable<TBetEntity>)> GetBetAsync<TOneEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId, string gameName)
+            where TOneEntity : BaseBetCoinMiningEntity
+            where TBetEntity : BaseBetLogEntity
+        {
+            var one = (await GetBetsCoinmingAsync<TOneEntity>(roundId, playerId, freeBet, CollectionNameFormatter.Round(gameName), operatorId)).FirstOrDefault();
+            var bets = await GetBetLogsAsync<TBetEntity>(roundId, playerId, CollectionNameFormatter.BetLog(gameName), operatorId);
+
+            return (one, bets);
+        }
     }
 }
