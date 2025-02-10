@@ -51,9 +51,9 @@ namespace GameRoundResult.Core.Database.Repository
         {
             Expression<Func<T, bool>> defaultExpression = bet =>
 #pragma warning disable S1067 // Expressions should not be too complex
-            bet.PlayerId == playerId 
-            //&& bet.RoundId == roundId
-            //&& (!bet.FreeBet.HasValue || bet.FreeBet == freeBet) 
+            bet.PlayerId == playerId
+            && bet.RoundId == roundId
+            && (!bet.FreeBet.HasValue || bet.FreeBet == freeBet)
             && bet.OperatorId == operatorId;
 #pragma warning restore S1067 // Expressions should not be too complex
             return await database
@@ -69,8 +69,8 @@ namespace GameRoundResult.Core.Database.Repository
             Expression<Func<T, bool>> defaultExpression = bet =>
 #pragma warning disable S1067 // Expressions should not be too complex
             bet.PlayerId == playerId
-            //&& bet.RoundId == roundId
-            //&& (!bet.FreeBet.HasValue || bet.FreeBet == freeBet) 
+            && bet.RoundId == roundId
+            && (!bet.FreeBet.HasValue || bet.FreeBet == freeBet)
             && bet.OperatorId == operatorId;
 #pragma warning restore S1067 // Expressions should not be too complex
             return await database
