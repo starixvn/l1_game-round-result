@@ -13,6 +13,10 @@
     .line-break {
         border-bottom: 4px solid var(--table-border-color);
     }
+
+    &.table-expand{
+        width: 115rem !important;
+    }
 }
 
 .main-container {
