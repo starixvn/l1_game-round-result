@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
+using System.Collections.Generic;
 
 namespace GameRoundResult.Core.Database.Entities.CoinMining
 {
@@ -30,6 +31,7 @@ namespace GameRoundResult.Core.Database.Entities.CoinMining
 
         public decimal Rate { get; set; }
         public decimal Multiplier { get; set; }
-        public decimal TapCount { get; set; }
+        public decimal Result { get; set; }
+        public long TapCount { get; set; }
     }
 }

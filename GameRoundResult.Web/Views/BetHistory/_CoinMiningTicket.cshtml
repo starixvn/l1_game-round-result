@@ -6,7 +6,7 @@
 
 @if (Model.EnableTolgee)
 {
-    <input value="GameTicketResultViewModel,Common,RoundResultViewModel" id="tolgee_namespace" readonly hidden/>
+    <input value="GameTicketResultViewModel,Common,CoinMining" id="tolgee_namespace" readonly hidden/>
 }
 
 <table class="table table-bordered">
@@ -26,24 +26,24 @@
             </td>
             <td>@Model.Bet.RoundId</td>
             <td colspan="4">
-                @Model.GetMultiplier()
+                @Model.GetCrashPoint()
             </td>
         </tr>
     </tbody>
     <thead>
         <tr>
-            <th>Mining Attempts</th>
-            <th>Result</th>
-            <th>Multiplier</th>
-            <th>Stake</th>
-            <th>Win</th>
-            <th>Win Loss</th>
+            <th>@Localizer["header_mining_attempts"]</th>
+            <th>@CommonLocalizer["result"]</th>
+            <th>@Localizer["header_multiplier"]</th>
+            <th>@CommonLocalizer["stake"]</th>
+            <th>@CommonLocalizer["win"]</th>
+            <th>@CommonLocalizer["win_loss"]</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>@Model.Bet.TapCount</td>
-            <td>@CommonLocalizer[Model.GetResult()]</td>
+            <td>@Localizer[Model.GetResult()]</td>
             <td>@Model.GetMultiplier()</td>
             <td>@Model.Bet.Amount</td>
             <td>@Model.Bet.Betwin</td>
