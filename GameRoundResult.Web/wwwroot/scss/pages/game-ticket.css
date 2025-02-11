@@ -19,6 +19,9 @@
 .main-container .table-baccaratx-bet {
   display: none;
 }
+.main-container .table-game-bet {
+  display: none;
+}
 .main-container .table-baccarat-fixed {
   table-layout: fixed;
 }
@@ -27,6 +30,10 @@
 }
 
 .table-baccaratx-bet-vertical tr td.title {
+  width: 17rem;
+}
+
+.table-game-bet-vertical tr td.title {
   width: 17rem;
 }
 
@@ -43,7 +50,13 @@
   .main-container .table-baccaratx-bet-vertical {
     display: none;
   }
+  .main-container .table-game-bet-vertical {
+    display: none;
+  }
   .main-container .table-baccaratx-bet {
+    display: table;
+  }
+  .main-container .table-game-bet {
     display: table;
   }
   .main-container .table {

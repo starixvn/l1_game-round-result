@@ -8,8 +8,7 @@
 {
     <input value="GameTicketResultViewModel,Common,CoinMining" id="tolgee_namespace" readonly hidden/>
 }
-
-<table class="table  table-bordered table-expand">
+<table class="table  table-bordered table-expand table-game-bet">
     <thead>
         <tr>
             <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
@@ -48,6 +47,72 @@
             <td>@Model.Bet.Amount</td>
             <td>@Model.Bet.Betwin</td>
             <td>@Model.WinLoss</td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table  table-bordered table-game-bet-vertical">
+    <thead>
+        <tr>
+            <th class="text-center title">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th class="text-center title">@CommonLocalizer["RoundId"]</th>
+            <th class="text-center title">@Localizer["header_crash_point"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-center title">
+                @Model.Bet.Time.ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture)
+                <br />
+                @Model.Bet.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+            </td>
+            <td class="text-center title">@Model.Bet.RoundId</td>
+            <td class="text-center title bold">
+                @Model.GetCrashPoint()
+            </td>
+        </tr>
+    </tbody>   
+    
+    <tbody>
+        <tr>
+            <td class="text-left bold" colspan="2">
+                @Localizer["header_mining_attempts"]
+            </td>
+            <td class="text-right">
+                @Model.Bet.TapCount
+            </td>
+        </tr>
+        <tr>
+            <td class="text-left bold" colspan="2">
+                @CommonLocalizer["result"]
+            </td>
+            <td class="text-right">@Localizer[Model.GetResult()]</td>
+        </tr>
+        <tr>
+            <td class="text-left bold" colspan="2">
+                @Localizer["header_multiplier"]
+            </td>
+            <td class="text-right">@Model.GetMultiplier()</td>
+        </tr>
+        <tr>
+            <td class="text-left bold" colspan="2">
+                @CommonLocalizer["stake"]
+            </td>
+            <td class="text-right">
+                @Model.Bet.Amount
+            </td>
+        </tr>
+        <tr>
+            <td class="text-left bold" colspan="2">
+                @CommonLocalizer["win"]
+            </td>
+            <td class="text-right">@Model.Bet.Betwin</td>
+        </tr>
+        <tr>
+            <td class="text-left bold" colspan="2">
+                @CommonLocalizer["win_loss"]
+            </td>
+            <td class="text-right">@Model.WinLoss</td>
         </tr>
     </tbody>
 </table>
