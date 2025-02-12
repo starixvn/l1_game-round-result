@@ -17,6 +17,8 @@ namespace GameRoundResult.Web.Models.GameTicket
 
         public string GetMultiplier() => Bet.Multiplier > 0 ? string.Format("{0:0.##}x", Bet.Multiplier) : "-";
         public string GetCrashPoint() => string.Format("{0:0.##}x", Bet.Result);
+        public override string WinLossRowClassName => WinLoss < 0 ? "text-red" : "bet-win-text";
+        public string CashOutClassName => WinLoss < 0 ? "" : "bet-win-text";
 
     }
 

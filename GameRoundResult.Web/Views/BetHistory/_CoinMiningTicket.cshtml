@@ -41,12 +41,12 @@
     </thead>
     <tbody>
         <tr>
-            <td>@Model.Bet.TapCount</td>
-            <td>@Localizer[Model.GetResult()]</td>
-            <td>@Model.GetMultiplier()</td>
-            <td>@Model.Bet.Amount</td>
-            <td>@Model.Bet.Betwin</td>
-            <td>@Model.WinLoss</td>
+            <td >@Model.Bet.TapCount</td>
+            <td class="@Model.WinLossRowClassName">@Localizer[Model.GetResult()]</td>
+            <td class="@Model.CashOutClassName">@Model.GetMultiplier()</td>
+            <td class="@Model.CashOutClassName">@Model.Bet.Amount</td>
+            <td class="@Model.CashOutClassName">@Model.Bet.Betwin</td>
+            <td class="@Model.WinLossRowClassName">@Model.WinLoss</td>
         </tr>
     </tbody>
 </table>
@@ -86,19 +86,19 @@
             <td class="text-left bold" colspan="2">
                 @CommonLocalizer["result"]
             </td>
-            <td class="text-right">@Localizer[Model.GetResult()]</td>
+            <td class="text-right @Model.WinLossRowClassName">@Localizer[Model.GetResult()]</td>
         </tr>
         <tr>
             <td class="text-left bold" colspan="2">
                 @Localizer["header_multiplier"]
             </td>
-            <td class="text-right">@Model.GetMultiplier()</td>
+            <td class="text-right @Model.CashOutClassName">@Model.GetMultiplier()</td>
         </tr>
         <tr>
             <td class="text-left bold" colspan="2">
                 @CommonLocalizer["stake"]
             </td>
-            <td class="text-right">
+            <td class="text-right @Model.CashOutClassName">
                 @Model.Bet.Amount
             </td>
         </tr>
@@ -106,13 +106,13 @@
             <td class="text-left bold" colspan="2">
                 @CommonLocalizer["win"]
             </td>
-            <td class="text-right">@Model.Bet.Betwin</td>
+            <td class="text-right @Model.CashOutClassName">@Model.Bet.Betwin</td>
         </tr>
         <tr>
             <td class="text-left bold" colspan="2">
                 @CommonLocalizer["win_loss"]
             </td>
-            <td class="text-right">@Model.WinLoss</td>
+            <td class="text-right @Model.WinLossRowClassName">@Model.WinLoss</td>
         </tr>
     </tbody>
 </table>
