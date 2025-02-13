@@ -12,7 +12,7 @@
     <thead>
         <tr>
             <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
-            <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
+            <th >@CommonLocalizer["RoundId"]</th>
             <th colspan="4">@Localizer["header_crash_point"]</th>
         </tr>
     </thead>
@@ -24,7 +24,7 @@
                 @Model.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
             </td>
             <td>@Model.Bet.RoundId</td>
-            <td colspan="4">
+            <td class="bold" colspan="4">
                 @Model.GetCrashPoint()
             </td>
         </tr>
@@ -44,9 +44,9 @@
             <td >@Model.Bet.TapCount</td>
             <td class="@Model.WinLossRowClassName">@Localizer[Model.GetResult()]</td>
             <td class="@Model.CashOutClassName">@Model.GetMultiplier()</td>
-            <td class="@Model.CashOutClassName">@Model.Bet.Amount</td>
-            <td class="@Model.CashOutClassName">@Model.Bet.Betwin</td>
-            <td class="@Model.WinLossRowClassName">@Model.WinLoss</td>
+            <td class="@Model.CashOutClassName">@Model.FormatNumber(Model.Bet.Amount)</td>
+            <td class="@Model.CashOutClassName">@Model.GetBetWin()</td>
+            <td class="@Model.WinLossRowClassName">@Model.FormatNumber(Model.WinLoss)</td>
         </tr>
     </tbody>
 </table>
@@ -99,7 +99,7 @@
                 @CommonLocalizer["stake"]
             </td>
             <td class="text-right @Model.CashOutClassName">
-                @Model.Bet.Amount
+                @Model.FormatNumber(Model.Bet.Amount)
             </td>
         </tr>
         <tr>
@@ -112,7 +112,7 @@
             <td class="text-left bold" colspan="2">
                 @CommonLocalizer["win_loss"]
             </td>
-            <td class="text-right @Model.WinLossRowClassName">@Model.WinLoss</td>
+            <td class="text-right @Model.WinLossRowClassName">@Model.FormatNumber(Model.WinLoss)</td>
         </tr>
     </tbody>
 </table>
