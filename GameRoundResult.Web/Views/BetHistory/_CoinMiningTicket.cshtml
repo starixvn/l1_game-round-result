@@ -45,7 +45,7 @@
             <td class="@Model.WinLossRowClassName">@Localizer[Model.GetResult()]</td>
             <td class="@Model.CashOutClassName">@Model.GetMultiplier()</td>
             <td class="@Model.CashOutClassName">@Model.FormatNumber(Model.Bet.Amount)</td>
-            <td class="@Model.CashOutClassName">@Model.GetBetWin()</td>
+            <td class="@Model.CashOutClassName">@Model.FormatNumber(Model.Bet.Betwin)</td>
             <td class="@Model.WinLossRowClassName">@Model.FormatNumber(Model.WinLoss)</td>
         </tr>
     </tbody>
@@ -106,7 +106,7 @@
             <td class="text-left bold" colspan="2">
                 @CommonLocalizer["win"]
             </td>
-            <td class="text-right @Model.CashOutClassName">@Model.GetBetWin()</td>
+            <td class="text-right @Model.CashOutClassName">@Model.FormatNumber(Model.Bet.Betwin)</td>
         </tr>
         <tr>
             <td class="text-left bold" colspan="2">

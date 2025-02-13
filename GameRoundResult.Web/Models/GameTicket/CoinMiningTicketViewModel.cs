@@ -18,8 +18,9 @@ namespace GameRoundResult.Web.Models.GameTicket
         public string GetResult() => Bet.Betwin > 0 ? "cash_out" : "crashed";
 
         public string GetMultiplier() => Bet.Multiplier > 0 ? $"{Bet.Multiplier.ToString("N2", CultureInfo.InvariantCulture)}x" : "-";
-        public string FormatNumber(decimal number) => number.ToString("N0", new CultureInfo("en-US"));
-        public string GetBetWin() => Bet.Betwin > 0 ? FormatNumber(Bet.Betwin) : "-";
+        public string FormatNumber(decimal number) => number % 1 == 0
+            ? number.ToString("N0", CultureInfo.InvariantCulture)
+            : number.ToString("0.##", CultureInfo.InvariantCulture);
         public string GetCrashPoint() => $"{Bet.Result.ToString("N2", CultureInfo.InvariantCulture)}x";
         public override string WinLossRowClassName => WinLoss < 0 ? "text-red" : "bet-win-text";
         public string CashOutClassName => WinLoss < 0 ? "" : "bet-win-text";
