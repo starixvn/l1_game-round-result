@@ -10,6 +10,7 @@ namespace GameRoundResult.Web.Models.GameTicket
     {
         public IEnumerable<CoinMiningBetLogViewModel> BetLogs { get; set; }
         public CoinMiningBet Bet { get; set; }
+        public DateTime Time { get; set; }
 
         public decimal WinLoss => Bet.Betwin - Bet.Amount;
 
@@ -17,6 +18,7 @@ namespace GameRoundResult.Web.Models.GameTicket
 
         public string GetMultiplier() => Bet.Multiplier > 0 ? string.Format("{0:0.##}x", Bet.Multiplier) : "-";
         public string GetCrashPoint() => string.Format("{0:0.##}x", Bet.Result);
+        public string GetBetWin() => Bet.Betwin > 0 ? Bet.Betwin.ToString() : "-";
         public override string WinLossRowClassName => WinLoss < 0 ? "text-red" : "bet-win-text";
         public string CashOutClassName => WinLoss < 0 ? "" : "bet-win-text";
 
