@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using GameRoundResult.Core.Database.Entities.CoinMining;
 using GameRoundResult.Web.Configuration;
+using Sentry.Protocol;
 
 namespace GameRoundResult.Web.Models.GameTicket
 {
@@ -22,6 +23,7 @@ namespace GameRoundResult.Web.Models.GameTicket
             ? number.ToString("N0", CultureInfo.InvariantCulture)
             : number.ToString("0.##", CultureInfo.InvariantCulture);
         public string GetCrashPoint() => $"{Bet.Result.ToString("N2", CultureInfo.InvariantCulture)}x";
+        public DateTime GetBetTime() => Bet.Time.AddHours(TimeZoneOffset.TotalHours);
         public override string WinLossRowClassName => WinLoss < 0 ? "text-red" : "bet-win-text";
         public string CashOutClassName => WinLoss < 0 ? "" : "bet-win-text";
 

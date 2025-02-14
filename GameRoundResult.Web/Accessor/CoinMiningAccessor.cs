@@ -36,9 +36,7 @@ namespace GameRoundResult.Web.Accessor
 
             return new CoinMiningTicketViewModel
             {
-                Bet = result.Item1,
-                Time = result.Item1.Time.AddHours(request.TimeZoneOffset.TotalHours),
-                BetLogs = result.Item2.Select(x => x.ToBetLogViewModel<TBetEntity, CoinMiningBetLogViewModel>(mapper, request.TimeZoneOffset))
+                Bet = result.Item1
             };
         }
 

@@ -17,17 +17,28 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>
-                @Model.Time.ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture)
-                <br />
-                @Model.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
-            </td>
-            <td>@Model.Bet.RoundId</td>
-            <td class="bold" colspan="4">
-                @Model.GetCrashPoint()
-            </td>
-        </tr>
+        @if (@Model.Bet != null)
+        {
+            <tr>
+                <td>
+                    @Model.GetBetTime().ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture)
+                    <br />
+                    @Model.GetBetTime().ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@Model.Bet.RoundId</td>
+                <td class="bold" colspan="4">
+                    @Model.GetCrashPoint()
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
     </tbody>
     <thead>
         <tr>
@@ -40,14 +51,25 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td >@Model.Bet.TapCount</td>
-            <td class="@Model.WinLossRowClassName">@Localizer[Model.GetResult()]</td>
-            <td class="@Model.CashOutClassName">@Model.GetMultiplier()</td>
-            <td class="@Model.CashOutClassName">@Model.FormatNumber(Model.Bet.Amount)</td>
-            <td class="@Model.CashOutClassName">@Model.FormatNumber(Model.Bet.Betwin)</td>
-            <td class="@Model.WinLossRowClassName">@Model.FormatNumber(Model.WinLoss)</td>
-        </tr>
+        @if (@Model.Bet != null)
+        {
+            <tr>
+                <td>@Model.Bet.TapCount</td>
+                <td class="@Model.WinLossRowClassName">@Localizer[Model.GetResult()]</td>
+                <td class="@Model.CashOutClassName">@Model.GetMultiplier()</td>
+                <td class="@Model.CashOutClassName">@Model.FormatNumber(Model.Bet.Amount)</td>
+                <td class="@Model.CashOutClassName">@Model.FormatNumber(Model.Bet.Betwin)</td>
+                <td class="@Model.WinLossRowClassName">@Model.FormatNumber(Model.WinLoss)</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
@@ -60,59 +82,86 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td class="text-center title">
-                @Model.Bet.Time.ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture)
-                <br />
-                @Model.Bet.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
-            </td>
-            <td class="text-center title">@Model.Bet.RoundId</td>
-            <td class="text-center title bold">
-                @Model.GetCrashPoint()
-            </td>
-        </tr>
+        @if (@Model.Bet != null)
+        {
+            <tr>
+                <td class="text-center title">
+                    @Model.GetBetTime().ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture)
+                    <br />
+                    @Model.GetBetTime().ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td class="text-center title">@Model.Bet.RoundId</td>
+                <td class="text-center title bold">
+                    @Model.GetCrashPoint()
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }       
     </tbody>   
     
     <tbody>
-        <tr>
-            <td class="text-left bold" colspan="2">
-                @Localizer["header_mining_attempts"]
-            </td>
-            <td class="text-right">
-                @Model.Bet.TapCount
-            </td>
-        </tr>
-        <tr>
-            <td class="text-left bold" colspan="2">
-                @CommonLocalizer["result"]
-            </td>
-            <td class="text-right @Model.WinLossRowClassName">@Localizer[Model.GetResult()]</td>
-        </tr>
-        <tr>
-            <td class="text-left bold" colspan="2">
-                @Localizer["header_multiplier"]
-            </td>
-            <td class="text-right @Model.CashOutClassName">@Model.GetMultiplier()</td>
-        </tr>
-        <tr>
-            <td class="text-left bold" colspan="2">
-                @CommonLocalizer["stake"]
-            </td>
-            <td class="text-right @Model.CashOutClassName">
-                @Model.FormatNumber(Model.Bet.Amount)
-            </td>
-        </tr>
-        <tr>
-            <td class="text-left bold" colspan="2">
-                @CommonLocalizer["win"]
-            </td>
-            <td class="text-right @Model.CashOutClassName">@Model.FormatNumber(Model.Bet.Betwin)</td>
-        </tr>
-        <tr>
-            <td class="text-left bold" colspan="2">
-                @CommonLocalizer["win_loss"]
-            </td>
-            <td class="text-right @Model.WinLossRowClassName">@Model.FormatNumber(Model.WinLoss)</td>
-        </tr>
+        @if (@Model.Bet != null)
+        {
+            <tr>
+                <td class="text-left bold" colspan="2">
+                    @Localizer["header_mining_attempts"]
+                </td>
+                <td class="text-right">
+                    @Model.Bet.TapCount
+                </td>
+            </tr>
+            <tr>
+                <td class="text-left bold" colspan="2">
+                    @CommonLocalizer["result"]
+                </td>
+                <td class="text-right @Model.WinLossRowClassName">@Localizer[Model.GetResult()]</td>
+            </tr>
+            <tr>
+                <td class="text-left bold" colspan="2">
+                    @Localizer["header_multiplier"]
+                </td>
+                <td class="text-right @Model.CashOutClassName">@Model.GetMultiplier()</td>
+            </tr>
+            <tr>
+                <td class="text-left bold" colspan="2">
+                    @CommonLocalizer["stake"]
+                </td>
+                <td class="text-right @Model.CashOutClassName">
+                    @Model.FormatNumber(Model.Bet.Amount)
+                </td>
+            </tr>
+            <tr>
+                <td class="text-left bold" colspan="2">
+                    @CommonLocalizer["win"]
+                </td>
+                <td class="text-right @Model.CashOutClassName">@Model.FormatNumber(Model.Bet.Betwin)</td>
+            </tr>
+            <tr>
+                <td class="text-left bold" colspan="2">
+                    @CommonLocalizer["win_loss"]
+                </td>
+                <td class="text-right @Model.WinLossRowClassName">@Model.FormatNumber(Model.WinLoss)</td>
+            </tr>
+        }       
+    </tbody>
+</table>
+
+<table class="table  table-bordered table-game-bet-vertical">
+    <tbody>
+        @if (@Model.Bet == null)
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
