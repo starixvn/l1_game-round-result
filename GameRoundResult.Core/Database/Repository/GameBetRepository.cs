@@ -70,7 +70,7 @@ namespace GameRoundResult.Core.Database.Repository
 #pragma warning disable S1067 // Expressions should not be too complex
             bet.PlayerId == playerId
             && bet.RoundId == roundId
-            && (!bet.FreeBet.HasValue || bet.FreeBet == freeBet)
+            && bet.Paid && (!bet.FreeBet.HasValue || bet.FreeBet == freeBet)
             && bet.OperatorId == operatorId;
 #pragma warning restore S1067 // Expressions should not be too complex
             return await database
