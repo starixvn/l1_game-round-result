@@ -11,6 +11,10 @@ namespace GameRoundResult.Web.Configuration
 
         public Uri GetDomain(string operatorId)
         {
+            if (string.IsNullOrEmpty(operatorId))
+            {
+                return Domain;
+            }
             var operatorDomain = Domain;
             if (OperatorsDomain?.TryGetValue(operatorId, out operatorDomain) == true)
             {
