@@ -38,7 +38,7 @@ namespace GameRoundResult.Core.Services
             var gameEntities = await generalGameSettingRepository.GetAll();
             var gameInfo = gameEntities.FirstOrDefault(x => x.GameId == gameId);
 
-            return gameInfo?.Type == (byte)GameConfigsType.Crash;
+            return gameInfo?.Type == (byte)GameConfigsType.Crash || gameInfo?.Type == (byte)GameConfigsType.CrashTurnBase;
         }
     }
 }
