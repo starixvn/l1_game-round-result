@@ -58,7 +58,11 @@
                 <td class="@Model.WinLossRowClassName">@Localizer[Model.GetResult()]</td>
                 <td class="@Model.CashOutClassName">@Model.GetMultiplier()</td>
                 <td class="@Model.CashOutClassName">@Model.FormatNumber(Model.Bet.Amount)</td>
-                <td class="@Model.CashOutClassName">@Model.FormatNumber(Model.Bet.Betwin)</td>
+                <td>
+                    <span class="@Model.CashOutClassName">@Model.FormatNumber(Model.Bet.Betwin)</span>
+                    <br />
+                    <span class="text-red">@(Model.IsReachMaxWin() ? Localizer["reached_max_win"] : "")</span>
+                </td>
                 <td class="@Model.WinLossRowClassName">@Model.FormatNumber(Model.WinLoss)</td>
             </tr>
         }
@@ -141,7 +145,11 @@
                 <td class="text-left bold" colspan="2">
                     @CommonLocalizer["win"]
                 </td>
-                <td class="text-right @Model.CashOutClassName">@Model.FormatNumber(Model.Bet.Betwin)</td>
+                <td class="text-right @Model.CashOutClassName">
+                    <span class="@Model.CashOutClassName">@Model.FormatNumber(Model.Bet.Betwin) </span>
+                    <br />
+                    <span class="text-red">@(Model.IsReachMaxWin() ? CommonLocalizer["reached_max_win"] : "")</span>
+                </td>
             </tr>
             <tr>
                 <td class="text-left bold" colspan="2">
