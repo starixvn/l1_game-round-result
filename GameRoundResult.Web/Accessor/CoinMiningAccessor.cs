@@ -15,7 +15,7 @@ using MongoDB.Driver.Linq;
 namespace GameRoundResult.Web.Accessor
 {
     public class CoinMiningAccessor<TOneEntity, TBetEntity> : IGameTicketAccessor
-        where TOneEntity : CoinMiningBet
+        where TOneEntity : CoinMiningRound
         where TBetEntity : CoinMiningBetLog
 
     {

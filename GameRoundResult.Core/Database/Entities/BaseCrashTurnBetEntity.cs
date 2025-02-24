@@ -1,10 +1,9 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
-using System.Collections.Generic;
 
-namespace GameRoundResult.Core.Database.Entities.CoinMining
+namespace GameRoundResult.Core.Database.Entities
 {
-    public class BaseBetCoinMiningEntity : Document
+    public class BaseCrashTurnBetEntity : Document
     {
         public bool Paid { get; set; }
 
@@ -34,6 +33,6 @@ namespace GameRoundResult.Core.Database.Entities.CoinMining
         public decimal Result { get; set; }
         public long TapCount { get; set; }
 
-        public bool? ReachMaxWin {  get; set; }
+        public bool? ReachMaxWin { get; set; }
     }
 }

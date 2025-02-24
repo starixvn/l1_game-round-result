@@ -1,13 +1,10 @@
 ﻿using GameRoundResult.Core._Share;
-using GameRoundResult.Core.Database.Entities.RoundHistory;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
 
 namespace GameRoundResult.Core.Database.Entities.CoinMining
 {
 
     [CollectionName("coinmining_rounds")]
-    public class CoinMiningBet : BaseBetCoinMiningEntity
+    public class CoinMiningRound : BaseCrashTurnBetEntity
     {
         public string UserId { get; set; }
 
@@ -18,8 +15,5 @@ namespace GameRoundResult.Core.Database.Entities.CoinMining
         public string OperatorName { get; set; }
 
         public decimal Amount { get; set; }
-
-        public long DrawId { get; set; }
-
     }
 }

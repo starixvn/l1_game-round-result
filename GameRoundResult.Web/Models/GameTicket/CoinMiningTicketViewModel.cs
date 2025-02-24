@@ -11,7 +11,7 @@ namespace GameRoundResult.Web.Models.GameTicket
     public class CoinMiningTicketViewModel : GameTicketViewModel
     {
         public IEnumerable<CoinMiningBetLogViewModel> BetLogs { get; set; }
-        public CoinMiningBet Bet { get; set; }
+        public CoinMiningRound Bet { get; set; }
         public DateTime Time { get; set; }
 
         public decimal WinLoss => Bet.Betwin - Bet.Amount;
