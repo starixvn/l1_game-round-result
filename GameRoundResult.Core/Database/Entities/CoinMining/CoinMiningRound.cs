@@ -4,7 +4,7 @@ namespace GameRoundResult.Core.Database.Entities.CoinMining
 {
 
     [CollectionName("coinmining_rounds")]
-    public class CoinMiningRound : BaseCrashTurnBetEntity
+    public class CoinMiningRound : BaseCrashTurnRoundEntity
     {
         public string UserId { get; set; }
 
@@ -14,6 +14,5 @@ namespace GameRoundResult.Core.Database.Entities.CoinMining
 
         public string OperatorName { get; set; }
 
-        public decimal Amount { get; set; }
     }
 }

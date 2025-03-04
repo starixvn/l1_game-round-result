@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.CoinMining;
 using GameRoundResult.Web.Configuration;
 using Sentry.Protocol;
@@ -11,10 +12,10 @@ namespace GameRoundResult.Web.Models.GameTicket
     public class CoinMiningTicketViewModel : GameTicketViewModel
     {
         public IEnumerable<CoinMiningBetLogViewModel> BetLogs { get; set; }
-        public CoinMiningRound Bet { get; set; }
+        public BaseCrashTurnRoundEntity Bet { get; set; }
         public DateTime Time { get; set; }
 
-        public decimal WinLoss => Bet.Betwin - Bet.Amount;
+        public new decimal WinLoss => Bet.Betwin - Bet.Amount;
 
         public string GetResult() => Bet.Betwin > 0 ? "cash_out" : "crashed";
 

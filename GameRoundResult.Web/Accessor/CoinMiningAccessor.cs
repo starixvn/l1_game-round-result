@@ -11,6 +11,8 @@ using System.Linq;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.CoinMining;
 using MongoDB.Driver.Linq;
+using GameRoundResult.Core.Database.Repository;
+using System.Collections.Generic;
 
 namespace GameRoundResult.Web.Accessor
 {
@@ -19,12 +21,15 @@ namespace GameRoundResult.Web.Accessor
         where TBetEntity : CoinMiningBetLog
 
     {
-        private readonly IGameBetService gameBetService;
+        private readonly ICrashTurnGameBetRepository gameBetService;
+
+
         private readonly IMapper mapper;
         private readonly ICurrencyGroupService currencyGroupService;
 
-        public CoinMiningAccessor(IGameBetService gameBetService, IMapper mapper, ICurrencyGroupService currencyGroupService)
+        public CoinMiningAccessor(ICrashTurnGameBetRepository gameBetService, IMapper mapper, ICurrencyGroupService currencyGroupService)
         {
+
             this.gameBetService = gameBetService;
             this.mapper = mapper;
             this.currencyGroupService = currencyGroupService;
@@ -32,7 +37,7 @@ namespace GameRoundResult.Web.Accessor
 
         public async Task<GameTicketViewModel> GetAsync(GetGameTicketRequest request)
         {
-            var result = await gameBetService.GetBetAsync<TOneEntity, TBetEntity>(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId, request.GameConfigs.Name);
+            var result = await gameBetService.GetBetAsync(request.RoundId, request.PlayerId, request.FreeBet, request.OperatorId, request.GameConfigs.Name);
 
             return new CoinMiningTicketViewModel
             {

@@ -32,7 +32,7 @@ namespace GameRoundResult.Core.Database.Repository
            where TBetEntity : BaseBetEntity;
 
         Task<(TOneEntity, IEnumerable<TBetEntity>)> GetBetAsync<TOneEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId, string gameName)
-           where TOneEntity : BaseCrashTurnBetEntity
+           where TOneEntity : BaseCrashTurnRoundEntity
            where TBetEntity : BaseBetLogEntity;
     }
 
@@ -62,8 +62,8 @@ namespace GameRoundResult.Core.Database.Repository
                 .ToListAsync();
         }
 
-        protected async Task<IEnumerable<T>> GetCrashTurnBetsAsync<T>(long roundId, string playerId, bool freeBet, string collectionName, string operatorId,
-           Expression<Func<T, bool>> filter = null) where T : BaseCrashTurnBetEntity
+        protected async Task<IEnumerable<T>> GetCrashTurnRoundAsync<T>(long roundId, string playerId, bool freeBet, string collectionName, string operatorId,
+           Expression<Func<T, bool>> filter = null) where T : BaseCrashTurnRoundEntity
         {
             Expression<Func<T, bool>> defaultExpression = bet =>
 #pragma warning disable S1067 // Expressions should not be too complex
@@ -145,10 +145,10 @@ namespace GameRoundResult.Core.Database.Repository
            => database.GetCollection<T>(CollectionNameFormatter.Round(name));
 
         public virtual async Task<(TOneEntity, IEnumerable<TBetEntity>)> GetBetAsync<TOneEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId, string gameName)
-            where TOneEntity : BaseCrashTurnBetEntity
+            where TOneEntity : BaseCrashTurnRoundEntity
             where TBetEntity : BaseBetLogEntity
         {
-            var one = (await GetCrashTurnBetsAsync<TOneEntity>(roundId, playerId, freeBet, CollectionNameFormatter.Round(gameName), operatorId)).FirstOrDefault();
+            var one = (await GetCrashTurnRoundAsync<TOneEntity>(roundId, playerId, freeBet, CollectionNameFormatter.Round(gameName), operatorId)).FirstOrDefault();
             var bets = await GetBetLogsAsync<TBetEntity>(roundId, playerId, CollectionNameFormatter.BetLog(gameName), operatorId);
 
             return (one, bets);

@@ -3,7 +3,7 @@ using MongoDB.Bson;
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    public class BaseCrashTurnBetEntity : Document
+    public class BaseCrashTurnRoundEntity : Document
     {
         public bool Paid { get; set; }
 
@@ -34,5 +34,7 @@ namespace GameRoundResult.Core.Database.Entities
         public long TapCount { get; set; }
 
         public bool? ReachMaxWin { get; set; }
+
+        public decimal Amount { get; set; }
     }
 }
