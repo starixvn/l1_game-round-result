@@ -28,6 +28,7 @@ namespace GameRoundResult.Core.Services
             var filteredGames = gameEntities
                 .Where(x => x.Type != (byte)GameConfigsType.Slot &&
                  x.Type != (byte)GameConfigsType.CascadingSlot &&
+                 x.Type != (byte)GameConfigsType.CrashTurnBase &&
                  x.GameId > 0);
 
             return filteredGames;
@@ -38,7 +39,7 @@ namespace GameRoundResult.Core.Services
             var gameEntities = await generalGameSettingRepository.GetAll();
             var gameInfo = gameEntities.FirstOrDefault(x => x.GameId == gameId);
 
-            return gameInfo?.Type == (byte)GameConfigsType.Crash || gameInfo?.Type == (byte)GameConfigsType.CrashTurnBase;
+            return gameInfo?.Type == (byte)GameConfigsType.Crash;
         }
     }
 }
