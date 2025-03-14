@@ -21,6 +21,8 @@ namespace GameRoundResult.Core.Database.Entities
 
         public string Action { get; set; }
 
+        public string ClientSeed { get; set; }
+
         public bool ReachMaxWin { get; set; }
     }
 
