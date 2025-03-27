@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using GameRoundResult.Core.Constants;
+using GameRoundResult.Core.Extensions;
 using MediatR;
 
 namespace GameRoundResult.Web.Models
@@ -54,7 +56,8 @@ namespace GameRoundResult.Web.Models
         public long GameRoundId { get; set; }
 
         [Required]
-        public string PlayerId { get; set; }
+        [JsonConverter(typeof(PlayerIdConverter))]
+        public object PlayerId { get; set; }
 
         public string SiteId { get; set; }
 
