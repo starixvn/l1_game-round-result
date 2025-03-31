@@ -120,7 +120,14 @@
             </tr>
             <tr class="total">
                 <td colspan="@(Model.HasTwoHand ? "3" : "4")" class="bold text-right">@CommonLocalizer["WinLoss"]</td>
-                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.DisplayWinLoss</td>
+                @if (Model.HasTwoHand)
+                {
+                    <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : "text-blue")">@Model.DisplayWinLoss</td>
+                }
+                else
+                {
+                    <td class="bold text-right @(Model.WinLossRowClassName)">@Model.DisplayWinLoss</td>
+                }
             </tr>
         }
         else

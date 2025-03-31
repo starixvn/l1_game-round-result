@@ -43,7 +43,7 @@ namespace GameRoundResult.Web.CrashGames.Handlers
 
             if (bet != null)
             {
-                viewModel.TotalBet = bet.Amount;
+                viewModel.TotalBet = bet.TotalAmount;
                 viewModel.BetWin = bet.Betwin;
             }
 

@@ -23,12 +23,12 @@ namespace GameRoundResult.Web.CrashGames
             {
                 return EndRoundInfoError.SB1001;
             }
-
+            
             return new EndRoundInfoResult
             {
                 EndTime = round.Time,
-                ValidBetAmount = bet.Amount,
-                TotalAmount = bet.Amount,
+                ValidBetAmount = bet.TotalAmount,
+                TotalAmount = bet.TotalAmount,
                 TotalWin = bet.Betwin
             };
         }
