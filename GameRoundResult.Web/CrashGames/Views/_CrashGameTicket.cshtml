@@ -64,13 +64,18 @@
                 {
                     if (betLog.Action != CrashGameAction.Bet)
                     {
+                        var acceptBet = Model.BetLogs.First(b => b.BetKey == betLog.BetKey && b.Action == CrashGameAction.Bet);
                         <tr>
                             <td>
-                                @betLog.DateDisplay
+                                @acceptBet.DateDisplay
                                 <br />
-                                @betLog.TimeDisplay
+                                @acceptBet.TimeDisplay
                             </td>
                             @if (betLog.Action == CrashGameAction.Crash)
+                            {
+                                <td>-</td>
+                            }
+                            else if (betLog.Action == CrashGameAction.Refund)
                             {
                                 <td>@Localizer[CrashGameTolgeeAction.Actions[betLog.Action]]</td>
                             }
