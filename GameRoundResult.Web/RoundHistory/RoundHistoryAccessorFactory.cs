@@ -48,6 +48,7 @@ namespace GameRoundResult.Web.RoundHistory
             { GameType.Bac101, typeof(RoundHistoryAccessor<BaccaratXRound, BaccaratXRoundResultViewModel, BaccaratXBet, RoundHistoryBetViewModel>) },
             { GameType.SevenUpDown, typeof(RoundHistoryAccessor<SevenUpDownRound, SevenUpDownRoundResultViewModel, SevenUpDownBet, RoundHistoryBetViewModel>) },
             { GameType.MarbleFootball, typeof(RoundHistoryAccessor<MarbleFootballRound, MarbleFootballRoundResultViewModel, MarbleFootballBet, RoundHistoryBetViewModel>) },
+            { GameType.MarbleFootball2, typeof(RoundHistoryAccessor<MarbleFootball2Round, MarbleFootball2RoundResultViewModel, MarbleFootball2Bet, RoundHistoryBetViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;

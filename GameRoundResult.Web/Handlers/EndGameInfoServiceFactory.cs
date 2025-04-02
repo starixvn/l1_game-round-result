@@ -98,6 +98,7 @@ namespace GameRoundResult.Web.Services
             { GameType.SeDie3, typeof(SeDie3EndGameInfoService) },
             { GameType.KaraKrus, typeof(KaraKrusEndGameInfoService) },
             { GameType.MarbleFootball, typeof(MarbleFootballEndGameInfoService) },
+            { GameType.MarbleFootball2, typeof(MarbleFootball2EndGameInfoService) },
             { GameType.Bac97, typeof(BaccaratXEndGameInfoService) },
             { GameType.Bac98, typeof(BaccaratXEndGameInfoService) },
             { GameType.Bac100, typeof(BaccaratXEndGameInfoService) },

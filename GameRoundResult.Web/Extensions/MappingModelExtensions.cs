@@ -430,5 +430,13 @@ namespace GameRoundResult.Web.Extensions
                 opts.AfterMap((source, dest) => dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours));
             });
         }
+
+        public static BetLogViewModel ToViewModel(this MarbleFootball2BetLog entity, IMapper mapper, TimeSpan timeZoneOffset)
+        {
+            return mapper.Map<MarbleFootball2BetLog, BetLogViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours));
+            });
+        }   
     }
 }

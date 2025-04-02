@@ -182,7 +182,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(KaraKrusTicketAccessor<,,>));
             services.AddScoped(typeof(SevenUpDownTicketAccessor<,,>));
             services.AddScoped(typeof(MarbleFootballTicketAccessor));
-
+            services.AddScoped(typeof(MarbleFootball2TicketAccessor));
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
             services.AddScoped<IGameDrawTypeFactory, GameDrawTypeFactory>();
@@ -254,7 +254,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<KaraKrusEndGameInfoService>();
             services.AddScoped<SevenUpDownEndGameInfoService>();
             services.AddScoped<MarbleFootballEndGameInfoService>();
-
+            services.AddScoped<MarbleFootball2EndGameInfoService>();
 
             services.AddScoped<IRoundHistoryRepository, RoundHistoryRepository>();
             services.AddScoped<IRoundHistoryService, RoundHistoryService>();

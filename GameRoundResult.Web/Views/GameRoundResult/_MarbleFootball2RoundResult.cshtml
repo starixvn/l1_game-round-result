@@ -1,0 +1,21 @@
+﻿@inject IJsonStringLocalizer<RoundResultViewModel> Localizer
+
+<table class="table table-bordered sticky-table" style="width:100%">
+	<thead>
+		<tr>
+			<th class="col-date">@Localizer["Date"]</th>
+			<th>@Localizer["Round"]</th>
+			<th>
+				@Localizer["Result"] <br />
+				<span class="marble-football-result-container">
+
+					<span class="marble-football-result marble-football-home">(@Localizer.GetStringWithNamcespace("glossary_home", "MarbleFootball")</span>
+					<span class="marble-football-divider">|</span>
+					<span class="marble-football-result marble-football-away">@Localizer.GetStringWithNamcespace("glossary_away", "MarbleFootball"))</span>
+				</span>
+			<th>@Localizer["WinningOptions"]</th>
+		</tr>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
