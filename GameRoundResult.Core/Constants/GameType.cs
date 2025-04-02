@@ -91,6 +91,7 @@
         SevenUpDown = 103,
         MarbleFootball = 104,
         TapFortune = 107,
-        CoinMining = 109
+        CoinMining = 109,
+        MarbleFootball2 = 114
     }
 }
