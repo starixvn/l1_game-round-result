@@ -175,8 +175,10 @@ namespace GameRoundResult.Web.Controllers
 
         private async Task<GameTicketViewModel> GetGameTicket(GameType gameType, long roundId, string playerId, string operatorId, bool freeBet, int? timeZoneOffset)
         {
+            var defaultTimeZone = "SA Western Standard Time";
             var config = operatorConfigs.FirstOrDefault(x => x.OperatorId == operatorId);
-            var offset = timeZoneOffset.HasValue ? TimeSpan.FromHours(timeZoneOffset.Value) : TZConvert.GetTimeZoneInfo(config.TimeZone).BaseUtcOffset;
+            var timeZone = string.IsNullOrEmpty(config?.TimeZone) ? defaultTimeZone : config.TimeZone;
+            var offset = timeZoneOffset.HasValue ? TimeSpan.FromHours(timeZoneOffset.Value) : TZConvert.GetTimeZoneInfo(timeZone).BaseUtcOffset;
             var result = await mediator.Send(new GetGameTicketRequest(gameType, roundId, playerId, offset,
                 operatorId, freeBet, systemType));
 
