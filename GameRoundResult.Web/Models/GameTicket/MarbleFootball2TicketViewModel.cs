@@ -40,7 +40,7 @@ namespace GameRoundResult.Web.Models
 
         public decimal GetOdds(string choice)
         {
-            return Odds[choice];
+            return Odds.ContainsKey(choice) ? Odds[choice] : 0;
         }
 
         public decimal GetBetLogWin(MarbleFootball2BetLogViewModel bet)
