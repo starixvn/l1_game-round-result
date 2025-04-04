@@ -27,6 +27,13 @@ namespace GameRoundResult.Web.Models
                 "under" => RoundResult.SettlementResult.Under,
                 "odd" => RoundResult.SettlementResult.Odd,
                 "even" => RoundResult.SettlementResult.Even,
+                "homelive" => RoundResult.SettlementResult.Home,
+                "awaylive" => RoundResult.SettlementResult.Away,
+                "drawlive" => RoundResult.SettlementResult.Draw,
+                "overlive" => RoundResult.SettlementResult.Over,
+                "underlive" => RoundResult.SettlementResult.Under,
+                "oddlive" => RoundResult.SettlementResult.Odd,
+                "evenlive" => RoundResult.SettlementResult.Even,
                 _ => false,
             };
         }
