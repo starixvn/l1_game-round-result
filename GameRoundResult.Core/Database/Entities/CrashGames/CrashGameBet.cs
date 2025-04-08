@@ -8,6 +8,7 @@ namespace GameRoundResult.Core.Database.Entities
     {
         [BsonRepresentation(BsonType.Decimal128, AllowTruncation = true)]
         public decimal TotalAmount { get; set; }
+        public string ClientSeed { get; set; }
     }
 
     [CollectionName("spaceflight_bets")]

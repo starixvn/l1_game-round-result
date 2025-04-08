@@ -45,6 +45,7 @@ namespace GameRoundResult.Web.CrashGames.Handlers
             {
                 viewModel.TotalBet = bet.TotalAmount;
                 viewModel.BetWin = bet.Betwin;
+                viewModel.ClientSeed = bet.ClientSeed;
             }
 
             return viewModel;
