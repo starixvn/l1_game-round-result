@@ -16,8 +16,7 @@ namespace GameRoundResult.Web.CrashGames.ViewModels
         public bool HasCashOut => BetLogs.Any(x => x.Action == CrashGameAction.CashOut);
         public bool HasRefund => BetLogs.Any(x => x.Action == CrashGameAction.Refund);
         public bool ReachMaxWin => BetLogs.Any(x => x.ReachMaxWin);
-        public string ClientSeed { get; set; }
 
-        public bool HasTwoHand => BetLogs.Any(x => !string.IsNullOrWhiteSpace(ClientSeed));
+        public bool HasTwoHand => BetLogs.Any(x => x.BetKey != null);
     }
 }
