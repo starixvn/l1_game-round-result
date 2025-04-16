@@ -7,162 +7,172 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GameRoundResult.Web.Models
 {
-	public class MarbleFootball2RoundResultViewModel : RoundResultViewModel
-	{
-		private const string tolgeeNameSpace = "MarbleFootball2";
-		public MarbleFootball2ResultEntity Result { get; set; }
+    public class MarbleFootball2RoundResultViewModel : RoundResultViewModel
+    {
+        private const string tolgeeNameSpace = "MarbleFootball2";
+        private const string tolgeeTeamName = "MarbleFootball";
 
-		public MarbleFootball2SettlementResultEntity SettlementResult { get; set; }
+        public MarbleFootball2ResultEntity Result { get; set; }
 
-		public MarbleFootball2MatchEntity Match { get; set; }
+        public MarbleFootball2SettlementResultEntity SettlementResult { get; set; }
 
-		public override IEnumerable<string> ToDataTableArray(
-			IJsonStringLocalizer<RoundResultViewModel> stringLocalizer
-		)
-		{
-			var result = new List<string>(base.ToDataTableArray(stringLocalizer))
-			{
-				$"{GetFormattedResult(stringLocalizer)}",
-				$"{GetWinningTextResult(stringLocalizer)}",
-			};
+        public MarbleFootball2MatchEntity Match { get; set; }
 
-			return result;
-		}
+        public override IEnumerable<string> ToDataTableArray(
+            IJsonStringLocalizer<RoundResultViewModel> stringLocalizer
+        )
+        {
+            var result = new List<string>(base.ToDataTableArray(stringLocalizer))
+            {
+                $"{GetFormattedResult(stringLocalizer)}",
+                $"{GetWinningTextResult(stringLocalizer)}",
+            };
 
-		public string GetFormattedResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
-		{
-			return GetResult(stringLocalizer);
-		}
+            return result;
+        }
 
-		public override string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
-		{
-			var resultBuilder = new TagBuilder("span");
-			var dividerBuilder = new TagBuilder("span");
+        public string GetFormattedResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            return GetResult(stringLocalizer);
+        }
 
-			resultBuilder.AddCssClass($"marble-football-result-container");
-			dividerBuilder.AddCssClass("marble-football-divider");
+        public override string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            var resultBuilder = new TagBuilder("span");
+            var dividerBuilder = new TagBuilder("span");
 
-			var homeContent = GetHomeResult(stringLocalizer);
-			var awayContent = GetAwayResult(stringLocalizer);
+            resultBuilder.AddCssClass($"marble-football-result-container");
+            dividerBuilder.AddCssClass("marble-football-divider");
 
-			dividerBuilder.InnerHtml.Append("|");
+            var homeContent = GetHomeResult(stringLocalizer);
+            var awayContent = GetAwayResult(stringLocalizer);
 
-			resultBuilder.InnerHtml.AppendHtml(homeContent);
-			resultBuilder.InnerHtml.AppendHtml(dividerBuilder.GetHtmlString());
-			resultBuilder.InnerHtml.AppendHtml(awayContent);
+            dividerBuilder.InnerHtml.Append("|");
 
-			return resultBuilder.GetHtmlString();
-		}
+            resultBuilder.InnerHtml.AppendHtml(homeContent);
+            resultBuilder.InnerHtml.AppendHtml(dividerBuilder.GetHtmlString());
+            resultBuilder.InnerHtml.AppendHtml(awayContent);
 
-		public string GetHomeResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
-		{
-			var fulltime = Result.FirstHalf + Result.SecondHalf;
-			var homeScore = fulltime.Count(score => score == 'H');
+            return resultBuilder.GetHtmlString();
+        }
 
-			var homeName = "team_" + Match.Home;
+        public string GetHomeResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            var fulltime = Result.FirstHalf + Result.SecondHalf;
+            var homeScore = fulltime.Count(score => score == 'H');
 
-			var homeImg = new TagBuilder("img");
-			homeImg.AddCssClass($"img");
-			homeImg.Attributes.Add(
-				"src",
-				$"/scss/images/marble-football2/{Match?.Home ?? "home"}.png"
-			);
-			homeImg.Attributes.Add("width", "50px");
-			homeImg.Attributes.Add("height", "50px");
+            var homeName = "team_" + Match.Home;
 
-			var nameBuilder = new TagBuilder("span");
-			nameBuilder.InnerHtml.AppendHtml(GetGameText(stringLocalizer, homeName));
-			var scoreBuilder = new TagBuilder("span");
-			scoreBuilder.InnerHtml.AppendHtml(homeScore.ToString());
-			var homeBuilder = new TagBuilder("span");
+            var homeImg = new TagBuilder("img");
+            homeImg.AddCssClass($"img");
+            homeImg.Attributes.Add(
+                "src",
+                $"/scss/images/marble-football2/{Match?.Home ?? "home"}.png"
+            );
+            homeImg.Attributes.Add("width", "50px");
+            homeImg.Attributes.Add("height", "50px");
 
-			homeBuilder.AddCssClass("marble-football-result marble-football-home");
+            var nameBuilder = new TagBuilder("span");
+            nameBuilder.InnerHtml.AppendHtml(GetTeamName(stringLocalizer, homeName));
+            var scoreBuilder = new TagBuilder("span");
+            scoreBuilder.InnerHtml.AppendHtml(homeScore.ToString());
+            var homeBuilder = new TagBuilder("span");
 
-			if (SettlementResult.Home)
-			{
-				homeBuilder.AddCssClass("bet-win-text");
-			}
+            homeBuilder.AddCssClass("marble-football-result marble-football-home");
 
-			homeBuilder.InnerHtml.AppendHtml(nameBuilder.GetHtmlString());
-			homeBuilder.InnerHtml.AppendHtml(homeImg.GetHtmlString());
-			homeBuilder.InnerHtml.AppendHtml(scoreBuilder.GetHtmlString());
+            if (SettlementResult.Home)
+            {
+                homeBuilder.AddCssClass("bet-win-text");
+            }
+
+            homeBuilder.InnerHtml.AppendHtml(nameBuilder.GetHtmlString());
+            homeBuilder.InnerHtml.AppendHtml(homeImg.GetHtmlString());
+            homeBuilder.InnerHtml.AppendHtml(scoreBuilder.GetHtmlString());
 
 
-			return homeBuilder.GetHtmlString();
-		}
+            return homeBuilder.GetHtmlString();
+        }
 
-		public string GetAwayResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
-		{
-			var fulltime = Result.FirstHalf + Result.SecondHalf;
-			var awayScore = fulltime.Count(score => score == 'A');
+        public string GetAwayResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            var fulltime = Result.FirstHalf + Result.SecondHalf;
+            var awayScore = fulltime.Count(score => score == 'A');
 
-			var awayName = "team_" + Match.Away;
-			var awayImg = new TagBuilder("img");
-			awayImg.AddCssClass($"img");
-			awayImg.Attributes.Add(
-				"src",
-				$"/scss/images/marble-football2/{Match?.Away ?? "away"}.png"
-			);
-			awayImg.Attributes.Add("width", "50px");
-			awayImg.Attributes.Add("height", "50px");
+            var awayName = "team_" + Match.Away;
+            var awayImg = new TagBuilder("img");
+            awayImg.AddCssClass($"img");
+            awayImg.Attributes.Add(
+                "src",
+                $"/scss/images/marble-football2/{Match?.Away ?? "away"}.png"
+            );
+            awayImg.Attributes.Add("width", "50px");
+            awayImg.Attributes.Add("height", "50px");
 
-			var nameBuilder = new TagBuilder("span");
-			nameBuilder.InnerHtml.AppendHtml(GetGameText(stringLocalizer, awayName));
-			var scoreBuilder = new TagBuilder("span");
-			scoreBuilder.InnerHtml.AppendHtml(awayScore.ToString());
-			var awayBuilder = new TagBuilder("span");
+            var nameBuilder = new TagBuilder("span");
+            nameBuilder.InnerHtml.AppendHtml(GetTeamName(stringLocalizer, awayName));
+            var scoreBuilder = new TagBuilder("span");
+            scoreBuilder.InnerHtml.AppendHtml(awayScore.ToString());
+            var awayBuilder = new TagBuilder("span");
 
-			awayBuilder.AddCssClass("marble-football-result marble-football-away");
+            awayBuilder.AddCssClass("marble-football-result marble-football-away");
 
-			if (SettlementResult.Away)
-			{
-				awayBuilder.AddCssClass("bet-win-text");
-			}
+            if (SettlementResult.Away)
+            {
+                awayBuilder.AddCssClass("bet-win-text");
+            }
 
-			awayBuilder.InnerHtml.AppendHtml(scoreBuilder.GetHtmlString());
-			awayBuilder.InnerHtml.AppendHtml(awayImg.GetHtmlString());
-			awayBuilder.InnerHtml.AppendHtml(nameBuilder.GetHtmlString());
+            awayBuilder.InnerHtml.AppendHtml(scoreBuilder.GetHtmlString());
+            awayBuilder.InnerHtml.AppendHtml(awayImg.GetHtmlString());
+            awayBuilder.InnerHtml.AppendHtml(nameBuilder.GetHtmlString());
 
-			return awayBuilder.GetHtmlString();
-		}
+            return awayBuilder.GetHtmlString();
+        }
 
-		public override string GetWinningTextResult(
-			IJsonStringLocalizer<RoundResultViewModel> stringLocalizer
-		)
-		{
-			var winningResults = new List<string>();
+        public override string GetWinningTextResult(
+            IJsonStringLocalizer<RoundResultViewModel> stringLocalizer
+        )
+        {
+            var winningResults = new List<string>();
 
-			if (SettlementResult.Home)
-				winningResults.Add(GetGameText(stringLocalizer, "glossary_home"));
-			;
+            if (SettlementResult.Home)
+                winningResults.Add(GetGameText(stringLocalizer, "glossary_home"));
+            ;
 
-			if (SettlementResult.Away)
-				winningResults.Add(GetGameText(stringLocalizer, "glossary_away"));
+            if (SettlementResult.Away)
+                winningResults.Add(GetGameText(stringLocalizer, "glossary_away"));
 
-			if (SettlementResult.Draw)
-				winningResults.Add(GetGameText(stringLocalizer, "glossary_draw"));
+            if (SettlementResult.Draw)
+                winningResults.Add(GetGameText(stringLocalizer, "glossary_draw"));
 
-			if (SettlementResult.Over)
-				winningResults.Add(GetGameText(stringLocalizer, "glossary_over"));
+            if (SettlementResult.Over)
+                winningResults.Add(GetGameText(stringLocalizer, "glossary_over"));
 
-			if (SettlementResult.Under)
-				winningResults.Add(GetGameText(stringLocalizer, "glossary_under"));
+            if (SettlementResult.Under)
+                winningResults.Add(GetGameText(stringLocalizer, "glossary_under"));
 
-			if (SettlementResult.Odd)
-				winningResults.Add(GetGameText(stringLocalizer, "glossary_odd"));
+            if (SettlementResult.Odd)
+                winningResults.Add(GetGameText(stringLocalizer, "glossary_odd"));
 
-			if (SettlementResult.Even)
-				winningResults.Add(GetGameText(stringLocalizer, "glossary_even"));
+            if (SettlementResult.Even)
+                winningResults.Add(GetGameText(stringLocalizer, "glossary_even"));
 
-			return string.Join(", ", winningResults);
-		}
+            return string.Join(", ", winningResults);
+        }
 
-		public string GetGameText(
-			IJsonStringLocalizer<RoundResultViewModel> stringLocalizer,
-			string key
-		)
-		{
-			return stringLocalizer.GetStringWithNamcespace(key, tolgeeNameSpace);
-		}
-	}
+        public string GetGameText(
+            IJsonStringLocalizer<RoundResultViewModel> stringLocalizer,
+            string key
+        )
+        {
+            return stringLocalizer.GetStringWithNamcespace(key, tolgeeNameSpace);
+        }
+
+        public string GetTeamName(
+            IJsonStringLocalizer<RoundResultViewModel> stringLocalizer,
+            string key
+)
+        {
+            return stringLocalizer.GetStringWithNamcespace(key, tolgeeTeamName);
+        }
+    }
 }
