@@ -77,7 +77,7 @@
                             }
                             else if (betLog.Action == CrashGameAction.Refund)
                             {
-                                <td>@Localizer[CrashGameTolgeeAction.Actions[betLog.Action]]</td>
+                                <td>@Localizer.GetStringWithNamcespace(CrashGameTolgeeAction.Actions[betLog.Action], Model.GameName)</td>
                             }
                             else
                             {
