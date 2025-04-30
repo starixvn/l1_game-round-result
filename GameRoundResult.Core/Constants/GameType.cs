@@ -92,7 +92,7 @@
         SevenUpDown = 103,
 
         MarbleFootball = 104,
-        TapFortune = 107
+        TapFortune = 107,
         SKMegaKeno = 1501,
         SKMegaKeno2 = 1502,
         SKKenoMini = 1503,
