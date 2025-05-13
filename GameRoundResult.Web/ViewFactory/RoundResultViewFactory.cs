@@ -46,7 +46,7 @@ namespace GameRoundResult.Web.ViewFactory
         private const string marblefootball = "_MarbleFootballRoundResult";
         private const string marblefootball2 = "_MarbleFootball2RoundResult";
         private const string coinMining = "_CoinMiningRoundResult";
-        private const string rngSoccer = "_RNGSoccer";
+        private const string rngSoccer = "_RNGSoccerRoundResult";
 
         private readonly Dictionary<GameType, string> views = new()
         {

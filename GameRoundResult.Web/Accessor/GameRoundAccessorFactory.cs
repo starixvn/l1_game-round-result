@@ -15,6 +15,7 @@ using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.Extensions.DependencyInjection;
+using GameRoundResult.Core.Database.Entities.RNGSoccer;
 
 namespace GameRoundResult.Web.Accessor
 {
@@ -105,6 +106,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.Bac100, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
             { GameType.Bac101, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
             { GameType.SevenUpDown, typeof(GameRoundAccessor<SevenUpDownRound, SevenUpDownRoundResultViewModel>) },
+            { GameType.RNGSoccer, typeof(GameRoundAccessor<RNGSoccerRound, RNGSoccerRoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;
