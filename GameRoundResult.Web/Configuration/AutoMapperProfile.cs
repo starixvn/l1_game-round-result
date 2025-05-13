@@ -16,6 +16,7 @@ using GameRoundResult.Core.Database.Entities.FootballCoinToss;
 using GameRoundResult.Core.Database.Entities.KaraKrus;
 using GameRoundResult.Core.Database.Entities.SevenUpDown;
 using GameRoundResult.Web.Models.GameTicket;
+using GameRoundResult.Core.Database.Entities.RNGSoccer;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -518,6 +519,13 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<MarbleFootballRound, MarbleFootballRoundResultViewModel>();
             CreateMap<MarbleFootball2BetLog, MarbleFootball2BetLogViewModel>();
             CreateMap<MarbleFootball2Round, MarbleFootball2RoundResultViewModel>();
+
+            CreateMap<RNGSoccerRound, RNGSoccerRoundResultViewModel>()
+                .ForMember(x => x.Home, opt => opt.MapFrom(x => x.Result.Home))
+                .ForMember(x => x.Away, opt => opt.MapFrom(x => x.Result.Away));
+
+            CreateMap<RNGSoccerCard, RNGSoccerCardViewModel>();
+            CreateMap<RNGSoccerBetLog, RNGSoccerBetLogViewModel>();
         }
     }
 }

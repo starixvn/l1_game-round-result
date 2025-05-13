@@ -1,0 +1,113 @@
+﻿@model RNGSoccerTicketViewModel
+@using GameRoundResult.Core.Constants
+
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<RNGSoccerTicketViewModel> Localizer
+
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,Common,RoundResultViewModel,RNGSoccer" id="tolgee_namespace" readonly hidden />
+}
+
+<table class="table table-bordered table-dragon-tiger-fight">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th>@CommonLocalizer["RoundId"]</th>
+            <th>@CommonLocalizer["Result"] (@Localizer["glossary_home"] | @Localizer["glossary_away"])</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null)
+        {
+            <tr>
+                <td>
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture)
+                    <br />
+                    @Model.RoundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@Model.RoundResult.RoundId</td>
+                <td>
+                    <div class="cards">
+                        <div class="card card-type-@Model.RoundResult.Home.Suit">
+                            <span>@Card.CardLabels[Model.RoundResult.Home.Rank]</span>
+                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Home.Suit).png" asp-append-version="true" />
+
+                        </div>
+                        <div style="margin: auto 15px auto 5px;">
+                            <span class="@Model.GetValueClass("Home")">@(Model.RoundResult.Home.Rank + 1)</span>
+                        </div>
+
+                        <div class="card card-type-@Model.RoundResult.Away.Suit split">
+                            <span>@Card.CardLabels[Model.RoundResult.Away.Rank]</span>
+                            <img class="img" src="~/scss/images/card_@(Model.RoundResult.Away.Suit).png" asp-append-version="true" />
+
+                        </div>
+
+                        <div style="margin: auto 5px auto 5px;">
+                            <span class="@Model.GetValueClass("Away")">@(Model.RoundResult.Away.Rank + 1)</span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["BetTime"] (@Model.TimeOffsetString)</th>
+            <th>@CommonLocalizer["BetChoice"]</th>
+            <th>@CommonLocalizer["Odds"]</th>
+            <th>@CommonLocalizer["Stake"]</th>
+            <th>@CommonLocalizer["Win"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.BetLogs.Any() && Model.RoundResult != null)
+        {
+            foreach (var bet in Model.BetLogs)
+            {
+                //var cssClass = Model.GetRowBetClass(bet.Choice);
+
+                <tr class="@Model.GetRowBetClass(bet.ChoiceDisplay)">
+                    <td>
+                        @bet.DateDisplay
+                        <br />
+                        @bet.TimeDisplay
+                    </td>
+                    <td>@Localizer[bet.TolgeeChoiceKey]</td>
+                    <td>@Model.GetOdds(bet.Choice).FormatOdds(Model.FractionalOddsFormat)</td>
+                    <td>@bet.Amount.Format()</td>
+                    <td>@Model.GetBetLogWin(bet).Format()</td>
+                </tr>
+            }
+            <tr class="total">
+                <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>
+                <td>@Model.TotalBet.Format()</td>
+                <td>@Model.BetWin.Format()</td>
+            </tr>
+            <tr class="total">
+                <td colspan="3" class="text-right">@CommonLocalizer["WinLoss"]</td>
+                <td colspan="2" class="@Model.WinLossRowClassName">@Model.WinLoss.Format()</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
