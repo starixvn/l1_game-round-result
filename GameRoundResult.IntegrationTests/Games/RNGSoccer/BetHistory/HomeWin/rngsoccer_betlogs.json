@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "68218f7e664fee7b0be4d2d8"
+  },
+  "uid": "62342b4ac46c7910b22b3b35",
+  "name": "Player",
+  "roundId": 32559,
+  "choice": "home",
+  "amount": 1,
+  "time": {
+    "$date": "2025-04-15T05:00:27.003Z"
+  },
+  "playerId": "123",
+  "siteId": "4100300",
+  "freeBet": false,
+  "currency": "$US",
+  "rate": 1,
+  "operatorId": "ONEworks1"
+}]

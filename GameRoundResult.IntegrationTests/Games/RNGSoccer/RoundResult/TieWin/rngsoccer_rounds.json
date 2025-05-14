@@ -1,0 +1,33 @@
+[{
+  "_id": {
+    "$oid": "68218a84664fee7b0be4d2c9"
+  },
+  "time": {
+    "$date": "2025-04-15T06:00:27.003Z"
+  },
+  "id": 32559,
+  "result": {
+    "home": {
+      "rank": 8,
+      "suit": 3
+    },
+    "away": {
+      "rank": 8,
+      "suit": 3
+    }
+  },
+  "settlementResult": {
+    "home": false,
+    "away": false,
+    "draw": true
+  },
+  "exchangeRateId": 2089,
+  "match": {
+    "_id": {
+      "$oid": "67fdf5fbd539067b9e6ee846"
+    },
+    "home": "ARS",
+    "away": "JUV"
+  },
+  "__v": 0
+}]
