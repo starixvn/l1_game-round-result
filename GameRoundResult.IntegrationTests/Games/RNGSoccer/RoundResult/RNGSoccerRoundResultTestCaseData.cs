@@ -11,7 +11,8 @@ namespace GameRoundResult.IntegrationTests
             {
                 new RoundResultTestCaseParam (GameType.RNGSoccer, 32559, string.Empty, Language.EN, "AwayWin"),
                 new RoundResultTestCaseParam (GameType.RNGSoccer, 32559, string.Empty, Language.EN, "HomeWin"),
-                new RoundResultTestCaseParam (GameType.RNGSoccer, 32559, string.Empty, Language.EN, "TieWin"),
+                new RoundResultTestCaseParam (GameType.RNGSoccer, 32559, string.Empty, Language.EN, "DrawWin"),
+                new RoundResultTestCaseParam (GameType.RNGSoccer, 0, string.Empty, Language.EN, "NotExistRound"),
             };
         }
     }

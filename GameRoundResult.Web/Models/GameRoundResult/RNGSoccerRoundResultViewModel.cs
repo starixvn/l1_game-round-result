@@ -51,7 +51,7 @@ namespace GameRoundResult.Web.Models
                 }
             }
 
-            return stringLocalizer["Tie"];
+            return stringLocalizer["Draw"];
         }
 
         private static string GetCardContent(RNGSoccerCardViewModel card)

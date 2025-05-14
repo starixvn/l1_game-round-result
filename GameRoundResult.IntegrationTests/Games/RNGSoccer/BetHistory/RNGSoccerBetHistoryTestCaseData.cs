@@ -14,6 +14,7 @@ namespace GameRoundResult.IntegrationTests.Games.RNGSoccer.BetHistory
             {
                 new BetHistoryTestCaseParam((int)GameType.RNGSoccer, "RNGSoccer", GameConfigsType.RNG, "123", 32559, Language.EN, "AwayLose"),
                 new BetHistoryTestCaseParam((int)GameType.RNGSoccer, "RNGSoccer", GameConfigsType.RNG, "123", 32559, Language.EN, "AwayWin"),
+                new BetHistoryTestCaseParam((int)GameType.RNGSoccer, "RNGSoccer", GameConfigsType.RNG, "123", 32559, Language.EN, "DrawWin"),
                 new BetHistoryTestCaseParam((int)GameType.RNGSoccer, "RNGSoccer", GameConfigsType.RNG, "123", 32559, Language.EN, "HomeLose"),
                 new BetHistoryTestCaseParam((int)GameType.RNGSoccer, "RNGSoccer", GameConfigsType.RNG, "123", 32559, Language.EN, "HomeWin"),
                 new BetHistoryTestCaseParam((int)GameType.RNGSoccer, "RNGSoccer", GameConfigsType.RNG, "123", 32559, Language.EN, "LosingRound"),
