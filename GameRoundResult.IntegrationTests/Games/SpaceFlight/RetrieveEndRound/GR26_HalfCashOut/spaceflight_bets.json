@@ -1,6 +1,7 @@
 [
   {
     "amount": 5,
+    "totalAmount": 5,
     "betwin": 2.63,
     "freeBet": false,
     "roundId": 20390,
