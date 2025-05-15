@@ -66,8 +66,8 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
             };
 
             endGameInfoService.Bets = new List<RNGSoccerBet> {
-                new RNGSoccerBet { Home = 2, Away = 0, Draw = 1, Betwin = 1 },
-                new RNGSoccerBet { Home = 0, Away = 1, Draw = 3, Betwin = 2 }
+                new RNGSoccerBet { Home = 2, Away = 0, Draw = 1, Betwin = 2 },
+                new RNGSoccerBet { Home = 0, Away = 0, Draw = 3, Betwin = 0 }
             };
 
             var expectedInfo = new EndRoundInfoResult
@@ -75,7 +75,7 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
                 EndTime = endGameInfoService.Round.Time,
                 ValidBetAmount = 6,
                 TotalAmount = 6,
-                TotalWin = 3
+                TotalWin = 2
             };
 
             // Act
