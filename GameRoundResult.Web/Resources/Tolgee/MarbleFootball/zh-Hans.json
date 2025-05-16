@@ -1,10 +1,7 @@
 {
   "bet_choice_over_4.5" : "大 4.5",
   "bet_choice_under_4.5" : "小 4.5",
-<<<<<<< HEAD
-=======
   "game_name" : "旋转足球",
->>>>>>> origin/portrait-mode
   "glossary_away" : "客队",
   "glossary_draw" : "平",
   "glossary_even" : "双",
@@ -12,10 +9,7 @@
   "glossary_odd" : "单",
   "glossary_over" : "大 4.5",
   "glossary_under" : "小 4.5",
-<<<<<<< HEAD
-=======
   "header_match" : "比赛",
->>>>>>> origin/portrait-mode
   "team_ACS" : "布拉格斯巴达",
   "team_ARS" : "阿森纳",
   "team_ASM" : "摩纳哥",
@@ -23,27 +17,18 @@
   "team_ATM" : "马德里竞技",
   "team_AVL" : "阿斯顿维拉",
   "team_BAR" : "巴塞罗那",
-<<<<<<< HEAD
-=======
   "team_BOC" : "Boca Warriors",
->>>>>>> origin/portrait-mode
   "team_BOL" : "博洛尼亚",
   "team_BRE" : "比斯特",
   "team_BVB" : "多特蒙德",
   "team_CEL" : "凯尔特人",
-<<<<<<< HEAD
-=======
   "team_CHE" : "Chelsee",
->>>>>>> origin/portrait-mode
   "team_CLU" : "布鲁日",
   "team_CZV" : "贝尔格莱德红星",
   "team_DIN" : "萨格勒布戴拿模",
   "team_FCB" : "拜仁慕尼黑",
   "team_FEY" : "费耶诺德",
-<<<<<<< HEAD
-=======
   "team_FLA" : "Flamenco",
->>>>>>> origin/portrait-mode
   "team_GIR" : "赫罗纳",
   "team_INT" : "国际米兰",
   "team_JUV" : "尤文图斯",
@@ -52,20 +37,14 @@
   "team_LIV" : "利物浦",
   "team_MCI" : "曼城",
   "team_MIL" : "AC米兰",
-<<<<<<< HEAD
-=======
   "team_MTY" : "Montaray",
   "team_PAL" : "Palmaris",
   "team_POR" : "Porta FC",
->>>>>>> origin/portrait-mode
   "team_PSG" : "巴黎圣日曼",
   "team_PSV" : "PSV埃因霍温",
   "team_RBL" : "RB莱比锡",
   "team_RBS" : "萨尔斯堡",
-<<<<<<< HEAD
-=======
   "team_RIV" : "Rio Plata",
->>>>>>> origin/portrait-mode
   "team_RMA" : "皇家马德里",
   "team_SCP" : "士砵亭",
   "team_SHK" : "萨克达",
