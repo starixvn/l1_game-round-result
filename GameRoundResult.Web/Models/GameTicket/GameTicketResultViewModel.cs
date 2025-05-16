@@ -135,6 +135,11 @@ namespace GameRoundResult.Web.Models
                 return name;
             }
 
+            if (name == "MarbleFootball2")
+            {
+                return name;
+            }
+
             return Regex.Replace(name, @"[\d-]", string.Empty).Replace("Turbo", string.Empty);
         }
 

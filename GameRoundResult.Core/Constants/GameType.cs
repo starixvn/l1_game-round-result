@@ -92,7 +92,9 @@
         SevenUpDown = 103,
 
         MarbleFootball = 104,
+        CoinMining = 109,
         TapFortune = 107,
+        MarbleFootball2 = 114,
         SKMegaKeno = 1501,
         SKMegaKeno2 = 1502,
         SKKenoMini = 1503,
@@ -104,6 +106,6 @@
         SKKenoPower = 1509,
         SKKenoPower2 = 1510,
         SKKenoSoccer = 1511,
-        SKKenoSoccer2 = 1512,
+        SKKenoSoccer2 = 1512
     }
 }

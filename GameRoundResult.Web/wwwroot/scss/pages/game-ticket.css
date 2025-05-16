@@ -12,8 +12,14 @@
 .table .line-break {
   border-bottom: 4px solid var(--table-border-color);
 }
+.table.table-expand {
+  width: 115rem !important;
+}
 
 .main-container .table-baccaratx-bet {
+  display: none;
+}
+.main-container .table-game-bet {
   display: none;
 }
 .main-container .table-baccarat-fixed {
@@ -27,6 +33,10 @@
   width: 17rem;
 }
 
+.table-game-bet-vertical tr td.title {
+  width: 17rem;
+}
+
 @media only screen and (min-width: 1000px) {
   .main-container {
     display: flex;
@@ -36,11 +46,17 @@
     margin: auto;
   }
 }
-@media only screen and (min-width: 651px) {
+@media only screen and (min-width: 719px) {
   .main-container .table-baccaratx-bet-vertical {
     display: none;
   }
+  .main-container .table-game-bet-vertical {
+    display: none;
+  }
   .main-container .table-baccaratx-bet {
+    display: table;
+  }
+  .main-container .table-game-bet {
     display: table;
   }
   .main-container .table {

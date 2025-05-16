@@ -181,8 +181,9 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(SeDie3TicketAccessor<,,>));
             services.AddScoped(typeof(KaraKrusTicketAccessor<,,>));
             services.AddScoped(typeof(SevenUpDownTicketAccessor<,,>));
+            services.AddScoped(typeof(CoinMiningAccessor<,>));
             services.AddScoped(typeof(MarbleFootballTicketAccessor));
-
+            services.AddScoped(typeof(MarbleFootball2TicketAccessor));
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
             services.AddScoped<IGameDrawTypeFactory, GameDrawTypeFactory>();
@@ -262,7 +263,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<KaraKrusEndGameInfoService>();
             services.AddScoped<SevenUpDownEndGameInfoService>();
             services.AddScoped<MarbleFootballEndGameInfoService>();
-
+            services.AddScoped<MarbleFootball2EndGameInfoService>();
 
             services.AddScoped<IRoundHistoryRepository, RoundHistoryRepository>();
             services.AddScoped<IRoundHistoryService, RoundHistoryService>();
@@ -275,6 +276,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddCascadingSlotGames();
             services.AddTransient(typeof(IJsonStringLocalizer<>), typeof(JsonStringLocalizer<>));
             services.AddCrashGames();
+            services.AddCrashTurnGames();
             services.AddScoped<IPartnerRequestAuthentication, PartnerRequestAuthentication>();
             services.AddScoped<IHmacHelpers, HmacHelpers>();
 

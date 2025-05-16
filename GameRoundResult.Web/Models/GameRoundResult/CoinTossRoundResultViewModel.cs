@@ -29,7 +29,7 @@ namespace GameRoundResult.Web.Models
             var tagBuilder = new TagBuilder("div");
             tagBuilder.AddCssClass($"");
 
-            var image = SettlementResult.Head ? "harris" : "trump";
+            var image = SettlementResult.Head ? "head" : "tail";
 
             var img = new TagBuilder("img");
             img.AddCssClass($"img");

@@ -1,8 +1,6 @@
 ﻿using System;
 using AutoMapper;
 using GameRoundResult.Core.Database.Entities;
-using GameRoundResult.Core.Database.Entities.BacBall;
-using GameRoundResult.Core.Database.Entities.LuckyNext;
 using GameRoundResult.Core.Database.Entities.BandarQiuQiu;
 using GameRoundResult.Core.Database.Entities.CoinToss;
 using GameRoundResult.Core.Database.Entities.ColorGame;
@@ -26,7 +24,7 @@ namespace GameRoundResult.Web.Extensions
             {
                 opts.AfterMap((source, dest) =>
                 {
-                    dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours);
+                    dest.Time = dest.Time != DateTime.MinValue ? source.Time.AddHours(timeZoneOffset.TotalHours) : DateTime.MinValue;
                 });
             });
         }
@@ -144,7 +142,7 @@ namespace GameRoundResult.Web.Extensions
                 opts.AfterMap((source, dest) => dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours));
             });
         }
-	public static FishPrawnCrabBetViewModel ToViewModel(this FishPrawnCrabBet entity, IMapper mapper, TimeSpan timeZoneOffset)
+        public static FishPrawnCrabBetViewModel ToViewModel(this FishPrawnCrabBet entity, IMapper mapper, TimeSpan timeZoneOffset)
         {
             return mapper.Map<FishPrawnCrabBet, FishPrawnCrabBetViewModel>(entity, opts =>
             {
@@ -290,7 +288,7 @@ namespace GameRoundResult.Web.Extensions
                 opts.AfterMap((source, dest) =>
                 {
                     dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours);
-                    dest.CallTime = source.CallTime.AddHours(timeZoneOffset.TotalHours);
+                    dest.CallTime = source.Call > 0 ? source.CallTime.AddHours(timeZoneOffset.TotalHours) : DateTime.MinValue;
                 });
             });
         }
@@ -315,9 +313,9 @@ namespace GameRoundResult.Web.Extensions
                 opts.AfterMap((source, dest) =>
                 {
                     dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours);
-                    dest.CallTime = source.CallTime.AddHours(timeZoneOffset.TotalHours);
-                    dest.RiverTime = source.RiverTime.AddHours(timeZoneOffset.TotalHours);
-                    dest.TurnTime = source.TurnTime.AddHours(timeZoneOffset.TotalHours);
+                    dest.CallTime = source.Call > 0 ? source.CallTime.AddHours(timeZoneOffset.TotalHours) : DateTime.MinValue;
+                    dest.RiverTime = source.River > 0 ? source.RiverTime.AddHours(timeZoneOffset.TotalHours) : DateTime.MinValue;
+                    dest.TurnTime = source.Turn > 0 ? source.TurnTime.AddHours(timeZoneOffset.TotalHours) : DateTime.MinValue;
                 });
             });
         }
@@ -430,5 +428,13 @@ namespace GameRoundResult.Web.Extensions
                 opts.AfterMap((source, dest) => dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours));
             });
         }
+
+        public static BetLogViewModel ToViewModel(this MarbleFootball2BetLog entity, IMapper mapper, TimeSpan timeZoneOffset)
+        {
+            return mapper.Map<MarbleFootball2BetLog, BetLogViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours));
+            });
+        }   
     }
 }

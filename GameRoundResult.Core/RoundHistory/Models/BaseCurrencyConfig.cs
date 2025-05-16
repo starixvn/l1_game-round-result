@@ -8,15 +8,15 @@ namespace GameRoundResult.Core.RoundHistory.Models
         public static Dictionary<string, int> MultiplierMapper = new Dictionary<string, int>
         {
             [SystemType.SC1] = 1,
+            [SystemType.GN] = 1000,
             [SystemType.VG2] = 1000,
-            [SystemType.GN] = 1,
             [SystemType.HD] = 1,
         };
         public static Dictionary<string, string> CurrencyMapper = new Dictionary<string, string>
         {
             [SystemType.SC1] = "USD",
+            [SystemType.GN] = "INH",
             [SystemType.VG2] = "INH",
-            [SystemType.GN] = "USD",
             [SystemType.HD] = "USD",
         };
     }

@@ -28,6 +28,7 @@ namespace GameRoundResult.Core.Services
             var filteredGames = gameEntities
                 .Where(x => x.Type != (byte)GameConfigsType.Slot &&
                  x.Type != (byte)GameConfigsType.CascadingSlot &&
+                 x.Type != (byte)GameConfigsType.CrashTurnBase &&
                  x.GameId > 0);
 
             return filteredGames;

@@ -45,59 +45,100 @@
     <thead>
         <tr>
             <th>@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
-            <th>@Localizer["glossary_option"]</th>
+            @if (!Model.HasTwoHand)
+            {
+                <th>@Localizer["glossary_option"]</th>
+            }
             <th>@Localizer["multiplier"]</th>
             <th>@CommonLocalizer["Stake"]</th>
             <th>@CommonLocalizer["Win"]</th>
         </tr>
     </thead>
     <tbody>
-        @if (Model.RoundResult != null &&  Model.BetLogs.Any())
+        @if (Model.RoundResult != null && Model.BetLogs.Any())
         {
 
             @foreach (var betLog in Model.BetLogs)
             {
-                <tr>
-                    <td>
-                        @betLog.DateDisplay
-                        <br />
-                        @betLog.TimeDisplay
-                    </td>
-                    @if (betLog.Action == CrashGameAction.Bet || betLog.Action == CrashGameAction.Crash)
+                @if (Model.HasTwoHand)
+                {
+                    if (betLog.Action != CrashGameAction.Bet)
                     {
-                        <td colspan="2">@Localizer[CrashGameTolgeeAction.Actions[betLog.Action]]</td>
-
+                        var acceptBet = Model.BetLogs.First(b => b.BetKey == betLog.BetKey && b.Action == CrashGameAction.Bet);
+                        <tr>
+                            <td>
+                                @acceptBet.DateDisplay
+                                <br />
+                                @acceptBet.TimeDisplay
+                            </td>
+                            @if (betLog.Action == CrashGameAction.Crash)
+                            {
+                                <td>-</td>
+                            }
+                            else if (betLog.Action == CrashGameAction.Refund)
+                            {
+                                <td>@Localizer.GetStringWithNamcespace(CrashGameTolgeeAction.Actions[betLog.Action], Model.GameDisplayName)</td>
+                            }
+                            else
+                            {
+                                <td>@betLog.DisplayMultiplier</td>
+                            }
+                            <td class="text-right">@betLog.DisplayAmount</td>
+                            <td class="text-right">@betLog.DisplayWinAmount</td>
+                        </tr>
                     }
-                    else
-                    {
-                        <td>@Localizer[CrashGameTolgeeAction.Actions[betLog.Action]]</td>
-                        <td>@betLog.DisplayMultiplier</td>
-                    }
+                }
+                else
+                {
+                    <tr>
+                        <td>
+                            @betLog.DateDisplay
+                            <br />
+                            @betLog.TimeDisplay
+                        </td>
+                        @if (betLog.Action == CrashGameAction.Bet || betLog.Action == CrashGameAction.Crash)
+                        {
+                            <td colspan="2">@Localizer[CrashGameTolgeeAction.Actions[betLog.Action]]</td>
 
-                    <td class="text-right">@betLog.DisplayAmount</td>
-                    <td class="text-right">@betLog.DisplayWinAmount</td>
-                </tr>
+                        }
+                        else
+                        {
+                            <td>@Localizer[CrashGameTolgeeAction.Actions[betLog.Action]]</td>
+                            <td>@betLog.DisplayMultiplier</td>
+                        }
 
+                        <td class="text-right">@betLog.DisplayAmount</td>
+                        <td class="text-right">@betLog.DisplayWinAmount</td>
+                    </tr>
+                }
             }
 
             <tr>
-                <td colspan="4" class="text-right">
-                    @if(Model.ReachMaxWin)
+                <td colspan="@(Model.HasTwoHand ? "3" : "4")" class="text-right">
+                    @if (Model.ReachMaxWin)
                     {
                         @($"({Localizer["you_reach_max_win"]})")
                     }
-                    @CommonLocalizer["Total"]</td>
+                    @CommonLocalizer["Total"]
+                </td>
                 <td class="text-right">@Model.DisplayBetWin</td>
             </tr>
             <tr class="total">
-                <td colspan="4" class="bold text-right">@CommonLocalizer["WinLoss"]</td>
-                <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.DisplayWinLoss</td>
+                <td colspan="@(Model.HasTwoHand ? "3" : "4")" class="bold text-right">@CommonLocalizer["WinLoss"]</td>
+                @if (Model.HasTwoHand)
+                {
+                    <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : "text-blue")">@Model.DisplayWinLoss</td>
+                }
+                else
+                {
+                    <td class="bold text-right @(Model.WinLossRowClassName)">@Model.DisplayWinLoss</td>
+                }
             </tr>
         }
         else
         {
             <tr>
-                <td colspan="5" class="text-center">
+                <td colspan="@(Model.HasTwoHand ? "4" : "5")" class="text-center">
                     @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>

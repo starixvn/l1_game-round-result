@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Database.Entities.CoinMining;
 using GameRoundResult.Core.Database.Entities.KaraKrus;
 using GameRoundResult.Core.Database.Entities.SevenUpDown;
 using GameRoundResult.Web.CascadingSlotGames;
@@ -105,6 +106,8 @@ namespace GameRoundResult.Web.Accessor
             { GameType.SevenUpDown, typeof(SevenUpDownTicketAccessor<SevenUpDownRound, SevenUpDownBet, SevenUpDownBetLog>) },
             { GameType.SKMegaKeno, typeof(MiniKenoTicketAccessor<SKMegaKenoRound, SKMegaKenoBet>) },
             { GameType.MarbleFootball, typeof(MarbleFootballTicketAccessor) },
+            { GameType.MarbleFootball2, typeof(MarbleFootball2TicketAccessor) },
+            { GameType.CoinMining, typeof(CoinMiningAccessor<CoinMiningRound, CoinMiningBetLog>) },
             { GameType.SKMegaKeno2, typeof(MiniKenoTicketAccessor<SKMegaKeno2Round, SKMegaKeno2Bet>) },
             { GameType.SKKenoMini, typeof(MiniKenoTicketAccessor<SKKenoMiniRound, SKKenoMiniBet>) },
             { GameType.SKKenoMini2, typeof(MiniKenoTicketAccessor<SKKenoMini2Round, SKKenoMini2Bet>) },

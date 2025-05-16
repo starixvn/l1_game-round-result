@@ -22,6 +22,8 @@ namespace GameRoundResult.Core.Database.Entities
         public string Action { get; set; }
 
         public bool ReachMaxWin { get; set; }
+
+        public byte? BetKey { get; set; }
     }
 
     [CollectionName("spaceflight_betlogs")]

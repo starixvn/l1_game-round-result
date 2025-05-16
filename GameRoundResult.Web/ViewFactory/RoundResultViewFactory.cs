@@ -44,6 +44,8 @@ namespace GameRoundResult.Web.ViewFactory
         private const string karakrus = "_KaraKrusRoundResult";
         private const string sevenupdown = "_SevenUpDownRoundResult";
         private const string marblefootball = "_MarbleFootballRoundResult";
+        private const string marblefootball2 = "_MarbleFootball2RoundResult";
+        private const string coinMining = "_CoinMiningRoundResult";
 
         private readonly Dictionary<GameType, string> views = new()
         {
@@ -125,19 +127,9 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.Bac100, baccarat },
             { GameType.Bac101, baccarat },
             { GameType.SevenUpDown, sevenupdown },
-            { GameType.SKMegaKeno, keno },
             {GameType.MarbleFootball, marblefootball },
-            { GameType.SKMegaKeno2, keno },
-            { GameType.SKKenoMini, keno },
-            { GameType.SKKenoMini2, keno },
-            { GameType.SKKenoEast, keno },
-            { GameType.SKKenoWest, keno },
-            { GameType.SKKenoSouth, keno },
-            { GameType.SKKenoNorth, keno },
-            { GameType.SKKenoPower, kenoPower },
-            { GameType.SKKenoPower2, kenoPower },
-            { GameType.SKKenoSoccer, kenoMatch },
-            { GameType.SKKenoSoccer2, kenoMatch },
+            {GameType.MarbleFootball2, marblefootball2 },
+            {GameType.CoinMining, coinMining }
         };
 
         public string GetView(int game, bool isCrashGame)
