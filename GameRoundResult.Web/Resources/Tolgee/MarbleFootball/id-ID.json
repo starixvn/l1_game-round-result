@@ -1,10 +1,7 @@
 {
   "bet_choice_over_4.5" : "Besar 4.5",
   "bet_choice_under_4.5" : "Kecil 4.5",
-<<<<<<< HEAD
-=======
   "game_name" : "Spinner Soccer",
->>>>>>> origin/portrait-mode
   "glossary_away" : "Tandang",
   "glossary_draw" : "Seri",
   "glossary_even" : "Genap",
@@ -12,10 +9,7 @@
   "glossary_odd" : "Ganjil",
   "glossary_over" : "Besar 4.5",
   "glossary_under" : "Kecil 4.5",
-<<<<<<< HEAD
-=======
   "header_match" : "Pertandingan",
->>>>>>> origin/portrait-mode
   "team_ACS" : "Sporting Praha",
   "team_ARS" : "Arsonist",
   "team_ASM" : "AS Monarch",
@@ -23,27 +17,18 @@
   "team_ATM" : "Atheist de Madrid",
   "team_AVL" : "Aston Valley",
   "team_BAR" : "FC Barna",
-<<<<<<< HEAD
-=======
   "team_BOC" : "Boca Warriors",
->>>>>>> origin/portrait-mode
   "team_BOL" : "Bologana",
   "team_BRE" : "Stadium Bresta",
   "team_BVB" : "Borussia Dog Munch",
   "team_CEL" : "Celtic Warriors",
-<<<<<<< HEAD
-=======
   "team_CHE" : "Chelsee",
->>>>>>> origin/portrait-mode
   "team_CLU" : "City Brugge",
   "team_CZV" : "Red Storm Belgrade",
   "team_DIN" : "Dynamite Zagreb",
   "team_FCB" : "Baya Munich",
   "team_FEY" : "Freya Nord",
-<<<<<<< HEAD
-=======
   "team_FLA" : "Flamenco",
->>>>>>> origin/portrait-mode
   "team_GIR" : "Gilona",
   "team_INT" : "Enter Milan",
   "team_JUV" : "Javentas",
@@ -51,30 +36,19 @@
   "team_LIL" : "Little OSC",
   "team_LIV" : "Livenpool",
   "team_MCI" : "Manchester Caliber",
-<<<<<<< HEAD
-  "team_MIL" : "Milano AC ",
-=======
   "team_MIL" : "Milano ACT",
   "team_MTY" : "Montaray",
   "team_PAL" : "Palmaris",
   "team_POR" : "Porta FC",
->>>>>>> origin/portrait-mode
   "team_PSG" : "Paris X Germain",
   "team_PSV" : "PSV Enders",
   "team_RBL" : "Red Bear Leipzig",
   "team_RBS" : "Red Bear Salzburg",
-<<<<<<< HEAD
-  "team_RMA" : "Unreal Madrid",
-  "team_SCP" : "Sparta Lisboa",
-  "team_SHK" : "Stars Donetsk",
-  "team_SLB" : "Sporting Benfica ",
-=======
   "team_RIV" : "Rio Plata",
   "team_RMA" : "Unreal Madrid",
   "team_SCP" : "Sparta Lisboa",
   "team_SHK" : "Stars Donetsk",
   "team_SLB" : "Sporting Benfica",
->>>>>>> origin/portrait-mode
   "team_SLO" : "Slava Bratislovan",
   "team_STU" : "Storm Grass",
   "team_VFB" : "Viva Stuttgart",
