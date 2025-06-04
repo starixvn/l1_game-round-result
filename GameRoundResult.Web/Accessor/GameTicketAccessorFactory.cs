@@ -106,6 +106,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.MarbleFootball, typeof(MarbleFootballTicketAccessor) },
             { GameType.MarbleFootball2, typeof(MarbleFootball2TicketAccessor) },
             { GameType.CoinMining, typeof(CoinMiningAccessor<CoinMiningRound, CoinMiningBetLog>) },
+            { GameType.SoloBlackjack, typeof(SoloBlackjackTicketAccessor) }
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()

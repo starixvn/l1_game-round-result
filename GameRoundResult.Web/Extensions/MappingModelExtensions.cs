@@ -435,6 +435,14 @@ namespace GameRoundResult.Web.Extensions
             {
                 opts.AfterMap((source, dest) => dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours));
             });
-        }   
+        }
+
+        public static SoloBlackjackBetViewModel ToViewModel(this SoloBlackjackBet entity, IMapper mapper, TimeSpan timeZoneOffset)
+        {
+            return mapper.Map<SoloBlackjackBet, SoloBlackjackBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours));
+            });
+        }
     }
 }

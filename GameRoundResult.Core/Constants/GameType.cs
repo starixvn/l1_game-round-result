@@ -92,6 +92,7 @@
         MarbleFootball = 104,
         TapFortune = 107,
         CoinMining = 109,
-        MarbleFootball2 = 114
+        MarbleFootball2 = 114,
+        SoloBlackjack = 115
     }
 }
