@@ -107,6 +107,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.Bac101, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
             { GameType.SevenUpDown, typeof(GameRoundAccessor<SevenUpDownRound, SevenUpDownRoundResultViewModel>) },
             { GameType.RNGSoccer, typeof(GameRoundAccessor<RNGSoccerRound, RNGSoccerRoundResultViewModel>) },
+            { GameType.MiniRoulette, typeof(GameRoundAccessor<MiniRouletteRound, MiniRouletteRoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;

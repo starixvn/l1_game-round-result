@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace GameRoundResult.Core.Services.EndRoundInfo
 {
-    public class RouletteSEndGameInfoService : RouletteEndGameInfoService
+    public class MiniRouletteEndGameInfoService : RouletteEndGameInfoService
     {
-        public RouletteSEndGameInfoService(IMongoDatabase database) : base(database)
+        public MiniRouletteEndGameInfoService(IMongoDatabase database) : base(database)
         {
         }
     }

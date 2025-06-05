@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GameRoundResult.Web.Models
 {
-    public class RouletteSRoundResultViewModel : RoundResultViewModel
+    public class MiniRouletteRoundResultViewModel : RoundResultViewModel
     {
         public byte Result { get; set; }
 
@@ -43,10 +43,10 @@ namespace GameRoundResult.Web.Models
             return span.GetHtmlString();
         }
 
-        public RouletteSSettlementResultViewModel SettlementResult { get; set; }
+        public MiniRouletteSettlementResultViewModel SettlementResult { get; set; }
     }
 
-    public class RouletteSSettlementResultViewModel : RouletteSettlementResultViewModel
+    public class MiniRouletteSettlementResultViewModel : RouletteSettlementResultViewModel
     {
     }
 }

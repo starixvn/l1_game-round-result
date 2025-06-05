@@ -437,9 +437,9 @@ namespace GameRoundResult.Web.Extensions
             });
         }
 
-        public static RouletteSBetViewModel ToViewModel(this RouletteSBetLog entity, IMapper mapper, TimeSpan timeZoneOffset)
+        public static MiniRouletteBetLogViewModel ToViewModel(this MiniRouletteBetLog entity, IMapper mapper, TimeSpan timeZoneOffset)
         {
-            return mapper.Map<RouletteSBetLog, RouletteSBetViewModel>(entity, opts =>
+            return mapper.Map<MiniRouletteBetLog, MiniRouletteBetLogViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours));
             });

@@ -526,8 +526,9 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<RNGSoccerCard, RNGSoccerCardViewModel>();
             CreateMap<RNGSoccerBetLog, RNGSoccerBetLogViewModel>();
 
-            CreateMap<RouletteSRound, RouletteSRoundResultViewModel>();
-            CreateMap<RouletteSSettlementResult, RouletteSSettlementResultViewModel>();
+            CreateMap<MiniRouletteRound, MiniRouletteRoundResultViewModel>();
+            CreateMap<MiniRouletteSettlementResult, MiniRouletteSettlementResultViewModel>();
+            CreateMap<MiniRouletteBetLog, MiniRouletteBetLogViewModel>();
         }
     }
 }

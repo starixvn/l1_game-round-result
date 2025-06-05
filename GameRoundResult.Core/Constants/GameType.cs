@@ -94,6 +94,6 @@
         CoinMining = 109,
         MarbleFootball2 = 114,
         RNGSoccer = 118,
-        RouletteS = 134
+        MiniRoulette = 134
     }
 }
