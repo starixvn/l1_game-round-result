@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameRoundResult.Core.Database.Entities
 {
-    [CollectionName("roulette_ones")]
+    [CollectionName("miniroulette_bets")]
     public class MiniRouletteBet : RouletteOne
     {
     }

@@ -1,0 +1,50 @@
+[{
+  "_id": {
+    "$oid": "6842691b4f255f77e335be66"
+  },
+  "time": {
+    "$date": "2025-06-06T04:05:47.003Z"
+  },
+  "id": 2346492,
+  "result": 31,
+  "settlementResult": {
+    "straightUp": [
+      "31"
+    ],
+    "split": [
+      "28-31",
+      "31-32",
+      "31-34"
+    ],
+    "street": [
+      "31-32-33"
+    ],
+    "triangle": [],
+    "corner": [
+      "28-29-31-32",
+      "31-32-34-35"
+    ],
+    "fourNumbers": [],
+    "line": [
+      "28-29-30-31-32-33",
+      "31-32-33-34-35-36"
+    ],
+    "column": [
+      "1"
+    ],
+    "dozen": [
+      "3"
+    ],
+    "redBlack": [
+      "black"
+    ],
+    "oddEven": [
+      "odd"
+    ],
+    "bigSmall": [
+      "big"
+    ]
+  },
+  "exchangeRateId": 2089,
+  "__v": 0
+}]

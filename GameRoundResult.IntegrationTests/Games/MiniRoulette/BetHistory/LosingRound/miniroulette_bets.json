@@ -1,0 +1,49 @@
+[
+  {
+    "_id": {
+      "$oid": "684268f54f255f367f35be65"
+    },
+    "roundId": 2346492,
+    "uid": "684268e16fc6f905447764ec",
+    "freeBet": false,
+    "__v": 0,
+    "betwin": 0,
+    "corner": {
+      "1-2-4-5": 10
+    },
+    "currency": "INH",
+    "name": "Gourd68915",
+    "odds": {
+      "straightUp": 36,
+      "split": 18,
+      "street": 12,
+      "triangle": 12,
+      "corner": 9,
+      "fourNumbers": 9,
+      "line": 6,
+      "column": 3,
+      "dozen": 3,
+      "redBlack": 2,
+      "oddEven": 2,
+      "bigSmall": 2
+    },
+    "operatorId": "ONEworks1",
+    "paid": true,
+    "playerId": "68915",
+    "rate": 0.039428669619026566,
+    "siteId": "4100300",
+    "split": {
+      "2-5": 10
+    },
+    "straightUp": {
+      "1": 10,
+      "3": 10,
+      "4": 10,
+      "6": 10
+    },
+    "time": {
+      "$date": "2025-06-06T04:05:09.286Z"
+    },
+    "totalAmount": 60
+  }
+]

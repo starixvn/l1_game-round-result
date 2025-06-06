@@ -1,0 +1,21 @@
+[
+  {
+    "_id": {
+      "$oid": "68426ea84f255f068235be88"
+    },
+    "uid": "684268e16fc6f905447764ec",
+    "time": {
+      "$date": "2025-06-06T04:29:28.354Z"
+    },
+    "oddEven": {
+      "odd": 10
+    },
+    "roundId": 2346516,
+    "siteId": "4100300",
+    "currency": "INH",
+    "rate": 0.039428669619026566,
+    "operatorId": "ONEworks1",
+    "playerId": "68915",
+    "__v": 0
+  }
+]

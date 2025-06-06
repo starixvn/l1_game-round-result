@@ -1,0 +1,21 @@
+[
+  {
+    "_id": {
+      "$oid": "68427f334f255f8df735bed3"
+    },
+    "uid": "684268e16fc6f905447764ec",
+    "time": {
+      "$date": "2025-06-06T05:40:03.932Z"
+    },
+    "redBlack": {
+      "red": 10
+    },
+    "roundId": 2346587,
+    "siteId": "4100300",
+    "currency": "INH",
+    "rate": 0.039428669619026566,
+    "operatorId": "ONEworks1",
+    "playerId": "68915",
+    "__v": 0
+  }
+]

@@ -7443,20 +7443,20 @@
   },
   {
     "_id": {
-      "$oid": "67ee2fdce043f2cac515d676"
+      "$oid": "683fddf8694d466f13bb918a"
     },
     "time": {
-      "$date": "2025-04-03T06:51:08.289Z"
+      "$date": "2025-06-04T05:47:36.866Z"
     },
     "__v": 0,
     "type": 1,
-    "name": "rngsoccer",
-    "displayName": "RNG Soccer",
-    "enabled": true,
+    "name": "miniroulette",
+    "displayName": "Mini Roulette",
+    "enabled": false,
     "botenabled": false,
-    "minbet": 10,
-    "maxbet": 40000,
-    "disabledround": 24343,
+    "minbet": 1,
+    "maxbet": 3000,
+    "disabledround": null,
     "bot_maxbet": 10,
     "hour_maxbot": [
       0,
@@ -7486,18 +7486,14 @@
     ],
     "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
     "choices_maxbet": null,
-    "odds": {
-      "home": 1.96,
-      "away": 1.96,
-      "draw": 11
-    },
+    "odds": null,
     "delayStartTime": 0,
     "enableFreeBet": false,
     "slotsConfig": null,
     "siteExclusions": [],
     "smartBotEnabled": false,
     "smartBotGroupRatio": 0,
-    "gameId": 118,
+    "gameId": 134,
     "randomMode": 0,
     "cascadingSlotsConfig": null,
     "slotRNGConfig": null,
@@ -7507,6 +7503,10 @@
     "oddsMultipliers": null,
     "applyMultiplier": false,
     "tournamentConfig": null,
+    "videoStreamConfig": null,
+    "haveTournament": false,
+    "haveVideoStream": false,
+    "useMargin": false
     "videoStreamConfig": null,
     "haveTournament": false,
     "haveVideoStream": false
