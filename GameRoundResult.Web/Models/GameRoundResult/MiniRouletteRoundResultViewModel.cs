@@ -15,10 +15,20 @@ namespace GameRoundResult.Web.Models
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
+               GetResult(stringLocalizer),
                GetResultString()
             };
 
             return result;
+        }
+
+        public override string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            var div = new TagBuilder("div");
+
+            div.InnerHtml.AppendHtml(Result.ToString());
+
+            return div.GetHtmlString();
         }
 
         private string GetResultString()
