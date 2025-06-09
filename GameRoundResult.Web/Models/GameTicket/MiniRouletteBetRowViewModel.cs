@@ -1,6 +1,6 @@
 ﻿namespace GameRoundResult.Web.Models
 {
-    public class MiniRouletteBetRowViewModel
+    public class MiniRouletteBetRowViewModel : GameTicketViewModel
     {
         public MiniRouletteSettlementResultViewModel SettlementResult { get; set; }
 

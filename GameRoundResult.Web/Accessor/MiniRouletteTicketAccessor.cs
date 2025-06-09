@@ -28,6 +28,7 @@ namespace GameRoundResult.Web.Accessor
             {
                 RoundResult = result.Item1?.ToViewModel<MiniRouletteRound, MiniRouletteRoundResultViewModel>(mapper, request.TimeZoneOffset),
                 Bets = result.Item2.Select(x => x.ToViewModel(mapper, request.TimeZoneOffset)),
+                Rate = result.Item3?.Rate ?? 0,
                 TotalBet = result.Item3?.TotalAmount ?? 0,
                 BetWin = result.Item3?.Betwin ?? 0,
             };

@@ -113,7 +113,7 @@
             @betChoice.Key
         </td>
         <td class="text-right @winningCssClass">
-            @betChoice.Value.Format()
+            @Model.DisplayAmount(betChoice.Value)
         </td>
     </tr>
 }
@@ -137,7 +137,7 @@
             @betChoice.Key.Replace("-", ", ")
         </td>
         <td class="text-right @winningCssClass">
-            @betChoice.Value.Format()
+            @Model.DisplayAmount(betChoice.Value)
         </td>
     </tr>
 }
@@ -162,7 +162,7 @@
             @betChoice.Key.Replace("-", ", ")
         </td>
         <td class="text-right @winningCssClass">
-            @betChoice.Value.Format()
+            @Model.DisplayAmount(betChoice.Value)
         </td>
     </tr>
 }
@@ -187,7 +187,7 @@
             @betChoice.Key.Replace("-", ", ")
         </td>
         <td class="text-right @winningCssClass">
-            @betChoice.Value.Format()
+            @Model.DisplayAmount(betChoice.Value)
         </td>
     </tr>
 }
@@ -212,7 +212,7 @@
             @betChoice.Key.Replace("-", ", ")
         </td>
         <td class="text-right @winningCssClass">
-            @betChoice.Value.Format()
+            @Model.DisplayAmount(betChoice.Value)
         </td>
     </tr>
 }
@@ -237,7 +237,7 @@
             @betChoice.Key.Replace("-", ", ")
         </td>
         <td class="text-right @winningCssClass">
-            @betChoice.Value.Format()
+            @Model.DisplayAmount(betChoice.Value)
         </td>
     </tr>
 }
@@ -266,7 +266,7 @@
             <div>@splits[3], @splits[4], @splits[5]</div>
         </td>
         <td class="text-right @winningCssClass">
-            @betChoice.Value.Format()
+            @Model.DisplayAmount(betChoice.Value)
         </td>
     </tr>
 }
@@ -290,7 +290,7 @@
             @Localizer[$"Column-{betChoice.Key}"]
         </td>
         <td class="text-right @winningCssClass">
-            @betChoice.Value.Format()
+            @Model.DisplayAmount(betChoice.Value)
         </td>
     </tr>
 }
@@ -313,7 +313,7 @@
             @dozens[betChoice.Key]
         </td>
         <td class="text-right @winningCssClass">
-            @betChoice.Value.Format()
+            @Model.DisplayAmount(betChoice.Value)
         </td>
     </tr>
 }
@@ -360,7 +360,7 @@
             @CommonLocalizer[oddEvenResource[betChoice.Key]]
         </td>
         <td class="text-right @winningCssClass">
-            @betChoice.Value.Format()
+            @Model.DisplayAmount(betChoice.Value)
         </td>
     </tr>
 }
@@ -383,7 +383,7 @@
             @bigSmall[betChoice.Key]
         </td>
         <td class="text-right @winningCssClass">
-            @betChoice.Value.Format()
+            @Model.DisplayAmount(betChoice.Value)
         </td>
     </tr>
 }
