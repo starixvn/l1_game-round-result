@@ -29,8 +29,8 @@ namespace GameRoundResult.Web.Models
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
-                $"{GetCardContent(Home)}{GetCardContent(Away)}",
-                GetResultContent(stringLocalizer)
+                $"{GetFormattedResult(stringLocalizer)}",
+                $"{GetWinningTextResult(stringLocalizer)}",
 
             };
 
@@ -43,12 +43,9 @@ namespace GameRoundResult.Web.Models
             {
                 return stringLocalizer["Home"];
             }
-            else
+            else if (Home.Rank < Away.Rank)
             {
-                if (Home.Rank < Away.Rank)
-                {
-                    return stringLocalizer["Away"];
-                }
+                return stringLocalizer["Away"];        
             }
 
             return stringLocalizer["Draw"];
@@ -69,6 +66,38 @@ namespace GameRoundResult.Web.Models
             tagBuilder.InnerHtml.AppendHtml(img);
 
             return tagBuilder.GetHtmlString();
+        }
+
+        public string GetFormattedResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            return GetResult(stringLocalizer);
+        }
+
+        public override string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            var resultBuilder = new TagBuilder("span");
+
+            resultBuilder.InnerHtml.AppendHtml(GetCardContent(Home));
+            resultBuilder.InnerHtml.AppendHtml(GetCardContent(Away));
+
+            return resultBuilder.GetHtmlString();
+        }
+
+        public override string GetWinningTextResult(
+            IJsonStringLocalizer<RoundResultViewModel> stringLocalizer
+        )
+        {
+            if (SettlementResult.Home) return GetGameText(stringLocalizer, "glossary_home");
+            else if (SettlementResult.Away) return GetGameText(stringLocalizer, "glossary_away");
+            else return GetGameText(stringLocalizer, "glossary_draw");
+        }
+
+        public string GetGameText(
+            IJsonStringLocalizer<RoundResultViewModel> stringLocalizer,
+            string key
+        )
+        {
+            return stringLocalizer.GetStringWithNamcespace(key, tolgeeNameSpace);
         }
     }
 
