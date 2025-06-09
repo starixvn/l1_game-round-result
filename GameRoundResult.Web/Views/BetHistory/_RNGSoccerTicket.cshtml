@@ -87,18 +87,18 @@
                     </td>
                     <td>@Localizer[bet.TolgeeChoiceKey]</td>
                     <td>@Model.GetOdds(bet.Choice).FormatOdds(Model.FractionalOddsFormat)</td>
-                    <td>@bet.Amount.Format()</td>
-                    <td>@Model.GetBetLogWin(bet).Format()</td>
+                    <td>@Model.DisplayAmount(bet.Amount)</td>
+                    <td>@Model.DisplayAmount(Model.GetBetLogWin(bet))</td>
                 </tr>
             }
             <tr class="total">
                 <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>
-                <td>@Model.TotalBet.Format()</td>
-                <td>@Model.BetWin.Format()</td>
+                <td>@Model.DisplayTotalBet</td>
+                <td>@Model.DisplayBetWin</td>
             </tr>
             <tr class="total">
                 <td colspan="3" class="text-right">@CommonLocalizer["WinLoss"]</td>
-                <td colspan="2" class="@Model.WinLossRowClassName">@Model.WinLoss.Format()</td>
+                <td colspan="2" class="@Model.WinLossRowClassName">@Model.DisplayWinLoss</td>
             </tr>
         }
         else
