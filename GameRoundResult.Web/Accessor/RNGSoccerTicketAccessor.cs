@@ -34,6 +34,7 @@ namespace GameRoundResult.Web.Accessor
                 RoundResult = result.Item1?.ToViewModel<RNGSoccerRound, RNGSoccerRoundResultViewModel>(mapper, request.TimeZoneOffset),
                 BetLogs = result.Item2?.Select(x => x.ToBetLogViewModel<RNGSoccerBetLog, RNGSoccerBetLogViewModel>(mapper, request.TimeZoneOffset)),
                 Odds = result.Item3?.Odds,
+                Rate = result.Item3?.Rate ?? 0,
                 TotalBet = result.Item3?.Sum ?? 0,
                 BetWin = result.Item3?.Betwin ?? 0
             };
