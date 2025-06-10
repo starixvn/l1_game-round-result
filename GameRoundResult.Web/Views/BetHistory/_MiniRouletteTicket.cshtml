@@ -71,7 +71,7 @@
         {
             foreach (var bet in Model.Bets)
             {
-                @await Html.PartialAsync("~/Views/BetHistory/_MiniRouletteBetRow.cshtml", new MiniRouletteBetRowViewModel { Bet = bet, SettlementResult = Model.RoundResult.SettlementResult })
+                @await Html.PartialAsync("~/Views/BetHistory/_MiniRouletteBetRow.cshtml", new MiniRouletteBetRowViewModel { Bet = bet, SettlementResult = Model.RoundResult.SettlementResult, ConvertToBaseCurrency = Model.ConvertToBaseCurrency, BaseCurrencyMultiplier = Model.BaseCurrencyMultiplier, Rate = Model.Rate })
             }
             <tr>
                 <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>

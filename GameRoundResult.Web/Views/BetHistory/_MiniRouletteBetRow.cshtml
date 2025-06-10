@@ -98,6 +98,7 @@
 @foreach (var betChoice in bet.StraightUp)
 {
     var winningCssClass = settlementResult.StraightUp.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
+
     <tr>
         @if (renderDate)
         {
@@ -121,7 +122,8 @@
 
 @foreach (var betChoice in bet.Split)
 {
-    var winningCssClass = settlementResult.Split.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
+    var winningCssClass = settlementResult.Split.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty; 
+
     <tr>
         @if (renderDate)
         {
@@ -161,9 +163,11 @@
         <td class="@winningCssClass">
             @betChoice.Key.Replace("-", ", ")
         </td>
+
         <td class="text-right @winningCssClass">
             @Model.DisplayAmount(betChoice.Value)
         </td>
+
     </tr>
 }
 
@@ -298,6 +302,7 @@
 @foreach (var betChoice in bet.Dozen)
 {
     var winningCssClass = settlementResult.Dozen.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
+
     <tr>
         @if (renderDate)
         {
@@ -321,6 +326,7 @@
 @foreach (var betChoice in bet.RedBlack)
 {
     var winningCssClass = settlementResult.RedBlack.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
+
     <tr>
         @if (renderDate)
         {
@@ -336,7 +342,7 @@
             @Localizer[redBlackResources[betChoice.Key]]
         </td>
         <td class="text-right @winningCssClass">
-            @betChoice.Value.Format()
+            @Model.DisplayAmount(betChoice.Value)
         </td>
     </tr>
 }
@@ -345,6 +351,7 @@
 @foreach (var betChoice in bet.OddEven)
 {
     var winningCssClass = settlementResult.OddEven.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
+
     <tr>
         @if (renderDate)
         {
@@ -368,6 +375,7 @@
 @foreach (var betChoice in bet.BigSmall)
 {
     var winningCssClass = settlementResult.BigSmall.Any(x => x == betChoice.Key) ? "text-blue bold" : string.Empty;
+
     <tr>
         @if (renderDate)
         {

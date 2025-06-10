@@ -8,12 +8,6 @@ namespace GameRoundResult.Web.Models
         public MiniRouletteRoundResultViewModel RoundResult { get; set; }
 
         public IEnumerable<MiniRouletteBetLogViewModel> Bets { get; set; }
-
-        public decimal TotalBet { get; set; }
-
-        public decimal BetWin { get; set; }
-
-        public decimal WinLoss => BetWin - TotalBet;
     }
 
     public class MiniRouletteBetLogViewModel
