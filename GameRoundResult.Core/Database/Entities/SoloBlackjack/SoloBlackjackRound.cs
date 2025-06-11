@@ -8,18 +8,7 @@ using System.Threading.Tasks;
 namespace GameRoundResult.Core.Database.Entities
 {
     [CollectionName("soloblackjack_rounds")]
-    public class SoloBlackjackRound : GameRound
+    public class SoloBlackjackRound : BlackjackRound
     {
-        public IEnumerable<Card> Result { get; set; }
-
-        public DateTime RoundStartTime { get; set; }
-
-        public bool Ended { get; set; }
-
-        public string Uid { get; set; }
-
-        public string Name { get; set; }
-
-        public byte SettlementResult { get; set; }
     }
 }
