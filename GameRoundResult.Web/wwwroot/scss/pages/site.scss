@@ -838,26 +838,7 @@ div table.bandar-qiuqiu-table {
     }
 }
 
-.bacball-result {
-    height: 35px;
-    width: 35px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    align-content: center;
-    font-weight: bold;
-    margin: 10px 5px 10px 5px;
 
-    &.blue-ball {
-        background: url(../images/bacball/blue-ball.png) no-repeat;
-        background-size: 35px 35px;
-    }
-
-    &.red-ball {
-        background: url(../images/bacball/red-ball.png) no-repeat;
-        background-size: 35px 35px;
-    }
-}
 
 .no-data {
     padding-top: 7px !important;
@@ -929,4 +910,25 @@ div table.bandar-qiuqiu-table {
 
 .marble-football-divider {
     padding: 0px;
+}
+
+.bacball-result {
+    height: 35px;
+    width: 35px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    align-content: center;
+    font-weight: bold;
+    margin: 10px 5px 10px 5px;
+
+    &.blue-ball {
+        background-image: url(../images/bacball/blue-ball.png);
+        background-size: 35px 35px;
+    }
+
+    &.red-ball {
+        background-image: url(../images/bacball/red-ball.png);
+        background-size: 35px 35px;
+    }
 }
