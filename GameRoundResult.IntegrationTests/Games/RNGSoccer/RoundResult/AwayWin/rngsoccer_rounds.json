@@ -1,19 +1,19 @@
 [{
   "_id": {
-    "$oid": "68218a84664fee7b0be4d2c9"
+    "$oid": "680865e879b08e65cb969c7c"
   },
   "time": {
-    "$date": "2025-04-15T06:00:27.003Z"
+    "$date": "2025-04-23T04:00:40.001Z"
   },
   "id": 32559,
   "result": {
     "home": {
-      "rank": 7,
-      "suit": 2
+      "rank": 8,
+      "suit": 0
     },
     "away": {
-      "rank": 8,
-      "suit": 3
+      "rank": 9,
+      "suit": 1
     }
   },
   "settlementResult": {
@@ -24,10 +24,10 @@
   "exchangeRateId": 2089,
   "match": {
     "_id": {
-      "$oid": "67fdf5fbd539067b9e6ee846"
+      "$oid": "680865e879b08e696e969c7d"
     },
-    "home": "ARS",
-    "away": "JUV"
+    "home": "MCI",
+    "away": "ATM"
   },
   "__v": 0
 }]
