@@ -26,8 +26,9 @@ namespace GameRoundResult.Core.UnitTests.Services
         public async Task GetAsync_ReturnCorrectResult(long roundId, string memberId, string operatorId, string gameName)
         {
             //Arrnage
+			var totalMultiplierEntity = fixture.Create<BaseCascadingSlotTotalMultiplierEntity>();
             var roundEntity = fixture.Create<BaseCascadingSlotRoundEntity>();
-            var totalMultiplierEntity = fixture.Create<BaseCascadingSlotTotalMultiplierEntity>();
+          
             gameBetRepository.GetAsync(roundId, memberId, operatorId, gameName).Returns((roundEntity, totalMultiplierEntity));
 
             //Act
