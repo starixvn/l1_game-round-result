@@ -39,7 +39,6 @@ namespace GameRoundResult.Web.Models
         {
             if (ConvertToBaseCurrency)
             {
-                Console.WriteLine($"{Rate}, {amount}, {BaseCurrencyMultiplier}");
                 return (amount * Rate / BaseCurrencyMultiplier).Format();
             }
 
