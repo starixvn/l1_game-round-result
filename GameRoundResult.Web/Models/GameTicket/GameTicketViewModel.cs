@@ -37,7 +37,7 @@ namespace GameRoundResult.Web.Models
 
         public string DisplayAmount(decimal amount)
         {
-            if(ConvertToBaseCurrency)
+            if (ConvertToBaseCurrency)
             {
                 return (amount * Rate / BaseCurrencyMultiplier).Format();
             }
