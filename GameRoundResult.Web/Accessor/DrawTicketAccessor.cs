@@ -45,9 +45,10 @@ namespace GameRoundResult.Web.Accessor
             viewModel.Odds = result.Item2?.Odds;
             viewModel.TotalBet = result.Item2?.TotalBet ?? 0;
             viewModel.BetWin = result.Item2?.Betwin ?? 0;
-            viewModel.DrawId = request.RoundId;
             viewModel.Rate = result.Item2?.Rate ?? 0;
+            viewModel.DrawId = request.RoundId;
 
+            Console.WriteLine(viewModel.Rate);
             if (!string.IsNullOrEmpty(result.Item2?.Currency))
             {
                 viewModel.FractionalOddsFormat = await currencyGroupService.GetFractionalOddsFormat(result.Item2.Currency, request.OperatorId);
