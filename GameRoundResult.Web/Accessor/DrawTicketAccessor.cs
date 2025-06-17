@@ -46,7 +46,7 @@ namespace GameRoundResult.Web.Accessor
             viewModel.TotalBet = result.Item2?.TotalBet ?? 0;
             viewModel.BetWin = result.Item2?.Betwin ?? 0;
             viewModel.DrawId = request.RoundId;
-
+            viewModel.Rate = result.Item2?.Rate ?? 0;
 
             if (!string.IsNullOrEmpty(result.Item2?.Currency))
             {
