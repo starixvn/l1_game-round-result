@@ -17,6 +17,8 @@ namespace GameRoundResult.Core.Services
         public DateTimeOffset? EndTime { get; set; }
 
         public bool IsAuthenticated { get; set; } = true;
+
+        public object MetaData { get; set; }
     }
 
     public static class EndRoundInfoError

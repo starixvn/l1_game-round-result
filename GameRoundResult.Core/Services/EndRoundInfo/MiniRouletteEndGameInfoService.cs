@@ -1,4 +1,5 @@
-﻿using GameRoundResult.Core.Database.Entities;
+﻿using Amazon.Runtime.Internal.Transform;
+using GameRoundResult.Core.Database.Entities;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -26,12 +27,20 @@ namespace GameRoundResult.Core.Services
 
             var bet = bets.FirstOrDefault();
 
+            var betDetails = bet.SettlementDetails;
+
+            var metaData = new Dictionary<string, object>
+            {
+                { "betDetails", betDetails}
+            };
+
             return new EndRoundInfoResult
             {
                 EndTime = round.Time,
                 ValidBetAmount = bet.TotalAmount,
                 TotalAmount = bet.TotalAmount,
-                TotalWin = bet.Betwin
+                TotalWin = bet.Betwin,
+                MetaData = metaData
             };
         }
     }

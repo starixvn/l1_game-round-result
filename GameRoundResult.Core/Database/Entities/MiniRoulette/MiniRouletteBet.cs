@@ -34,5 +34,7 @@ namespace GameRoundResult.Core.Database.Entities
         public Dictionary<string, decimal> OddEven { get; set; }
 
         public Dictionary<string, decimal> BigSmall { get; set; }
+
+        public List<object> SettlementDetails { get; set; }
     }
 }
