@@ -28,10 +28,12 @@ namespace GameRoundResult.Core.Services
             var bet = bets.FirstOrDefault();
 
             var betDetails = bet.SettlementDetails;
+            var result = round.Result.ToString();
 
             var metaData = new Dictionary<string, object>
             {
-                { "betDetails", betDetails}
+                { "betDetails", betDetails},
+                { "result", result }
             };
 
             return new EndRoundInfoResult
