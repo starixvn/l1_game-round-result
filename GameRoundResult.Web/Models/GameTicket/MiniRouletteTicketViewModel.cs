@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameRoundResult.Core.Database.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace GameRoundResult.Web.Models
@@ -8,6 +9,8 @@ namespace GameRoundResult.Web.Models
         public MiniRouletteRoundResultViewModel RoundResult { get; set; }
 
         public IEnumerable<MiniRouletteBetLogViewModel> Bets { get; set; }
+
+        public List<BetDetail> SettlementDetails { get; set; }
     }
 
     public class MiniRouletteBetLogViewModel
@@ -36,6 +39,6 @@ namespace GameRoundResult.Web.Models
 
         public Dictionary<string, decimal> OddEven { get; set; }
 
-        public Dictionary<string, decimal> BigSmall { get; set; }
+        public Dictionary<string, decimal> BigSmall { get; set; }        
     }
 }

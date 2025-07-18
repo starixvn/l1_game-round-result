@@ -64,6 +64,7 @@
             <th>@CommonLocalizer["BetType"]</th>
             <th>@CommonLocalizer["BetChoice"]</th>
             <th>@CommonLocalizer["BetAmount"]</th>
+            <th>@CommonLocalizer["WinAmount"]</th>
         </tr>
     </thead>
     <tbody>
@@ -71,18 +72,18 @@
         {
             foreach (var bet in Model.Bets)
             {
-                @await Html.PartialAsync("~/Views/BetHistory/_MiniRouletteBetRow.cshtml", new MiniRouletteBetRowViewModel { Bet = bet, SettlementResult = Model.RoundResult.SettlementResult, ConvertToBaseCurrency = Model.ConvertToBaseCurrency, BaseCurrencyMultiplier = Model.BaseCurrencyMultiplier, Rate = Model.Rate })
+                @await Html.PartialAsync("~/Views/BetHistory/_MiniRouletteBetRow.cshtml", new MiniRouletteBetRowViewModel { Bet = bet, SettlementResult = Model.RoundResult.SettlementResult, ConvertToBaseCurrency = Model.ConvertToBaseCurrency, BaseCurrencyMultiplier = Model.BaseCurrencyMultiplier, Rate = Model.Rate, SettlementDetails = Model.SettlementDetails })
             }
             <tr>
-                <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>
+                <td colspan="4" class="text-right">@CommonLocalizer["Total"]</td>
                 <td class="text-right">@Model.DisplayTotalBet</td>
             </tr>
             <tr>
-                <td colspan="3" class="text-right">@CommonLocalizer["TotalWin"]</td>
+                <td colspan="4" class="text-right">@CommonLocalizer["TotalWin"]</td>
                 <td class="text-right">@Model.DisplayBetWin</td>
             </tr>
             <tr class="total">
-                <td colspan="3" class="bold text-right">@CommonLocalizer["WinLoss"]</td>
+                <td colspan="4" class="bold text-right">@CommonLocalizer["WinLoss"]</td>
                 <td class="bold text-right @(Model.WinLoss < 0 ? "text-red" : string.Empty)">@Model.DisplayWinLoss</td>
             </tr>
         }

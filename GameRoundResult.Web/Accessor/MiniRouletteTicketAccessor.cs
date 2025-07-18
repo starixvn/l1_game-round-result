@@ -31,6 +31,7 @@ namespace GameRoundResult.Web.Accessor
                 Rate = result.Item3?.Rate ?? 0,
                 TotalBet = result.Item3?.TotalAmount ?? 0,
                 BetWin = result.Item3?.Betwin ?? 0,
+                SettlementDetails = result.Item3?.SettlementDetails,
             };
         }
     }
