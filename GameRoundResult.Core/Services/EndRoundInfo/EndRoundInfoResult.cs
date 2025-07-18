@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using GameRoundResult.Core.Database.Entities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -28,17 +29,14 @@ namespace GameRoundResult.Core.Services
         public List<BetDetail> BetDetails { get; set; }
 
         public string Result { get; set; }
-    }
 
-    public class BetDetail
-    {
-        public int ChoiceId { get; set; }
+        public string GuaranteedWinStatus { get; set; }
 
-        public decimal TotalAmount { get; set; }
+        public bool GuaranteedWinTriggered { get; set; }
 
-        public decimal ValidBetAmount { get; set; }
+        public string GuaranteedLossStatus { get; set; }
 
-        public decimal TotalWin { get; set; }
+        public bool GuaranteedLossTriggered { get; set; }
     }
 
     public static class EndRoundInfoError

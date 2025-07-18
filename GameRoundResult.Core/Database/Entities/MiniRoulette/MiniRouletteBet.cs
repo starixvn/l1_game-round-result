@@ -37,5 +37,20 @@ namespace GameRoundResult.Core.Database.Entities
         public Dictionary<string, decimal> BigSmall { get; set; }
 
         public List<BetDetail> SettlementDetails { get; set; }
+
+        public string GuaranteedLossStatus { get; set; }
+
+        public string GuaranteedWinStatus { get; set; }
+    }
+
+    public class BetDetail
+    {
+        public int ChoiceId { get; set; }
+
+        public decimal TotalAmount { get; set; }
+
+        public decimal ValidBetAmount { get; set; }
+
+        public decimal TotalWin { get; set; }
     }
 }

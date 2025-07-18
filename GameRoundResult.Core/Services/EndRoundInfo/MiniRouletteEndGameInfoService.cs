@@ -29,10 +29,20 @@ namespace GameRoundResult.Core.Services
             var betDetails = bet.SettlementDetails;
             var result = round.Result.ToString();
 
+            var guaranteedWinStatus = string.IsNullOrEmpty(bet.GuaranteedWinStatus) ? "existed" : bet.GuaranteedWinStatus;
+            var guaranteedWinTriggered = !string.IsNullOrEmpty(bet.GuaranteedWinStatus);
+
+            var guaranteedLossStatus = string.IsNullOrEmpty(bet.GuaranteedLossStatus) ? "existed" : bet.GuaranteedLossStatus;
+            var guaranteedLossTriggered = !string.IsNullOrEmpty(bet.GuaranteedLossStatus);
+
             var metaData = new MetaData
             {
                 BetDetails = betDetails,
-                Result = result
+                Result = result,
+                GuaranteedWinStatus = guaranteedWinStatus,
+                GuaranteedWinTriggered = guaranteedWinTriggered,
+                GuaranteedLossStatus = guaranteedLossStatus,
+                GuaranteedLossTriggered = guaranteedLossTriggered
             };
 
             return new EndRoundInfoResult
