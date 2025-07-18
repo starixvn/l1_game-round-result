@@ -1,5 +1,6 @@
 ﻿using GameRoundResult.Core._Share;
 using GameRoundResult.Core.Database.Entities.RoundHistory;
+using GameRoundResult.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,6 @@ namespace GameRoundResult.Core.Database.Entities
 
         public Dictionary<string, decimal> BigSmall { get; set; }
 
-        public List<object> SettlementDetails { get; set; }
+        public List<BetDetail> SettlementDetails { get; set; }
     }
 }

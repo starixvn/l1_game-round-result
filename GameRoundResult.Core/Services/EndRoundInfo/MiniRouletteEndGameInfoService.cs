@@ -1,5 +1,4 @@
-﻿using Amazon.Runtime.Internal.Transform;
-using GameRoundResult.Core.Database.Entities;
+﻿using GameRoundResult.Core.Database.Entities;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -30,10 +29,10 @@ namespace GameRoundResult.Core.Services
             var betDetails = bet.SettlementDetails;
             var result = round.Result.ToString();
 
-            var metaData = new Dictionary<string, object>
+            var metaData = new MetaData
             {
-                { "betDetails", betDetails},
-                { "result", result }
+                BetDetails = betDetails,
+                Result = result
             };
 
             return new EndRoundInfoResult
