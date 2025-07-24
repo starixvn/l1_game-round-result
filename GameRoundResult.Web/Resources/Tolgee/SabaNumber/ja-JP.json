@@ -1,0 +1,13 @@
+{
+  "glossary_draw_id" : "ドロー",
+  "glossary_even" : "偶数",
+  "glossary_odd" : "オッズ",
+  "glossary_over" : "終了",
+  "glossary_tie" : "引き分け",
+  "glossary_under" : "アンダー",
+  "pf_algorithm_ball" : "ボールの価値 ＝ （乱数 ＋ X） mod 6 ＋ 1",
+  "pf_ball_value" : "ボールバリュー",
+  "pf_verifier_tool_ball" : "{value}番ボール",
+  "pf_verifier_tool_para_24_1" : "SHA512の2文字ごとのグループを10進数に変換する",
+  "pf_verifier_tool_para_27" : "SHA512を2文字ずつ区切り、10進数に変換"
+}

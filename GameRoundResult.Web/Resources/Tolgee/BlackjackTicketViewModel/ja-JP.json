@@ -1,0 +1,10 @@
+{
+  "Blackjack" : "ブラックジャック",
+  "Bust" : "バスト",
+  "Dealer" : "ディーラー",
+  "HandId" : "ハンドID",
+  "Player" : "プレイヤー",
+  "Stake" : "ステーク",
+  "Unfinished Game" : "未完了のゲーム",
+  "WinLoss" : "損益"
+}

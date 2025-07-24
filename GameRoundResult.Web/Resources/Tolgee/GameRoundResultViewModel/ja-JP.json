@@ -1,0 +1,9 @@
+{
+  "Date" : "日付",
+  "GameRoundResult" : "ゲームラウンド結果",
+  "GameType" : "ゲームタイプ",
+  "Note" : "ノート",
+  "NoteDetail" : "データは、現在の日付から過去7日間以内にのみ利用可能です。",
+  "RoundId" : "ラウンド",
+  "Search" : "検索"
+}

@@ -1,0 +1,13 @@
+{
+  "game_name_1005" : "シーボール",
+  "glossary_even" : "偶数",
+  "glossary_odd" : "奇数",
+  "pf_verifier_tool_para_24" : "SHA512ハッシュの各2文字のグループを10進数に変換",
+  "pf_verifier_tool_para_25" : "ボール1 - インデックス (1-60)",
+  "pf_verifier_tool_para_26" : "ボール2 - インデックス (1-59)",
+  "pf_verifier_tool_para_27" : "ボール 3 - インデックス (1-58)",
+  "pf_verifier_tool_para_28" : "ボール 4 - インデックス (1-57)",
+  "pf_verifier_tool_para_29" : "ボール1 - 最終結果",
+  "pf_verifier_tool_para_30" : "ボール 2 - 最終結果",
+  "pf_verifier_tool_para_32" : "ボール4 - 最終結果"
+}

@@ -1,0 +1,16 @@
+{
+  "dealer" : "ディーラー",
+  "game_name" : "チャイニーズブラックジャック",
+  "gameNames.77" : "チャイニーズブラックジャック",
+  "glossary_bust" : "バスト",
+  "glossary_five-card" : "ファイブカード",
+  "glossary_hand_ranking_ban-ban" : "バンバン",
+  "glossary_hand_ranking_ban-luck" : "盤石の幸運 (Banjaku no Koun)",
+  "glossary_hand_ranking_five-card_trick" : "ファイブカードトリック",
+  "handid" : "ハンドID",
+  "hand_ranking_five-card_trick" : "ファイブカードトリック",
+  "player" : "プレイヤー",
+  "unfinished_game" : "未完了ゲーム",
+  "unqualified" : "未資格",
+  "unsatisfied" : "不満"
+}

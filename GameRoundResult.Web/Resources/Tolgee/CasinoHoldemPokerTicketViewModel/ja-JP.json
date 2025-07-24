@@ -1,0 +1,21 @@
+{
+  "Card" : "カード",
+  "Combination" : "組み合わせ",
+  "CommunityCards" : "コミュニティカード",
+  "Dealer" : "ディーラー",
+  "DoesNotQualify" : "対象外",
+  "Flush" : "フラッシュ",
+  "Fold" : "フォールド",
+  "FourOfAKind" : "フォー・オブ・ア・カインド",
+  "FullHouse" : "フルハウス",
+  "HighCard" : "ハイカード",
+  "Pair" : "ペア",
+  "Player" : "プレイヤー",
+  "RoyalFlush" : "ロイヤルフラッシュ",
+  "Stake" : "ステーク",
+  "Straight" : "ストレート",
+  "StraightFlush" : "ストレートフラッシュ",
+  "ThreeOfAKind" : "スリーカード",
+  "TwoPairs" : "ツーペア",
+  "UnfinishedGame" : "未完了のゲーム"
+}

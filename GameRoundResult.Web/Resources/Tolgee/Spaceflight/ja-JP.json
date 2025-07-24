@@ -1,0 +1,13 @@
+{
+  "bet_accepted" : "ベット受付",
+  "cashout" : "キャッシュアウト",
+  "cashout_50%" : "50%キャッシュアウト",
+  "crash" : "クラッシュ",
+  "glossary_bet" : "ベット",
+  "glossary_crash_point" : "クラッシュポイント",
+  "glossary_option" : "オプション",
+  "glossary_refund" : "払い戻し",
+  "glossary_total_bet" : "合計ベット",
+  "multiplier" : "マルチプライヤー",
+  "you_reach_max_win" : "最大勝利額に到達しました"
+}

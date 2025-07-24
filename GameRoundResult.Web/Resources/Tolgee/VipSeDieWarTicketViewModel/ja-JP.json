@@ -1,0 +1,18 @@
+{
+  "Banker" : "バンカー",
+  "BankerEven" : "バンカー - イーブン",
+  "BankerOdd" : "バンカー - オッズ",
+  "BankerRed1" : "バンカー - 赤1",
+  "BankerRed3" : "バンカー - 赤3つ",
+  "BankerRed4" : "バンカー - レッド4",
+  "BankerWhite4" : "バンカー - 白4",
+  "Player" : "プレイヤー",
+  "PlayerEven" : "プレイヤー - イーブン",
+  "PlayerOdd" : "プレイヤー - 奇数",
+  "PlayerRed1" : "プレイヤー - 赤1",
+  "PlayerRed3" : "プレイヤー - 赤3つ",
+  "PlayerRed4" : "プレイヤー - 赤4",
+  "PlayerWhite4" : "プレイヤー - 白4",
+  "TotalEven" : "合計偶数",
+  "TotalOdd" : "トータルオッズ"
+}

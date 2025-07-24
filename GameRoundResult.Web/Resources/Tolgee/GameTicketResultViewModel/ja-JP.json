@@ -1,0 +1,10 @@
+{
+  "CustomerId" : "ユーザーID",
+  "GameTickets" : "ゲームチケット",
+  "GameType" : "ゲームタイプ",
+  "Note" : "注意",
+  "NoteDetail" : "データは直近7日間のみご利用いただけます。",
+  "RoundId" : "ラウンド",
+  "Search" : "検索",
+  "Stake" : "ベット"
+}
