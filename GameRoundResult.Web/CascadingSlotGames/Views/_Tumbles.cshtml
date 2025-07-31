@@ -88,7 +88,7 @@
                             param-GameName="Model.GameName"
                             param-GameId="Model.GameId" />
                         </td>
-                        @if (additionalFreeSpins.Odds > 0)
+                        @if (additionalFreeSpins.Odds > 0 || additionalFreeSpins?.Win > 0)
                         {
                             <td>
                                 <component type="typeof(Symbol)"
@@ -102,9 +102,12 @@
                                 @if (additionalFreeSpins.Win != null && additionalFreeSpins.Win > 0)
                                 {
                                     @additionalFreeSpins.Win
-                                    <br />
                                 }
-                                @additionalFreeSpins.Odds @(roundResult.FreeSpin ? Localizer["ExtraFreeSpin"] : Localizer["FreeSpins"])
+                                @if(additionalFreeSpins.Odds > 0)
+                                {
+                                    <br />
+                                    @additionalFreeSpins.Odds @(roundResult.FreeSpin ? Localizer["ExtraFreeSpin"] : Localizer["FreeSpins"])
+                                }
                             </td>
 
                         }
