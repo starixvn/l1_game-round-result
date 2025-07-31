@@ -101,7 +101,7 @@
                             <td>
                                 @if (additionalFreeSpins.Win > 0)
                                 {
-                                    @additionalFreeSpins.Win
+                                    @additionalFreeSpins.Win?.Format()
                                 }
 
                                 @if(additionalFreeSpins.Odds > 0 && additionalFreeSpins.Odds > 0)
