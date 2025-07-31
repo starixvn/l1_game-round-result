@@ -38,19 +38,19 @@
                                 <td rowspan="@rowspan">@(index + 1)</td>
                                 <td rowspan="@rowspan">
                                     <component type="typeof(CascadingBoard)"
-                           render-mode="Static" 
-                           param-Multipliers="tumbles[index].Multipliers"
-                           param-Board="tumbles[index].Board"
-                           param-StaticResourceUrl="Model.StaticResourceUrl"
-                           param-GameName="Model.GameName" 
-                           param-GameId="Model.GameId" />
+                                    render-mode="Static" 
+                                    param-Multipliers="tumbles[index].Multipliers"
+                                    param-Board="tumbles[index].Board"
+                                    param-StaticResourceUrl="Model.StaticResourceUrl"
+                                    param-GameName="Model.GameName" 
+                                    param-GameId="Model.GameId" />
                                 </td>
                                 <td>
                                     <component type="typeof(Symbol)"
-                           render-mode="Static"
-                           param-Number="item.key"
-                           param-StaticResourceUrl="Model.StaticResourceUrl"
-                           param-GameName="Model.GameName" />
+                                    render-mode="Static"
+                                    param-Number="item.key"
+                                    param-StaticResourceUrl="Model.StaticResourceUrl"
+                                    param-GameName="Model.GameName" />
                                 </td>
                                 <td>@tumbles[index].Icons[item.key].Count</td>
                                 <td>@tumbles[index].Icons[item.key].Win.Format()</td>
@@ -62,10 +62,10 @@
                             <tr>
                                 <td>
                                     <component type="typeof(Symbol)"
-                           render-mode="Static"
-                           param-Number="item.key"
-                           param-StaticResourceUrl="Model.StaticResourceUrl"
-                           param-GameName="Model.GameName" />
+                                    render-mode="Static"
+                                    param-Number="item.key"
+                                    param-StaticResourceUrl="Model.StaticResourceUrl"
+                                    param-GameName="Model.GameName" />
                                 </td>
                                 <td>@tumbles[index].Icons[item.key].Count</td>
                                 <td>@tumbles[index].Icons[item.key].Win.Format()</td>
@@ -81,24 +81,31 @@
                         <td rowspan="@rowspan">@(index + 1)</td>
                         <td rowspan="@rowspan">
                             <component type="typeof(CascadingBoard)"
-                           render-mode="Static"
-                           param-Multipliers="tumbles[index].Multipliers"
-                           param-Board="tumbles[index].Board"
-                           param-StaticResourceUrl="Model.StaticResourceUrl"
-                           param-GameName="Model.GameName"
-                           param-GameId="Model.GameId" />
+                            render-mode="Static"
+                            param-Multipliers="tumbles[index].Multipliers"
+                            param-Board="tumbles[index].Board"
+                            param-StaticResourceUrl="Model.StaticResourceUrl"
+                            param-GameName="Model.GameName"
+                            param-GameId="Model.GameId" />
                         </td>
                         @if (additionalFreeSpins.Odds > 0)
                         {
                             <td>
                                 <component type="typeof(Symbol)"
-                           render-mode="Static"
-                           param-Number="CascadingSlotGameConstant.FreeSpinSymbol"
-                           param-StaticResourceUrl="Model.StaticResourceUrl"
-                           param-GameName="Model.GameName" />
+                                render-mode="Static"
+                                param-Number="CascadingSlotGameConstant.FreeSpinSymbol"
+                                param-StaticResourceUrl="Model.StaticResourceUrl"
+                                param-GameName="Model.GameName" />
                             </td>
                             <td>@additionalFreeSpins.Count</td>
-                            <td>@additionalFreeSpins.Odds @(roundResult.FreeSpin ? Localizer["ExtraFreeSpin"] : Localizer["FreeSpins"])</td>
+                            <td>
+                                @if (additionalFreeSpins.Win != null && additionalFreeSpins.Win > 0)
+                                {
+                                    @additionalFreeSpins.Win
+                                    <br />
+                                }
+                                @additionalFreeSpins.Odds @(roundResult.FreeSpin ? Localizer["ExtraFreeSpin"] : Localizer["FreeSpins"])
+                            </td>
 
                         }
                         else

@@ -57,5 +57,7 @@ namespace GameRoundResult.Web.CascadingSlotGames.ViewModels
         public byte Count { get; set; }
 
         public byte Odds { get; set; }
+
+        public decimal? Win { get; set; }
     }
 }

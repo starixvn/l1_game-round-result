@@ -10,10 +10,11 @@ namespace GameRoundResult.Core.Services
     public interface IGeneralGameSettingService
     {
         Task<IEnumerable<GameConfigEntity>> GetSelectGamesAsync();
-
+        Task<IEnumerable<GameConfigEntity>> GetAll();
         Task<bool> IsCrashGame(int gameId);
     }
-    public class GeneralGameSettingService: IGeneralGameSettingService
+
+    public class GeneralGameSettingService : IGeneralGameSettingService
     {
         private readonly IGeneralGameSettingRepository generalGameSettingRepository;
 
@@ -33,7 +34,16 @@ namespace GameRoundResult.Core.Services
 
             return filteredGames;
         }
-        
+
+        public async Task<IEnumerable<GameConfigEntity>> GetAll()
+        {
+            var gameEntities = await generalGameSettingRepository.GetAll();
+            var filteredGames = gameEntities
+                .Where(x => x.GameId > 0);
+
+            return filteredGames;
+        }
+
         public async Task<bool> IsCrashGame(int gameId)
         {
             var gameEntities = await generalGameSettingRepository.GetAll();
