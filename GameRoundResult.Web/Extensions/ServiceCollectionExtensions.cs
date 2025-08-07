@@ -255,6 +255,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<MarbleFootball2EndGameInfoService>();
             services.AddScoped<RNGSoccerEndGameInfoService>();
             services.AddScoped<MiniRouletteEndGameInfoService>();
+            services.AddScoped<SeDieMultiplayerEndGameInfoService>();
 
             services.AddScoped<IRoundHistoryRepository, RoundHistoryRepository>();
             services.AddScoped<IRoundHistoryService, RoundHistoryService>();
