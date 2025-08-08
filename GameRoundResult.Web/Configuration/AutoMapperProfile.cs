@@ -15,6 +15,7 @@ using GameRoundResult.Core.Database.Entities.CoinToss;
 using GameRoundResult.Core.Database.Entities.FootballCoinToss;
 using GameRoundResult.Core.Database.Entities.KaraKrus;
 using GameRoundResult.Core.Database.Entities.SevenUpDown;
+using GameRoundResult.Core.Database.Entities.SeDieMultiplayer;
 using GameRoundResult.Web.Models.GameTicket;
 using GameRoundResult.Core.Database.Entities.RNGSoccer;
 
@@ -529,6 +530,18 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<MiniRouletteRound, MiniRouletteRoundResultViewModel>();
             CreateMap<MiniRouletteSettlementResult, MiniRouletteSettlementResultViewModel>();
             CreateMap<MiniRouletteBetLog, MiniRouletteBetLogViewModel>();
+
+            CreateMap<SeDieMultiplayerRound, SeDieMultiplayerRoundResultViewModel>()
+                .ForMember(x => x.RedChips, opt => opt.MapFrom(x => new[]
+                {
+                    x.Result.FirstRedChip,
+                    x.Result.SecondRedChip ,
+                    x.Result.ThirdRedChip,
+                    x.Result.FourthRedChip
+                }.OrderByDescending(x => x)));
+
+            CreateMap<SeDieMultiplayerSettlementResult, SeDieMultiplayerSettlementResultViewModel>();
+            CreateMap<SeDieMultiplayerBet, SeDieMultiplayerBetViewModel>();
         }
     }
 }

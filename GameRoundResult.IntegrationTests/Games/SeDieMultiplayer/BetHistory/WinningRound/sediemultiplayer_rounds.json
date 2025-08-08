@@ -1,0 +1,28 @@
+[
+  {
+    "_id": {
+      "$oid": "6894072f4a63a8676f805395"
+    },
+    "time": {
+      "$date": "2025-08-08T02:51:51.000Z"
+    },
+    "id": 7654322,
+    "result": {
+      "red1": true,
+      "red2": true,
+      "red3": false,
+      "red4": false
+    },
+    "settlementResult": {
+      "odd": false,
+      "even": true,
+      "red2": true,
+      "red3": false,
+      "red4": false,
+      "white3": false,
+      "white4": false
+    },
+    "exchangeRateId": 2089,
+    "__v": 0
+  }
+]

@@ -12,6 +12,7 @@ using GameRoundResult.Web.Models.GameRoundResult;
 using GameRoundResult.Core.Database.Entities.GameDraw;
 using GameRoundResult.Web.Models.RoundHistory;
 using GameRoundResult.Core.Database.Entities.FootballCoinToss;
+using GameRoundResult.Core.Database.Entities.SeDieMultiplayer;
 
 namespace GameRoundResult.Web.Extensions
 {
@@ -440,6 +441,14 @@ namespace GameRoundResult.Web.Extensions
         public static MiniRouletteBetLogViewModel ToViewModel(this MiniRouletteBetLog entity, IMapper mapper, TimeSpan timeZoneOffset)
         {
             return mapper.Map<MiniRouletteBetLog, MiniRouletteBetLogViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours));
+            });
+        }
+
+        public static SeDieMultiplayerBetViewModel ToViewModel(this SeDieMultiplayerBet entity, IMapper mapper, TimeSpan timeZoneOffset)
+        {
+            return mapper.Map<SeDieMultiplayerBet, SeDieMultiplayerBetViewModel>(entity, opts =>
             {
                 opts.AfterMap((source, dest) => dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours));
             });

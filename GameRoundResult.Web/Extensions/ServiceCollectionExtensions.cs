@@ -182,6 +182,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(MarbleFootball2TicketAccessor));
             services.AddScoped(typeof(RNGSoccerTicketAccessor));
             services.AddScoped<MiniRouletteTicketAccessor>();
+            services.AddScoped<SeDieMultiplayerTicketAccessor>();
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
             services.AddScoped<IGameDrawTypeFactory, GameDrawTypeFactory>();

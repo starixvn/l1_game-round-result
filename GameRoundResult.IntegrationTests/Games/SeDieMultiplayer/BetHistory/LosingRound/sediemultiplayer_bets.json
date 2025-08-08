@@ -1,0 +1,41 @@
+[
+  {
+    "_id": {
+      "$oid": "689407184a63a80c5d80538c"
+    },
+    "roundId": 1234568,
+    "uid": "68940706569d0961d9c4c606",
+    "freeBet": false,
+    "__v": 0,
+    "betwin": 0,
+    "currency": "INH",
+    "even": 0,
+    "name": "Azure92073",
+    "odd": 50,
+    "odds": {
+      "even": 1.96,
+      "odd": 1.96,
+      "red3": 3.75,
+      "white3": 3.75,
+      "red4": 14.4,
+      "white4": 14.4,
+      "red2": 2.4
+    },
+    "operatorId": "ONEworks1",
+    "paid": true,
+    "playerId": "1111111",
+    "rate": 0.039428669619026566,
+    "red2": 0,
+    "red3": 25,
+    "red4": 0,
+    "siteId": "4100300",
+    "time": {
+      "$date": "2025-08-08T02:55:00.000Z"
+    },
+    "white3": 0,
+    "white4": 0,
+    "__archive": {
+      "summarized": true
+    }
+  }
+]
