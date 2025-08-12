@@ -35,6 +35,14 @@
     "time": {
       "$date": "2025-06-06T05:40:04.106Z"
     },
-    "totalAmount": 10
+    "totalAmount": 10,
+    "settlementDetails": [
+      {
+        "choiceId": 39,
+        "totalAmount": 10,
+        "validBetAmount": 10,
+        "totalWin": 20
+      }
+    ]
   }
 ]
