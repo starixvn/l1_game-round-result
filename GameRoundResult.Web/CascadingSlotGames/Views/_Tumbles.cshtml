@@ -125,18 +125,11 @@
                     </tr>
                 }
             }
-            @if (!roundResult.FreeSpin && roundResult.BetWin > 0 && roundResult.Multiplier > 0)
+            @if (roundResult.BetWin > 0 && roundResult.Multiplier > 0 && tumbles.Count > 1)
             {
                 <tr>
                     <td colspan="5" class="text-right">@Localizer["TotalMultiplier"]</td>
-                    <td>@(roundResult.Multiplier)</td>
-                </tr>
-            }
-            @if (roundResult.FreeSpin && roundResult.BetWin > 0 && roundResult.Multiplier > 0 && tumbles.Count > 1)
-            {
-                <tr>
-                    <td colspan="5" class="text-right">@Localizer["TotalMultiplier"]</td>
-                    <td>@(roundResult.TotalMultiplier)</td>
+                    <td>@(roundResult.FreeSpin ? roundResult.TotalMultiplier : roundResult.Multiplier)</td>
                 </tr>
             }
             <tr>
