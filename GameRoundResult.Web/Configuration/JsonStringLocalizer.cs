@@ -90,7 +90,7 @@ namespace GameRoundResult.Web.Configuration
             string fullFilePath = Path.GetFullPath(relativeFilePath);
             if (File.Exists(fullFilePath))
             {
-                string cacheKey = $"locale_{Thread.CurrentThread.CurrentCulture.Name}_{key}";
+                string cacheKey = $"locale_{Thread.CurrentThread.CurrentCulture.Name}_{tolgeeNamespace}|{key}";
                 string cacheValue = cache.GetString(cacheKey);
 
                 if (!string.IsNullOrEmpty(cacheValue))
