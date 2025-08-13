@@ -11,6 +11,8 @@ namespace GameRoundResult.Web.CascadingSlotGames.ViewModels
 
         public decimal CoinValue { get; set; }
 
+        public string DisplayCoinValue => CoinValue.Format();
+
         public decimal TotalAmount { get; set; }
 
         public string DisplayTotalAmount => TotalAmount.Format();
