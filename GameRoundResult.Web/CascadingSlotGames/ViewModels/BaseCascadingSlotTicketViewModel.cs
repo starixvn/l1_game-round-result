@@ -11,4 +11,8 @@
 
         public IEnumerable<BaseCascadingSlotRoundMultiplierViewModel> Multipliers { get; set; }
     }
+
+    public class cascadingslot
+    {
+    }
 }

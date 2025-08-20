@@ -2,6 +2,7 @@
 
 @inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
 @inject IJsonStringLocalizer<BaseCascadingSlotTicketViewModel> Localizer
+@inject IJsonStringLocalizer<cascadingslot> CascadingSlotLocalizer
 
 @{
     var roundResult = Model.Round;
@@ -28,7 +29,7 @@
                     <div>@(roundResult.FreeSpin ? $"({Localizer["FreeSpin"]})" : string.Empty)</div>
                     @if (roundResult.BuyFreeSpin)
                     {
-                        <div>@($"({Localizer["buy_free_spins"]})")</div>
+                        <div style="font-size: medium;">@($"({CascadingSlotLocalizer["buy_free_spins"]})")</div>
                     }
                 </td>
                 <td>
