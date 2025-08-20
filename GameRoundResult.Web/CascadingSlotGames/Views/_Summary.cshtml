@@ -26,6 +26,10 @@
                 <td>
                     @roundResult.RoundId
                     <div>@(roundResult.FreeSpin ? $"({Localizer["FreeSpin"]})" : string.Empty)</div>
+                    @if (roundResult.BuyFreeSpin)
+                    {
+                        <div>@($"({Localizer["buy_free_spins"]})")</div>
+                    }
                 </td>
                 <td>
                     @roundResult.DisplayRoundDate
@@ -45,7 +49,7 @@
             <tr class="total">
                 <td colspan="4" class="text-right">@CommonLocalizer["WinLoss"]</td>
                 <td></td>
-                <td class="@(roundResult.IsWinning ? string.Empty: "text-red")">@roundResult.DisplayWinLoss</td>
+                <td class="@(roundResult.IsWinning ? string.Empty : "text-red")">@roundResult.DisplayWinLoss</td>
             </tr>
         }
         else
