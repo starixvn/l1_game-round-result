@@ -1,7 +1,9 @@
 ﻿using System;
+using GameRoundResult.Web.Configuration;
 
 namespace GameRoundResult.Web.Models
 {
+    [TolgeeNamespace("SeDieTicketViewModel")]
     public class SeDieMultiplayerTicketViewModel : GameTicketViewModel
     {
         public SeDieMultiplayerRoundResultViewModel RoundResult { get; set; }
