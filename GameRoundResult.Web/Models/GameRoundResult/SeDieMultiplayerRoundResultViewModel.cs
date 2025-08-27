@@ -19,18 +19,23 @@ namespace GameRoundResult.Web.Models
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
-                GetChipContent(),
-                GetResultContent(stringLocalizer)
+                SeDieOriginalGamesHelper.GetChipContent(RedChips),
+                SeDieOriginalGamesHelper.GetResultContent(SettlementResult.Even, TotalRed, stringLocalizer)
             };
 
             return result;
         }
+    }
 
-        private string GetChipContent()
+    public class SeDieMultiplayerSettlementResultViewModel : SeDieSettlementResultViewModel { }
+
+    public static class SeDieOriginalGamesHelper
+    {
+        public static string GetChipContent(IEnumerable<bool> redChips)
         {
             var result = new List<string>();
 
-            foreach (var chip in RedChips)
+            foreach (var chip in redChips)
             {
                 var tagBuilder = new TagBuilder("i");
 
@@ -42,12 +47,12 @@ namespace GameRoundResult.Web.Models
             return string.Join("", result);
         }
 
-        private string GetResultContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        public static string GetResultContent(bool isEven, int totalRed, IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var tagBuilder = new TagBuilder("span");
             tagBuilder.AddCssClass("bold");
 
-            if (SettlementResult.Even)
+            if (isEven)
             {
                 tagBuilder.AddCssClass("text-blue");
                 tagBuilder.InnerHtml.Append(stringLocalizer["Even"]);
@@ -58,10 +63,8 @@ namespace GameRoundResult.Web.Models
                 tagBuilder.InnerHtml.Append(stringLocalizer["Odd"]);
             }
 
-            tagBuilder.InnerHtml.Append($", {(TotalRed > 0 ? $"{TotalRed} {stringLocalizer["red"]}" : $"{SeDie.NumberOfChips} {stringLocalizer["white"]}")}");
+            tagBuilder.InnerHtml.Append($", {(totalRed > 0 ? $"{totalRed} {stringLocalizer["red"]}" : $"{SeDie.NumberOfChips} {stringLocalizer["white"]}")}");
             return tagBuilder.GetHtmlString();
         }
     }
-
-    public class SeDieMultiplayerSettlementResultViewModel : SeDieSettlementResultViewModel { }
 }

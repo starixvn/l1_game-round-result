@@ -11,29 +11,27 @@ namespace GameRoundResult.Core.Services
 {
     public class SeDieMultiplayerEndGameInfoService : BaseEndGameInfoService<SeDieMultiplayerRound, SeDieMultiplayerBet>, IEndGameInfoService
     {
-        public SeDieMultiplayerEndGameInfoService(IMongoDatabase database) : base(database)
-        {
-        }
+        public SeDieMultiplayerEndGameInfoService(IMongoDatabase database) : base(database) { }
 
         public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request)
         {
-            var round = await GetRoundAsync(request);
-            var bets  = await GetBetsAsync(request);
+            var sedieMultiplayerRound = await GetRoundAsync(request);
+            var sedieMultiplayerBets  = await GetBetsAsync(request);
 
-            if (round == null || !bets.Any())
+            if (sedieMultiplayerRound == null || !sedieMultiplayerBets.Any())
             {
                 return EndRoundInfoError.SB1001;
             }
 
-            var totalBetAmount = bets.Sum(x => x.Odd + x.Even + x.TwoRed + x.ThreeRed + x.FourRed + x.ThreeWhite + x.FourWhite);
-            var totalBetWin    = bets.Sum(x => x.Betwin);
+            var sedieMultiplayerTotalBetAmount = sedieMultiplayerBets.Sum(x => x.Odd + x.Even + x.TwoRed + x.ThreeRed + x.FourRed + x.ThreeWhite + x.FourWhite);
+            var sedieMultiplayerTotalBetWin    = sedieMultiplayerBets.Sum(x => x.Betwin);
 
             return new EndRoundInfoResult
             {
-                EndTime        = round.Time,
-                ValidBetAmount = request.FreeBet ? 0 : totalBetAmount,
-                TotalAmount    = request.FreeBet ? 0 : totalBetAmount,
-                TotalWin       = totalBetWin
+                EndTime        = sedieMultiplayerRound.Time,
+                ValidBetAmount = request.FreeBet ? 0 : sedieMultiplayerTotalBetAmount,
+                TotalAmount    = request.FreeBet ? 0 : sedieMultiplayerTotalBetAmount,
+                TotalWin       = sedieMultiplayerTotalBetWin
             };
         }
 

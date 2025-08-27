@@ -1,0 +1,155 @@
+@model dynamic
+
+@{
+    var enableTolgee = ViewBag.EnableTolgee ?? false;
+    var tolgeeNamespace = ViewBag.TolgeeNamespace ?? "";
+    var timeOffsetString = ViewBag.TimeOffsetString ?? "";
+    var roundResult = ViewBag.RoundResult;
+    var bet = ViewBag.Bet;
+    var totalBet = (decimal)(ViewBag.TotalBet ?? 0m);
+    var totalWin = (decimal)(ViewBag.TotalWin ?? 0m);
+    var winLoss = (decimal)(ViewBag.WinLoss ?? 0m);
+    var commonLocalizer = ViewBag.CommonLocalizer;
+    var gameLocalizer = ViewBag.GameLocalizer;
+}
+
+@if (enableTolgee)
+{
+    <input value="@tolgeeNamespace" id="tolgee_namespace" readonly hidden/>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@commonLocalizer["Time"] (@timeOffsetString)</th>
+            <th class="col-round-id">@commonLocalizer["RoundId"]</th>
+            <th>@commonLocalizer["Result"]</th>
+            <th>@commonLocalizer["WinningOptions"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (roundResult != null)
+        {
+            <tr>
+                <td>
+                    @roundResult.Time.ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture)
+                    <br />
+                    @roundResult.Time.ToString(ViewFormat.RoundTimeWithSecondFormat, CultureInfo.InvariantCulture)
+                </td>
+                <td>@roundResult.RoundId</td>
+                <td>
+                    @foreach (var chip in roundResult.RedChips)
+                    {
+                        <i class="@(chip ? "red-chip" : "white-chip")"></i>
+                    }
+                </td>
+                <td class="bold @(roundResult.SettlementResult.Even ? "text-blue" : "text-red")">
+                    @(roundResult.SettlementResult.Even ? commonLocalizer["Even"] : commonLocalizer["Odd"])
+
+                    @{
+                        var totalRed = roundResult.TotalRed;
+                        @(totalRed > 0 ? $", {totalRed} {commonLocalizer["Red"]}" : $", 4 {commonLocalizer["White"]}")
+                    }
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center">
+                    @commonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@commonLocalizer["BetChoice"]</th>
+            <th>@commonLocalizer["BetAmount"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (bet != null && roundResult != null)
+        {
+            if (bet.Even > 0)
+            {
+                <tr>
+                    <td>@commonLocalizer["Even"]</td>
+                    <td class="text-right">@(((decimal)bet.Even).Format())</td>
+                </tr>
+            }
+            if (bet.Odd > 0)
+            {
+                <tr>
+                    <td>@commonLocalizer["Odd"]</td>
+                    <td class="text-right">@(((decimal)bet.Odd).Format())</td>
+                </tr>
+            }
+
+            if (bet.TwoRed > 0)
+            {
+                <tr>
+                    <td>@gameLocalizer["2Red"]</td>
+                    <td class="text-right">@(((decimal)bet.TwoRed).Format())</td>
+                </tr>
+            }
+
+            if (bet.ThreeRed > 0)
+            {
+                <tr>
+                    <td>@gameLocalizer["3Red"]</td>
+                    <td class="text-right">@(((decimal)bet.ThreeRed).Format())</td>
+                </tr>
+            }
+            if (bet.FourRed > 0)
+            {
+                <tr>
+                    <td>@gameLocalizer["4Red"]</td>
+                    <td class="text-right">@(((decimal)bet.FourRed).Format())</td>
+                </tr>
+            }
+            if (bet.ThreeWhite > 0)
+            {
+                <tr>
+                    <td>@gameLocalizer["1Red"]</td>
+                    <td class="text-right">@(((decimal)bet.ThreeWhite).Format())</td>
+                </tr>
+            }
+
+            if (bet.FourWhite > 0)
+            {
+                <tr>
+                    <td>@gameLocalizer["4White"]</td>
+                    <td class="text-right">@(((decimal)bet.FourWhite).Format())</td>
+                </tr>
+            }
+
+            <tr>
+                <td class="text-right">@commonLocalizer["Total"]</td>
+                <td class="text-right">@totalBet.Format() @(bet.FreeBet ? "(Scoin)": string.Empty)</td>
+            </tr>
+            <tr>
+                <td class="text-right">@commonLocalizer["TotalWin"]</td>
+                <td class="text-right">@totalWin.Format()</td>
+            </tr>
+            @if (!bet.FreeBet)
+            {
+                <tr class="total">
+                    <td class="bold text-right">@commonLocalizer["WinLoss"]</td>
+                    <td class="bold text-right @(winLoss < 0 ? "text-red" : string.Empty)">@winLoss.Format()</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="2" class="text-center">
+                    @commonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> 
