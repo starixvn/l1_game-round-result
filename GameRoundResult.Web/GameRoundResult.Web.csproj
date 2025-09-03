@@ -228,7 +228,6 @@
   <ItemGroup>
     <Folder Include="Resources\Tolgee\ChineseBlackjack\" />
     <Folder Include="Resources\Tolgee\Common\" />
-    <Folder Include="Resources\Tolgee\cascadingslot\" />
     <Folder Include="wwwroot\scss\fonts\Noto\" />
     <Folder Include="wwwroot\scss\images\football-dice\" />
     <Folder Include="Resources\Tolgee\BacBall\" />
