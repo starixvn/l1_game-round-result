@@ -90,7 +90,6 @@
         Bac100 = 100,
         Bac101 = 101,
         SevenUpDown = 103,
-        MarbleFootball = 104,
         TapFortune = 107,
         MarbleFootball2 = 114,
     }

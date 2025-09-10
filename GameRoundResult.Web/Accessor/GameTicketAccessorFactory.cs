@@ -103,7 +103,6 @@ namespace GameRoundResult.Web.Accessor
             { GameType.Bac100, typeof(BaccaratXTicketAccessor) },
             { GameType.Bac101, typeof(BaccaratXTicketAccessor) },
             { GameType.SevenUpDown, typeof(SevenUpDownTicketAccessor<SevenUpDownRound, SevenUpDownBet, SevenUpDownBetLog>) },
-            { GameType.MarbleFootball, typeof(MarbleFootballTicketAccessor) },
             { GameType.MarbleFootball2, typeof(MarbleFootball2TicketAccessor) },
         };
 

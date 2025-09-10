@@ -88,7 +88,6 @@ namespace GameRoundResult.Web.Accessor
             { GameType.Bac81, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
             { GameType.SeDie3, typeof(GameRoundAccessor<SeDie3Round, SeDie3RoundResultViewModel>) },
             { GameType.KaraKrus, typeof(GameRoundAccessor<KaraKrusRound, KaraKrusRoundResultViewModel>) },
-            { GameType.MarbleFootball, typeof(GameRoundAccessor<MarbleFootballRound, MarbleFootballRoundResultViewModel>)},
             { GameType.MarbleFootball2, typeof(GameRoundAccessor<MarbleFootball2Round, MarbleFootball2RoundResultViewModel>) },
             { GameType.Bac82, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
             { GameType.Bac83, typeof(GameRoundAccessor<BaccaratXRound, BaccaratXRoundResultViewModel>) },
