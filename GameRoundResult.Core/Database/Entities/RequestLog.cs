@@ -36,7 +36,7 @@ namespace GameRoundResult.Core.Database.Entities
 
         public long GameRoundId { get; set; }
 
-        public string PlayerId { get; set; }
+        public object PlayerId { get; set; }
 
         public string Language { get; set; }
 
