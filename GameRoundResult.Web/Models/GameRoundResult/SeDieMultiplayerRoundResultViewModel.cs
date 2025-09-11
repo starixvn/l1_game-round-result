@@ -15,6 +15,16 @@ namespace GameRoundResult.Web.Models
 
         public int TotalRed => RedChips.Count(x => x);
 
+        public override string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            return SeDieOriginalGamesHelper.GetChipContent(RedChips);
+        }
+
+        public override string GetWinningTextResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            return SeDieOriginalGamesHelper.GetResultContent(SettlementResult.Even, TotalRed, stringLocalizer);
+        }
+
         public override IEnumerable<string> ToDataTableArray(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))

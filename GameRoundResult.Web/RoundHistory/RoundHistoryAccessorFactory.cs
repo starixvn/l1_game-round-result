@@ -5,6 +5,7 @@ using GameRoundResult.Core.Database.Entities.BacBall;
 using GameRoundResult.Core.Database.Entities.FootballCoinToss;
 using GameRoundResult.Core.Database.Entities.SevenUpDown;
 using GameRoundResult.Core.Database.Entities.RNGSoccer;
+using GameRoundResult.Core.Database.Entities.SeDieMultiplayer;
 using GameRoundResult.Web.Models;
 using GameRoundResult.Web.Models.GameRoundResult;
 using GameRoundResult.Web.Models.RoundHistory;
@@ -50,6 +51,7 @@ namespace GameRoundResult.Web.RoundHistory
             { GameType.MarbleFootball2, typeof(RoundHistoryAccessor<MarbleFootball2Round, MarbleFootball2RoundResultViewModel, MarbleFootball2Bet, RoundHistoryBetViewModel>) },
             { GameType.RNGSoccer, typeof(RoundHistoryAccessor<RNGSoccerRound, RNGSoccerRoundResultViewModel, RNGSoccerBet, RoundHistoryBetViewModel>) },
             { GameType.MiniRoulette, typeof(RoundHistoryAccessor<MiniRouletteRound, MiniRouletteRoundResultViewModel, MiniRouletteBet, RoundHistoryBetViewModel>) },
+            { GameType.SeDieMultiplayer, typeof(RoundHistoryAccessor<SeDieMultiplayerRound, SeDieMultiplayerRoundResultViewModel, SeDieMultiplayerBet, RoundHistoryBetViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;
