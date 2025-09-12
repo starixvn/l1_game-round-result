@@ -6,9 +6,9 @@
     var timeOffsetString = ViewBag.TimeOffsetString ?? "";
     var roundResult = ViewBag.RoundResult;
     var bet = ViewBag.Bet;
-    var totalBet = (decimal)(ViewBag.TotalBet ?? 0m);
-    var totalWin = (decimal)(ViewBag.TotalWin ?? 0m);
-    var winLoss = (decimal)(ViewBag.WinLoss ?? 0m);
+    var totalBet = ViewBag.TotalBet;
+    var totalWin = ViewBag.TotalWin;
+    var winLoss = ViewBag.WinLoss;
     var commonLocalizer = ViewBag.CommonLocalizer;
     var gameLocalizer = ViewBag.GameLocalizer;
 }
@@ -78,14 +78,14 @@
             {
                 <tr>
                     <td>@commonLocalizer["Even"]</td>
-                    <td class="text-right">@(((decimal)bet.Even).Format())</td>
+                    <td class="text-right">@Model.DisplayAmount(bet.Even)</td>
                 </tr>
             }
             if (bet.Odd > 0)
             {
                 <tr>
                     <td>@commonLocalizer["Odd"]</td>
-                    <td class="text-right">@(((decimal)bet.Odd).Format())</td>
+                    <td class="text-right">@Model.DisplayAmount(bet.Odd)</td>
                 </tr>
             }
 
@@ -93,7 +93,7 @@
             {
                 <tr>
                     <td>@gameLocalizer["2Red"]</td>
-                    <td class="text-right">@(((decimal)bet.TwoRed).Format())</td>
+                    <td class="text-right">@Model.DisplayAmount(bet.TwoRed)</td>
                 </tr>
             }
 
@@ -101,21 +101,21 @@
             {
                 <tr>
                     <td>@gameLocalizer["3Red"]</td>
-                    <td class="text-right">@(((decimal)bet.ThreeRed).Format())</td>
+                    <td class="text-right">@Model.DisplayAmount(bet.ThreeRed)</td>
                 </tr>
             }
             if (bet.FourRed > 0)
             {
                 <tr>
                     <td>@gameLocalizer["4Red"]</td>
-                    <td class="text-right">@(((decimal)bet.FourRed).Format())</td>
+                    <td class="text-right">@Model.DisplayAmount(bet.FourRed)</td>
                 </tr>
             }
             if (bet.ThreeWhite > 0)
             {
                 <tr>
                     <td>@gameLocalizer["1Red"]</td>
-                    <td class="text-right">@(((decimal)bet.ThreeWhite).Format())</td>
+                    <td class="text-right">@Model.DisplayAmount(bet.ThreeWhite)</td>
                 </tr>
             }
 
@@ -123,23 +123,23 @@
             {
                 <tr>
                     <td>@gameLocalizer["4White"]</td>
-                    <td class="text-right">@(((decimal)bet.FourWhite).Format())</td>
+                    <td class="text-right">@Model.DisplayAmount(bet.FourWhite)</td>
                 </tr>
             }
 
             <tr>
                 <td class="text-right">@commonLocalizer["Total"]</td>
-                <td class="text-right">@totalBet.Format() @(bet.FreeBet ? "(Scoin)": string.Empty)</td>
+                <td class="text-right">@Model.DisplayAmount(totalBet) @(bet.FreeBet ? "(Scoin)" : string.Empty)</td>
             </tr>
             <tr>
                 <td class="text-right">@commonLocalizer["TotalWin"]</td>
-                <td class="text-right">@totalWin.Format()</td>
+                <td class="text-right">@Model.DisplayAmount(totalWin)</td>
             </tr>
             @if (!bet.FreeBet)
             {
                 <tr class="total">
                     <td class="bold text-right">@commonLocalizer["WinLoss"]</td>
-                    <td class="bold text-right @(winLoss < 0 ? "text-red" : string.Empty)">@winLoss.Format()</td>
+                    <td class="bold text-right @(winLoss < 0 ? "text-red" : string.Empty)">@Model.DisplayAmount(winLoss)</td>
                 </tr>
             }
         }

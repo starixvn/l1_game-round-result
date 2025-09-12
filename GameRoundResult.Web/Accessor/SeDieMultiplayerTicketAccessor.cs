@@ -25,6 +25,10 @@ namespace GameRoundResult.Web.Accessor
 
             return new SeDieMultiplayerTicketViewModel
             {
+                GameId = request.GameConfigs.GameId,
+                GameType = request.GameConfigs.Type,
+                Rate = result.Item2?.Rate ?? 0,
+                BetWin = result.Item2?.Betwin ?? 0,
                 RoundResult = result.Item1?.ToViewModel<SeDieMultiplayerRound, SeDieMultiplayerRoundResultViewModel>(mapper, request.TimeZoneOffset),
                 Bet = result.Item2?.ToViewModel(mapper, request.TimeZoneOffset)
             };
