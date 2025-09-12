@@ -461,5 +461,13 @@ namespace GameRoundResult.Web.Extensions
                 opts.AfterMap((source, dest) => dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours));
             });
         }
+
+        public static BetLogViewModel ToViewModel(this SoccerPinGoalBetLog entity, IMapper mapper, TimeSpan timeZoneOffset)
+        {
+            return mapper.Map<SoccerPinGoalBetLog, BetLogViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours));
+            });
+        }
     }
 }

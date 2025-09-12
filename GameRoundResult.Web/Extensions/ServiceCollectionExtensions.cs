@@ -181,6 +181,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(MarbleFootballTicketAccessor));
             services.AddScoped(typeof(MarbleFootball2TicketAccessor));
             services.AddScoped(typeof(RNGSoccerTicketAccessor));
+            services.AddScoped(typeof(SoccerPinGoalTicketAccessor));
             services.AddScoped<MiniRouletteTicketAccessor>();
             services.AddScoped<SeDieMultiplayerTicketAccessor>();
             services.AddScoped<BaccaratMultiplayerTicketAccessor>();
@@ -259,6 +260,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<MiniRouletteEndGameInfoService>();
             services.AddScoped<SeDieMultiplayerEndGameInfoService>();
             services.AddScoped<BaccaratMultiplayerEndGameInfoService>();
+            services.AddScoped<SoccerPinGoalEndGameInfoService>();
 
             services.AddScoped<IRoundHistoryRepository, RoundHistoryRepository>();
             services.AddScoped<IRoundHistoryService, RoundHistoryService>();

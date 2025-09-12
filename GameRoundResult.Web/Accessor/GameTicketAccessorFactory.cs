@@ -110,6 +110,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.MiniRoulette, typeof(MiniRouletteTicketAccessor) },
             { GameType.SeDieMultiplayer, typeof(SeDieMultiplayerTicketAccessor) },
             { GameType.BaccaratMultiplayer, typeof(BaccaratMultiplayerTicketAccessor) },
+            { GameType.SoccerPinGoal, typeof(SoccerPinGoalTicketAccessor) },
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()

@@ -96,6 +96,7 @@
         RNGSoccer = 118,
         MiniRoulette = 134,
         SeDieMultiplayer = 148,
-        BaccaratMultiplayer = 150
+        BaccaratMultiplayer = 150,
+        SoccerPinGoal = 156,
     }
 }

@@ -542,6 +542,8 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<SeDieMultiplayerSettlementResult, SeDieMultiplayerSettlementResultViewModel>();
             CreateMap<SeDieMultiplayerBet, SeDieMultiplayerBetViewModel>();
+            CreateMap<SoccerPinGoalRound, SoccerPinGoalRoundResultViewModel>();
+            CreateMap<SoccerPinGoalBetLog, SoccerPinGoalBetLogViewModel>();
 
             CreateMap<BaccaratMultiplayerRound, BaccaratMultiplayerRoundResultViewModel>()
                 .ForMember(x => x.PlayerCards, opt => opt.MapFrom((source, _, _, context) =>

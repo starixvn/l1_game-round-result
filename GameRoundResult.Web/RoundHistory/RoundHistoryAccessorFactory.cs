@@ -53,6 +53,7 @@ namespace GameRoundResult.Web.RoundHistory
             { GameType.MiniRoulette, typeof(RoundHistoryAccessor<MiniRouletteRound, MiniRouletteRoundResultViewModel, MiniRouletteBet, RoundHistoryBetViewModel>) },
             { GameType.SeDieMultiplayer, typeof(RoundHistoryAccessor<SeDieMultiplayerRound, SeDieMultiplayerRoundResultViewModel, SeDieMultiplayerBet, RoundHistoryBetViewModel>) },
             { GameType.BaccaratMultiplayer, typeof(RoundHistoryAccessor<BaccaratMultiplayerRound, BaccaratMultiplayerRoundResultViewModel, BaccaratMultiplayerBet, RoundHistoryBetViewModel>) },
+            { GameType.SoccerPinGoal, typeof(RoundHistoryAccessor<SoccerPinGoalRound, SoccerPinGoalRoundResultViewModel, SoccerPinGoalBet, RoundHistoryBetViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;
