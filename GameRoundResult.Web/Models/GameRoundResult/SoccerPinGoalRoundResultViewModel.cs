@@ -53,19 +53,24 @@ namespace GameRoundResult.Web.Models
             var winningResults = new List<string>();
 
             if (SettlementResult.Red)
+            {
                 winningResults.Add(GetGameText(stringLocalizer, "glossary_red"));
-            ;
+            }
 
             if (SettlementResult.Blue)
+            {
                 winningResults.Add(GetGameText(stringLocalizer, "glossary_blue"));
+            }
 
             if (SettlementResult.Draw)
+            {
                 winningResults.Add(GetGameText(stringLocalizer, "glossary_draw"));
+            }
 
             return string.Join(", ", winningResults);
         }
 
-        public string GetGameText(
+        public static string GetGameText(
             IJsonStringLocalizer<RoundResultViewModel> stringLocalizer,
             string key
         )

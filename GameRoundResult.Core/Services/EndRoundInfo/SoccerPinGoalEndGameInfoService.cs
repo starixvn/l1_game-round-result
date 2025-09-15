@@ -14,20 +14,20 @@ namespace GameRoundResult.Core.Services
 
         public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request)
         {
-            var round = await GetRoundAsync(request);
-            var bets = await GetBetsAsync(request);
+            var soccerPinGoalRound = await GetRoundAsync(request);
+            var soccerPinGoalBets = await GetBetsAsync(request);
 
-            if (round == null || !bets.Any())
+            if (soccerPinGoalRound == null || !soccerPinGoalBets.Any())
             {
                 return EndRoundInfoError.SB1001;
             }
 
-            var totalBetAmount = bets.Sum(x => x.TotalAmount);
-            var totalBetWin = bets.Sum(x => x.Betwin);
+            var totalBetAmount = soccerPinGoalBets.Sum(x => x.TotalAmount);
+            var totalBetWin = soccerPinGoalBets.Sum(x => x.Betwin);
 
             return new EndRoundInfoResult
             {
-                EndTime = round.Time,
+                EndTime = soccerPinGoalRound.Time,
                 ValidBetAmount = totalBetAmount,
                 TotalAmount = totalBetAmount,
                 TotalWin = totalBetWin,

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using GameRoundResult.Web.Configuration;
 
 namespace GameRoundResult.Web.Models
@@ -18,7 +19,7 @@ namespace GameRoundResult.Web.Models
                 return false;
             }
 
-            return choice.ToLower() switch
+            return choice.ToLower(CultureInfo.InvariantCulture) switch
             {
                 "red" => RoundResult.SettlementResult.Red,
                 "blue" => RoundResult.SettlementResult.Blue,
