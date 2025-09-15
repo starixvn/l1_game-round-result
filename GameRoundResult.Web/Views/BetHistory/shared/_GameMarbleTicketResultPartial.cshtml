@@ -1,0 +1,56 @@
+@model dynamic
+@using GameRoundResult.Core.Constants
+
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<RoundResultViewModel> RoundResultLocalizer
+
+
+@{
+    var localizer = ViewBag.Localizer;
+    var tolgeeNamespace = ViewBag.TolgeeNamespace;
+    var headerText = ViewBag.HeaderText ?? "header_match";
+}
+
+@if (Model.EnableTolgee)
+{
+    <input value="@tolgeeNamespace" id="tolgee_namespace" readonly hidden />
+}
+
+<table class="table table-bordered table-baccarat table-baccarat-fixed">
+    <thead>
+        <tr>
+            <th style="width: 20%;">@localizer[headerText]</th>
+            <th>
+                @CommonLocalizer["Result"] <br />
+                <span class="marble-football-result-container">
+                    <span class="marble-football-result marble-football-home">(@localizer["glossary_home"]</span>
+                    <span class="marble-football-divider">|</span>
+                    <span class="marble-football-result marble-football-away">@localizer["glossary_away"])</span>
+                </span>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null)
+        {
+            <tr>
+                <td>@Model.RoundResult.RoundId</td>
+                <td>
+                    <div>
+                        <span style="margin-top: 5px; margin-bottom: 5px;">
+                            @Html.Raw(@Model.RoundResult.GetFormattedResult(RoundResultLocalizer))
+                        </span>
+                    </div>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

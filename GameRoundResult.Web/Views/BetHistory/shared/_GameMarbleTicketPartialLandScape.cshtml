@@ -1,0 +1,72 @@
+@model dynamic
+@using GameRoundResult.Core.Constants
+
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+
+@{
+    var localizer = ViewBag.Localizer;
+    var tolgeeNamespace = ViewBag.TolgeeNamespace;
+    var showingBetDetail = ViewBag.ShowingBetDetail ?? false;
+}
+
+@if (Model.EnableTolgee)
+{
+    <input value="@tolgeeNamespace" id="tolgee_namespace" readonly hidden />
+}
+
+<table class="table table-bordered table-baccarat table-baccaratx-bet">
+    <thead>
+        <tr>
+            <th style="width: 20%;">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th style="width: 20%;">@CommonLocalizer["BetChoice"]</th>
+            <th style="width: 20%;">@CommonLocalizer["Odds"]</th>
+            <th style="width: 20%;">@CommonLocalizer["Stake"]</th>
+            <th style="width: 20%;">@CommonLocalizer["Win"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (showingBetDetail)
+        {
+            foreach (var bet in Model.BetLogs)
+            {
+                var cssClass = Model.GetRowBetClass(bet.Choice);
+                <tr>
+                    <td>
+                        @bet.DateDisplay
+                        <br />
+                        @bet.TimeDisplay
+                    </td>
+                    <td class="@cssClass">
+                        @localizer[bet.TolgeeChoiceKey]
+                    </td>
+                    <td class="@cssClass">
+                        @Model.DisplayOdds(bet.Choice)
+                    </td>
+                    <td class="@cssClass">
+                        @Model.DisplayAmount(bet.Amount)
+                    </td>
+                    <td class="@cssClass">
+                        @Model.DisplayAmount(Model.GetBetLogWin(bet))
+                    </td>
+                </tr>
+            }
+            <tr class="total">
+                <td colspan="3" class="text-right">@CommonLocalizer["Total"]</td>
+                <td>@Model.DisplayTotalBet</td>
+                <td>@Model.DisplayBetWin</td>
+            </tr>
+            <tr class="total">
+                <td colspan="3" class="text-right">@CommonLocalizer["WinLoss"]</td>
+                <td colspan="2" class="@Model.WinLossRowClassName">@Model.DisplayWinLoss</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
