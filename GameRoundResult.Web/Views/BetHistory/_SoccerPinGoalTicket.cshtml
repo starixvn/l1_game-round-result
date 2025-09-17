@@ -15,8 +15,23 @@
 <table class="table table-bordered table-baccarat table-baccarat-fixed">
     <thead>
         <tr>
-            <th class="col-round-id col-fixed">@CommonLocalizer["RoundId"]</th>
-            <th>@CommonLocalizer["Result"]</th>
+            <th style="width: 20%;">@CommonLocalizer["RoundId"]</th>
+            <th>
+                @Localizer["glossary_tunnel_selection"] <br />
+                <span class="marble-football-result-container">
+                    <span class="marble-football-result marble-football-home">(@Localizer["glossary_red_tunnel"])</span>
+                    <span class="marble-football-divider">|</span>
+                    <span class="marble-football-result marble-football-away">@Localizer["glossary_blue_tunnel"])</span>
+                </span>
+            </th>
+            <th>
+                @CommonLocalizer["Result"] <br />
+                <span class="marble-football-result-container">
+                    <span class="marble-football-result marble-football-home">(@Localizer["glossary_red"])</span>
+                    <span class="marble-football-divider">|</span>
+                    <span class="marble-football-result marble-football-away">@Localizer["glossary_blue"])</span>
+                </span>
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +39,13 @@
         {
             <tr>
                 <td>@Model.RoundResult.RoundId</td>
+                <td>
+                    <div>
+                        <span style="margin-top: 5px; margin-bottom: 5px;">
+                            @Html.Raw(@Model.RoundResult.GetTunnelSelection(RoundResultLocalizer))
+                        </span>
+                    </div>
+                </td>
                 <td>
                     <div>
                         <span style="margin-top: 5px; margin-bottom: 5px;">

@@ -33,17 +33,47 @@ namespace GameRoundResult.Web.Models
             return GetResult(stringLocalizer);
         }
 
-        public override string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetRedBlueContent(int redValue, int blueValue)
         {
             var resultBuilder = new TagBuilder("span");
+            var dividerBuilder = new TagBuilder("span");
+            var redBuilder = new TagBuilder("span");
+            var blueBuilder = new TagBuilder("span");
 
-            var redResult = $"Red: {Result.Red} - Tunnel: {Result.RedTunnel}";
-            var blueResult = $"Blue: {Result.Blue} - Tunnel: {Result.BlueTunnel}";
+            resultBuilder.AddCssClass($"marble-football-result marble-football-result-container");
+            dividerBuilder.AddCssClass("marble-football-divider");
 
-            resultBuilder.InnerHtml.AppendHtml(redResult);
-            resultBuilder.InnerHtml.AppendHtml(blueResult);
+            if (SettlementResult.Red)
+            {
+                redBuilder.AddCssClass("bet-win-text");
+            }
+
+            if (SettlementResult.Blue)
+            {
+                blueBuilder.AddCssClass("bet-win-text");
+            }
+
+            redBuilder.InnerHtml.AppendHtml($"{redValue}");
+            blueBuilder.InnerHtml.AppendHtml($"{blueValue}");
+            dividerBuilder.InnerHtml.Append("|");
+
+            resultBuilder.InnerHtml.AppendHtml(redBuilder.GetHtmlString());
+            resultBuilder.InnerHtml.AppendHtml(dividerBuilder.GetHtmlString());
+            resultBuilder.InnerHtml.AppendHtml(blueBuilder.GetHtmlString());
+
+
 
             return resultBuilder.GetHtmlString();
+        }
+
+        public override string GetResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            return GetRedBlueContent(Result.Red, Result.Blue);
+        }
+
+        public string GetTunnelSelection(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        {
+            return GetRedBlueContent(Result.RedTunnel, Result.BlueTunnel);
         }
 
         public override string GetWinningTextResult(
