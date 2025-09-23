@@ -453,5 +453,13 @@ namespace GameRoundResult.Web.Extensions
                 opts.AfterMap((source, dest) => dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours));
             });
         }
+
+        public static BaccaratMultiplayerBetViewModel ToViewModel(this BaccaratMultiplayerBet entity, IMapper mapper, TimeSpan timeZoneOffset)
+        {
+            return mapper.Map<BaccaratMultiplayerBet, BaccaratMultiplayerBetViewModel>(entity, opts =>
+            {
+                opts.AfterMap((source, dest) => dest.Time = source.Time.AddHours(timeZoneOffset.TotalHours));
+            });
+        }
     }
 }

@@ -1,0 +1,43 @@
+[{
+  "_id": {
+    "$oid": "68ccff72924de1d28ecdad4b"
+  },
+  "id": 19879,
+  "result": {
+    "player": {
+      "card1": {
+        "rank": 9,
+        "suit": 0
+      },
+      "card2": {
+        "rank": 6,
+        "suit": 3
+      },
+      "card3": null,
+      "score": 7
+    },
+    "banker": {
+      "card1": {
+        "rank": 1,
+        "suit": 3
+      },
+      "card2": {
+        "rank": 3,
+        "suit": 2
+      },
+      "card3": null,
+      "score": 6
+    }
+  },
+  "settlementResult": {
+    "player": true,
+    "banker": false,
+    "tie": false,
+    "anyPair": false
+  },
+  "time": {
+    "$date": "2025-09-19T07:00:02.362Z"
+  },
+  "exchangeRateId": 2089,
+  "__v": 0
+}]

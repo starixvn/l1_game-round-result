@@ -7577,5 +7577,105 @@
     "haveTournament": false,
     "haveVideoStream": false,
     "useMargin": false
-  }
+  },
+  {
+      "_id": {
+        "$oid": "68bf9edbf9799ab4a5d2e5ca"
+      },
+      "time": {
+        "$date": "2025-09-09T03:28:27.621Z"
+      },
+      "__v": 0,
+      "type": 10,
+      "name": "baccaratmultiplayer",
+      "displayName": "Baccarat Multiplayer",
+      "enabled": true,
+      "botenabled": true,
+      "minbet": 1,
+      "maxbet": 1000,
+      "disabledround": null,
+      "bot_maxbet": 10,
+      "hour_maxbot": [
+        0,
+        0.03,
+        0.03,
+        0.03,
+        0.03,
+        0.03,
+        0.03,
+        0.03,
+        0.03,
+        0.03,
+        0.03,
+        0.03,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "disabled_message": "Game đang được bảo trì, vui lòng quay lại sau 10 phút.",
+      "choices_maxbet": null,
+      "odds": {
+        "player": 2,
+        "banker": 1.95,
+        "tie": 9,
+        "anyPair": 6
+      },
+      "oddsDisplayNames": {
+        "player": "Player",
+        "banker": "Banker",
+        "tie": "Tie",
+        "anyPair": "Any Pair"
+      },
+      "choices": [
+        {
+          "key": "player",
+          "name": "Player",
+          "odds": 1
+        },
+        {
+          "key": "banker",
+          "name": "Banker",
+          "odds": 1
+        },
+        {
+          "key": "tie",
+          "name": "Tie",
+          "odds": 1
+        },
+        {
+          "key": "anyPair",
+          "name": "Any Pair",
+          "odds": 0.99
+        }
+      ],
+      "delayStartTime": 0,
+      "enableFreeBet": false,
+      "slotsConfig": null,
+      "siteExclusions": [],
+      "smartBotEnabled": false,
+      "smartBotGroupRatio": 0,
+      "gameId": 150,
+      "randomMode": 1,
+      "cascadingSlotsConfig": null,
+      "slotRNGConfig": null,
+      "crashConfig": null,
+      "margin": null,
+      "maxWinPerRound": 0,
+      "oddsMultipliers": null,
+      "applyMultiplier": false,
+      "tournamentConfig": null,
+      "videoStreamConfig": null,
+      "haveTournament": false,
+      "haveVideoStream": false,
+      "useMargin": false
+   }
 ]

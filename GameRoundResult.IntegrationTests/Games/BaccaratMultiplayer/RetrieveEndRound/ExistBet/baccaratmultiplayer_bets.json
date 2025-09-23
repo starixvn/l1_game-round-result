@@ -1,0 +1,35 @@
+[
+  {
+    "_id": {
+      "$oid": "68ccff7ed35d85a9458fcfc0"
+    },
+    "roundId": 19880,
+    "freeBet": false,
+    "uid": "68677ddb6fc6f9bd8c776dd5",
+    "__v": 0,
+    "anyPair": 50,
+    "appType": 10,
+    "banker": 150,
+    "betwin": 292.5,
+    "clientSeed": "8480",
+    "currency": "INH",
+    "name": "Hehe293",
+    "odds": {
+      "player": 2,
+      "banker": 1.95,
+      "tie": 9,
+      "anyPair": 6
+    },
+    "operatorId": "ONEworks1",
+    "paid": true,
+    "player": 0,
+    "playerId": "100",
+    "rate": 0.039428669619026566,
+    "siteId": "4100300",
+    "tie": 50,
+    "time": {
+      "$date": "2025-09-19T07:00:16.099Z"
+    },
+    "totalAmount": 250
+  }
+]

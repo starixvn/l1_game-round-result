@@ -542,6 +542,32 @@ namespace GameRoundResult.Web.Configuration
 
             CreateMap<SeDieMultiplayerSettlementResult, SeDieMultiplayerSettlementResultViewModel>();
             CreateMap<SeDieMultiplayerBet, SeDieMultiplayerBetViewModel>();
+
+            CreateMap<BaccaratMultiplayerRound, BaccaratMultiplayerRoundResultViewModel>()
+                .ForMember(x => x.PlayerCards, opt => opt.MapFrom((source, _, _, context) =>
+                    MapBaccaratCards(context.Mapper, source.Result.Player)))
+                 .ForMember(x => x.BankerCards, opt => opt.MapFrom((source, _, _, context) =>
+                    MapBaccaratCards(context.Mapper, source.Result.Banker)))
+                .ForMember(x => x.Player, opt => opt.MapFrom(x => x.SettlementResult.Player))
+                .ForMember(x => x.Banker, opt => opt.MapFrom(x => x.SettlementResult.Banker))
+                .ForMember(x => x.Tie, opt => opt.MapFrom(x => x.SettlementResult.Tie))
+                .ForMember(x => x.AnyPair, opt => opt.MapFrom(x => x.SettlementResult.AnyPair));
+            CreateMap<BaccaratMultiplayerBet, BaccaratMultiplayerBetViewModel>();
+        }
+
+        private static List<DragonTigerCardViewModel> MapBaccaratCards(IRuntimeMapper mapper, dynamic playerOrBanker)
+        {
+            var result = new List<DragonTigerCardViewModel> { 
+                mapper.Map<DragonTigerCardViewModel>(playerOrBanker.FirstCard), 
+                mapper.Map<DragonTigerCardViewModel>(playerOrBanker.SecondCard) 
+            };
+
+            if (playerOrBanker.ThirdCard != null)
+            {
+                result.Add(mapper.Map<DragonTigerCardViewModel>(playerOrBanker.ThirdCard));
+            }
+
+            return result;
         }
     }
 }

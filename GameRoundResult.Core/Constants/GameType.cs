@@ -95,6 +95,7 @@
         MarbleFootball2 = 114,
         RNGSoccer = 118,
         MiniRoulette = 134,
-        SeDieMultiplayer = 148
+        SeDieMultiplayer = 148,
+        BaccaratMultiplayer = 150
     }
 }
