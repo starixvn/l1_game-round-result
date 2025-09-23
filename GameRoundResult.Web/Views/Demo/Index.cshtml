@@ -40,14 +40,27 @@
                     <label asp-for="SiteId"></label>
                     <input type="text" asp-for="SiteId" class="form-control " />
                 </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" asp-for="FreeBet" />
-                    <label class="form-check-label ml-2" asp-for="FreeBet">Free Bet</label>
+                <div class="form-group mt-3">
+                    <div class="form-row">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" asp-for="FreeBet" />
+                            <label class="form-check-label ml-2" asp-for="FreeBet">Free Bet</label>
+                        </div>
+                        <div class="form-check ml-5">
+                            <label class="form-check-label ml-2" asp-for="ConvertToUSD">
+                                <input type="checkbox" class="form-check-input" asp-for="ConvertToUSD" />
+                                Convert to USD
+                            </label>
+                        </div>
+                    </div>
+                   
                 </div>
+                
                 <div class="form-group mt-3">
                     <input type="text" asp-for="OperatorSecret" class="form-control " hidden />
-                    <button class="btn btn-primary" onclick="demo.getBetDetails()">Get Bet Details</button>
+                    <button class="btn btn-primary" onclick="demo.getBetDetails()">Get Bet History</button>
                     <button class="btn btn-primary" onclick="demo.getEndRoundInfo()">End Round Info</button>
+                    <button class="btn btn-primary" onclick="demo.getRoundHistory()">Get Round History</button>
                 </div>
             </form>
         </div>

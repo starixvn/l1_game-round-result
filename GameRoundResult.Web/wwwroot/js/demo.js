@@ -1,4 +1,7 @@
 ﻿var demo = (function ($) {
+    const formDemo = '#form-demo';
+    const getRequestParamUrl = "/Demo/GetRequestParam";
+
     function openRoundResultPage() {
         var data = {
             auth: {
@@ -15,7 +18,7 @@
     }
 
     function getBetDetails() {
-        postRequest("/Demo/GetRequestParam", $('#form-demo').serialize(), {}, (request) => {
+        postRequest(getRequestParamUrl, $(formDemo).serialize(), {}, (request) => {
             if (request) {
                 requestBetDetails(request);
             }
@@ -23,9 +26,17 @@
     }
 
     function getEndRoundInfo() {
-        postRequest("/Demo/GetRequestParam", $('#form-demo').serialize(), {}, (request) => {
+        postRequest(getRequestParamUrl, $(formDemo).serialize(), {}, (request) => {
             if (request) {
                 requestEndRoundInfo(request);
+            }
+        })
+    }
+
+    function getRoundHistory() {
+        postRequest(getRequestParamUrl, $(formDemo).serialize(), {}, (request) => {
+            if (request) {
+                requestRoundHistory(request);
             }
         })
     }
@@ -52,6 +63,15 @@
         });
     }
 
+    function requestRoundHistory(data) {
+        postRequest("/RoundHistory/GetAccessUrl", data, {
+            contentType: "application/json; charset=utf-8",
+            dataType: "text"
+        }, (content) => {
+            openNewTab(content);
+        });
+    }
+
     function postRequest(url, data, options, onDone) {
         $.ajax({
             ...options,
@@ -75,7 +95,8 @@
         },
         getBetDetails,
         openRoundResultPage,
-        getEndRoundInfo
+        getEndRoundInfo,
+        getRoundHistory
     }
 }(jQuery));
 

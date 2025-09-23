@@ -96,7 +96,7 @@ namespace GameRoundResult.Web.Controllers
             return PartialView("~/Views/BetHistory/Index.cshtml", viewModel);
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> GetAccessUrl([FromBody] RoundHistoryRequest model)
         {
             var authenticationResult = await partnerRequestAuthentication.Authorize(model.Auth.OperatorId, Request, model.Auth.OperatorSecret);

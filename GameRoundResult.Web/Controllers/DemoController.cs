@@ -43,7 +43,10 @@ namespace GameRoundResult.Web.Controllers
                 {
                     FreeBet = model.FreeBet,
                     GameRoundId = model.GameRoundId,
+                    RoundId = model.GameRoundId,
+                    Game = model.GameTypeId,
                     GameTypeId = model.GameTypeId,
+                    ConvertToUSD = model.ConvertToUSD,
                     PlayerId = model.PlayerId,
                     Language = model.Language,
                     SiteId = model.SiteId,

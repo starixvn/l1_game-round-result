@@ -63,5 +63,7 @@ namespace GameRoundResult.Web.Models
         public string SiteId { get; set; } = "4100300";
 
         public bool FreeBet { get; set; }
+
+        public bool ConvertToUSD { get; set; }
     }
 }
