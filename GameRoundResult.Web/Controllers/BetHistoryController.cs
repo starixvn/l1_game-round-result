@@ -77,7 +77,7 @@ namespace GameRoundResult.Web.Controllers
 
                 if (authenticationResult.IsAuthorize)
                 {
-                    var formatPlayerId = StringExtensions.FormatPlayerId(operatorId, siteId, playerId.ToString());
+                    var formatPlayerId = StringExtensions.FormatPlayerId(operatorId, siteId, playerId);
                     var viewModel = new GameTicketResultViewModel
                     {
                         GameType = gameType,

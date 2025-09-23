@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Text.Json.Serialization;
-using GameRoundResult.Core.Extensions;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -37,8 +35,7 @@ namespace GameRoundResult.Core.Database.Entities
 
         public long GameRoundId { get; set; }
 
-        [JsonConverter(typeof(PlayerIdConverter))]
-        public object PlayerId { get; set; }
+        public string PlayerId { get; set; }
 
         public string Language { get; set; }
 
