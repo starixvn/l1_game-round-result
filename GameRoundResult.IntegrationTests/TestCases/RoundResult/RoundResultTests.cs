@@ -17,7 +17,7 @@ namespace GameRoundResult.IntegrationTests
 {
     public class GameRoundResultTests : IntegrationTestBase
     {
-        public GameRoundResultTests(CustomWebApplicationFactory<Program> factory, GameManagementServiceFixture gameManagementServiceFixture) 
+        public GameRoundResultTests(CustomWebApplicationFactory<Program> factory, GameManagementServiceFixture gameManagementServiceFixture)
             : base(factory, gameManagementServiceFixture)
         {
         }
@@ -139,7 +139,7 @@ namespace GameRoundResult.IntegrationTests
         public async Task GetData_ValidData_ReturnExpectedInfo(
             GameType game,
             string testcase,
-            int roundId,
+            long roundId,
             string date,
             string language
             )

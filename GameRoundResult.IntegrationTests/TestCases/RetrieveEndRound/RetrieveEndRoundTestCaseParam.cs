@@ -7,6 +7,6 @@ namespace GameRoundResult.IntegrationTests
              string GameName,
              GameConfigsType GameType,
              string PlayerId,
-             int RoundId,
+             long RoundId,
              string TestCase);
 }

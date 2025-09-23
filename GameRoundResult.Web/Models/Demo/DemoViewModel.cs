@@ -48,7 +48,7 @@ namespace GameRoundResult.Web.Models
 
         public IEnumerable<SelectListItem> GameTypeItem { get; set; }
 
-        public int GameRoundId { get; set; }
+        public long GameRoundId { get; set; }
 
         public string PlayerId { get; set; }
 

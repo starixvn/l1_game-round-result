@@ -16,7 +16,7 @@ namespace GameRoundResult.IntegrationTests
 {
     public class RetrieveEndRoundTests : IntegrationTestBase
     {
-        public RetrieveEndRoundTests(CustomWebApplicationFactory<Program> factory, GameManagementServiceFixture gameManagementServiceFixture) 
+        public RetrieveEndRoundTests(CustomWebApplicationFactory<Program> factory, GameManagementServiceFixture gameManagementServiceFixture)
             : base(factory, gameManagementServiceFixture)
         {
             databaseHelper.ClearAllData();
@@ -32,7 +32,7 @@ namespace GameRoundResult.IntegrationTests
             GameConfigsType gameType,
             string testcase,
             string playerId,
-            int roundId
+            long roundId
             )
         {
             // arrange
