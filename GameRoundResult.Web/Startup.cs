@@ -69,6 +69,7 @@ namespace GameRoundResult.Web
                     options.ViewLocationFormats.Add("/CascadingSlotGames/Views/{0}.cshtml");
                     options.ViewLocationFormats.Add("/CrashGames/Views/{0}.cshtml");
                     options.ViewLocationFormats.Add("/RoundHistory/Views/{0}.cshtml");
+                    options.ViewLocationFormats.Add("/PlinkoGames/Views/{0}.cshtml");
                 });
         }
 

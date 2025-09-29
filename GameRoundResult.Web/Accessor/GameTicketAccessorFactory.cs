@@ -7,6 +7,7 @@ using GameRoundResult.Core.Database.Entities.KaraKrus;
 using GameRoundResult.Core.Database.Entities.SevenUpDown;
 using GameRoundResult.Web.CascadingSlotGames;
 using GameRoundResult.Web.CrashGames.Handlers;
+using GameRoundResult.Web.PlinkoGames;
 using GameRoundResult.Web.SlotGames.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -117,7 +118,8 @@ namespace GameRoundResult.Web.Accessor
         {
             {GameConfigsType.Slot, typeof(SlotGameHandler) },
             {GameConfigsType.CascadingSlot, typeof(CascadingSlotTicketHandler) },
-            {GameConfigsType.Crash, typeof(CrashGameHandler) }
+            {GameConfigsType.Crash, typeof(CrashGameHandler) },
+            {GameConfigsType.Plinko, typeof(PlinkoGameHandler) },
         };
 
         private readonly IServiceProvider serviceProvider;
