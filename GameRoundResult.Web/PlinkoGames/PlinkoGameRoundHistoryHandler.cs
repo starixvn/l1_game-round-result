@@ -41,17 +41,14 @@ namespace GameRoundResult.Web.PlinkoGames
             var timeZone = TZConvert.GetTimeZoneInfo("SE Asia Standard Time");
             var roundResult = await roundHistoryService.GetRoundAsync<PlinkoGameRound>(request.RoundId, BuildRoundFilterExpression(request.RoundId), request.GameConfigs.Name);
 
-            // Tạo Bets từ Round data vì PlinkoGame đã gộp bet vào round
             var bets = new List<RoundHistoryBetEntity>();
             if (roundResult != null)
             {
-                bets.Add(CreateBetFromRound(roundResult, timeZone));
+                bets.Add(CreateBetFromRound(roundResult));
             }
 
-            // Lấy thông tin user và partner cho bets
             var betsWithUserInfo = await this.GetBetRecordsWithUserInfo(bets, request.Username, request.ExcludeBot);
             
-            // Convert sang RoundHistoryBetViewModel như RoundHistoryAccessor
             var betViewModel = betsWithUserInfo.Select(r => r.ToBetViewModel<RoundHistoryBetEntity, RoundHistoryBetViewModel>(mapper, timeZone.BaseUtcOffset));
 
             return new RoundHistoryViewModel
@@ -64,9 +61,8 @@ namespace GameRoundResult.Web.PlinkoGames
             };
         }
 
-        private RoundHistoryBetEntity CreateBetFromRound(PlinkoGameRound round, TimeZoneInfo timeZone)
+        private static RoundHistoryBetEntity CreateBetFromRound(PlinkoGameRound round)
         {
-            // Tạo RoundHistoryBetEntity từ PlinkoGameRound data
             return new RoundHistoryBetEntity
             {
                 UserId = round.PlayerId,
@@ -87,14 +83,23 @@ namespace GameRoundResult.Web.PlinkoGames
         {
             if (bets.Any())
             {
-                // Sử dụng UserId thay vì Username để filter
                 var userInfos = await userInfoService.FilterByUidsAndUserName(bets.Select(x => x.Uid), username, excludeBot);
+
+                var operatorIds = bets.Select(x => x.OperatorId).Distinct().ToList();
+                var partnerTasks = operatorIds.Select(async operatorId =>
+                {
+                    var partner = await partnerService.GetById(operatorId);
+                    return new { OperatorId = operatorId, Name = partner?.Name ?? string.Empty };
+                });
+                
+                var partnerResults = await Task.WhenAll(partnerTasks);
+                var partners = partnerResults.ToDictionary(x => x.OperatorId, x => x.Name);
 
                 return bets.Join(userInfos, bet => bet.Uid, userInfo => userInfo.Uid, (bet, userInfo) =>
                 {
                     bet.Username = userInfo.Username;
                     bet.Nickname = userInfo.NickName;
-                    bet.OperatorName = partnerService.GetById(bet.OperatorId).Result.Name;
+                    bet.OperatorName = partners.GetValueOrDefault(bet.OperatorId, string.Empty);
                     return bet;
                 }).ToList();
             }
