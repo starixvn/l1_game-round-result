@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Requests.RoundHistory;
 
@@ -42,6 +43,9 @@ namespace GameRoundResult.Web.Models.RoundHistory
 
         public string DisplayTotalBet => Bets.Sum(x => ConvertToBase(x.TotalAmount, x.Rate)).Format2Decimals();
         public string DisplayTotalBetwin => Bets.Sum(x => ConvertToBase(x.Betwin, x.Rate)).Format2Decimals();
+
+        public bool IsPlinkoGame
+            => Request.GameConfigs.Type == GameConfigsType.Plinko;
     }
 
     public class RoundHistoryBetViewModel

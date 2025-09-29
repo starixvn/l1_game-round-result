@@ -6,6 +6,7 @@ using GameRoundResult.Core.Services;
 using GameRoundResult.Core.Services.EndRoundInfo;
 using GameRoundResult.Web.CascadingSlotGames;
 using GameRoundResult.Web.CrashGames;
+using GameRoundResult.Web.PlinkoGames;
 using GameRoundResult.Web.SlotGames;
 
 namespace GameRoundResult.Web.Services
@@ -115,7 +116,8 @@ namespace GameRoundResult.Web.Services
             { GameConfigsType.Slot, typeof(SlotGameEndRoundInfoService)},
             { GameConfigsType.CascadingSlot, typeof(CascadingSlotGameEndRoundInfoService)},
             { GameConfigsType.Crash, typeof(CrashGameEndRoundInfoService)},
-            { GameConfigsType.CrashTurnBase, typeof(CrashTurnGameEndRoundInfoService)}
+            { GameConfigsType.CrashTurnBase, typeof(CrashTurnGameEndRoundInfoService)},
+            { GameConfigsType.Plinko, typeof(PlinkoGameEndRoundInfoService)}
         };
 
         private readonly IServiceProvider serviceProvider;

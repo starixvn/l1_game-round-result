@@ -13,6 +13,7 @@ using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.CascadingSlotGames;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.CrashGames;
+using GameRoundResult.Web.PlinkoGames;
 using GameRoundResult.Web.Requests;
 using GameRoundResult.Web.RoundHistory;
 using GameRoundResult.Web.Services;
@@ -278,6 +279,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddCrashTurnGames();
             services.AddScoped<IPartnerRequestAuthentication, PartnerRequestAuthentication>();
             services.AddScoped<IHmacHelpers, HmacHelpers>();
+            services.AddPlinkoGames();
 
             services.AddScoped<IRoundHistoryAdditionalViewFactory, RoundHistoryAdditionalViewFactory>();
         }

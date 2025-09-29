@@ -12,12 +12,18 @@ using GameRoundResult.Web.Models.RoundHistory;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using GameRoundResult.Web.Accessor;
+using GameRoundResult.Web.CascadingSlotGames;
+using GameRoundResult.Web.CrashGames.Handlers;
+using GameRoundResult.Web.SlotGames.Handlers;
+using GameRoundResult.Web.PlinkoGames;
+using GameRoundResult.Web.PlinkoGames.ViewModels;
 
 namespace GameRoundResult.Web.RoundHistory
 {
     public interface IRoundHistoryAccessorFactory
     {
-        IRoundHistoryAccessor GetService(GameType game);
+        IRoundHistoryAccessor GetService(GameType game, GameConfigsType gameType);
     }
 
     public class RoundHistoryAccessorFactory : IRoundHistoryAccessorFactory
@@ -58,14 +64,20 @@ namespace GameRoundResult.Web.RoundHistory
 
         private readonly IServiceProvider serviceProvider;
 
+        private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()
+        {
+            {GameConfigsType.Plinko, typeof(PlinkoGameRoundHistoryHandler) },
+        };
+
         public RoundHistoryAccessorFactory(IServiceProvider serviceProvider)
         {
             this.serviceProvider = serviceProvider;
         }
 
-        public IRoundHistoryAccessor GetService(GameType game)
+        public IRoundHistoryAccessor GetService(GameType game, GameConfigsType gameType)
         {
-            return (IRoundHistoryAccessor)serviceProvider.GetRequiredService(services[game]);
+            return services.ContainsKey(game) ? (IRoundHistoryAccessor)serviceProvider.GetRequiredService(services[game]) 
+                : serviceProvider.GetRequiredService(servicesOnType[gameType]) as IRoundHistoryAccessor;
         }
     }
 }

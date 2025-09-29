@@ -27,7 +27,7 @@ namespace GameRoundResult.Web.Handlers
             var response = await gameManagementApi.GetGameConfigById((int)request.Game);
             request.GameConfigs = response.Data;
 
-            var accessor = factory.GetService(request.Game);
+            var accessor = factory.GetService(request.Game, request.GameConfigs.Type);
 
             if (accessor != null)
             {

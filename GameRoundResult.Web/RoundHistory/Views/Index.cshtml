@@ -19,7 +19,12 @@
             <th>Round Id</th>
             <th>Exchange Id</th>
             <th class="col-result" style="min-width: 350px;">Result</th>
-            <th>Winning Options</th>
+            @{
+                if (!Model.IsPlinkoGame)
+                {
+                    <th>Winning Options</th>
+                }
+            }
         </tr>
     </thead>
     <tbody>
@@ -35,9 +40,14 @@
                 <td>
                     @Html.Raw(@Model.Round.GetResult(Localizer))
                 </td>
-                <td _tolgee="true">
-                    @Html.Raw(@Model.Round.GetWinningTextResult(Localizer))
-                </td>
+                @{
+                    if (!Model.IsPlinkoGame)
+                    {
+                        <td _tolgee="true">
+                            @Html.Raw(@Model.Round.GetWinningTextResult(Localizer))
+                        </td>
+                    }
+                }
             </tr>
         }
         else

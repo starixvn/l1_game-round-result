@@ -304,5 +304,19 @@ namespace GameRoundResult.Core.Database.Repository
 
             return (rounds, bets);
         }
+
+        protected async Task<T> GetPlinkoRoundAsync<T>(long roundId, string playerId, string collectionName, string operatorId,
+             Expression<Func<T, bool>> filter = null) where T : PlinkoGameRound
+        {
+            Expression<Func<T, bool>> defaultExpression = bet =>
+            bet.PlayerId == playerId
+            && bet.RoundId == roundId
+            && bet.OperatorId == operatorId;
+
+            return await database
+                .GetCollection<T>(collectionName)
+                .Find(filter == null ? defaultExpression : defaultExpression.And(filter))
+                .SortByDescending(x => x.Id).FirstOrDefaultAsync();
+        }
     }
 }

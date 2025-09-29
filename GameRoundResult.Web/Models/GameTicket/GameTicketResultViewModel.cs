@@ -53,6 +53,11 @@ namespace GameRoundResult.Web.Models
             {
                 return $"_{Enum.GetName(typeof(GameType), GameType)}{PartialPostfix}";
             }
+
+            if(IsPlinkoGame)
+            {
+                return $"_PlinkoGame{PartialPostfix}";
+            }
             var viewName = GetViewNameAttribute();
 
             if (!string.IsNullOrWhiteSpace(viewName))
@@ -109,6 +114,9 @@ namespace GameRoundResult.Web.Models
 
         private bool IsCrashGame
             => GameTicketResult.GameType == GameConfigsType.Crash;
+
+        private bool IsPlinkoGame
+            => GameTicketResult.GameType == GameConfigsType.Plinko;
 
         private static string TransformToViewName(string name)
         {

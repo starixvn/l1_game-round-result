@@ -99,5 +99,6 @@
         SeDieMultiplayer = 148,
         BaccaratMultiplayer = 150,
         SoccerPinGoal = 156,
+        Plinko = 145
     }
 }
