@@ -41,13 +41,13 @@ namespace GameRoundResult.Web.PlinkoGames.ViewModels
         {
             var result = new List<string>(base.ToDataTableArray(stringLocalizer))
             {
-               GetResultContent(stringLocalizer),
+               GetResultContent(),
             };
 
             return result;
         }
 
-        private string GetResultContent(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
+        private string GetResultContent()
         {
             var tagBuilder = new TagBuilder("span");
 

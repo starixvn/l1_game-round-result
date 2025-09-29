@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using GameRoundResult.Core.Constants;
 using GameRoundResult.Web.Configuration;
@@ -19,51 +21,43 @@ namespace GameRoundResult.Web.Models
 
         public string GetPartialViewName()
         {
-            if (IsMiniKeno)
-            {
-                return $"_RNGKeno{PartialPostfix}";
-            }
+            return GetViewNameByGameType() ?? GetDefaultViewName();
+        }
 
-            if (IsCascadingSlot)
+        private string GetViewNameByGameType()
+        {
+            var viewNameStrategies = new Dictionary<Func<bool>, Func<string>>
             {
-                return $"_CascadingSlot{PartialPostfix}";
-            }
+                { () => IsMiniKeno, () => $"_RNGKeno{PartialPostfix}" },
+                { () => IsCascadingSlot, () => $"_CascadingSlot{PartialPostfix}" },
+                { () => IsClassicSlot, () => GetClassicSlotViewName() },
+                { () => IsCrashGame, () => $"_CrashGame{PartialPostfix}" },
+                { () => IsBaccarat, () => $"_Baccarat{PartialPostfix}" },
+                { () => IsDrawGame, () => $"_{Enum.GetName(typeof(GameType), GameType)}{PartialPostfix}" },
+                { () => IsPlinkoGame, () => $"_PlinkoGame{PartialPostfix}" }
+            };
 
-            if (IsClassicSlot)
-            {
-                if (GameType == GameType.TapFortune)
-                {
-                    return $"{PartialSuffix}_TapFortune{PartialPostfix}.cshtml";
-                }
+            return viewNameStrategies
+                .FirstOrDefault(strategy => strategy.Key())
+                .Value?.Invoke();
+        }
 
-                return $"_SlotGame{PartialPostfix}";
-            }
+        private string GetClassicSlotViewName()
+        {
+            return GameType == GameType.TapFortune
+                ? $"{PartialSuffix}_TapFortune{PartialPostfix}.cshtml"
+                : $"_SlotGame{PartialPostfix}";
+        }
 
-            if (IsCrashGame)
-            {
-                return $"_CrashGame{PartialPostfix}";
-            }
-
-            if (IsBaccarat)
-            {
-                return $"_Baccarat{PartialPostfix}";
-            }
-
-            if (IsDrawGame)
-            {
-                return $"_{Enum.GetName(typeof(GameType), GameType)}{PartialPostfix}";
-            }
-
-            if(IsPlinkoGame)
-            {
-                return $"_PlinkoGame{PartialPostfix}";
-            }
+        private string GetDefaultViewName()
+        {
             var viewName = GetViewNameAttribute();
-
+            
             if (!string.IsNullOrWhiteSpace(viewName))
             {
                 return $"{PartialSuffix}_{viewName}.cshtml";
             }
+
             return Enum.IsDefined(typeof(GameType), GameType)
                 ? $"{PartialSuffix}_{TransformToViewName(Enum.GetName(typeof(GameType), GameType))}{PartialPostfix}.cshtml"
                 : $"_SlotGame{PartialPostfix}";
