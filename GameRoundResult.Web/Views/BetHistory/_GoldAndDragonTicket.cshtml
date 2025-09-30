@@ -63,32 +63,6 @@
 <!-- Tumble Details -->
 @await Html.PartialAsync("_GoldAndDragonTumbleDetails", Model)
 
-@functions {
-    private bool IsWinningPosition(IEnumerable<SymbolsInfo> symbols, int x, int y)
-    {
-        if (symbols == null) return false;
-        return symbols.Any(s => s.Position != null && s.Position.Any(p => p.X == x && p.Y == y));
-    }
-
-    private string GetSymbolColor(int symbolId)
-    {
-        return symbolId switch
-        {
-            1 => "#2E8B57", // SeaGreen
-            2 => "#4169E1", // RoyalBlue  
-            3 => "#8A2BE2", // BlueViolet
-            4 => "#DC143C", // Crimson
-            5 => "#FF8C00", // DarkOrange
-            6 => "#32CD32", // LimeGreen
-            7 => "#FFD700", // Gold
-            8 => "#FF1493", // DeepPink
-            9 => "#00CED1", // DarkTurquoise
-            0 => "#808080", // Gray (empty)
-            _ => "#696969"   // DimGray (default)
-        };
-    }
-}
-
 <style>
     .ticket-sticky-header {
         position: sticky;

@@ -2,6 +2,7 @@
 @using GameRoundResult.Core.Database.Entities
 @using System.Globalization
 @using System.Linq
+@using System.Collections.Generic
 @model GoldAndDragonTicketViewModel
 
 @inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
@@ -16,19 +17,16 @@
     {
         var nextTumble = tumbles[tumbleIndex + 1 < tumbles.Count ? tumbleIndex + 1 : tumbleIndex];
         var previousSymbols = nextTumble?.Symbols;
-        var payoutSymbols = previousSymbols;
+        var payoutList = (previousSymbols ?? Enumerable.Empty<SymbolsInfo>())
+            .Where(s => s.Win > 0)
+            .ToList();
         var triggeredStage = nextTumble?.TriggeredStage;
         var triggeredPosition = nextTumble?.TriggeredPositions;
+        var rageStages = tumble.RageStages ?? Array.Empty<bool>();
+        var title = tumbleIndex == 0 ? Localizer["InitialSpin"] : $"{Localizer["Tumble"]} {tumbleIndex}";
         <div class="tumble-section mb-4" data-tumble-index="@tumbleIndex">
             <div class="tumble-title bg-dark text-white p-2 rounded-top text-center">
-                @if (tumbleIndex == 0)
-                {
-                    <strong>@Localizer["InitialSpin"]</strong>
-                }
-                else
-                {
-                    <strong>@Localizer["Tumble"] @tumbleIndex</strong>
-                }
+                <strong>@title</strong>
                 @if (triggeredStage.HasValue)
                 {
                     <span class="badge badge-warning ml-2">@Localizer["TriggeredStage"] @(triggeredStage + 1)</span>
@@ -49,57 +47,41 @@
 
                 @if (tumble.Reels != null && tumble.Reels.Length > 0)
                 {
-                    <div class="grid-container"
-                        style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; max-width: 300px; margin: 0 auto;">
-                        @for (int y = 0; y < 6; y++)
+                    <div class="grid-container" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; max-width: 300px; margin: 0 auto;">
+                        @for (int i = 0; i < 36; i++)
                         {
-                            @for (int x = 0; x < 6; x++)
-                            {
-                                var symbolId = tumble.Reels.Length > x && tumble.Reels[x].Length > y ? tumble.Reels[x][y] : 0;
-                                var multiplier = tumble.ReelMultipliers?.Length > x && tumble.ReelMultipliers[x].Length > y ?
-                                tumble.ReelMultipliers[x][y] : 0;
-                                var isWinning = IsWinningPosition(previousSymbols, x, y)
-                                    || (triggeredPosition != null && triggeredPosition.Any(p => p.X == x && p.Y == y));
+                            var x = i % 6;
+                            var y = i / 6;
+                            var symbolId = tumble.Reels.Length > x && tumble.Reels[x].Length > y ? tumble.Reels[x][y] : 0;
+                            var multiplier = tumble.ReelMultipliers?.Length > x && tumble.ReelMultipliers[x].Length > y ? tumble.ReelMultipliers[x][y] : 0;
+                            var isWinning = IsWinningPosition(previousSymbols, x, y) || (triggeredPosition != null && triggeredPosition.Any(p => p.X == x && p.Y == y));
+                            var badgeClass = multiplier > 0 ? "multiplier-badge" : "multiplier-badge d-none";
 
-                                <div class="grid-cell @(isWinning ? "winning-cell" : "faded-cell")" style="width: 45px; height: 45px; border: 2px solid @(isWinning ? "#ffd700" : "#ccc"); 
-                                                                background: @GetSymbolColor(symbolId); display: flex; align-items: center; justify-content: center;
-                                                                position: relative; color: white; font-weight: bold; font-size: 12px;">
-                                    @symbolId
-                                    @if (multiplier > 0)
-                                    {
-                                        <span class="multiplier-badge"
-                                            style="position: absolute; top: -5px; right: -5px; 
-                                                                        background: #ff6600; color: white; border-radius: 50%; width: 16px; height: 16px; 
-                                                                        font-size: 8px; display: flex; align-items: center; justify-content: center;">
-                                            @multiplier
-                                        </span>
-                                    }
-                                </div>
-                            }
+                            <div class="grid-cell @(isWinning ? "winning-cell" : "faded-cell")" style="width: 45px; height: 45px; border: 2px solid @(isWinning ? "#ffd700" : "#ccc"); background: @GetSymbolColor(symbolId); display: flex; align-items: center; justify-content: center; position: relative; color: white; font-weight: bold; font-size: 12px;">
+                                @symbolId
+                                @if (multiplier >= 0){
+                                    <span class="@badgeClass" style="position: absolute; top: -5px; right: -5px; background: #ff6600; color: white; border-radius: 50%; width: 16px; height: 16px; font-size: 8px; display: flex; align-items: center; justify-content: center;">@multiplier</span>
+                                }
+                            </div>
                         }
                     </div>
                 }
 
                 <!-- Payout Info (uses previous tumble's symbols) -->
-                @if (payoutSymbols != null && payoutSymbols.Any())
-                {
-                    <div class="payout-section mt-3 text-left">
-                        <span class="mb-2">@Localizer["Payout"]</span>
-                        @foreach (var symbol in payoutSymbols.Where(s => s.Win > 0))
-                        {
-                            <div class="payout-item d-flex justify-content-between align-items-center p-2 bg-light rounded mb-1">
-                                <div>
-                                    <span class="symbol-icon" style="background: @GetSymbolColor(symbol.Symbol); color: white; 
-                                                            padding: 2px 6px; border-radius: 3px; font-size: 12px; font-weight: bold;">
-                                        @symbol.Symbol
-                                    </span>
-                                    <span class="ml-2">x @symbol.Count @(symbol.Multiplier > 1 ? $"x {symbol.Multiplier}" : "") =
-                                        @symbol.Win.ToString("F2")</span>
-                                </div>
+                <div class="payout-section mt-3 text-left">
+                    <span class="mb-2">@Localizer["Payout"]</span>
+                    @foreach (var symbol in payoutList)
+                    {
+                        <div class="payout-item d-flex justify-content-between align-items-center p-2 bg-light rounded mb-1">
+                            <div>
+                                <span class="symbol-icon" style="background: @GetSymbolColor(symbol.Symbol); color: white; padding: 2px 6px; border-radius: 3px; font-size: 12px; font-weight: bold;">
+                                    @symbol.Symbol
+                                </span>
+                                <span class="ml-2">x @symbol.Count @(symbol.Multiplier > 1 ? $"x {symbol.Multiplier}" : "") = @symbol.Win.ToString("F2")</span>
                             </div>
-                        }
-                    </div>
-                }
+                        </div>
+                    }
+                </div>
 
                 <!-- Total Win for this tumble -->
                 <div class="tumble-win text-right mt-2">
@@ -107,18 +89,13 @@
                 </div>
 
                 <!-- Rage Stages -->
-                @if (tumble.RageStages != null && tumble.RageStages.Any())
-                {
-                    <div class="rage-stages mt-2">
-                        <small class="text-muted">@Localizer["RageStages"]: </small>
-                        @for (int i = 0; i < tumble.RageStages.Length; i++)
-                        {
-                            <span class="badge @(tumble.RageStages[i] ? "badge-success" : "badge-secondary") mr-1">
-                                @(i + 1)
-                            </span>
-                        }
-                    </div>
-                }
+                <div class="rage-stages mt-2">
+                    <small class="text-muted">@Localizer["RageStages"]: </small>
+                    @for (int i = 0; i < rageStages.Length; i++)
+                    {
+                        <span class="badge @(rageStages[i] ? "badge-success" : "badge-secondary") mr-1">@(i + 1)</span>
+                    }
+                </div>
             </div>
         </div>
         tumbleIndex++;
@@ -126,28 +103,34 @@
 }
 
 @functions {
-    private bool IsWinningPosition(IEnumerable<SymbolsInfo> symbols, int x, int y)
+    private static readonly IReadOnlyDictionary<int, string> SymbolColorMap = new Dictionary<int, string>
     {
-        if (symbols == null) return false;
+        { 1, "#2E8B57" }, // SeaGreen
+        { 2, "#4169E1" }, // RoyalBlue
+        { 3, "#8A2BE2" }, // BlueViolet
+        { 4, "#DC143C" }, // Crimson
+        { 5, "#FF8C00" }, // DarkOrange
+        { 6, "#32CD32" }, // LimeGreen
+        { 7, "#FFD700" }, // Gold
+        { 8, "#FF1493" }, // DeepPink
+        { 9, "#00CED1" }, // DarkTurquoise
+        { 0, "#808080" }  // Gray (empty)
+    };
+    private static bool IsWinningPosition(IEnumerable<SymbolsInfo> symbols, int x, int y)
+    {
+        if (symbols == null)
+        {
+            return false;
+        }
+
         return symbols.Any(s => s.Position != null && s.Position.Any(p => p.X == x && p.Y == y));
     }
 
-    private string GetSymbolColor(int symbolId)
+    private static string GetSymbolColor(int symbolId)
     {
-        return symbolId switch
-        {
-            1 => "#2E8B57", // SeaGreen
-            2 => "#4169E1", // RoyalBlue
-            3 => "#8A2BE2", // BlueViolet
-            4 => "#DC143C", // Crimson
-            5 => "#FF8C00", // DarkOrange
-            6 => "#32CD32", // LimeGreen
-            7 => "#FFD700", // Gold
-            8 => "#FF1493", // DeepPink
-            9 => "#00CED1", // DarkTurquoise
-            0 => "#808080", // Gray (empty)
-            _ => "#696969" // DimGray (default)
-        };
+        return SymbolColorMap.TryGetValue(symbolId, out var color)
+            ? color
+            : "#696969"; // DimGray (default)
     }
 }
 

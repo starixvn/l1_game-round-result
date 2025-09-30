@@ -294,7 +294,8 @@ namespace GameRoundResult.Core.Database.Repository
             return (one, bets);
         }
 
-        public virtual async Task<(TRoundEntity, IEnumerable<TBetEntity>)> GetCascadingClusterBetAsync<TRoundEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId, string gameName)
+        public virtual async Task<(TRoundEntity, IEnumerable<TBetEntity>)> GetCascadingClusterBetAsync<
+            TRoundEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId, string gameName)
             where TRoundEntity : BaseCascadingClusterRoundEntity
             where TBetEntity : BaseBetLogEntity
         {
