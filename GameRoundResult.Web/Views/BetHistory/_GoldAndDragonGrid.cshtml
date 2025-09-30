@@ -1,0 +1,58 @@
+@using GameRoundResult.Core.Database.Entities
+@using System.Linq
+@using System.Collections.Generic
+@model (int[][] Reels, int[][] ReelMultipliers, IEnumerable<SymbolsInfo> WinningSymbols, IEnumerable<SymbolPosition> TriggeredPositions)
+
+@functions {
+    private static readonly IReadOnlyDictionary<int, string> SymbolColorMap = new Dictionary<int, string>
+    {
+        { 1, "#2E8B57" }, // SeaGreen
+        { 2, "#4169E1" }, // RoyalBlue
+        { 3, "#8A2BE2" }, // BlueViolet
+        { 4, "#DC143C" }, // Crimson
+        { 5, "#FF8C00" }, // DarkOrange
+        { 6, "#32CD32" }, // LimeGreen
+        { 7, "#FFD700" }, // Gold
+        { 8, "#FF1493" }, // DeepPink
+        { 9, "#00CED1" }, // DarkTurquoise
+        { 0, "#808080" }  // Gray (empty)
+    };
+
+    private static bool IsWinningPosition(IEnumerable<SymbolsInfo> symbols, int x, int y)
+    {
+        if (symbols == null)
+        {
+            return false;
+        }
+
+        return symbols.Any(s => s.Position != null && s.Position.Any(p => p.X == x && p.Y == y));
+    }
+
+    private static string GetSymbolColor(int symbolId)
+    {
+        return SymbolColorMap.TryGetValue(symbolId, out var color)
+            ? color
+            : "#696969"; // DimGray default
+    }
+}
+
+@if (Model.Reels != null && Model.Reels.Length > 0)
+{
+    <div class="grid-container" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; max-width: 300px; margin: 0 auto;">
+        @for (int i = 0; i < 36; i++)
+        {
+            var x = i % 6;
+            var y = i / 6;
+            var symbolId = Model.Reels.Length > x && Model.Reels[x].Length > y ? Model.Reels[x][y] : 0;
+            var multiplier = Model.ReelMultipliers?.Length > x && Model.ReelMultipliers[x].Length > y ? Model.ReelMultipliers[x][y] : 0;
+            var isWinning = IsWinningPosition(Model.WinningSymbols, x, y) || (Model.TriggeredPositions != null && Model.TriggeredPositions.Any(p => p.X == x && p.Y == y));
+            var badgeClass = multiplier >= 0 ? "multiplier-badge" : "multiplier-badge d-none";
+
+            <div class="grid-cell @(isWinning ? "winning-cell" : "faded-cell")" style="width: 45px; height: 45px; border: 2px solid @(isWinning ? "#ffd700" : "#ccc"); background: @GetSymbolColor(symbolId); display: flex; align-items: center; justify-content: center; position: relative; color: white; font-weight: bold; font-size: 12px;">
+                @symbolId
+                <span class="@badgeClass">@multiplier</span>
+            </div>
+        }
+    </div>
+}
+
