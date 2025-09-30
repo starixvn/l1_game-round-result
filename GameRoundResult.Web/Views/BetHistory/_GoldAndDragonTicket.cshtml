@@ -1,0 +1,167 @@
+﻿@using GameRoundResult.Core.Database.Entities
+@using GameRoundResult.Web.Models.GameTicket
+@using System.Globalization
+@using MongoDB.Driver.Linq
+@model GoldAndDragonTicketViewModel
+
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<GoldAndDragonTicketViewModel> Localizer
+
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,Common,GoldAndDragonTicketViewModel" id="tolgee_namespace" readonly hidden/>
+}
+
+<!-- Sticky Ticket Header -->
+@{
+    DateTime? localTime = Model.Bet != null ? Model.Bet.Time.Add(Model.TimeZoneOffset) : (DateTime?)null;
+}
+<div class="ticket-sticky-header">
+    <div class="ticket-header-top">
+        <div class="ticket-title">ROUND: @Model.Bet?.RoundId</div>
+    </div>
+    <div class="ticket-sub">
+        @if (localTime.HasValue)
+        {
+            <span>@localTime.Value.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture)</span>
+            <span class="ml-1">(@Model.TimeOffsetString)</span>
+        }
+    </div>
+    <div class="ticket-stats">
+        <div class="stat">
+            <div class="stat-label">@Localizer["BetLevel"]</div>
+            <div class="stat-value">@Model.Bet?.BetLevel</div>
+        </div>
+        <div class="stat">
+            <div class="stat-label">@Localizer["CoinValue"]</div>
+            <div class="stat-value">@Model.Bet?.CoinValue.ToString("F2")</div>
+        </div>
+        <div class="stat">
+            <div class="stat-label">@CommonLocalizer["TotalBet"]</div>
+            <div class="stat-value">@Model.Bet?.TotalAmount.ToString("F2")</div>
+        </div>
+        <div class="stat">
+            <div class="stat-label">@CommonLocalizer["TotalWin"]</div>
+            <div class="stat-value">@Model.Bet?.BetWin.ToString("F2")</div>
+        </div>
+    </div>
+    @if (Model.Bet?.FreeSpin == true || Model.Bet?.BuyFreeSpin == true)
+    {
+        <div class="ticket-flags">
+            @if (Model.Bet.FreeSpin)
+            {
+                <span class="flag flag-info">@Localizer["FreeSpin"]</span>
+            }
+            @if (Model.Bet.BuyFreeSpin)
+            {
+                <span class="flag flag-warning">@Localizer["BuyFreeSpin"]</span>
+            }
+        </div>
+    }
+</div>
+
+<!-- Tumble Details -->
+@await Html.PartialAsync("_GoldAndDragonTumbleDetails", Model)
+
+@functions {
+    private bool IsWinningPosition(IEnumerable<SymbolsInfo> symbols, int x, int y)
+    {
+        if (symbols == null) return false;
+        return symbols.Any(s => s.Position != null && s.Position.Any(p => p.X == x && p.Y == y));
+    }
+
+    private string GetSymbolColor(int symbolId)
+    {
+        return symbolId switch
+        {
+            1 => "#2E8B57", // SeaGreen
+            2 => "#4169E1", // RoyalBlue  
+            3 => "#8A2BE2", // BlueViolet
+            4 => "#DC143C", // Crimson
+            5 => "#FF8C00", // DarkOrange
+            6 => "#32CD32", // LimeGreen
+            7 => "#FFD700", // Gold
+            8 => "#FF1493", // DeepPink
+            9 => "#00CED1", // DarkTurquoise
+            0 => "#808080", // Gray (empty)
+            _ => "#696969"   // DimGray (default)
+        };
+    }
+}
+
+<style>
+    .ticket-sticky-header {
+        position: sticky;
+        top: 0;
+        z-index: 1020;
+        background: #111;
+        color: #fff;
+        padding: 12px 16px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .ticket-header-top {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .ticket-title {
+        font-weight: 800;
+        letter-spacing: .5px;
+        color: #ffd700;
+    }
+
+    .ticket-sub {
+        font-size: 12px;
+        color: #bdbdbd;
+        margin-top: 2px;
+        text-align: center;
+    }
+
+    .ticket-stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-top: 8px;
+        background: #1f1f1f;
+        border-radius: 6px;
+        padding: 8px 10px;
+    }
+
+    .stat { text-align: center; }
+    .stat-label { font-size: 10px; color: #c0a000; text-transform: uppercase; }
+    .stat-value { font-weight: 700; margin-top: 2px; }
+
+    .ticket-flags { margin-top: 6px; }
+    .flag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; margin-right: 6px; }
+    .flag-info { background: #17a2b8; color: #fff; }
+    .flag-warning { background: #ffc107; color: #1f1f1f; }
+
+    .winning-cell {
+        box-shadow: 0 0 8px #ffd700 !important;
+        border-color: #ffd700 !important;
+    }
+    
+    .non-winning-cell {
+        opacity: 0.7;
+    }
+
+    .grid-cell {
+        transition: all 0.3s ease;
+    }
+
+    .section-header {
+        font-size: 1.1em;
+    }
+    
+    .initial-grid .grid-cell:hover {
+        transform: scale(1.05);
+        z-index: 10;
+        position: relative;
+    }
+</style>

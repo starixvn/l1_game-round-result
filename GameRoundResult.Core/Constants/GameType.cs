@@ -94,6 +94,7 @@
         CoinMining = 109,
         MarbleFootball2 = 114,
         RNGSoccer = 118,
+        GoldAndDragon = 120,
         MiniRoulette = 134,
         SeDieMultiplayer = 148,
         BaccaratMultiplayer = 150,

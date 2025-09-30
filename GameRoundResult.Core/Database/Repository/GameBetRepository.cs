@@ -58,6 +58,10 @@ namespace GameRoundResult.Core.Database.Repository
         )
             where TOneEntity : BaseCrashTurnRoundEntity
             where TBetEntity : BaseBetLogEntity;
+
+        Task<(TRoundEntity, IEnumerable<TBetEntity>)> GetCascadingClusterBetAsync<TRoundEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId, string gameName)
+           where TRoundEntity : BaseCascadingClusterRoundEntity
+           where TBetEntity : BaseBetLogEntity;
     }
 
     public class GameBetRepository : IGameBetRepository
@@ -288,6 +292,16 @@ namespace GameRoundResult.Core.Database.Repository
             );
 
             return (one, bets);
+        }
+
+        public virtual async Task<(TRoundEntity, IEnumerable<TBetEntity>)> GetCascadingClusterBetAsync<TRoundEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId, string gameName)
+            where TRoundEntity : BaseCascadingClusterRoundEntity
+            where TBetEntity : BaseBetLogEntity
+        {
+            var rounds = await GetRoundAsync<TRoundEntity>(roundId, CollectionNameFormatter.Round(gameName));
+            var bets = await GetBetLogsAsync<TBetEntity>(roundId, playerId, CollectionNameFormatter.BetLog(gameName), operatorId);
+
+            return (rounds, bets);
         }
     }
 }

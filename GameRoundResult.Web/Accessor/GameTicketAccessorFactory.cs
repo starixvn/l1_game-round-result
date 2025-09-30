@@ -111,6 +111,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.SeDieMultiplayer, typeof(SeDieMultiplayerTicketAccessor) },
             { GameType.BaccaratMultiplayer, typeof(BaccaratMultiplayerTicketAccessor) },
             { GameType.SoccerPinGoal, typeof(SoccerPinGoalTicketAccessor) },
+            { GameType.GoldAndDragon, typeof(GoldAndDragonAccessor<GoldAndDragonRound, GoldAndDragonBetLog>) },
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()

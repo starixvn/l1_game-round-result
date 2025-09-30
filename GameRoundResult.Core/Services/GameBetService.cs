@@ -28,6 +28,10 @@ namespace GameRoundResult.Core.Services
         Task<(TOneEntity, IEnumerable<TBetEntity>)> GetBetAsync<TOneEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId, string gameName)
            where TOneEntity : BaseCrashTurnRoundEntity
            where TBetEntity : BaseBetLogEntity;
+
+        Task<(TOneEntity, IEnumerable<TBetEntity>)> GetCascadingClusterBetAsync<TOneEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId, string gameName)
+           where TOneEntity : BaseCascadingClusterRoundEntity
+           where TBetEntity : BaseBetLogEntity;
     }
 
     public class GameBetService : IGameBetService
@@ -74,6 +78,13 @@ namespace GameRoundResult.Core.Services
             where TBetEntity : BaseBetLogEntity
         {
             return await repository.GetBetAsync<TOneEntity, TBetEntity>(roundId, playerId, freeBet, operatorId, gameName);
+        }
+
+        public async Task<(TOneEntity, IEnumerable<TBetEntity>)> GetCascadingClusterBetAsync<TOneEntity, TBetEntity>(long roundId, string playerId, bool freeBet, string operatorId, string gameName)
+            where TOneEntity : BaseCascadingClusterRoundEntity
+            where TBetEntity : BaseBetLogEntity
+        {
+            return await repository.GetCascadingClusterBetAsync<TOneEntity, TBetEntity>(roundId, playerId, freeBet, operatorId, gameName);
         }
     }
 }

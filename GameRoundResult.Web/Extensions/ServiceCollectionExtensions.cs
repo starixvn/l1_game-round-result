@@ -131,6 +131,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(BigSmallTicketAccessor<,,>));
 
             services.AddScoped<BlackjackTicketAccessor>();
+            services.AddScoped(typeof(GoldAndDragonAccessor<,>));
             services.AddScoped<DragonTigerTicketAccessor>();
             services.AddScoped<FishPrawnCrabTicketAccessor>();
 
@@ -182,6 +183,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(MarbleFootball2TicketAccessor));
             services.AddScoped(typeof(RNGSoccerTicketAccessor));
             services.AddScoped(typeof(SoccerPinGoalTicketAccessor));
+            services.AddScoped(typeof(GoldAndDragonAccessor<,>));
             services.AddScoped<MiniRouletteTicketAccessor>();
             services.AddScoped<SeDieMultiplayerTicketAccessor>();
             services.AddScoped<BaccaratMultiplayerTicketAccessor>();
