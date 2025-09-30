@@ -55,47 +55,39 @@
                             var symbolId = tumble.Reels.Length > x && tumble.Reels[x].Length > y ? tumble.Reels[x][y] : 0;
                             var multiplier = tumble.ReelMultipliers?.Length > x && tumble.ReelMultipliers[x].Length > y ? tumble.ReelMultipliers[x][y] : 0;
                             var isWinning = IsWinningPosition(previousSymbols, x, y) || (triggeredPosition != null && triggeredPosition.Any(p => p.X == x && p.Y == y));
-                            var badgeClass = multiplier > 0 ? "multiplier-badge" : "multiplier-badge d-none";
+                            var badgeClass = multiplier >= 0 ? "multiplier-badge" : "multiplier-badge d-none";
 
                             <div class="grid-cell @(isWinning ? "winning-cell" : "faded-cell")" style="width: 45px; height: 45px; border: 2px solid @(isWinning ? "#ffd700" : "#ccc"); background: @GetSymbolColor(symbolId); display: flex; align-items: center; justify-content: center; position: relative; color: white; font-weight: bold; font-size: 12px;">
                                 @symbolId
-                                @if (multiplier >= 0){
-                                    <span class="@badgeClass" style="position: absolute; top: -5px; right: -5px; background: #ff6600; color: white; border-radius: 50%; width: 16px; height: 16px; font-size: 8px; display: flex; align-items: center; justify-content: center;">@multiplier</span>
-                                }
+                                <span class="@badgeClass">@multiplier</span>
                             </div>
                         }
                     </div>
                 }
 
-                <!-- Payout Info (uses previous tumble's symbols) -->
-                <div class="payout-section mt-3 text-left">
-                    <span class="mb-2">@Localizer["Payout"]</span>
-                    @foreach (var symbol in payoutList)
-                    {
-                        <div class="payout-item d-flex justify-content-between align-items-center p-2 bg-light rounded mb-1">
-                            <div>
-                                <span class="symbol-icon" style="background: @GetSymbolColor(symbol.Symbol); color: white; padding: 2px 6px; border-radius: 3px; font-size: 12px; font-weight: bold;">
-                                    @symbol.Symbol
-                                </span>
-                                <span class="ml-2">x @symbol.Count @(symbol.Multiplier > 1 ? $"x {symbol.Multiplier}" : "") = @symbol.Win.ToString("F2")</span>
+                @if (payoutList.Any() && nextTumble.Win > 0)
+                {
+                    <!-- Payout Info (uses previous tumble's symbols) -->
+                    <div class="payout-section mt-3 text-left">
+                        <span class="mb-2">@Localizer["Payout"]</span>
+                        @foreach (var symbol in payoutList)
+                        {
+                            <div class="payout-item d-flex justify-content-between align-items-center p-2 bg-light rounded mb-1">
+                                <div>
+                                    <span class="symbol-icon" style="background: @GetSymbolColor(symbol.Symbol); color: white; padding: 2px 6px; border-radius: 3px; font-size: 12px; font-weight: bold;">
+                                        @symbol.Symbol
+                                    </span>
+                                    <span class="ml-2">x @symbol.Count @(symbol.Multiplier > 1 ? $"x {symbol.Multiplier}" : "") = @symbol.Win.ToString("F2")</span>
+                                </div>
                             </div>
-                        </div>
-                    }
-                </div>
+                        }
+                    </div>
 
-                <!-- Total Win for this tumble -->
-                <div class="tumble-win text-right mt-2">
-                    <strong>@Localizer["TumbleWin"]: @nextTumble.Win.ToString("F2")</strong>
-                </div>
-
-                <!-- Rage Stages -->
-                <div class="rage-stages mt-2">
-                    <small class="text-muted">@Localizer["RageStages"]: </small>
-                    @for (int i = 0; i < rageStages.Length; i++)
-                    {
-                        <span class="badge @(rageStages[i] ? "badge-success" : "badge-secondary") mr-1">@(i + 1)</span>
-                    }
-                </div>
+                    <!-- Total Win for this tumble -->
+                    <div class="tumble-win text-right mt-2">
+                        <strong>@Localizer["TumbleWin"]: @nextTumble.Win.ToString("F2")</strong>
+                    </div>
+                }
             </div>
         </div>
         tumbleIndex++;
@@ -144,6 +136,26 @@
         opacity: 0.4;
         filter: grayscale(20%);
     }
+
+/* Multiplier badge styling */
+.multiplier-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff6600;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    font-size: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.d-none {
+    display: none !important;
+}
 
         @@keyframes glow
         {
