@@ -24,49 +24,96 @@
         var triggeredPosition = nextTumble?.TriggeredPositions;
         var title = tumbleIndex == 0 ? Localizer["InitialSpin"] : $"{Localizer["Tumble"]} {tumbleIndex}";
         <div class="tumble-section mb-4" data-tumble-index="@tumbleIndex">
-            <div class="tumble-title bg-dark text-white p-2 rounded-top text-center">
+            <div class="tumble-title p-2 text-center">
                 <strong>@title</strong>
-                @if (triggeredStage.HasValue)
-                {
-                    <span class="badge badge-warning ml-2">@Localizer["TriggeredStage"] @(triggeredStage + 1)</span>
-                }
             </div>
 
             <!-- Reels Grid 6x6 -->
             <div class="reels-grid border rounded-bottom p-3">
-                <div class="rage-meter mb-2 text-center">
-                    <div class="rage-bar d-inline-block"
-                        style="width: 100px; height: 8px; background: #333; position: relative; margin: 0 auto;">
-                        <div class="rage-fill"
-                            style="width: @(nextTumble.RageMeter)%; height: 100%; background: linear-gradient(to right, #ff6b00, #ff0000);">
+                <div class="rage-meter mb-2">
+                    <div class="rage-scale">
+                        <span class="mark" style="left: 10%">15</span>
+                        <span class="mark" style="left: 33%">30</span>
+                        <span class="mark" style="left: 66%">60</span>
+                        <span class="mark" style="left: 100%">90</span>
+                    </div>
+                    <div class="rage-row">
+                        <span class="rage-label">RAGE</span>
+                        <div class="rage-track">
+                            <div class="rage-fill" style="width: @(nextTumble.RageMeter)%"></div>
+                            <div class="rage-ticks">
+                                <span style="left: 10%"></span>
+                                <span style="left: 33%"></span>
+                                <span style="left: 66%"></span>
+                                <span style="left: 90%"></span>
+                            </div>
                         </div>
                     </div>
-                    <div class="rage-value mt-1">@nextTumble.RageMeter.ToString("F1")</div>
                 </div>
 
                 @await Html.PartialAsync("_GoldAndDragonGrid", (tumble.Reels, tumble.ReelMultipliers, previousSymbols, triggeredPosition))
 
-                @if (payoutList.Any() && nextTumble.Win > 0)
+                @if (payoutList.Any())
                 {
                     <!-- Payout Info (uses previous tumble's symbols) -->
                     <div class="payout-section mt-3 text-left">
-                        <span class="mb-2">@Localizer["Payout"]</span>
+                        <div class="payout-title mb-2">
+                            <span>@Localizer["Payout"]</span>
+                        </div>
                         @foreach (var symbol in payoutList)
                         {
+                            var sumMultipliers = 0;
+                            if (symbol.Position != null && tumble.ReelMultipliers != null)
+                            {
+                                foreach (var pos in symbol.Position)
+                                {
+                                    if (pos.X >= 0 && pos.Y >= 0 && pos.X < tumble.ReelMultipliers.Length && tumble.ReelMultipliers[pos.X] != null && pos.Y < tumble.ReelMultipliers[pos.X].Length)
+                                    {
+                                        var cellMultiplier = tumble.ReelMultipliers[pos.X][pos.Y];
+                                        if (cellMultiplier > 0)
+                                        {
+                                            sumMultipliers += cellMultiplier;
+                                        }
+                                    }
+                                }
+                            }
+                            var basePayoutValue = sumMultipliers > 0 ? (symbol.Win / sumMultipliers) : symbol.Win;
+                            var tooltipText = $"(Payout x Dragon Wound Multipliers)\n{basePayoutValue.ToString("F2", CultureInfo.InvariantCulture)} x {sumMultipliers}";
+
                             <div class="payout-item d-flex justify-content-between align-items-center p-2 bg-light rounded mb-1">
-                                <div>
-                                    <span class="symbol-icon" style="background: @GetSymbolColor(symbol.Symbol); color: white; padding: 2px 6px; border-radius: 3px; font-size: 12px; font-weight: bold;">
-                                        @symbol.Symbol
+                                <div class="d-flex align-items-center">
+                                    <span class="symbol-icon" style="background: @GetSymbolColor(symbol.Symbol)">@symbol.Symbol</span>
+                                    <span class="ml-2">x @symbol.Count @(symbol.Multiplier > 1 ? $"x {symbol.Multiplier}" : "")</span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-2">@symbol.Win.ToString("F2")</span>
+                                    <span class="payout-info-icon" title="@tooltipText">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                                            <text x="8" y="11" text-anchor="middle" font-size="10" font-weight="bold" fill="currentColor">i</text>
+                                        </svg>
                                     </span>
-                                    <span class="ml-2">x @symbol.Count @(symbol.Multiplier > 1 ? $"x {symbol.Multiplier}" : "") = @symbol.Win.ToString("F2")</span>
                                 </div>
                             </div>
                         }
                     </div>
-
-                    <!-- Total Win for this tumble -->
-                    <div class="tumble-win text-right mt-2">
-                        <strong>@Localizer["TumbleWin"]: @nextTumble.Win.ToString("F2")</strong>
+                }
+                else
+                {
+                    <!-- No winning combination + optional Rage Meter bonus label -->
+                    <div class="payout-section mt-3 text-left">
+                        <div class="payout-title mb-2">
+                            <span>@Localizer["Payout"]</span>
+                        </div>
+                        <div class="payout-message p-2 bg-light rounded mb-1 text-muted">@Localizer["NoWinningCombination"]</div>
+                        @if (triggeredStage.HasValue)
+                        {
+                            var rageBonusLabelKey = $"RageBonusStage{(triggeredStage.Value + 1)}";
+                            <div class="payout-message p-2 bg-light rounded d-flex align-items-center justify-content-center">
+                                <span class="mr-2">&#128227;</span>
+                                <span>@Localizer["ThunderousRoarBonus"]</span>
+                            </div>
+                        }
                     </div>
                 }
             </div>
@@ -97,99 +144,4 @@
     }
 }
 
-<style>
-    .winning-cell {
-        box-shadow: 0 0 10px #ffd700 !important;
-        animation: glow 1.5s ease-in-out infinite alternate;
-    }
-
-    .faded-cell {
-        opacity: 0.4;
-        filter: grayscale(20%);
-    }
-
-/* Multiplier badge styling */
-.multiplier-badge {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background: #ff6600;
-    color: #ffffff;
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
-    font-size: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.d-none {
-    display: none !important;
-}
-
-        @@keyframes glow
-        {
-                from {
-                    box-shadow: 0 0 5px #ffd700;
-                }
-
-                to {
-                    box-shadow: 0 0 15px #ffd700, 0 0 20px #ffd700;
-                }
-            }
-
-            .grid-cell {
-                transition: all 0.3s ease;
-            }
-
-            .grid-cell:hover {
-                transform: scale(1.05);
-            }
-
-            .rage-bar {
-                border-radius: 4px;
-                overflow: hidden;
-            }
-
-            .tumble-section {
-                border: 1px solid #dee2e6;
-                border-radius: 8px;
-                overflow: hidden;
-                transition: all 0.3s ease;
-            }
-
-            .payout-item {
-                animation: fadeIn 0.5s ease-in;
-            }
-
-            @@keyframes fadeIn
-            {
-                    from {
-                        opacity: 0;
-                        transform: translateY(10px);
-                    }
-
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-
-                /* Add some visual separation between tumbles */
-                .tumble-section:not(:last-child) {
-                    margin-bottom: 2rem;
-                    position: relative;
-                }
-
-                .tumble-section:not(:last-child)::after {
-                    content: '';
-                    position: absolute;
-                    bottom: -1rem;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    width: 50px;
-                    height: 2px;
-                    background: linear-gradient(to right, transparent, #ddd, transparent);
-                }
-            </style>
+@* styles moved to wwwroot/scss/pages/gold-and-dragon.scss *@

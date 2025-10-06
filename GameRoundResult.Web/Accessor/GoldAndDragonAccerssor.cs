@@ -35,6 +35,7 @@ namespace GameRoundResult.Web.Accessor
             {
                 viewModel.Bet = result.Item1;
                 viewModel.TimeZoneOffset = request.TimeZoneOffset;
+                viewModel.GameType = request.GameConfigs.Type;
                 
                 // Process symbols data if available
                 if (result.Item1.SettlementResult?.Tumbles != null)

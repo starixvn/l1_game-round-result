@@ -1,0 +1,411 @@
+﻿/* Gold & Dragon specific styles extracted from Razor views */
+/* Ticket container */
+.ticket-container {
+  width: 600px;
+}
+
+/* Ticket header */
+.ticket-sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  color: #fff;
+  background: #1f1f1f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.ticket-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.ticket-title {
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #ffd700;
+}
+
+.ticket-sub {
+  font-size: 12px;
+  color: #bdbdbd;
+  margin-top: 2px;
+  text-align: center;
+}
+
+.ticket-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+  background: #1f1f1f;
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 10px;
+  color: #c0a000;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.ticket-flags {
+  margin-top: 6px;
+}
+
+.flag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  margin-right: 6px;
+}
+
+.flag-info {
+  background: #17a2b8;
+  color: #fff;
+}
+
+.flag-warning {
+  background: #ffc107;
+  color: #1f1f1f;
+}
+
+/* Grid and cell visuals */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2px;
+  margin: 20px;
+}
+
+.grid-cell {
+  width: 90px;
+  height: 90px;
+  border: 2px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  transition: all 0.3s ease;
+}
+
+.grid-cell:hover {
+  transform: scale(1.05);
+}
+
+.winning-cell {
+  box-shadow: 0 0 10px #ffd700 !important;
+  border-color: #ffd700 !important;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+.faded-cell {
+  opacity: 0.4;
+  filter: grayscale(20%);
+}
+
+.non-winning-cell {
+  opacity: 0.7;
+}
+
+/* Multiplier badge */
+.multiplier-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff6600;
+  color: #ffffff;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.d-none {
+  display: none !important;
+}
+
+/* Rage meter */
+.rage-bar {
+  width: 100px;
+  height: 8px;
+  background: #333;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.rage-fill {
+  height: 100%;
+  background: linear-gradient(to right, #ff6b00, #ff0000);
+}
+
+.rage-value {
+  text-align: center;
+}
+
+/* Tumble section */
+.tumble-section {
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.tumble-section:not(:last-child) {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.tumble-section:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #ddd, transparent);
+}
+
+.payout-section {
+  margin-bottom: 10px;
+  line-height: 30px;
+}
+
+.payout-message {
+  text-align: center !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.payout-item {
+  animation: fadeIn 0.5s ease-in;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px;
+}
+.payout-item > div {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.payout-item > div:first-child {
+  gap: 8px;
+}
+.payout-item > div:last-child {
+  gap: 8px;
+  margin-left: auto;
+}
+
+/* Payout symbol icon */
+.symbol-icon {
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Payout info icon with tooltip */
+.payout-info-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #6c757d;
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+.payout-info-icon:hover {
+  color: #495057;
+}
+.payout-info-icon:hover::after {
+  content: attr(title);
+  position: absolute;
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(50, 50, 60, 0.95);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  white-space: pre-line;
+  line-height: 1.5;
+  min-width: 230px;
+  max-width: 450px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  pointer-events: none;
+  text-align: left;
+  font-weight: normal;
+}
+.payout-info-icon:hover::before {
+  content: "";
+  position: absolute;
+  right: calc(100% + 2px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid rgba(50, 50, 60, 0.95);
+  z-index: 1001;
+}
+.payout-info-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Animations */
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px #ffd700;
+  }
+  to {
+    box-shadow: 0 0 15px #ffd700, 0 0 20px #ffd700;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ========== Redesigned tumble title and rage meter ========== */
+.tumble-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tumble-title::before,
+.tumble-title::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #6c757d);
+  opacity: 0.7;
+}
+
+.tumble-title::after {
+  background: linear-gradient(to left, transparent, #6c757d);
+}
+
+.tumble-title strong {
+  color: #ffd700;
+}
+
+/* Payout title with line on right side only */
+.payout-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.payout-title span {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.payout-title::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+  background: linear-gradient(to right, #6c757d, transparent);
+  opacity: 0.5;
+}
+
+.rage-meter {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.rage-scale {
+  position: relative;
+  height: 14px;
+}
+
+.rage-scale .mark {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: #bdbdbd;
+}
+
+.rage-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rage-label {
+  font-size: 10px;
+  color: #bdbdbd;
+  margin-right: 6px;
+}
+
+.rage-track {
+  position: relative;
+  flex: 1 1 auto;
+  height: 12px;
+  background: #6c757d;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.rage-fill {
+  height: 100%;
+  background: linear-gradient(to right, #ff6b00, #ff0000);
+}
+
+.rage-ticks {
+  position: absolute;
+  inset: 0;
+}
+
+.rage-ticks span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.35);
+}

@@ -9,133 +9,58 @@
 
 @if (Model.EnableTolgee)
 {
-    <input value="GameTicketResultViewModel,Common,GoldAndDragonTicketViewModel" id="tolgee_namespace" readonly hidden/>
+    <input value="GameTicketResultViewModel,Common,GoldAndDragonTicketViewModel" id="tolgee_namespace" readonly hidden />
 }
 
-<!-- Sticky Ticket Header -->
-@{
-    DateTime? localTime = Model.Bet != null ? Model.Bet.Time.Add(Model.TimeZoneOffset) : (DateTime?)null;
-}
-<div class="ticket-sticky-header">
-    <div class="ticket-header-top">
-        <div class="ticket-title">ROUND: @Model.Bet?.RoundId</div>
-    </div>
-    <div class="ticket-sub">
-        @if (localTime.HasValue)
+<div class="ticket-container">
+    <!-- Sticky Ticket Header -->
+    @{
+        DateTime? localTime = Model.Bet != null ? Model.Bet.Time.Add(Model.TimeZoneOffset) : (DateTime?)null;
+    }
+    <div class="ticket-sticky-header">
+        <div class="ticket-header-top">
+            <div class="ticket-title">ROUND: @Model.Bet?.RoundId</div>
+        </div>
+        <div class="ticket-sub">
+            @if (localTime.HasValue)
+            {
+                <span>@localTime.Value.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture)</span>
+                <span class="ml-1">(@Model.TimeOffsetString)</span>
+            }
+        </div>
+        <div class="ticket-stats">
+            <div class="stat">
+                <div class="stat-label">@Localizer["BetLevel"]</div>
+                <div class="stat-value">@Model.Bet?.BetLevel</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">@Localizer["CoinValue"]</div>
+                <div class="stat-value">@Model.Bet?.CoinValue.ToString("F2")</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">@CommonLocalizer["TotalBet"]</div>
+                <div class="stat-value">@Model.Bet?.TotalAmount.ToString("F2")</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">@CommonLocalizer["TotalWin"]</div>
+                <div class="stat-value">@Model.Bet?.BetWin.ToString("F2")</div>
+            </div>
+        </div>
+        @if (Model.Bet?.FreeSpin == true || Model.Bet?.BuyFreeSpin == true)
         {
-            <span>@localTime.Value.ToString("MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture)</span>
-            <span class="ml-1">(@Model.TimeOffsetString)</span>
+            <div class="ticket-flags">
+                @if (Model.Bet.FreeSpin)
+                {
+                    <span class="flag flag-info">@Localizer["FreeSpin"]</span>
+                }
+                @if (Model.Bet.BuyFreeSpin)
+                {
+                    <span class="flag flag-warning">@Localizer["BuyFreeSpin"]</span>
+                }
+            </div>
         }
     </div>
-    <div class="ticket-stats">
-        <div class="stat">
-            <div class="stat-label">@Localizer["BetLevel"]</div>
-            <div class="stat-value">@Model.Bet?.BetLevel</div>
-        </div>
-        <div class="stat">
-            <div class="stat-label">@Localizer["CoinValue"]</div>
-            <div class="stat-value">@Model.Bet?.CoinValue.ToString("F2")</div>
-        </div>
-        <div class="stat">
-            <div class="stat-label">@CommonLocalizer["TotalBet"]</div>
-            <div class="stat-value">@Model.Bet?.TotalAmount.ToString("F2")</div>
-        </div>
-        <div class="stat">
-            <div class="stat-label">@CommonLocalizer["TotalWin"]</div>
-            <div class="stat-value">@Model.Bet?.BetWin.ToString("F2")</div>
-        </div>
-    </div>
-    @if (Model.Bet?.FreeSpin == true || Model.Bet?.BuyFreeSpin == true)
-    {
-        <div class="ticket-flags">
-            @if (Model.Bet.FreeSpin)
-            {
-                <span class="flag flag-info">@Localizer["FreeSpin"]</span>
-            }
-            @if (Model.Bet.BuyFreeSpin)
-            {
-                <span class="flag flag-warning">@Localizer["BuyFreeSpin"]</span>
-            }
-        </div>
-    }
+
+    <!-- Tumble Details -->
+    @await Html.PartialAsync("_GoldAndDragonTumbleDetails", Model)
 </div>
-
-<!-- Tumble Details -->
-@await Html.PartialAsync("_GoldAndDragonTumbleDetails", Model)
-
-<style>
-    .ticket-sticky-header {
-        position: sticky;
-        top: 0;
-        z-index: 1020;
-        background: #111;
-        color: #fff;
-        padding: 12px 16px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-        border-bottom-left-radius: 8px;
-        border-bottom-right-radius: 8px;
-        margin-bottom: 20px;
-    }
-
-    .ticket-header-top {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .ticket-title {
-        font-weight: 800;
-        letter-spacing: .5px;
-        color: #ffd700;
-    }
-
-    .ticket-sub {
-        font-size: 12px;
-        color: #bdbdbd;
-        margin-top: 2px;
-        text-align: center;
-    }
-
-    .ticket-stats {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 8px;
-        margin-top: 8px;
-        background: #1f1f1f;
-        border-radius: 6px;
-        padding: 8px 10px;
-    }
-
-    .stat { text-align: center; }
-    .stat-label { font-size: 10px; color: #c0a000; text-transform: uppercase; }
-    .stat-value { font-weight: 700; margin-top: 2px; }
-
-    .ticket-flags { margin-top: 6px; }
-    .flag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; margin-right: 6px; }
-    .flag-info { background: #17a2b8; color: #fff; }
-    .flag-warning { background: #ffc107; color: #1f1f1f; }
-
-    .winning-cell {
-        box-shadow: 0 0 8px #ffd700 !important;
-        border-color: #ffd700 !important;
-    }
-    
-    .non-winning-cell {
-        opacity: 0.7;
-    }
-
-    .grid-cell {
-        transition: all 0.3s ease;
-    }
-
-    .section-header {
-        font-size: 1.1em;
-    }
-    
-    .initial-grid .grid-cell:hover {
-        transform: scale(1.05);
-        z-index: 10;
-        position: relative;
-    }
-</style>

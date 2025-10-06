@@ -38,7 +38,7 @@
 
 @if (Model.Reels != null && Model.Reels.Length > 0)
 {
-    <div class="grid-container" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; max-width: 300px; margin: 0 auto;">
+    <div class="grid-container">
         @for (int i = 0; i < 36; i++)
         {
             var x = i % 6;
@@ -48,7 +48,7 @@
             var isWinning = IsWinningPosition(Model.WinningSymbols, x, y) || (Model.TriggeredPositions != null && Model.TriggeredPositions.Any(p => p.X == x && p.Y == y));
             var badgeClass = multiplier >= 0 ? "multiplier-badge" : "multiplier-badge d-none";
 
-            <div class="grid-cell @(isWinning ? "winning-cell" : "faded-cell")" style="width: 45px; height: 45px; border: 2px solid @(isWinning ? "#ffd700" : "#ccc"); background: @GetSymbolColor(symbolId); display: flex; align-items: center; justify-content: center; position: relative; color: white; font-weight: bold; font-size: 12px;">
+            <div class="grid-cell @(isWinning ? "winning-cell" : "faded-cell")" style="background: @GetSymbolColor(symbolId);">
                 @symbolId
                 <span class="@badgeClass">@multiplier</span>
             </div>

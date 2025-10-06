@@ -46,5 +46,9 @@
   {
     "outputFile": "wwwroot/scss/pages/modal.css",
     "inputFile": "wwwroot/scss/pages/modal.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/pages/gold-and-dragon.css",
+    "inputFile": "wwwroot/scss/pages/gold-and-dragon.scss"
   }
 ]

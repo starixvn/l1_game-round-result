@@ -97,6 +97,8 @@ namespace GameRoundResult.Web.Models
 
         private bool IsClassicSlot
             => GameTicketResult.GameType == GameConfigsType.Slot;
+        public bool IsCascadingCluster
+            => GameTicketResult.GameType == GameConfigsType.CascadingCluster;
 
         private bool IsBaccarat
              => GameType switch
