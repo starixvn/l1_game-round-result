@@ -32,20 +32,22 @@
             <div class="reels-grid border rounded-bottom p-3">
                 <div class="rage-meter mb-2">
                     <div class="rage-scale">
-                        <span class="mark" style="left: 10%">15</span>
-                        <span class="mark" style="left: 33%">30</span>
-                        <span class="mark" style="left: 66%">60</span>
+                        <span class="rage-label">RAGE</span>
+                        <span class="mark" style="left: 18.75%">15</span>
+                        <span class="mark" style="left: 37.5%">30</span>
+                        <span class="mark" style="left: 62.5%">60</span>
                         <span class="mark" style="left: 100%">90</span>
                     </div>
                     <div class="rage-row">
-                        <span class="rage-label">RAGE</span>
                         <div class="rage-track">
-                            <div class="rage-fill" style="width: @(nextTumble.RageMeter)%"></div>
+                            <div class="rage-fill" style="width: @((nextTumble.RageMeter / 80m * 100))%">
+                                <span class="rage-value">@nextTumble.RageMeter</span>
+                            </div>
                             <div class="rage-ticks">
-                                <span style="left: 10%"></span>
-                                <span style="left: 33%"></span>
-                                <span style="left: 66%"></span>
-                                <span style="left: 90%"></span>
+                                <span style="left: 18.75%"></span>
+                                <span style="left: 37.5%"></span>
+                                <span style="left: 62.5%"></span>
+                                <span style="left: 100%"></span>
                             </div>
                         </div>
                     </div>
