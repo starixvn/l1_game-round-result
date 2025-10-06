@@ -119,13 +119,6 @@
   overflow: hidden;
 }
 
-.rage-fill {
-  height: 100%;
-  background: linear-gradient(to right, #ff6b00, #ff0000);
-}
-
-.rage-value { text-align: center; }
-
 /* Tumble section */
 .tumble-section {
   border-radius: 8px;
@@ -385,6 +378,7 @@
   white-space: nowrap;
   z-index: 2;
   letter-spacing: 0.5px;
+  text-align: center;
 }
 
 .rage-ticks { 

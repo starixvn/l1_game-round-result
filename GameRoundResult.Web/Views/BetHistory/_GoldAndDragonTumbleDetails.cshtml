@@ -64,23 +64,8 @@
                         </div>
                         @foreach (var symbol in payoutList)
                         {
-                            var sumMultipliers = 0;
-                            if (symbol.Position != null && tumble.ReelMultipliers != null)
-                            {
-                                foreach (var pos in symbol.Position)
-                                {
-                                    if (pos.X >= 0 && pos.Y >= 0 && pos.X < tumble.ReelMultipliers.Length && tumble.ReelMultipliers[pos.X] != null && pos.Y < tumble.ReelMultipliers[pos.X].Length)
-                                    {
-                                        var cellMultiplier = tumble.ReelMultipliers[pos.X][pos.Y];
-                                        if (cellMultiplier > 0)
-                                        {
-                                            sumMultipliers += cellMultiplier;
-                                        }
-                                    }
-                                }
-                            }
-                            var basePayoutValue = sumMultipliers > 0 ? (symbol.Win / sumMultipliers) : symbol.Win;
-                            var tooltipText = $"(Payout x Dragon Wound Multipliers)\n{basePayoutValue.ToString("F2", CultureInfo.InvariantCulture)} x {sumMultipliers}";
+                            var basePayoutValue = symbol.Multiplier > 0 ? (symbol.Win / symbol.Multiplier) : symbol.Win;
+                            var tooltipText = $"(Payout x Dragon Wound Multipliers)\n{basePayoutValue.ToString("F2", CultureInfo.InvariantCulture)} x {symbol.Multiplier}";
 
                             <div class="payout-item d-flex justify-content-between align-items-center p-2 bg-light rounded mb-1">
                                 <div class="d-flex align-items-center">
@@ -110,7 +95,6 @@
                         <div class="payout-message p-2 bg-light rounded mb-1 text-muted">@Localizer["NoWinningCombination"]</div>
                         @if (triggeredStage.HasValue)
                         {
-                            var rageBonusLabelKey = $"RageBonusStage{(triggeredStage.Value + 1)}";
                             <div class="payout-message p-2 bg-light rounded d-flex align-items-center justify-content-center">
                                 <span class="mr-2">&#128227;</span>
                                 <span>@Localizer["ThunderousRoarBonus"]</span>
