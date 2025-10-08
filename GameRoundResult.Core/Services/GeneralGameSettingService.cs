@@ -4,6 +4,7 @@ using GameRoundResult.Core.Database.Repository;
 using System.Collections.Generic;
 using GameRoundResult.Core.Constants;
 using System.Linq;
+using GameRoundResult.Web._Shared;
 
 namespace GameRoundResult.Core.Services
 {
@@ -29,8 +30,7 @@ namespace GameRoundResult.Core.Services
             var filteredGames = gameEntities
                 .Where(x => x.Type != (byte)GameConfigsType.Slot &&
                 x.Type != (byte)GameConfigsType.CascadingSlot &&
-                x.Type != (byte)GameConfigsType.CrashTurnBase &&
-                x.Type != (byte)GameConfigsType.FixedStepsCrashTurnBase &&
+                !GameConfigsTypeHelper.IsCrashTurn(x.Type) &&
                 x.GameId > 0);
 
             return filteredGames;
