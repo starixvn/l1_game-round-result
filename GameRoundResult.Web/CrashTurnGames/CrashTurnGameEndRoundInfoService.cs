@@ -2,7 +2,7 @@
 using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
 
-namespace GameRoundResult.Web.CrashGames
+namespace GameRoundResult.Web.CrashTurnGames
 {
     public class CrashTurnGameEndRoundInfoService : IEndGameInfoService
     {

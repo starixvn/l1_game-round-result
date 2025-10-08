@@ -6,6 +6,7 @@ using GameRoundResult.Core.Services;
 using GameRoundResult.Core.Services.EndRoundInfo;
 using GameRoundResult.Web.CascadingSlotGames;
 using GameRoundResult.Web.CrashGames;
+using GameRoundResult.Web.CrashTurnGames;
 using GameRoundResult.Web.PlinkoGames;
 using GameRoundResult.Web.SlotGames;
 

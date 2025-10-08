@@ -1,18 +1,18 @@
 ﻿@using GameRoundResult.Web.Models.GameTicket
-@model CoinMiningTicketViewModel
+@model CrashTurnGameTicketViewModel
 
 @inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
-@inject IJsonStringLocalizer<CoinMiningTicketViewModel> Localizer
+@inject IJsonStringLocalizer<CrashTurnGameTicketViewModel> Localizer
 
 @if (Model.EnableTolgee)
 {
-    <input value="GameTicketResultViewModel,Common,CoinMining" id="tolgee_namespace" readonly hidden/>
+    <input value="GameTicketResultViewModel,Common,CoinMining" id="tolgee_namespace" readonly hidden />
 }
 <table class="table  table-bordered table-expand table-game-bet">
     <thead>
         <tr>
             <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
-            <th >@CommonLocalizer["RoundId"]</th>
+            <th>@CommonLocalizer["RoundId"]</th>
             <th colspan="4">@Localizer["header_crash_point"]</th>
         </tr>
     </thead>
@@ -107,9 +107,9 @@
                     @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>
-        }       
-    </tbody>   
-    
+        }
+    </tbody>
+
     <tbody>
         @if (@Model.Bet != null)
         {
@@ -157,7 +157,7 @@
                 </td>
                 <td class="text-right @Model.WinLossRowClassName">@Model.FormatNumber(Model.WinLoss)</td>
             </tr>
-        }       
+        }
     </tbody>
 </table>
 

@@ -13,6 +13,7 @@ using GameRoundResult.Web.Accessor;
 using GameRoundResult.Web.CascadingSlotGames;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.CrashGames;
+using GameRoundResult.Web.CrashTurnGames;
 using GameRoundResult.Web.PlinkoGames;
 using GameRoundResult.Web.Requests;
 using GameRoundResult.Web.RoundHistory;
@@ -179,7 +180,6 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped(typeof(SeDie3TicketAccessor<,,>));
             services.AddScoped(typeof(KaraKrusTicketAccessor<,,>));
             services.AddScoped(typeof(SevenUpDownTicketAccessor<,,>));
-            services.AddScoped(typeof(CoinMiningAccessor<,>));
             services.AddScoped(typeof(MarbleFootballTicketAccessor));
             services.AddScoped(typeof(MarbleFootball2TicketAccessor));
             services.AddScoped(typeof(RNGSoccerTicketAccessor));

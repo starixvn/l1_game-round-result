@@ -12,7 +12,6 @@ namespace GameRoundResult.Web.CascadingSlotGames
             services.AddScoped<ICascadingSlotBetRepository, CascadingSlotBetRepository>();
             services.AddScoped<CascadingSlotGameEndRoundInfoService>();
             services.AddScoped<CascadingSlotTicketHandler>();
-            services.AddScoped<CrashGameEndRoundInfoService>();
         }
     }
 }

@@ -7,6 +7,7 @@ using GameRoundResult.Core.Database.Entities.KaraKrus;
 using GameRoundResult.Core.Database.Entities.SevenUpDown;
 using GameRoundResult.Web.CascadingSlotGames;
 using GameRoundResult.Web.CrashGames.Handlers;
+using GameRoundResult.Web.CrashTurnGames.Handlers;
 using GameRoundResult.Web.PlinkoGames;
 using GameRoundResult.Web.SlotGames.Handlers;
 using Microsoft.Extensions.DependencyInjection;
@@ -106,7 +107,6 @@ namespace GameRoundResult.Web.Accessor
             { GameType.SevenUpDown, typeof(SevenUpDownTicketAccessor<SevenUpDownRound, SevenUpDownBet, SevenUpDownBetLog>) },
             { GameType.MarbleFootball, typeof(MarbleFootballTicketAccessor) },
             { GameType.MarbleFootball2, typeof(MarbleFootball2TicketAccessor) },
-            { GameType.CoinMining, typeof(CoinMiningAccessor<CoinMiningRound, CoinMiningBetLog>) },
             { GameType.RNGSoccer, typeof(RNGSoccerTicketAccessor) },
             { GameType.MiniRoulette, typeof(MiniRouletteTicketAccessor) },
             { GameType.SeDieMultiplayer, typeof(SeDieMultiplayerTicketAccessor) },
@@ -120,7 +120,9 @@ namespace GameRoundResult.Web.Accessor
             {GameConfigsType.Slot, typeof(SlotGameHandler) },
             {GameConfigsType.CascadingSlot, typeof(CascadingSlotTicketHandler) },
             {GameConfigsType.Crash, typeof(CrashGameHandler) },
-            {GameConfigsType.Plinko, typeof(PlinkoGameHandler) }
+            {GameConfigsType.CrashTurnBase, typeof(CrashTurnGameHandler) },
+            {GameConfigsType.FixedStepsCrashTurnBase, typeof(CrashTurnGameHandler) },
+            {GameConfigsType.Plinko, typeof(PlinkoGameHandler) },
         };
 
         private readonly IServiceProvider serviceProvider;

@@ -10,6 +10,7 @@ namespace GameRoundResult.Web.CrashGames
         {
             services.AddScoped<ICrashGameTicketService, CrashGameTicketService>();
             services.AddScoped<ICrashGameBetRepository, CrashGameBetRepository>();
+            services.AddScoped<CrashGameEndRoundInfoService>();
             services.AddScoped<CrashGameHandler>();
         }
     }

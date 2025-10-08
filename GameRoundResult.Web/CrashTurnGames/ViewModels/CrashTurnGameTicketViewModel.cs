@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Globalization;
 using GameRoundResult.Core.Database.Entities;
-using GameRoundResult.Core.Database.Entities.CoinMining;
 using GameRoundResult.Web.Configuration;
-using Sentry.Protocol;
+using GameRoundResult.Web.Models;
 
-namespace GameRoundResult.Web.Models.GameTicket
+namespace GameRoundResult.Web.CrashTurnGames.ViewModels
 {
     [TolgeeNamespace("CoinMining")]
-    public class CoinMiningTicketViewModel : GameTicketViewModel
+    public class CrashTurnGameTicketViewModel : GameTicketViewModel
     {
-        public IEnumerable<CoinMiningBetLogViewModel> BetLogs { get; set; }
+        public IEnumerable<CrashTurnBetLogViewModel> BetLogs { get; set; }
         public BaseCrashTurnRoundEntity Bet { get; set; }
         public DateTime Time { get; set; }
 
@@ -32,7 +31,7 @@ namespace GameRoundResult.Web.Models.GameTicket
 
     }
 
-    public class CoinMiningBetLogViewModel : BetLogViewModel
+    public class CrashTurnBetLogViewModel : BetLogViewModel
     {
         
     }

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using GameRoundResult.Core.Constants;
+using GameRoundResult.Web._Shared;
+using GameRoundResult.Web.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using GameRoundResult.Core.Constants;
-using GameRoundResult.Web.Configuration;
 
 namespace GameRoundResult.Web.Models
 {
@@ -32,6 +33,7 @@ namespace GameRoundResult.Web.Models
                 { () => IsCascadingSlot, () => $"_CascadingSlot{PartialPostfix}" },
                 { () => IsClassicSlot, () => GetClassicSlotViewName() },
                 { () => IsCrashGame, () => $"_CrashGame{PartialPostfix}" },
+                { () => GameConfigsTypeHelper.IsCrashTurn(GameTicketResult.GameType), () => $"_CrashTurnGame{PartialPostfix}" },
                 { () => IsBaccarat, () => $"_Baccarat{PartialPostfix}" },
                 { () => IsDrawGame, () => $"_{Enum.GetName(typeof(GameType), GameType)}{PartialPostfix}" },
                 { () => IsPlinkoGame, () => $"_PlinkoGame{PartialPostfix}" }

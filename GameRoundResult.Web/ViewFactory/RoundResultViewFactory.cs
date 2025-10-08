@@ -45,7 +45,6 @@ namespace GameRoundResult.Web.ViewFactory
         private const string sevenupdown = "_SevenUpDownRoundResult";
         private const string marblefootball = "_MarbleFootballRoundResult";
         private const string marblefootball2 = "_MarbleFootball2RoundResult";
-        private const string coinMining = "_CoinMiningRoundResult";
         private const string rngSoccer = "_RNGSoccerRoundResult";
         private const string miniroulette = "_RouletteRoundResult";
         private const string soccerpingoal = "_SoccerPinGoalRoundResult";
@@ -132,7 +131,6 @@ namespace GameRoundResult.Web.ViewFactory
             { GameType.SevenUpDown, sevenupdown },
             {GameType.MarbleFootball, marblefootball },
             {GameType.MarbleFootball2, marblefootball2 },
-            {GameType.CoinMining, coinMining },
             {GameType.RNGSoccer, rngSoccer },
             { GameType.MiniRoulette, miniroulette },
             { GameType.SoccerPinGoal, soccerpingoal },
