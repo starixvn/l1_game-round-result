@@ -28,9 +28,10 @@ namespace GameRoundResult.Core.Services
             var gameEntities = await generalGameSettingRepository.GetAll();
             var filteredGames = gameEntities
                 .Where(x => x.Type != (byte)GameConfigsType.Slot &&
-                 x.Type != (byte)GameConfigsType.CascadingSlot &&
-                 x.Type != (byte)GameConfigsType.CrashTurnBase &&
-                 x.GameId > 0);
+                x.Type != (byte)GameConfigsType.CascadingSlot &&
+                x.Type != (byte)GameConfigsType.CrashTurnBase &&
+                x.Type != (byte)GameConfigsType.FixedStepsCrashTurnBase &&
+                x.GameId > 0);
 
             return filteredGames;
         }

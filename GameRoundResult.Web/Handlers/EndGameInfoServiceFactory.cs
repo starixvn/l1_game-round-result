@@ -117,6 +117,7 @@ namespace GameRoundResult.Web.Services
             { GameConfigsType.CascadingSlot, typeof(CascadingSlotGameEndRoundInfoService)},
             { GameConfigsType.Crash, typeof(CrashGameEndRoundInfoService)},
             { GameConfigsType.CrashTurnBase, typeof(CrashTurnGameEndRoundInfoService)},
+            { GameConfigsType.FixedStepsCrashTurnBase, typeof(CrashTurnGameEndRoundInfoService)},
             { GameConfigsType.Plinko, typeof(PlinkoGameEndRoundInfoService)}
         };
 
