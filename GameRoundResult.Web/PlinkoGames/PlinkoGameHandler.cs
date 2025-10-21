@@ -39,6 +39,7 @@ namespace GameRoundResult.Web.PlinkoGames
                 viewModel.RoundResult.TimeZoneOffset = request.TimeZoneOffset;
                 viewModel.TotalBet = round.TotalAmount;
                 viewModel.BetWin = round.BetWin;
+                viewModel.Rate = round.Rate;
             }
 
             return viewModel;
