@@ -1,0 +1,59 @@
+@model PlinkoXGameTicketViewModel
+
+@inject IJsonStringLocalizer<GameTicketViewModel> CommonLocalizer
+@inject IJsonStringLocalizer<PlinkoXGameTicketViewModel> Localizer
+
+@if (Model.EnableTolgee)
+{
+    <input value="GameTicketResultViewModel,Common,Spaceflight" id="tolgee_namespace" readonly hidden />
+}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+            <th class="col-round-id">@CommonLocalizer["RoundId"]</th>
+            <th>@CommonLocalizer["BetAmount"]</th>
+            <th>@CommonLocalizer["Result"]</th>
+            <th>@CommonLocalizer["Win"]</th>
+            <th>@CommonLocalizer["WinLoss"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.RoundResult != null)
+        {
+            <tr>
+                <td>
+                    @Model.RoundResult.DisplayRoundDate
+                    <br />
+                    @Model.RoundResult.DisplayRoundTime
+                </td>
+                <td>@Model.RoundResult.RoundId</td>
+                <td class="text-right">@Model.RoundResult.DisplayAmount</td>
+                <td>
+                    @Model.RoundResult.DisplayResult
+                </td>
+                <td class="text-right">@Model.DisplayBetWin</td>
+                <td class="bold text-right @(Model.WinLossRowClassName)">@Model.DisplayWinLoss</td>
+            </tr>
+
+            @if (Model.RoundResult.ReachMaxWin)
+            {
+                <tr>
+                    <td class="text-right">
+
+                        @($"({Localizer["you_reach_max_win"]})")
+
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -7,7 +7,8 @@
         CascadingSlot = 3,
         SlotRNG = 4,
         Crash = 5,
-        CrashTurnBase=8,
-        Plinko = 11
+        CrashTurnBase = 8,
+        Plinko = 11,
+        PlinkoX = 12
     }
 }

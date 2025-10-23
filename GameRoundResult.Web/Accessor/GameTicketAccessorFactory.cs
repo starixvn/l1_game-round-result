@@ -9,6 +9,7 @@ using GameRoundResult.Web.CascadingSlotGames;
 using GameRoundResult.Web.CrashGames.Handlers;
 using GameRoundResult.Web.PlinkoGames;
 using GameRoundResult.Web.SlotGames.Handlers;
+using GameRoundResult.Web.PlinkoXGames;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GameRoundResult.Web.Accessor
@@ -120,6 +121,7 @@ namespace GameRoundResult.Web.Accessor
             {GameConfigsType.CascadingSlot, typeof(CascadingSlotTicketHandler) },
             {GameConfigsType.Crash, typeof(CrashGameHandler) },
             {GameConfigsType.Plinko, typeof(PlinkoGameHandler) },
+            {GameConfigsType.PlinkoX, typeof(PlinkoXGameHandler) },
         };
 
         private readonly IServiceProvider serviceProvider;
