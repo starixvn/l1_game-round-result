@@ -118,8 +118,7 @@ namespace GameRoundResult.Web.Services
             { GameConfigsType.CascadingSlot, typeof(CascadingSlotGameEndRoundInfoService)},
             { GameConfigsType.Crash, typeof(CrashGameEndRoundInfoService)},
             { GameConfigsType.CrashTurnBase, typeof(CrashTurnGameEndRoundInfoService)},
-            { GameConfigsType.Plinko, typeof(PlinkoGameEndRoundInfoService)},
-            { GameConfigsType.PlinkoX, typeof(PlinkoXGameEndRoundInfoService)}
+            { GameConfigsType.Plinko, typeof(PlinkoGameEndRoundInfoService)}
         };
 
         private readonly IServiceProvider serviceProvider;

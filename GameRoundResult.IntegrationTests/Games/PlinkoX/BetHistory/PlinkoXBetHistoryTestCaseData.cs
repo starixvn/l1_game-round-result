@@ -1,4 +1,4 @@
-﻿using GameRoundResult.Core.Constants;
+using GameRoundResult.Core.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +12,8 @@ namespace GameRoundResult.IntegrationTests
         public override List<BetHistoryTestCaseParam> GetTestCaseParams()
             => new List<BetHistoryTestCaseParam>
             {
-                new BetHistoryTestCaseParam((int)GameType.PlinkoX, "PlinkoX", GameConfigsType.PlinkoX, "100", 11, Language.EN, "LosingRound"),
-                new BetHistoryTestCaseParam((int)GameType.PlinkoX, "PlinkoX", GameConfigsType.PlinkoX, "100", 10, Language.EN, "WinRound"),
+                new BetHistoryTestCaseParam((int)GameType.PlinkoX, "PlinkoX", GameConfigsType.Plinko, "100", 11, Language.EN, "LosingRound"),
+                new BetHistoryTestCaseParam((int)GameType.PlinkoX, "PlinkoX", GameConfigsType.Plinko, "100", 10, Language.EN, "WinRound"),
             };
     }
 }

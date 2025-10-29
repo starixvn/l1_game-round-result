@@ -67,8 +67,7 @@ namespace GameRoundResult.Web.RoundHistory
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()
         {
-            {GameConfigsType.Plinko, typeof(PlinkoGameRoundHistoryHandler) },
-            {GameConfigsType.PlinkoX, typeof(PlinkoXGameRoundHistoryHandler) },
+            {GameConfigsType.Plinko, typeof(PlinkoGameRoundHistoryHandler) }
         };
 
         public RoundHistoryAccessorFactory(IServiceProvider serviceProvider)

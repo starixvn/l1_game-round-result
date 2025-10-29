@@ -1,4 +1,4 @@
-﻿using AutoFixture;
+using AutoFixture;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
@@ -15,13 +15,13 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
 {
     public class PlinkoXEndGameInfoServiceTests
     {
-        private readonly IPlinkoXGameBetRepository betRepository;
+        private readonly IPlinkoGameBetRepository betRepository;
         private readonly PlinkoXEndGameInfoServiceMock endGameInfoService;
         private readonly Fixture fixture;
 
         public PlinkoXEndGameInfoServiceTests()
         {
-            betRepository = Substitute.For<IPlinkoXGameBetRepository>();
+            betRepository = Substitute.For<IPlinkoGameBetRepository>();
             endGameInfoService = new PlinkoXEndGameInfoServiceMock(betRepository);
             fixture = new Fixture();
         }
@@ -45,7 +45,7 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
         {
             // Arrange
             var request = new RetrieveEndGameInfoRequest();
-            endGameInfoService.Round = new PlinkoXGameRound();
+            endGameInfoService.Round = new PlinkoGameRound();
             endGameInfoService.Round.TotalAmount = 0; // No bets
 
             // Act
@@ -64,7 +64,7 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
             var betWin = fixture.Create<decimal>();
             var endTime = new DateTime(2022, 10, 20);
 
-            endGameInfoService.Round = new PlinkoXGameRound
+            endGameInfoService.Round = new PlinkoGameRound
             {
                 Time = endTime,
                 TotalAmount = betAmount,
@@ -100,12 +100,12 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
             var slotIndex = fixture.Create<int>();
             var multiplier = fixture.Create<double>();
 
-            endGameInfoService.Round = new PlinkoXGameRound
+            endGameInfoService.Round = new PlinkoGameRound
             {
                 Time = endTime,
                 TotalAmount = betAmount,
                 BetWin = betWin,
-                SettlementResult = new PlinkoXSettlement
+                SettlementResult = new PlinkoSettlement
                 {
                     SlotIndex = slotIndex,
                     Multiplier = multiplier
@@ -131,7 +131,7 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
             var betWin = fixture.Create<decimal>();
             var endTime = new DateTime(2022, 10, 20);
 
-            endGameInfoService.Round = new PlinkoXGameRound
+            endGameInfoService.Round = new PlinkoGameRound
             {
                 Time = endTime,
                 TotalAmount = betAmount,
@@ -154,7 +154,7 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
         {
             // Arrange
             var request = new RetrieveEndGameInfoRequest();
-            endGameInfoService.Round = new PlinkoXGameRound
+            endGameInfoService.Round = new PlinkoGameRound
             {
                 Time = new DateTime(2022, 10, 20),
                 TotalAmount = 0,

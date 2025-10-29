@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace GameRoundResult.Core.Database.Repository
 {
-    public interface IPlinkoXGameBetRepository
+    public interface IPlinkoXGameBetRepository : IPlinkoGameBetRepository
     {
-        Task<PlinkoXGameRound> GetAsync(long roundId, string playerId, string operatorId, string gameName);
     }
 
     public class PlinkoXGameBetRepository : GameBetRepository, IPlinkoXGameBetRepository
@@ -19,12 +18,9 @@ namespace GameRoundResult.Core.Database.Repository
         public PlinkoXGameBetRepository(IMongoDatabase database) : base(database)
         {
         }
-        public async Task<PlinkoXGameRound> GetAsync(long roundId, string playerId, string operatorId, string gameName)
+        public async Task<PlinkoGameRound> GetAsync(long roundId, string playerId, string operatorId, string gameName)
         {
-            var round = await database
-                .GetCollection<PlinkoXGameRound>(CollectionNameFormatter.Round(gameName))
-                .Find(x => x.RoundId == roundId && x.PlayerId == playerId && x.OperatorId == operatorId)
-                .FirstOrDefaultAsync();
+            var round = (await GetPlinkoRoundAsync<PlinkoXGameRound>(roundId, playerId, CollectionNameFormatter.Round(gameName), operatorId));
 
             return round;
         }

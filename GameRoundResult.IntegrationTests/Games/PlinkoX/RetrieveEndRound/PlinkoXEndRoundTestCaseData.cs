@@ -9,8 +9,8 @@ namespace GameRoundResult.IntegrationTests
         {
             return new List<RetrieveEndRoundTestCaseParam>
             {
-                new RetrieveEndRoundTestCaseParam((int)GameType.PlinkoX, "PlinkoX", GameConfigsType.PlinkoX, "100", 11, "ExistBet"),
-                new RetrieveEndRoundTestCaseParam((int)GameType.PlinkoX, "PlinkoX", GameConfigsType.PlinkoX, "123", 1, "NotExistRound"),
+                new RetrieveEndRoundTestCaseParam((int)GameType.PlinkoX, "PlinkoX", GameConfigsType.Plinko, "100", 11, "ExistBet"),
+                new RetrieveEndRoundTestCaseParam((int)GameType.PlinkoX, "PlinkoX", GameConfigsType.Plinko, "123", 1, "NotExistRound"),
             };
         }
     }

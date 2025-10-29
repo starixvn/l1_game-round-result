@@ -1,4 +1,4 @@
-﻿using GameRoundResult.Core.Database.Entities;
+using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Repository;
 using GameRoundResult.Core.Services;
 using GameRoundResult.Web.PlinkoXGames;
@@ -13,9 +13,9 @@ namespace GameRoundResult.Core.UnitTests.Services.EndRoundInfo
 {
     public class PlinkoXEndGameInfoServiceMock : IEndGameInfoService
     {
-        public PlinkoXGameRound Round { get; set; }
+        public PlinkoGameRound Round { get; set; }
 
-        public PlinkoXEndGameInfoServiceMock(IPlinkoXGameBetRepository _)
+        public PlinkoXEndGameInfoServiceMock(IPlinkoGameBetRepository _)
         {
         }
 
