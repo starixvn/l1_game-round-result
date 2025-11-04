@@ -18,7 +18,6 @@ using GameRoundResult.Web.CrashGames.Handlers;
 using GameRoundResult.Web.SlotGames.Handlers;
 using GameRoundResult.Web.PlinkoGames;
 using GameRoundResult.Web.PlinkoGames.ViewModels;
-using GameRoundResult.Web.PlinkoXGames;
 
 namespace GameRoundResult.Web.RoundHistory
 {
@@ -47,7 +46,7 @@ namespace GameRoundResult.Web.RoundHistory
             { GameType.Bac90, typeof(RoundHistoryAccessor<BaccaratXRound, BaccaratXRoundResultViewModel, BaccaratXBet, RoundHistoryBetViewModel>) },
             { GameType.Bac91, typeof(RoundHistoryAccessor<BaccaratXRound, BaccaratXRoundResultViewModel, BaccaratXBet, RoundHistoryBetViewModel>) },
             { GameType.Bac92, typeof(RoundHistoryAccessor<BaccaratXRound, BaccaratXRoundResultViewModel, BaccaratXBet, RoundHistoryBetViewModel>) },
-            { GameType.SeDie3, typeof(RoundHistoryAccessor<SeDie3Round, SeDie3RoundResultViewModel, SeDie3Bet, RoundHistoryBetViewModel>) },
+            { GameType.SeDie3, typeof(RoundHistoryAccessor<SeDie3Round, SeDie3RoundResultViewModel, SeDie3Bet, RoundHistoryBetViewModel>) }, 
             { GameType.KaraKrus, typeof(RoundHistoryAccessor<KaraKrusRound, KaraKrusRoundResultViewModel, KaraKrusBet, RoundHistoryBetViewModel>) },
             { GameType.Bac97, typeof(RoundHistoryAccessor<BaccaratXRound, BaccaratXRoundResultViewModel, BaccaratXBet, RoundHistoryBetViewModel>) },
             { GameType.Bac98, typeof(RoundHistoryAccessor<BaccaratXRound, BaccaratXRoundResultViewModel, BaccaratXBet, RoundHistoryBetViewModel>) },
@@ -67,7 +66,7 @@ namespace GameRoundResult.Web.RoundHistory
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()
         {
-            {GameConfigsType.Plinko, typeof(PlinkoGameRoundHistoryHandler) }
+            {GameConfigsType.Plinko, typeof(PlinkoGameRoundHistoryHandler) },
         };
 
         public RoundHistoryAccessorFactory(IServiceProvider serviceProvider)
@@ -77,7 +76,7 @@ namespace GameRoundResult.Web.RoundHistory
 
         public IRoundHistoryAccessor GetService(GameType game, GameConfigsType gameType)
         {
-            return services.ContainsKey(game) ? (IRoundHistoryAccessor)serviceProvider.GetRequiredService(services[game])
+            return services.ContainsKey(game) ? (IRoundHistoryAccessor)serviceProvider.GetRequiredService(services[game]) 
                 : serviceProvider.GetRequiredService(servicesOnType[gameType]) as IRoundHistoryAccessor;
         }
     }

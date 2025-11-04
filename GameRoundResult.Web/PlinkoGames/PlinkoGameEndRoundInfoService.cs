@@ -17,13 +17,13 @@ namespace GameRoundResult.Web.PlinkoGames
         public async Task<EndRoundInfoResult> GetAsync(RetrieveEndGameInfoRequest request)
         {
             var round = await betRepository.GetAsync(request.GameRoundId, request.PlayerId, request.OperatorId, request.GameName);
-
+ 
 
             if (round == null)
             {
                 return EndRoundInfoError.SB1001;
             }
-
+            
             return new EndRoundInfoResult
             {
                 EndTime = round.Time,
