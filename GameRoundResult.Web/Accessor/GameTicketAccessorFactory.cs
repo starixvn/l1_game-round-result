@@ -120,7 +120,7 @@ namespace GameRoundResult.Web.Accessor
             {GameConfigsType.Slot, typeof(SlotGameHandler) },
             {GameConfigsType.CascadingSlot, typeof(CascadingSlotTicketHandler) },
             {GameConfigsType.Crash, typeof(CrashGameHandler) },
-            {GameConfigsType.Plinko, typeof(PlinkoGameHandler) },
+            {GameConfigsType.Plinko, typeof(PlinkoGameHandler) }
         };
 
         private readonly IServiceProvider serviceProvider;
