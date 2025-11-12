@@ -7,12 +7,46 @@ using GameRoundResult.Core.Constants;
 using System.Globalization;
 using System;
 using GameRoundResult.Core.Database.Entities;
+using System.Linq;
+using System.Reflection;
 
 namespace GameRoundResult.Web.PlinkoGames.ViewModels
 {
     public class PlinkoGameRoundResultViewModel : RoundResultViewModel
     {
         public PlinkoSettlement SettlementResult { get; set; }
+
+        public LightningBoard LightningBoard { get; set; }
+
+        public string DisplayPayoutSlot
+        {
+            get
+            {
+                var payoutSlot = Odds[GameMode][16][SettlementResult.SlotIndex];
+                return $"{payoutSlot}x";
+            }
+        }
+
+        public string TotalMultiplier
+        {
+            get
+            {
+                decimal totalMultiplier = 0;
+
+                if(!SettlementResult.ReachedPegMultipliers.Exists(x => x.Multiplier > 0))
+                {
+                    return "-";
+                }
+                else
+                {
+                    foreach (var multiplier in SettlementResult.ReachedPegMultipliers)
+                    {
+                        totalMultiplier += multiplier.Multiplier;
+                    }
+                    return $"{totalMultiplier}x";
+                }
+            }
+        }
 
         public string DisplayResult => $"{SettlementResult.Multiplier}x";
 
@@ -27,6 +61,10 @@ namespace GameRoundResult.Web.PlinkoGames.ViewModels
         public decimal Amount { get; set; }
 
         public decimal Rate { get; set; }
+
+        public Dictionary<decimal, Dictionary<decimal, List<decimal>>> Odds { get; set; }
+
+        public int GameMode { get; set; }
 
         public string DisplayAmount => Amount.Format();
 
