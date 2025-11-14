@@ -65,5 +65,7 @@ namespace GameRoundResult.Web.Models
         public bool FreeBet { get; set; }
 
         public bool ConvertToUSD { get; set; }
+
+        public bool ExcludeUUS { get; set; }
     }
 }

@@ -47,6 +47,7 @@ namespace GameRoundResult.Web.Controllers
                     Game = model.GameTypeId,
                     GameTypeId = model.GameTypeId,
                     ConvertToUSD = model.ConvertToUSD,
+                    ExcludeUUS = model.ExcludeUUS,
                     PlayerId = model.PlayerId,
                     Language = model.Language,
                     SiteId = model.SiteId,

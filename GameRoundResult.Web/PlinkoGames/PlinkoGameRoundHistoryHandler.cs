@@ -39,7 +39,7 @@ namespace GameRoundResult.Web.PlinkoGames
         public async Task<RoundHistoryViewModel> GetAsync(RoundHistoryRequest request)
         {
             var timeZone = TZConvert.GetTimeZoneInfo("SE Asia Standard Time");
-            var roundResult = await roundHistoryService.GetRoundAsync<PlinkoGameRound>(request.RoundId, BuildRoundFilterExpression(request.RoundId), request.GameConfigs.Name);
+            var roundResult = await roundHistoryService.GetRoundAsync<PlinkoGameRound>(request.RoundId, BuildRoundFilterExpression(request.RoundId, request.ExcludeUUS), request.GameConfigs.Name);
 
             var bets = new List<RoundHistoryBetEntity>();
             if (roundResult != null)
@@ -113,9 +113,14 @@ namespace GameRoundResult.Web.PlinkoGames
             return roundViewModel;
         }
 
-        protected virtual FilterDefinition<PlinkoGameRound> BuildRoundFilterExpression(long roundId)
+        protected virtual FilterDefinition<PlinkoGameRound> BuildRoundFilterExpression(long roundId, bool excludeUUS)
         {
             var filter = Builders<PlinkoGameRound>.Filter.Eq(x => x.RoundId, roundId);
+            if (excludeUUS)
+            {
+                filter &= Builders<PlinkoGameRound>.Filter.Ne(x => x.Currency, "UUS");
+            }
+
             return filter;
         }
     }
