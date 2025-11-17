@@ -55,5 +55,7 @@
   "you_reached_max_win": "您達到了最大勝利",
   "multiplier_position": "倍數位置",
   "payout_slot": "賠付槽",
-  "total_multiplier": "總乘數"
+  "total_multiplier": "總乘數",
+  "column": "列",
+  "row": "行"
 }

@@ -55,5 +55,7 @@
   "you_reached_max_win": "Bạn Đã Đạt Mức Tiền Thắng Tối Đa",
   "multiplier_position": "Vị trí nhân",
   "payout_slot": "Khe trả thưởng",
-  "total_multiplier": "Tổng Số Nhân"
+  "total_multiplier": "Tổng Số Nhân",
+  "column": "Cột",
+  "row": "Hàng"
 }

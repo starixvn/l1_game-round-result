@@ -55,5 +55,7 @@
   "you_reached_max_win": "You reached the max win",
   "multiplier_position": "Multiplier Position",
   "payout_slot": "Payout Slot",
-  "total_multiplier": "Total Multiplier"
+  "total_multiplier": "Total Multiplier",
+  "column": "Kolum",
+  "row": "Row"
 }

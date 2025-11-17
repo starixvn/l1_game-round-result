@@ -56,5 +56,7 @@
   "you_reached_max_win": "最大配当を獲得しました。",
   "multiplier_position": "マルチプライヤーの位置",
   "payout_slot": "ペイアウトスロット",
-  "total_multiplier": "総合マルチプライヤー"
+  "total_multiplier": "総合マルチプライヤー",
+  "column": "列",
+  "row": "行"
 }

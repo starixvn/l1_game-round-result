@@ -55,5 +55,7 @@
   "you_reached_max_win": "Anda mencapai Maksimal Menang",
   "multiplier_position": "Posisi Pengganda",
   "payout_slot": "Slot Pembayaran",
-  "total_multiplier": "Pengganda Total"
+  "total_multiplier": "Pengganda Total",
+  "column": "Kolom",
+  "row": "Baris"
 }

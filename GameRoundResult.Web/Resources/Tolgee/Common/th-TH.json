@@ -55,5 +55,7 @@
   "you_reached_max_win": "คุณถึงยอดชนะสูงสุด",
   "multiplier_position": "ตำแหน่งตัวคูณ",
   "payout_slot": "ช่องจ่ายเงิน",
-  "total_multiplier": "ตัวคูณทั้งหมด"
+  "total_multiplier": "ตัวคูณทั้งหมด",
+  "column": "คอลัมน์",
+  "row": "แถว"
 }
