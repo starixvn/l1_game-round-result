@@ -13,6 +13,6 @@
     ViewBag.ShowingBetDetail = Model.BetLogs.Any() && Model.RoundResult != null;
 }
 
-@await Html.PartialAsync("shared/_GameMarbleTicketResultPartial", Model)
-@await Html.PartialAsync("shared/_GameMarbleTicketPartialLandScape", Model)
-@await Html.PartialAsync("shared/_GameMarbleTicketPartialPortrait", Model)
+@await Html.PartialAsync("~/Views/BetHistory/shared/_GameMarbleTicketResultPartial.cshtml", Model)
+@await Html.PartialAsync("~/Views/BetHistory/shared/_GameMarbleTicketPartialLandScape.cshtml", Model)
+@await Html.PartialAsync("~/Views/BetHistory/shared/_GameMarbleTicketPartialPortrait.cshtml", Model)
