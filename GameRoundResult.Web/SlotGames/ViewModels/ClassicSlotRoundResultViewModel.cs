@@ -56,5 +56,7 @@ namespace GameRoundResult.Web.SlotGames.ViewModels
         public decimal TotalBetWin => BetWin + (SettlementResult.Jackpot?.WinningAmount ?? 0);
 
         public string DisplayTotalBetWin => TotalBetWin.Format();
+
+        public int XMode { get; set; }
     }
 }

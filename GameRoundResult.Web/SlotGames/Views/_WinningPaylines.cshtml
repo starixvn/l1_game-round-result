@@ -13,7 +13,7 @@
         </td>
         <td>@winningPayline.Count</td>
         <td>x@(winningPayline.Odds)</td>
-        <td class="text-right">@roundResult.Bet.Format()</td>
-        <td class="text-right">@((roundResult.Bet * winningPayline.Odds).Format())</td>
+        <td class="text-right">@roundResult.Bet.Format(roundResult.XMode)</td>
+        <td class="text-right">@((roundResult.Bet * winningPayline.Odds).Format(roundResult.XMode))</td>
     </tr>
 }

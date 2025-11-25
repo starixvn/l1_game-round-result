@@ -15,6 +15,6 @@
         <td>@bonus.Count</td>
         <td>@bonus.Odds @Localizer["Bonus"]</td>
         <td>-</td>
-        <td class="text-right">@roundResult.PickedBonusChestsTotalAmount.Format()</td>
+        <td class="text-right">@roundResult.PickedBonusChestsTotalAmount.Format(roundResult.XMode)</td>
     </tr>
 }

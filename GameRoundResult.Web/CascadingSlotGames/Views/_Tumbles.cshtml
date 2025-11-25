@@ -53,8 +53,8 @@
                                     param-GameName="Model.GameName" />
                                 </td>
                                 <td>@tumbles[index].Icons[item.key].Count</td>
-                                <td>@tumbles[index].Icons[item.key].Win.Format()</td>
-                                <td rowspan="@rowspan">@tumbleWin.Format()</td>
+                                <td>@tumbles[index].Icons[item.key].Win.Format(roundResult.XMode)</td>
+                                <td rowspan="@rowspan">@tumbleWin.Format(roundResult.XMode)</td>
                             </tr>
                         }
                         else
@@ -68,7 +68,7 @@
                                     param-GameName="Model.GameName" />
                                 </td>
                                 <td>@tumbles[index].Icons[item.key].Count</td>
-                                <td>@tumbles[index].Icons[item.key].Win.Format()</td>
+                                <td>@tumbles[index].Icons[item.key].Win.Format(roundResult.XMode)</td>
                             </tr>
                         }
 

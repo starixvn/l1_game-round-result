@@ -27,5 +27,7 @@ namespace GameRoundResult.Core.Database
 
         [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime EndTime { get; set; }
+
+        public int XMode { get; set; } = 1;
     }
 }

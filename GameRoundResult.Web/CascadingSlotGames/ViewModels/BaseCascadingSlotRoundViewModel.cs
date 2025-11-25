@@ -11,14 +11,14 @@ namespace GameRoundResult.Web.CascadingSlotGames.ViewModels
 
         public decimal CoinValue { get; set; }
 
-        public string DisplayCoinValue => CoinValue.Format();
+        public string DisplayCoinValue => CoinValue.Format(XMode);
 
         public decimal TotalAmount { get; set; }
 
-        public string DisplayTotalAmount => TotalAmount.Format();
+        public string DisplayTotalAmount => TotalAmount.Format(XMode);
         public decimal BetWin { get; set; }
 
-        public string DisplayBetWin => BetWin.Format();
+        public string DisplayBetWin => BetWin.Format(XMode);
 
         public int TotalMultiplier { get; set; }
 
@@ -35,15 +35,17 @@ namespace GameRoundResult.Web.CascadingSlotGames.ViewModels
 
         public decimal WinLoss => FreeSpin ? BetWin : BetWin - TotalAmount;
 
-        public string DisplayWinLoss => WinLoss.Format();
+        public string DisplayWinLoss => WinLoss.Format(XMode);
 
-        public string DisplayTotalBetAmount => (FreeSpin ? 0 : TotalAmount).Format();
+        public string DisplayTotalBetAmount => (FreeSpin ? 0 : TotalAmount).Format(XMode);
 
         public IEnumerable<byte> Board => Result.Split(',').Select(value => byte.Parse(value));
 
         public bool ReachMaxWin { get; set; }
 
         public bool IsWinning => WinLoss > 0;
+
+        public int XMode { get; set; }
     }
 
     public class BaseCascadingSlotSettlementResultViewModel

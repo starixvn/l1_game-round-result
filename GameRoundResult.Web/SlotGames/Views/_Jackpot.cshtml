@@ -15,7 +15,7 @@
         </td>
         <td>5</td>
         <td>@(string.IsNullOrWhiteSpace(jackpot.WinningPrize) ? Localizer["Jackpot"] : Localizer[$"jackpot_{jackpot.WinningPrize}"])</td>
-        <td class="text-right">@roundResult.Bet.Format()</td>
+        <td class="text-right">@roundResult.Bet.Format(roundResult.XMode)</td>
         <td class="text-right">@jackpot.WinningAmount.Format()</td>
     </tr>
 

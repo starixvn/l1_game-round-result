@@ -49,6 +49,8 @@
         public bool ReachMaxWin { get; set; }
 
         public string OperatorId { get; set; }
+
+        public int XMode { get; set; } = 1;
     }
 
     public class BaseCascadingSlotSettlementResult

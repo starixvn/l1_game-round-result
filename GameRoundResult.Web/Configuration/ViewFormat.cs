@@ -5,7 +5,7 @@ namespace GameRoundResult.Web.Configuration
 {
     public static class ViewFormat
     {
-        public const string NumberFormat = "#,##0.######";
+        public const string NumberFormat = "#,##0.##";
 
         public const string _2DecimalsFormat = "#,##0.00";
 
@@ -24,9 +24,11 @@ namespace GameRoundResult.Web.Configuration
 
     public static class FormatHelper
     {
-        public static string Format(this decimal value)
+        public static string Format(this decimal value, int xMode = 1)
         {
-            return value.ToString(ViewFormat.NumberFormat, CultureInfo.InvariantCulture);
+            var decimalPlaces = (int)Math.Log10(xMode);
+            var format = ViewFormat.NumberFormat + new string('#', decimalPlaces);
+            return value.ToString(format, CultureInfo.InvariantCulture);
         }
 
         public static string Format2Decimals(this decimal value)
