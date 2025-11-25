@@ -5,7 +5,7 @@ namespace GameRoundResult.Web.Configuration
 {
     public static class ViewFormat
     {
-        public const string NumberFormat = "#,##0.##";
+        public const string NumberFormat = "#,##0.######";
 
         public const string _2DecimalsFormat = "#,##0.00";
 
