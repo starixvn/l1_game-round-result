@@ -26,7 +26,7 @@ namespace GameRoundResult.Web.Configuration
     {
         public static string Format(this decimal value, int xMode = 1)
         {
-            var decimalPlaces = (int)Math.Log10(xMode);
+            var decimalPlaces = (int)Math.Log10(xMode) + 2;
             var format = ViewFormat.NumberFormat + new string('#', decimalPlaces);
             return value.ToString(format, CultureInfo.InvariantCulture);
         }

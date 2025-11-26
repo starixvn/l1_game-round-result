@@ -101,7 +101,7 @@
                             <td>
                                 @if (additionalFreeSpins.Win > 0)
                                 {
-                                    @additionalFreeSpins.Win?.Format()
+                                    @additionalFreeSpins.Win?.Format(roundResult.XMode)
                                 }
 
                                 @if(additionalFreeSpins.Win > 0 && additionalFreeSpins.Odds > 0)
@@ -121,7 +121,7 @@
                             <td colspan="2">-</td>
                             <td>0</td>
                         }
-                        <td rowspan="@rowspan">@roundResult.SettlementResult.DisplayTumbleWin</td>
+                        <td rowspan="@rowspan">@roundResult.DisplayBetWin</td>
                     </tr>
                 }
             }
