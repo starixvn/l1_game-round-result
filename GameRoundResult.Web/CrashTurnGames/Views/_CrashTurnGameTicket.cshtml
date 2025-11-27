@@ -6,7 +6,14 @@
 
 @if (Model.EnableTolgee)
 {
-    <input value="GameTicketResultViewModel,Common,CoinMining" id="tolgee_namespace" readonly hidden />
+    <input value="GameTicketResultViewModel,Common,CoinMining,ChickenRoad" id="tolgee_namespace" readonly hidden />
+}
+@{
+    var headerName = Model.GameType switch
+    {
+        GameConfigsType.FixedStepsCrashTurnBase => Localizer.GetStringWithNamcespace("crosssed_lanes", "ChickenRoad"),
+        _ => Localizer["header_mining_attempts"]
+    };
 }
 <table class="table  table-bordered table-expand table-game-bet">
     <thead>
@@ -42,7 +49,7 @@
     </tbody>
     <thead>
         <tr>
-            <th>@Localizer["header_mining_attempts"]</th>
+            <th>@headerName</th>
             <th>@CommonLocalizer["result"]</th>
             <th>@Localizer["header_multiplier"]</th>
             <th>@CommonLocalizer["stake"]</th>
@@ -115,7 +122,7 @@
         {
             <tr>
                 <td class="text-left bold" colspan="2">
-                    @Localizer["header_mining_attempts"]
+                    @headerName
                 </td>
                 <td class="text-right">
                     @Model.Bet.TapCount
