@@ -9,18 +9,32 @@
     <input value="GameTicketResultViewModel,Common,CoinMining,ChickenRoad" id="tolgee_namespace" readonly hidden />
 }
 @{
-    var headerName = Model.GameType switch
+    var headerNameSteps = Model.GameType switch
     {
         GameConfigsType.FixedStepsCrashTurnBase => Localizer.GetStringWithNamcespace("crosssed_lanes", "ChickenRoad"),
         _ => Localizer["header_mining_attempts"]
     };
+
+    string GetResult()
+    {
+        if (Model.Bet.Betwin > 0)
+        {
+            return Localizer["cash_out"];
+        }
+
+        return Model.GameType switch
+        {
+            GameConfigsType.FixedStepsCrashTurnBase => Localizer.GetStringWithNamcespace("Crashed", "ChickenRoad"),
+            _ => Localizer["crashed"]
+        };
+    }
 }
 <table class="table  table-bordered table-expand table-game-bet">
     <thead>
         <tr>
             <th class="col-date">@CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
             <th>@CommonLocalizer["RoundId"]</th>
-            <th colspan="4">@Localizer["header_crash_point"]</th>
+            <th colspan="4">@CommonLocalizer["result"]</th>
         </tr>
     </thead>
     <tbody>
@@ -49,8 +63,8 @@
     </tbody>
     <thead>
         <tr>
-            <th>@headerName</th>
-            <th>@CommonLocalizer["result"]</th>
+            <th>@headerNameSteps</th>
+            <th>@CommonLocalizer["status"]</th>
             <th>@Localizer["header_multiplier"]</th>
             <th>@CommonLocalizer["stake"]</th>
             <th>@CommonLocalizer["win"]</th>
@@ -62,7 +76,7 @@
         {
             <tr>
                 <td>@Model.Bet.TapCount</td>
-                <td class="@Model.WinLossRowClassName">@Localizer[Model.GetResult()]</td>
+                <td class="@Model.WinLossRowClassName">@GetResult()</td>
                 <td class="@Model.CashOutClassName">@Model.GetMultiplier()</td>
                 <td class="@Model.CashOutClassName">@Model.FormatNumber(Model.Bet.Amount)</td>
                 <td>
@@ -122,7 +136,7 @@
         {
             <tr>
                 <td class="text-left bold" colspan="2">
-                    @headerName
+                    @headerNameSteps
                 </td>
                 <td class="text-right">
                     @Model.Bet.TapCount
