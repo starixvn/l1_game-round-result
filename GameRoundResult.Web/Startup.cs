@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using AutoMapper;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
 using GameRoundResult.Web.Handlers;
@@ -39,8 +40,8 @@ namespace GameRoundResult.Web
 
             services.AddSingleton(cloudServiceConfig);
             services.AddRestServices(Configuration);
-            services.AddAutoMapper(typeof(Startup));
-            services.AddMediatR(typeof(Startup));
+            services.AddAutoMapper(typeof(Startup).Assembly);
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Startup).Assembly));
             services.AddMongoDatabase(Configuration);
             services.AddServices();
             services.AddValidators();
