@@ -110,6 +110,7 @@ namespace GameRoundResult.Web.Services
             { GameType.SeDieMultiplayer, typeof(SeDieMultiplayerEndGameInfoService) },
             { GameType.BaccaratMultiplayer, typeof(BaccaratMultiplayerEndGameInfoService) },
             { GameType.SoccerPinGoal, typeof(SoccerPinGoalEndGameInfoService) },
+            { GameType.Ludo, typeof(LudoEndGameInfoService)}
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()

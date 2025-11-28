@@ -4,6 +4,7 @@ using GameRoundResult.Core.Constants;
 using GameRoundResult.Core.Database.Entities;
 using GameRoundResult.Core.Database.Entities.CoinMining;
 using GameRoundResult.Core.Database.Entities.KaraKrus;
+using GameRoundResult.Core.Database.Entities.Ludo;
 using GameRoundResult.Core.Database.Entities.SevenUpDown;
 using GameRoundResult.Web.CascadingSlotGames;
 using GameRoundResult.Web.CrashGames.Handlers;
@@ -113,6 +114,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.BaccaratMultiplayer, typeof(BaccaratMultiplayerTicketAccessor) },
             { GameType.SoccerPinGoal, typeof(SoccerPinGoalTicketAccessor) },
             { GameType.GoldAndDragon, typeof(GoldAndDragonAccessor<GoldAndDragonRound, GoldAndDragonBetLog>) },
+            { GameType.Ludo, typeof(LudoTicketAccessor<LudoRound, LudoBet, LudoBetLog>) },
         };
 
         private readonly Dictionary<GameConfigsType, Type> servicesOnType = new()

@@ -18,6 +18,7 @@ using GameRoundResult.Core.Database.Entities.SevenUpDown;
 using GameRoundResult.Core.Database.Entities.SeDieMultiplayer;
 using GameRoundResult.Web.Models.GameTicket;
 using GameRoundResult.Core.Database.Entities.RNGSoccer;
+using GameRoundResult.Core.Database.Entities.Ludo;
 
 namespace GameRoundResult.Web.Configuration
 {
@@ -555,6 +556,10 @@ namespace GameRoundResult.Web.Configuration
                 .ForMember(x => x.Tie, opt => opt.MapFrom(x => x.SettlementResult.Tie))
                 .ForMember(x => x.AnyPair, opt => opt.MapFrom(x => x.SettlementResult.AnyPair));
             CreateMap<BaccaratMultiplayerBet, BaccaratMultiplayerBetViewModel>();
+
+            CreateMap<LudoRound, LudoRoundResultViewModel>()
+                .ForMember(x => x.Dice, opt => opt.MapFrom(x => x.Result.Dice));
+            CreateMap<LudoBetLog, LudoBetLogViewModel>();
         }
 
         private static List<DragonTigerCardViewModel> MapBaccaratCards(IRuntimeMapper mapper, dynamic playerOrBanker)

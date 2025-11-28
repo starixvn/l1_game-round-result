@@ -18,6 +18,7 @@ using GameRoundResult.Web.CrashGames.Handlers;
 using GameRoundResult.Web.SlotGames.Handlers;
 using GameRoundResult.Web.PlinkoGames;
 using GameRoundResult.Web.PlinkoGames.ViewModels;
+using GameRoundResult.Core.Database.Entities.Ludo;
 
 namespace GameRoundResult.Web.RoundHistory
 {
@@ -60,6 +61,7 @@ namespace GameRoundResult.Web.RoundHistory
             { GameType.SeDieMultiplayer, typeof(RoundHistoryAccessor<SeDieMultiplayerRound, SeDieMultiplayerRoundResultViewModel, SeDieMultiplayerBet, RoundHistoryBetViewModel>) },
             { GameType.BaccaratMultiplayer, typeof(RoundHistoryAccessor<BaccaratMultiplayerRound, BaccaratMultiplayerRoundResultViewModel, BaccaratMultiplayerBet, RoundHistoryBetViewModel>) },
             { GameType.SoccerPinGoal, typeof(RoundHistoryAccessor<SoccerPinGoalRound, SoccerPinGoalRoundResultViewModel, SoccerPinGoalBet, RoundHistoryBetViewModel>) },
+            { GameType.Ludo, typeof(RoundHistoryAccessor<LudoRound, LudoRoundResultViewModel, LudoBet, RoundHistoryBetViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;
