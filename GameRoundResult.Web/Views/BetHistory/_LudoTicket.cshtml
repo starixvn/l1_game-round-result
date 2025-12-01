@@ -27,20 +27,20 @@
                     <span class="sedie3-result">
                         @foreach (var dice in Model.RoundResult.Dice)
                         {
-                            <img class="dice" src="/scss/images/dice_@(dice).png" asp-append-version="true">
+                            <img class="dice" src="/scss/images/dice_@(dice).png" alt="@dice" asp-append-version="true">
                         }
                         @Html.Raw(@Model.GetWinningText(Localizer))
                     </span>
                 </td>
-                <td>@Html.Raw(@Model.GetWinningOptions(RoundResultLocalizer))</td>
+                <td style="word-break: break-word;">@Html.Raw(@Model.GetWinningOptions(RoundResultLocalizer))</td>
             </tr>
         }
         else
         {
             <tr>
-               <td colspan="2" class="text-center">
-                   @CommonLocalizer["NoDataAvailable"]
-               </td>
+                <td colspan="2" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
             </tr>
         }   
     </tbody>
@@ -65,7 +65,7 @@
             {
                 @Html.Raw(row)
             }
-           
+
             <tr class="total">
                 <td class="text-right keep-text-size" colspan="3">
                     @if (Model.ReachMaxWin)
@@ -86,6 +86,72 @@
         {
             <tr>
                 <td colspan="5" class="text-center">
+                    @CommonLocalizer["NoDataAvailable"]
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table table-bordered table-baccarat table-baccaratx-bet-vertical">
+    <tbody>
+        @if (Model.RoundResult != null && Model.BetLogs.Any())
+        {
+            var currentIndex = 0;
+
+            @foreach (var betLog in Model.BetLogs)
+            {
+                var cssClass = Model.GetRowBetClass(betLog.Choice);
+                <tr>
+                    <th id="ludo-time" class="text-left title"> @CommonLocalizer["Time"] (@Model.TimeOffsetString)</th>
+                    <td class="text-right">@FormatHelper.RoundDateTimeFormat(betLog.Time)</td>
+                </tr>
+                <tr>
+                    <th id="ludo-betChoice" class="text-left">@CommonLocalizer["BetChoice"]</th>
+                    <td class="text-right @cssClass">@Localizer[betLog.ChoiceKey]</td>
+                </tr>
+                <tr>
+                    <th id="ludo-odds" class="text-left">@CommonLocalizer["Odds"]</th>
+                    <td class="text-right @cssClass">@Model.GetOdds(betLog.Choice).FormatOdds(Model.FractionalOddsFormat)</td>
+                </tr>
+                <tr>
+                    <th id="ludo-stake" class="text-left">@CommonLocalizer["Stake"]</th>
+                    <td class="text-right @cssClass">@Model.DisplayAmount(betLog.Amount)</td>
+                </tr>
+                <tr>
+                    <th id="ludo-win" class="text-left">@CommonLocalizer["Win"]</th>
+                    <td class="text-right @cssClass">@Model.DisplayAmount(Model.GetBetLogWin(betLog))</td>
+                </tr>
+                @if (!currentIndex.Equals(Model.BetLogs.Count() - 1))
+                {
+                    <tr>
+                        <td colspan="2"></td>
+                    </tr>
+                }
+
+                currentIndex++;
+            }
+            <tr class="total">
+                <th id="ludo-max-win" class="text-right">
+                    @if (Model.ReachMaxWin)
+                    {
+                        @($"({CommonLocalizer["you_reached_max_win"]})")
+                    }
+                    @CommonLocalizer["TotalWin"]
+                </th>
+                <td class="text-right">@Model.DisplayBetWin</td>
+            </tr>
+            <tr class="total">
+                <th id="ludo-winloss" class="bold text-right">@CommonLocalizer["WinLoss"]</th>
+                <td class="bold text-right @Model.WinLossRowClassName">
+                    @Model.DisplayWinLoss
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="2" class="text-center">
                     @CommonLocalizer["NoDataAvailable"]
                 </td>
             </tr>

@@ -1,0 +1,71 @@
+[{
+  "_id": {
+    "$oid": "692facea9ab63934ec068da6"
+  },
+  "id": 23202,
+  "result": {
+    "board": {
+      "0": [
+        17,
+        11,
+        0,
+        0
+      ],
+      "1": [
+        41,
+        0,
+        39,
+        0
+      ],
+      "2": [
+        57,
+        46,
+        20,
+        0
+      ],
+      "3": [
+        30,
+        1,
+        0,
+        0
+      ]
+    },
+    "nextTurnIndex": 2,
+    "currentPlayers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "winners": [],
+    "action": {
+      "oldPosition": 31,
+      "newPosition": 39,
+      "playerColor": 1
+    },
+    "dice": [
+      2,
+      6
+    ]
+  },
+  "settlementResult": {
+    "odd": false,
+    "even": true,
+    "big": true,
+    "small": false,
+    "kick": false,
+    "noKick": true,
+    "move": true,
+    "noMove": false,
+    "release": false,
+    "noRelease": true,
+    "goStable": false,
+    "noStable": true
+  },
+  "time": {
+    "$date": "2025-12-03T03:22:18.011Z"
+  },
+  "exchangeRateId": 3466,
+  "initRoundId": 23078,
+  "__v": 0
+}]

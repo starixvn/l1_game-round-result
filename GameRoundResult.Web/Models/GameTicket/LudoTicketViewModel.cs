@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace GameRoundResult.Web.Models.GameTicket
 {
@@ -23,22 +24,24 @@ namespace GameRoundResult.Web.Models.GameTicket
 
         public override bool IsWinningChoice(string choice)
         {
-            return choice.ToLower() switch
+            if (string.IsNullOrWhiteSpace(choice))
             {
-                "noMove" => RoundResult?.SettlementResult.NoMove ?? false,
-                "move" => RoundResult?.SettlementResult.Move ?? false,
-                "kick" => RoundResult?.SettlementResult.Kick ?? false,
-                "noKick" => RoundResult?.SettlementResult.NoKick ?? false,
-                "release" => RoundResult?.SettlementResult.Release ?? false,
-                "noRelease" => RoundResult?.SettlementResult.NoRelease ?? false,
-                "goStable" => RoundResult?.SettlementResult.GoStable ?? false,
-                "noStable" => RoundResult?.SettlementResult.NoStable ?? false,
-                "big" => RoundResult?.SettlementResult.Big ?? false,
-                "small" => RoundResult?.SettlementResult.Small ?? false,
-                "odd" => RoundResult?.SettlementResult.Odd ?? false,
-                "even" => RoundResult?.SettlementResult.Even ?? false,
-                _ => false
-            };
+                return false;
+            }
+
+            var normalizedChoice = char.ToUpperInvariant(choice[0]) + choice.Substring(1);
+            
+            var property = typeof(LudoSettlementResultEntity).GetProperty(
+                normalizedChoice,
+                BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+
+            if (property?.PropertyType == typeof(bool))
+            {
+                var value = property.GetValue(RoundResult.SettlementResult);
+                return value is bool boolValue && boolValue;
+            }
+
+            return false;
         }
 
         public override string WinLossRowClassName => WinLoss < 0 ? "text-red" : "bet-win-text";
@@ -48,15 +51,13 @@ namespace GameRoundResult.Web.Models.GameTicket
 
         public string GetMultiplierChoice()
         {
-            var choice = RoundResult?.Multiplier?.Choice?.ToLower();
+            var choice = RoundResult?.Multiplier?.Choice?.ToLowerInvariant();
             if (string.IsNullOrEmpty(choice))
-                return string.Empty;
-
-            return choice switch
             {
-                "seven" => "glossary_7",
-                _ => $"glossary_{choice}"
-            };
+                return string.Empty;
+            }
+
+            return $"glossary_{choice}";
         }
 
         public string DisplayMultiplierValue(string choice) =>
@@ -68,9 +69,7 @@ namespace GameRoundResult.Web.Models.GameTicket
             var span = new TagBuilder("span");
             span.AddCssClass("text");
 
-            string content = RoundResult.Total == 7
-                ? $"| {RoundResult.Total}"
-                : $"| {RoundResult.Total}";
+            string content = $"| {RoundResult.Total}";
 
             span.InnerHtml.Append(content);
 
@@ -82,13 +81,22 @@ namespace GameRoundResult.Web.Models.GameTicket
             return RoundResult.GetWinningTextResult(stringLocalizer);
         }
 
+        public decimal GetOdds(string choice)
+        {
+            var oddsChoice = char.ToLower(choice[0]) + choice.Substring(1);
+            return Odds[oddsChoice];
+        }
+
         public override decimal GetBetLogWin(BetLogViewModel betLog) =>
             IsWinningChoice(betLog.Choice)
             ? betLog.Amount * CalculateFinalOdds(betLog.Choice) : 0;
 
         private decimal CalculateFinalOdds(string choice)
         {
-            if (!Odds.TryGetValue(choice, out var baseOdds)) return 1;
+            if (!Odds.TryGetValue(choice, out var baseOdds)) 
+            {
+                return 1;
+            }
 
             return IsMultiplerValue && RoundResult.Multiplier.Choice.Equals(choice, StringComparison.OrdinalIgnoreCase)
                 ? (baseOdds - 1) * RoundResult.Multiplier.Value + 1
@@ -108,10 +116,20 @@ namespace GameRoundResult.Web.Models.GameTicket
 
         protected override string GetChoice(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string choice)
         {
-            return RoundResult.GetText(stringLocalizer, choice);
+            return RoundResult.GetText(stringLocalizer, TransformChoice(choice));
         }
 
+        public static string TransformChoice(string str)
+        {
+            var choice = str;
+            if (string.IsNullOrEmpty(choice))
+            {
+                return string.Empty;
+            }
+            string result = Regex.Replace(choice, "(?<!^)([A-Z])", "_$1").ToLowerInvariant();
 
+            return $"glossary_{result}";
+        }
     }
 
     public class LudoBetLogViewModel : BetLogViewModel
@@ -120,8 +138,7 @@ namespace GameRoundResult.Web.Models.GameTicket
         {
             get
             {
-                var choice = Choice?.ToLower();
-                return string.IsNullOrEmpty(choice) ? string.Empty : $"glossary_{choice}";
+               return LudoTicketViewModel.TransformChoice(Choice);
             }
         }
     }

@@ -1,0 +1,85 @@
+[{
+  "_id": {
+    "$oid": "693000e3e3ee9453712627de"
+  },
+  "id": 23853,
+  "result": {
+    "board": {
+      "0": [
+        57,
+        6,
+        32,
+        25
+      ],
+      "1": [
+        27,
+        60,
+        0,
+        24
+      ],
+      "2": [
+        29,
+        31,
+        0,
+        0
+      ],
+      "3": [
+        57,
+        13,
+        58,
+        54
+      ]
+    },
+    "nextTurnIndex": 0,
+    "currentPlayers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "winners": [],
+    "action": {
+      "oldPosition": 7,
+      "newPosition": 13,
+      "playerColor": 3
+    },
+    "dice": [
+      2,
+      4
+    ]
+  },
+  "settlementResult": {
+    "odd": false,
+    "even": true,
+    "big": false,
+    "small": true,
+    "kick": false,
+    "noKick": true,
+    "move": true,
+    "noMove": false,
+    "release": false,
+    "noRelease": true,
+    "goStable": false,
+    "noStable": true
+  },
+  "time": {
+    "$date": "2025-12-03T09:20:35.000Z"
+  },
+  "exchangeRateId": 3478,
+  "initRoundId": 23574,
+  "margins": {
+    "marginMove": 0.04,
+    "marginNoMove": 0.04,
+    "marginKick": 0.04,
+    "marginNoKick": 0.04,
+    "marginRelease": 0.04,
+    "marginNoRelease": 0.04,
+    "marginGoStable": 0.04,
+    "marginNoStable": 0.04,
+    "marginBig": 0.04,
+    "marginSmall": 0.04,
+    "marginOdd": 0.04,
+    "marginEven": 0.04
+  },
+  "__v": 0
+}]

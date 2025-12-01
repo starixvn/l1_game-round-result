@@ -3,6 +3,7 @@ using System.Linq;
 using GameRoundResult.Core.Database.Entities.Ludo;
 using GameRoundResult.Web.Configuration;
 using GameRoundResult.Web.Extensions;
+using GameRoundResult.Web.Models.GameTicket;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GameRoundResult.Web.Models.GameRoundResult
@@ -86,7 +87,7 @@ namespace GameRoundResult.Web.Models.GameRoundResult
             var names = SettlementResult.GetType().GetProperties()
                   .Where(p => p.PropertyType == typeof(bool) &&
                               (bool)p.GetValue(SettlementResult))
-                  .Select(p => GetText(stringLocalizer, p.Name.ToLower()));
+                  .Select(p => GetText(stringLocalizer, LudoTicketViewModel.TransformChoice(p.Name)));
 
             result = string.Join(", ", names);
             tagBuilder.InnerHtml.Append(result);
@@ -97,7 +98,7 @@ namespace GameRoundResult.Web.Models.GameRoundResult
         public string GetText(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer, string key)
         {
             var betChoice = new BetLogViewModel { Choice = key };
-            return stringLocalizer.GetStringWithNamcespace(betChoice.ChoiceKey, "VNLudo");
+            return stringLocalizer.GetStringWithNamcespace(betChoice.Choice, "VNLudo");
         }
     }
 

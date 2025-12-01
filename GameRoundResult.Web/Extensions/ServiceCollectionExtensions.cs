@@ -188,7 +188,7 @@ namespace GameRoundResult.Web.Extensions
             services.AddScoped<MiniRouletteTicketAccessor>();
             services.AddScoped<SeDieMultiplayerTicketAccessor>();
             services.AddScoped<BaccaratMultiplayerTicketAccessor>();
-            services.AddScoped(typeof(LudoTicketAccessor<,,>));
+            services.AddScoped(typeof(LudoTicketAccessor));
 
             services.AddScoped<IGameTicketAccessorFactory, GameTicketAccessorFactory>();
             services.AddScoped<IGameDrawTypeFactory, GameDrawTypeFactory>();

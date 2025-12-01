@@ -1,0 +1,44 @@
+[
+  {
+    "_id": {
+      "$oid": "692facdcd7676adff07d2d5f"
+    },
+    "roundId": 23202,
+    "uid": "68677ddb6fc6f9bd8c776dd5",
+    "__v": 0,
+    "currency": "INH",
+    "freeBet": false,
+    "kick": 10,
+    "maxWin": 0,
+    "name": "Hehe293",
+    "odds": {
+      "big": 1.64,
+      "small": 2.3,
+      "odd": 1.92,
+      "even": 1.92,
+      "kick": 6.91,
+      "noKick": 1.11,
+      "move": 1.08,
+      "noMove": 8.64,
+      "release": 4.93,
+      "noRelease": 1.19,
+      "goStable": 0,
+      "noStable": 0
+    },
+    "operatorId": "ONEworks1",
+    "paid": true,
+    "playerId": "100",
+    "rate": 0.038009999999999995,
+    "reachMaxWin": false,
+    "siteId": "4100300",
+    "time": {
+      "$date": "2025-12-03T03:22:04.681Z"
+    },
+    "totalAmount": 50,
+    "noMove": 10,
+    "noRelease": 10,
+    "big": 10,
+    "odd": 10,
+    "betwin": 28.3
+  }
+]
