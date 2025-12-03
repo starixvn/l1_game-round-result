@@ -56,7 +56,7 @@ namespace GameRoundResult.Web.Models
 
             var s2 = new TagBuilder("span");
             s2.AddCssClass("result-detail");
-            s2.InnerHtml.Append($"{Math.Abs(amount).Format2Decimals()})");
+            s2.InnerHtml.Append($"{Math.Abs(amount).Format4Decimals()})");
             span.InnerHtml.AppendHtml(s2);
 
             tagBuilder.InnerHtml.AppendHtml(span);

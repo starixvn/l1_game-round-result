@@ -34,14 +34,14 @@ namespace GameRoundResult.Web.Models.RoundHistory
         {
             if (Request.ConvertToUSD)
             {
-                return ConvertToBase(value, rate).Format2Decimals();
+                return ConvertToBase(value, rate).Format4Decimals();
             }
 
-            return value.Format2Decimals();
+            return value.Format4Decimals();
         }
 
-        public string DisplayTotalBet => Bets.Sum(x => ConvertToBase(x.TotalAmount, x.Rate)).Format2Decimals();
-        public string DisplayTotalBetwin => Bets.Sum(x => ConvertToBase(x.Betwin, x.Rate)).Format2Decimals();
+        public string DisplayTotalBet => Bets.Sum(x => ConvertToBase(x.TotalAmount, x.Rate)).Format4Decimals();
+        public string DisplayTotalBetwin => Bets.Sum(x => ConvertToBase(x.Betwin, x.Rate)).Format4Decimals();
     }
 
     public class RoundHistoryBetViewModel

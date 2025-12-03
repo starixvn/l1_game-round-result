@@ -5,9 +5,11 @@ namespace GameRoundResult.Web.Configuration
 {
     public static class ViewFormat
     {
-        public const string NumberFormat = "#,##0.##";
+        public const string NumberFormat = "#,##0.####";
 
         public const string _2DecimalsFormat = "#,##0.00";
+
+        public const string _4DecimalsFormat = "#,##0.0000";
 
         public const string TicketDateFormat = "MM/dd/yyyy";
 
@@ -34,6 +36,12 @@ namespace GameRoundResult.Web.Configuration
             return value.ToString(ViewFormat._2DecimalsFormat, CultureInfo.InvariantCulture);
         }
 
+        public static string Format4Decimals(this decimal value)
+        {
+            return value.ToString(ViewFormat._4DecimalsFormat, CultureInfo.InvariantCulture);
+        }
+
+
         public static string RoundDateFormat(this DateTimeOffset dateTime)
         {
             return dateTime.ToString(ViewFormat.RoundDateFormat, CultureInfo.InvariantCulture);
@@ -58,14 +66,14 @@ namespace GameRoundResult.Web.Configuration
 
         public static string FormatOddsWithZero(this decimal value, bool frationalFormat)
         {
-            if(value == 0)
+            if (value == 0)
             {
                 return "-";
             }
             else
             {
                 return FormatHelper.FormatOdds(value, frationalFormat);
-            }            
+            }
         }
     }
 }
