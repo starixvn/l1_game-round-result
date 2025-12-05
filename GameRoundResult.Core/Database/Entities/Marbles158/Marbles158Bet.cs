@@ -11,7 +11,6 @@ namespace GameRoundResult.Core.Database.Entities
     {
         public Dictionary<int, Marbles158BetChoice> BetAmount { get; set; }
         public Dictionary<int, Dictionary<string, Marbles158BetOdds>> MarbleOdds { get; set; }
-        public decimal BetWin { get; set; }
     }
 
     public class Marbles158BetOdds {

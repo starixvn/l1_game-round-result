@@ -33,7 +33,7 @@ namespace GameRoundResult.Web.Accessor
                 BetLogs = result.Item2.Select(x => x.ToBetLogViewModel<Marbles158BetLog, Marbles158BetLogViewModel>(mapper, request.TimeZoneOffset)),
                 MarbleOdds = result.Item3?.MarbleOdds,
                 TotalBet = result.Item3?.TotalAmount ?? 0,
-                BetWin = result.Item3?.BetWin ?? 0
+                BetWin = result.Item3?.Betwin ?? 0
             };
             if (result.Item2.Any())
             {

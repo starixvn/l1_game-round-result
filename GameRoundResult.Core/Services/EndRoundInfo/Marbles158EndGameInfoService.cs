@@ -23,7 +23,7 @@ namespace GameRoundResult.Core.Services
             }
 
             var totalBetAmount = marbles158Bets.Sum(x => x.TotalAmount);
-            var totalBetWin = marbles158Bets.Sum(x => x.BetWin);
+            var totalBetWin = marbles158Bets.Sum(x => x.Betwin);
 
             return new EndRoundInfoResult
             {
