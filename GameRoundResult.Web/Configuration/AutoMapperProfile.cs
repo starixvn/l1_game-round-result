@@ -523,7 +523,7 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<Marbles158BetLog, Marbles158BetLogViewModel>()
                 .ForMember(x => x.LiveScore, opt => opt.MapFrom(x => x.LiveScore.Replace(":", "-")));
             CreateMap<Marbles158Round, Marbles158RoundResultViewModel>()
-                .ForMember(x => x.SettlementResult, opt => opt.MapFrom((source, destination) =>
+                .ForMember(x => x.SettlementResult, opt => opt.MapFrom((source, _) =>
                 {
                     if (source.SettlementResult == null || !source.SettlementResult.Any())
                     {
@@ -531,7 +531,7 @@ namespace GameRoundResult.Web.Configuration
                     }
                     return source.SettlementResult.Last().Value;
                 }))
-                .ForMember(x => x.Result, opt => opt.MapFrom((source, destination) =>
+                .ForMember(x => x.Result, opt => opt.MapFrom((source, _) =>
                 {
                     var homeScore = 0;
                     var awayScore = 0;

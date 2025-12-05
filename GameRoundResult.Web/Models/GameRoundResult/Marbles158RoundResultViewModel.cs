@@ -57,7 +57,7 @@ namespace GameRoundResult.Web.Models
         public string GetHomeResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var homeScore = Result.Split(":")[0];
-            var homeShortName = Match.Home.Split("_")[1].ToUpper();
+            var homeShortName = Match.Home.Split("_")[1].ToUpperInvariant();
             var homeImg = new TagBuilder("img");
             homeImg.AddCssClass($"img");
             homeImg.Attributes.Add(
@@ -92,7 +92,7 @@ namespace GameRoundResult.Web.Models
         public string GetAwayResult(IJsonStringLocalizer<RoundResultViewModel> stringLocalizer)
         {
             var awayScore = Result.Split(":")[1];
-            var awayShortName = Match.Away.Split("_")[1].ToUpper();
+            var awayShortName = Match.Away.Split("_")[1].ToUpperInvariant();
             var awayImg = new TagBuilder("img");
             awayImg.AddCssClass($"img");
             awayImg.Attributes.Add(
@@ -129,31 +129,44 @@ namespace GameRoundResult.Web.Models
             var winningResults = new List<string>();
 
             if (SettlementResult.Home)
+            {
                 winningResults.Add(GetGameText(stringLocalizer, "glossary_home"));
-            ;
+            }
 
             if (SettlementResult.Away)
+            {
                 winningResults.Add(GetGameText(stringLocalizer, "glossary_away"));
+            }
 
             if (SettlementResult.Draw)
+            {
                 winningResults.Add(GetGameText(stringLocalizer, "glossary_draw"));
+            }
 
             if (SettlementResult.Over)
+            {
                 winningResults.Add(GetGameText(stringLocalizer, "glossary_over"));
+            }
 
             if (SettlementResult.Under)
+            {
                 winningResults.Add(GetGameText(stringLocalizer, "glossary_under"));
+            }
 
             if (SettlementResult.Odd)
+            {
                 winningResults.Add(GetGameText(stringLocalizer, "glossary_odd"));
+            }
 
             if (SettlementResult.Even)
+            {
                 winningResults.Add(GetGameText(stringLocalizer, "glossary_even"));
+            }
 
             return string.Join(", ", winningResults);
         }
 
-        public string GetGameText(
+        public static string GetGameText(
             IJsonStringLocalizer<RoundResultViewModel> stringLocalizer,
             string key
         )

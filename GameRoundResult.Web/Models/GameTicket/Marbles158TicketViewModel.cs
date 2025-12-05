@@ -20,7 +20,7 @@ namespace GameRoundResult.Web.Models
                 return false;
             }
 
-            return choice.ToLower() switch
+            return choice.ToLowerInvariant() switch
             {
                 "home" => RoundResult.SettlementResult.Home,
                 "away" => RoundResult.SettlementResult.Away,
@@ -57,7 +57,7 @@ namespace GameRoundResult.Web.Models
         {
             var choiceTranslation = stringLocalizer.GetStringWithNamcespace($"glossary_{choice}", "SpinnerSoccerUltraLive");
 
-            return choice.ToLower() switch
+            return choice.ToLowerInvariant() switch
             {
                 "over" => $"{choiceTranslation} {MarbleOdds[index][choice].Point} [{liveScore}]",
                 "under" => $"{choiceTranslation} {MarbleOdds[index][choice].Point} [{liveScore}]",
