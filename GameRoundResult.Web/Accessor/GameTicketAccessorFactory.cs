@@ -107,6 +107,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.SevenUpDown, typeof(SevenUpDownTicketAccessor<SevenUpDownRound, SevenUpDownBet, SevenUpDownBetLog>) },
             { GameType.MarbleFootball, typeof(MarbleFootballTicketAccessor) },
             { GameType.MarbleFootball2, typeof(MarbleFootball2TicketAccessor) },
+            { GameType.Marbles158, typeof(Marbles158TicketAccessor) },
             { GameType.RNGSoccer, typeof(RNGSoccerTicketAccessor) },
             { GameType.MiniRoulette, typeof(MiniRouletteTicketAccessor) },
             { GameType.SeDieMultiplayer, typeof(SeDieMultiplayerTicketAccessor) },

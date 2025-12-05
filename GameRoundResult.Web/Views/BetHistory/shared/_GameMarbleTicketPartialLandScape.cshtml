@@ -7,6 +7,7 @@
     var localizer = ViewBag.Localizer;
     var tolgeeNamespace = ViewBag.TolgeeNamespace;
     var showingBetDetail = ViewBag.ShowingBetDetail ?? false;
+    var isUsingMarbleOdds = ViewBag.IsUsingMarbleOdds ?? false;
 }
 
 @if (Model.EnableTolgee)
@@ -37,10 +38,24 @@
                         @bet.TimeDisplay
                     </td>
                     <td class="@cssClass">
-                        @localizer[bet.TolgeeChoiceKey]
+                        @if (isUsingMarbleOdds)
+                        {
+                            @Model.DisplayMarbleChoice(localizer, bet.Choice, bet.Index, bet.LiveScore)
+                        }
+                        else
+                        {
+                            @localizer[bet.TolgeeChoiceKey]
+                        }
                     </td>
                     <td class="@cssClass">
-                        @Model.DisplayOdds(bet.Choice)
+                        @if (isUsingMarbleOdds)
+                        {
+                            @Model.DisplayMarbleOdds(bet.Choice, bet.Index)
+                        }
+                        else
+                        {
+                            @Model.DisplayOdds(bet.Choice)
+                        }
                     </td>
                     <td class="@cssClass">
                         @Model.DisplayAmount(bet.Amount)

@@ -7,6 +7,7 @@
     var localizer = ViewBag.Localizer;
     var tolgeeNamespace = ViewBag.TolgeeNamespace;
     var showingBetDetail = ViewBag.ShowingBetDetail ?? false;
+    var isUsingMarbleOdds = ViewBag.IsUsingMarbleOdds ?? false;
 }
 
 @if (Model.EnableTolgee)
@@ -34,13 +35,28 @@
                 <tr>
                     <td class="text-left">@CommonLocalizer["BetChoice"]</td>
                     <td class="text-right @cssClass">
-                        @localizer[betLog.TolgeeChoiceKey]
+                        @if (isUsingMarbleOdds)
+                        {
+                            @Model.DisplayMarbleChoice(localizer, betLog.Choice, betLog.Index, betLog.LiveScore)
+                        }
+                        else
+                        {
+                            @localizer[betLog.TolgeeChoiceKey]
+                        }
                     </td>
                 </tr>
                 <tr>
                     <td class="text-left">@CommonLocalizer["Odds"]</td>
                     <td class="text-right @cssClass">
-                        @Model.DisplayOdds(betLog.Choice)</td>
+                        @if (isUsingMarbleOdds)
+                        {
+                            @Model.DisplayMarbleOdds(betLog.Choice, betLog.Index)
+                        }
+                        else
+                        {
+                            @Model.DisplayOdds(betLog.Choice)
+                        }
+                    </td>
                 </tr>
                 <tr>
                     <td class="text-left">@CommonLocalizer["Stake"]</td>

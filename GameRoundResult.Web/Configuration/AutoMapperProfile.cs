@@ -520,6 +520,31 @@ namespace GameRoundResult.Web.Configuration
             CreateMap<MarbleFootballRound, MarbleFootballRoundResultViewModel>();
             CreateMap<MarbleFootball2BetLog, MarbleFootball2BetLogViewModel>();
             CreateMap<MarbleFootball2Round, MarbleFootball2RoundResultViewModel>();
+            CreateMap<Marbles158BetLog, Marbles158BetLogViewModel>()
+                .ForMember(x => x.LiveScore, opt => opt.MapFrom(x => x.LiveScore.Replace(":", "-")));
+            CreateMap<Marbles158Round, Marbles158RoundResultViewModel>()
+                .ForMember(x => x.SettlementResult, opt => opt.MapFrom((source, destination) =>
+                {
+                    if (source.SettlementResult == null || !source.SettlementResult.Any())
+                    {
+                        return null;
+                    }
+                    return source.SettlementResult.Last().Value;
+                }))
+                .ForMember(x => x.Result, opt => opt.MapFrom((source, destination) =>
+                {
+                    var homeScore = 0;
+                    var awayScore = 0;
+
+                    foreach (var result in source.Result)
+                    {
+                        var scores = result.Value.Result.Split(":");
+                        homeScore += int.Parse(scores[0]);
+                        awayScore += int.Parse(scores[1]);
+                    }
+
+                    return $"{homeScore}:{awayScore}";
+                }));
             CreateMap<RNGSoccerRound, RNGSoccerRoundResultViewModel>()
                 .ForMember(x => x.Home, opt => opt.MapFrom(x => x.Result.Home))
                 .ForMember(x => x.Away, opt => opt.MapFrom(x => x.Result.Away));
@@ -559,9 +584,9 @@ namespace GameRoundResult.Web.Configuration
 
         private static List<DragonTigerCardViewModel> MapBaccaratCards(IRuntimeMapper mapper, dynamic playerOrBanker)
         {
-            var result = new List<DragonTigerCardViewModel> { 
-                mapper.Map<DragonTigerCardViewModel>(playerOrBanker.FirstCard), 
-                mapper.Map<DragonTigerCardViewModel>(playerOrBanker.SecondCard) 
+            var result = new List<DragonTigerCardViewModel> {
+                mapper.Map<DragonTigerCardViewModel>(playerOrBanker.FirstCard),
+                mapper.Map<DragonTigerCardViewModel>(playerOrBanker.SecondCard)
             };
 
             if (playerOrBanker.ThirdCard != null)

@@ -60,6 +60,7 @@ namespace GameRoundResult.Web.RoundHistory
             { GameType.SeDieMultiplayer, typeof(RoundHistoryAccessor<SeDieMultiplayerRound, SeDieMultiplayerRoundResultViewModel, SeDieMultiplayerBet, RoundHistoryBetViewModel>) },
             { GameType.BaccaratMultiplayer, typeof(RoundHistoryAccessor<BaccaratMultiplayerRound, BaccaratMultiplayerRoundResultViewModel, BaccaratMultiplayerBet, RoundHistoryBetViewModel>) },
             { GameType.SoccerPinGoal, typeof(RoundHistoryAccessor<SoccerPinGoalRound, SoccerPinGoalRoundResultViewModel, SoccerPinGoalBet, RoundHistoryBetViewModel>) },
+            { GameType.Marbles158, typeof(RoundHistoryAccessor<Marbles158Round, Marbles158RoundResultViewModel, Marbles158Bet, RoundHistoryBetViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;

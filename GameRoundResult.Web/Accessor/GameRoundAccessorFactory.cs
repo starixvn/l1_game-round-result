@@ -109,6 +109,7 @@ namespace GameRoundResult.Web.Accessor
             { GameType.RNGSoccer, typeof(GameRoundAccessor<RNGSoccerRound, RNGSoccerRoundResultViewModel>) },
             { GameType.MiniRoulette, typeof(GameRoundAccessor<MiniRouletteRound, MiniRouletteRoundResultViewModel>) },
             { GameType.SoccerPinGoal, typeof(GameRoundAccessor<SoccerPinGoalRound, SoccerPinGoalRoundResultViewModel>) },
+            { GameType.Marbles158, typeof(GameRoundAccessor<Marbles158Round, Marbles158RoundResultViewModel>) },
         };
 
         private readonly IServiceProvider serviceProvider;
